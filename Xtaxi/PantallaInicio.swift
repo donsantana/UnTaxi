@@ -12,7 +12,7 @@ import MapKit
 import Socket_IO_Client_Swift
 import AddressBook
 
-class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
     var coreLocationManager : CLLocationManager!
     var miposicion = CLLocationCoordinate2D()
     var locationMarker = MKPointAnnotation()
@@ -70,8 +70,11 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         coreLocationManager.requestWhenInUseAuthorization() //solicitud de autorización para acceder a la localización del usuario
         coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
-        //self.miposicion = coreLocationManager.location!.coordinate
-        //trabajo con IOSMap
+        //INICIALIZACION DE LOS TEXTFIELD
+        origenText.delegate = self
+        referenciaText.delegate = self
+        destinoText.delegate = self
+        vestuarioText.delegate = self
         //Inicializacion del mapa con una vista panoramica de guayaquil
         
      
@@ -211,7 +214,13 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }*/
    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        self.TablaSolPendientes.hidden = true
+       self.formularioSolicitud.endEditing(true)
     
+    }
+    //OCULTAR TECLADO CON TECLA ENTER
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
        //Funcion para ejecutar acciones cuando selecciono un icono en el mapa.
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
@@ -473,15 +482,68 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         
-        let solSeleccionada = indexPath.row
-        self.performSegueWithIdentifier("haciaSolicitud", sender: solSeleccionada)
+        let alertaDos = UIAlertController (title: "Cancelación", message: "Desea Enviar la Solicitud en proceso", preferredStyle: UIAlertControllerStyle.Alert)
         
+        //Ahora es mucho mas sencillo, y podemos añadir nuevos botones y usar handler para capturar el botón seleccionado y hacer algo.
+        
+        alertaDos.addAction(UIAlertAction(title: "MAPA", style: UIAlertActionStyle.Cancel ,handler: {alerAction in
+            let solSeleccionada = indexPath.row
+            self.performSegueWithIdentifier("haciaSolicitud", sender: solSeleccionada)
+        }))
+        alertaDos.addAction(UIAlertAction(title: "SI", style: UIAlertActionStyle.Default, handler: {alerAction in
+            
+        }))
+        
+        alertaDos.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: {alerAction in
+            
+        }))
+        
+        alertaDos.addAction(UIAlertAction(title: "LLAMAR", style: UIAlertActionStyle.Default, handler: {alerAction in
+            
+        }))
+        
+        //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
+        
+        self.presentViewController(alertaDos, animated: true, completion: nil)
+      
     }
     
     
     //FUNCION PARA EL CAMBIO DE PANTALLA
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      let seleccion = sender as! in
+      let seleccion = sender as! Int
+        let SolicitudView : PantallaSolic = segue.destinationViewController as! PantallaSolic
+        SolicitudView.Solicitud = myvariables.solpendientes[seleccion]
+        
     }
+    
+    //CONTROL DE TECLADO VIRTUAL
+   
+    func textFieldDidEndEditing(textfield: UITextField) {
+        if textfield.isEqual(vestuarioText){
+            animateViewMoving(false, moveValue: 100)
+        }
+        else{
+        }
+    }
+    
+    //Funciones para mover los elementos para que no queden detrás del teclado
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.isEqual(vestuarioText){
+            animateViewMoving(true, moveValue: 100)
+        }
+        else{
+        }
+    }
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
+    }
+
 
 }

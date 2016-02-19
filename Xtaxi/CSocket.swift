@@ -25,25 +25,7 @@ class CSocket {
     }
     //Control de eventos desde el servidor
     func ControlEventos(){
-        //conexion
-        self.socket.on("auth"){data, ack in
-           if !data.isEmpty{
-            self.resultado = data[0] as! String
-            }
-           else {
-            self.resultado = "hay problemas"
-            }
-        }
-        //Autenticación
-        self.socket.on("autenticacion"){data, ack in
         
-        }
-    }
-    //Función conectar
-    func Conectar(){
-        if self.socket.status.description != "connecting"{
-        self.socket.connect()
-        }
     }
     //Desconectar
     func Desconectar()->String{

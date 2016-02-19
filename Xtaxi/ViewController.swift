@@ -23,9 +23,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //var conexionSocket = CSocket()
     
     var idusuario = String()
+    var cliente : CCliente! //usuario y contraseña para el login automatico
     //var cliente : CCliente!
     @IBOutlet weak var Usuario: UITextField!
     @IBOutlet weak var Clave: UITextField!
+    
     
     
     //Registro Variables
@@ -53,9 +55,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
        telefonoText.delegate = self
        claveText.delegate = self
        correoText.delegate = self
+        Clave.delegate = self
        confirmarClavText.delegate = self
        telefonoText.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-     }
+     }   
     
     //Funcion para controlar los eventos del socket
     func ControlEventos(){
@@ -111,6 +114,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.Usuario.text = "Sin Conexión"
         }
         else{
+        cliente = CCliente(user: self.Usuario.text!, password: self.Clave.text!)
         let usuario = self.Usuario.text! + ","
         let clave = self.Clave.text! + ","
         let dato = "#LoginPassword," + usuario + clave + "#"
@@ -146,8 +150,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let datos = "#Registro" + "," + nombreApText.text! + temporal + temporal1
         myvariables.socket.emit("data", datos)
         }
-    }   
+    }
     
+    
+    @IBAction func CancelRegistro(sender: AnyObject) {
+       self.RegistroView.hidden = true
+        
+    }
     //Funciones de la logica de la aplicacion
    //FUNCION DE AUTENTICACION
     func Autenticacion(resultado: [String]){
@@ -155,16 +164,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
        case "loginok":
        myvariables.solicitud.DatosCliente(resultado[4], nombreapellidoscliente: resultado[5], movilcliente: self.Usuario.text!)
        self.idusuario = String(resultado[2])
+       cliente.CrearSesion()
        if resultado[6] != "0"{
         self.ListSolicitudPendiente(resultado)
-        
        }
        self.CambiarPantalla()
        case "loginerror": self.Usuario.text = "usuario incorrecto"
         default: self.Usuario.text = "Problemas de conexion"
         }
     }
-    
+     
     //FUNCIÓN CAMBIO DE PANTALLA
     func CambiarPantalla (){        
         myvariables.idusuario = self.idusuario
@@ -195,6 +204,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     func textFieldDidEndEditing(textfield: UITextField) {
+        if textfield.isEqual(Clave){
+            animateViewMoving(false, moveValue: 80)
+        }
+        else{
         if textfield.isEqual(telefonoText){
             usuarioText.text = textfield.text
             usuarioText.userInteractionEnabled = false
@@ -211,21 +224,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     RegistrarBtn.enabled = true
                 }
             }
-        animateViewMoving(false, moveValue: 150)
+        animateViewMoving(false, moveValue: 140)
+        }
         }
     }
-    
+    //OCULTAR TECLACO CON TECLA ENTER
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
     //Funciones para mover los elementos para que no queden detrás del teclado
     func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.isEqual(Clave){
+            animateViewMoving(true, moveValue: 80)
+        }
+        else{
         if textField.isEqual(telefonoText){
        
         }
         else{
-             animateViewMoving(true, moveValue: 150)
+             animateViewMoving(true, moveValue: 140)
             if textField.isEqual(confirmarClavText){
                 textField.secureTextEntry = true
                 textField.textColor = UIColor.blackColor()
             }
+        }
         }
     }
     func animateViewMoving (up:Bool, moveValue :CGFloat){
