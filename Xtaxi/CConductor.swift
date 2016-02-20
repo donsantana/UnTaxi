@@ -18,7 +18,11 @@ class CConductor{
         self.IdConductor = IdConductor
         self.NombreApellido = Nombre
         self.Telefono = Telefono
+        if UrlFoto != ""{
         self.UrlFoto = UrlFoto
+        }
+        else{
+        self.UrlFoto = "chofer"}
     }
     
     

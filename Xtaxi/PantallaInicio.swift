@@ -34,6 +34,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var GeolocalizandoView: UIView!
     @IBOutlet weak var origenIcono: UIImageView!
     @IBOutlet weak var mapaVista: MKMapView!
+    @IBOutlet weak var ExplicacionView: UIView!
    
     //@IBOutlet weak var menuTable: UITableView!
    
@@ -230,6 +231,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapaVista.removeAnnotation(taxiLocation)
         let Datos = "#Taxi" + "," + myvariables.idusuario + "," + self.taxiLocation.title! + "," + "# /n"
             myvariables.socket.emit("data", Datos)
+             ExplicacionView.hidden = true
         }
 
     }
@@ -367,6 +369,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
        myvariables.socket.emit("data", datos)
         coreLocationManager.stopUpdatingLocation()
         TablaSolPendientes.hidden = true
+        ExplicacionView.hidden = false
     }
     
     //Botones para solicitud
@@ -446,7 +449,22 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //Aceptar y Enviar solicitud
     @IBAction func AceptarSolicitud(sender: AnyObject) {
-      self.confirmaCarrera()
+        if destinoText.text != ""{
+           self.confirmaCarrera()
+        }
+        else{
+            let alertaDos = UIAlertController (title: "Datos Solicitud", message: "Debe Seleccionar una Dirección de Destino", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
+                
+            }))
+            
+            //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
+            
+            self.presentViewController(alertaDos, animated: true, completion: nil)
+
+        }        
+      
     }
     //Boton Cerrar la APP
    
