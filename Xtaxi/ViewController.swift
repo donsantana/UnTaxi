@@ -9,13 +9,7 @@
 import UIKit
 import Socket_IO_Client_Swift
 
-struct myvariables {
-    static var idusuario : String = ""
-    static var solicitud = CSolicitud()
-    static var socket : SocketIOClient!
-    static var solpendientes = [CSolPendiente]()
-    static var prueba = [String]()
-}
+
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -47,10 +41,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myvariables.socket = SocketIOClient(socketURL: "104.171.10.34:5800")
+        
         // Do any additional setup after loading the view, typically from a nib.
        self.ControlEventos()
-       myvariables.socket.connect()
+       
         //asignar el delegado a los textfield para poder utilizar las funciones propias
        telefonoText.delegate = self
        claveText.delegate = self

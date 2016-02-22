@@ -76,10 +76,11 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         referenciaText.delegate = self
         destinoText.delegate = self
         vestuarioText.delegate = self
+        
         //Inicializacion del mapa con una vista panoramica de guayaquil
         
      
-        span = MKCoordinateSpanMake(150 , 150)
+        span = MKCoordinateSpanMake(150.0 , 150.0)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(0.0, 0.0), span: span)
         mapaVista.setRegion(region, animated: true)
         self.GeolocalizandoView.hidden = false
@@ -108,7 +109,42 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
            self.RespuestaSolicitd(temporal)
         }
         
+        //RESPUESTA DE CANCELAR SOLICITUD
+        myvariables.socket.on("Cancelarsolicitud"){data, ack in
+            let temporal = String(data).componentsSeparatedByString(",")
+            if temporal[1] == "ok"{
+            let alertaDos = UIAlertController (title: "Cancelar solicitud", message: "Su solicitud ha sido cancelada", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
+                self.TablaSolPendientes.hidden = true
+            }))
         
+            //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
+            
+            self.presentViewController(alertaDos, animated: true, completion: nil)
+            }
+            
+        }
+        //RESPUESTA DE CONDUCTOR A SOLICITUD
+        myvariables.socket.on("Solicitudestado"){data, ack in
+            let temporal = String(data).componentsSeparatedByString(",")
+            if temporal[0] == "Sms"{
+                let alertaDos = UIAlertController (title: "Solicitud", message: temporal[2] as String, preferredStyle: UIAlertControllerStyle.Alert)
+                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
+                    
+                }))
+                //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
+                self.presentViewController(alertaDos, animated: true, completion: nil)
+            }
+            else{
+                if temporal[0] == "Cancelada" {
+                        let alertaDos = UIAlertController (title: "Solicitu", message: "Su solicitud ha sido Rechazada por el Conductor", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
+                            
+                        }))
+                    }
+            }
+        }
         //SOLICITUDES PENDIENTES
         if myvariables.solpendientes.count != 0{
             SolPendientesBtn.hidden = false
@@ -144,16 +180,14 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
         mapaVista.removeAnnotation(userAnotacion)
         self.miposicion =  newLocation.coordinate
-        span = MKCoordinateSpanMake(0.4 , 0.4)
+        span = MKCoordinateSpanMake(0.1 , 0.1)
         region = MKCoordinateRegion(center: miposicion, span: span)
         mapaVista.setRegion(region, animated: true)
-        
         userAnotacion.coordinate = miposicion
         userAnotacion.title = "Cliente"
         mapaVista.showsUserLocation = false
         mapaVista.addAnnotation(userAnotacion)
         self.GeolocalizandoView.hidden = true
-        
         self.SolicitarBtn.hidden = false
         
     }
@@ -248,11 +282,11 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let posicionTaxi = CLLocationCoordinate2D(latitude: Double(temporal[4])!, longitude: Double(temporal[5])!)
             self.taxiLocation.coordinate = posicionTaxi
             self.taxiLocation.title = temporal[2]
-        span = MKCoordinateSpanMake(0.4 , 0.4)
-        let region = MKCoordinateRegion(center: taxiLocation.coordinate, span: span)
+        let spantax = MKCoordinateSpanMake(0.1 , 0.1)
+        let region = MKCoordinateRegion(center: taxiLocation.coordinate, span: spantax)
         mapaVista.setRegion(region, animated: true)
             mapaVista.addAnnotation(taxiLocation)
-            mapaVista.showAnnotations([taxiLocation], animated: true)
+            //mapaVista.showAnnotations([taxiLocation], animated: true)
             self.SolicitarBtn.hidden = true
         myvariables.solicitud.OtrosDatosTaxi(temporal[2], lattaxi: temporal[4], lngtaxi: temporal[5])
       }
@@ -267,8 +301,11 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //Respuesta de solicitud
     func RespuestaSolicitd(Temporal : [String]){
-        //taxisDisponible.hidden = false
-        //taxisDisponible.text = Temporal[0]
+        /*var mensaje = ""
+        if Temporal[1] == "ok"{
+           mensaje = "Su Solicitud se procesó con exito, espere la confirmación del conductor"
+        }
+        else*/
     }
     
     //Crear las rutas entre los puntos de origen y destino
@@ -322,6 +359,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let Datos = "#Solicitud" + "," + myvariables.solicitud.idcliente + "," + myvariables.solicitud.idconductor + "," + myvariables.solicitud.idtaxi + "," + myvariables.solicitud.nombreapellidoscliente + "," + myvariables.solicitud.nombreapellidosconductor + "," + myvariables.solicitud.codigovehiculo + "," + myvariables.solicitud.dirorigen + "," + myvariables.solicitud.referenciaorigen + "," + myvariables.solicitud.dirdestino + "," + myvariables.solicitud.disttaxiorigen + "," + myvariables.solicitud.distorigendestino + "," + myvariables.solicitud.consumocombustible + "," + myvariables.solicitud.importe + "," + myvariables.solicitud.tiempotaxiorigen + "," + myvariables.solicitud.tiempoorigendestino + "," + myvariables.solicitud.lattaxi + "," + myvariables.solicitud.lngtaxi + "," + myvariables.solicitud.latorigen + "," + myvariables.solicitud.lngorigen + "," + myvariables.solicitud.latdestino + "," + myvariables.solicitud.lngdestino + "," + myvariables.solicitud.vestuariocliente + "," + myvariables.solicitud.movilcliente + "," + "#/ n"
         
        myvariables.socket.emit("data", Datos)
+        self.formularioSolicitud.hidden = true
     }))
     alertaDos.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default, handler: {alerAction in
       
@@ -380,7 +418,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.origenIcono.image = UIImage(named:"origen2")
         self.origenIcono.hidden = false
         mapaVista.removeAnnotations(mapaVista.annotations)
-        span = MKCoordinateSpanMake(0.2 , 0.2)
+        span = MKCoordinateSpanMake(0.3 , 0.3)
         region = MKCoordinateRegion(center: self.userAnotacion.coordinate, span: span)
         mapaVista.setRegion(region, animated: true)
         self.aceptarLocBtn.hidden = false
@@ -406,7 +444,6 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.origenAnotacion.coordinate = mapaVista.centerCoordinate
         self.origenText.text = String(self.origenAnotacion.coordinate.latitude) +  String(self.origenAnotacion.coordinate.longitude)
         mapaVista.addAnnotation(origenAnotacion)
-       
         }
         else{
         self.destinoAnotacion.coordinate = mapaVista.centerCoordinate
@@ -482,25 +519,20 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-       return myvariables.solpendientes.count
+        return myvariables.solpendientes.count
     }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
        cell.textLabel!.text = myvariables.solpendientes[indexPath.row].FechaHora
         //cell.imageView?.image =
-        
-        return cell
+       return cell
     }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         
-        let alertaDos = UIAlertController (title: "Cancelación", message: "Desea Enviar la Solicitud en proceso", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertaDos = UIAlertController (title: "Cancelación", message: "Desea Cancelar la Solicitud en proceso", preferredStyle: UIAlertControllerStyle.Alert)
         
         //Ahora es mucho mas sencillo, y podemos añadir nuevos botones y usar handler para capturar el botón seleccionado y hacer algo.
         
@@ -509,7 +541,11 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.performSegueWithIdentifier("haciaSolicitud", sender: solSeleccionada)
         }))
         alertaDos.addAction(UIAlertAction(title: "SI", style: UIAlertActionStyle.Default, handler: {alerAction in
-            
+            let Datos = "#Cancelarsolicitud" + "," + myvariables.solpendientes[indexPath.row].idSolicitud + "," + myvariables.solpendientes[indexPath.row].idTaxi + "," + "# \n"
+            myvariables.socket.emit("data", Datos)
+            myvariables.solpendientes.removeAtIndex(indexPath.row)
+            self.TablaSolPendientes.deleteRowsAtIndexPaths(self.TablaSolPendientes.indexPathsForSelectedRows!, withRowAnimation: UITableViewRowAnimation.Fade)
+            self.TablaSolPendientes.deselectRowAtIndexPath(indexPath, animated: true)
         }))
         
         alertaDos.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.Default, handler: {alerAction in
@@ -528,12 +564,12 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     //FUNCION PARA EL CAMBIO DE PANTALLA
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       let seleccion = sender as! Int
         let SolicitudView : PantallaSolic = segue.destinationViewController as! PantallaSolic
         SolicitudView.Solicitud = myvariables.solpendientes[seleccion]
         
-    }
+    }*/
     
     //CONTROL DE TECLADO VIRTUAL
    

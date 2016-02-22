@@ -9,6 +9,15 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import Socket_IO_Client_Swift
+
+struct myvariables {
+    static var idusuario : String = ""
+    static var solicitud = CSolicitud()
+    static var socket : SocketIOClient!
+    static var solpendientes = [CSolPendiente]()
+    static var prueba = [String]()
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,10 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        myvariables.socket = SocketIOClient(socketURL: "104.171.10.34:5800")
+        myvariables.socket.connect()
         GMSServices.provideAPIKey("AIzaSyADlVgBSmX1FSFBvf4njnTDq9YL0RwF9e4")
         
-          
+       /* self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Solicitud")
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()*/
         return true
     }
 
