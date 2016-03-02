@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //var conexionSocket = CSocket()
     
     var idusuario = String()
-    var cliente : CCliente! //usuario y contraseña para el login automatico
+    
     //var cliente : CCliente!
     @IBOutlet weak var Usuario: UITextField!
     @IBOutlet weak var Clave: UITextField!
@@ -41,9 +41,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
-       self.ControlEventos()
+        self.ControlEventos()
        
         //asignar el delegado a los textfield para poder utilizar las funciones propias
        telefonoText.delegate = self
@@ -52,11 +51,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Clave.delegate = self
        confirmarClavText.delegate = self
        telefonoText.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-     }   
+     }
+    
     
     //Funcion para controlar los eventos del socket
-    func ControlEventos(){
-        myvariables.socket.on("LoginPassword"){data, ack in
+    func ControlEventos(){        
+       /* myvariables.socket.on("LoginPassword"){data, ack in
           let temporal = String(data).componentsSeparatedByString(",")
             
             if (temporal[0] == "[#LoginPassword"){
@@ -65,8 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             else{
              self.Usuario.text = "Vacio"
             }
-        }
-        
+        }*/
        myvariables.socket.on("Registro") {data, ack in
            let temporal = String(data).componentsSeparatedByString(",")
         
@@ -74,6 +73,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación", preferredStyle: UIAlertControllerStyle.Alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
                 self.RegistroView.hidden = true
+                   
                 }))
                 
                 //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
@@ -108,13 +108,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.Usuario.text = "Sin Conexión"
         }
         else{
-        cliente = CCliente(user: self.Usuario.text!, password: self.Clave.text!)
-        let usuario = self.Usuario.text! + ","
-        let clave = self.Clave.text! + ","
-        let dato = "#LoginPassword," + usuario + clave + "#"
-        myvariables.socket.emit("data", dato)
-       }
-        
+            let writeString = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# /n"
+            //CREAR EL FICHERO DE LOGÍN
+            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+            
+            do {
+                _ = try writeString.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+            } catch {
+                
+            }
+            CambiarPantalla()
+        }
     }
        
     func textFieldDidChange(textField: UITextField) {
@@ -153,24 +157,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     //Funciones de la logica de la aplicacion
    //FUNCION DE AUTENTICACION
-    func Autenticacion(resultado: [String]){
+   /* func Autenticacion(resultado: [String]){
        switch resultado[1]{
        case "loginok":
        myvariables.solicitud.DatosCliente(resultado[4], nombreapellidoscliente: resultado[5], movilcliente: self.Usuario.text!)
        self.idusuario = String(resultado[2])
-       cliente.CrearSesion()
+       let writeString = "#LoginPassword," + self.idusuario + "," + self.Usuario.text! + "," + self.Clave.text! + "," + resultado[4] + "," + resultado[5] + "," + self.Usuario.text! + "," + resultado[6] + "," + "#"
+       //CREAR EL FICHERO DE LOGÍN
+       let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+       
+       do {
+        _ = try writeString.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+       } catch {
+        
+       }
        if resultado[6] != "0"{
         self.ListSolicitudPendiente(resultado)
        }
        self.CambiarPantalla()
+        
        case "loginerror": self.Usuario.text = "usuario incorrecto"
         default: self.Usuario.text = "Problemas de conexion"
-        }
-    }
+      }
+    }*/
      
     //FUNCIÓN CAMBIO DE PANTALLA
-    func CambiarPantalla (){        
-        myvariables.idusuario = self.idusuario
+    func CambiarPantalla (){
         let nuestroStoryBoard : UIStoryboard = UIStoryboard(name:"Main",bundle: nil)
         let nuestraPantallaInicio = nuestroStoryBoard.instantiateViewControllerWithIdentifier("PI") as! PantallaInicio
         //Para cambiar a otra Pantalla por metodo push (cargar otra vista)
@@ -181,7 +193,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
-    func ListSolicitudPendiente(listado : [String]){
+    /*func ListSolicitudPendiente(listado : [String]){
         var i = 7
         while i < listado.count-10 {
            let solicitud = CSolPendiente(idSolicitud: listado[i], idTaxi: listado[i + 1], codigo: listado[i + 2], FechaHora: listado[i + 3], Latitudtaxi: listado[i + 4], Longitudtaxi: listado[i + 5], Latitudorigen: listado[i + 6], Longitudorigen: listado[i + 7], Latituddestino: listado[i + 8], Longituddestino: listado[i + 9])
@@ -190,7 +202,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         //self.Usuario.text = String(myvariables.solpendientes[0].idSolicitud)
     }
-    
+    */
     
     
     //enviar el id usuario
@@ -220,7 +232,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         animateViewMoving(false, moveValue: 140)
         }
-        }
+     }
     }
     //OCULTAR TECLACO CON TECLA ENTER
     func textFieldShouldReturn(textField: UITextField) -> Bool {
