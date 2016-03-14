@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  Xtaxi
 //
@@ -12,26 +12,25 @@ import CoreLocation
 import Socket_IO_Client_Swift
 
 struct myvariables {
-    
     static var socket : SocketIOClient!    
-    static var prueba = [String]()
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        myvariables.socket = SocketIOClient(socketURL: "104.171.10.34:5800")
-        myvariables.socket.connect()     
+        GMSServices.provideAPIKey("AIzaSyADlVgBSmX1FSFBvf4njnTDq9YL0RwF9e4")
         
+        myvariables.socket = SocketIOClient(socketURL: "104.171.10.34:5800")
+        myvariables.socket.connect()
 
         //LEER SI EXISTE EL FICHERO DEL LOGIN
         
-        var read = "Vacio"
+       var read = "Vacio"
         var vista = ""
         let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
         
@@ -52,9 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialViewController = storyboard.instantiateViewControllerWithIdentifier(vista)
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
-        GMSServices.provideAPIKey("AIzaSyADlVgBSmX1FSFBvf4njnTDq9YL0RwF9e4")
-            
+       
         return true
     }
 
@@ -77,8 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-       
+        myvariables.socket.close()       
     }
 
 }

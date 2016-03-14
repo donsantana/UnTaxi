@@ -11,16 +11,14 @@ import Foundation
 class CCliente{
     var user : String
     var password : String
+    var idusuario : String
     let file = "login.txt"
     
     //Constructor
     init(){
         self.user = ""
         self.password = ""
-    }
-    init(user:String, password:String){
-        self.user = user
-        self.password = password
+        self.idusuario = ""
     }
     func CrearSesion(){
          //this is the file. we will write to and read from it

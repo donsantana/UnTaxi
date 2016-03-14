@@ -8,15 +8,12 @@
 
 import UIKit
 import Socket_IO_Client_Swift
+import Pods
+
 
 
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
-   
-    //var conexionSocket = CSocket()
-    
-    var idusuario = String()
     
     //var cliente : CCliente!
     @IBOutlet weak var Usuario: UITextField!
@@ -42,6 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.ControlEventos()
        
         //asignar el delegado a los textfield para poder utilizar las funciones propias
@@ -126,12 +124,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func Registrarse(sender: UIButton) {
+        
         self.RegistroView.hidden = false
          self.telefonoText.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
     }
     
     
     @IBAction func RegistrarUsuario(sender: UIButton) {
+        
+        
+        
         if (nombreApText.text!.isEmpty || telefonoText.text!.isEmpty || claveText.text!.isEmpty) {
             let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertControllerStyle.Alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
