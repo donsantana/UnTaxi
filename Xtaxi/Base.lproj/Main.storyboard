@@ -203,6 +203,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="top" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-ei-ic2" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="66" width="320" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX3-NS-ezk">
                                 <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="1" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -213,12 +217,8 @@
                                     <action selector="Solicitar:" destination="crh-83-xV9" eventType="touchUpInside" id="ETp-R9-y6e"/>
                                 </connections>
                             </button>
-                            <view contentMode="top" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-ei-ic2" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="66" width="320" height="370"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-fC-fLk">
-                                <rect key="frame" x="130" y="187" width="61" height="128"/>
+                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="origen2.png" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-fC-fLk">
+                                <rect key="frame" x="130" y="209" width="61" height="128"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDx-jq-Yz0">
                                 <rect key="frame" x="78" y="175" width="163" height="144"/>
@@ -264,13 +264,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKC-P4-l4R">
-                                        <rect key="frame" x="183" y="93" width="60" height="35"/>
-                                        <state key="normal" image="cbuton.png"/>
-                                        <connections>
-                                            <action selector="OrigenBtn:" destination="crh-83-xV9" eventType="touchUpInside" id="slY-2R-y7C"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-Jk-ded">
                                         <rect key="frame" x="183" y="197" width="60" height="35"/>
                                         <state key="normal" image="cbuton.png"/>
@@ -326,7 +319,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-2J-Yyx">
-                                        <rect key="frame" x="15" y="95" width="159" height="30"/>
+                                        <rect key="frame" x="15" y="95" width="223" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -457,7 +450,7 @@
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w82-6W-VgL">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w82-6W-VgL">
                                 <rect key="frame" x="0.0" y="15" width="320" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMd-IX-i53">
@@ -595,7 +588,7 @@
                                     </view>
                                 </subviews>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nh-Wh-7fT">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nh-Wh-7fT">
                                 <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.96862745100000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="gbutoff2.png"/>
@@ -606,15 +599,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.86666666670000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="fCz-ei-ic2" firstAttribute="leading" secondItem="7It-MB-IIT" secondAttribute="leadingMargin" constant="-20" id="XD4-hk-aP7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fCz-ei-ic2" secondAttribute="trailing" constant="-20" id="aiV-NY-O1N"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="fCz-ei-ic2" secondAttribute="bottom" constant="44" id="fCh-Qc-9Q9"/>
-                            <constraint firstItem="fCz-ei-ic2" firstAttribute="top" secondItem="w82-6W-VgL" secondAttribute="bottom" constant="2" id="hNH-NL-DVp"/>
-                            <constraint firstItem="PcN-fC-fLk" firstAttribute="leading" secondItem="7It-MB-IIT" secondAttribute="leadingMargin" constant="110" id="sI7-Ts-UuT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PcN-fC-fLk" secondAttribute="trailing" constant="109" id="tRr-js-uUe"/>
-                            <constraint firstItem="1Nh-Wh-7fT" firstAttribute="top" secondItem="PcN-fC-fLk" secondAttribute="bottom" constant="115" id="w6w-zH-IxQ"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -672,6 +656,7 @@
         <image name="ic_sol.png" width="72" height="72"/>
         <image name="logpassfondo.png" width="300" height="90"/>
         <image name="nbuton.png" width="80" height="40"/>
+        <image name="origen2.png" width="61" height="128"/>
         <image name="phoneoff.png" width="80" height="40"/>
         <image name="pulsa.png" width="45" height="45"/>
         <image name="rrmapoff.png" width="80" height="40"/>

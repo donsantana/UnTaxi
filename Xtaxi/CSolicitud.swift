@@ -34,6 +34,7 @@ class CSolicitud {
     var lngdestino :String //= datos[21];
     var vestuariocliente :String //= datos[22];
     var movilcliente :String //= datos[23];
+    var movilconductor : String //= datos[24]
 
 //Constructor
     init(){
@@ -60,6 +61,7 @@ class CSolicitud {
         self.lngdestino = ""
         self.vestuariocliente = ""
         self.movilcliente = ""
+        self.movilconductor = ""
     }
     //agregar datos del cliente
     func DatosCliente(idcliente: String,nombreapellidoscliente :String,movilcliente :String){
@@ -68,11 +70,11 @@ class CSolicitud {
         self.movilcliente = movilcliente
     }
     //Agregar datos del Conductor
-    func DatosTaxiConductor(idconductor: String, nombreapellidosconductor :String, codigovehiculo :String){
+    func DatosTaxiConductor(idconductor: String, nombreapellidosconductor :String, codigovehiculo :String, movilconductor: String){
         self.idconductor = idconductor
         self.nombreapellidosconductor = nombreapellidosconductor
         self.codigovehiculo = codigovehiculo
-        
+        self.movilconductor = movilconductor
     }
     //sgregar id y posicion de taxi
     func OtrosDatosTaxi(idtaxi :String,lattaxi :String, lngtaxi :String){
