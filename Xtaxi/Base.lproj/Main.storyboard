@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9C-L9-wsY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="f9C-L9-wsY">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logpassfondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sxc-Nv-TpT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logpassfondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sxc-Nv-TpT">
                                 <rect key="frame" x="34" y="211" width="252" height="93"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ok" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9Y-Qj-IfY">
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JyX-3H-MUH">
-                                <rect key="frame" x="34" y="50" width="254" height="386"/>
+                                <rect key="frame" x="33" y="50" width="254" height="386"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-DJ-sld">
                                         <rect key="frame" x="0.0" y="-5" width="254" height="45"/>
@@ -164,12 +164,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="sxc-Nv-TpT" secondAttribute="trailing" constant="14" id="ViD-k5-wue"/>
-                            <constraint firstItem="sxc-Nv-TpT" firstAttribute="leading" secondItem="YX1-hZ-bmn" secondAttribute="leadingMargin" constant="14" id="Vzt-dG-iuv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f9C-L9-wsY" secondAttribute="trailing" constant="-20" id="Dgl-Bp-q6X"/>
+                            <constraint firstItem="f9C-L9-wsY" firstAttribute="leading" secondItem="YX1-hZ-bmn" secondAttribute="leadingMargin" constant="-20" id="ZXX-Hx-Uzq"/>
+                            <constraint firstItem="fLu-an-hqa" firstAttribute="top" secondItem="f9C-L9-wsY" secondAttribute="bottom" id="ooh-Dy-sKf"/>
+                            <constraint firstItem="f9C-L9-wsY" firstAttribute="top" secondItem="qFA-GQ-2xf" secondAttribute="bottom" id="wFg-1n-tZR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -202,27 +204,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aX3-NS-ezk">
-                                <rect key="frame" x="0.0" y="429" width="320" height="52"/>
+                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="1" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" image="ysolicitaroff2.png"/>
+                                <state key="normal" image="ysolicitaroff.png"/>
                                 <connections>
                                     <action selector="Solicitar:" destination="crh-83-xV9" eventType="touchUpInside" id="ETp-R9-y6e"/>
                                 </connections>
                             </button>
-                            <view contentMode="top" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-ei-ic2" customClass="GMSMapView">
+                            <view contentMode="top" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-ei-ic2" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="66" width="320" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-fC-fLk">
-                                <rect key="frame" x="135" y="138" width="50" height="105"/>
+                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-fC-fLk">
+                                <rect key="frame" x="130" y="187" width="61" height="128"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDx-jq-Yz0">
-                                <rect key="frame" x="78" y="168" width="163" height="144"/>
+                                <rect key="frame" x="78" y="175" width="163" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Geolocalizando..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC6-vm-v1R">
-                                        <rect key="frame" x="14" y="84" width="149" height="21"/>
+                                        <rect key="frame" x="7" y="84" width="149" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -252,7 +254,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEi-6k-2W4">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEi-6k-2W4">
                                         <rect key="frame" x="15" y="199" width="159" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -263,14 +265,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKC-P4-l4R">
-                                        <rect key="frame" x="73" y="93" width="115" height="35"/>
+                                        <rect key="frame" x="183" y="93" width="60" height="35"/>
                                         <state key="normal" image="cbuton.png"/>
                                         <connections>
                                             <action selector="OrigenBtn:" destination="crh-83-xV9" eventType="touchUpInside" id="slY-2R-y7C"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-Jk-ded">
-                                        <rect key="frame" x="77" y="197" width="115" height="35"/>
+                                        <rect key="frame" x="183" y="197" width="60" height="35"/>
                                         <state key="normal" image="cbuton.png"/>
                                         <connections>
                                             <action selector="DestinoBtn:" destination="crh-83-xV9" eventType="touchUpInside" id="7a5-Ar-NGH"/>
@@ -323,7 +325,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-2J-Yyx">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-2J-Yyx">
                                         <rect key="frame" x="15" y="95" width="159" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -406,7 +408,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.82323232323232309" green="0.82323232323232309" blue="0.82323232323232309" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView hidden="YES" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-Z2-OGi">
                                 <rect key="frame" x="109" y="56" width="167" height="281"/>
@@ -439,14 +441,14 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfO-ew-f6B">
-                                <rect key="frame" x="40" y="64" width="240" height="39"/>
+                                <rect key="frame" x="20" y="64" width="280" height="39"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pulsa.png" translatesAutoresizingMaskIntoConstraints="NO" id="36y-6K-QPu">
-                                        <rect key="frame" x="0.0" y="5" width="40" height="34"/>
+                                        <rect key="frame" x="1" y="5" width="40" height="34"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pulse sobre el vehículo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yc-4f-NhO">
-                                        <rect key="frame" x="48" y="11" width="202" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yc-4f-NhO">
+                                        <rect key="frame" x="41" y="11" width="246" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
@@ -455,15 +457,7 @@
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nh-Wh-7fT">
-                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="1" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="gbutoff2.png"/>
-                                <connections>
-                                    <action selector="AceptarLoc:" destination="crh-83-xV9" eventType="touchUpInside" id="Bdx-6z-nml"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w82-6W-VgL">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w82-6W-VgL">
                                 <rect key="frame" x="0.0" y="15" width="320" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMd-IX-i53">
@@ -473,7 +467,7 @@
                                             <action selector="CerrarApp:" destination="crh-83-xV9" eventType="touchUpInside" id="wvg-jq-jsg"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_launcher.png" translatesAutoresizingMaskIntoConstraints="NO" id="32e-3Q-gGs">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_launcher-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="32e-3Q-gGs">
                                         <rect key="frame" x="8" y="2" width="42" height="42"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vecino Taxi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0W-Qh-Mi4">
@@ -501,10 +495,10 @@
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.86666666670000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O1m-sS-DwL">
-                                <rect key="frame" x="6" y="64" width="308" height="372"/>
+                                <rect key="frame" x="20" y="96" width="280" height="313"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zV7-PF-OMw">
-                                        <rect key="frame" x="42" y="217" width="113" height="35"/>
+                                        <rect key="frame" x="28" y="187" width="113" height="35"/>
                                         <color key="backgroundColor" red="0.25490196078431371" green="0.96862745098039216" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="gbuton2.png"/>
                                         <connections>
@@ -512,10 +506,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oH-tE-Qec">
-                                        <rect key="frame" x="42" y="100" width="224" height="37"/>
+                                        <rect key="frame" x="28" y="70" width="224" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY2-ze-fVF">
                                                 <rect key="frame" x="16" y="8" width="194" height="21"/>
+                                                <color key="backgroundColor" red="0.99215686270000003" green="0.87058823529999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -524,7 +519,7 @@
                                         <color key="backgroundColor" red="0.99215686274509807" green="0.87058823529411766" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAq-Ac-Yjp">
-                                        <rect key="frame" x="153" y="217" width="113" height="35"/>
+                                        <rect key="frame" x="139" y="187" width="113" height="35"/>
                                         <color key="backgroundColor" red="0.8901960784313725" green="0.062745098039215685" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ycancelaroff2.png"/>
                                         <connections>
@@ -532,7 +527,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PU-ua-RPz">
-                                        <rect key="frame" x="42" y="217" width="224" height="35"/>
+                                        <rect key="frame" x="28" y="187" width="224" height="35"/>
                                         <color key="backgroundColor" red="0.25490196079999999" green="0.96862745100000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="gbutoff2.png"/>
                                         <connections>
@@ -540,69 +535,86 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="rXy-rn-Qxy">
-                                        <rect key="frame" x="42" y="136" width="224" height="81"/>
+                                        <rect key="frame" x="28" y="106" width="224" height="81"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                </subviews>
-                            </view>
-                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-Vl-1fq">
-                                <rect key="frame" x="6" y="64" width="308" height="349"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wz3-ws-aSr">
-                                        <rect key="frame" x="40" y="36" width="229" height="46"/>
+                                    <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-Vl-1fq">
+                                        <rect key="frame" x="-14" y="-28" width="308" height="349"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cancelar solicitud" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZy-3h-paE">
-                                                <rect key="frame" x="30" y="11" width="167" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wz3-ws-aSr">
+                                                <rect key="frame" x="40" y="36" width="229" height="46"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cancelar solicitud" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZy-3h-paE">
+                                                        <rect key="frame" x="30" y="11" width="167" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsa-aw-F6Z">
+                                                        <rect key="frame" x="-48" y="-35" width="322" height="363"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.99215686270000003" green="0.87058823529999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿Desea cancelar la solicitud?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z9-SK-Hpa">
+                                                <rect key="frame" x="40" y="82" width="229" height="67"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsa-aw-F6Z">
-                                                <rect key="frame" x="-48" y="-35" width="322" height="363"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-hO-sYX">
+                                                <rect key="frame" x="40" y="149" width="229" height="45"/>
+                                                <color key="backgroundColor" red="0.25490196079999999" green="0.96862745100000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="saliroff2.png"/>
+                                                <connections>
+                                                    <action selector="CancelarSolicitud:" destination="crh-83-xV9" eventType="touchUpInside" id="ebP-ZB-Hbk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-4s-Hrd">
+                                                <rect key="frame" x="40" y="194" width="229" height="45"/>
+                                                <color key="backgroundColor" red="0.99215686270000003" green="0.87058823529999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="phoneoff.png"/>
+                                                <connections>
+                                                    <action selector="LLamarConductor:" destination="crh-83-xV9" eventType="touchUpInside" id="EDl-vs-9ZU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg3-yq-W9h">
+                                                <rect key="frame" x="40" y="239" width="229" height="45"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="rrmapoff.png"/>
+                                                <connections>
+                                                    <action selector="MostrarSolMapa:" destination="crh-83-xV9" eventType="touchUpInside" id="YI4-1c-o5A"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.99215686270000003" green="0.87058823529999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿Desea cancelar la solicitud?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z9-SK-Hpa">
-                                        <rect key="frame" x="40" y="82" width="229" height="67"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-hO-sYX">
-                                        <rect key="frame" x="40" y="149" width="229" height="45"/>
-                                        <color key="backgroundColor" red="0.25490196079999999" green="0.96862745100000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="saliroff2.png"/>
-                                        <connections>
-                                            <action selector="CancelarSolicitud:" destination="crh-83-xV9" eventType="touchUpInside" id="ebP-ZB-Hbk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-4s-Hrd">
-                                        <rect key="frame" x="40" y="194" width="229" height="45"/>
-                                        <color key="backgroundColor" red="0.99215686270000003" green="0.87058823529999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="phoneoff.png"/>
-                                        <connections>
-                                            <action selector="LLamarConductor:" destination="crh-83-xV9" eventType="touchUpInside" id="EDl-vs-9ZU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg3-yq-W9h">
-                                        <rect key="frame" x="40" y="239" width="229" height="45"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="rrmapoff.png"/>
-                                        <connections>
-                                            <action selector="MostrarSolMapa:" destination="crh-83-xV9" eventType="touchUpInside" id="YI4-1c-o5A"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nh-Wh-7fT">
+                                <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.96862745100000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="gbutoff2.png"/>
+                                <connections>
+                                    <action selector="AceptarLoc:" destination="crh-83-xV9" eventType="touchUpInside" id="Bdx-6z-nml"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.86666666670000003" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="fCz-ei-ic2" firstAttribute="leading" secondItem="7It-MB-IIT" secondAttribute="leadingMargin" constant="-20" id="XD4-hk-aP7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fCz-ei-ic2" secondAttribute="trailing" constant="-20" id="aiV-NY-O1N"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fCz-ei-ic2" secondAttribute="bottom" constant="44" id="fCh-Qc-9Q9"/>
+                            <constraint firstItem="fCz-ei-ic2" firstAttribute="top" secondItem="w82-6W-VgL" secondAttribute="bottom" constant="2" id="hNH-NL-DVp"/>
+                            <constraint firstItem="PcN-fC-fLk" firstAttribute="leading" secondItem="7It-MB-IIT" secondAttribute="leadingMargin" constant="110" id="sI7-Ts-UuT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PcN-fC-fLk" secondAttribute="trailing" constant="109" id="tRr-js-uUe"/>
+                            <constraint firstItem="1Nh-Wh-7fT" firstAttribute="top" secondItem="PcN-fC-fLk" secondAttribute="bottom" constant="115" id="w6w-zH-IxQ"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -618,6 +630,7 @@
                         <outlet property="DatosCondBtn" destination="EdJ-cK-pM7" id="x2l-Bx-OyX"/>
                         <outlet property="DatosConductor" destination="ccK-KW-kHA" id="M1c-Nn-afC"/>
                         <outlet property="EnviarSolBtn" destination="jFt-ep-9XE" id="Dfv-yi-7Tt"/>
+                        <outlet property="ExplicacionText" destination="3yc-4f-NhO" id="qIe-a5-LWq"/>
                         <outlet property="ExplicacionView" destination="IfO-ew-f6B" id="R6Z-YC-7H4"/>
                         <outlet property="Geolocalizando" destination="Brq-bI-64i" id="7KP-ib-AUe"/>
                         <outlet property="GeolocalizandoView" destination="EDx-jq-Yz0" id="FmA-94-uRX"/>
@@ -652,9 +665,9 @@
         <image name="cbuton.png" width="80" height="40"/>
         <image name="chofer.png" width="150" height="150"/>
         <image name="fondo.png" width="540" height="960"/>
-        <image name="gbutoff2.png" width="80" height="40"/>
+        <image name="gbutoff2.png" width="120" height="60"/>
         <image name="gbuton2.png" width="80" height="40"/>
-        <image name="ic_launcher.png" width="72" height="72"/>
+        <image name="ic_launcher-1.png" width="72" height="72"/>
         <image name="ic_salir2.png" width="72" height="72"/>
         <image name="ic_sol.png" width="72" height="72"/>
         <image name="logpassfondo.png" width="300" height="90"/>
@@ -665,6 +678,6 @@
         <image name="saliroff2.png" width="80" height="40"/>
         <image name="separador.png" width="52" height="52"/>
         <image name="ycancelaroff2.png" width="80" height="40"/>
-        <image name="ysolicitaroff2.png" width="80" height="40"/>
+        <image name="ysolicitaroff.png" width="400" height="40"/>
     </resources>
 </document>

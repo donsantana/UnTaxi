@@ -100,8 +100,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //Boton de Autenticacion
     
     @IBAction func Autenticar(sender: AnyObject) {
+      
+        /* let ruta = CRuta(origin:"-2.154682,-79.890714",destination:"-2.136854,-79.902789")
+        self.Usuario.text = String(ruta.drawRoute())
+        //self.Usuario.text = ruta.displayRouteInfo()*/
         
-        if myvariables.socket.status.description == "Reconnecting"
+       if myvariables.socket.status.description == "Reconnecting"
         {
             self.Usuario.text = "Sin Conexión"
         }
