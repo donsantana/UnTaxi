@@ -93,8 +93,16 @@
 		84CD977C1C877E6900E658C0 /* ic_sol1 copia.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CD977B1C877E6900E658C0 /* ic_sol1 copia.png */; };
 		84CD97801C87C36E00E658C0 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CD977F1C87C36E00E658C0 /* Contents.json */; };
 		84CD97871C87CA9B00E658C0 /* Images-4.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CD97861C87CA9B00E658C0 /* Images-4.xcassets */; };
+		84E9BCBE1CA03FCC00C3B05A /* SolicitarIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E9BCBD1CA03FCC00C3B05A /* SolicitarIOS.png */; };
+		84EC1B8B1C9DBB260025630B /* ycancelaronIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EC1B8A1C9DBB260025630B /* ycancelaronIOS.png */; };
 		84F0D9FD1C5BB52C00C7E962 /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0D9FC1C5BB52C00C7E962 /* CSolicitud.swift */; };
 		84F2E9891C9B18D60075BC72 /* PantallaInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2E9881C9B18D60075BC72 /* PantallaInicio.swift */; };
+		84F493CB1CA10EFB00A54C36 /* GreenIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493CA1CA10EFB00A54C36 /* GreenIOS.png */; };
+		84F493D01CA11AFD00A54C36 /* RedIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493CE1CA11AFD00A54C36 /* RedIOS.png */; };
+		84F493D11CA11AFD00A54C36 /* yellowIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493CF1CA11AFD00A54C36 /* yellowIOS.png */; };
+		84F493D31CA11C8800A54C36 /* encabezadosIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D21CA11C8800A54C36 /* encabezadosIOS.png */; };
+		84F493D51CA1311300A54C36 /* ic_solIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D41CA1311300A54C36 /* ic_solIOS.png */; };
+		84F493D71CA137AD00A54C36 /* solpendientes.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D61CA137AD00A54C36 /* solpendientes.png */; };
 		84F495B51C9C484600A955E9 /* fondoaceptar.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F495B41C9C484600A955E9 /* fondoaceptar.png */; };
 		84F495B91C9C52DB00A955E9 /* aceptarIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F495B81C9C52DB00A955E9 /* aceptarIOS.png */; };
 		84F571471BCE958200FC18D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F571461BCE958200FC18D5 /* AppDelegate.swift */; };
@@ -225,8 +233,16 @@
 		84CD977B1C877E6900E658C0 /* ic_sol1 copia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sol1 copia.png"; sourceTree = "<group>"; };
 		84CD977F1C87C36E00E658C0 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Contents.json; path = "Images-2.xcassets/AppIcon-2.appiconset/Contents.json"; sourceTree = "<group>"; };
 		84CD97861C87CA9B00E658C0 /* Images-4.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-4.xcassets"; sourceTree = "<group>"; };
+		84E9BCBD1CA03FCC00C3B05A /* SolicitarIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SolicitarIOS.png; sourceTree = "<group>"; };
+		84EC1B8A1C9DBB260025630B /* ycancelaronIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ycancelaronIOS.png; sourceTree = "<group>"; };
 		84F0D9FC1C5BB52C00C7E962 /* CSolicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSolicitud.swift; sourceTree = "<group>"; };
 		84F2E9881C9B18D60075BC72 /* PantallaInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantallaInicio.swift; sourceTree = "<group>"; };
+		84F493CA1CA10EFB00A54C36 /* GreenIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenIOS.png; sourceTree = "<group>"; };
+		84F493CE1CA11AFD00A54C36 /* RedIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedIOS.png; sourceTree = "<group>"; };
+		84F493CF1CA11AFD00A54C36 /* yellowIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowIOS.png; sourceTree = "<group>"; };
+		84F493D21CA11C8800A54C36 /* encabezadosIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = encabezadosIOS.png; sourceTree = "<group>"; };
+		84F493D41CA1311300A54C36 /* ic_solIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_solIOS.png; sourceTree = "<group>"; };
+		84F493D61CA137AD00A54C36 /* solpendientes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solpendientes.png; sourceTree = "<group>"; };
 		84F495B41C9C484600A955E9 /* fondoaceptar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fondoaceptar.png; sourceTree = "<group>"; };
 		84F495B81C9C52DB00A955E9 /* aceptarIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aceptarIOS.png; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* Xtaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xtaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +314,14 @@
 		84609EE21C758E6F0056A282 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				84F493D61CA137AD00A54C36 /* solpendientes.png */,
+				84F493D41CA1311300A54C36 /* ic_solIOS.png */,
+				84F493D21CA11C8800A54C36 /* encabezadosIOS.png */,
+				84F493CE1CA11AFD00A54C36 /* RedIOS.png */,
+				84F493CF1CA11AFD00A54C36 /* yellowIOS.png */,
+				84F493CA1CA10EFB00A54C36 /* GreenIOS.png */,
+				84E9BCBD1CA03FCC00C3B05A /* SolicitarIOS.png */,
+				84EC1B8A1C9DBB260025630B /* ycancelaronIOS.png */,
 				84F495B81C9C52DB00A955E9 /* aceptarIOS.png */,
 				84F495B41C9C484600A955E9 /* fondoaceptar.png */,
 				84CD977B1C877E6900E658C0 /* ic_sol1 copia.png */,
@@ -585,9 +609,12 @@
 			files = (
 				84609F3C1C758E6F0056A282 /* fondonew.9.png in Resources */,
 				84609F4B1C758E6F0056A282 /* nbutoff.png in Resources */,
+				84F493D51CA1311300A54C36 /* ic_solIOS.png in Resources */,
 				84609F2B1C758E6F0056A282 /* bbutoff.png in Resources */,
+				84F493D11CA11AFD00A54C36 /* yellowIOS.png in Resources */,
 				842986EF1C614EDD00D78371 /* Main.storyboard in Resources */,
 				84609F681C758E6F0056A282 /* ycancelaron2.png in Resources */,
+				84F493D01CA11AFD00A54C36 /* RedIOS.png in Resources */,
 				84609F601C758E6F0056A282 /* taxi_libre.png in Resources */,
 				84609F311C758E6F0056A282 /* dbuton3.png in Resources */,
 				84609F321C758E6F0056A282 /* dclock.png in Resources */,
@@ -604,6 +631,7 @@
 				84F495B51C9C484600A955E9 /* fondoaceptar.png in Resources */,
 				84609F391C758E6F0056A282 /* fondo.png in Resources */,
 				84609F4F1C758E6F0056A282 /* origen.png in Resources */,
+				84F493D31CA11C8800A54C36 /* encabezadosIOS.png in Resources */,
 				84609F521C758E6F0056A282 /* phoneon.png in Resources */,
 				84609F461C758E6F0056A282 /* ic_launcher-1.png in Resources */,
 				84609F411C758E6F0056A282 /* gbutoff2.png in Resources */,
@@ -621,8 +649,10 @@
 				84609F2E1C758E6F0056A282 /* cbutoff.png in Resources */,
 				84609F301C758E6F0056A282 /* dbutoff3.png in Resources */,
 				84609F651C758E6F0056A282 /* ycancelaroff.png in Resources */,
+				84F493CB1CA10EFB00A54C36 /* GreenIOS.png in Resources */,
 				84609F631C758E6F0056A282 /* ybutoff.png in Resources */,
 				84609F6B1C758E6F0056A282 /* ysolicitaron.png in Resources */,
+				84E9BCBE1CA03FCC00C3B05A /* SolicitarIOS.png in Resources */,
 				84609F491C758E6F0056A282 /* logofondo.9.png in Resources */,
 				84609F3A1C758E6F0056A282 /* fondogreen.9.png in Resources */,
 				84F495B91C9C52DB00A955E9 /* aceptarIOS.png in Resources */,
@@ -634,6 +664,7 @@
 				84609F611C758E6F0056A282 /* waitfondo2.9.png in Resources */,
 				84609F431C758E6F0056A282 /* gbuton.png in Resources */,
 				84609F511C758E6F0056A282 /* phoneoff.png in Resources */,
+				84F493D71CA137AD00A54C36 /* solpendientes.png in Resources */,
 				84609F551C758E6F0056A282 /* rbuton.png in Resources */,
 				84609F501C758E6F0056A282 /* origen2.png in Resources */,
 				84609F471C758E6F0056A282 /* ic_salir2.png in Resources */,
@@ -652,6 +683,7 @@
 				8430E3431C76E18700B85444 /* ic_sol1.png in Resources */,
 				84CD97801C87C36E00E658C0 /* Contents.json in Resources */,
 				84609F281C758E6F0056A282 /* aceptar1off.png in Resources */,
+				84EC1B8B1C9DBB260025630B /* ycancelaronIOS.png in Resources */,
 				84609F421C758E6F0056A282 /* gbutoff3.png in Resources */,
 				84609F5E1C758E6F0056A282 /* separador.png in Resources */,
 				84609F291C758E6F0056A282 /* aceptar1on.png in Resources */,

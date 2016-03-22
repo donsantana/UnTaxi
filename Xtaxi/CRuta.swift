@@ -82,17 +82,17 @@ class CRuta{
         }
         
         let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)
-        self.totalDistance = "Total Distance: \(distanceInKilometers) Km"
+        self.totalDistance = "\(distanceInKilometers) Km"
         
         
         let mins = totalDurationInSeconds / 60
         let hours = mins / 60
-        let days = hours / 24
+       //let days = hours / 24
         let remainingHours = hours % 24
         let remainingMins = mins % 60
         let remainingSecs = totalDurationInSeconds % 60
         
-        self.totalDuration = "Duration: \(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+        self.totalDuration = "\(remainingHours)h:\(remainingMins)m:\(remainingSecs)s"
     }
     
     func displayRouteInfo() ->[String]{
