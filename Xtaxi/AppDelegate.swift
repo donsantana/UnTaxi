@@ -1,4 +1,5 @@
-  //
+
+//
 //  AppDelegate.swift
 //  Xtaxi
 //
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         GMSServices.provideAPIKey("AIzaSyADlVgBSmX1FSFBvf4njnTDq9YL0RwF9e4")
         
-        myvariables.socket = SocketIOClient(socketURL: "104.171.10.34:5800")
+        myvariables.socket = SocketIOClient(socketURL: "www.xoait.com:5800")
         myvariables.socket.connect()
 
         //LEER SI EXISTE EL FICHERO DEL LOGIN
@@ -74,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        myvariables.socket.close()       
+        myvariables.socket.disconnect()
     }
 
 }

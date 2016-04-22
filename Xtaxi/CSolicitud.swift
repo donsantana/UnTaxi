@@ -35,6 +35,12 @@ class CSolicitud {
     var vestuariocliente :String //= datos[22];
     var movilcliente :String //= datos[23];
     var movilconductor : String //= datos[24]
+    var FechaHora : String
+    var tarifa : Double
+    var distancia : Double
+    var tiempo : String
+    var Costo : String
+    
 
 //Constructor
     init(){
@@ -62,6 +68,13 @@ class CSolicitud {
         self.vestuariocliente = ""
         self.movilcliente = ""
         self.movilconductor = ""
+        self.FechaHora = ""
+        self.tarifa = 0.0
+        self.distancia = 0.0
+        self.tiempo = ""
+        self.Costo = ""
+        
+        
     }
     //agregar datos del cliente
     func DatosCliente(idcliente: String,nombreapellidoscliente :String,movilcliente :String){
@@ -82,6 +95,10 @@ class CSolicitud {
         self.lattaxi = lattaxi
         self.lngtaxi = lngtaxi
     }
+    //REGISTRAR FECHA Y HORA
+    func RegistrarFechaHora(FechaHora: String){
+        self.FechaHora = FechaHora
+    }
     //Agregar datos de la solicitud
     func DatosSolicitud(dirorigen :String, referenciaorigen :String, dirdestino :String, disttaxiorigen :String, distorigendestino :String, consumocombustible :String, importe :String, tiempotaxiorigen :String, tiempoorigendestino :String,   latorigen :String, lngorigen :String, latdestino :String, lngdestino :String, vestuariocliente :String){
         self.dirorigen = dirorigen
@@ -98,6 +115,26 @@ class CSolicitud {
         self.latdestino = latdestino
         self.lngdestino = lngdestino
         self.vestuariocliente = vestuariocliente
+    }
+    //agregar a la solicitud los datos de distancia y tiempo
+    func AgregarDistanciaTiempo(datos : [String]){
+        self.distancia = Double(datos[0])!
+        self.tiempo = datos[1]
+    }
+    //Fijar tarifa
+    func FijarTarifa(tarifario : [CTarifa]){
+        var temporal = String(FechaHora).componentsSeparatedByString(" ")
+        temporal = String(temporal[2]).componentsSeparatedByString(":")
+        for var tarifatemporal in tarifario{
+            if (Int(tarifatemporal.horaInicio) <= Int(temporal[1])) && (Int(temporal[1]) <= Int(tarifatemporal.horaFin)){
+                self.tarifa = Double(tarifatemporal.valorKilometro)
+            }
+        }
+    }
+    //Calcular el costo de la solicitud
+    func CalcularCosto()->String{
+        self.Costo = String(distancia * tarifa)
+        return self.Costo
     }
 
 }

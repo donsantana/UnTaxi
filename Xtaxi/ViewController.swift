@@ -16,6 +16,7 @@ import Pods
 class ViewController: UIViewController, UITextFieldDelegate {
     
     //var cliente : CCliente!
+    var alerta : CAlerta!
     @IBOutlet weak var Usuario: UITextField!
     @IBOutlet weak var Clave: UITextField!
     
@@ -35,12 +36,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var RegistrarBtn: UIButton!
     
+    @IBOutlet weak var AlertaView: UIView!
+    @IBOutlet weak var Titulo: UILabel!
+    @IBOutlet weak var Mensaje: UITextView!
+    @IBOutlet weak var AcpetarAlerta: UIButton!
+    @IBOutlet weak var CancelarAlerta: UIButton!
+    @IBOutlet weak var AceptarSoloAlerta: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.ControlEventos()
+        alerta = CAlerta(titulo: Titulo, mensaje: Mensaje, vistaalerta: AlertaView, aceptarbtn: AcpetarAlerta, aceptarsolobtn: AceptarSoloAlerta, cancelarbtn: CancelarAlerta, tipo: 1)
        
         //asignar el delegado a los textfield para poder utilizar las funciones propias
        telefonoText.delegate = self
@@ -54,41 +62,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //Funcion para controlar los eventos del socket
     func ControlEventos(){        
-       /* myvariables.socket.on("LoginPassword"){data, ack in
-          let temporal = String(data).componentsSeparatedByString(",")
-            
-            if (temporal[0] == "[#LoginPassword"){
-                self.Autenticacion(temporal)
-            }
-            else{
-             self.Usuario.text = "Vacio"
-            }
-        }*/
-       myvariables.socket.on("Registro") {data, ack in
+      myvariables.socket.on("Registro") {data, ack in
            let temporal = String(data).componentsSeparatedByString(",")
         
            if temporal[1] == "registrook"{
-               let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación", preferredStyle: UIAlertControllerStyle.Alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
-                self.RegistroView.hidden = true
-                   
-                }))
-                
-                //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
-                
-                self.presentViewController(alertaDos, animated: true, completion: nil)
+               self.alerta.CambiarTitulo("Registro de Usuario")
+            self.alerta.CambiarMensaje("Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?")
+            self.alerta.DefinirTipo(1)
+            self.AlertaView.hidden = false
+            self.RegistroView.hidden = true
             }
             else{
-                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: " + String(temporal[2]), preferredStyle: UIAlertControllerStyle.Alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
-                    
-                }))
-                
-                //Para hacer que la alerta se muestre usamos presentViewController, a diferencia de Objective C que como recordaremos se usa [Show Alerta]
-                
-                self.presentViewController(alertaDos, animated: true, completion: nil)
-            }
+            self.alerta.CambiarTitulo("Registro de Usuario")
+            self.alerta.CambiarMensaje("Error al registrar el usuario: " + temporal[2])
+            self.alerta.DefinirTipo(10)
+            self.AlertaView.hidden = false
+            self.RegistroView.hidden = true
           }
+        }
         
     }
      override func didReceiveMemoryWarning() {
@@ -100,10 +91,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //Boton de Autenticacion
     
     @IBAction func Autenticar(sender: AnyObject) {
-      
-        /* let ruta = CRuta(origin:"-2.154682,-79.890714",destination:"-2.136854,-79.902789")
-        self.Usuario.text = String(ruta.drawRoute())
-        //self.Usuario.text = ruta.displayRouteInfo()*/
         
        if myvariables.socket.status.description == "Reconnecting"
         {
@@ -136,8 +123,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func RegistrarUsuario(sender: UIButton) {
         
-        
-        
         if (nombreApText.text!.isEmpty || telefonoText.text!.isEmpty || claveText.text!.isEmpty) {
             let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertControllerStyle.Alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default, handler: {alerAction in
@@ -150,7 +135,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else{
         let temporal = "," + telefonoText.text! + "," + usuarioText.text! + "," + claveText.text!
-        let temporal1 = "," + correoText.text! + "," + "# /n"
+            var temporal1 = ",Sin correo" + ",# /n"
+            if correoText.text != ""{
+         temporal1 = "," + correoText.text! + "," + "# /n"
+            }
         let datos = "#Registro" + "," + nombreApText.text! + temporal + temporal1
         myvariables.socket.emit("data", datos)
         }
@@ -161,32 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
        self.RegistroView.hidden = true
         
     }
-    //Funciones de la logica de la aplicacion
-   //FUNCION DE AUTENTICACION
-   /* func Autenticacion(resultado: [String]){
-       switch resultado[1]{
-       case "loginok":
-       myvariables.solicitud.DatosCliente(resultado[4], nombreapellidoscliente: resultado[5], movilcliente: self.Usuario.text!)
-       self.idusuario = String(resultado[2])
-       let writeString = "#LoginPassword," + self.idusuario + "," + self.Usuario.text! + "," + self.Clave.text! + "," + resultado[4] + "," + resultado[5] + "," + self.Usuario.text! + "," + resultado[6] + "," + "#"
-       //CREAR EL FICHERO DE LOGÍN
-       let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-       
-       do {
-        _ = try writeString.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
-       } catch {
-        
-       }
-       if resultado[6] != "0"{
-        self.ListSolicitudPendiente(resultado)
-       }
-       self.CambiarPantalla()
-        
-       case "loginerror": self.Usuario.text = "usuario incorrecto"
-        default: self.Usuario.text = "Problemas de conexion"
-      }
-    }*/
-     
+    
     //FUNCIÓN CAMBIO DE PANTALLA
     func CambiarPantalla (){
         let nuestroStoryBoard : UIStoryboard = UIStoryboard(name:"Main",bundle: nil)
@@ -196,20 +159,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //Para cambiar a otra pantalla superponiendo la vista.
         self.presentViewController(nuestraPantallaInicio, animated: true, completion: nil)
    }
-    
-    
-    //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
-    /*func ListSolicitudPendiente(listado : [String]){
-        var i = 7
-        while i < listado.count-10 {
-           let solicitud = CSolPendiente(idSolicitud: listado[i], idTaxi: listado[i + 1], codigo: listado[i + 2], FechaHora: listado[i + 3], Latitudtaxi: listado[i + 4], Longitudtaxi: listado[i + 5], Latitudorigen: listado[i + 6], Longitudorigen: listado[i + 7], Latituddestino: listado[i + 8], Longituddestino: listado[i + 9])
-           myvariables.solpendientes.append(solicitud)
-            i += 10
-        }
-        //self.Usuario.text = String(myvariables.solpendientes[0].idSolicitud)
-    }
-    */
-    
     
     //enviar el id usuario
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -240,6 +189,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
      }
     }
+    
+    @IBAction func AceptarAlerta(sender: AnyObject) {
+        RegistroView.hidden = true
+        let writeString = "#LoginPassword," + self.usuarioText.text! + "," + self.claveText.text! + ",# /n"
+        //CREAR EL FICHERO DE LOGÍN
+        let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+        
+        do {
+            _ = try writeString.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch {
+            
+        }
+        CambiarPantalla()
+    }
+    @IBAction func CancelarAlerta(sender: AnyObject) {
+        AlertaView.hidden = true
+        RegistroView.hidden = true
+    }
+    @IBAction func AceptarSolo(sender: AnyObject) {
+        AlertaView.hidden = true
+    }
+    
+    
     //OCULTAR TECLACO CON TECLA ENTER
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
