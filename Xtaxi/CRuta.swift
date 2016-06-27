@@ -63,12 +63,7 @@ class CRuta{
                 
                 self.calculateTotalDistanceAndDuration()
             }
-       // })
     }
-    
-    func getDirections(){
-       
-                    }
     
     func calculateTotalDistanceAndDuration() {
         let legs = self.selectedRoute["legs"] as! Array<Dictionary<NSObject, AnyObject>>
@@ -82,7 +77,7 @@ class CRuta{
         }
         
         let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)
-        self.totalDistance = "\(distanceInKilometers) Km"
+        self.totalDistance = "\(distanceInKilometers)"
         
         
         let mins = totalDurationInSeconds / 60

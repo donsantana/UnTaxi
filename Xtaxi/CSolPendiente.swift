@@ -39,14 +39,14 @@ class CSolPendiente {
         self.Latituddestino = Latituddestino
         self.Longituddestino = Longituddestino
         self.tarifa = 0.0
-        self.distancia = 0.0
-        self.tiempo = ""
+        self.distancia = 2.0
+        self.tiempo = "0"
         self.Costo = ""
         //self.Movilchofer = Movilchofer
 
     }
     
-    func AgregarDistanciaTiempo(datos : [String]){
+    func AgregarDistanciaTiempo(datos: [String]){
         self.distancia = Double(datos[0])!
         self.tiempo = datos[1]
     }
@@ -54,16 +54,18 @@ class CSolPendiente {
     //Fijar tarifa
     func FijarTarifa(tarifario : [CTarifa]){
         var temporal = String(FechaHora).componentsSeparatedByString(" ")
-        temporal = String(temporal[2]).componentsSeparatedByString(":")
+        var temporal1 = String(temporal[2]).componentsSeparatedByString(":")
         for var tarifatemporal in tarifario{
-            if (Int(tarifatemporal.horaInicio) <= Int(temporal[1])) && (Int(temporal[1]) <= Int(tarifatemporal.horaFin)){
-                self.tarifa = Double(tarifatemporal.valorKilometro)
+            if (Int(tarifatemporal.horaInicio) <= Int(temporal1[1])) && (Int(temporal1[1]) <= Int(tarifatemporal.horaFin)){
+               // self.tarifa = Double(tarifatemporal.valorKilometro)
+                
             }
         }
+        self.tarifa = tarifario[0].valorKilometro
     }
     //Calcular el costo de la solicitud
     func CalcularCosto()->String{
-        self.Costo = String(distancia * tarifa)
+        self.Costo = String(distancia * self.tarifa)
         return self.Costo
     }
 

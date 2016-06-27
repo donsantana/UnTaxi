@@ -70,12 +70,21 @@
 		84EFA5CB1CA8C7E7004E8578 /* aceptarTest320x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EFA5CA1CA8C7E7004E8578 /* aceptarTest320x50.png */; };
 		84EFA5CE1CA8CC88004E8578 /* aceptarTest161x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EFA5CC1CA8CC88004E8578 /* aceptarTest161x50.png */; };
 		84EFA5CF1CA8CC88004E8578 /* cancelarTest161x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EFA5CD1CA8CC88004E8578 /* cancelarTest161x50.png */; };
+		84F019411CD183BE002D1BDE /* sos.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F019401CD183BE002D1BDE /* sos.png */; };
+		84F019451CD18E56002D1BDE /* Mapa.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F019441CD18E56002D1BDE /* Mapa.png */; };
+		84F019471CD1AA6A002D1BDE /* Taximetro.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F019461CD1AA6A002D1BDE /* Taximetro.png */; };
+		84F019491CD1B780002D1BDE /* Tarifario.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F019481CD1B780002D1BDE /* Tarifario.png */; };
 		84F08BE81CA71B7B00EB2919 /* BlueIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F08BE71CA71B7B00EB2919 /* BlueIOS.png */; };
 		84F0D9FD1C5BB52C00C7E962 /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0D9FC1C5BB52C00C7E962 /* CSolicitud.swift */; };
 		84F0EEC91CA5D102007E969F /* ExplicacionIma.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F0EEC81CA5D102007E969F /* ExplicacionIma.png */; };
 		84F1DC1A1CA41F8B00B859FE /* detalles.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1DC191CA41F8B00B859FE /* detalles.png */; };
 		84F1F6B21CACCA87001C46FB /* OpcionesTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1F6B01CACCA87001C46FB /* OpcionesTest.png */; };
 		84F1F6B31CACCA87001C46FB /* OpcionSelecTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1F6B11CACCA87001C46FB /* OpcionSelecTest.png */; };
+		84F229791CE3C4E600D492AA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F229781CE3C4E600D492AA /* Launch Screen.storyboard */; };
+		84F2297D1CE3C93D00D492AA /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2297C1CE3C93D00D492AA /* Launch.png */; };
+		84F22CA41CDBEB0300CDC432 /* Voz.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F22CA31CDBEB0300CDC432 /* Voz.png */; };
+		84F22CA81CDC117300CDC432 /* CSMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F22CA71CDC117300CDC432 /* CSMSVoz.swift */; };
+		84F2840B1CD697430074E07A /* solicitudesp.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2840A1CD697430074E07A /* solicitudesp.png */; };
 		84F28A281CC13CC400529F53 /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F28A271CC13CC400529F53 /* Images-5.xcassets */; };
 		84F28A2C1CC13DE600529F53 /* ic_vecino.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F28A291CC13DE600529F53 /* ic_vecino.png */; };
 		84F28A2D1CC13DE600529F53 /* ic_vecino@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F28A2A1CC13DE600529F53 /* ic_vecino@2x.png */; };
@@ -92,6 +101,7 @@
 		84F493D31CA11C8800A54C36 /* encabezadosIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D21CA11C8800A54C36 /* encabezadosIOS.png */; };
 		84F493D51CA1311300A54C36 /* ic_solIOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D41CA1311300A54C36 /* ic_solIOS.png */; };
 		84F493D71CA137AD00A54C36 /* solpendientes.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F493D61CA137AD00A54C36 /* solpendientes.png */; };
+		84F4F8F31CDF045D0090FDD9 /* selectmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F4F8F21CDF045D0090FDD9 /* selectmenu.png */; };
 		84F5090F1CA895130032D487 /* CancelarTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F5090E1CA895130032D487 /* CancelarTest.png */; };
 		84F509121CA897560032D487 /* EvaluarTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F509111CA897560032D487 /* EvaluarTest.png */; };
 		84F509201CA8A4700032D487 /* AceptarSoloTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F5091F1CA8A4700032D487 /* AceptarSoloTest.png */; };
@@ -102,6 +112,7 @@
 		84F571751BCE964100FC18D5 /* CCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F571741BCE964100FC18D5 /* CCliente.swift */; };
 		84F571791BCF6CEE00FC18D5 /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F571781BCF6CEE00FC18D5 /* CSocket.swift */; };
 		84F5868F1CA5217E004AC03C /* prueba.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F5868E1CA5217E004AC03C /* prueba.png */; };
+		84F6AC5A1CE27B3E0037604D /* untaxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6AC591CE27B3E0037604D /* untaxi.png */; };
 		84F7469A1CA25F6300AEFC85 /* formSolici.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F746991CA25F6300AEFC85 /* formSolici.png */; };
 		84F7469E1CA2685500AEFC85 /* alerta.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F7469D1CA2685500AEFC85 /* alerta.png */; };
 		84F748571CB5B9680014B07D /* llamartest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F748561CB5B9680014B07D /* llamartest.png */; };
@@ -110,9 +121,20 @@
 		84F7E3851CB38C04008D4713 /* stardorada.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F7E3841CB38C04008D4713 /* stardorada.png */; };
 		84F83E711CC994DB00FDC18D /* AccesoSistema@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F83E6F1CC994DB00FDC18D /* AccesoSistema@2x.png */; };
 		84F83E721CC994DB00FDC18D /* AccesoSistema@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F83E701CC994DB00FDC18D /* AccesoSistema@3x.png */; };
+		84F9692F1CCBF01900B32C2C /* Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F9692E1CCBF01900B32C2C /* Gris.png */; };
+		84F9D2C61CDE8850008F1E10 /* calcular.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F9D2C51CDE8850008F1E10 /* calcular.png */; };
 		84FC18E71C7D0784000E5407 /* CAlerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC18E61C7D0784000E5407 /* CAlerta.swift */; };
 		84FE64CD1CC919A20099A06C /* AccesoSistema.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FE64CC1CC919A20099A06C /* AccesoSistema.png */; };
 		84FEE8921CC403630095C322 /* CTarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE8911CC403630095C322 /* CTarifa.swift */; };
+		B5EC43E21D1D89EC009EDF4F /* Solicitud.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EC43E11D1D89EC009EDF4F /* Solicitud.png */; };
+		B5EC43E71D1DC0D7009EDF4F /* piemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EC43E61D1DC0D7009EDF4F /* piemenu.png */; };
+		B5EDE7FB1D1EC225004E130E /* CTarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE7FA1D1EC225004E130E /* CTarifario.swift */; };
+		B5FB646C1D1C60C3006A2C70 /* Mapacopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64671D1C60C3006A2C70 /* Mapacopia.png */; };
+		B5FB646D1D1C60C3006A2C70 /* salir2copia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64681D1C60C3006A2C70 /* salir2copia.png */; };
+		B5FB646E1D1C60C3006A2C70 /* solicitudespcopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */; };
+		B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */; };
+		B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */; };
+		B5FB64721D1C6FB1006A2C70 /* soscopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64711D1C6FB1006A2C70 /* soscopia.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,12 +233,21 @@
 		84EFA5CA1CA8C7E7004E8578 /* aceptarTest320x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aceptarTest320x50.png; sourceTree = "<group>"; };
 		84EFA5CC1CA8CC88004E8578 /* aceptarTest161x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aceptarTest161x50.png; sourceTree = "<group>"; };
 		84EFA5CD1CA8CC88004E8578 /* cancelarTest161x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelarTest161x50.png; sourceTree = "<group>"; };
+		84F019401CD183BE002D1BDE /* sos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sos.png; sourceTree = "<group>"; };
+		84F019441CD18E56002D1BDE /* Mapa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapa.png; sourceTree = "<group>"; };
+		84F019461CD1AA6A002D1BDE /* Taximetro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetro.png; sourceTree = "<group>"; };
+		84F019481CD1B780002D1BDE /* Tarifario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tarifario.png; sourceTree = "<group>"; };
 		84F08BE71CA71B7B00EB2919 /* BlueIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueIOS.png; sourceTree = "<group>"; };
 		84F0D9FC1C5BB52C00C7E962 /* CSolicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSolicitud.swift; sourceTree = "<group>"; };
 		84F0EEC81CA5D102007E969F /* ExplicacionIma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExplicacionIma.png; sourceTree = "<group>"; };
 		84F1DC191CA41F8B00B859FE /* detalles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detalles.png; sourceTree = "<group>"; };
 		84F1F6B01CACCA87001C46FB /* OpcionesTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpcionesTest.png; sourceTree = "<group>"; };
 		84F1F6B11CACCA87001C46FB /* OpcionSelecTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpcionSelecTest.png; sourceTree = "<group>"; };
+		84F229781CE3C4E600D492AA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		84F2297C1CE3C93D00D492AA /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
+		84F22CA31CDBEB0300CDC432 /* Voz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Voz.png; sourceTree = "<group>"; };
+		84F22CA71CDC117300CDC432 /* CSMSVoz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSMSVoz.swift; sourceTree = "<group>"; };
+		84F2840A1CD697430074E07A /* solicitudesp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solicitudesp.png; sourceTree = "<group>"; };
 		84F28A271CC13CC400529F53 /* Images-5.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-5.xcassets"; sourceTree = "<group>"; };
 		84F28A291CC13DE600529F53 /* ic_vecino.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vecino.png; sourceTree = "<group>"; };
 		84F28A2A1CC13DE600529F53 /* ic_vecino@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_vecino@2x.png"; sourceTree = "<group>"; };
@@ -233,22 +264,24 @@
 		84F493D21CA11C8800A54C36 /* encabezadosIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = encabezadosIOS.png; sourceTree = "<group>"; };
 		84F493D41CA1311300A54C36 /* ic_solIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_solIOS.png; sourceTree = "<group>"; };
 		84F493D61CA137AD00A54C36 /* solpendientes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solpendientes.png; sourceTree = "<group>"; };
+		84F4F8F21CDF045D0090FDD9 /* selectmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectmenu.png; sourceTree = "<group>"; };
 		84F5090E1CA895130032D487 /* CancelarTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelarTest.png; sourceTree = "<group>"; };
 		84F509111CA897560032D487 /* EvaluarTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EvaluarTest.png; sourceTree = "<group>"; };
 		84F5091F1CA8A4700032D487 /* AceptarSoloTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AceptarSoloTest.png; sourceTree = "<group>"; };
-		84F571431BCE958200FC18D5 /* Xtaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xtaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F571431BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XTaxi.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F571461BCE958200FC18D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F571481BCE958200FC18D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84F571521BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F571571BCE958200FC18D5 /* XtaxiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XtaxiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F571571BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XTaxi.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F5715B1BCE958200FC18D5 /* XtaxiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiTests.swift; sourceTree = "<group>"; };
 		84F5715D1BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F571621BCE958200FC18D5 /* XtaxiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XtaxiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F571621BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XTaxi.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F571661BCE958200FC18D5 /* XtaxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiUITests.swift; sourceTree = "<group>"; };
 		84F571681BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F571741BCE964100FC18D5 /* CCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCliente.swift; sourceTree = "<group>"; };
 		84F571781BCF6CEE00FC18D5 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
 		84F5868E1CA5217E004AC03C /* prueba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prueba.png; sourceTree = "<group>"; };
+		84F6AC591CE27B3E0037604D /* untaxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = untaxi.png; sourceTree = "<group>"; };
 		84F746991CA25F6300AEFC85 /* formSolici.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = formSolici.png; sourceTree = "<group>"; };
 		84F7469D1CA2685500AEFC85 /* alerta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alerta.png; sourceTree = "<group>"; };
 		84F748561CB5B9680014B07D /* llamartest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = llamartest.png; sourceTree = "<group>"; };
@@ -257,10 +290,21 @@
 		84F7E3841CB38C04008D4713 /* stardorada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stardorada.png; sourceTree = "<group>"; };
 		84F83E6F1CC994DB00FDC18D /* AccesoSistema@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AccesoSistema@2x.png"; sourceTree = "<group>"; };
 		84F83E701CC994DB00FDC18D /* AccesoSistema@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AccesoSistema@3x.png"; sourceTree = "<group>"; };
+		84F9692E1CCBF01900B32C2C /* Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gris.png; sourceTree = "<group>"; };
+		84F9D2C51CDE8850008F1E10 /* calcular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calcular.png; sourceTree = "<group>"; };
 		84FC18E61C7D0784000E5407 /* CAlerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAlerta.swift; sourceTree = "<group>"; };
 		84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		84FE64CC1CC919A20099A06C /* AccesoSistema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccesoSistema.png; sourceTree = "<group>"; };
 		84FEE8911CC403630095C322 /* CTarifa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTarifa.swift; sourceTree = "<group>"; };
+		B5EC43E11D1D89EC009EDF4F /* Solicitud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Solicitud.png; sourceTree = "<group>"; };
+		B5EC43E61D1DC0D7009EDF4F /* piemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piemenu.png; sourceTree = "<group>"; };
+		B5EDE7FA1D1EC225004E130E /* CTarifario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTarifario.swift; sourceTree = "<group>"; };
+		B5FB64671D1C60C3006A2C70 /* Mapacopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapacopia.png; sourceTree = "<group>"; };
+		B5FB64681D1C60C3006A2C70 /* salir2copia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = salir2copia.png; sourceTree = "<group>"; };
+		B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solicitudespcopia.png; sourceTree = "<group>"; };
+		B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tarifariocopia.png; sourceTree = "<group>"; };
+		B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetrocopia.png; sourceTree = "<group>"; };
+		B5FB64711D1C6FB1006A2C70 /* soscopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soscopia.png; sourceTree = "<group>"; };
 		C6E3C8FA07E97EE50D7AB02C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,6 +360,25 @@
 		84609EE21C758E6F0056A282 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC43E61D1DC0D7009EDF4F /* piemenu.png */,
+				B5EC43E11D1D89EC009EDF4F /* Solicitud.png */,
+				B5FB64711D1C6FB1006A2C70 /* soscopia.png */,
+				B5FB64671D1C60C3006A2C70 /* Mapacopia.png */,
+				B5FB64681D1C60C3006A2C70 /* salir2copia.png */,
+				B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */,
+				B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */,
+				B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */,
+				84F2297C1CE3C93D00D492AA /* Launch.png */,
+				84F6AC591CE27B3E0037604D /* untaxi.png */,
+				84F4F8F21CDF045D0090FDD9 /* selectmenu.png */,
+				84F9D2C51CDE8850008F1E10 /* calcular.png */,
+				84F22CA31CDBEB0300CDC432 /* Voz.png */,
+				84F2840A1CD697430074E07A /* solicitudesp.png */,
+				84F019481CD1B780002D1BDE /* Tarifario.png */,
+				84F019461CD1AA6A002D1BDE /* Taximetro.png */,
+				84F019441CD18E56002D1BDE /* Mapa.png */,
+				84F019401CD183BE002D1BDE /* sos.png */,
+				84F9692E1CCBF01900B32C2C /* Gris.png */,
 				84794F9C1CCA7DCC00C4DD33 /* encabezadosIOS@2x.png */,
 				84794F9D1CCA7DCC00C4DD33 /* encabezadosIOS@3x.png */,
 				84F83E6F1CC994DB00FDC18D /* AccesoSistema@2x.png */,
@@ -420,9 +483,9 @@
 		84F571441BCE958200FC18D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84F571431BCE958200FC18D5 /* Xtaxi.app */,
-				84F571571BCE958200FC18D5 /* XtaxiTests.xctest */,
-				84F571621BCE958200FC18D5 /* XtaxiUITests.xctest */,
+				84F571431BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.app */,
+				84F571571BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */,
+				84F571621BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -449,6 +512,9 @@
 				84F7E37E1CB38159008D4713 /* CEvaluacion.swift */,
 				84F28A271CC13CC400529F53 /* Images-5.xcassets */,
 				84FEE8911CC403630095C322 /* CTarifa.swift */,
+				84F22CA71CDC117300CDC432 /* CSMSVoz.swift */,
+				84F229781CE3C4E600D492AA /* Launch Screen.storyboard */,
+				B5EDE7FA1D1EC225004E130E /* CTarifario.swift */,
 			);
 			path = Xtaxi;
 			sourceTree = "<group>";
@@ -483,9 +549,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84F571421BCE958200FC18D5 /* Xtaxi */ = {
+		84F571421BCE958200FC18D5 /* XTaxi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "Xtaxi" */;
+			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxi" */;
 			buildPhases = (
 				93794A4E94289F25FE36D102 /* Check Pods Manifest.lock */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
@@ -498,14 +564,14 @@
 			);
 			dependencies = (
 			);
-			name = Xtaxi;
+			name = XTaxi;
 			productName = Xtaxi;
-			productReference = 84F571431BCE958200FC18D5 /* Xtaxi.app */;
+			productReference = 84F571431BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84F571561BCE958200FC18D5 /* XtaxiTests */ = {
+		84F571561BCE958200FC18D5 /* XTaxiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F5716E1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XtaxiTests" */;
+			buildConfigurationList = 84F5716E1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxiTests" */;
 			buildPhases = (
 				84F571531BCE958200FC18D5 /* Sources */,
 				84F571541BCE958200FC18D5 /* Frameworks */,
@@ -516,14 +582,14 @@
 			dependencies = (
 				84F571591BCE958200FC18D5 /* PBXTargetDependency */,
 			);
-			name = XtaxiTests;
+			name = XTaxiTests;
 			productName = XtaxiTests;
-			productReference = 84F571571BCE958200FC18D5 /* XtaxiTests.xctest */;
+			productReference = 84F571571BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		84F571611BCE958200FC18D5 /* XtaxiUITests */ = {
+		84F571611BCE958200FC18D5 /* XTaxiUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F571711BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XtaxiUITests" */;
+			buildConfigurationList = 84F571711BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxiUITests" */;
 			buildPhases = (
 				84F5715E1BCE958200FC18D5 /* Sources */,
 				84F5715F1BCE958200FC18D5 /* Frameworks */,
@@ -534,9 +600,9 @@
 			dependencies = (
 				84F571641BCE958200FC18D5 /* PBXTargetDependency */,
 			);
-			name = XtaxiUITests;
+			name = XTaxiUITests;
 			productName = XtaxiUITests;
-			productReference = 84F571621BCE958200FC18D5 /* XtaxiUITests.xctest */;
+			productReference = 84F571621BCE958200FC18D5 /* XTaxi.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -562,7 +628,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "Xtaxi" */;
+			buildConfigurationList = 84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "XTaxi" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -581,9 +647,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				84F571421BCE958200FC18D5 /* Xtaxi */,
-				84F571561BCE958200FC18D5 /* XtaxiTests */,
-				84F571611BCE958200FC18D5 /* XtaxiUITests */,
+				84F571421BCE958200FC18D5 /* XTaxi */,
+				84F571561BCE958200FC18D5 /* XTaxiTests */,
+				84F571611BCE958200FC18D5 /* XTaxiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -610,6 +676,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FB64721D1C6FB1006A2C70 /* soscopia.png in Resources */,
 				84EFA5CB1CA8C7E7004E8578 /* aceptarTest320x50.png in Resources */,
 				84EA6BFF1CB55276009EC7A5 /* Evaluacion.png in Resources */,
 				84F83E721CC994DB00FDC18D /* AccesoSistema@3x.png in Resources */,
@@ -618,12 +685,14 @@
 				84609F2B1C758E6F0056A282 /* bbutoff.png in Resources */,
 				84F493D11CA11AFD00A54C36 /* yellowIOS.png in Resources */,
 				842986EF1C614EDD00D78371 /* Main.storyboard in Resources */,
+				84F2840B1CD697430074E07A /* solicitudesp.png in Resources */,
 				84F3041D1CC7F14C009EAEF8 /* fondoUT@2x.png in Resources */,
 				84F748571CB5B9680014B07D /* llamartest.png in Resources */,
 				84609F601C758E6F0056A282 /* taxi_libre.png in Resources */,
 				84609F311C758E6F0056A282 /* dbuton3.png in Resources */,
 				84EFA5CE1CA8CC88004E8578 /* aceptarTest161x50.png in Resources */,
 				84FE64CD1CC919A20099A06C /* AccesoSistema.png in Resources */,
+				B5EC43E21D1D89EC009EDF4F /* Solicitud.png in Resources */,
 				84B9E07D1CC93E5700A96814 /* Encabezado.png in Resources */,
 				84609F321C758E6F0056A282 /* dclock.png in Resources */,
 				84794F9E1CCA7DCC00C4DD33 /* encabezadosIOS@2x.png in Resources */,
@@ -635,11 +704,14 @@
 				84F1F6B21CACCA87001C46FB /* OpcionesTest.png in Resources */,
 				84CD977C1C877E6900E658C0 /* ic_sol1 copia.png in Resources */,
 				84F7469A1CA25F6300AEFC85 /* formSolici.png in Resources */,
+				B5EC43E71D1DC0D7009EDF4F /* piemenu.png in Resources */,
 				84F3F5081CB853C500AEDF31 /* fondoUT.png in Resources */,
 				84609F351C758E6F0056A282 /* destino2.png in Resources */,
 				84F83E711CC994DB00FDC18D /* AccesoSistema@2x.png in Resources */,
 				84F304201CC7F77A009EAEF8 /* fondoUT@3x.png in Resources */,
+				84F229791CE3C4E600D492AA /* Launch Screen.storyboard in Resources */,
 				84EFA5CF1CA8CC88004E8578 /* cancelarTest161x50.png in Resources */,
+				B5FB646C1D1C60C3006A2C70 /* Mapacopia.png in Resources */,
 				84609F5D1C758E6F0056A282 /* saliron2.png in Resources */,
 				84F28A2D1CC13DE600529F53 /* ic_vecino@2x.png in Resources */,
 				84F5090F1CA895130032D487 /* CancelarTest.png in Resources */,
@@ -652,6 +724,7 @@
 				84609F4A1C758E6F0056A282 /* logpassfondo.png in Resources */,
 				84609F331C758E6F0056A282 /* ddistancia.png in Resources */,
 				84609F361C758E6F0056A282 /* dmony.png in Resources */,
+				84F019471CD1AA6A002D1BDE /* Taximetro.png in Resources */,
 				84EFA5C71CA8C56F004E8578 /* DatosCondTest.png in Resources */,
 				84F28A321CC14F1700529F53 /* logpassfondo@2X.png in Resources */,
 				84609F531C758E6F0056A282 /* pulsa.png in Resources */,
@@ -660,33 +733,46 @@
 				84609F591C758E6F0056A282 /* rrmapon.png in Resources */,
 				84B9E0811CC93F5400A96814 /* Pie.png in Resources */,
 				84F28A281CC13CC400529F53 /* Images-5.xcassets in Resources */,
+				84F019451CD18E56002D1BDE /* Mapa.png in Resources */,
+				84F6AC5A1CE27B3E0037604D /* untaxi.png in Resources */,
+				84F22CA41CDBEB0300CDC432 /* Voz.png in Resources */,
 				84609F2E1C758E6F0056A282 /* cbutoff.png in Resources */,
 				84609F301C758E6F0056A282 /* dbutoff3.png in Resources */,
 				84F7E3831CB389A6008D4713 /* stargris.png in Resources */,
 				84F08BE81CA71B7B00EB2919 /* BlueIOS.png in Resources */,
 				84609F481C758E6F0056A282 /* ic_sol.png in Resources */,
 				84F28A2E1CC13DE600529F53 /* ic_vecino@3x.png in Resources */,
+				84F9692F1CCBF01900B32C2C /* Gris.png in Resources */,
 				84609F511C758E6F0056A282 /* phoneoff.png in Resources */,
 				84F493D71CA137AD00A54C36 /* solpendientes.png in Resources */,
+				B5FB646D1D1C60C3006A2C70 /* salir2copia.png in Resources */,
+				84F4F8F31CDF045D0090FDD9 /* selectmenu.png in Resources */,
 				84609F551C758E6F0056A282 /* rbuton.png in Resources */,
 				84F1F6B31CACCA87001C46FB /* OpcionSelecTest.png in Resources */,
 				84609F501C758E6F0056A282 /* origen2.png in Resources */,
 				84F509201CA8A4700032D487 /* AceptarSoloTest.png in Resources */,
+				84F9D2C61CDE8850008F1E10 /* calcular.png in Resources */,
+				84F2297D1CE3C93D00D492AA /* Launch.png in Resources */,
+				84F019411CD183BE002D1BDE /* sos.png in Resources */,
 				84609F471C758E6F0056A282 /* ic_salir2.png in Resources */,
 				84609F581C758E6F0056A282 /* rrmapoff.png in Resources */,
 				84609F2A1C758E6F0056A282 /* back.png in Resources */,
 				84F7E3851CB38C04008D4713 /* stardorada.png in Resources */,
 				845C0F521C7633EF0050F852 /* chofer.png in Resources */,
 				84609F5F1C758E6F0056A282 /* sinconexion.png in Resources */,
+				B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */,
 				84609F2D1C758E6F0056A282 /* calendar.png in Resources */,
+				B5FB646E1D1C60C3006A2C70 /* solicitudespcopia.png in Resources */,
 				84F7469E1CA2685500AEFC85 /* alerta.png in Resources */,
 				84609F5C1C758E6F0056A282 /* saliron.png in Resources */,
+				B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */,
 				84F28A381CC1672100529F53 /* destino2@2x.png in Resources */,
 				84609F2F1C758E6F0056A282 /* cbuton.png in Resources */,
 				84609F621C758E6F0056A282 /* warning.png in Resources */,
 				84609F5B1C758E6F0056A282 /* saliroff2.png in Resources */,
 				84F1DC1A1CA41F8B00B859FE /* detalles.png in Resources */,
 				8430E3431C76E18700B85444 /* ic_sol1.png in Resources */,
+				84F019491CD1B780002D1BDE /* Tarifario.png in Resources */,
 				84CD97801C87C36E00E658C0 /* Contents.json in Resources */,
 				84609F281C758E6F0056A282 /* aceptar1off.png in Resources */,
 				84794F9F1CCA7DCC00C4DD33 /* encabezadosIOS@3x.png in Resources */,
@@ -779,7 +865,9 @@
 				84F571471BCE958200FC18D5 /* AppDelegate.swift in Sources */,
 				84FC18E71C7D0784000E5407 /* CAlerta.swift in Sources */,
 				845AADE11C543B8700D4FFA4 /* CTaxi.swift in Sources */,
+				B5EDE7FB1D1EC225004E130E /* CTarifario.swift in Sources */,
 				844E394C1C650EE7009EF09F /* PantallaSolic.swift in Sources */,
+				84F22CA81CDC117300CDC432 /* CSMSVoz.swift in Sources */,
 				84C8E9261C82566C00F21E0B /* LocationManager.swift in Sources */,
 				84FEE8921CC403630095C322 /* CTarifa.swift in Sources */,
 			);
@@ -806,12 +894,12 @@
 /* Begin PBXTargetDependency section */
 		84F571591BCE958200FC18D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 84F571421BCE958200FC18D5 /* Xtaxi */;
+			target = 84F571421BCE958200FC18D5 /* XTaxi */;
 			targetProxy = 84F571581BCE958200FC18D5 /* PBXContainerItemProxy */;
 		};
 		84F571641BCE958200FC18D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 84F571421BCE958200FC18D5 /* Xtaxi */;
+			target = 84F571421BCE958200FC18D5 /* XTaxi */;
 			targetProxy = 84F571631BCE958200FC18D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -925,8 +1013,8 @@
 				INFOPLIST_FILE = Xtaxi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XOA.Xtaxi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = XTaxi;
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -948,8 +1036,8 @@
 				INFOPLIST_FILE = Xtaxi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XOA.Xtaxi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = XTaxi;
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -962,8 +1050,8 @@
 				INFOPLIST_FILE = XtaxiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XOA.XtaxiTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xtaxi.app/Xtaxi";
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XTaxi.temp_caseinsensitive_rename.app/XTaxi.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -974,8 +1062,8 @@
 				INFOPLIST_FILE = XtaxiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XOA.XtaxiTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xtaxi.app/Xtaxi";
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XTaxi.temp_caseinsensitive_rename.app/XTaxi.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -985,7 +1073,7 @@
 				INFOPLIST_FILE = XtaxiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XOA.XtaxiUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
 				TEST_TARGET_NAME = Xtaxi;
 				USES_XCTRUNNER = YES;
 			};
@@ -997,7 +1085,7 @@
 				INFOPLIST_FILE = XtaxiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XOA.XtaxiUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = XTaxi.temp_caseinsensitive_rename;
 				TEST_TARGET_NAME = Xtaxi;
 				USES_XCTRUNNER = YES;
 			};
@@ -1006,7 +1094,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "Xtaxi" */ = {
+		84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "XTaxi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F571691BCE958200FC18D5 /* Debug */,
@@ -1015,7 +1103,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "Xtaxi" */ = {
+		84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F5716C1BCE958200FC18D5 /* Debug */,
@@ -1024,7 +1112,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F5716E1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XtaxiTests" */ = {
+		84F5716E1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F5716F1BCE958200FC18D5 /* Debug */,
@@ -1033,7 +1121,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F571711BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XtaxiUITests" */ = {
+		84F571711BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "XTaxiUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F571721BCE958200FC18D5 /* Debug */,

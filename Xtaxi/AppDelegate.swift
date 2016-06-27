@@ -1,4 +1,4 @@
-
+ 
 //
 //  AppDelegate.swift
 //  Xtaxi
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         GMSServices.provideAPIKey("AIzaSyADlVgBSmX1FSFBvf4njnTDq9YL0RwF9e4")
         
-        myvariables.socket = SocketIOClient(socketURL: "www.xoait.com:5800")
+        myvariables.socket = SocketIOClient(socketURL: "www.xoait.com:5800")//5803
         myvariables.socket.connect()
 
         //LEER SI EXISTE EL FICHERO DEL LOGIN
@@ -43,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         if read != "Vacio"
         {
             vista = "PI"
-         }
-        else{
-            vista = "PL"
+        }
+            else{
+                vista = "PL"
         }
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

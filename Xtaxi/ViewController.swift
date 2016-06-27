@@ -42,13 +42,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var AcpetarAlerta: UIButton!
     @IBOutlet weak var CancelarAlerta: UIButton!
     @IBOutlet weak var AceptarSoloAlerta: UIButton!
+    @IBOutlet weak var activityview: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.ControlEventos()
-        alerta = CAlerta(titulo: Titulo, mensaje: Mensaje, vistaalerta: AlertaView, aceptarbtn: AcpetarAlerta, aceptarsolobtn: AceptarSoloAlerta, cancelarbtn: CancelarAlerta, tipo: 1)
+        alerta = CAlerta(titulo: Titulo, mensaje: Mensaje, vistaalerta: AlertaView, aceptarbtn: AcpetarAlerta, aceptarsolobtn: AceptarSoloAlerta, cancelarbtn: CancelarAlerta, tipo: 1, esperandoactivity: activityview)
        
         //asignar el delegado a los textfield para poder utilizar las funciones propias
        telefonoText.delegate = self

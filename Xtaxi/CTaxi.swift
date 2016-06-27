@@ -8,20 +8,24 @@
 
 import Foundation
 class CTaxi{
-    var Matricula :String
-    var CodTaxi :String
-    var MarcaVehiculo :String
-    var ColorVehiculo :String
-    var GastoCombustible :String
-    var Conductor : CConductor
+    var idTaxi: String
+    var matricula :String
+    var codTaxi :String
+    var marcaVehiculo :String
+    var modelo: String
+    var colorVehiculo :String
+    var gastoCombustible :String
+    var conductor : CConductor
     
-    init(Matricula :String, CodTaxi :String, MarcaVehiculo :String, ColorVehiculo :String, GastoCombustible :String,  Conductor : CConductor){
-        self.Matricula = Matricula
-        self.CodTaxi = CodTaxi
-        self.MarcaVehiculo = MarcaVehiculo
-        self.ColorVehiculo = ColorVehiculo
-        self.GastoCombustible = GastoCombustible
-        self.Conductor = Conductor
+    init(IdTaxi: String, Matricula :String, CodTaxi :String, MarcaVehiculo :String, modelo: String,ColorVehiculo :String, GastoCombustible :String,  Conductor : CConductor){
+        self.idTaxi = IdTaxi
+        self.matricula = Matricula
+        self.codTaxi = CodTaxi
+        self.marcaVehiculo = MarcaVehiculo
+        self.modelo =  modelo
+        self.colorVehiculo = ColorVehiculo
+        self.gastoCombustible = GastoCombustible
+        self.conductor = Conductor
     }
 
 }

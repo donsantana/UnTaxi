@@ -17,14 +17,11 @@ class CTarifa {
     var valorArranque : Double
     
     init(horaInicio : String, horaFin : String, valorMinimo : Double, tiempoEspera : Double, valorKilometro : Double, valorArranque : Double){
-        var temporal = String(horaInicio).componentsSeparatedByString(":")
-        self.horaInicio = Int(temporal[2])!
-        self.horaFin = Int(temporal[3])!
+        self.horaInicio = Int(horaInicio)!
+        self.horaFin = Int(horaFin)!
         self.valorMinimo = valorMinimo
         self.tiempoEspera = tiempoEspera
         self.valorKilometro = valorKilometro
         self.valorArranque = valorArranque
     }
-    
-    
 }
