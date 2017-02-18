@@ -1,5 +1,20 @@
+
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, ‘9.0’
 use_frameworks!
-pod 'Socket.IO-Client-Swift', '~> 3.1.6'
-pod ‘GoogleMaps’
+target “UnTaxi” do
+    pod 'Socket.IO-Client-Swift', '~> 8.1.2’
+    pod 'GoogleMaps'
+    pod 'Canvas'
+    pod 'AFNetworking'
+    pod 'SwiftyJSON'
+    
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.0'
+            end
+        end
+    end
+    
+end
