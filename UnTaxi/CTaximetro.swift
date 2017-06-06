@@ -63,7 +63,7 @@ class CTaximetro {
         for var tarifatemporal in tarifas{
             if (Int(tarifatemporal.horaInicio) <= Int(temporal[0])) && (Int(temporal[0]) <= Int(tarifatemporal.horaFin)){
                 self.ValorArranque = tarifatemporal.valorArranque
-                self.ValorKilometro = tarifatemporal.valorKilometro
+                self.ValorKilometro = tarifatemporal.valorKilometro1
                 self.ValorMinimo = tarifatemporal.valorMinimo
                 self.ValorEspera = tarifatemporal.tiempoEspera
                 self.ValorPagar = self.ValorArranque
@@ -117,7 +117,7 @@ class CTaximetro {
     }
     func ActualizarTarifa(_ tarifa: CTarifa){
         self.ValorArranque = tarifa.valorArranque
-        self.ValorKilometro = tarifa.valorKilometro
+        self.ValorKilometro = tarifa.valorKilometro1
         self.ValorMinimo = tarifa.valorMinimo
         self.ValorEspera = tarifa.tiempoEspera
 

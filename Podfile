@@ -1,9 +1,10 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/socketio/socket.io-client-swift'
 platform :ios, ‘9.0’
 use_frameworks!
 target “UnTaxi” do
-    pod 'Socket.IO-Client-Swift', '~> 8.1.2’
+    pod 'Socket.IO-Client-Swift', '~> 10.0.0'
     pod 'GoogleMaps'
     pod 'Canvas'
     pod 'AFNetworking'
