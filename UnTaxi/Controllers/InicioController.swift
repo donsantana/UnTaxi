@@ -701,25 +701,25 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Completada"){data, ack in
             //'#Completada,'+idsolicitud+','+idtaxi+','+distancia+','+tiempoespera+','+importe+',# \n'
             let temporal = String(describing: data).components(separatedBy: ",")
-            print(temporal)
-            var pos = self.BuscarPosSolicitudID(temporal[1])
-            myvariables.solpendientes.remove(at: pos)
-            
+            let tiempoTemp = String(describing: temporal[4]).components(separatedBy: ".")
             if myvariables.solpendientes.count != 0{
-                self.SolPendientesView.isHidden = true
-                self.CantSolPendientes.text = String(myvariables.solpendientes.count)
+                let tiempoTemp = String(describing: temporal[4]).components(separatedBy: ".")
+                var pos = self.BuscarPosSolicitudID(temporal[1])
+                myvariables.solpendientes.remove(at: pos)
+                if myvariables.solpendientes.count != 0{
+                    self.SolPendientesView.isHidden = true
+                    self.CantSolPendientes.text = String(myvariables.solpendientes.count)
+                }else{
+                    self.SolPendImage.isHidden = true
+                }
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "completadaView") as! CompletadaController
+                vc.idSolicitud = temporal[1]
+                vc.idTaxi = temporal[2]
+                vc.distanciaValue = temporal[3]
+                vc.tiempoValue = temporal[4]
+                vc.costoValue = temporal[5]
+                self.navigationController?.show(vc, sender: nil)
             }
-            else{
-                self.SolPendImage.isHidden = true
-            }
-
-            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "completadaView") as! CompletadaController
-            vc.idSolicitud = temporal[1]
-            vc.idTaxi = temporal[2]
-            vc.distanciaValue = temporal[3]
-            vc.tiempoValue = temporal[4]
-            vc.costoValue = temporal[5]
-            self.navigationController?.show(vc, sender: nil)
         }
         
         
@@ -1211,12 +1211,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.solpendientes.append(nuevaSolicitud)
         self.referenciaText.text?.removeAll()
         self.origenText.text?.removeAll()
-        //"," + datosgeo + 
+        //"," + voucher +
         
         let datoscliente = nuevaSolicitud.idCliente + "," + nuevaSolicitud.nombreApellidos + "," + nuevaSolicitud.user
         let datossolicitud = nuevaSolicitud.origenCarrera.snippet! + "," + nuevaSolicitud.referenciaorigen + "," + nuevaSolicitud.destinoCarrera.snippet!
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
-        let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.position.latitude) + "," + String(nuevaSolicitud.origenCarrera.position.longitude) + "," + String(nuevaSolicitud.destinoCarrera.position.latitude) + "," + String(nuevaSolicitud.destinoCarrera.position.longitude) + "," + voucher + ",# \n"
+        let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.position.latitude) + "," + String(nuevaSolicitud.origenCarrera.position.longitude) + "," + String(nuevaSolicitud.destinoCarrera.position.latitude) + "," + String(nuevaSolicitud.destinoCarrera.position.longitude) + "," + datosgeo + "," + voucher + ",# \n"
         print(Datos)
         EnviarSocket(Datos)
         MensajeEspera.text = "Procesando..."

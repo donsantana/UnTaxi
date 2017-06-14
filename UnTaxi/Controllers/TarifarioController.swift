@@ -229,26 +229,20 @@ class TarifarioController: UIViewController, CLLocationManagerDelegate, UITextVi
             "  }" +
         "]"
         
-        
         do{
             self.MapaTarifario.mapStyle = try GMSMapStyle(jsonString: JSONStyle)
         }catch{
             print("NO PUEDEEEEEEEEEEEEEEEEEEEEEE")
         }
-
-        
         self.tarifas = myvariables.tarifas
     }
 
-  
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
 
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        
         origenIcono.isHidden = true
-        
         if DestinoTarifarioBtn.isHidden == false {
             OrigenTarifario = GMSMarker(position: MapaTarifario.camera.target)
             OrigenTarifario.icon = UIImage(named: "origen")
@@ -276,7 +270,6 @@ class TarifarioController: UIViewController, CLLocationManagerDelegate, UITextVi
             }
         }
     }
-
 
     //MASK:- FUNCIONES PROPIAS
     

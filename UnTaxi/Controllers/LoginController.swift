@@ -47,10 +47,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
         Clave.delegate = self
         
         if CConexionInternet.isConnectedToNetwork() == true{
-           
             myvariables.socket = SocketIOClient(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(false), .forcePolling(true)])
             myvariables.socket.connect()
-            
             myvariables.socket.on("connect"){data, ack in
                 var read = "Vacio"
                 let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
@@ -72,19 +70,13 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }else{
             ErrorConexion()
         }
-
-
     }
 
     func SocketEventos(){
         myvariables.socket.on("LoginPassword"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
-
-                //self.solpendientes = [CSolicitud]()
-                //self.contador = 0
                 switch temporal[1]{
                 case "loginok":
-                print(temporal)
                     myvariables.cliente = CCliente(idUsuario: temporal[2],idcliente: temporal[4], user: self.login[1], nombre: temporal[5],email: temporal[3],empresa: temporal[temporal.count - 2])
                     if temporal[6] != "0"{
                         self.ListSolicitudPendiente(temporal)
@@ -100,7 +92,6 @@ class LoginController: UIViewController, UITextFieldDelegate{
                     }catch{
                         
                     }
-                    
                     let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         self.AutenticandoView.isHidden = true
@@ -108,14 +99,11 @@ class LoginController: UIViewController, UITextFieldDelegate{
                     self.present(alertaDos, animated: true, completion: nil)
                 default: print("Problemas de conexion")
                 }
-
         }
         
         myvariables.socket.on("Registro") {data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
-            
             if temporal[1] == "registrook"{
-                
                 let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.RegistroView.isHidden = true
@@ -123,16 +111,13 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 alertaDos.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
-                
                 self.present(alertaDos, animated: true, completion: nil)
             }
             else{
-                
                 let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertControllerStyle.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.AutenticandoView.isHidden = true
                 }))
-                
                 self.present(alertaDos, animated: true, completion: nil)
             }
         }
@@ -144,12 +129,9 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
-                
                 self.present(alertaDos, animated: true, completion: nil)
-                
             }
         }
-
     }
     
     //FUNCION PARA LISTAR SOLICITUDES PENDIENTES

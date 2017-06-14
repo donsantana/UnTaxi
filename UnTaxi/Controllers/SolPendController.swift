@@ -288,7 +288,6 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
         
         //GEOPOSICION DE TAXIS
         myvariables.socket.on("Geo"){data, ack in
-            print("atualizando taxi")
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0 {
                     if (temporal[2] == self.SolicitudPendiente.idTaxi){
@@ -311,12 +310,10 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
     
     
     //MASK:- FUNCIONES PROPIAS
-    func longTap(_ sender : UILongPressGestureRecognizer){
-        
+    func longTap(_ sender : UILongPressGestureRecognizer){        
       if sender.state == .ended {
         if !myvariables.SMSVoz.reproduciendo && myvariables.grabando{
-            
-           // if sender.state == .ended{
+
                 let dateFormato = DateFormatter()
                 dateFormato.dateFormat = "yyMMddhhmmss"
                 self.fechahora = dateFormato.string(from: Date())
@@ -326,7 +323,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
                 myvariables.SMSVoz.SubirAudio(myvariables.UrlSubirVoz, name: name)
                 myvariables.grabando = false
                 myvariables.SMSVoz.ReproducirMusica()
-           // }
+
         }
     }else if sender.state == .began {
         if !myvariables.SMSVoz.reproduciendo{
@@ -348,7 +345,6 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
-                
                 self.present(alertaDos, animated: true, completion: nil)
             }
         }else{
