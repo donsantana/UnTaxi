@@ -9,21 +9,17 @@
 import UIKit
 import CoreLocation
 import MapKit
-import GoogleMaps
 import SocketIO
 import Canvas
 import AddressBook
 import AVFoundation
 import CoreData
 
-class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, GMSMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate {
+class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, MKMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate {
     var coreLocationManager : CLLocationManager!
-    var miposicion = CLLocationCoordinate2D()
-    var locationMarker = MKPointAnnotation()
-    var taxiLocation : GMSMarker!
-    var userAnotacion : GMSMarker!
-    var origenAnotacion : GMSMarker!
-    var destinoAnotacion : GMSMarker!
+    var miposicion = MKPointAnnotation()
+    var origenAnotacion : MKPointAnnotation!
+    var taxiLocation : MKPointAnnotation!
     var taxi : CTaxi!
     var login = [String]()
     var idusuario : String = ""
@@ -33,7 +29,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     var TelefonosCallCenter = [CTelefono]()
     var opcionAnterior : IndexPath!
     var evaluacion: CEvaluacion!
-    var taxiscercanos = [GMSMarker]()
+    var taxiscercanos = [MKPointAnnotation]()
     //var SMSVoz = CSMSVoz()
     
     var responseData = NSMutableData()
@@ -54,7 +50,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //variables de interfaz
     
     @IBOutlet weak var origenIcono: UIImageView!
-    @IBOutlet weak var mapaVista : GMSMapView!
+    @IBOutlet weak var mapaVista: MKMapView!
 
     
     @IBOutlet weak var destinoText: UITextField!
@@ -71,13 +67,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     @IBOutlet weak var aceptarLocBtn: UIButton!
     @IBOutlet weak var CancelarEnvioBtn: UIButton!
-    
-    
-    //@IBOutlet weak var SolicitudMapaView: UIView!
-    
-    @IBOutlet weak var DistanciaText: UILabel!
-    @IBOutlet weak var DuracionText: UILabel!
-    @IBOutlet weak var CostoText: UILabel!
+
     
     //MENU BUTTONS
     @IBOutlet weak var MenuView: UIView!
@@ -116,252 +106,37 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         self.referenciaText.delegate = self
-        if CLLocationManager.locationServicesEnabled(){
-            switch(CLLocationManager.authorizationStatus()) {
-            case .notDetermined, .restricted, .denied:
-                let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
-                locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                    UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
-                    
-                }))
-                locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-                    exit(0)
-                }))
-                self.present(locationAlert, animated: true, completion: nil)
-            case .authorizedAlways, .authorizedWhenInUse:
-            
-            break
-                
-            }
-        }else{
-            let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
-            locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                UIApplication.shared.openURL(NSURL(string:"App-Prefs:root=Privacy&path=LOCATION_SERVICES")! as URL)
-            }))
-            locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-            exit(0)
-            }))
-            self.present(locationAlert, animated: true, completion: nil)
-
-        }
-         //solicitud de autorización para acceder a la localización del usuario
+        //solicitud de autorización para acceder a la localización del usuario
 
         coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
         
-        let JSONStyle = "[" +
-            "  {" +
-            "    \"featureType\": \"all\"," +
-            "    \"elementType\": \"geometry.fill\"," +
-            "    \"stylers\": [" +
-            "      {" +
-            "        \"weight\": \"2.00\"" +
-            "      }" +
-            "    ]" +
-            "  }," +
-            "       {" +
-            "           \"featureType\": \"all\"," +
-            "           \"elementType\": \"geometry.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#9c9c9c\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#f2f2f2\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#f2f2f2\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape.man_made\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"poi\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"off\"" +
-            "           }" +
-            "           ]" +
-            "      }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"saturation\": -100" +
-            "           }," +
-            "           {" +
-            "           \"lightness\": 45" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#e1e2e2\"" +
-            "          }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"labels.text.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#232323\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"labels.text.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road.highway\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"simplified\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "          \"featureType\": \"road.arterial\"," +
-            "           \"elementType\": \"labels.icon\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"off\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"transit\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"on\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"9aadb5\"" +
-            "           }," +
-            "           {" +
-            "           \"visibility\": \"on\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#def5fe\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"labels.text.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#070707\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"labels.text.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            
-            "  {" +
-            "    \"featureType\": \"transit\"," +
-            "    \"elementType\": \"labels.icon\"," +
-            "    \"stylers\": [" +
-            "      {" +
-            "        \"visibility\": \"on\"" +
-            "      }" +
-            "    ]" +
-            "  }" +
-        "]"
+        self.origenAnotacion = MKPointAnnotation()
         
-        
-        do{
-            self.mapaVista.mapStyle = try GMSMapStyle(jsonString: JSONStyle)
-        }catch{
-    
-        }
-
-        mapaVista.isMyLocationEnabled = false
         if let tempLocation = self.coreLocationManager.location?.coordinate{
-            self.miposicion = tempLocation
-            self.mapaVista.camera = GMSCameraPosition.camera(withLatitude: (tempLocation.latitude), longitude: (tempLocation.longitude), zoom: 15.0)
+            self.origenAnotacion.coordinate = (coreLocationManager.location?.coordinate)!
+            self.origenAnotacion.title = "origen"
         }else{
             coreLocationManager.requestWhenInUseAuthorization()
-            self.mapaVista.camera = GMSCameraPosition.camera(withLatitude: -2.173714, longitude: -79.921601, zoom: 12.0)
+            self.origenAnotacion.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
         }
         
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
+        self.mapaVista.setRegion(region, animated: true)
+        //self.mapaVista.addAnnotation(self.origenAnotacion)
+        
         //UBICAR LOS BOTONES DEL MENU
-        var espacioBtn = self.view.frame.width/5
+        var espacioBtn = self.view.frame.width / 4
         self.CallCEnterBtn.frame = CGRect(x: espacioBtn - 40, y: 5, width: 44, height: 44)
-        self.SolPendientesBtn.frame = CGRect(x: (espacioBtn * 2 - 35), y: 5, width: 44, height: 44)
-        self.TarifarioBtn.frame = CGRect(x: (espacioBtn * 3 - 15), y: 5, width: 44, height: 44)
-        self.MapaBtn.frame = CGRect(x: (espacioBtn * 4 - 10), y: 5, width: 44, height: 44)
-        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
-        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
+        self.SolPendientesBtn.frame = CGRect(x: (espacioBtn * 2 - 25), y: 5, width: 44, height: 44)
+        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2), y: 5, width: 25, height: 22)
+        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2), y: 5, width: 25, height: 22)
+        self.MapaBtn.frame = CGRect(x: (espacioBtn * 3 - 10), y: 5, width: 44, height: 44)
+        //self.TarifarioBtn.frame = CGRect(x: (espacioBtn * 3 - 15), y: 5, width: 44, height: 44)
+        
 
-        self.userAnotacion = GMSMarker()
-        self.taxiLocation = GMSMarker()
-        self.taxiLocation.icon = UIImage(named: "taxi_libre")
-        self.origenAnotacion = GMSMarker()
-        self.origenAnotacion.icon = UIImage(named: "origen")
-        self.destinoAnotacion = GMSMarker()
-        self.destinoAnotacion.icon = UIImage(named: "destino")
+        self.taxiLocation = MKPointAnnotation()
         
         if myvariables.solpendientes.count > 0{
             self.CantSolPendientes.isHidden = false
@@ -390,61 +165,52 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }else{
             self.Reconect()
         }
+        ExplicacionText.text = "Localice el origen"
+        ExplicacionView.isHidden = false
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var anotationView = mapaVista.dequeueReusableAnnotationView(withIdentifier: "annotationView")
+        anotationView = MKAnnotationView(annotation: self.origenAnotacion, reuseIdentifier: "annotationView")
+        if annotation.title! == "origen"{
+            anotationView?.image = UIImage(named: "origen")
+        }else{
+            anotationView?.image = UIImage(named: "taxi_libre")
+        }
+        return anotationView
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            self.miposicion = (locations.last?.coordinate)!
-            self.setuplocationMarker(miposicion)
-            //GeolocalizandoView.isHidden = true
+            self.miposicion.coordinate = (locations.last?.coordinate)!
             self.SolicitarBtn.isHidden = false
     }
     
-    func setuplocationMarker(_ coordinate: CLLocationCoordinate2D) {
-        self.userAnotacion.position = coordinate
-        userAnotacion.snippet = "Cliente"
-        userAnotacion.icon = UIImage(named: "origen")
-        mapaVista.camera = GMSCameraPosition.camera(withLatitude: userAnotacion.position.latitude,longitude:userAnotacion.position.longitude,zoom: 14)
-        self.origenIcono.isHidden = false
-        ExplicacionText.text = "Localice el origen en el mapa"
-        ExplicacionView.isHidden = false
-        coreLocationManager.stopUpdatingLocation()
+    func mapView(_ mapView: MKMapView, rendererFor
+        overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.green
+        renderer.lineWidth = 4.0
+        return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        if SolicitarBtn.isHidden == false {
+            self.miposicion.title = "origen"
+            self.coreLocationManager.stopUpdatingLocation()
+            self.mapaVista.removeAnnotations(self.mapaVista.annotations)
+            self.origenIcono.isHidden = false
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        origenIcono.isHidden = true
+        if SolicitarBtn.isHidden == false {
+            miposicion.coordinate = (self.mapaVista.centerCoordinate)
+            self.DireccionDeCoordenada(self.miposicion.coordinate, directionText: origenText)
+            origenAnotacion.title = "origen"
+            mapaVista.addAnnotation(self.miposicion)
+        }
     }
 
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        origenIcono.isHidden = true
-        
-        if SolicitarBtn.isHidden == false {
-            origenAnotacion = GMSMarker(position: mapaVista.camera.target)
-            self.DireccionDeCoordenada(self.origenAnotacion.position, directionText: origenText)
-            origenAnotacion.icon = UIImage(named: "origen")
-            origenAnotacion.snippet = origenText.text
-            origenAnotacion.map = mapaVista
-            //GeolocalizandoView.isHidden = false
-        }
-        else{
-            if aceptarLocBtn.isHidden == false{
-                destinoAnotacion = GMSMarker(position: mapaVista.camera.target)
-                self.DireccionDeCoordenada(self.destinoAnotacion.position, directionText: origenText)
-                destinoAnotacion.icon = UIImage(named: "destino")
-                origenAnotacion.snippet = destinoText.text
-                destinoAnotacion.map = mapaVista
-            }
-        }
-    }
-    
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-            if SolicitarBtn.isHidden == false {
-                origenIcono.isHidden = false
-                origenAnotacion.map = nil
-            }
-            else{
-                if aceptarLocBtn.isHidden == false{
-                    origenIcono.isHidden = false
-                    destinoAnotacion.map = nil
-                }
-            }
-    }
-    
     //MARK:- FUNCIONES PROPIAS
     func appUpdateAvailable() -> Bool
     {
@@ -563,24 +329,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 myvariables.tarifas.append(unatarifa)
                 i += 8
             }
-            /*if myvariables.taximetroActive{
-                let date = Date()
-                let formatter:DateFormatter = DateFormatter()
-                formatter.dateFormat = "HH:mm" //opción formateador
-                let hora = formatter.string(from: date)
-                let temporal = String(hora).components(separatedBy: ":")
-                
-                for var tarifatemporal in self.tarifas{
-                    if (Int(tarifatemporal.horaInicio) <= Int(temporal[0])!) && (Int(temporal[0])! <= Int(tarifatemporal.horaFin)){
-                        self.taximetro.ActualizarTarifa(tarifatemporal)
-                        self.MinimaText.text = String(tarifatemporal.valorMinimo)
-                        self.ArranqueText.text = String(tarifatemporal.valorArranque)
-                    }
-                }
-            }*/
         }
 
-        
         
         //Evento Posicion de taxis
         myvariables.socket.on("Posicion"){data, ack in
@@ -701,10 +451,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Completada"){data, ack in
             //'#Completada,'+idsolicitud+','+idtaxi+','+distancia+','+tiempoespera+','+importe+',# \n'
             let temporal = String(describing: data).components(separatedBy: ",")
-            let tiempoTemp = String(describing: temporal[4]).components(separatedBy: ".")
+
             if myvariables.solpendientes.count != 0{
-                let tiempoTemp = String(describing: temporal[4]).components(separatedBy: ".")
-                var pos = self.BuscarPosSolicitudID(temporal[1])
+                let pos = self.BuscarPosSolicitudID(temporal[1])
                 myvariables.solpendientes.remove(at: pos)
                 if myvariables.solpendientes.count != 0{
                     self.SolPendientesView.isHidden = true
@@ -712,12 +461,14 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 }else{
                     self.SolPendImage.isHidden = true
                 }
+
                 let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "completadaView") as! CompletadaController
                 vc.idSolicitud = temporal[1]
                 vc.idTaxi = temporal[2]
                 vc.distanciaValue = temporal[3]
                 vc.tiempoValue = temporal[4]
                 vc.costoValue = temporal[5]
+                
                 self.navigationController?.show(vc, sender: nil)
             }
         }
@@ -787,7 +538,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("disconnect"){data, ack in
-            self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(PantallaInicio.Reconect), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)
         }
         
         myvariables.socket.on("connect"){data, ack in
@@ -902,13 +653,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     func Inicio(){
-        mapaVista!.clear()
+        mapaVista.removeAnnotations(self.mapaVista.annotations)
         self.coreLocationManager.startUpdatingLocation()
-        self.origenAnotacion.position = (self.coreLocationManager.location?.coordinate)!
+        self.origenAnotacion.coordinate = (self.coreLocationManager.location?.coordinate)!
         self.origenIcono.image = UIImage(named: "origen2")
-        self.origenAnotacion.snippet = "Cliente"
-        self.origenAnotacion.icon = UIImage(named: "origen")
-        mapaVista.camera = GMSCameraPosition.camera(withLatitude: self.origenAnotacion.position.latitude,longitude: self.origenAnotacion.position.longitude,zoom: 15)
+        self.origenAnotacion.title = "origen"
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
+        self.mapaVista.setRegion(region, animated: true)
+
         self.origenIcono.isHidden = false
         ExplicacionText.text = "Localice el origen"
         ExplicacionView.isHidden = false
@@ -967,70 +720,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             if solicitud.idSolicitud == temporal[1]{
                 myvariables.solicitudesproceso = true
                 solicitud.DatosTaxiConductor(idtaxi: temporal[6], matricula: temporal[8], codigovehiculo: temporal[7], marcaVehiculo: temporal[9],colorVehiculo: temporal[10], lattaxi: temporal[11], lngtaxi: temporal[12], idconductor: temporal[2], nombreapellidosconductor: temporal[3], movilconductor: temporal[4], foto: temporal[5])
-                solicitud.taximarker.map = mapaVista
-                _ = RutaCliente(solicitud.origenCarrera.position, destino: solicitud.destinoCarrera.position, taxi: solicitud.taximarker.position)
-                self.indexselect = myvariables.solpendientes.count - 1
-                if solicitud.tiempo != "0"{
-                    DuracionText.text = solicitud.tiempo
-                    DistanciaText.text = String(solicitud.distancia) + "KM"
-                    CostoText.text = "$"+solicitud.costo
-                }
-                
             }
         }
     }
     
-    //Crear las rutas entre los puntos de origen y destino
-    func RutaCliente(_ origen: CLLocationCoordinate2D, destino: CLLocationCoordinate2D, taxi: CLLocationCoordinate2D)->[String]{
-        
-        var distancia = "???"
-        var duracion = "???"
-        let origentext = String(origen.latitude) + "," + String(origen.longitude)
-        if ((taxi.latitude == 0.0 || taxi.latitude == 0) && destino.latitude != 0){
-            let destinotext = String(destino.latitude) + "," + String(destino.longitude)
-            let ruta = CRuta(origin: origentext, destination: destinotext)
-            let routePolyline = ruta.drawRoute()
-            let lines = GMSPolyline(path: routePolyline)
-            lines.strokeWidth = 5
-            lines.map = self.mapaVista
-            lines.strokeColor = UIColor.green
-            distancia = ruta.totalDistance
-            duracion = ruta.totalDuration
-        }
-        else{
-            if ((destino.latitude == 0) && (taxi.latitude != 0)){
-                let taxitext = String(taxi.latitude) + "," + String(taxi.longitude)
-                let ruta = CRuta(origin: origentext, destination: taxitext)
-                let routePolyline = ruta.drawRoute()
-                let lines = GMSPolyline(path: routePolyline)
-                lines.strokeWidth = 5
-                lines.map = self.mapaVista
-                lines.strokeColor = UIColor.red
-                distancia = ruta.totalDistance
-                duracion = ruta.totalDuration
-            }
-            else{
-                let destinotext = String(destino.latitude) + "," + String(destino.longitude)
-                let taxitext = String(taxi.latitude) + "," + String(taxi.longitude)
-                let rutataxi = CRuta(origin: origentext, destination: taxitext)
-                let routePolylineTaxi = rutataxi.drawRoute()
-                let linestaxi = GMSPolyline(path: routePolylineTaxi)
-                linestaxi.strokeWidth = 4
-                linestaxi.strokeColor = UIColor.red
-                linestaxi.map = self.mapaVista
-                duracion = rutataxi.totalDuration
-                let ruta = CRuta(origin: origentext, destination: destinotext)
-                let routePolyline = ruta.drawRoute()
-                let lines = GMSPolyline(path: routePolyline)
-                lines.strokeWidth = 5
-                lines.map = self.mapaVista
-                lines.strokeColor = UIColor.green
-                distancia = ruta.totalDistance
-            }
-        }
-        
-        return [distancia, duracion]
-    }
     
     //FUNCIÓN BUSCA UNA SOLICITUD DENTRO DEL ARRAY DE SOLICITUDES PENDIENTES DADO SU ID
     func BuscarSolicitudID(_ id : String)->CSolicitud{
@@ -1075,7 +768,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 moc.delete(managedObjectData)
             }
         } catch {
-            //print("Detele all data in \(Telefonos) error : \(error) \(error.userInfo)")
+            
         }
         
         //moc.delete(data)
@@ -1102,13 +795,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         if Temporal[1] == "ok"{
             myvariables.solpendientes.last!.RegistrarFechaHora(IdSolicitud: Temporal[2], FechaHora: Temporal[3])
-            if myvariables.solpendientes.last!.destinoCarrera.position.latitude != Double(0){
-                //let detalles = self.solpendientes.last!.DetallesCarrera(tarifas: tarifas)
-                /*DistanciaText.text = detalles[0] + " KM"
-                DuracionText.text = detalles[1]
-                CostoText.text = "$" + detalles[2]
-                DetallesCarreraView.isHidden = false*/
-            }
             self.CantSolPendientes.isHidden = false
             self.CantSolPendientes.text = String(myvariables.solpendientes.count)
             self.SolPendImage.isHidden = false
@@ -1124,9 +810,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         //TRAMA IN: #Posicion,idtaxi,lattaxi,lngtaxi
         var i = 2
         while i  <= temporal.count - 6{
-            let taxiTemp = GMSMarker(position: CLLocationCoordinate2DMake(Double(temporal[i + 2])!, Double(temporal[i + 3])!))
+            let taxiTemp = MKPointAnnotation()
+            taxiTemp.coordinate = CLLocationCoordinate2DMake(Double(temporal[i + 2])!, Double(temporal[i + 3])!)
             taxiTemp.title = temporal[i]
-            taxiTemp.icon = UIImage(named: "taxi_libre")
+            //taxiTemp.icon = UIImage(named: "taxi_libre")
             taxiscercanos.append(taxiTemp)
             i += 6
         }
@@ -1150,7 +837,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     //FUNCION DETERMINAR DIRECCIÓN A PARTIR DE COORDENADAS
     func DireccionDeCoordenada(_ coordenada : CLLocationCoordinate2D, directionText : UITextView){
-        let geocoder = GMSGeocoder()
+        let geocoder = CLGeocoder()
         var address = ""
         if CConexionInternet.isConnectedToNetwork() == true {
             let temporaLocation = CLLocation(latitude: coordenada.latitude, longitude: coordenada.longitude)
@@ -1169,20 +856,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                     if let city = placemark.addressDictionary?["City"] as? String {
                         address += " \(city)"
                     }
-                   /*
-                    if let state = placemark.addressDictionary?["State"] as? String {
-                        address += " \(state)"
-                    }
-                    
-                    if let country = placemark.country{
-                        address += " \(country)"
-                    }*/
-                    directionText.text = address
-                    //self.GeolocalizandoView.isHidden = true
+                    directionText.text = String(address)?.replacingOccurrences(of: ",", with: " ")
+
                 }
                 else {
                     directionText.text = "No disponible"
-                    //self.GeolocalizandoView.isHidden = true
+
                 }
             })
             
@@ -1190,18 +869,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             ErrorConexion()
         }
     }
-    func AddressToCoordenate(address: String) {
-        var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) {
-            placemarks, error in
-            let placemark = placemarks?.first
-            let lat = placemark?.location?.coordinate.latitude
-            let lon = placemark?.location?.coordinate.longitude
-            self.destinoAnotacion = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: lon!))
-            self.destinoAnotacion.map = self.mapaVista
-        }
-    }
-    
     
     //CREAR SOLICITUD CON LOS DATOS DEL CIENTE, SU LOCALIZACIÓN DE ORIGEN Y DESTINO
     func CrearSolicitud(_ nuevaSolicitud: CSolicitud, voucher: String){
@@ -1209,46 +876,34 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         formularioSolicitud.isHidden = true
         origenIcono.isHidden = true
         myvariables.solpendientes.append(nuevaSolicitud)
-        self.referenciaText.text?.removeAll()
-        self.origenText.text?.removeAll()
-        //"," + voucher +
-        
+
         let datoscliente = nuevaSolicitud.idCliente + "," + nuevaSolicitud.nombreApellidos + "," + nuevaSolicitud.user
-        let datossolicitud = nuevaSolicitud.origenCarrera.snippet! + "," + nuevaSolicitud.referenciaorigen + "," + nuevaSolicitud.destinoCarrera.snippet!
+        let datossolicitud = self.origenText.text + "," + nuevaSolicitud.referenciaorigen + "," + "null"
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
-        let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.position.latitude) + "," + String(nuevaSolicitud.origenCarrera.position.longitude) + "," + String(nuevaSolicitud.destinoCarrera.position.latitude) + "," + String(nuevaSolicitud.destinoCarrera.position.longitude) + "," + datosgeo + "," + voucher + ",# \n"
-        print(Datos)
+        let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.latitude) + "," + String(nuevaSolicitud.origenCarrera.longitude) + "," + "0.0" + "," + "0.0" + "," + datosgeo + "," + voucher + ",# \n"
         EnviarSocket(Datos)
         MensajeEspera.text = "Procesando..."
         self.AlertaEsperaView.isHidden = false
+        self.origenText.text?.removeAll()
+        self.referenciaText.text?.removeAll()
     }
     
-
-
     //FUNCION PARA DIBUJAR LAS ANOTACIONES
     
-    func DibujarIconos(_ anotaciones: [GMSMarker]){
+    func DibujarIconos(_ anotaciones: [MKPointAnnotation]){
         if anotaciones.count == 1{
-            mapaVista!.camera = GMSCameraPosition.camera(withLatitude: anotaciones[0].position.latitude, longitude: anotaciones[0].position.longitude, zoom: 12)
-            anotaciones[0].map = mapaVista
+            let span = MKCoordinateSpanMake(0.005, 0.005)
+            let region = MKCoordinateRegion(center: anotaciones[0].coordinate, span: span)
+            self.mapaVista.setRegion(region, animated: true)
+            self.mapaVista.addAnnotation(anotaciones[0])
         }
         else{
             for var anotacionview in anotaciones{
-                if ((anotacionview.position.latitude != 0) && (anotacionview.position.longitude != 0)){
-                    anotacionview.map = mapaVista
+                if ((anotacionview.coordinate.latitude != 0) && (anotacionview.coordinate.longitude != 0)){
+                    self.mapaVista.addAnnotation(anotacionview)
                 }
-                fitAllMarkers(anotaciones)
             }
         }
-    }
-    
-    //MOSTRAR TODOS LOS MARCADORES EN PANTALLA
-    func fitAllMarkers(_ markers: [GMSMarker]) {
-        var bounds = GMSCoordinateBounds()
-        for marcador in markers{
-            bounds = bounds.includingCoordinate(marcador.position)
-        }
-        mapaVista.animate(with: GMSCameraUpdate.fit(bounds))
     }
     
     //CANCELAR SOLICITUDES
@@ -1303,8 +958,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
     }
     
-   
-    
     //MARK:- BOTONES GRAFICOS ACCIONES
     @IBAction func CerrarApp(_ sender: Any) {
             let fileAudio = FileManager()
@@ -1317,21 +970,23 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             EnviarSocket(datos)
             exit(3)
     }
+    
     @IBAction func RelocateBtn(_ sender: Any) {
-        self.mapaVista.camera = GMSCameraPosition.camera(withLatitude: (self.miposicion.latitude), longitude: (self.miposicion.longitude), zoom: 15.0)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
+        self.mapaVista.setRegion(region, animated: true)
+
     }
     //SOLICITAR BUTTON
     @IBAction func Solicitar(_ sender: AnyObject) {
         //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
         self.origenIcono.isHidden = true
-        self.origenAnotacion.position = mapaVista.camera.target
-        //self.DireccionDeCoordenada(self.origenAnotacion.position, directionText: origenText)
+        self.origenAnotacion.coordinate = mapaVista.centerCoordinate
         coreLocationManager.stopUpdatingLocation()
-        //self.destinoText.text?.removeAll()
         self.SolicitarBtn.isHidden = true
         ExplicacionView.isHidden = true
         self.formularioSolicitud.isHidden = false
-        let datos = "#Posicion," + myvariables.cliente.idCliente + "," + "\(self.origenAnotacion.position.latitude)," + "\(self.origenAnotacion.position.longitude)," + "# \n"
+        let datos = "#Posicion," + myvariables.cliente.idCliente + "," + "\(self.origenAnotacion.coordinate.latitude)," + "\(self.origenAnotacion.coordinate.longitude)," + "# \n"
         EnviarSocket(datos)
         if myvariables.cliente.empresa != "null"{
             self.VoucherView.isHidden = false
@@ -1347,69 +1002,24 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.VoucherEmpresaName.isHidden = true
         }
     }
-    
-    
-    /*//Boton Vista Mapa para Destino
-    @IBAction func DestinoBtn(_ sender: UIButton) {
-        mapaVista.clear()
-        self.formularioSolicitud.isHidden = true
-        self.origenIcono.image = UIImage(named: "destino2@2x")
-        self.origenIcono.isHidden = false
-        ExplicacionText.text = "Localice el destino en el mapa"
-        ExplicacionView.isHidden = false
-        self.origenAnotacion.map = mapaVista
-        mapaVista.camera = GMSCameraPosition.camera(withLatitude: self.origenAnotacion.position.latitude, longitude: self.origenAnotacion.position.longitude, zoom: 12)
-        self.coreLocationManager.stopUpdatingLocation()
-        self.aceptarLocBtn.isHidden = false
-        self.CancelarEnvioBtn.isHidden = false
-    }
-    
-    //Aceptar y Enviar solicitud desde Pantalla de Destino
-    @IBAction func AceptarLoc(_ sender: UIButton) {
-        self.DireccionDeCoordenada(mapaVista.camera.target, directionText: origenText)
-        mapaVista.clear()
-        let nuevaSolicitud = CSolicitud()
-        self.destinoAnotacion = GMSMarker(position: mapaVista.camera.target)
-        nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-        nuevaSolicitud.destinoCarrera = self.destinoAnotacion
-        nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: destinoText.text!,  latorigen: String(Double(origenAnotacion.position.latitude)), lngorigen: String(Double(origenAnotacion.position.longitude)), latdestino: String(nuevaSolicitud.destinoCarrera.position.latitude), lngdestino: String(nuevaSolicitud.destinoCarrera.position.longitude),FechaHora: "")
-        nuevaSolicitud.destinoCarrera.snippet = destinoText.text
-        //self.destinoAnotacion = GMSMarker(position: nuevaSolicitud.destinoCarrera.position)
-        self.destinoAnotacion.icon = UIImage(named: "destino")
-        self.formularioSolicitud.isHidden = false
-        ExplicacionView.isHidden = true
-        self.aceptarLocBtn.isHidden = true
-        self.CancelarEnvioBtn.isHidden = true
-        self.CrearSolicitud(nuevaSolicitud)
-        self.DibujarIconos([self.origenAnotacion, self.destinoAnotacion])
-        nuevaSolicitud.DibujarRutaSolicitud(mapa: mapaVista)
-        self.CancelarSolicitudProceso.isHidden = false
-    }
-    @IBAction func CancelarDestino(_ sender: Any) {
-        self.formularioSolicitud.isHidden = false
-        self.aceptarLocBtn.isHidden = true
-        self.CancelarEnvioBtn.isHidden = true
-    }
-    */
+   
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
         if !(self.referenciaText.text?.isEmpty)! {
             self.referenciaText.endEditing(true)
-            mapaVista.clear()
+            mapaVista.removeAnnotations(self.mapaVista.annotations)
             let nuevaSolicitud = CSolicitud()
             nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-            nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: "", latorigen: String(Double(origenAnotacion.position.latitude)), lngorigen: String(Double(origenAnotacion.position.longitude)), latdestino: "0", lngdestino: "0",FechaHora: "")
+            nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: String(referenciaText.text!).replacingOccurrences(of: ",", with: " "), dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
             if self.VoucherCheck.isOn{
                 self.CrearSolicitud(nuevaSolicitud,voucher: "1")
             }else{
                 self.CrearSolicitud(nuevaSolicitud,voucher: "0")
             }
-            DibujarIconos([self.origenAnotacion])
             self.CancelarSolicitudProceso.isHidden = false
         }else{
             
         }
-        
     }
     
     //Boton para Cancelar Carrera

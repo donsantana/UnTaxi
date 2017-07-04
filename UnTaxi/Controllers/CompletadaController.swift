@@ -37,6 +37,8 @@ class CompletadaController: UIViewController, UITextViewDelegate {
         self.distanciaText.text = self.distanciaValue + " km"
         self.tiempoText.text = self.tiempoValue
         self.costoText.text = "$ " + self.costoValue
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
     //ENVIAR EVALUACIÓN

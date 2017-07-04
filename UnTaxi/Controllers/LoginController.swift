@@ -8,11 +8,13 @@
 
 import UIKit
 import SocketIO
+import CoreLocation
 
-class LoginController: UIViewController, UITextFieldDelegate{
+class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate{
     
     var login = [String]()
     var solitudespdtes = [CSolicitud]()
+    var coreLocationManager: CLLocationManager!
     
     //MARK:- VARIABLES INTERFAZ
     
@@ -38,11 +40,14 @@ class LoginController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.coreLocationManager = CLLocationManager()
+        coreLocationManager.delegate = self
+        coreLocationManager.requestWhenInUseAuthorization()
+        
         telefonoText.delegate = self
         claveText.delegate = self
         correoText.delegate = self
         self.movilClaveRecover.delegate = self
-        //Clave.delegate = self
         confirmarClavText.delegate = self
         Clave.delegate = self
         
@@ -70,6 +75,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }else{
             ErrorConexion()
         }
+        self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     func SocketEventos(){
@@ -81,9 +87,36 @@ class LoginController: UIViewController, UITextFieldDelegate{
                     if temporal[6] != "0"{
                         self.ListSolicitudPendiente(temporal)
                     }
-                    let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
-                    self.navigationController?.show(vc, sender: nil)
-                    
+                    if CLLocationManager.locationServicesEnabled(){
+                        switch(CLLocationManager.authorizationStatus()) {
+                        case .notDetermined, .restricted, .denied:
+                            let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
+                            locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+                                self.Login()
+                            }))
+                            locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+                                exit(0)
+                            }))
+                            self.present(locationAlert, animated: true, completion: nil)
+                        case .authorizedAlways, .authorizedWhenInUse:
+                            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
+                            self.navigationController?.show(vc, sender: nil)
+
+                            break
+                            
+                        }
+                    }else{
+                        let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
+                        locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                            UIApplication.shared.openURL(NSURL(string:"App-Prefs:root=Privacy&path=LOCATION_SERVICES")! as URL)
+                        }))
+                        locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+                            exit(0)
+                        }))
+                        self.present(locationAlert, animated: true, completion: nil)
+                        
+                    }
                 case "loginerror":
                     let fileManager = FileManager()
                     let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
@@ -281,8 +314,6 @@ class LoginController: UIViewController, UITextFieldDelegate{
         claveText.endEditing(true)
         confirmarClavText.endEditing(true)
         correoText.endEditing(true)
-        
-        
         nombreApText.text?.removeAll()
         telefonoText.text?.removeAll()
         usuarioText.text?.removeAll()
@@ -339,7 +370,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
                     animateViewMoving(false, moveValue: 155, view: self.view)
                     }else{
                         if textfield.isEqual(telefonoText){
-                            usuarioText.text = textfield.text
+                            
                             usuarioText.isUserInteractionEnabled = false
                             if telefonoText.text?.characters.count != 10{
                                 textfield.textColor = UIColor.red
@@ -358,11 +389,10 @@ class LoginController: UIViewController, UITextFieldDelegate{
                         }
                     }
                 }
-        
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        self.usuarioText.text = textField.text
+        usuarioText.text = telefonoText.text
     }
 
     func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){

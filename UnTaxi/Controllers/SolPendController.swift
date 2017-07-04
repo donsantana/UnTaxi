@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import GoogleMaps
+import MapKit
 import SocketIO
 
-class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
+class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
     
     var SolicitudPendiente: CSolicitud!
     var posicionSolicitud: Int!
-    //var OrigenSolicitud = GMSMarker()
+    var OrigenSolicitud = MKPointAnnotation()
     //var DestinoSolicitud = GMSMarker()
-    var TaxiSolicitud = GMSMarker()
+    var TaxiSolicitud = MKPointAnnotation()
     
     //var SMSVoz = CSMSVoz()
     var grabando = false
@@ -26,7 +26,8 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
 
     
     //MASK:- VARIABLES INTERFAZ
-    @IBOutlet weak var MapaSolPen: GMSMapView!
+    //@IBOutlet weak var MapaSolPen: GMSMapView!
+    @IBOutlet weak var MapaSolPen: MKMapView!
     @IBOutlet weak var DetallesCarreraView: UIView!
     @IBOutlet weak var DistanciaText: UILabel!
     @IBOutlet weak var DuracionText: UILabel!
@@ -59,205 +60,19 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
 
         self.MapaSolPen.delegate = self
         //self.ComentarioText.delegate = self
-        MapaSolPen.camera = GMSCameraPosition.camera(withLatitude: self.SolicitudPendiente.origenCarrera.position.latitude,longitude: self.SolicitudPendiente.origenCarrera.position.longitude,zoom: 15)
-        
-        
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.normalTap))
+        self.OrigenSolicitud.coordinate = self.SolicitudPendiente.origenCarrera
+        self.OrigenSolicitud.title = "origen"
+        let span = MKCoordinateSpanMake(0.077, 0.077)
+        let region = MKCoordinateRegion(center: self.SolicitudPendiente.origenCarrera, span: span)
+        self.MapaSolPen.setRegion(region, animated: true)
+        self.MostrarDetalleSolicitud()
+        //self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
+
+
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
         longGesture.minimumPressDuration = 0.2
-        //tapGesture.numberOfTapsRequired = 1
-        //self.SMSVozBtn.addGestureRecognizer(tapGesture)
         self.SMSVozBtn.addGestureRecognizer(longGesture)
         
-        let JSONStyle = "[" +
-            "  {" +
-            "    \"featureType\": \"all\"," +
-            "    \"elementType\": \"geometry.fill\"," +
-            "    \"stylers\": [" +
-            "      {" +
-            "        \"weight\": \"2.00\"" +
-            "      }" +
-            "    ]" +
-            "  }," +
-            "       {" +
-            "           \"featureType\": \"all\"," +
-            "           \"elementType\": \"geometry.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#9c9c9c\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#f2f2f2\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#f2f2f2\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"landscape.man_made\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"poi\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"off\"" +
-            "           }" +
-            "           ]" +
-            "      }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"saturation\": -100" +
-            "           }," +
-            "           {" +
-            "           \"lightness\": 45" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#e1e2e2\"" +
-            "          }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"labels.text.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#232323\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road\"," +
-            "           \"elementType\": \"labels.text.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"road.highway\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"simplified\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "          \"featureType\": \"road.arterial\"," +
-            "           \"elementType\": \"labels.icon\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"off\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"transit\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"visibility\": \"on\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"all\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"9aadb5\"" +
-            "           }," +
-            "           {" +
-            "           \"visibility\": \"on\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"geometry.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#def5fe\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"labels.text.fill\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#070707\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            "       {" +
-            "           \"featureType\": \"water\"," +
-            "           \"elementType\": \"labels.text.stroke\"," +
-            "           \"stylers\": [" +
-            "           {" +
-            "           \"color\": \"#ffffff\"" +
-            "           }" +
-            "           ]" +
-            "       }," +
-            
-            "  {" +
-            "    \"featureType\": \"transit\"," +
-            "    \"elementType\": \"labels.icon\"," +
-            "    \"stylers\": [" +
-            "      {" +
-            "        \"visibility\": \"on\"" +
-            "      }" +
-            "    ]" +
-            "  }" +
-        "]"
-        
-        
-        do{
-            self.MapaSolPen.mapStyle = try GMSMapStyle(jsonString: JSONStyle)
-        }catch{
-            print("NO PUEDEEEEEEEEEEEEEEEEEEEEEE")
-        }
-
-
         //MASK:- EVENTOS SOCKET
         myvariables.socket.on("Taxi"){data, ack in
             //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
@@ -288,12 +103,14 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
         
         //GEOPOSICION DE TAXIS
         myvariables.socket.on("Geo"){data, ack in
+            
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0 {
                     if (temporal[2] == self.SolicitudPendiente.idTaxi){
-                        self.SolicitudPendiente.taximarker.position = CLLocationCoordinate2DMake(Double(temporal[3])!, Double(temporal[4])!)
-                        self.SolicitudPendiente.taximarker.map = nil
-                        //self.SolicitudPendiente.taximarker.map = self.MapaSolPen
+                        self.MapaSolPen.removeAnnotation(self.TaxiSolicitud)
+                        self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(Double(temporal[3])!, Double(temporal[4])!)
+                        self.MapaSolPen.addAnnotation(self.TaxiSolicitud)
+                        self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
                         self.MostrarDetalleSolicitud()
                     }
             }
@@ -303,11 +120,19 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
             self.MensajesBtn.isHidden = false
             self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControlState())
         }
-        
-        self.MostrarDetalleSolicitud()
     }
 
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var anotationView = MapaSolPen.dequeueReusableAnnotationView(withIdentifier: "annotationView")
+        anotationView = MKAnnotationView(annotation: self.OrigenSolicitud, reuseIdentifier: "annotationView")
+        if annotation.title! == "origen"{
+            anotationView?.image = UIImage(named: "origen")
+        }else{
+            anotationView?.image = UIImage(named: "taxi_libre")
+        }
+        return anotationView
+    }
+
     
     //MASK:- FUNCIONES PROPIAS
     func longTap(_ sender : UILongPressGestureRecognizer){        
@@ -319,11 +144,11 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
                 self.fechahora = dateFormato.string(from: Date())
                 let name = self.SolicitudPendiente.idSolicitud + "-" + self.SolicitudPendiente.idTaxi + "-" + fechahora + ".m4a"
                 myvariables.SMSVoz.TerminarMensaje(name)
-                print("ando por aqui")
                 myvariables.SMSVoz.SubirAudio(myvariables.UrlSubirVoz, name: name)
                 myvariables.grabando = false
                 myvariables.SMSVoz.ReproducirMusica()
 
+            
         }
     }else if sender.state == .began {
         if !myvariables.SMSVoz.reproduciendo{
@@ -362,29 +187,18 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
     }
     
     func MostrarDetalleSolicitud(){
-        
-        self.SolicitudPendiente.origenCarrera.map = self.MapaSolPen
-
         if self.SolicitudPendiente.idTaxi != "null" && self.SolicitudPendiente.idTaxi != ""{
-            self.SolicitudPendiente.taximarker.map = self.MapaSolPen
+            self.TaxiSolicitud.coordinate = self.SolicitudPendiente.taximarker
+            self.MapaSolPen.addAnnotations([self.OrigenSolicitud, self.TaxiSolicitud])
             let temporal = self.SolicitudPendiente.TiempoTaxi()
             DistanciaText.text = temporal[0] + " KM"
-            DuracionText.text = temporal[1]
             DetallesCarreraView.isHidden = false
             self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControlState())
-            self.SolicitudPendiente.DibujarRutaSolicitud(mapa: MapaSolPen)
-            self.fitAllMarkers(markers: [self.SolicitudPendiente.origenCarrera, self.SolicitudPendiente.taximarker])
+        }else{
+            self.MapaSolPen.addAnnotation(self.OrigenSolicitud)
         }
     }
     
-    //MOSTRAR TODOS LOS MARCADORES EN PANTALLA
-    func fitAllMarkers(markers:[GMSMarker]){
-        var bounds = GMSCoordinateBounds()
-        for marcador in markers{
-            bounds = bounds.includingCoordinate(marcador.position)
-        }
-        MapaSolPen.animate(with: .fit(bounds, withPadding: 100))
-    }
     
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
