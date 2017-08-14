@@ -15,7 +15,7 @@ import AddressBook
 import AVFoundation
 import CoreData
 
-class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, MKMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate {
+class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, MKMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UITableViewDelegate, UITableViewDataSource {
     var coreLocationManager : CLLocationManager!
     var miposicion = MKPointAnnotation()
     var origenAnotacion : MKPointAnnotation!
@@ -40,11 +40,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     var tiempoTemporal = 10
     
-    var taximetro: CTaximetro!
     var TaximetroTimer = Timer()
     var TaximetroTotalTimer = Timer()
     var espera = 0
     
+    var keyboardHeight:CGFloat!
+    
+    var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
     
 
     //variables de interfaz
@@ -53,9 +55,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var mapaVista: MKMapView!
 
     
-    @IBOutlet weak var destinoText: UITextField!
-    @IBOutlet weak var origenText: UITextView!
+    //@IBOutlet weak var destinoText: UITextField!
+    @IBOutlet weak var origenText: UITextField!
     @IBOutlet weak var referenciaText: UITextView!
+    @IBOutlet weak var TablaDirecciones: UITableView!
+    @IBOutlet weak var RecordarView: UIView!
+    @IBOutlet weak var RecordarSwitch: UISwitch!
 
  
 
@@ -73,8 +78,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var MenuView: UIView!
     @IBOutlet weak var CallCEnterBtn: UIButton!
     @IBOutlet weak var SolPendientesBtn: UIButton!
-    @IBOutlet weak var TaximetroBtn: UIButton!
-    @IBOutlet weak var TarifarioBtn: UIButton!
     @IBOutlet weak var MapaBtn: UIButton!
     @IBOutlet weak var SolPendImage: UIImageView!
     @IBOutlet weak var CantSolPendientes: UILabel!
@@ -112,6 +115,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
         
         self.origenAnotacion = MKPointAnnotation()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         
         if let tempLocation = self.coreLocationManager.location?.coordinate{
             self.origenAnotacion.coordinate = (coreLocationManager.location?.coordinate)!
@@ -167,6 +172,29 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         ExplicacionText.text = "Localice el origen"
         ExplicacionView.isHidden = false
+        
+        //self.referenciaText.enablesReturnKeyAutomatically = false
+        self.origenText.delegate = self
+        self.TablaDirecciones.delegate = self
+        
+        self.origenText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        switch AVAudioSession.sharedInstance().recordPermission() {
+        case AVAudioSessionRecordPermission.granted:
+            print("Permission granted")
+        case AVAudioSessionRecordPermission.denied:
+            print("Pemission denied")
+        case AVAudioSessionRecordPermission.undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+                if granted {
+                    
+                } else{
+
+                }
+            })
+        default:
+            break
+        }
+
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var anotationView = mapaVista.dequeueReusableAnnotationView(withIdentifier: "annotationView")
@@ -205,7 +233,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         origenIcono.isHidden = true
         if SolicitarBtn.isHidden == false {
             miposicion.coordinate = (self.mapaVista.centerCoordinate)
-            self.DireccionDeCoordenada(self.miposicion.coordinate, directionText: origenText)
+            //self.DireccionDeCoordenada(self.miposicion.coordinate, directionText: origenText)
             origenAnotacion.title = "origen"
             mapaVista.addAnnotation(self.miposicion)
         }
@@ -330,19 +358,16 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 i += 8
             }
         }
-
         
         //Evento Posicion de taxis
         myvariables.socket.on("Posicion"){data, ack in
+            //
             let temporal = String(describing: data).components(separatedBy: ",")
-            //self.MensajeEspera.text = String(temporal)
-            //self.AlertaEsperaView.hidden = false
             if(temporal[1] == "0") {
                 let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.Inicio()
-                }))
-                
+                }))                
                 self.present(alertaDos, animated: true, completion: nil)
             }
             else{
@@ -354,6 +379,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Solicitud"){data, ack in
             //Trama IN: #Solicitud, ok, idsolicitud, fechahora
             //Trama IN: #Solicitud, error
+            
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 self.MensajeEspera.text = "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor."
@@ -512,7 +538,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             myvariables.UrlSubirVoz = temporal[1]
         }
         
-        myvariables.socket.on("V"){data, ack in            
+        myvariables.socket.on("V"){data, ack in
+            print("llego mensaje")
             let temporal = String(describing: data).components(separatedBy: ",")
             myvariables.urlconductor = temporal[1]
             if UIApplication.shared.applicationState != .background {
@@ -679,6 +706,47 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         AlertaEsperaView.isHidden = true
 
     }
+    
+    //DIRECCIONES FAVORITAS
+    func CargarFavoritas(){
+        let path = NSHomeDirectory() + "/Library/Caches/"
+        let url = NSURL(fileURLWithPath: path)
+        let filePath = url.appendingPathComponent("dir.plist")?.path
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath!) {
+            let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist") as URL
+            do {
+                self.DireccionesArray = NSArray(contentsOf: filePath) as! [[String]]
+            }catch{
+            
+            }
+        }
+    }
+    
+    func GuardarFavorita(newFavorita: [String]){
+        self.DireccionesArray.append(newFavorita)
+        //CREAR EL FICHERO DE LOGÍN
+        let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist")
+        
+        do {
+            _ = try (self.DireccionesArray as NSArray).write(to: filePath as URL, atomically: true)
+            
+        } catch {
+            
+        }
+    }
+    
+    func EliminarFavorita(posFavorita: Int){
+        self.DireccionesArray.remove(at: posFavorita)
+        //CREAR EL FICHERO DE LOGÍN
+        let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist")
+        
+        do {
+            _ = try (self.DireccionesArray as NSArray).write(to: filePath as URL, atomically: true)
+        } catch {
+            
+        }
+    }
 
     
     //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
@@ -835,41 +903,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.present(alertaDos, animated: true, completion: nil)
     }
     
-    //FUNCION DETERMINAR DIRECCIÓN A PARTIR DE COORDENADAS
-    func DireccionDeCoordenada(_ coordenada : CLLocationCoordinate2D, directionText : UITextView){
-        let geocoder = CLGeocoder()
-        var address = ""
-        if CConexionInternet.isConnectedToNetwork() == true {
-            let temporaLocation = CLLocation(latitude: coordenada.latitude, longitude: coordenada.longitude)
-            CLGeocoder().reverseGeocodeLocation(temporaLocation, completionHandler: {(placemarks, error) -> Void in
-                if error != nil {
-                    print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                    return
-                }
-                
-                if (placemarks?.count)! > 0 {
-                    let placemark = (placemarks?[0])! as CLPlacemark
-                    if let name = placemark.addressDictionary?["Name"] as? String {
-                        address += name
-                    }
-                    
-                    if let city = placemark.addressDictionary?["City"] as? String {
-                        address += " \(city)"
-                    }
-                    directionText.text = String(address)?.replacingOccurrences(of: ",", with: " ")
-
-                }
-                else {
-                    directionText.text = "No disponible"
-
-                }
-            })
-            
-        }else{
-            ErrorConexion()
-        }
-    }
-    
     //CREAR SOLICITUD CON LOS DATOS DEL CIENTE, SU LOCALIZACIÓN DE ORIGEN Y DESTINO
     func CrearSolicitud(_ nuevaSolicitud: CSolicitud, voucher: String){
         //#Solicitud, idcliente, nombrecliente, movilcliente, dirorig, referencia, dirdest,latorig,lngorig, latdest, lngdest, distancia, costo, #
@@ -878,13 +911,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.solpendientes.append(nuevaSolicitud)
 
         let datoscliente = nuevaSolicitud.idCliente + "," + nuevaSolicitud.nombreApellidos + "," + nuevaSolicitud.user
-        let datossolicitud = self.origenText.text + "," + nuevaSolicitud.referenciaorigen + "," + "null"
+        let datossolicitud = nuevaSolicitud.dirOrigen + "," + nuevaSolicitud.referenciaorigen + "," + "null"
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
         let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.latitude) + "," + String(nuevaSolicitud.origenCarrera.longitude) + "," + "0.0" + "," + "0.0" + "," + datosgeo + "," + voucher + ",# \n"
+        print(Datos)
         EnviarSocket(Datos)
         MensajeEspera.text = "Procesando..."
         self.AlertaEsperaView.isHidden = false
         self.origenText.text?.removeAll()
+        self.RecordarSwitch.isOn = false
         self.referenciaText.text?.removeAll()
     }
     
@@ -980,6 +1015,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //SOLICITAR BUTTON
     @IBAction func Solicitar(_ sender: AnyObject) {
         //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
+        self.CargarFavoritas()
+        self.TablaDirecciones.reloadData()
         self.origenIcono.isHidden = true
         self.origenAnotacion.coordinate = mapaVista.centerCoordinate
         coreLocationManager.stopUpdatingLocation()
@@ -1005,18 +1042,25 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
    
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
-        if !(self.referenciaText.text?.isEmpty)! {
+        if !(self.origenText.text?.isEmpty)! {
+            var voucher = "0"
+            var recordar = "0"
             self.referenciaText.endEditing(true)
+            
             mapaVista.removeAnnotations(self.mapaVista.annotations)
             let nuevaSolicitud = CSolicitud()
             nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-            nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: String(referenciaText.text!).replacingOccurrences(of: ",", with: " "), dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
-            if self.VoucherCheck.isOn{
-                self.CrearSolicitud(nuevaSolicitud,voucher: "1")
-            }else{
-                self.CrearSolicitud(nuevaSolicitud,voucher: "0")
+            nuevaSolicitud.DatosSolicitud(dirorigen: self.origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
+            if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
+                voucher = "1"
             }
-            self.CancelarSolicitudProceso.isHidden = false
+            if self.RecordarView.isHidden == false && self.RecordarSwitch.isOn{
+                let newFavorita = [self.origenText.text, referenciaText.text]
+                self.GuardarFavorita(newFavorita: newFavorita as! [String])
+            }
+            self.CrearSolicitud(nuevaSolicitud,voucher: voucher)
+            self.RecordarView.isHidden = true
+            //self.CancelarSolicitudProceso.isHidden = false
         }else{
             
         }
@@ -1028,7 +1072,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.referenciaText.endEditing(true)
         self.Inicio()
         self.origenText.text?.removeAll()
-        self.destinoText.text?.removeAll()
+        self.RecordarView.isHidden = true
+        self.RecordarSwitch.isOn = false
+        //self.destinoText.text?.removeAll()
         self.referenciaText.text?.removeAll()
         self.SolicitarBtn.isHidden = false
         if myvariables.solpendientes.count != 0{
@@ -1087,24 +1133,42 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
     }
 
-    //MARK:- CONTROL DE TECLADO VIRTUAL
+    //CONTROL DE TECLADO VIRTUAL
     //Funciones para mover los elementos para que no queden detrás del teclado
-
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text.removeAll()
-        animateViewMoving(true, moveValue: 200, view: self.view)
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text?.removeAll()
+        self.referenciaText.text.removeAll()
+        if self.DireccionesArray.count != 0{
+            self.TablaDirecciones.frame = CGRect(x: 20, y: 65, width: 261, height: 44 * self.DireccionesArray.count)
+            self.TablaDirecciones.isHidden = false
+            self.RecordarView.isHidden = true
+        }
+        self.animateViewMoving(true, moveValue: 50, view: view)
     }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        animateViewMoving(false, moveValue: 200, view: self.view)
+    func textFieldDidEndEditing(_ textfield: UITextField) {
+        self.animateViewMoving(false, moveValue: 50, view: view)
         self.EnviarSolBtn.isEnabled = true
+    }
+    func textFieldDidChange(_ textField: UITextField) {
+        if textField.text?.lengthOfBytes(using: .utf8) == 0{
+            self.TablaDirecciones.isHidden = false
+        }else{
+            self.TablaDirecciones.isHidden = true
+        }
         
+        if self.DireccionesArray.count < 5 {
+            self.RecordarView.isHidden = false
+        }
+        
+        self.EnviarSolBtn.isEnabled = true
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        self.EnviarSolBtn.isEnabled = true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //self.origenText.resignFirstResponder()
+        self.referenciaText.becomeFirstResponder()
+        return true
     }
-
+    
     func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
         let movementDuration:TimeInterval = 0.3
         let movement:CGFloat = ( up ? -moveValue : moveValue)
@@ -1114,8 +1178,91 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
+
+    //MARK:- CONTROL DE TECLADO VIRTUAL
+    //Funciones para mover los elementos para que no queden detrás del teclado
+
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.keyboardHeight = keyboardSize.height
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if !(self.origenText.text?.isEmpty)!{
+            textView.text.removeAll()
+            animateViewMoving(true, moveValue: self.keyboardHeight, view: self.view)
+        }else{
+            self.referenciaText.resignFirstResponder()
+            animateViewMoving(true, moveValue: self.keyboardHeight, view: self.view)
+            let alertaDos = UIAlertController (title: "Dirección de Origen", message: "Debe teclear la dirección de recogida para orientar al conductor.", preferredStyle: .alert)
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+               self.origenText.becomeFirstResponder()
+            }))
+            
+            self.present(alertaDos, animated: true, completion: nil)
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        animateViewMoving(false, moveValue: self.keyboardHeight, view: self.view)
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.referenciaText.resignFirstResponder()
     }
+    
+    //TABLA FUNCTIONS
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return self.DireccionesArray.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
+        cell.textLabel?.text = self.DireccionesArray[indexPath.row][0]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.origenText.text = self.DireccionesArray[indexPath.row][0]
+        self.TablaDirecciones.isHidden = true
+        self.origenText.resignFirstResponder()
+        self.referenciaText.text = self.DireccionesArray[indexPath.row][1]
+    }
+    
+    //FUNCIONES Y EVENTOS PARA ELIMIMAR CELLS, SE NECESITA AGREGAR UITABLEVIEWDATASOURCE
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Eliminar"
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            self.EliminarFavorita(posFavorita: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            if self.DireccionesArray.count == 0{
+                self.TablaDirecciones.isHidden = true
+            }
+            tableView.reloadData()
+        
+        }
+    }
+
+
+    
 }

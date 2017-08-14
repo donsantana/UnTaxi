@@ -282,7 +282,23 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     }
     
     @IBAction func AceptarCond(_ sender: UIButton) {
-        self.DatosConductor.isHidden = true        
+        
+        let alertaCompartir = UIAlertController (title: "Viaje seguro", message: "Para un viaje más seguro, puede compartir los datos de conductor con un amigo a familiar. ¿Desea compartir?", preferredStyle: UIAlertControllerStyle.alert)
+        alertaCompartir.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
+
+        let datosAuto = self.MarcaAut.text! + ", " + self.ColorAut.text! + ", " + self.MatriculaAut.text!
+        let datosConductor = self.NombreCond.text! + ", " + self.MovilCond.text! + ", " +  datosAuto
+        let objectsToShare = [datosConductor]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        self.DatosConductor.isHidden = true
+        self.present(activityVC, animated: true, completion: nil)
+
+        }))
+        alertaCompartir.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+            self.DatosConductor.isHidden = true
+        }))
+        self.present(alertaCompartir, animated: true, completion: nil)
+        
     }
     
     @IBAction func NuevaSolicitud(_ sender: Any) {

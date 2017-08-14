@@ -33,7 +33,8 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @IBOutlet weak var confirmarClavText: UITextField!
     @IBOutlet weak var correoText: UITextField!
     @IBOutlet weak var telefonoText: UITextField!
-    @IBOutlet weak var usuarioText: UITextField!
+    //@IBOutlet weak var RecomendadoText: UITextField!
+    @IBOutlet weak var RecomendadoText: UITextField!
     @IBOutlet weak var RegistroBtn: UIButton!
 
     
@@ -50,6 +51,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.movilClaveRecover.delegate = self
         confirmarClavText.delegate = self
         Clave.delegate = self
+        self.RecomendadoText.delegate = self
         
         if CConexionInternet.isConnectedToNetwork() == true{
             myvariables.socket = SocketIOClient(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(false), .forcePolling(true)])
@@ -134,7 +136,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                 }
         }
         
-        myvariables.socket.on("Registro") {data, ack in
+        myvariables.socket.on("NR") {data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "registrook"{
                 let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
@@ -218,7 +220,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         if CConexionInternet.isConnectedToNetwork() == true{
             print(myvariables.socket.reconnects)
             if myvariables.socket.reconnects{
+                print(datos)
                 myvariables.socket.emit("data",datos)
+                
             }
             else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
@@ -295,18 +299,23 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             self.present(alertaDos, animated: true, completion: nil)
         }
         else{
-            let temporal = "," + telefonoText.text! + "," + usuarioText.text! + "," + claveText.text!
-            var temporal1 = ",Sin correo" + ",# \n"
-            if correoText.text != ""{
-                temporal1 = "," + correoText.text! + "," + "# \n"
+            var posicion = "0,0"
+            let temporal = "," + telefonoText.text! + "," + telefonoText.text! + "," + claveText.text!
+            var correo = ",Sin correo" + "," + RecomendadoText.text!
+            if !(correoText.text?.isEmpty)!{
+                correo = "," + correoText.text! + "," + RecomendadoText.text!
             }
-            let datos = "#Registro" + "," + nombreApText.text! + temporal + temporal1
+            if let posTemp = coreLocationManager.location{
+                    posicion = String(posTemp.coordinate.latitude) + "," + String(posTemp.coordinate.longitude)
+            }
+            let datos = "#NR" + "," + nombreApText.text! + temporal + correo + "," + posicion + ",# \n"
             myvariables.socket.emit("data", datos)
         }
         RegistroView.isHidden = true
-        claveText.endEditing(true)
-        confirmarClavText.endEditing(true)
-        correoText.endEditing(true)
+        claveText.resignFirstResponder()
+        confirmarClavText.resignFirstResponder()
+        correoText.resignFirstResponder()
+        RecomendadoText.resignFirstResponder()
     }
     
     @IBAction func CancelarRegistro(_ sender: AnyObject) {
@@ -316,10 +325,11 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         correoText.endEditing(true)
         nombreApText.text?.removeAll()
         telefonoText.text?.removeAll()
-        usuarioText.text?.removeAll()
+        
         claveText.text?.removeAll()
         confirmarClavText.text?.removeAll()
         correoText.text?.removeAll()
+        RecomendadoText.text?.removeAll()
     }
 
 
@@ -337,15 +347,13 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     animateViewMoving(true, moveValue: 105, view: self.view)
                 }
                 else{
-                    if textField.isEqual(confirmarClavText) || textField.isEqual(correoText){
+                    if textField.isEqual(confirmarClavText) || textField.isEqual(correoText) || textField.isEqual(RecomendadoText){
                             textField.tintColor = UIColor.black
-                            animateViewMoving(true, moveValue: 155, view: self.view)
+                            animateViewMoving(true, moveValue: 200, view: self.view)
                         }else{
                         if textField.isEqual(self.telefonoText){
                             textField.textColor = UIColor.black
                             //textField.text = ""
-                            usuarioText.text = textField.text
-                            usuarioText.isUserInteractionEnabled = false
                             animateViewMoving(true, moveValue: 70, view: self.view)
                         }
                     }
@@ -357,7 +365,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             if textfield.isEqual(claveText) || textfield.isEqual(Clave){
                     animateViewMoving(false, moveValue: 80, view: self.view)
             }else{
-                if textfield.isEqual(confirmarClavText) || textfield.isEqual(correoText){
+                if textfield.isEqual(confirmarClavText) || textfield.isEqual(correoText) || textfield.isEqual(RecomendadoText){
                     if textfield.text != claveText.text && textfield.isEqual(confirmarClavText){
                             textfield.textColor = UIColor.red
                             textfield.text = "Las claves no coinciden"
@@ -367,12 +375,11 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                         else{
                             RegistroBtn.isEnabled = true
                         }
-                    animateViewMoving(false, moveValue: 155, view: self.view)
+                    animateViewMoving(false, moveValue: 200, view: self.view)
                     }else{
-                        if textfield.isEqual(telefonoText){
-                            
-                            usuarioText.isUserInteractionEnabled = false
-                            if telefonoText.text?.characters.count != 10{
+                        if textfield.isEqual(telefonoText) || textfield.isEqual(RecomendadoText){
+        
+                            if textfield.text?.characters.count != 10{
                                 textfield.textColor = UIColor.red
                                 textfield.text = "Número de Teléfono Incorrecto"
                             }
@@ -392,7 +399,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        usuarioText.text = telefonoText.text
+
     }
 
     func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
