@@ -2,7 +2,7 @@
 //  Perfil3ViewCell.swift
 //  UnTaxi
 //
-//  Created by Done Santana on 9/3/17.
+//  Created by Done Santana on 10/29/17.
 //  Copyright © 2017 Done Santana. All rights reserved.
 //
 
@@ -15,14 +15,14 @@ class Perfil3ViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var NuevaClaveText: UITextField!
     @IBOutlet weak var ConfirmeClaveText: UITextField!
     var vista = PerfilController()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         NuevaClaveText.delegate = self
         ConfirmeClaveText.delegate = self
         self.ClaveActualText.delegate = self
     }
-
+    
     //CONTROL DE TECLADO VIRTUAL
     //Funciones para mover los elementos para que no queden detrás del teclado
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -56,6 +56,7 @@ class Perfil3ViewCell: UITableViewCell, UITextFieldDelegate {
         view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
-
+    
     
 }
+

@@ -30,10 +30,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     @IBOutlet weak var MapaSolPen: MKMapView!
     @IBOutlet weak var DetallesCarreraView: UIView!
     @IBOutlet weak var DistanciaText: UILabel!
-    @IBOutlet weak var DuracionText: UILabel!
-    
-    @IBOutlet weak var EvaluarBtn: UIButton!
-    @IBOutlet weak var EvaluacionView: UIView!
+
     @IBOutlet weak var ComentarioEvalua: UIView!
     
     
@@ -59,7 +56,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         self.navigationController?.navigationBar.tintColor = UIColor.black
 
         self.MapaSolPen.delegate = self
-        //self.ComentarioText.delegate = self
         self.OrigenSolicitud.coordinate = self.SolicitudPendiente.origenCarrera
         self.OrigenSolicitud.title = "origen"
         let span = MKCoordinateSpanMake(0.077, 0.077)
@@ -67,7 +63,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         self.MapaSolPen.setRegion(region, animated: true)
         self.MostrarDetalleSolicitud()
         //self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
-
 
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
         longGesture.minimumPressDuration = 0.2
@@ -147,7 +142,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     @objc func longTap(_ sender : UILongPressGestureRecognizer){        
       if sender.state == .ended {
         if !myvariables.SMSVoz.reproduciendo && myvariables.grabando{
-
+                self.SMSVozBtn.setImage(UIImage(named: "smsvoz"), for: .normal)
                 let dateFormato = DateFormatter()
                 dateFormato.dateFormat = "yyMMddhhmmss"
                 self.fechahora = dateFormato.string(from: Date())
@@ -156,18 +151,16 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
                 myvariables.SMSVoz.SubirAudio(myvariables.UrlSubirVoz, name: name)
                 myvariables.grabando = false
                 myvariables.SMSVoz.ReproducirMusica()
-
-            
         }
     }else if sender.state == .began {
         if !myvariables.SMSVoz.reproduciendo{
+            self.SMSVozBtn.setImage(UIImage(named: "smsvozRec"), for: .normal)
             myvariables.SMSVoz.ReproducirMusica()
                 myvariables.SMSVoz.GrabarMensaje()
                 myvariables.grabando = true
             }
         }
     }
-    
     
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
@@ -234,7 +227,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
         }))
-        
         self.present(motivoAlerta, animated: true, completion: nil)
     }
     
@@ -247,10 +239,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         self.navigationController?.show(vc, sender: nil)        
     }
 
-
-    
     //MASK:- ACCIONES DE BOTONES
-    
     //LLAMAR CONDUCTOR
     @IBAction func LLamarConductor(_ sender: AnyObject) {
         if let url = URL(string: "tel://\(self.SolicitudPendiente.movil)") {
@@ -307,7 +296,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
             self.DatosConductor.isHidden = true
         }))
         self.present(alertaCompartir, animated: true, completion: nil)
-        
     }
     
     @IBAction func NuevaSolicitud(_ sender: Any) {

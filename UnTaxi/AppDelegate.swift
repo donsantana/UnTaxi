@@ -21,8 +21,8 @@ struct myvariables {
     static var grabando = false
     static var SMSProceso = false
     static var UrlSubirVoz:String!
-    static var SMSVoz:CSMSVoz!
-    static var urlconductor:String!
+    static var SMSVoz = CSMSVoz()
+    static var urlconductor = ""
 }
 
 @UIApplicationMain

@@ -28,7 +28,7 @@ class CRuta{
     func CalcularDistancia() -> String {
         let origen = CLLocation(latitude: self.originCoordinate.latitude, longitude: self.originCoordinate.longitude)
         let taxi = CLLocation(latitude: self.taxiCoordinate.latitude, longitude: self.taxiCoordinate.longitude)
-        let distancia = origen.distance(from: taxi)
+        let distancia = origen.distance(from: taxi)/1000
         return String(format: "%.2f", distancia)
     }
 }

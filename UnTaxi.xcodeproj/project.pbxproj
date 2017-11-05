@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		845C0F521C7633EF0050F852 /* chofer.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C0F511C7633EF0050F852 /* chofer.png */; };
-		84609F301C758E6F0056A282 /* dbutoff3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EEB1C758E6F0056A282 /* dbutoff3.png */; };
-		84609F311C758E6F0056A282 /* dbuton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EEC1C758E6F0056A282 /* dbuton3.png */; };
 		84609F321C758E6F0056A282 /* dclock.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EED1C758E6F0056A282 /* dclock.png */; };
 		84609F331C758E6F0056A282 /* ddistancia.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EEE1C758E6F0056A282 /* ddistancia.png */; };
 		84609F341C758E6F0056A282 /* destino.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EEF1C758E6F0056A282 /* destino.png */; };
@@ -18,7 +16,6 @@
 		84609F4A1C758E6F0056A282 /* logpassfondo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F051C758E6F0056A282 /* logpassfondo.png */; };
 		84609F4F1C758E6F0056A282 /* origen.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F0A1C758E6F0056A282 /* origen.png */; };
 		84609F501C758E6F0056A282 /* origen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F0B1C758E6F0056A282 /* origen2.png */; };
-		84609F531C758E6F0056A282 /* pulsa.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F0E1C758E6F0056A282 /* pulsa.png */; };
 		84609F5E1C758E6F0056A282 /* separador.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F191C758E6F0056A282 /* separador.png */; };
 		84609F5F1C758E6F0056A282 /* sinconexion.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F1A1C758E6F0056A282 /* sinconexion.png */; };
 		84609F601C758E6F0056A282 /* taxi_libre.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609F1B1C758E6F0056A282 /* taxi_libre.png */; };
@@ -43,6 +40,16 @@
 		84F571671BCE958200FC18D5 /* XtaxiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F571661BCE958200FC18D5 /* XtaxiUITests.swift */; };
 		84F7E3831CB389A6008D4713 /* stargris.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F7E3821CB389A6008D4713 /* stargris.png */; };
 		84F7E3851CB38C04008D4713 /* stardorada.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F7E3841CB38C04008D4713 /* stardorada.png */; };
+		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
+		AF3D9E131FA510E80019432B /* CLARO.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E101FA510E70019432B /* CLARO.png */; };
+		AF3D9E141FA510E80019432B /* MOVISTAR.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E111FA510E80019432B /* MOVISTAR.png */; };
+		AF3D9E151FA510E80019432B /* CNT.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E121FA510E80019432B /* CNT.png */; };
+		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
+		AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E171FA51A190019432B /* PerfilViewCell.xib */; };
+		AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */; };
+		AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */; };
+		AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */; };
+		AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */; };
 		AFD655D61F9D391000C8A5BD /* CallCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */; };
 		AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */; };
 		AFD655D81F9D391000C8A5BD /* ClaveChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D31F9D390F00C8A5BD /* ClaveChangeController.swift */; };
@@ -66,15 +73,12 @@
 		AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656351F9D42E000C8A5BD /* LocationManager.swift */; };
 		AFD656541F9D42E100C8A5BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656371F9D42E100C8A5BD /* ViewController.swift */; };
 		AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */; };
-		AFD6566C1FA1777500C8A5BD /* Perfil3ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656671FA1734300C8A5BD /* Perfil3ViewCell.swift */; };
-		AFD6566D1FA1777500C8A5BD /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656691FA1734300C8A5BD /* PerfilViewCell.swift */; };
 		AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
 		AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
-		AFD656701FA1777500C8A5BD /* Perfil2ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656651FA1734300C8A5BD /* Perfil2ViewCell.swift */; };
 		AFD656721FA17CD100C8A5BD /* ds_digital in Resources */ = {isa = PBXBuildFile; fileRef = AFD656711FA17CD000C8A5BD /* ds_digital */; };
+		AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */; };
 		B50482A11E6883B100D5236C /* InicioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50482A01E6883B100D5236C /* InicioController.swift */; };
 		B5054D771E66051500FEEDE4 /* SolPendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolPendController.swift */; };
-		B511EEAC1D76C0D5000E8E4F /* selectmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B511EEAB1D76C0D5000E8E4F /* selectmenu.png */; };
 		B58C6C341D5D15FA0034277C /* mensajesnew.png in Resources */ = {isa = PBXBuildFile; fileRef = B58C6C331D5D15FA0034277C /* mensajesnew.png */; };
 		B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F1E5D1E635D2B008F07AC /* LoginController.swift */; };
 		B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F1E611E638A9B008F07AC /* CSocket.swift */; };
@@ -84,14 +88,9 @@
 		B5EE14C01D527B040050ADAD /* destino@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE14BF1D527B040050ADAD /* destino@2x.png */; };
 		B5EE14C41D5282520050ADAD /* destino@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE14C31D5282520050ADAD /* destino@3x.png */; };
 		B5EE14C81D5286010050ADAD /* origen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE14C71D5286010050ADAD /* origen@3x.png */; };
-		B5EE74F61D5D5F0500DC8D77 /* logo_claro.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE74F31D5D5F0500DC8D77 /* logo_claro.png */; };
-		B5EE74F71D5D5F0500DC8D77 /* logo_cnt.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE74F41D5D5F0500DC8D77 /* logo_cnt.png */; };
-		B5EE74F81D5D5F0500DC8D77 /* logo_movistar.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE74F51D5D5F0500DC8D77 /* logo_movistar.png */; };
 		B5EE74FC1D5D976F00DC8D77 /* callcenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE74FB1D5D976F00DC8D77 /* callcenter.png */; };
 		B5EFF1B31D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF1B21D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png */; };
 		B5EFF1B51D5C46D8007C4C30 /* uctglogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF1B41D5C46D8007C4C30 /* uctglogo.png */; };
-		B5F0FEB21DD6767200500197 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F0FEAF1DD6767200500197 /* stop.png */; };
-		B5F0FEB41DD6767200500197 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F0FEB11DD6767200500197 /* play.png */; };
 		B5F1D4AC1DA4B5C0006BF1AE /* compartir.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F1D4AB1DA4B5C0006BF1AE /* compartir.png */; };
 		B5F2A86F1D73EB030050F564 /* xoalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F2A86E1D73EB030050F564 /* xoalogo.png */; };
 		B5F753D61D5CCB3700FFDFD0 /* evaluar.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F753D51D5CCB3700FFDFD0 /* evaluar.png */; };
@@ -129,8 +128,6 @@
 		614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C0F511C7633EF0050F852 /* chofer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chofer.png; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		84609EEB1C758E6F0056A282 /* dbutoff3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dbutoff3.png; sourceTree = "<group>"; };
-		84609EEC1C758E6F0056A282 /* dbuton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dbuton3.png; sourceTree = "<group>"; };
 		84609EED1C758E6F0056A282 /* dclock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dclock.png; sourceTree = "<group>"; };
 		84609EEE1C758E6F0056A282 /* ddistancia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ddistancia.png; sourceTree = "<group>"; };
 		84609EEF1C758E6F0056A282 /* destino.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destino.png; sourceTree = "<group>"; };
@@ -139,7 +136,6 @@
 		84609F051C758E6F0056A282 /* logpassfondo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logpassfondo.png; sourceTree = "<group>"; };
 		84609F0A1C758E6F0056A282 /* origen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = origen.png; sourceTree = "<group>"; };
 		84609F0B1C758E6F0056A282 /* origen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = origen2.png; sourceTree = "<group>"; };
-		84609F0E1C758E6F0056A282 /* pulsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulsa.png; sourceTree = "<group>"; };
 		84609F191C758E6F0056A282 /* separador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separador.png; sourceTree = "<group>"; };
 		84609F1A1C758E6F0056A282 /* sinconexion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sinconexion.png; sourceTree = "<group>"; };
 		84609F1B1C758E6F0056A282 /* taxi_libre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taxi_libre.png; sourceTree = "<group>"; };
@@ -171,6 +167,16 @@
 		84F7E3821CB389A6008D4713 /* stargris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stargris.png; sourceTree = "<group>"; };
 		84F7E3841CB38C04008D4713 /* stardorada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stardorada.png; sourceTree = "<group>"; };
 		84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCenterViewCell.xib; sourceTree = "<group>"; };
+		AF3D9E101FA510E70019432B /* CLARO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CLARO.png; sourceTree = "<group>"; };
+		AF3D9E111FA510E80019432B /* MOVISTAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MOVISTAR.png; sourceTree = "<group>"; };
+		AF3D9E121FA510E80019432B /* CNT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CNT.png; sourceTree = "<group>"; };
+		AF3D9E161FA51A190019432B /* PerfilViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewCell.swift; sourceTree = "<group>"; };
+		AF3D9E171FA51A190019432B /* PerfilViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PerfilViewCell.xib; sourceTree = "<group>"; };
+		AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil2ViewCell.swift; sourceTree = "<group>"; };
+		AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Perfil2ViewCell.xib; sourceTree = "<group>"; };
+		AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil3ViewCell.swift; sourceTree = "<group>"; };
+		AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Perfil3ViewCell.xib; sourceTree = "<group>"; };
 		AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallCenterController.swift; path = Controllers/CallCenterController.swift; sourceTree = "<group>"; };
 		AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SolicitudesTableController.swift; path = Controllers/SolicitudesTableController.swift; sourceTree = "<group>"; };
 		AFD655D31F9D390F00C8A5BD /* ClaveChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaveChangeController.swift; path = Controllers/ClaveChangeController.swift; sourceTree = "<group>"; };
@@ -201,17 +207,11 @@
 		AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterViewCell.swift; sourceTree = "<group>"; };
-		AFD656651FA1734300C8A5BD /* Perfil2ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil2ViewCell.swift; sourceTree = "<group>"; };
-		AFD656661FA1734300C8A5BD /* Perfil2ViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Perfil2ViewCell.xib; sourceTree = "<group>"; };
-		AFD656671FA1734300C8A5BD /* Perfil3ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfil3ViewCell.swift; sourceTree = "<group>"; };
-		AFD656681FA1734300C8A5BD /* Perfil3ViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Perfil3ViewCell.xib; sourceTree = "<group>"; };
-		AFD656691FA1734300C8A5BD /* PerfilViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewCell.swift; sourceTree = "<group>"; };
-		AFD6566A1FA1734300C8A5BD /* PerfilViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PerfilViewCell.xib; sourceTree = "<group>"; };
 		AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolViewCell.swift; sourceTree = "<group>"; };
 		AFD656711FA17CD000C8A5BD /* ds_digital */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ds_digital; sourceTree = "<group>"; };
+		AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo1.png; sourceTree = "<group>"; };
 		B50482A01E6883B100D5236C /* InicioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioController.swift; path = Controllers/InicioController.swift; sourceTree = "<group>"; };
 		B5054D761E66051500FEEDE4 /* SolPendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SolPendController.swift; path = Controllers/SolPendController.swift; sourceTree = "<group>"; };
-		B511EEAB1D76C0D5000E8E4F /* selectmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectmenu.png; sourceTree = "<group>"; };
 		B52CA4991DE0B69300E9782C /* Canvas.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Canvas.framework; path = "Pods/../build/Release-iphoneos/Canvas/Canvas.framework"; sourceTree = "<group>"; };
 		B58C6C331D5D15FA0034277C /* mensajesnew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensajesnew.png; sourceTree = "<group>"; };
 		B58F1E5D1E635D2B008F07AC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controllers/LoginController.swift; sourceTree = "<group>"; };
@@ -223,14 +223,9 @@
 		B5EE14BF1D527B040050ADAD /* destino@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "destino@2x.png"; sourceTree = "<group>"; };
 		B5EE14C31D5282520050ADAD /* destino@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "destino@3x.png"; sourceTree = "<group>"; };
 		B5EE14C71D5286010050ADAD /* origen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "origen@3x.png"; sourceTree = "<group>"; };
-		B5EE74F31D5D5F0500DC8D77 /* logo_claro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_claro.png; sourceTree = "<group>"; };
-		B5EE74F41D5D5F0500DC8D77 /* logo_cnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_cnt.png; sourceTree = "<group>"; };
-		B5EE74F51D5D5F0500DC8D77 /* logo_movistar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_movistar.png; sourceTree = "<group>"; };
 		B5EE74FB1D5D976F00DC8D77 /* callcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callcenter.png; sourceTree = "<group>"; };
 		B5EFF1B21D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = looooooooooooooggggggggggggggggggggo.png; sourceTree = "<group>"; };
 		B5EFF1B41D5C46D8007C4C30 /* uctglogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uctglogo.png; sourceTree = "<group>"; };
-		B5F0FEAF1DD6767200500197 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
-		B5F0FEB11DD6767200500197 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		B5F1D4AB1DA4B5C0006BF1AE /* compartir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compartir.png; sourceTree = "<group>"; };
 		B5F2A86E1D73EB030050F564 /* xoalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo.png; sourceTree = "<group>"; };
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
@@ -299,15 +294,13 @@
 		84609EE21C758E6F0056A282 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				B5F0FEAF1DD6767200500197 /* stop.png */,
-				B5F0FEB11DD6767200500197 /* play.png */,
+				AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */,
+				AF3D9E101FA510E70019432B /* CLARO.png */,
+				AF3D9E121FA510E80019432B /* CNT.png */,
+				AF3D9E111FA510E80019432B /* MOVISTAR.png */,
 				B5F1D4AB1DA4B5C0006BF1AE /* compartir.png */,
-				B511EEAB1D76C0D5000E8E4F /* selectmenu.png */,
 				B5F2A86E1D73EB030050F564 /* xoalogo.png */,
 				B5EE74FB1D5D976F00DC8D77 /* callcenter.png */,
-				B5EE74F31D5D5F0500DC8D77 /* logo_claro.png */,
-				B5EE74F41D5D5F0500DC8D77 /* logo_cnt.png */,
-				B5EE74F51D5D5F0500DC8D77 /* logo_movistar.png */,
 				B58C6C331D5D15FA0034277C /* mensajesnew.png */,
 				B5F753DD1D5CF60500FFDFD0 /* smsvoz2.png */,
 				B5F753DE1D5CF60500FFDFD0 /* smsvoz3.png */,
@@ -344,8 +337,6 @@
 				84F493D61CA137AD00A54C36 /* solpendientes.png */,
 				84F493D21CA11C8800A54C36 /* encabezadosIOS.png */,
 				845C0F511C7633EF0050F852 /* chofer.png */,
-				84609EEB1C758E6F0056A282 /* dbutoff3.png */,
-				84609EEC1C758E6F0056A282 /* dbuton3.png */,
 				84609EED1C758E6F0056A282 /* dclock.png */,
 				84609EEE1C758E6F0056A282 /* ddistancia.png */,
 				84609EEF1C758E6F0056A282 /* destino.png */,
@@ -354,7 +345,6 @@
 				84609F051C758E6F0056A282 /* logpassfondo.png */,
 				84609F0A1C758E6F0056A282 /* origen.png */,
 				84609F0B1C758E6F0056A282 /* origen2.png */,
-				84609F0E1C758E6F0056A282 /* pulsa.png */,
 				84609F191C758E6F0056A282 /* separador.png */,
 				84609F1A1C758E6F0056A282 /* sinconexion.png */,
 				84609F1B1C758E6F0056A282 /* taxi_libre.png */,
@@ -441,13 +431,14 @@
 			isa = PBXGroup;
 			children = (
 				AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */,
-				AFD656651FA1734300C8A5BD /* Perfil2ViewCell.swift */,
-				AFD656661FA1734300C8A5BD /* Perfil2ViewCell.xib */,
-				AFD656671FA1734300C8A5BD /* Perfil3ViewCell.swift */,
-				AFD656681FA1734300C8A5BD /* Perfil3ViewCell.xib */,
-				AFD656691FA1734300C8A5BD /* PerfilViewCell.swift */,
-				AFD6566A1FA1734300C8A5BD /* PerfilViewCell.xib */,
+				AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */,
 				AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */,
+				AF3D9E161FA51A190019432B /* PerfilViewCell.swift */,
+				AF3D9E171FA51A190019432B /* PerfilViewCell.xib */,
+				AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */,
+				AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */,
+				AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */,
+				AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -617,8 +608,6 @@
 				B5F753DF1D5CF60500FFDFD0 /* smsvoz2.png in Resources */,
 				AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */,
 				84609F601C758E6F0056A282 /* taxi_libre.png in Resources */,
-				84609F311C758E6F0056A282 /* dbuton3.png in Resources */,
-				B5F0FEB21DD6767200500197 /* stop.png in Resources */,
 				AFD656721FA17CD100C8A5BD /* ds_digital in Resources */,
 				B5F753E01D5CF60500FFDFD0 /* smsvoz3.png in Resources */,
 				84609F321C758E6F0056A282 /* dclock.png in Resources */,
@@ -628,7 +617,9 @@
 				AFD656491F9D42E100C8A5BD /* Launch Screen.storyboard.xml in Resources */,
 				84609F351C758E6F0056A282 /* destino2.png in Resources */,
 				B58C6C341D5D15FA0034277C /* mensajesnew.png in Resources */,
+				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
 				B5FB646C1D1C60C3006A2C70 /* Mapacopia.png in Resources */,
+				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				84609F341C758E6F0056A282 /* destino.png in Resources */,
 				84609F4F1C758E6F0056A282 /* origen.png in Resources */,
 				84F493D31CA11C8800A54C36 /* encabezadosIOS.png in Resources */,
@@ -638,41 +629,40 @@
 				84F019471CD1AA6A002D1BDE /* Taximetro.png in Resources */,
 				84F28A321CC14F1700529F53 /* logpassfondo@2X.png in Resources */,
 				B5EFF1B51D5C46D8007C4C30 /* uctglogo.png in Resources */,
-				84609F531C758E6F0056A282 /* pulsa.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
 				84F28A281CC13CC400529F53 /* Images-5.xcassets in Resources */,
 				84F019451CD18E56002D1BDE /* Mapa.png in Resources */,
+				AF3D9E131FA510E80019432B /* CLARO.png in Resources */,
 				B5EE74FC1D5D976F00DC8D77 /* callcenter.png in Resources */,
 				B5F753DC1D5CE6ED00FFDFD0 /* smsvoz.png in Resources */,
-				84609F301C758E6F0056A282 /* dbutoff3.png in Resources */,
 				84F7E3831CB389A6008D4713 /* stargris.png in Resources */,
+				AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */,
+				AF3D9E151FA510E80019432B /* CNT.png in Resources */,
 				B5EE14C41D5282520050ADAD /* destino@3x.png in Resources */,
 				AFD656471F9D42E100C8A5BD /* beep.wav in Resources */,
-				B5EE74F61D5D5F0500DC8D77 /* logo_claro.png in Resources */,
 				B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */,
+				AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */,
+				AF3D9E141FA510E80019432B /* MOVISTAR.png in Resources */,
 				84F493D71CA137AD00A54C36 /* solpendientes.png in Resources */,
 				84609F501C758E6F0056A282 /* origen2.png in Resources */,
-				B5EE74F81D5D5F0500DC8D77 /* logo_movistar.png in Resources */,
 				84F019411CD183BE002D1BDE /* sos.png in Resources */,
 				84F7E3851CB38C04008D4713 /* stardorada.png in Resources */,
 				B5EABB641D2C7BA300693DE6 /* salir2.png in Resources */,
 				845C0F521C7633EF0050F852 /* chofer.png in Resources */,
 				84609F5F1C758E6F0056A282 /* sinconexion.png in Resources */,
 				B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */,
+				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
 				B5FB646E1D1C60C3006A2C70 /* solicitudespcopia.png in Resources */,
 				B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */,
 				B5F753D61D5CCB3700FFDFD0 /* evaluar.png in Resources */,
-				B5EE74F71D5D5F0500DC8D77 /* logo_cnt.png in Resources */,
 				B5F753D81D5CDD8300FFDFD0 /* mensajes.png in Resources */,
 				84F28A381CC1672100529F53 /* destino2@2x.png in Resources */,
 				84F1DC1A1CA41F8B00B859FE /* detalles.png in Resources */,
-				B511EEAC1D76C0D5000E8E4F /* selectmenu.png in Resources */,
 				84F019491CD1B780002D1BDE /* Tarifario.png in Resources */,
 				B5F1D4AC1DA4B5C0006BF1AE /* compartir.png in Resources */,
 				84794F9F1CCA7DCC00C4DD33 /* encabezadosIOS@3x.png in Resources */,
 				B5EE14C01D527B040050ADAD /* destino@2x.png in Resources */,
 				84609F5E1C758E6F0056A282 /* separador.png in Resources */,
-				B5F0FEB41DD6767200500197 /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,15 +755,16 @@
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				B50482A11E6883B100D5236C /* InicioController.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
-				AFD6566C1FA1777500C8A5BD /* Perfil3ViewCell.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656541F9D42E100C8A5BD /* ViewController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* CTelefono.swift in Sources */,
+				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				AFD656421F9D42E100C8A5BD /* PantallaSolic.swift in Sources */,
 				AFD6563B1F9D42E100C8A5BD /* CUsuario.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolPendController.swift in Sources */,
+				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
 				AFD656481F9D42E100C8A5BD /* CTaxi.swift in Sources */,
 				AFD656431F9D42E100C8A5BD /* CCliente.swift in Sources */,
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
@@ -781,7 +772,6 @@
 				AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */,
 				AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
-				AFD6566D1FA1777500C8A5BD /* PerfilViewCell.swift in Sources */,
 				AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */,
 				AFD6564F1F9D42E100C8A5BD /* CConductor.swift in Sources */,
 				B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */,
@@ -790,7 +780,7 @@
 				AFD6563E1F9D42E100C8A5BD /* CEvaluacion.swift in Sources */,
 				B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */,
 				AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */,
-				AFD656701FA1777500C8A5BD /* Perfil2ViewCell.swift in Sources */,
+				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

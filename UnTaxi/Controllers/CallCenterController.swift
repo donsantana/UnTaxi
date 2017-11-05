@@ -42,7 +42,6 @@ class CallCenterController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CallCenterViewCell", owner: self, options: nil)?.first as! CallCenterViewCell
-        
         cell.ImagenOperadora.image = UIImage(named: self.telefonosCallCenter[indexPath.row].operadora)
         cell.NumeroTelefono.text = self.telefonosCallCenter[indexPath.row].numero
 
@@ -55,7 +54,6 @@ class CallCenterController: UITableViewController {
         if let url = URL(string: "tel://\(telefonosCallCenter[indexPath.row].numero)") {
             UIApplication.shared.openURL(url)
         }
-
     }
     
 

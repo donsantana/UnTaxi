@@ -15,7 +15,12 @@ import AddressBook
 import AVFoundation
 import CoreData
 
-class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, MKMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UITableViewDelegate, UITableViewDataSource {
+struct MenuData {
+    var imagen: String
+    var title: String
+}
+
+class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, MKMapViewDelegate, UITextFieldDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     var coreLocationManager : CLLocationManager!
     var miposicion = MKPointAnnotation()
     var origenAnotacion : MKPointAnnotation!
@@ -37,6 +42,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     var timer = Timer()
     var fechahora: String!
     
+    var emitTimer = Timer()
     
     var tiempoTemporal = 10
     
@@ -48,7 +54,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
     
-
+    //Menu variables
+    var MenuArray = [MenuData(imagen: "solicitud", title: "En proceso"), MenuData(imagen: "operadora", title: "Call center"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app"),MenuData(imagen: "salir2", title: "Salir")]
     //variables de interfaz
     
     @IBOutlet weak var origenIcono: UIImageView!
@@ -67,6 +74,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var LocationBtn: UIButton!
     @IBOutlet weak var SolicitarBtn: UIButton!
     @IBOutlet weak var formularioSolicitud: UIView!
+    @IBOutlet weak var SolicitudView: CSAnimationView!
     
     @IBOutlet weak var EnviarSolBtn: UIButton!
     
@@ -75,6 +83,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
 
     
     //MENU BUTTONS
+    @IBOutlet weak var MenuView1: UIView!
+    @IBOutlet weak var MenuTable: UITableView!
+    @IBOutlet weak var NombreUsuario: UILabel!
+    @IBOutlet weak var TransparenciaView: UIVisualEffectView!
+    
+    
     @IBOutlet weak var MenuView: UIView!
     @IBOutlet weak var CallCEnterBtn: UIButton!
     @IBOutlet weak var SolPendientesBtn: UIButton!
@@ -110,13 +124,27 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         coreLocationManager.delegate = self
         self.referenciaText.delegate = self
         //solicitud de autorización para acceder a la localización del usuario
+        self.NombreUsuario.text = myvariables.cliente.nombreApellidos
 
+        self.MenuTable.delegate = self
+        self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
+        self.MenuView1.layer.borderWidth = 0.3
+        self.MenuView1.layer.masksToBounds = false
+        
         coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
         
         self.origenAnotacion = MKPointAnnotation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
+        tapGesture.delegate = self
+        self.SolicitudView.addGestureRecognizer(tapGesture)
+        
+        let MenuTapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarMenu))
+        self.TransparenciaView.addGestureRecognizer(MenuTapGesture)
+
         
         if let tempLocation = self.coreLocationManager.location?.coordinate{
             self.origenAnotacion.coordinate = (coreLocationManager.location?.coordinate)!
@@ -129,7 +157,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
         self.mapaVista.setRegion(region, animated: true)
-        //self.mapaVista.addAnnotation(self.origenAnotacion)
         
         //UBICAR LOS BOTONES DEL MENU
         var espacioBtn = self.view.frame.width / 4
@@ -140,7 +167,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.MapaBtn.frame = CGRect(x: (espacioBtn * 3 - 10), y: 5, width: 44, height: 44)
         //self.TarifarioBtn.frame = CGRect(x: (espacioBtn * 3 - 15), y: 5, width: 44, height: 44)
         
-
         self.taxiLocation = MKPointAnnotation()
         
         if myvariables.solpendientes.count > 0{
@@ -196,6 +222,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
 
     }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var anotationView = mapaVista.dequeueReusableAnnotationView(withIdentifier: "annotationView")
         anotationView = MKAnnotationView(annotation: self.origenAnotacion, reuseIdentifier: "annotationView")
@@ -225,6 +252,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.miposicion.title = "origen"
             self.coreLocationManager.stopUpdatingLocation()
             self.mapaVista.removeAnnotations(self.mapaVista.annotations)
+            self.ExplicacionView.isHidden = false
+            self.SolPendientesView.isHidden = true
             self.origenIcono.isHidden = false
         }
     }
@@ -240,6 +269,16 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
 
     //MARK:- FUNCIONES PROPIAS
+    
+    //FUNCTION TIMER
+    func TimerStart(estado: Int, datos: String){
+        if estado == 1{
+            self.emitTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(EnviarSocket(_:)), userInfo: ["datos":datos], repeats: true)
+            print("Activando Timer")
+        }else{
+            self.emitTimer.invalidate()
+        }
+    }
     func appUpdateAvailable() -> Bool
     {
         let storeInfoURL: String = "http://itunes.apple.com/lookup?bundleId=com.xoait.UnTaxi"
@@ -644,16 +683,16 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 exit(0)
             }))
-            
             self.present(alertaDos, animated: true, completion: nil)
         }
     }
 
     //FUNCIÓN ENVIAR AL SOCKET
-    func EnviarSocket(_ datos: String){
+    @objc func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
             if myvariables.socket.reconnects{
                 myvariables.socket.emit("data",datos)
+                let result = myvariables.socket.emitWithAck("data", datos)
             }
             else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
@@ -982,9 +1021,30 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
     }
     
+    func CloseAPP(){
+        let fileAudio = FileManager()
+        let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
+        do {
+            try fileAudio.removeItem(atPath: AudioPath)
+        }catch{
+        }
+        let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
+        EnviarSocket(datos)
+        exit(3)
+    }
+    
+    @objc func ocultarMenu(){
+        self.MenuView1.isHidden = true
+        self.TransparenciaView.isHidden = true
+    }
+    
     //MARK:- BOTONES GRAFICOS ACCIONES
     @IBAction func CerrarApp(_ sender: Any) {
-            let fileAudio = FileManager()
+        self.MenuView1.isHidden = !self.MenuView1.isHidden
+        self.MenuView1.startCanvasAnimation()
+        self.TransparenciaView.isHidden = self.MenuView1.isHidden
+        self.TransparenciaView.startCanvasAnimation()
+            /*let fileAudio = FileManager()
             let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
             do {
                 try fileAudio.removeItem(atPath: AudioPath)
@@ -992,7 +1052,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             }
             let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
             EnviarSocket(datos)
-            exit(3)
+            exit(3)*/
     }
     
     @IBAction func RelocateBtn(_ sender: Any) {
@@ -1083,13 +1143,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "CallCenter") as! CallCenterController
         vc.telefonosCallCenter = self.TelefonosCallCenter
         self.navigationController?.show(vc, sender: nil)
-        
     }
     
     @IBAction func MostrarSolPendientes(_ sender: AnyObject) {
-        
         if myvariables.solpendientes.count > 0{
-        
         let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
         vc.solicitudesMostrar = myvariables.solpendientes
         self.navigationController?.show(vc, sender: nil)
@@ -1097,29 +1154,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.ExplicacionView.isHidden = !self.ExplicacionView.isHidden
             self.SolPendientesView.isHidden = !self.SolPendientesView.isHidden
         }
-        
-    }
-    @IBAction func TaximetroMenu(_ sender: AnyObject) {
-        self.SolPendientesView.isHidden = true
-    }
-    
-    @IBAction func TarifarioMenu(_ sender: AnyObject) {
-        self.SolPendientesView.isHidden = true
     }
     @IBAction func MapaMenu(_ sender: AnyObject) {
         Inicio()
-    }
-    @IBAction func CompartirApp(_ sender: Any) {
-        if let name = URL(string: "itms://itunes.apple.com/us/app/apple-store/id1149206387?mt=8") {
-            let objectsToShare = [name]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
-            self.present(activityVC, animated: true, completion: nil)
-        }
-        else
-        {
-            // show alert for not available
-        }
     }
 
     //CONTROL DE TECLADO VIRTUAL
@@ -1134,8 +1171,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         self.animateViewMoving(true, moveValue: 50, view: view)
     }
+    
     func textFieldDidEndEditing(_ textfield: UITextField) {
         self.animateViewMoving(false, moveValue: 50, view: view)
+        self.TablaDirecciones.isHidden = true
         self.EnviarSolBtn.isEnabled = true
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -1148,7 +1187,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         if self.DireccionesArray.count < 5 {
             self.RecordarView.isHidden = false
         }
-        
+    
         self.EnviarSolBtn.isEnabled = true
     }
     
@@ -1206,6 +1245,20 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.referenciaText.resignFirstResponder()
     }
     
+    @objc func ocultarTeclado(sender: UITapGestureRecognizer){
+        //sender.cancelsTouchesInView = false
+        //self.SolicitudView.endEditing(true)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isDescendant(of: self.TablaDirecciones) == true {
+            gestureRecognizer.cancelsTouchesInView = false
+        }else{
+            self.SolicitudView.endEditing(true)
+        }
+        return true
+    }
+    
     //TABLA FUNCTIONS
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -1214,26 +1267,78 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.DireccionesArray.count
+        if tableView.isEqual(self.TablaDirecciones){
+           return self.DireccionesArray.count
+        }else{
+            return self.MenuArray.count
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView.isEqual(self.TablaDirecciones){
         let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
         cell.textLabel?.text = self.DireccionesArray[indexPath.row][0]
         return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
+            cell.textLabel?.text = self.MenuArray[indexPath.row].title
+            cell.imageView?.image = UIImage(named: self.MenuArray[indexPath.row].imagen)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       if tableView.isEqual(self.TablaDirecciones){
         self.origenText.text = self.DireccionesArray[indexPath.row][0]
         self.TablaDirecciones.isHidden = true
         self.origenText.resignFirstResponder()
         self.referenciaText.text = self.DireccionesArray[indexPath.row][1]
+       }else{
+        self.MenuView1.isHidden = true
+        self.TransparenciaView.isHidden = true
+        tableView.deselectRow(at: indexPath, animated: false)
+        switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
+        case "En proceso"?:
+            if myvariables.solpendientes.count > 0{
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
+                vc.solicitudesMostrar = myvariables.solpendientes
+                self.navigationController?.show(vc, sender: nil)
+            }else{
+                self.ExplicacionView.isHidden = true
+                self.SolPendientesView.isHidden = false
+            }
+        case "Call center"?:
+            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "CallCenter") as! CallCenterController
+            vc.telefonosCallCenter = self.TelefonosCallCenter
+            self.navigationController?.show(vc, sender: nil)
+        case "Perfil"?:
+            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Perfil") as! PerfilController
+            self.navigationController?.show(vc, sender: nil)
+        case "Compartir app"?:
+            if let name = URL(string: "itms://itunes.apple.com/us/app/apple-store/id1149206387?mt=8") {
+                let objectsToShare = [name]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                self.present(activityVC, animated: true, completion: nil)
+            }
+            else
+            {
+                // show alert for not available
+            }
+        default:
+            self.CloseAPP()
+        }
+        }
     }
     
     //FUNCIONES Y EVENTOS PARA ELIMIMAR CELLS, SE NECESITA AGREGAR UITABLEVIEWDATASOURCE
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        if tableView.isEqual(self.TablaDirecciones){
+            return true
+        }else{
+            return false
+        }
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
@@ -1248,7 +1353,14 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.TablaDirecciones.isHidden = true
             }
             tableView.reloadData()
-        
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView.isEqual(self.MenuTable){
+            return self.MenuTable.frame.height/5
+        }else{
+            return 44
         }
     }
 
