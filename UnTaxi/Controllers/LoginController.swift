@@ -15,7 +15,8 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     var login = [String]()
     var solitudespdtes = [CSolicitud]()
     var coreLocationManager: CLLocationManager!
-    
+    var EnviosCount = 0
+    var emitTimer = Timer()
    // var conexion = CSocket()
     
     var ServersData = [String]()
@@ -73,8 +74,26 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.ClaveRecover.addGestureRecognizer(tapGesture)
         
         if CConexionInternet.isConnectedToNetwork() == true{
+            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(false), .forcePolling(true)])
+            myvariables.socket.connect()
+                
+            myvariables.socket.on("connect"){data, ack in
+                var loginData = "Vacio"
+                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+                do {
+                    loginData = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
+                }catch {
+                }
+                if loginData != "Vacio"
+                {
+                    self.Login(loginData: loginData)
+                }else{
+                    self.AutenticandoView.isHidden = true
+                }
+                self.SocketEventos()
+            }
             
-            var servers = "Vacio"
+            /*var servers = "Vacio"
             let filePath = NSHomeDirectory() + "/Library/Caches/servers.txt"
             do {
                 servers = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
@@ -83,23 +102,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             if servers != "Vacio"{
                 self.ServersData = String(describing: servers).components(separatedBy: ",")
                 self.ServerConect(){data in
-                    myvariables.socket.on("connect"){data, ack in
-                        var read = "Vacio"
-                        let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                        do {
-                            read = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-                        }catch {
-                        }
-                        if read != "Vacio"
-                        {
-                            self.AutenticandoView.isHidden = false
-                            self.Login()
-                        }
-                        else{
-                            self.AutenticandoView.isHidden = true
-                        }
-                        self.SocketEventos()
-                    }
+
                 }
             }else{
                 self.ServerSelect(){ success in
@@ -125,9 +128,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     }
                     
                 }
-            }
-            /*myvariables.socket = SocketIOClient(socketURL: URL(string: self.ServersData[0])!, config: [.log(false), .forcePolling(true)])
-            myvariables.socket.connect()*/
+            }*/
             
         }else{
             ErrorConexion()
@@ -137,6 +138,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
 
     func SocketEventos(){
         myvariables.socket.on("LoginPassword"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
                 switch temporal[1]{
                 case "loginok":
@@ -150,7 +152,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                             let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
                             locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                                 UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
-                                self.Login()
+                                //self.Login()
                             }))
                             locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
                                 exit(0)
@@ -191,6 +193,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
         
         myvariables.socket.on("NR") {data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "registrook"{
                 let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
@@ -213,6 +216,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         //RECUPERAR CLAVES
         myvariables.socket.on("Recuperarclave"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
@@ -250,21 +254,27 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             }
             i += 11
         }
-        
+    }
+    
+    //FUNCTION ENVIO CON TIMER
+    func EnviarTimer(estado: Int, datos: String){
+        if estado == 1{
+            if !self.emitTimer.isValid{
+                self.emitTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+            }
+        }else{
+            self.emitTimer.invalidate()
+            self.EnviosCount = 0
+        }
     }
     
     //MARK:- FUNCIONES PROPIAS
     
-    func Login(){
-        var readString = ""
-        let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-        
-        do {
-            readString = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-        } catch {
-        }
-        self.login = String(readString).components(separatedBy: ",")
-        EnviarSocket(readString)
+    func Login(loginData: String){
+        self.AutenticandoView.isHidden = false
+        self.login = String(loginData).components(separatedBy: ",")
+        //EnviarSocket(readString)
+        self.EnviarTimer(estado: 1, datos: loginData)
     }
 
     
@@ -288,28 +298,49 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
     }
     
+    @objc func EnviarSocket1(_ timer: Timer){
+        if CConexionInternet.isConnectedToNetwork() == true{
+            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+                self.EnviosCount += 1
+                let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+                var datos: String = (userInfo["datos"] as! String)
+                myvariables.socket.emit("data",datos)
+                //let result = myvariables.socket.emitWithAck("data", datos)
+            }else{
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    exit(0)
+                }))    
+                self.present(alertaDos, animated: true, completion: nil)
+            }
+        }else{
+            ErrorConexion()
+        }
+    }
+    
     func ErrorConexion(){
         let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
-        
         self.present(alertaDos, animated: true, completion: nil)
     }
 
     //MARK:- ACCIONES DE LOS BOTONES
     //LOGIN Y REGISTRO DE CLIENTE
     @IBAction func Autenticar(_ sender: AnyObject) {
-        let writeString = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
+        
+        let loginData = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
+        self.Clave.endEditing(true)
         //CREAR EL FICHERO DE LOGÍN
         let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"        
         do {
-            _ = try writeString.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
+            _ = try loginData.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
             
         } catch {
             
         }
-        self.Login()
+        self.Login(loginData: loginData)
     }
     
     @IBAction func OlvideClave(_ sender: AnyObject) {
@@ -320,8 +351,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         //"#Recuperarclave,numero de telefono,#"
         self.Usuario.resignFirstResponder()
         self.Clave.resignFirstResponder()
-        let datos = "#Recuperarclave," + movilClaveRecover.text! + ",# \n"
-        EnviarSocket(datos)
+        let recuperarDatos = "#Recuperarclave," + movilClaveRecover.text! + ",# \n"
+        //EnviarSocket(datos)
+        self.EnviarTimer(estado: 1, datos: recuperarDatos)
         ClaveRecover.isHidden = true
         movilClaveRecover.endEditing(true)
         movilClaveRecover.text?.removeAll()
@@ -358,8 +390,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             if let posTemp = coreLocationManager.location{
                     posicion = String(posTemp.coordinate.latitude) + "," + String(posTemp.coordinate.longitude)
             }
-            let datos = "#NR" + "," + nombreApText.text! + temporal + correo + "," + posicion + ",# \n"
-            myvariables.socket.emit("data", datos)
+            let registroDatos = "#NR" + "," + nombreApText.text! + temporal + correo + "," + posicion + ",# \n"
+            //myvariables.socket.emit("data", datos)
+            self.EnviarTimer(estado: 1, datos: registroDatos)
         }
         RegistroView.isHidden = true
         claveText.resignFirstResponder()
@@ -465,17 +498,17 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         if textField.isEqual(self.Clave){
-            let writeString = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
+            let loginData = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
             //CREAR EL FICHERO DE LOGÍN
             let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
             
             do {
-                _ = try writeString.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
+                _ = try loginData.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
                 
             } catch {
                 
             }
-            self.Login()
+            self.Login(loginData: loginData)
         }
         return true
     }
@@ -541,7 +574,6 @@ extension LoginController: XMLParserDelegate {
         
         do {
             _ = try writeString.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
-            
         } catch {
             
         }
@@ -549,11 +581,9 @@ extension LoginController: XMLParserDelegate {
         completionHandler(true)
     }
     func ServerConect(completionHandler:@escaping (Bool)->()){
-
         var i = 0
         while i < self.ServersData.count - 1{
             myvariables.socket = SocketIOClient(socketURL: URL(string: "http://"+self.ServersData[i])!, config: [.log(false), .forcePolling(true)])
-            print(self.ServersData[i])
             myvariables.socket.connect()
             i += 1
         }

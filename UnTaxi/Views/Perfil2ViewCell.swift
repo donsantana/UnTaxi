@@ -18,6 +18,7 @@ class Perfil2ViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         self.NuevoValor.delegate = self
+        self.NuevoValor.setBottomBorder(borderColor: UIColor.black)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,3 +33,4 @@ class Perfil2ViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
 }
+

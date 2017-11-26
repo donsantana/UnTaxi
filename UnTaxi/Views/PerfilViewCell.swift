@@ -16,6 +16,7 @@ class PerfilViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.NuevoValor.delegate = self
+        self.NuevoValor.setBottomBorder(borderColor: UIColor.black)
         // Initialization code
     }
     
@@ -31,3 +32,4 @@ class PerfilViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
 }
+

@@ -48,7 +48,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 19), NSAttributedStringKey.foregroundColor : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSAttributedString.font : UIFont.systemFont(ofSize: 19), NSAttributedString.foregroundColor : UIColor.black])
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
@@ -68,7 +68,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 19), NSAttributedStringKey.foregroundColor : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSAttributedString.font : UIFont.systemFont(ofSize: 19), NSAttributedStringKey.foregroundColor : UIColor.black])
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 self.present(alertaDos, animated: true, completion: nil)
@@ -95,7 +95,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 19), NSAttributedStringKey.foregroundColor : UIColor.black])
+                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSAttributedString.attributes.font : UIFont.systemFont(ofSize: 19), NSAttributedString.foregroundColor : UIColor.black])
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
@@ -121,7 +121,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
         let alertContentView = subview.subviews.last! as UIView
         alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
         alertContentView.layer.cornerRadius = 5
-        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 19), NSAttributedStringKey.foregroundColor : UIColor.black])
+        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSAttributedString.attributes.font : UIFont.systemFont(ofSize: 19), NSAttributedString.foregroundColor : UIColor.black])
         alertaDos.setValue(TitleString, forKey: "attributedTitle")
         //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
         

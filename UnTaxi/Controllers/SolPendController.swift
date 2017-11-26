@@ -98,7 +98,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         
         //GEOPOSICION DE TAXIS
         myvariables.socket.on("Geo"){data, ack in
-            
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0 {
                     if (temporal[2] == self.SolicitudPendiente.idTaxi){

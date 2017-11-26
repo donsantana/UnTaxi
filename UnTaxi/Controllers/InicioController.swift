@@ -50,6 +50,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     var TaximetroTotalTimer = Timer()
     var espera = 0
     
+    var EnviosCount = 0
+    
     var keyboardHeight:CGFloat!
     
     var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
@@ -64,11 +66,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     //@IBOutlet weak var destinoText: UITextField!
     @IBOutlet weak var origenText: UITextField!
-    @IBOutlet weak var referenciaText: UITextView!
+    @IBOutlet weak var referenciaText: UITextField!
     @IBOutlet weak var TablaDirecciones: UITableView!
     @IBOutlet weak var RecordarView: UIView!
     @IBOutlet weak var RecordarSwitch: UISwitch!
-
+    @IBOutlet weak var BtnsView: UIView!
+    @IBOutlet weak var ContactoView: UIView!
+    @IBOutlet weak var NombreContactoText: UITextField!
+    @IBOutlet weak var TelefonoContactoText: UITextField!
+    
  
 
     @IBOutlet weak var LocationBtn: UIButton!
@@ -96,8 +102,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var SolPendImage: UIImageView!
     @IBOutlet weak var CantSolPendientes: UILabel!
     @IBOutlet weak var SolPendientesView: UIView!
-    @IBOutlet weak var ExplicacionView: UIView!
-    @IBOutlet weak var ExplicacionText: UILabel!
+
     
     
     @IBOutlet weak var AlertaEsperaView: UIView!
@@ -107,7 +112,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //Voucher
     @IBOutlet weak var VoucherView: UIView!
     @IBOutlet weak var VoucherCheck: UISwitch!
-    @IBOutlet weak var VoucherEmpresaName: UITextField!
+    @IBOutlet weak var VoucherEmpresaName: UILabel!
     
     
     @IBOutlet weak var CancelarSolicitudProceso: UIButton!
@@ -123,6 +128,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         self.referenciaText.delegate = self
+        self.NombreContactoText.delegate = self
+        self.TelefonoContactoText.delegate = self
+        self.origenText.delegate = self
+        
         //solicitud de autorización para acceder a la localización del usuario
         self.NombreUsuario.text = myvariables.cliente.nombreApellidos
 
@@ -165,7 +174,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.SolPendImage.frame = CGRect(x: (espacioBtn * 2), y: 5, width: 25, height: 22)
         self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2), y: 5, width: 25, height: 22)
         self.MapaBtn.frame = CGRect(x: (espacioBtn * 3 - 10), y: 5, width: 44, height: 44)
-        //self.TarifarioBtn.frame = CGRect(x: (espacioBtn * 3 - 15), y: 5, width: 44, height: 44)
         
         self.taxiLocation = MKPointAnnotation()
         
@@ -177,15 +185,18 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         if myvariables.socket.reconnects{
             let ColaHilos = OperationQueue()
-            let Hilos : BlockOperation = BlockOperation ( block: {
+            let Hilos : BlockOperation = BlockOperation (block: {
                 self.SocketEventos()
                 self.timer.invalidate()
                 let url = "#U,# \n"
                 self.EnviarSocket(url)
+                //self.EnviarTimer(estado: 1, datos: url)
                 let telefonos = "#Telefonos,# \n"
                 self.EnviarSocket(telefonos)
+                //self.EnviarTimer(estado: 1, datos: telefonos)
                 let datos = "OT"
                 self.EnviarSocket(datos)
+                //self.EnviarTimer(estado: 1, datos: datos)
                 if myvariables.solpendientes.count > 0{
                      self.CantSolPendientes.isHidden = false
                      self.CantSolPendientes.text = String(myvariables.solpendientes.count)
@@ -196,11 +207,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }else{
             self.Reconect()
         }
-        ExplicacionText.text = "Localice el origen"
-        ExplicacionView.isHidden = false
         
         //self.referenciaText.enablesReturnKeyAutomatically = false
-        self.origenText.delegate = self
+        //self.origenText.delegate = self
         self.TablaDirecciones.delegate = self
         
         self.origenText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -220,10 +229,17 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         default:
             break
         }
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        self.NombreContactoText.setBottomBorder(borderColor: UIColor.black)
+        self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.black)
+        self.origenText.setBottomBorder(borderColor: UIColor.black)
+        self.referenciaText.setBottomBorder(borderColor: UIColor.black)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        self.mapaVista.removeAnnotations(self.mapaVista.annotations)
         var anotationView = mapaVista.dequeueReusableAnnotationView(withIdentifier: "annotationView")
         anotationView = MKAnnotationView(annotation: self.origenAnotacion, reuseIdentifier: "annotationView")
         if annotation.title! == "origen"{
@@ -252,7 +268,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.miposicion.title = "origen"
             self.coreLocationManager.stopUpdatingLocation()
             self.mapaVista.removeAnnotations(self.mapaVista.annotations)
-            self.ExplicacionView.isHidden = false
             self.SolPendientesView.isHidden = true
             self.origenIcono.isHidden = false
         }
@@ -270,13 +285,16 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
 
     //MARK:- FUNCIONES PROPIAS
     
-    //FUNCTION TIMER
-    func TimerStart(estado: Int, datos: String){
+    //FUNCTION ENVIO CON TIMER
+    func EnviarTimer(estado: Int, datos: String){
         if estado == 1{
-            self.emitTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(EnviarSocket(_:)), userInfo: ["datos":datos], repeats: true)
-            print("Activando Timer")
+            if !self.emitTimer.isValid{
+                self.emitTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+            }
         }else{
             self.emitTimer.invalidate()
+            self.EnviosCount = 0
+            print("Desactivando Timer")
         }
     }
     func appUpdateAvailable() -> Bool
@@ -301,8 +319,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                                 // Get the version number of the current version
                                 if let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String {
                                     // Check if they are the same. If not, an upgrade is available.
-                                    if appStoreVersion != currentVersion {
-                                        
+                                    if appStoreVersion > currentVersion {
                                         upgradeAvailable = true
                                     }
                                 }
@@ -315,6 +332,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         ///Volumes/Datos/Ecuador/Desarrollo/UnTaxi/UnTaxi/LocationManager.swift:635:31: Ambiguous use of 'indexOfObject'
         return upgradeAvailable
     }
+
     func SocketEventos(){
        
         //Evento sockect para escuchar
@@ -333,9 +351,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
 
         }
         
-        
         myvariables.socket.on("LoginPassword"){data, ack in
-            
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
            
             if (temporal[0] == "[#LoginPassword") || (temporal[0] == "#LoginPassword"){
@@ -345,8 +362,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 case "loginok":
                     let url = "#U,# \n"
                     self.EnviarSocket(url)
+                    //self.EnviarTimer(estado: 1, datos: url)
                     let telefonos = "#Telefonos,# \n"
                     self.EnviarSocket(telefonos)
+                    //self.EnviarTimer(estado: 1, datos: telefonos)
                     self.idusuario = temporal[2]
                     self.SolicitarBtn.isHidden = false
                     //self.LoginView.isHidden = true
@@ -370,19 +389,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                         
                     }))
                     self.present(alertaDos, animated: true, completion: nil)
-                case "version":
-                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertControllerStyle.alert)
-                    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                        
-                    }))
-                    alertaDos.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
-                        
-                    }))
-                    self.present(alertaDos, animated: true, completion: nil)
                 default: print("Problemas de conexion")
                 }
-            }
-            else{
+            }else{
                 //exit(0)
             }
         }
@@ -390,6 +399,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         //Evento Posicion de taxis
         myvariables.socket.on("Posicion"){data, ack in
             //
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if(temporal[1] == "0") {
                 let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
@@ -407,10 +417,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Solicitud"){data, ack in
             //Trama IN: #Solicitud, ok, idsolicitud, fechahora
             //Trama IN: #Solicitud, error
-            
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                self.MensajeEspera.text = "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor."
+                self.MensajeEspera.text = "Solicitud enviada a todos los taxis cercanos. Esperando respuesta."
                 self.AlertaEsperaView.isHidden = false
                 self.CancelarSolicitudProceso.isHidden = false
                 self.ConfirmaSolicitud(temporal)
@@ -422,6 +432,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //ACTIVACION DEL TAXIMETRO
         myvariables.socket.on("TI"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0 {
                 //self.MensajeEspera.text = temporal
@@ -441,10 +452,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //RESPUESTA DE CANCELAR SOLICITUD
         myvariables.socket.on("Cancelarsolicitud"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertControllerStyle.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    self.Inicio()
                     if myvariables.solpendientes.count != 0{
                         self.SolPendientesView.isHidden = true
                         self.CantSolPendientes.text = String(myvariables.solpendientes.count)
@@ -452,17 +465,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                     else{
                         self.SolPendImage.isHidden = true
                     }
-                    self.Inicio()
                 }))
-                
                 self.present(alertaDos, animated: true, completion: nil)
-                
             }
         }
         
         //RESPUESTA DE CONDUCTOR A SOLICITUD
         
         myvariables.socket.on("Aceptada"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             self.Inicio()
             let temporal = String(describing: data).components(separatedBy: ",")
             //#Aceptada, idsolicitud, idconductor, nombreApellidosConductor, movilConductor, URLfoto, idTaxi, Codvehiculo, matricula, marca, color, latTaxi, lngTaxi
@@ -503,6 +514,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("Completada"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             //'#Completada,'+idsolicitud+','+idtaxi+','+distancia+','+tiempoespera+','+importe+',# \n'
             let temporal = String(describing: data).components(separatedBy: ",")
 
@@ -528,6 +540,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("Cambioestadosolicitudconductor"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertControllerStyle.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
@@ -544,6 +557,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //SOLICITUDES SIN RESPUESTA DE TAXIS
         myvariables.socket.on("SNA"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0{
                 for solicitudenproceso in myvariables.solpendientes{
@@ -562,12 +576,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //URl PARA AUDIO
         myvariables.socket.on("U"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             myvariables.UrlSubirVoz = temporal[1]
         }
         
         myvariables.socket.on("V"){data, ack in
-            print("llego mensaje")
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             myvariables.urlconductor = temporal[1]
             if UIApplication.shared.applicationState != .background {
@@ -589,7 +604,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 localNotification.fireDate = Date(timeIntervalSinceNow: 4)
                 UIApplication.shared.scheduleLocalNotification(localNotification)
             }
-
         }
         
         myvariables.socket.on("disconnect"){data, ack in
@@ -616,6 +630,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         myvariables.socket.on("Telefonos"){data, ack in
             //#Telefonos,cantidad,numerotelefono1,operadora1,siesmovil1,sitienewassap1,numerotelefono2,operadora2..,#
+            self.EnviarTimer(estado: 0, datos: "terminando")
             self.TelefonosCallCenter = [CTelefono]()
             let temporal = String(describing: data).components(separatedBy: ",")
             
@@ -633,6 +648,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //RECUPERAR CLAVES
         myvariables.socket.on("Recuperarclave"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
@@ -651,6 +667,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
          retorno #Cambiarclave,ok
          #Cambiarclave,error*/
         myvariables.socket.on("Cambiarclave"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
@@ -690,11 +707,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //FUNCIÓN ENVIAR AL SOCKET
     @objc func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.reconnects && self.EnviosCount <= 3{
+                print("here")
                 myvariables.socket.emit("data",datos)
-                let result = myvariables.socket.emitWithAck("data", datos)
-            }
-            else{
+                //let result = myvariables.socket.emitWithAck("data", datos)
+            }else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
@@ -707,19 +724,38 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
     }
     
+    @objc func EnviarSocket1(_ timer: Timer){
+        if CConexionInternet.isConnectedToNetwork() == true{
+            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+                self.EnviosCount += 1
+                let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+                var datos: String = (userInfo["datos"] as! String)
+                myvariables.socket.emit("data",datos)
+                print(self.EnviosCount)
+                //let result = myvariables.socket.emitWithAck("data", datos)
+            }else{
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    exit(0)
+                }))
+                self.present(alertaDos, animated: true, completion: nil)
+            }
+        }else{
+            ErrorConexion()
+        }
+    }
+    
     func Inicio(){
         mapaVista.removeAnnotations(self.mapaVista.annotations)
         self.coreLocationManager.startUpdatingLocation()
         self.origenAnotacion.coordinate = (self.coreLocationManager.location?.coordinate)!
         self.origenIcono.image = UIImage(named: "origen2")
+        self.origenIcono.isHidden = true
         self.origenAnotacion.title = "origen"
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
         self.mapaVista.setRegion(region, animated: true)
-
-        self.origenIcono.isHidden = false
-        ExplicacionText.text = "Localice el origen"
-        ExplicacionView.isHidden = false
+        self.mapaVista.addAnnotation(self.origenAnotacion)
         if myvariables.solpendientes.count != 0 {
             self.SolPendImage.isHidden = false
             self.CantSolPendientes.text = String(myvariables.solpendientes.count)
@@ -732,11 +768,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         CancelarEnvioBtn.isHidden = true
         CancelarSolicitudProceso.isHidden = true
         AlertaEsperaView.isHidden = true
-
     }
     
     //DIRECCIONES FAVORITAS
     func CargarFavoritas(){
+        print("hereeeee")
         let path = NSHomeDirectory() + "/Library/Caches/"
         let url = NSURL(fileURLWithPath: path)
         let filePath = url.appendingPathComponent("dir.plist")?.path
@@ -942,8 +978,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         let datossolicitud = nuevaSolicitud.dirOrigen + "," + nuevaSolicitud.referenciaorigen + "," + "null"
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
         let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.latitude) + "," + String(nuevaSolicitud.origenCarrera.longitude) + "," + "0.0" + "," + "0.0" + "," + datosgeo + "," + voucher + ",# \n"
-        print(Datos)
-        EnviarSocket(Datos)
+        //EnviarSocket(Datos)
+        self.EnviarTimer(estado: 1, datos: Datos)
         MensajeEspera.text = "Procesando..."
         self.AlertaEsperaView.isHidden = false
         self.origenText.text?.removeAll()
@@ -1017,7 +1053,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             myvariables.solicitudesproceso = false
         }
         if motivo != "Conductor"{
-            EnviarSocket(Datos)
+            //EnviarSocket(Datos)
+            self.EnviarTimer(estado: 1, datos: Datos)
         }
     }
     
@@ -1029,13 +1066,32 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }catch{
         }
         let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
-        EnviarSocket(datos)
+        //EnviarSocket(datos)
+        self.EnviarTimer(estado: 1, datos: datos)
         exit(3)
+    }
+    //Validar los formularios
+    func SoloLetras(name: String) -> Bool {
+        // (1):
+        let pat = "[0-9,.!@#$%^&*()_+-]"
+        // (2):
+        //let testStr = "x.wu@strath.ac.uk, ak123@hotmail.com     e1s59@oxford.ac.uk, ee123@cooleng.co.uk, a.khan@surrey.ac.uk"
+        // (3):
+        let regex = try! NSRegularExpression(pattern: pat, options: [])
+        // (4):
+        let matches = regex.matches(in: name, options: [], range: NSRange(location: 0, length: name.characters.count))
+        print(matches.count)
+        if matches.count == 0{
+            return true
+        }else{
+            return false
+        }
     }
     
     @objc func ocultarMenu(){
         self.MenuView1.isHidden = true
         self.TransparenciaView.isHidden = true
+        self.Inicio()
     }
     
     //MARK:- BOTONES GRAFICOS ACCIONES
@@ -1043,16 +1099,20 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.MenuView1.isHidden = !self.MenuView1.isHidden
         self.MenuView1.startCanvasAnimation()
         self.TransparenciaView.isHidden = self.MenuView1.isHidden
+        self.Inicio()
         self.TransparenciaView.startCanvasAnimation()
-            /*let fileAudio = FileManager()
-            let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
-            do {
-                try fileAudio.removeItem(atPath: AudioPath)
-            }catch{
-            }
-            let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
-            EnviarSocket(datos)
-            exit(3)*/
+        
+    }
+    @IBAction func SalirApp(_ sender: Any) {
+        let fileAudio = FileManager()
+         let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
+         do {
+         try fileAudio.removeItem(atPath: AudioPath)
+         }catch{
+         }
+         let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
+         EnviarSocket(datos)
+         exit(3)
     }
     
     @IBAction func RelocateBtn(_ sender: Any) {
@@ -1064,19 +1124,31 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //SOLICITAR BUTTON
     @IBAction func Solicitar(_ sender: AnyObject) {
         //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
+        
+        //Constraint to formulario solicitud
+        /*NSLayoutConstraint(item: myView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+        
+        NSLayoutConstraint(item: myView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+        
+        NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: myView, attribute:.width, multiplier: 2.0, constant:0.0).isActive = true?*/
+        
         self.CargarFavoritas()
         self.TablaDirecciones.reloadData()
         self.origenIcono.isHidden = true
         self.origenAnotacion.coordinate = mapaVista.centerCoordinate
         coreLocationManager.stopUpdatingLocation()
         self.SolicitarBtn.isHidden = true
-        ExplicacionView.isHidden = true
         self.formularioSolicitud.isHidden = false
         let datos = "#Posicion," + myvariables.cliente.idCliente + "," + "\(self.origenAnotacion.coordinate.latitude)," + "\(self.origenAnotacion.coordinate.longitude)," + "# \n"
-        EnviarSocket(datos)
+        //EnviarSocket(datos)
+        self.EnviarTimer(estado: 1, datos: datos)
         if myvariables.cliente.empresa != "null"{
             self.VoucherView.isHidden = false
             self.VoucherEmpresaName.text = myvariables.cliente.empresa
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:5.0).isActive = true
+            NSLayoutConstraint(item: self.BtnsView, attribute:.height, relatedBy: .equal, toItem: self.origenText, attribute:.height, multiplier: 1.0, constant:5.0).isActive = true
+        }else{
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:10.0).isActive = true
         }
     }
     
@@ -1091,14 +1163,18 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
    
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
-        if !(self.origenText.text?.isEmpty)! {
+        if !(self.origenText.text?.isEmpty)! && self.TelefonoContactoText.text != "Escriba el nombre del contacto" && self.TelefonoContactoText.text != "Número de teléfono incorrecto"{
             var voucher = "0"
             var recordar = "0"
             self.referenciaText.endEditing(true)
             
             mapaVista.removeAnnotations(self.mapaVista.annotations)
             let nuevaSolicitud = CSolicitud()
-            nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
+            if !(NombreContactoText.text?.isEmpty)!{
+                nuevaSolicitud.DatosOtroCliente(clienteId: myvariables.cliente.idCliente, telefono: self.TelefonoContactoText.text!, nombre: self.NombreContactoText.text!)
+            }else{
+                nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
+            }
             nuevaSolicitud.DatosSolicitud(dirorigen: self.origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
             if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
                 voucher = "1"
@@ -1123,7 +1199,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.origenText.text?.removeAll()
         self.RecordarView.isHidden = true
         self.RecordarSwitch.isOn = false
-        //self.destinoText.text?.removeAll()
         self.referenciaText.text?.removeAll()
         self.SolicitarBtn.isHidden = false
         if myvariables.solpendientes.count != 0{
@@ -1151,7 +1226,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         vc.solicitudesMostrar = myvariables.solpendientes
         self.navigationController?.show(vc, sender: nil)
         }else{
-            self.ExplicacionView.isHidden = !self.ExplicacionView.isHidden
             self.SolPendientesView.isHidden = !self.SolPendientesView.isHidden
         }
     }
@@ -1163,17 +1237,52 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //Funciones para mover los elementos para que no queden detrás del teclado
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text?.removeAll()
-        self.referenciaText.text.removeAll()
-        if self.DireccionesArray.count != 0{
-            self.TablaDirecciones.frame = CGRect(x: 20, y: 65, width: 261, height: 44 * self.DireccionesArray.count)
-            self.TablaDirecciones.isHidden = false
-            self.RecordarView.isHidden = true
+        if textField.isEqual(self.NombreContactoText) || textField.isEqual(self.TelefonoContactoText){
+            if textField.isEqual(self.TelefonoContactoText){
+                self.TelefonoContactoText.textColor = UIColor.black
+                if (self.NombreContactoText.text?.isEmpty)! || !self.SoloLetras(name: self.NombreContactoText.text!){
+                    self.TelefonoContactoText.textColor = UIColor.red
+                    self.TelefonoContactoText.text = "Escriba el nombre del contacto"
+                }
+            }
+            self.animateViewMoving(true, moveValue: 190, view: view)
+        }else{
+            if textField.isEqual(self.origenText){
+                if self.DireccionesArray.count != 0{
+                    self.TablaDirecciones.frame = CGRect(x: 22, y: Int(self.origenText.frame.origin.y + self.origenText.frame.height), width: Int(self.origenText.frame.width - 2) , height: 44 * self.DireccionesArray.count)
+                    self.TablaDirecciones.isHidden = false
+                    self.RecordarView.isHidden = true
+                }
+            }else{
+                if !(self.origenText.text?.isEmpty)! && textField.isEqual(self.referenciaText){
+                    textField.text?.removeAll()
+                    animateViewMoving(true, moveValue: 100, view: self.view)
+                }else{
+                    self.referenciaText.resignFirstResponder()
+                    animateViewMoving(true, moveValue: 100, view: self.view)
+                    let alertaDos = UIAlertController (title: "Dirección de Origen", message: "Debe teclear la dirección de recogida para orientar al conductor.", preferredStyle: .alert)
+                    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                        self.origenText.becomeFirstResponder()
+                    }))
+                    
+                    self.present(alertaDos, animated: true, completion: nil)
+                }
+            }
         }
-        self.animateViewMoving(true, moveValue: 50, view: view)
     }
     
     func textFieldDidEndEditing(_ textfield: UITextField) {
-        self.animateViewMoving(false, moveValue: 50, view: view)
+        if textfield.isEqual(self.NombreContactoText) || textfield.isEqual(self.TelefonoContactoText){
+            if textfield.isEqual(self.TelefonoContactoText) && textfield.text?.characters.count != 10 && textfield.text?.characters.count != 9 && !((self.NombreContactoText.text?.isEmpty)!){
+                textfield.textColor = UIColor.red
+                textfield.text = "Número de teléfono incorrecto"
+            }
+            self.animateViewMoving(false, moveValue: 190, view: view)
+        }else{
+            if textfield.isEqual(self.referenciaText){
+                self.animateViewMoving(false, moveValue: 100, view: view)
+            }
+        }
         self.TablaDirecciones.isHidden = true
         self.EnviarSolBtn.isEnabled = true
     }
@@ -1193,7 +1302,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //self.origenText.resignFirstResponder()
-        self.referenciaText.becomeFirstResponder()
+        //self.referenciaText.becomeFirstResponder()
+        self.view.endEditing(true)
         return true
     }
     
@@ -1217,24 +1327,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if !(self.origenText.text?.isEmpty)!{
-            textView.text.removeAll()
-            animateViewMoving(true, moveValue: self.keyboardHeight, view: self.view)
-        }else{
-            self.referenciaText.resignFirstResponder()
-            animateViewMoving(true, moveValue: self.keyboardHeight, view: self.view)
-            let alertaDos = UIAlertController (title: "Dirección de Origen", message: "Debe teclear la dirección de recogida para orientar al conductor.", preferredStyle: .alert)
-            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-               self.origenText.becomeFirstResponder()
-            }))
-            
-            self.present(alertaDos, animated: true, completion: nil)
-        }
+        
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        animateViewMoving(false, moveValue: self.keyboardHeight, view: self.view)
-        
+        animateViewMoving(false, moveValue: 60, view: self.view)
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -1305,7 +1402,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 vc.solicitudesMostrar = myvariables.solpendientes
                 self.navigationController?.show(vc, sender: nil)
             }else{
-                self.ExplicacionView.isHidden = true
                 self.SolPendientesView.isHidden = false
             }
         case "Call center"?:
@@ -1340,10 +1436,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             return false
         }
     }
+    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
     }
-    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
@@ -1358,12 +1454,23 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.isEqual(self.MenuTable){
-            return self.MenuTable.frame.height/5
+            return self.MenuTable.frame.height/CGFloat(self.MenuArray.count)
         }else{
             return 44
         }
     }
+    
+}
 
-
+ extension UITextField {
+    func setBottomBorder(borderColor: UIColor) {
+        self.borderStyle = UITextBorderStyle.none
+        self.backgroundColor = UIColor.clear
+        let width = 1.0
+        let borderLine = UIView()
+        borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - width, width: Double(self.frame.width), height: width)
+        borderLine.backgroundColor = borderColor
+        self.addSubview(borderLine)
+    }
     
 }

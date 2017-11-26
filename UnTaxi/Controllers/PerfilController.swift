@@ -279,7 +279,4 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
         }
         //animateViewMoving(true, moveValue: 135, view: self.view)
     }
-
-
-
 }

@@ -77,6 +77,13 @@ class CSolicitud {
         
     }
     
+    //agregar datos de otro cliente
+    func DatosOtroCliente(clienteId: String, telefono: String, nombre: String){
+        self.idCliente = clienteId
+        self.user = telefono
+        self.nombreApellidos = nombre
+    }
+    
     //agregar datos del cliente
     func DatosCliente(cliente: CCliente){
         self.idCliente = cliente.idCliente
