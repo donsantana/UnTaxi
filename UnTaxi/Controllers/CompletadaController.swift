@@ -107,12 +107,12 @@ class CompletadaController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.isEqual(comentarioText){
             textView.text.removeAll()
-            animateViewMoving(true, moveValue: 180, view: self.view)
+            animateViewMoving(true, moveValue: 200, view: self.view)
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.isEqual(comentarioText){
-            animateViewMoving(false, moveValue: 180,view: self.view)
+            animateViewMoving(false, moveValue: 200,view: self.view)
         }
     }
     

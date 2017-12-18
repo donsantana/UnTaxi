@@ -47,7 +47,6 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @IBOutlet weak var confirmarClavText: UITextField!
     @IBOutlet weak var correoText: UITextField!
     @IBOutlet weak var telefonoText: UITextField!
-    //@IBOutlet weak var RecomendadoText: UITextField!
     @IBOutlet weak var RecomendadoText: UITextField!
     @IBOutlet weak var RegistroBtn: UIButton!
 
@@ -72,6 +71,8 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         self.DatosView.addGestureRecognizer(tapGesture)
         self.ClaveRecover.addGestureRecognizer(tapGesture)
+        self.RegistroView.addGestureRecognizer(tapGesture)
+        self.view.addGestureRecognizer(tapGesture)
         
         if CConexionInternet.isConnectedToNetwork() == true{
             myvariables.socket = SocketIOClient(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(false), .forcePolling(true)])
@@ -516,6 +517,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @objc func ocultarTeclado(){
         self.ClaveRecover.endEditing(true)
         self.DatosView.endEditing(true)
+        self.RegistroView.endEditing(true)
     }
 }
 

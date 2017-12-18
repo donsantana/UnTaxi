@@ -34,7 +34,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     var TelefonosCallCenter = [CTelefono]()
     var opcionAnterior : IndexPath!
     var evaluacion: CEvaluacion!
-    var taxiscercanos = [MKPointAnnotation]()
+
     //var SMSVoz = CSMSVoz()
     
     var responseData = NSMutableData()
@@ -62,7 +62,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     @IBOutlet weak var origenIcono: UIImageView!
     @IBOutlet weak var mapaVista: MKMapView!
-
+    
     
     //@IBOutlet weak var destinoText: UITextField!
     @IBOutlet weak var origenText: UITextField!
@@ -75,8 +75,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var NombreContactoText: UITextField!
     @IBOutlet weak var TelefonoContactoText: UITextField!
     
- 
-
+    
+    
     @IBOutlet weak var LocationBtn: UIButton!
     @IBOutlet weak var SolicitarBtn: UIButton!
     @IBOutlet weak var formularioSolicitud: UIView!
@@ -86,7 +86,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     @IBOutlet weak var aceptarLocBtn: UIButton!
     @IBOutlet weak var CancelarEnvioBtn: UIButton!
-
+    
     
     //MENU BUTTONS
     @IBOutlet weak var MenuView1: UIView!
@@ -102,7 +102,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBOutlet weak var SolPendImage: UIImageView!
     @IBOutlet weak var CantSolPendientes: UILabel!
     @IBOutlet weak var SolPendientesView: UIView!
-
+    
     
     
     @IBOutlet weak var AlertaEsperaView: UIView!
@@ -119,7 +119,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     
     var TimerTemporal = Timer()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //LECTURA DEL FICHERO PARA AUTENTICACION
@@ -134,7 +134,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //solicitud de autorización para acceder a la localización del usuario
         self.NombreUsuario.text = myvariables.cliente.nombreApellidos
-
+        
         self.MenuTable.delegate = self
         self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
         self.MenuView1.layer.borderWidth = 0.3
@@ -153,7 +153,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         let MenuTapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarMenu))
         self.TransparenciaView.addGestureRecognizer(MenuTapGesture)
-
+        
         
         if let tempLocation = self.coreLocationManager.location?.coordinate{
             self.origenAnotacion.coordinate = (coreLocationManager.location?.coordinate)!
@@ -190,17 +190,14 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.timer.invalidate()
                 let url = "#U,# \n"
                 self.EnviarSocket(url)
-                //self.EnviarTimer(estado: 1, datos: url)
                 let telefonos = "#Telefonos,# \n"
                 self.EnviarSocket(telefonos)
-                //self.EnviarTimer(estado: 1, datos: telefonos)
                 let datos = "OT"
                 self.EnviarSocket(datos)
-                //self.EnviarTimer(estado: 1, datos: datos)
                 if myvariables.solpendientes.count > 0{
-                     self.CantSolPendientes.isHidden = false
-                     self.CantSolPendientes.text = String(myvariables.solpendientes.count)
-                     self.SolPendImage.isHidden = false
+                    self.CantSolPendientes.isHidden = false
+                    self.CantSolPendientes.text = String(myvariables.solpendientes.count)
+                    self.SolPendImage.isHidden = false
                 }
             })
             ColaHilos.addOperation(Hilos)
@@ -213,6 +210,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.TablaDirecciones.delegate = self
         
         self.origenText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         switch AVAudioSession.sharedInstance().recordPermission() {
         case AVAudioSessionRecordPermission.granted:
             print("Permission granted")
@@ -223,7 +221,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 if granted {
                     
                 } else{
-
+                    
                 }
             })
         default:
@@ -239,7 +237,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        self.mapaVista.removeAnnotations(self.mapaVista.annotations)
         var anotationView = mapaVista.dequeueReusableAnnotationView(withIdentifier: "annotationView")
         anotationView = MKAnnotationView(annotation: self.origenAnotacion, reuseIdentifier: "annotationView")
         if annotation.title! == "origen"{
@@ -251,8 +248,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            self.miposicion.coordinate = (locations.last?.coordinate)!
-            self.SolicitarBtn.isHidden = false
+        self.miposicion.coordinate = (locations.last?.coordinate)!
+        self.SolicitarBtn.isHidden = false
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -282,19 +279,18 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             mapaVista.addAnnotation(self.miposicion)
         }
     }
-
+    
     //MARK:- FUNCIONES PROPIAS
     
     //FUNCTION ENVIO CON TIMER
     func EnviarTimer(estado: Int, datos: String){
         if estado == 1{
             if !self.emitTimer.isValid{
-                self.emitTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+                self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
             }
         }else{
             self.emitTimer.invalidate()
             self.EnviosCount = 0
-            print("Desactivando Timer")
         }
     }
     func appUpdateAvailable() -> Bool
@@ -332,9 +328,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         ///Volumes/Datos/Ecuador/Desarrollo/UnTaxi/UnTaxi/LocationManager.swift:635:31: Ambiguous use of 'indexOfObject'
         return upgradeAvailable
     }
-
+    
     func SocketEventos(){
-       
+        
         //Evento sockect para escuchar
         //TRAMA IN: #LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi,latorig,lngorig,latdest,lngdest,telefonoconductor
         if self.appUpdateAvailable(){
@@ -348,13 +344,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 exit(0)
             }))
             self.present(alertaVersion, animated: true, completion: nil)
-
+            
         }
         
         myvariables.socket.on("LoginPassword"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
-           
+            
             if (temporal[0] == "[#LoginPassword") || (temporal[0] == "#LoginPassword"){
                 myvariables.solpendientes = [CSolicitud]()
                 self.contador = 0
@@ -362,10 +357,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 case "loginok":
                     let url = "#U,# \n"
                     self.EnviarSocket(url)
-                    //self.EnviarTimer(estado: 1, datos: url)
                     let telefonos = "#Telefonos,# \n"
                     self.EnviarSocket(telefonos)
-                    //self.EnviarTimer(estado: 1, datos: telefonos)
                     self.idusuario = temporal[2]
                     self.SolicitarBtn.isHidden = false
                     //self.LoginView.isHidden = true
@@ -395,11 +388,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 //exit(0)
             }
         }
-    
+        
         //Evento Posicion de taxis
         myvariables.socket.on("Posicion"){data, ack in
-            //
-            self.EnviarTimer(estado: 0, datos: "terminando")
+
             let temporal = String(describing: data).components(separatedBy: ",")
             if(temporal[1] == "0") {
                 let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
@@ -407,8 +399,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                     self.Inicio()
                 }))                
                 self.present(alertaDos, animated: true, completion: nil)
-            }
-            else{
+            }else{
                 self.MostrarTaxi(temporal)
             }
         }
@@ -424,15 +415,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.AlertaEsperaView.isHidden = false
                 self.CancelarSolicitudProceso.isHidden = false
                 self.ConfirmaSolicitud(temporal)
-            }
-            else{
-
+            }else{
+                
             }
         }
         
         //ACTIVACION DEL TAXIMETRO
         myvariables.socket.on("TI"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0 {
                 //self.MensajeEspera.text = temporal
@@ -444,15 +433,14 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                             
                         }))
                         self.present(alertaDos, animated: true, completion: nil)
-                        }
                     }
                 }
+            }
         }
-
+        
         
         //RESPUESTA DE CANCELAR SOLICITUD
         myvariables.socket.on("Cancelarsolicitud"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertControllerStyle.alert)
@@ -473,7 +461,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         //RESPUESTA DE CONDUCTOR A SOLICITUD
         
         myvariables.socket.on("Aceptada"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             self.Inicio()
             let temporal = String(describing: data).components(separatedBy: ",")
             //#Aceptada, idsolicitud, idconductor, nombreApellidosConductor, movilConductor, URLfoto, idTaxi, Codvehiculo, matricula, marca, color, latTaxi, lngTaxi
@@ -484,20 +471,20 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 }
                 if myvariables.solpendientes[i].idSolicitud == temporal[1]{
                     
-                        let solicitud = myvariables.solpendientes[i]
-                        solicitud.DatosTaxiConductor(idtaxi: temporal[6], matricula: temporal[8], codigovehiculo: temporal[7], marcaVehiculo: temporal[9],colorVehiculo: temporal[10], lattaxi: temporal[11], lngtaxi: temporal[12], idconductor: temporal[2], nombreapellidosconductor: temporal[3], movilconductor: temporal[4], foto: temporal[5])
-                        
-                        let alertaDos = UIAlertController (title: "Solicitud Aceptada", message: "Su vehículo se encuentra en camino, siga su trayectoria en el mapa y/o comuníquese con el conductor.", preferredStyle: .alert)
-                        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                            
-                            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "SolPendientes") as! SolPendController
-                            vc.SolicitudPendiente = solicitud
-                            vc.posicionSolicitud = myvariables.solpendientes.count - 1
-                            self.navigationController?.show(vc, sender: nil)
-                        }))
+                    let solicitud = myvariables.solpendientes[i]
+                    solicitud.DatosTaxiConductor(idtaxi: temporal[6], matricula: temporal[8], codigovehiculo: temporal[7], marcaVehiculo: temporal[9],colorVehiculo: temporal[10], lattaxi: temporal[11], lngtaxi: temporal[12], idconductor: temporal[2], nombreapellidosconductor: temporal[3], movilconductor: temporal[4], foto: temporal[5])
                     
-                        self.present(alertaDos, animated: true, completion: nil)
-                    }
+                    let alertaDos = UIAlertController (title: "Solicitud Aceptada", message: "Su vehículo se encuentra en camino, siga su trayectoria en el mapa y/o comuníquese con el conductor.", preferredStyle: .alert)
+                    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                        
+                        let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "SolPendientes") as! SolPendController
+                        vc.SolicitudPendiente = solicitud
+                        vc.posicionSolicitud = myvariables.solpendientes.count - 1
+                        self.navigationController?.show(vc, sender: nil)
+                    }))
+                    
+                    self.present(alertaDos, animated: true, completion: nil)
+                }
             }
             else{
                 if temporal[0] == "#Cancelada" {
@@ -514,10 +501,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("Completada"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             //'#Completada,'+idsolicitud+','+idtaxi+','+distancia+','+tiempoespera+','+importe+',# \n'
             let temporal = String(describing: data).components(separatedBy: ",")
-
+            
             if myvariables.solpendientes.count != 0{
                 let pos = self.BuscarPosSolicitudID(temporal[1])
                 myvariables.solpendientes.remove(at: pos)
@@ -527,7 +513,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 }else{
                     self.SolPendImage.isHidden = true
                 }
-
+                
                 let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "completadaView") as! CompletadaController
                 vc.idSolicitud = temporal[1]
                 vc.idTaxi = temporal[2]
@@ -540,7 +526,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("Cambioestadosolicitudconductor"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertControllerStyle.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
@@ -557,7 +542,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //SOLICITUDES SIN RESPUESTA DE TAXIS
         myvariables.socket.on("SNA"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if myvariables.solpendientes.count != 0{
                 for solicitudenproceso in myvariables.solpendientes{
@@ -571,18 +555,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                     }
                 }
             }
-            
         }
         
         //URl PARA AUDIO
         myvariables.socket.on("U"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             myvariables.UrlSubirVoz = temporal[1]
         }
         
         myvariables.socket.on("V"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             myvariables.urlconductor = temporal[1]
             if UIApplication.shared.applicationState != .background {
@@ -630,7 +611,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         myvariables.socket.on("Telefonos"){data, ack in
             //#Telefonos,cantidad,numerotelefono1,operadora1,siesmovil1,sitienewassap1,numerotelefono2,operadora2..,#
-            self.EnviarTimer(estado: 0, datos: "terminando")
             self.TelefonosCallCenter = [CTelefono]()
             let temporal = String(describing: data).components(separatedBy: ",")
             
@@ -644,48 +624,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 }
                 //self.GuardarTelefonos(temporal)
             }
-        }
-        
-        //RECUPERAR CLAVES
-        myvariables.socket.on("Recuperarclave"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
-            let temporal = String(describing: data).components(separatedBy: ",")
-            if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                }))
-                
-                self.present(alertaDos, animated: true, completion: nil)
-                
-            }
-            
-        }
-        
-        //CAMBIAR CLAVE
-        /*#Cambiarclave,idusuario,claveold,clavenew
-         evento Cambiarclave
-         retorno #Cambiarclave,ok
-         #Cambiarclave,error*/
-        myvariables.socket.on("Cambiarclave"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "terminando")
-            let temporal = String(describing: data).components(separatedBy: ",")
-            if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-
-                }))
-                
-                self.present(alertaDos, animated: true, completion: nil)
-                
-            }else{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-
-                }))
-                
-                self.present(alertaDos, animated: true, completion: nil)
-            }
-            
         }
     }
     
@@ -703,12 +641,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.present(alertaDos, animated: true, completion: nil)
         }
     }
-
+    
     //FUNCIÓN ENVIAR AL SOCKET
     @objc func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
             if myvariables.socket.reconnects && self.EnviosCount <= 3{
-                print("here")
                 myvariables.socket.emit("data",datos)
                 //let result = myvariables.socket.emitWithAck("data", datos)
             }else{
@@ -730,12 +667,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
                 var datos: String = (userInfo["datos"] as! String)
-                myvariables.socket.emit("data",datos)
-                print(self.EnviosCount)
-                //let result = myvariables.socket.emitWithAck("data", datos)
             }else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    self.EnviarTimer(estado: 0, datos: "Terminado")
                     exit(0)
                 }))
                 self.present(alertaDos, animated: true, completion: nil)
@@ -772,7 +707,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     //DIRECCIONES FAVORITAS
     func CargarFavoritas(){
-        print("hereeeee")
         let path = NSHomeDirectory() + "/Library/Caches/"
         let url = NSURL(fileURLWithPath: path)
         let filePath = url.appendingPathComponent("dir.plist")?.path
@@ -782,7 +716,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             do {
                 self.DireccionesArray = NSArray(contentsOf: filePath) as! [[String]]
             }catch{
-            
+                
             }
         }
     }
@@ -811,7 +745,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             
         }
     }
-
+    
     
     //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
     func ListSolicitudPendiente(_ listado : [String]){
@@ -880,47 +814,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         return posicion
     }
     
-    //GUARDAR LOS DATOS CON COREDATA
-    
-    /*func GuardarTelefonos(_ telefonos: [String]) {
-        // create an instance of our managedObjectContext
-        //let moc = DataController().managedObjectContext
-        
-        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Telefonos")
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do
-        {
-            let results = try moc.fetch(fetchRequest)
-            for managedObject in results
-            {
-                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-                moc.delete(managedObjectData)
-            }
-        } catch {
-            
-        }
-        
-        //moc.delete(data)
-        var i = 2
-        while i <= telefonos.count - 4{
-            let entity = NSEntityDescription.insertNewObject(forEntityName: "Telefonos", into: moc) as! Telefonos
-            // add our data
-            entity.setValue(telefonos[i], forKey: "numerotelefono")
-            entity.setValue(telefonos[i + 1], forKey: "operadoratelefono")
-            
-            // we save our entity
-            do {
-                try moc.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
-            i += 4
-        }
-    }*/
-    
     //Respuesta de solicitud
     func ConfirmaSolicitud(_ Temporal : [String]){
         //Trama IN: #Solicitud, ok, idsolicitud, fechahora
@@ -941,18 +834,17 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     func MostrarTaxi(_ temporal : [String]){
         //TRAMA IN: #Posicion,idtaxi,lattaxi,lngtaxi
         var i = 2
+        var taxiscercanos = [MKPointAnnotation]()
         while i  <= temporal.count - 6{
             let taxiTemp = MKPointAnnotation()
             taxiTemp.coordinate = CLLocationCoordinate2DMake(Double(temporal[i + 2])!, Double(temporal[i + 3])!)
             taxiTemp.title = temporal[i]
-            //taxiTemp.icon = UIImage(named: "taxi_libre")
             taxiscercanos.append(taxiTemp)
             i += 6
         }
         DibujarIconos(taxiscercanos)
     }
-
-
+    
     //FUNCIONES ESCUCHAR SOCKET
     func ErrorConexion(){
         //self.CargarTelefonos()
@@ -962,8 +854,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
-
-        
         self.present(alertaDos, animated: true, completion: nil)
     }
     
@@ -973,7 +863,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         formularioSolicitud.isHidden = true
         origenIcono.isHidden = true
         myvariables.solpendientes.append(nuevaSolicitud)
-
+        
         let datoscliente = nuevaSolicitud.idCliente + "," + nuevaSolicitud.nombreApellidos + "," + nuevaSolicitud.user
         let datossolicitud = nuevaSolicitud.dirOrigen + "," + nuevaSolicitud.referenciaorigen + "," + "null"
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
@@ -991,17 +881,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     func DibujarIconos(_ anotaciones: [MKPointAnnotation]){
         if anotaciones.count == 1{
-            let span = MKCoordinateSpanMake(0.005, 0.005)
-            let region = MKCoordinateRegion(center: anotaciones[0].coordinate, span: span)
-            self.mapaVista.setRegion(region, animated: true)
-            self.mapaVista.addAnnotation(anotaciones[0])
-        }
-        else{
-            for var anotacionview in anotaciones{
-                if ((anotacionview.coordinate.latitude != 0) && (anotacionview.coordinate.longitude != 0)){
-                    self.mapaVista.addAnnotation(anotacionview)
-                }
-            }
+            self.mapaVista.addAnnotations([self.origenAnotacion,anotaciones[0]])
+            self.mapaVista.fitAll(in: self.mapaVista.annotations, andShow: true)
+        }else{
+            self.mapaVista.addAnnotations(anotaciones)
+            self.mapaVista.fitAll(in: anotaciones, andShow: true)
         }
     }
     
@@ -1010,32 +894,32 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-                self.CancelarSolicitudes("No necesito")
-   
+            self.CancelarSolicitudes("No necesito")
+            
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             
-                self.CancelarSolicitudes("Demora el servicio")
-      
+            self.CancelarSolicitudes("Demora el servicio")
+            
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-
-                self.CancelarSolicitudes("Tarifa incorrecta")
-       
+            
+            self.CancelarSolicitudes("Tarifa incorrecta")
+            
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-
-                self.CancelarSolicitudes("Vehículo en mal estado")
-
+            
+            self.CancelarSolicitudes("Vehículo en mal estado")
+            
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-
-                self.CancelarSolicitudes("Solo probaba el servicio")
-
+            
+            self.CancelarSolicitudes("Solo probaba el servicio")
+            
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
         }))
@@ -1053,8 +937,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             myvariables.solicitudesproceso = false
         }
         if motivo != "Conductor"{
-            //EnviarSocket(Datos)
-            self.EnviarTimer(estado: 1, datos: Datos)
+            EnviarSocket(Datos)
         }
     }
     
@@ -1066,10 +949,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }catch{
         }
         let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
-        //EnviarSocket(datos)
-        self.EnviarTimer(estado: 1, datos: datos)
+        EnviarSocket(datos)
         exit(3)
     }
+    
     //Validar los formularios
     func SoloLetras(name: String) -> Bool {
         // (1):
@@ -1105,21 +988,21 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     @IBAction func SalirApp(_ sender: Any) {
         let fileAudio = FileManager()
-         let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
-         do {
-         try fileAudio.removeItem(atPath: AudioPath)
-         }catch{
-         }
-         let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
-         EnviarSocket(datos)
-         exit(3)
+        let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
+        do {
+            try fileAudio.removeItem(atPath: AudioPath)
+        }catch{
+        }
+        let datos = "#SocketClose," + myvariables.cliente.idCliente + ",# \n"
+        EnviarSocket(datos)
+        exit(3)
     }
     
     @IBAction func RelocateBtn(_ sender: Any) {
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
         self.mapaVista.setRegion(region, animated: true)
-
+        
     }
     //SOLICITAR BUTTON
     @IBAction func Solicitar(_ sender: AnyObject) {
@@ -1127,10 +1010,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         //Constraint to formulario solicitud
         /*NSLayoutConstraint(item: myView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: myView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: myView, attribute:.width, multiplier: 2.0, constant:0.0).isActive = true?*/
+         
+         NSLayoutConstraint(item: myView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+         
+         NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: myView, attribute:.width, multiplier: 2.0, constant:0.0).isActive = true?*/
         
         self.CargarFavoritas()
         self.TablaDirecciones.reloadData()
@@ -1140,15 +1023,16 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.SolicitarBtn.isHidden = true
         self.formularioSolicitud.isHidden = false
         let datos = "#Posicion," + myvariables.cliente.idCliente + "," + "\(self.origenAnotacion.coordinate.latitude)," + "\(self.origenAnotacion.coordinate.longitude)," + "# \n"
-        //EnviarSocket(datos)
-        self.EnviarTimer(estado: 1, datos: datos)
+        EnviarSocket(datos)
         if myvariables.cliente.empresa != "null"{
             self.VoucherView.isHidden = false
             self.VoucherEmpresaName.text = myvariables.cliente.empresa
-            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:5.0).isActive = true
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:15.0).isActive = true
             NSLayoutConstraint(item: self.BtnsView, attribute:.height, relatedBy: .equal, toItem: self.origenText, attribute:.height, multiplier: 1.0, constant:5.0).isActive = true
         }else{
-            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:10.0).isActive = true
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:0.0).isActive = true
+            
+            NSLayoutConstraint(item: self.BtnsView, attribute:.height, relatedBy: .equal, toItem: self.origenText, attribute:.height, multiplier: 1.0, constant:5.0).isActive = true
         }
     }
     
@@ -1160,34 +1044,42 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.VoucherEmpresaName.isHidden = true
         }
     }
-   
+    
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
-        if !(self.origenText.text?.isEmpty)! && self.TelefonoContactoText.text != "Escriba el nombre del contacto" && self.TelefonoContactoText.text != "Número de teléfono incorrecto"{
-            var voucher = "0"
-            var recordar = "0"
-            self.referenciaText.endEditing(true)
-            
-            mapaVista.removeAnnotations(self.mapaVista.annotations)
-            let nuevaSolicitud = CSolicitud()
-            if !(NombreContactoText.text?.isEmpty)!{
-                nuevaSolicitud.DatosOtroCliente(clienteId: myvariables.cliente.idCliente, telefono: self.TelefonoContactoText.text!, nombre: self.NombreContactoText.text!)
-            }else{
-                nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-            }
-            nuevaSolicitud.DatosSolicitud(dirorigen: self.origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
-            if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
-                voucher = "1"
-            }
-            if self.RecordarView.isHidden == false && self.RecordarSwitch.isOn{
-                let newFavorita = [self.origenText.text, referenciaText.text]
-                self.GuardarFavorita(newFavorita: newFavorita as! [String])
-            }
-            self.CrearSolicitud(nuevaSolicitud,voucher: voucher)
-            self.RecordarView.isHidden = true
-            //self.CancelarSolicitudProceso.isHidden = false
+        if !(self.NombreContactoText.text?.isEmpty)! && (self.TelefonoContactoText.text?.isEmpty)!{
+            let alertaDos = UIAlertController (title: "Contactar a otra persona", message: "Debe teclear el número de teléfono de la persona que el conductor debe contactar.", preferredStyle: .alert)
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                
+            }))
+            self.present(alertaDos, animated: true, completion: nil)
         }else{
-            
+            if (!(self.origenText.text?.isEmpty)! && self.TelefonoContactoText.text != "Escriba el nombre del contacto" && self.TelefonoContactoText.text != "Número de teléfono incorrecto"){
+                var voucher = "0"
+                var recordar = "0"
+                self.referenciaText.endEditing(true)
+                
+                mapaVista.removeAnnotations(self.mapaVista.annotations)
+                let nuevaSolicitud = CSolicitud()
+                if !(NombreContactoText.text?.isEmpty)!{
+                    nuevaSolicitud.DatosOtroCliente(clienteId: myvariables.cliente.idCliente, telefono: self.TelefonoContactoText.text!, nombre: self.NombreContactoText.text!)
+                }else{
+                    nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
+                }
+                nuevaSolicitud.DatosSolicitud(dirorigen: self.origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
+                if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
+                    voucher = "1"
+                }
+                if self.RecordarView.isHidden == false && self.RecordarSwitch.isOn{
+                    let newFavorita = [self.origenText.text, referenciaText.text]
+                    self.GuardarFavorita(newFavorita: newFavorita as! [String])
+                }
+                self.CrearSolicitud(nuevaSolicitud,voucher: voucher)
+                self.RecordarView.isHidden = true
+                //self.CancelarSolicitudProceso.isHidden = false
+            }else{
+                
+            }
         }
     }
     
@@ -1222,9 +1114,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     @IBAction func MostrarSolPendientes(_ sender: AnyObject) {
         if myvariables.solpendientes.count > 0{
-        let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
-        vc.solicitudesMostrar = myvariables.solpendientes
-        self.navigationController?.show(vc, sender: nil)
+            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
+            vc.solicitudesMostrar = myvariables.solpendientes
+            self.navigationController?.show(vc, sender: nil)
         }else{
             self.SolPendientesView.isHidden = !self.SolPendientesView.isHidden
         }
@@ -1232,7 +1124,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @IBAction func MapaMenu(_ sender: AnyObject) {
         Inicio()
     }
-
+    
     //CONTROL DE TECLADO VIRTUAL
     //Funciones para mover los elementos para que no queden detrás del teclado
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -1241,8 +1133,11 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             if textField.isEqual(self.TelefonoContactoText){
                 self.TelefonoContactoText.textColor = UIColor.black
                 if (self.NombreContactoText.text?.isEmpty)! || !self.SoloLetras(name: self.NombreContactoText.text!){
-                    self.TelefonoContactoText.textColor = UIColor.red
-                    self.TelefonoContactoText.text = "Escriba el nombre del contacto"
+                    let alertaDos = UIAlertController (title: "Contactar a otra persona", message: "Debe teclear el nombre de la persona que el conductor debe contactar.", preferredStyle: .alert)
+                    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                        self.NombreContactoText.becomeFirstResponder()
+                    }))
+                    self.present(alertaDos, animated: true, completion: nil)
                 }
             }
             self.animateViewMoving(true, moveValue: 190, view: view)
@@ -1296,7 +1191,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         if self.DireccionesArray.count < 5 {
             self.RecordarView.isHidden = false
         }
-    
+        
         self.EnviarSolBtn.isEnabled = true
     }
     
@@ -1316,10 +1211,10 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
-
+    
     //MARK:- CONTROL DE TECLADO VIRTUAL
     //Funciones para mover los elementos para que no queden detrás del teclado
-
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.keyboardHeight = keyboardSize.height
@@ -1329,7 +1224,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     func textViewDidBeginEditing(_ textView: UITextView) {
         
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         animateViewMoving(false, moveValue: 60, view: self.view)
     }
@@ -1365,7 +1260,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if tableView.isEqual(self.TablaDirecciones){
-           return self.DireccionesArray.count
+            return self.DireccionesArray.count
         }else{
             return self.MenuArray.count
         }
@@ -1374,9 +1269,9 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.isEqual(self.TablaDirecciones){
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
-        cell.textLabel?.text = self.DireccionesArray[indexPath.row][0]
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
+            cell.textLabel?.text = self.DireccionesArray[indexPath.row][0]
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
             cell.textLabel?.text = self.MenuArray[indexPath.row].title
@@ -1386,45 +1281,45 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       if tableView.isEqual(self.TablaDirecciones){
-        self.origenText.text = self.DireccionesArray[indexPath.row][0]
-        self.TablaDirecciones.isHidden = true
-        self.origenText.resignFirstResponder()
-        self.referenciaText.text = self.DireccionesArray[indexPath.row][1]
-       }else{
-        self.MenuView1.isHidden = true
-        self.TransparenciaView.isHidden = true
-        tableView.deselectRow(at: indexPath, animated: false)
-        switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
-        case "En proceso"?:
-            if myvariables.solpendientes.count > 0{
-                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
-                vc.solicitudesMostrar = myvariables.solpendientes
+        if tableView.isEqual(self.TablaDirecciones){
+            self.origenText.text = self.DireccionesArray[indexPath.row][0]
+            self.TablaDirecciones.isHidden = true
+            self.origenText.resignFirstResponder()
+            self.referenciaText.text = self.DireccionesArray[indexPath.row][1]
+        }else{
+            self.MenuView1.isHidden = true
+            self.TransparenciaView.isHidden = true
+            tableView.deselectRow(at: indexPath, animated: false)
+            switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
+            case "En proceso"?:
+                if myvariables.solpendientes.count > 0{
+                    let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "ListaSolPdtes") as! SolicitudesTableController
+                    vc.solicitudesMostrar = myvariables.solpendientes
+                    self.navigationController?.show(vc, sender: nil)
+                }else{
+                    self.SolPendientesView.isHidden = false
+                }
+            case "Call center"?:
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "CallCenter") as! CallCenterController
+                vc.telefonosCallCenter = self.TelefonosCallCenter
                 self.navigationController?.show(vc, sender: nil)
-            }else{
-                self.SolPendientesView.isHidden = false
+            case "Perfil"?:
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Perfil") as! PerfilController
+                self.navigationController?.show(vc, sender: nil)
+            case "Compartir app"?:
+                if let name = URL(string: "itms://itunes.apple.com/us/app/apple-store/id1149206387?mt=8") {
+                    let objectsToShare = [name]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+                else
+                {
+                    // show alert for not available
+                }
+            default:
+                self.CloseAPP()
             }
-        case "Call center"?:
-            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "CallCenter") as! CallCenterController
-            vc.telefonosCallCenter = self.TelefonosCallCenter
-            self.navigationController?.show(vc, sender: nil)
-        case "Perfil"?:
-            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Perfil") as! PerfilController
-            self.navigationController?.show(vc, sender: nil)
-        case "Compartir app"?:
-            if let name = URL(string: "itms://itunes.apple.com/us/app/apple-store/id1149206387?mt=8") {
-                let objectsToShare = [name]
-                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                
-                self.present(activityVC, animated: true, completion: nil)
-            }
-            else
-            {
-                // show alert for not available
-            }
-        default:
-            self.CloseAPP()
-        }
         }
     }
     
@@ -1462,7 +1357,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
 }
 
- extension UITextField {
+extension UITextField {
     func setBottomBorder(borderColor: UIColor) {
         self.borderStyle = UITextBorderStyle.none
         self.backgroundColor = UIColor.clear
@@ -1472,5 +1367,38 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         borderLine.backgroundColor = borderColor
         self.addSubview(borderLine)
     }
+}
+
+extension MKMapView {
+    /// when we call this function, we have already added the annotations to the map, and just want all of them to be displayed.
+    func fitAll() {
+        var zoomRect            = MKMapRectNull;
+        for annotation in annotations {
+            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+            let pointRect       = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.01, 0.01)
+            zoomRect            = MKMapRectUnion(zoomRect, pointRect);
+        }
+        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(100, 100, 100, 100), animated: true)
+    }
     
+    /// we call this function and give it the annotations we want added to the map. we display the annotations if necessary
+    func fitAll(in annotations: [MKAnnotation], andShow show: Bool) {
+        
+        var zoomRect:MKMapRect  = MKMapRectNull
+        
+        for annotation in annotations {
+            let aPoint          = MKMapPointForCoordinate(annotation.coordinate)
+            let rect            = MKMapRectMake(aPoint.x, aPoint.y, 0.071, 0.071)
+            
+            if MKMapRectIsNull(zoomRect) {
+                zoomRect = rect
+            } else {
+                zoomRect = MKMapRectUnion(zoomRect, rect)
+            }
+        }
+        if(show) {
+            addAnnotations(annotations)
+        }
+        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: true)
+    }
 }

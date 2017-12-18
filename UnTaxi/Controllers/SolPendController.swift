@@ -58,9 +58,9 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         self.MapaSolPen.delegate = self
         self.OrigenSolicitud.coordinate = self.SolicitudPendiente.origenCarrera
         self.OrigenSolicitud.title = "origen"
-        let span = MKCoordinateSpanMake(0.077, 0.077)
-        let region = MKCoordinateRegion(center: self.SolicitudPendiente.origenCarrera, span: span)
-        self.MapaSolPen.setRegion(region, animated: true)
+        //let span = MKCoordinateSpanMake(0.77, 0.77)
+        //let region = MKCoordinateRegion(center: self.SolicitudPendiente.origenCarrera, span: span)
+        //self.MapaSolPen.setRegion(region, animated: true)
         self.MostrarDetalleSolicitud()
         //self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
 
@@ -72,6 +72,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         myvariables.socket.on("Taxi"){data, ack in
             //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
             let datosConductor = String(describing: data).components(separatedBy: ",")
+            print(datosConductor)
             self.NombreCond.text! = "Conductor: " + datosConductor[1]
             self.MarcaAut.text! = "Marca: " + datosConductor[5]
             self.ColorAut.text! = "Color: " + datosConductor[6]
@@ -102,9 +103,10 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
             if myvariables.solpendientes.count != 0 {
                     if (temporal[2] == self.SolicitudPendiente.idTaxi){
                         self.MapaSolPen.removeAnnotation(self.TaxiSolicitud)
-                        self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(Double(temporal[3])!, Double(temporal[4])!)
-                        self.MapaSolPen.addAnnotation(self.TaxiSolicitud)
-                        self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
+                        self.SolicitudPendiente.taximarker = CLLocationCoordinate2DMake(Double(temporal[3])!, Double(temporal[4])!)
+                        //self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(Double(temporal[3])!, Double(temporal[4])!)
+                        //self.MapaSolPen.addAnnotation(self.TaxiSolicitud)
+                        //self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
                         self.MostrarDetalleSolicitud()
                     }
             }
@@ -135,6 +137,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         
         return renderer
     }
+    
 
     
     //MASK:- FUNCIONES PROPIAS
@@ -190,7 +193,8 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     func MostrarDetalleSolicitud(){
         if self.SolicitudPendiente.idTaxi != "null" && self.SolicitudPendiente.idTaxi != ""{
             self.TaxiSolicitud.coordinate = self.SolicitudPendiente.taximarker
-            self.MapaSolPen.addAnnotations([self.OrigenSolicitud, self.TaxiSolicitud])
+            //self.MapaSolPen.addAnnotations([self.OrigenSolicitud, self.TaxiSolicitud])
+            self.MapaSolPen.fitAll(in: [self.OrigenSolicitud, self.TaxiSolicitud], andShow: true)
             let temporal = self.SolicitudPendiente.DistanciaTaxi()
             DistanciaText.text = temporal + " KM"
             DetallesCarreraView.isHidden = false
@@ -306,8 +310,5 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
         MostrarMotivoCancelacion()
     }
-
-
-    
 
 }

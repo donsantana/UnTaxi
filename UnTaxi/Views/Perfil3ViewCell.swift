@@ -20,6 +20,7 @@ class Perfil3ViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         NuevaClaveText.delegate = self
         ConfirmeClaveText.delegate = self
+        self.ClaveActualText.setBottomBorder(borderColor: UIColor.black)
         self.NuevaClaveText.setBottomBorder(borderColor: UIColor.black)
         self.ConfirmeClaveText.setBottomBorder(borderColor: UIColor.black)
         self.ClaveActualText.delegate = self

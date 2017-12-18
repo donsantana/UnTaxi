@@ -112,6 +112,7 @@ class CSolicitud {
     }
     //Agregar datos de la solicitud
     func DatosSolicitud(dirorigen :String, referenciaorigen :String, dirdestino :String, latorigen :String, lngorigen :String, latdestino :String, lngdestino :String,FechaHora: String){
+        self.dirOrigen = dirorigen
         self.referenciaorigen = referenciaorigen
         self.origenCarrera = CLLocationCoordinate2D(latitude: Double(latorigen)!, longitude: Double(lngorigen)!)
         self.fechaHora = FechaHora
