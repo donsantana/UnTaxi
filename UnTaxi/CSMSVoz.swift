@@ -153,7 +153,6 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     func SubirAudio(_ UrlSubirVoz: String, name: String){
         // The variable "recordedFileURL" is defined earlier in the code like this:
-        
         let currentFilename = name
         let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         //let docsDir: AnyObject=dirPaths[0]

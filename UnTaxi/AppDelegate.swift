@@ -16,7 +16,7 @@ struct myvariables {
     static var socket: SocketIOClient!
     static var cliente : CCliente!
     static var solicitudesproceso: Bool = false
-    static  var taximetroActive: Bool = false
+    static var taximetroActive: Bool = false
     static var solpendientes = [CSolicitud]()
     static var grabando = false
     static var SMSProceso = false
@@ -80,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             self.myTimer = nil
             UIApplication.shared.endBackgroundTask(self.backgrounTaskIdentifier)
             self.backgrounTaskIdentifier = UIBackgroundTaskInvalid
-            
         }
         
     }

@@ -257,6 +257,16 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
     }
     
+    
+    //MARK:- FUNCIONES PROPIAS
+    
+    func Login(loginData: String){
+        self.AutenticandoView.isHidden = false
+        self.login = String(loginData).components(separatedBy: ",")
+        EnviarSocket(loginData)
+        //self.EnviarTimer(estado: 1, datos: loginData)
+    }
+
     //FUNCTION ENVIO CON TIMER
     func EnviarTimer(estado: Int, datos: String){
         if estado == 1{
@@ -269,22 +279,12 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
     }
     
-    //MARK:- FUNCIONES PROPIAS
-    
-    func Login(loginData: String){
-        self.AutenticandoView.isHidden = false
-        self.login = String(loginData).components(separatedBy: ",")
-        //EnviarSocket(readString)
-        self.EnviarTimer(estado: 1, datos: loginData)
-    }
-
-    
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
             if myvariables.socket.reconnects{
-                print(datos)
                 myvariables.socket.emit("data",datos)
+                self.EnviarTimer(estado: 1, datos: datos)
             }
             else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
@@ -353,8 +353,8 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.Usuario.resignFirstResponder()
         self.Clave.resignFirstResponder()
         let recuperarDatos = "#Recuperarclave," + movilClaveRecover.text! + ",# \n"
-        //EnviarSocket(datos)
-        self.EnviarTimer(estado: 1, datos: recuperarDatos)
+        EnviarSocket(recuperarDatos)
+        //self.EnviarTimer(estado: 1, datos: recuperarDatos)
         ClaveRecover.isHidden = true
         movilClaveRecover.endEditing(true)
         movilClaveRecover.text?.removeAll()
@@ -392,8 +392,8 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     posicion = String(posTemp.coordinate.latitude) + "," + String(posTemp.coordinate.longitude)
             }
             let registroDatos = "#NR" + "," + nombreApText.text! + temporal + correo + "," + posicion + ",# \n"
-            //myvariables.socket.emit("data", datos)
-            self.EnviarTimer(estado: 1, datos: registroDatos)
+            myvariables.socket.emit("data", registroDatos)
+            //self.EnviarTimer(estado: 1, datos: registroDatos)
         }
         RegistroView.isHidden = true
         claveText.resignFirstResponder()

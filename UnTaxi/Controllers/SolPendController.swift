@@ -72,19 +72,22 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         myvariables.socket.on("Taxi"){data, ack in
             //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
             let datosConductor = String(describing: data).components(separatedBy: ",")
-            print(datosConductor)
             self.NombreCond.text! = "Conductor: " + datosConductor[1]
             self.MarcaAut.text! = "Marca: " + datosConductor[5]
             self.ColorAut.text! = "Color: " + datosConductor[6]
             self.MatriculaAut.text! = "Matrícula: " + datosConductor[7]
             self.MovilCond.text! = "Movil: " + datosConductor[2]
-            if datosConductor[9] != "null" && datosConductor[9] != ""{
-                URLSession.shared.dataTask(with: URL(string: datosConductor[9])!, completionHandler: { (data, response, error) in
-                    DispatchQueue.main.async {
-                        _ = UIViewContentMode.scaleAspectFill
-                        self.ImagenCond.image = UIImage(data: data!)
+            if datosConductor[8] != "null" && datosConductor[8] != ""{
+                let url = URL(string:datosConductor[8])
+                
+                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                    guard let data = data, error == nil else { return }
+                    
+                    DispatchQueue.main.sync() {
+                        self.ImagenCond.image = UIImage(data: data)
                     }
-                })
+                }
+                task.resume()
             }else{
                 self.ImagenCond.image = UIImage(named: "chofer")
             }
@@ -207,37 +210,34 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
+        //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
         let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-            //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-                self.CancelarSolicitud("No necesito")
+            self.CancelarSolicitud("No necesito")
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
-            //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
            self.CancelarSolicitud("Demora el servicio")
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
-            //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             self.CancelarSolicitud("Tarifa incorrecta")
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
-            //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             self.CancelarSolicitud("Vehículo en mal estado")
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
-            //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             self.CancelarSolicitud("Solo probaba el servicio")
         }))
         motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
         }))
+        
         self.present(motivoAlerta, animated: true, completion: nil)
     }
     
     func CancelarSolicitud(_ motivo: String){
         //#Cancelarsolicitud, idSolicitud, idTaxi, motivo, "# \n"
         let Datos = "#Cancelarsolicitud" + "," + self.SolicitudPendiente.idSolicitud + "," + self.SolicitudPendiente.idTaxi + "," + motivo + "," + "# \n"
-        EnviarSocket(Datos)
         myvariables.solpendientes.remove(at: self.posicionSolicitud)
+        EnviarSocket(Datos)
         let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
         self.navigationController?.show(vc, sender: nil)        
     }
@@ -257,7 +257,11 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     
     //MARK:- BOTNES ACTION
     @IBAction func DatosConductor(_ sender: AnyObject) {
-        if self.SolicitudPendiente.marcaVehiculo != ""{
+        let datos = "#Taxi," + myvariables.cliente.idUsuario + "," + self.SolicitudPendiente.idTaxi + ",# \n"
+        self.EnviarSocket(datos)
+        MensajeEspera.text = "Procesando..."
+        AlertaEsperaView.isHidden = false
+        /*if self.SolicitudPendiente.marcaVehiculo != ""{
             self.NombreCond.text! = "Conductor: " + self.SolicitudPendiente.nombreApellido
             self.MarcaAut.text! = "Marca: " + self.SolicitudPendiente.marcaVehiculo
             self.ColorAut.text! = "Color: " + self.SolicitudPendiente.colorVehiculo
@@ -279,7 +283,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
             self.EnviarSocket(datos)
             MensajeEspera.text = "Procesando..."
             AlertaEsperaView.isHidden = false
-        }
+        }*/
     }
     
     @IBAction func AceptarCond(_ sender: UIButton) {
