@@ -17,7 +17,7 @@ class CEvaluacion {
         self.PtoEvaluacion = 0
         var i = 0
         while i < 5 {
-                self.Botones[i].setImage(UIImage(named: "stargris"), for: UIControlState())
+                self.Botones[i].setImage(UIImage(named: "stargris"), for: UIControl.State())
             i += 1
             }    
 
@@ -26,11 +26,11 @@ class CEvaluacion {
         var i = 0
         while i < 5 {
             if i < posicion{
-            self.Botones[i].setImage(UIImage(named: "stardorada"), for: UIControlState())
+            self.Botones[i].setImage(UIImage(named: "stardorada"), for: UIControl.State())
                 
             }
             else{
-                self.Botones[i].setImage(UIImage(named: "stargris"), for: UIControlState())
+                self.Botones[i].setImage(UIImage(named: "stargris"), for: UIControl.State())
             }
             i += 1
         }

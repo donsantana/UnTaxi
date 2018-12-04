@@ -92,16 +92,19 @@ class CSolicitud {
     }
     //Agregar datos del Conductor
     func DatosTaxiConductor(idtaxi :String, matricula: String, codigovehiculo :String, marcaVehiculo:String, colorVehiculo: String,lattaxi :String, lngtaxi :String, idconductor: String, nombreapellidosconductor :String, movilconductor: String, foto: String){
-        self.idConductor = idconductor
-        self.nombreApellido = nombreapellidosconductor
-        self.movil = movilconductor
-        self.urlFoto = foto
-        self.idTaxi = idtaxi
-        self.matricula = matricula
-        self.codTaxi = codigovehiculo
-        self.marcaVehiculo = marcaVehiculo
-        self.colorVehiculo = colorVehiculo
-        taximarker = CLLocationCoordinate2D(latitude: Double(lattaxi)!, longitude: Double(lngtaxi)!)
+      
+        if lattaxi != "undefined"{
+            self.idConductor = idconductor
+            self.nombreApellido = nombreapellidosconductor
+            self.movil = movilconductor
+            self.urlFoto = foto
+            self.idTaxi = idtaxi
+            self.matricula = matricula
+            self.codTaxi = codigovehiculo
+            self.marcaVehiculo = marcaVehiculo
+            self.colorVehiculo = colorVehiculo
+            taximarker = CLLocationCoordinate2D(latitude: Double(lattaxi)!, longitude: Double(lngtaxi)!)
+        }
        
     }
 

@@ -18,6 +18,8 @@ class CompletadaController: UIViewController, UITextViewDelegate {
     var costoValue = ""
     var evaluacion: CEvaluacion!
     
+    @IBOutlet weak var completadaBack: UIView!
+    
     @IBOutlet weak var distanciaText: UILabel!
     @IBOutlet weak var tiempoText: UILabel!
     @IBOutlet weak var costoText: UILabel!
@@ -31,6 +33,8 @@ class CompletadaController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.completadaBack.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.comentarioText.delegate = self
         self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
         
@@ -43,20 +47,29 @@ class CompletadaController: UIViewController, UITextViewDelegate {
     
     //ENVIAR EVALUACIÓN
     func EnviarEvaluacion(_ evaluacion: Int, comentario: String){
-
+        
         self.comentarioText.text = "Escriba su comentario..."
         let idsolicitud = self.idSolicitud
-        let datos = "#Evaluar," + idsolicitud + "," + String(evaluacion) + "," + comentario + ",# \n"
-        EnviarSocket(datos)
+        if evaluacion != 0 {
+            print("enviando evaluaci'on")
+            let datos = "#Evaluar," + idsolicitud + "," + String(evaluacion) + "," + comentario + ",# \n"
+            EnviarSocket(datos)
+        }
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+            self.navigationController?.show(vc, sender: nil)
+        }
+        
     }
     
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
-                myvariables.socket.emit("data",datos)
+            if myvariables.socket.status.active{
+                myvariables.socket.emit("data", datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -69,7 +82,7 @@ class CompletadaController: UIViewController, UITextViewDelegate {
     }
     
     func ErrorConexion(){
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))

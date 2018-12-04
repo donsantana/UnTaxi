@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 import Foundation
-import StarscreamSocketIO
+import Starscream
 
 protocol ClientOption : CustomStringConvertible, Equatable {
     func getSocketIOOptionValue() -> Any
@@ -40,10 +40,6 @@ public enum SocketIOClientOption : ClientOption {
     /// An array of cookies that will be sent during the initial connection.
     case cookies([HTTPCookie])
 
-    /// Deprecated
-    @available(*, deprecated, message: "No longer needed in socket.io 2.0+")
-    case doubleEncodeUTF8(Bool)
-
     /// Any extra HTTP headers that should be sent during the initial connection.
     case extraHeaders([String: String])
 
@@ -59,6 +55,8 @@ public enum SocketIOClientOption : ClientOption {
 
     /// The queue that all interaction with the client should occur on. This is the queue that event handlers are
     /// called on.
+    ///
+    /// **This should be a serial queue! Concurrent queues are not supported and might cause crashes and races**.
     case handleQueue(DispatchQueue)
 
     /// If passed `true`, the client will log debug information. This should be turned off in production code.
@@ -66,10 +64,6 @@ public enum SocketIOClientOption : ClientOption {
 
     /// Used to pass in a custom logger.
     case logger(SocketLogger)
-
-    /// The namespace that this client should connect to. Can be changed during use using the `joinNamespace`
-    /// and `leaveNamespace` methods on `SocketIOClient`.
-    case nsp(String)
 
     /// A custom path to socket.io. Only use this if the socket.io server is configured to look for this path.
     case path(String)
@@ -96,11 +90,6 @@ public enum SocketIOClientOption : ClientOption {
     /// Sets an NSURLSessionDelegate for the underlying engine. Useful if you need to handle self-signed certs.
     case sessionDelegate(URLSessionDelegate)
 
-    /// If passed `true`, the WebSocket transport will try and use voip logic to keep network connections open in
-    /// the background. **This option is experimental as socket.io shouldn't be used for background communication.**
-    @available(*, deprecated, message: "No longer has any effect, and will be removed in v11.0")
-    case voipEnabled(Bool)
-
     // MARK: Properties
 
     /// The description of this option.
@@ -114,8 +103,6 @@ public enum SocketIOClientOption : ClientOption {
             description = "connectParams"
         case .cookies:
             description = "cookies"
-        case .doubleEncodeUTF8:
-            description = "doubleEncodeUTF8"
         case .extraHeaders:
             description = "extraHeaders"
         case .forceNew:
@@ -130,8 +117,6 @@ public enum SocketIOClientOption : ClientOption {
             description = "log"
         case .logger:
             description = "logger"
-        case .nsp:
-            description = "nsp"
         case .path:
             description = "path"
         case .reconnects:
@@ -148,8 +133,6 @@ public enum SocketIOClientOption : ClientOption {
             description = "security"
         case .sessionDelegate:
             description = "sessionDelegate"
-        case .voipEnabled:
-            description = "voipEnabled"
         }
 
         return description
@@ -165,8 +148,6 @@ public enum SocketIOClientOption : ClientOption {
             value = params
         case let .cookies(cookies):
             value = cookies
-        case let .doubleEncodeUTF8(encode):
-            value = encode
         case let .extraHeaders(headers):
             value = headers
         case let .forceNew(force):
@@ -181,8 +162,6 @@ public enum SocketIOClientOption : ClientOption {
             value = log
         case let .logger(logger):
             value = logger
-        case let .nsp(nsp):
-            value = nsp
         case let .path(path):
             value = path
         case let .reconnects(reconnects):
@@ -199,8 +178,6 @@ public enum SocketIOClientOption : ClientOption {
             value = signed
         case let .sessionDelegate(delegate):
             value = delegate
-        case let .voipEnabled(enabled):
-            value = enabled
         }
 
         return value

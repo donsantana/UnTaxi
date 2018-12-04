@@ -30,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
     
-    var backgrounTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    var backgrounTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     var myTimer: Timer?
     var BackgroundSeconds = 0
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         application.isIdleTimerDisabled = true
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
@@ -78,14 +78,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         if let timer = self.myTimer{
             timer.invalidate()
             self.myTimer = nil
-            UIApplication.shared.endBackgroundTask(self.backgrounTaskIdentifier)
-            self.backgrounTaskIdentifier = UIBackgroundTaskInvalid
+            UIApplication.shared.endBackgroundTask(convertToUIBackgroundTaskIdentifier(self.backgrounTaskIdentifier.rawValue))
+            self.backgrounTaskIdentifier = UIBackgroundTaskIdentifier.invalid
         }
         
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if backgrounTaskIdentifier != UIBackgroundTaskInvalid{
+        if backgrounTaskIdentifier != UIBackgroundTaskIdentifier.invalid{
             endBackgroundTask()
         }
     }
@@ -103,3 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIBackgroundTaskIdentifier(_ input: Int) -> UIBackgroundTaskIdentifier {
+	return UIBackgroundTaskIdentifier(rawValue: input)
+}

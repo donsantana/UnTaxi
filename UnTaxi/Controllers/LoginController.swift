@@ -28,8 +28,11 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     var currentDictionary = [String : String]()    // the current dictionary
     var currentValue: String = ""                   // the current value for one of the keys in the dictionary
     
+    let socketIOManager = SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
+    
     //MARK:- VARIABLES INTERFAZ
     
+    @IBOutlet weak var loginBackView: UIView!
     @IBOutlet weak var Usuario: UITextField!
     @IBOutlet weak var Clave: UITextField!
     @IBOutlet weak var AutenticandoView: UIView!
@@ -49,7 +52,22 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @IBOutlet weak var telefonoText: UITextField!
     @IBOutlet weak var RecomendadoText: UITextField!
     @IBOutlet weak var RegistroBtn: UIButton!
-
+    @IBOutlet weak var correoTextTop: NSLayoutConstraint!
+    
+    
+    //CONSTRAINTS DEFINITION
+    @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var creaUsuarioBottom: NSLayoutConstraint!
+    @IBOutlet weak var nombreTextBottom: NSLayoutConstraint!
+    @IBOutlet weak var telefonoTextBottom: NSLayoutConstraint!
+    @IBOutlet weak var claveTextBottom: NSLayoutConstraint!
+    @IBOutlet weak var recomendadoLabelTop: NSLayoutConstraint!
+    @IBOutlet weak var recomendadoTextTop: NSLayoutConstraint!
+    @IBOutlet weak var registrarTop: NSLayoutConstraint!
+    @IBOutlet weak var cancelarTop: NSLayoutConstraint!
+    @IBOutlet weak var movilClaveRecoverHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +91,33 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.ClaveRecover.addGestureRecognizer(tapGesture)
         self.RegistroView.addGestureRecognizer(tapGesture)
         self.view.addGestureRecognizer(tapGesture)
+        //Put Background image to View
+        self.loginBackView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
+        //Calculate the custom constraints
+        if UIScreen.main.bounds.height < 736{
+            self.textFieldHeight.constant = 40
+        }else{
+            self.textFieldHeight.constant = 45
+        }
+        
+        let spaceBetween = (UIScreen.main.bounds.height - self.textFieldHeight.constant * 9) / 15
+
+        self.claveTextBottom.constant = -spaceBetween
+        self.telefonoTextBottom.constant = -spaceBetween
+        self.nombreTextBottom.constant = -spaceBetween
+        self.creaUsuarioBottom.constant = -spaceBetween
+        
+        self.correoTextTop.constant = spaceBetween
+        self.recomendadoLabelTop.constant = spaceBetween + 10
+        self.recomendadoTextTop.constant = 5
+        self.cancelarTop.constant = spaceBetween
+        self.registrarTop.constant = spaceBetween
+
+        self.movilClaveRecoverHeight.constant = 40
         
         if CConexionInternet.isConnectedToNetwork() == true{
-            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(false), .forcePolling(true)])
+            myvariables.socket = self.socketIOManager.defaultSocket
             myvariables.socket.connect()
                 
             myvariables.socket.on("connect"){data, ack in
@@ -136,6 +178,10 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
         self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
 
     func SocketEventos(){
         myvariables.socket.on("LoginPassword"){data, ack in
@@ -152,7 +198,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                         case .notDetermined, .restricted, .denied:
                             let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
                             locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+                                UIApplication.shared.openURL(NSURL(string:UIApplication.openSettingsURLString)! as URL)
                                 //self.Login()
                             }))
                             locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
@@ -160,8 +206,11 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                             }))
                             self.present(locationAlert, animated: true, completion: nil)
                         case .authorizedAlways, .authorizedWhenInUse:
-                            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
-                            self.navigationController?.show(vc, sender: nil)
+                            DispatchQueue.main.async {
+                                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
+                                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                                self.navigationController?.show(vc, sender: nil)
+                            }
                             break
                         }
                     }else{
@@ -182,7 +231,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     }catch{
                         
                     }
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         self.AutenticandoView.isHidden = true
                         self.Usuario.text?.removeAll()
@@ -207,7 +256,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                 self.present(alertaDos, animated: true, completion: nil)
             }
             else{
-                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.AutenticandoView.isHidden = true
                 }))
@@ -220,7 +269,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
                 self.present(alertaDos, animated: true, completion: nil)
@@ -282,12 +331,12 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 myvariables.socket.emit("data",datos)
                 self.EnviarTimer(estado: 1, datos: datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -301,14 +350,14 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     
     @objc func EnviarSocket1(_ timer: Timer){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+            if myvariables.socket.status.active && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
                 var datos: String = (userInfo["datos"] as! String)
                 myvariables.socket.emit("data",datos)
                 //let result = myvariables.socket.emitWithAck("data", datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))    
@@ -320,7 +369,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
     
     func ErrorConexion(){
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -346,10 +395,12 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     
     @IBAction func OlvideClave(_ sender: AnyObject) {
         ClaveRecover.isHidden = false
+        self.movilClaveRecover.becomeFirstResponder()
     }
     
     @IBAction func RecuperarClave(_ sender: AnyObject) {
         //"#Recuperarclave,numero de telefono,#"
+        if !self.movilClaveRecover.text!.isEmpty{
         self.Usuario.resignFirstResponder()
         self.Clave.resignFirstResponder()
         let recuperarDatos = "#Recuperarclave," + movilClaveRecover.text! + ",# \n"
@@ -358,6 +409,14 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         ClaveRecover.isHidden = true
         movilClaveRecover.endEditing(true)
         movilClaveRecover.text?.removeAll()
+        }else{
+            let alertaDos = UIAlertController (title: "Recuperar Clave", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                self.movilClaveRecover.becomeFirstResponder()
+            }))
+            
+            self.present(alertaDos, animated: true, completion: nil)
+        }
     }
     
     @IBAction func CancelRecuperarclave(_ sender: AnyObject) {
@@ -370,13 +429,15 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.Usuario.resignFirstResponder()
         self.Clave.resignFirstResponder()
         RegistroView.isHidden = false
+        self.nombreApText.becomeFirstResponder()
         
     }
     @IBAction func EnviarRegistro(_ sender: AnyObject) {
         if (nombreApText.text!.isEmpty || telefonoText.text!.isEmpty || claveText.text!.isEmpty) {
-            let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                
+                self.RegistroView.isHidden = false
+                self.nombreApText.becomeFirstResponder()
             }))
 
             self.present(alertaDos, animated: true, completion: nil)
@@ -432,6 +493,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                 }
                 else{
                     if textField.isEqual(confirmarClavText) || textField.isEqual(correoText) || textField.isEqual(RecomendadoText){
+                        if textField.isEqual(confirmarClavText){
+                            textField.isSecureTextEntry = true
+                        }
                             textField.tintColor = UIColor.black
                             animateViewMoving(true, moveValue: 200, view: self.view)
                         }else{
@@ -445,6 +509,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
     }
     func textFieldDidEndEditing(_ textfield: UITextField) {
+        if !textfield.isEqual(RecomendadoText) && textfield.text!.isEmpty{
+            textfield.text = "Campo requerido"
+        }
         textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
             if textfield.isEqual(claveText) || textfield.isEqual(Clave){
                     animateViewMoving(false, moveValue: 80, view: self.view)
@@ -585,7 +652,7 @@ extension LoginController: XMLParserDelegate {
     func ServerConect(completionHandler:@escaping (Bool)->()){
         var i = 0
         while i < self.ServersData.count - 1{
-            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://"+self.ServersData[i])!, config: [.log(false), .forcePolling(true)])
+            myvariables.socket = self.socketIOManager.defaultSocket
             myvariables.socket.connect()
             i += 1
         }

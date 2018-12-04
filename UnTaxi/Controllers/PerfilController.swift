@@ -22,6 +22,8 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
 
     var perfil2 : UITextField!
 
+    @IBOutlet weak var perfilBackground: UIView!
+    
     @IBOutlet weak var NombreApellidoText: UILabel!
     @IBOutlet weak var PerfilTable: UITableView!
     @IBOutlet weak var ActualizarBtn: UIButton!
@@ -33,7 +35,8 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.black
-
+        self.perfilBackground.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
             var readString = ""
             let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
             
@@ -52,7 +55,7 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
         myvariables.socket.on("UpdateUser"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Perfil Actualizado", message: "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Perfil Actualizado", message: "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
                     self.navigationController?.show(vc, sender: nil)
@@ -60,7 +63,7 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
                 
                 self.present(alertaDos, animated: true, completion: nil)
             }else{
-                    let alertaDos = UIAlertController (title: "Error de Perfil", message: "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Error de Perfil", message: "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
@@ -78,11 +81,11 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 myvariables.socket.emit("data",datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -97,7 +100,7 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
         //self.CargarTelefonos()
         //AlertaSinConexion.isHidden = false
         
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -107,7 +110,7 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
     
     func EnviarActualizacion() {
         if self.NuevoTelefonoText == "" && self.NuevoEmailText == "" && self.NuevaClaveText == "" && self.ConfirmeClaveText == ""{
-            let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando en enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando en enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
  
             }))
@@ -261,11 +264,11 @@ class PerfilController: UIViewController,UITableViewDataSource,UITableViewDelega
     
     func keyboardNotification(notification: NSNotification){
         if let userInfo = notification.userInfo{
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
                 animateViewMoving(false, moveValue: 180, view: self.view)//self.keyboardHeightLayoutConstraint?.constant = 0.0
             } else {
