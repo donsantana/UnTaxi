@@ -353,7 +353,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             if myvariables.socket.status.active && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
-                var datos: String = (userInfo["datos"] as! String)
+                let datos: String = (userInfo["datos"] as! String)
                 myvariables.socket.emit("data",datos)
                 //let result = myvariables.socket.emitWithAck("data", datos)
             }else{
@@ -530,14 +530,14 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     }else{
                         if textfield.isEqual(telefonoText) || textfield.isEqual(RecomendadoText){
         
-                            if textfield.text?.characters.count != 10{
+                            if textfield.text?.count != 10{
                                 textfield.textColor = UIColor.red
                                 textfield.text = "Número de Teléfono Incorrecto"
                             }
                             animateViewMoving(false, moveValue: 70, view: self.view)
                         }else{
                             if textfield.isEqual(movilClaveRecover){
-                                if movilClaveRecover.text?.characters.count != 10{
+                                if movilClaveRecover.text?.count != 10{
                                     textfield.text = "Número de Teléfono Incorrecto"
                                 }else{
                                     self.RecuperarClaveBtn.isEnabled = true

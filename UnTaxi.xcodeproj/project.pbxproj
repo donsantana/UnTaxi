@@ -52,7 +52,6 @@
 		AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */; };
 		AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D41F9D391000C8A5BD /* PerfilController.swift */; };
 		AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D51F9D391000C8A5BD /* CompletadaController.swift */; };
-		AFD6563B1F9D42E100C8A5BD /* CUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6561E1F9D42DB00C8A5BD /* CUsuario.swift */; };
 		AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */; };
 		AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */; };
 		AFD6563E1F9D42E100C8A5BD /* CEvaluacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */; };
@@ -161,7 +160,6 @@
 		AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656191F9D3C5300C8A5BD /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6561A1F9D3C5300C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD6561E1F9D42DB00C8A5BD /* CUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUsuario.swift; sourceTree = "<group>"; };
 		AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantallaInicio.swift; sourceTree = "<group>"; };
 		AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSMSVoz.swift; sourceTree = "<group>"; };
 		AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEvaluacion.swift; sourceTree = "<group>"; };
@@ -339,6 +337,7 @@
 		84F571451BCE958200FC18D5 /* UnTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				C69D7AD921D5552D00B018F1 /* Models */,
 				AFD656711FA17CD000C8A5BD /* ds_digital */,
 				AFD656631FA1734300C8A5BD /* Views */,
 				B58F1E601E638A2D008F07AC /* Class */,
@@ -348,16 +347,7 @@
 				84F28A271CC13CC400529F53 /* Images-5.xcassets */,
 				AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */,
 				AFD6562A1F9D42DE00C8A5BD /* beep.wav */,
-				AFD656261F9D42DD00C8A5BD /* CCliente.swift */,
-				AFD656321F9D42E000C8A5BD /* CConductor.swift */,
-				AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */,
 				AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */,
-				AFD656221F9D42DC00C8A5BD /* CRuta.swift */,
-				AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */,
-				AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */,
-				AFD6562B1F9D42DE00C8A5BD /* CTaxi.swift */,
-				AFD656271F9D42DD00C8A5BD /* CTelefono.swift */,
-				AFD6561E1F9D42DB00C8A5BD /* CUsuario.swift */,
 				AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard.xml */,
 				AFD656351F9D42E000C8A5BD /* LocationManager.swift */,
 				AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */,
@@ -423,6 +413,21 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
+		C69D7AD921D5552D00B018F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFD656261F9D42DD00C8A5BD /* CCliente.swift */,
+				AFD656321F9D42E000C8A5BD /* CConductor.swift */,
+				AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */,
+				AFD656221F9D42DC00C8A5BD /* CRuta.swift */,
+				AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */,
+				AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */,
+				AFD6562B1F9D42DE00C8A5BD /* CTaxi.swift */,
+				AFD656271F9D42DD00C8A5BD /* CTelefono.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		CE1476283A03C36D4A975E6E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +465,7 @@
 		84F5713B1BCE958200FC18D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Done Santana";
 				TargetAttributes = {
 					84F571421BCE958200FC18D5 = {
@@ -647,7 +652,6 @@
 				AFD656441F9D42E100C8A5BD /* CTelefono.swift in Sources */,
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				AFD656421F9D42E100C8A5BD /* PantallaSolic.swift in Sources */,
-				AFD6563B1F9D42E100C8A5BD /* CUsuario.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolPendController.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
 				AFD656481F9D42E100C8A5BD /* CTaxi.swift in Sources */,
@@ -685,20 +689,28 @@
 		84F571691BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -706,7 +718,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -727,7 +738,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -738,20 +749,28 @@
 		84F5716A1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -759,7 +778,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -810,7 +828,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
@@ -846,7 +864,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";

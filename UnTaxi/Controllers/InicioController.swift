@@ -1340,7 +1340,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         MostrarMotivoCancelacion()
     }
     
-    
     @IBAction func MostrarTelefonosCC(_ sender: AnyObject) {
         self.SolPendientesView.isHidden = true
         DispatchQueue.main.async {
@@ -1362,6 +1361,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.SolPendientesView.isHidden = !self.SolPendientesView.isHidden
         }
     }
+    
     @IBAction func MapaMenu(_ sender: AnyObject) {
         Inicio()
     }
