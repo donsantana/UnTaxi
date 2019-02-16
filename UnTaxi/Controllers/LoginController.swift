@@ -127,52 +127,13 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
                     loginData = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
                 }catch {
                 }
-                if loginData != "Vacio"
-                {
+                if loginData != "Vacio"{
                     self.Login(loginData: loginData)
                 }else{
                     self.AutenticandoView.isHidden = true
                 }
                 self.SocketEventos()
             }
-            
-            /*var servers = "Vacio"
-            let filePath = NSHomeDirectory() + "/Library/Caches/servers.txt"
-            do {
-                servers = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-            }catch {
-            }
-            if servers != "Vacio"{
-                self.ServersData = String(describing: servers).components(separatedBy: ",")
-                self.ServerConect(){data in
-
-                }
-            }else{
-                self.ServerSelect(){ success in
-                    self.ServerConect(){data in
-                        myvariables.socket.on("connect"){data, ack in
-                            print("CONECTADOOO")
-                            var read = "Vacio"
-                            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                            do {
-                                read = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-                            }catch {
-                            }
-                            if read != "Vacio"
-                            {
-                                self.AutenticandoView.isHidden = false
-                                self.Login()
-                            }
-                            else{
-                                self.AutenticandoView.isHidden = true
-                            }
-                            self.SocketEventos()
-                        }
-                    }
-                    
-                }
-            }*/
-            
         }else{
             ErrorConexion()
         }
@@ -286,7 +247,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         var i = 7
         
         while i <= listado.count-10 {
-            let solicitudpdte = CSolicitud()
+            var solicitudpdte = CSolicitud()
             if listado[i+4] == "null"{
                 lattaxi = "0"
                 longtaxi = "0"

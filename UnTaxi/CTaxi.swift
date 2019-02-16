@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class CTaxi{
+struct CTaxi{
     var idTaxi: String
     var matricula :String
     var codTaxi :String

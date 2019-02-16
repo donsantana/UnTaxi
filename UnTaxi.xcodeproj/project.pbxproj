@@ -99,6 +99,8 @@
 		B5FB646E1D1C60C3006A2C70 /* solicitudespcopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */; };
 		B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */; };
 		B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */; };
+		C63D220821D56150007378D7 /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
+		C6AFBD1122186DC100CC060A /* InicioControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +216,8 @@
 		B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solicitudespcopia.png; sourceTree = "<group>"; };
 		B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tarifariocopia.png; sourceTree = "<group>"; };
 		B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetrocopia.png; sourceTree = "<group>"; };
+		C63D220721D56150007378D7 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
+		C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExtension.swift; sourceTree = "<group>"; };
 		E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,7 +356,6 @@
 				AFD656351F9D42E000C8A5BD /* LocationManager.swift */,
 				AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */,
 				AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */,
-				B5EDE1331D6517B20014130F /* CConexionInternet.swift */,
 			);
 			path = UnTaxi;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6AFBD0F22186D6400CC060A /* Extensions */,
 				AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */,
 				AFD655D51F9D391000C8A5BD /* CompletadaController.swift */,
 				AFD655D41F9D391000C8A5BD /* PerfilController.swift */,
@@ -416,6 +420,8 @@
 		C69D7AD921D5552D00B018F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C63D220721D56150007378D7 /* CSocket.swift */,
+				B5EDE1331D6517B20014130F /* CConexionInternet.swift */,
 				AFD656261F9D42DD00C8A5BD /* CCliente.swift */,
 				AFD656321F9D42E000C8A5BD /* CConductor.swift */,
 				AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */,
@@ -426,6 +432,14 @@
 				AFD656271F9D42DD00C8A5BD /* CTelefono.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C6AFBD0F22186D6400CC060A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		CE1476283A03C36D4A975E6E /* Pods */ = {
@@ -645,6 +659,7 @@
 			files = (
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				B50482A11E6883B100D5236C /* InicioController.swift in Sources */,
+				C6AFBD1122186DC100CC060A /* InicioControllerExtension.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */,
@@ -658,6 +673,7 @@
 				AFD656431F9D42E100C8A5BD /* CCliente.swift in Sources */,
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
 				B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */,
+				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
 				AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */,
 				AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,

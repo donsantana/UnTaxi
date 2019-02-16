@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 class CEvaluacion {
     var Botones: [UIButton]
     var PtoEvaluacion : Int

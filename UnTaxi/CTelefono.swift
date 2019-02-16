@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CTelefono{
+struct CTelefono{
     //#Telefonos,cantidad,numerotelefono1,operadora1,siesmovil1,sitienewassap1,numerotelefono2,operadora2.......,#
     var numero: String
     var operadora: String

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CConductor{
+struct CConductor{
     var idConductor :String
     var nombreApellido :String
     var movil :String

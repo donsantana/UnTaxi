@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CRuta{
+struct CRuta{
     var originCoordinate: CLLocationCoordinate2D!
     var taxiCoordinate: CLLocationCoordinate2D!
     var totalDistanceInMeters: UInt = 0
