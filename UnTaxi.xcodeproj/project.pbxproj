@@ -62,7 +62,7 @@
 		AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */; };
 		AFD656471F9D42E100C8A5BD /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562A1F9D42DE00C8A5BD /* beep.wav */; };
 		AFD656481F9D42E100C8A5BD /* CTaxi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562B1F9D42DE00C8A5BD /* CTaxi.swift */; };
-		AFD656491F9D42E100C8A5BD /* Launch Screen.storyboard.xml in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard.xml */; };
+		AFD656491F9D42E100C8A5BD /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard */; };
 		AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
 		AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */; };
 		AFD6564F1F9D42E100C8A5BD /* CConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* CConductor.swift */; };
@@ -100,7 +100,12 @@
 		B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */; };
 		B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */; };
 		C63D220821D56150007378D7 /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
-		C6AFBD1122186DC100CC060A /* InicioControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */; };
+		C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
+		C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
+		C68DA29C227E39BE0029CD0B /* Myvariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* Myvariables.swift */; };
+		C68DA29E227E39F20029CD0B /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29D227E39F20029CD0B /* Customization.swift */; };
+		C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29F227E3A240029CD0B /* GlobalConstants.swift */; };
+		C6AFBD1122186DC100CC060A /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,7 +177,7 @@
 		AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFD6562A1F9D42DE00C8A5BD /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		AFD6562B1F9D42DE00C8A5BD /* CTaxi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTaxi.swift; sourceTree = "<group>"; };
-		AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Launch Screen.storyboard.xml"; sourceTree = "<group>"; };
+		AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = claxon.mp3; sourceTree = "<group>"; };
 		AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSolicitud.swift; sourceTree = "<group>"; };
 		AFD656321F9D42E000C8A5BD /* CConductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConductor.swift; sourceTree = "<group>"; };
@@ -217,7 +222,12 @@
 		B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tarifariocopia.png; sourceTree = "<group>"; };
 		B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetrocopia.png; sourceTree = "<group>"; };
 		C63D220721D56150007378D7 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
-		C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExtension.swift; sourceTree = "<group>"; };
+		C68DA297227E12D40029CD0B /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
+		C68DA299227E13030029CD0B /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
+		C68DA29B227E39BE0029CD0B /* Myvariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Myvariables.swift; sourceTree = "<group>"; };
+		C68DA29D227E39F20029CD0B /* Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customization.swift; sourceTree = "<group>"; };
+		C68DA29F227E3A240029CD0B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
 		E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,18 +351,20 @@
 		84F571451BCE958200FC18D5 /* UnTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				B5F753E31D5D045500FFDFD0 /* Main.storyboard */,
+				C68DA296227E12A50029CD0B /* Extensions */,
+				C68DA295227E0C8F0029CD0B /* Constants */,
 				C69D7AD921D5552D00B018F1 /* Models */,
 				AFD656711FA17CD000C8A5BD /* ds_digital */,
 				AFD656631FA1734300C8A5BD /* Views */,
 				B58F1E601E638A2D008F07AC /* Class */,
 				B58F1E5C1E635C5F008F07AC /* Controllers */,
-				B5F753E31D5D045500FFDFD0 /* Main.storyboard */,
 				84F571521BCE958200FC18D5 /* Info.plist */,
 				84F28A271CC13CC400529F53 /* Images-5.xcassets */,
 				AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */,
 				AFD6562A1F9D42DE00C8A5BD /* beep.wav */,
 				AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */,
-				AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard.xml */,
+				AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard */,
 				AFD656351F9D42E000C8A5BD /* LocationManager.swift */,
 				AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */,
 				AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */,
@@ -417,6 +429,25 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
+		C68DA295227E0C8F0029CD0B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C68DA29B227E39BE0029CD0B /* Myvariables.swift */,
+				C68DA29D227E39F20029CD0B /* Customization.swift */,
+				C68DA29F227E3A240029CD0B /* GlobalConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C68DA296227E12A50029CD0B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C68DA297227E12D40029CD0B /* MKMapView.swift */,
+				C68DA299227E13030029CD0B /* UITextfield.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C69D7AD921D5552D00B018F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +468,7 @@
 		C6AFBD0F22186D6400CC060A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C6AFBD1022186DC100CC060A /* InicioControllerExtension.swift */,
+				C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -509,6 +540,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -543,7 +575,7 @@
 				84794F9E1CCA7DCC00C4DD33 /* encabezadosIOS@2x.png in Resources */,
 				84EF6E701CB4245F00BC8A04 /* starimage.png in Resources */,
 				84F0EEC91CA5D102007E969F /* ExplicacionIma.png in Resources */,
-				AFD656491F9D42E100C8A5BD /* Launch Screen.storyboard.xml in Resources */,
+				AFD656491F9D42E100C8A5BD /* Launch Screen.storyboard in Resources */,
 				84609F351C758E6F0056A282 /* destino2.png in Resources */,
 				B58C6C341D5D15FA0034277C /* mensajesnew.png in Resources */,
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
@@ -659,17 +691,21 @@
 			files = (
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				B50482A11E6883B100D5236C /* InicioController.swift in Sources */,
-				C6AFBD1122186DC100CC060A /* InicioControllerExtension.swift in Sources */,
+				C6AFBD1122186DC100CC060A /* InicioControllerExt.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
+				C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */,
+				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* CTelefono.swift in Sources */,
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				AFD656421F9D42E100C8A5BD /* PantallaSolic.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolPendController.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
+				C68DA29C227E39BE0029CD0B /* Myvariables.swift in Sources */,
 				AFD656481F9D42E100C8A5BD /* CTaxi.swift in Sources */,
+				C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */,
 				AFD656431F9D42E100C8A5BD /* CCliente.swift in Sources */,
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
 				B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */,
@@ -682,6 +718,7 @@
 				B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */,
 				AFD655D61F9D391000C8A5BD /* CallCenterController.swift in Sources */,
 				AFD6563E1F9D42E100C8A5BD /* CEvaluacion.swift in Sources */,
+				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */,
 				AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,

@@ -53,16 +53,12 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-
+        
         self.MapaSolPen.delegate = self
         self.OrigenSolicitud.coordinate = self.SolicitudPendiente.origenCarrera
         self.OrigenSolicitud.title = "origen"
-        //let span = MKCoordinateSpanMake(0.77, 0.77)
-        //let region = MKCoordinateRegion(center: self.SolicitudPendiente.origenCarrera, span: span)
-        //self.MapaSolPen.setRegion(region, animated: true)
         self.MostrarDetalleSolicitud()
-        //self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
+        self.DetallesCarreraView.backgroundColor = Customization.primaryColor
 
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
         longGesture.minimumPressDuration = 0.2
@@ -261,29 +257,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         self.EnviarSocket(datos)
         MensajeEspera.text = "Procesando..."
         AlertaEsperaView.isHidden = false
-        /*if self.SolicitudPendiente.marcaVehiculo != ""{
-            self.NombreCond.text! = "Conductor: " + self.SolicitudPendiente.nombreApellido
-            self.MarcaAut.text! = "Marca: " + self.SolicitudPendiente.marcaVehiculo
-            self.ColorAut.text! = "Color: " + self.SolicitudPendiente.colorVehiculo
-            self.MatriculaAut.text! = "Matrícula: " + self.SolicitudPendiente.matricula
-            self.MovilCond.text! = "Movil: " + self.SolicitudPendiente.movil
-            if self.SolicitudPendiente.urlFoto != "null" && self.SolicitudPendiente.urlFoto != ""{
-                URLSession.shared.dataTask(with: URL(string: self.SolicitudPendiente.urlFoto)!, completionHandler: { (data, response, error) in
-                    DispatchQueue.main.async {
-                        _ = UIViewContentMode.scaleAspectFill
-                        self.ImagenCond.image = UIImage(data: data!)
-                    }
-                })
-            }else{
-                self.ImagenCond.image = UIImage(named: "chofer")
-            }
-            self.DatosConductor.isHidden = false
-        }else{
-            let datos = "#Taxi," + myvariables.cliente.idUsuario + "," + self.SolicitudPendiente.idTaxi + ",# \n"
-            self.EnviarSocket(datos)
-            MensajeEspera.text = "Procesando..."
-            AlertaEsperaView.isHidden = false
-        }*/
     }
     
     @IBAction func AceptarCond(_ sender: UIButton) {

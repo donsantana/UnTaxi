@@ -254,6 +254,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         self.vozConductor.stop()
         self.ReproducirMusica()
         self.reproduciendo = false
+        myvariables.SMSProceso = false
     }
 }
 

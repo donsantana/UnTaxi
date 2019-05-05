@@ -52,8 +52,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
     
     //Menu variables
-    var MenuArray = [MenuData(imagen: "solicitud", title: "En proceso"), MenuData(imagen: "operadora", title: "Call center"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app"),MenuData(imagen: "salir2", title: "Salir")]
+    var MenuArray = [MenuData(imagen: "solicitud", title: "En proceso"), MenuData(imagen: "operadora", title: "Call center"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app"), MenuData(imagen: "sesion", title: "Cerrar Sesion"), MenuData(imagen: "salir2", title: "Salir")]
     //variables de interfaz
+    
+    
+    //CONSTRAINTS
+    var btnViewTop: NSLayoutConstraint!
     
     @IBOutlet weak var origenIcono: UIImageView!
     @IBOutlet weak var mapaVista: MKMapView!
@@ -99,6 +103,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     @IBOutlet weak var VoucherView: UIView!
     @IBOutlet weak var VoucherCheck: UISwitch!
     @IBOutlet weak var VoucherEmpresaName: UILabel!
+    @IBOutlet weak var destinoText: UITextField!
     
     
     @IBOutlet weak var CancelarSolicitudProceso: UIButton!
@@ -112,6 +117,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     @IBOutlet weak var contactoViewTop: NSLayoutConstraint!
     @IBOutlet weak var contactViewHeight: NSLayoutConstraint!
     @IBOutlet weak var voucherViewTop: NSLayoutConstraint!
+
     
     
     
@@ -126,6 +132,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
         self.NombreContactoText.delegate = self
         self.TelefonoContactoText.delegate = self
         self.origenText.delegate = self
+        self.destinoText.delegate = self
         
         //solicitud de autorización para acceder a la localización del usuario
         self.NombreUsuario.text = myvariables.cliente.nombreApellidos
@@ -134,6 +141,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
         self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
         self.MenuView1.layer.borderWidth = 0.3
         self.MenuView1.layer.masksToBounds = false
+        self.NombreContactoText.setBottomBorder(borderColor: UIColor.gray)
+        self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.gray)
         
         self.MenuView1.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
@@ -221,6 +230,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     override func viewDidAppear(_ animated: Bool){
         self.NombreContactoText.setBottomBorder(borderColor: UIColor.black)
         self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.black)
+        self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenText, attribute: .bottom, multiplier: 1, constant: 0)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -351,6 +361,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     
     func Inicio(){
         mapaVista.removeAnnotations(self.mapaVista.annotations)
+        self.view.endEditing(true)
         self.coreLocationManager.startUpdatingLocation()
         self.origenAnotacion.coordinate = (self.coreLocationManager.location?.coordinate)!
         self.origenIcono.image = UIImage(named: "origen2")
@@ -680,6 +691,33 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
         return true
     }
     
+    func cleanTextField(textfield: UITextField)->String{
+        var cleanedTextField = textfield.text?.uppercased()
+        cleanedTextField = cleanedTextField!.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
+        cleanedTextField = cleanedTextField!.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
+        cleanedTextField = cleanedTextField!.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
+        cleanedTextField = cleanedTextField!.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
+        return cleanedTextField!.folding(options: .diacriticInsensitive, locale: .current)
+    }
+    
+    func showFormularioSolicitud(){
+        self.CargarFavoritas()
+        self.TablaDirecciones.reloadData()
+        self.origenIcono.isHidden = true
+        self.origenAnotacion.coordinate = mapaVista.centerCoordinate
+        coreLocationManager.stopUpdatingLocation()
+        self.SolicitarBtn.isHidden = true
+        self.origenText.becomeFirstResponder()
+        if myvariables.cliente.empresa != "null"{
+            self.VoucherView.isHidden = false
+            self.VoucherEmpresaName.text = myvariables.cliente.empresa
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:43.0).isActive = true
+        }else{
+            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:10.0).isActive = true
+            
+        }
+        self.formularioSolicitud.isHidden = false
+    }
     
     
     
@@ -718,91 +756,117 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     //SOLICITAR BUTTON
     @IBAction func Solicitar(_ sender: AnyObject) {
         //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
-        
-        //Constraint to formulario solicitud
-        /*NSLayoutConstraint(item: myView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-         
-         NSLayoutConstraint(item: myView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-         
-         NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: myView, attribute:.width, multiplier: 2.0, constant:0.0).isActive = true?*/
-        
-        self.CargarFavoritas()
-        self.TablaDirecciones.reloadData()
-        self.origenIcono.isHidden = true
-        self.origenAnotacion.coordinate = mapaVista.centerCoordinate
-        coreLocationManager.stopUpdatingLocation()
-        self.SolicitarBtn.isHidden = true
-        self.formularioSolicitud.isHidden = false
+
         let datos = "#Posicion," + myvariables.cliente.idCliente + "," + "\(self.origenAnotacion.coordinate.latitude)," + "\(self.origenAnotacion.coordinate.longitude)," + "# \n"
         EnviarSocket(datos)
-        if myvariables.cliente.empresa != "null"{
-            self.VoucherView.isHidden = false
-            self.VoucherEmpresaName.text = myvariables.cliente.empresa
-            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:15.0).isActive = true
-        }else{
-            NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:15.0).isActive = true
-
-        }
+        
     }
     
     //Voucher check
     @IBAction func SwicthVoucher(_ sender: Any) {
         if self.VoucherCheck.isOn{
-            //self.VoucherEmpresaName.isHidden = false
+            self.destinoText.isHidden = false
+            self.destinoText.becomeFirstResponder()
         }else{
-            //self.VoucherEmpresaName.isHidden = true
+            self.destinoText.isHidden = true
+            self.destinoText.resignFirstResponder()
         }
     }
     
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
-        if !(self.NombreContactoText.text?.isEmpty)! && (self.TelefonoContactoText.text?.isEmpty)!{
-            let alertaDos = UIAlertController (title: "Contactar a otra persona", message: "Debe teclear el número de teléfono de la persona que el conductor debe contactar.", preferredStyle: .alert)
+        
+        if !self.destinoText.isHidden && self.destinoText.text!.isEmpty{
+            let alertaDos = UIAlertController (title: "Dirección de Destino", message: "Si desea pagar con Voucher necesita escribir su dirección de Destino.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                
+                self.destinoText.becomeFirstResponder()
             }))
             self.present(alertaDos, animated: true, completion: nil)
         }else{
-            if (!(self.origenText.text?.isEmpty)! && self.TelefonoContactoText.text != "Escriba el nombre del contacto" && self.TelefonoContactoText.text != "Número de teléfono incorrecto"){
+            if !(self.origenText.text?.isEmpty)! {
                 var voucher = "0"
-                var recordar = "0"
-                var origen = self.origenText.text!.uppercased()
-                origen = origen.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
-                origen = origen.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
-                origen = origen.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
-                origen = origen.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
-                origen = origen.folding(options: .diacriticInsensitive, locale: .current)
+                let origen = self.cleanTextField(textfield: self.origenText)
                 
-                self.referenciaText.endEditing(true)
-                var referencia = self.referenciaText.text!.uppercased()
-                referencia = referencia.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
-                referencia = referencia.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
-                referencia = referencia.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
-                referencia = referencia.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
-                referencia = referencia.folding(options: .diacriticInsensitive, locale: .current)
+                let referencia = self.cleanTextField(textfield: self.referenciaText)
                 
-                mapaVista.removeAnnotations(self.mapaVista.annotations)
+                let destino = self.cleanTextField(textfield: self.destinoText)
+                
+                let nombreContactar = self.NombreContactoText.text!.isEmpty ? myvariables.cliente.nombreApellidos : self.cleanTextField(textfield: self.NombreContactoText)
+                
+                let telefonoContactar = self.TelefonoContactoText.text!.isEmpty ? myvariables.cliente.user : self.cleanTextField(textfield: self.TelefonoContactoText)
+                
+                let clienteSolicitud = self.NombreContactoText.text!.isEmpty ? myvariables.cliente : CCliente(idUsuario: myvariables.cliente.idUsuario, idcliente: myvariables.cliente.idCliente, user: telefonoContactar!, nombre: nombreContactar!, email: myvariables.cliente.email, empresa: myvariables.cliente.empresa)
+                
+                mapaVista.removeAnnotations(mapaVista.annotations)
                 let nuevaSolicitud = CSolicitud()
-                if !(NombreContactoText.text?.isEmpty)!{
-                    nuevaSolicitud.DatosOtroCliente(clienteId: myvariables.cliente.idCliente, telefono: self.TelefonoContactoText.text!, nombre: self.NombreContactoText.text!)
-                }else{
-                    nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-                }
-                nuevaSolicitud.DatosSolicitud(dirorigen: origen, referenciaorigen: referencia, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
+                
+                nuevaSolicitud.DatosCliente(cliente: clienteSolicitud!)
+                
+                nuevaSolicitud.DatosSolicitud(dirorigen: origen, referenciaorigen: referencia, dirdestino: destino,latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0", lngdestino: "0",FechaHora: "")
+                
                 if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
                     voucher = "1"
                 }
+                
                 if self.RecordarView.isHidden == false && self.RecordarSwitch.isOn{
                     let newFavorita = [self.origenText.text, referenciaText.text]
                     self.GuardarFavorita(newFavorita: newFavorita as! [String])
                 }
+                
                 self.CrearSolicitud(nuevaSolicitud,voucher: voucher)
-                self.RecordarView.isHidden = true
-                //self.CancelarSolicitudProceso.isHidden = false
+                DibujarIconos([self.origenAnotacion])
+                view.endEditing(true)
             }else{
                 
             }
         }
+//        if !(self.NombreContactoText.text?.isEmpty)! && (self.TelefonoContactoText.text?.isEmpty)!{
+//            let alertaDos = UIAlertController (title: "Contactar a otra persona", message: "Debe teclear el número de teléfono de la persona que el conductor debe contactar.", preferredStyle: .alert)
+//            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//
+//            }))
+//            self.present(alertaDos, animated: true, completion: nil)
+//        }else{
+//            if (!(self.origenText.text?.isEmpty)! && self.TelefonoContactoText.text != "Escriba el nombre del contacto" && self.TelefonoContactoText.text != "Número de teléfono incorrecto"){
+//                var voucher = "0"
+//                var recordar = "0"
+//                var origen = self.origenText.text!.uppercased()
+//                origen = origen.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
+//                origen = origen.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
+//                origen = origen.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
+//                origen = origen.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
+//                origen = origen.folding(options: .diacriticInsensitive, locale: .current)
+//
+//                self.referenciaText.endEditing(true)
+//                var referencia = self.referenciaText.text!.uppercased()
+//                referencia = referencia.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
+//                referencia = referencia.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
+//                referencia = referencia.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
+//                referencia = referencia.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
+//                referencia = referencia.folding(options: .diacriticInsensitive, locale: .current)
+//
+//                mapaVista.removeAnnotations(self.mapaVista.annotations)
+//                let nuevaSolicitud = CSolicitud()
+//                if !(NombreContactoText.text?.isEmpty)!{
+//                    nuevaSolicitud.DatosOtroCliente(clienteId: myvariables.cliente.idCliente, telefono: self.TelefonoContactoText.text!, nombre: self.NombreContactoText.text!)
+//                }else{
+//                    nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
+//                }
+//                nuevaSolicitud.DatosSolicitud(dirorigen: origen, referenciaorigen: referencia, dirdestino: "null", latorigen: String(Double(origenAnotacion.coordinate.latitude)), lngorigen: String(Double(origenAnotacion.coordinate.longitude)), latdestino: "0.0", lngdestino: "0.0",FechaHora: "null")
+//                if self.VoucherView.isHidden == false && self.VoucherCheck.isOn{
+//                    voucher = "1"
+//                }
+//                if self.RecordarView.isHidden == false && self.RecordarSwitch.isOn{
+//                    let newFavorita = [self.origenText.text, referenciaText.text]
+//                    self.GuardarFavorita(newFavorita: newFavorita as! [String])
+//                }
+//                self.CrearSolicitud(nuevaSolicitud,voucher: voucher)
+//                self.RecordarView.isHidden = true
+//                //self.CancelarSolicitudProceso.isHidden = false
+//            }else{
+//
+//            }
+//        }
     }
     
     //Boton para Cancelar Carrera
@@ -850,48 +914,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     
 }
 
-extension UITextField {
-    func setBottomBorder(borderColor: UIColor) {
-        self.borderStyle = UITextField.BorderStyle.none
-        self.backgroundColor = UIColor.clear
-        let width = 1.0
-        let borderLine = UIView()
-        borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - width, width: Double(self.frame.width), height: width)
-        borderLine.backgroundColor = borderColor
-        self.addSubview(borderLine)
-    }
-}
 
-extension MKMapView {
-    /// when we call this function, we have already added the annotations to the map, and just want all of them to be displayed.
-    func fitAll() {
-        var zoomRect            = MKMapRect.null;
-        for annotation in annotations {
-            let annotationPoint = MKMapPoint.init(annotation.coordinate)
-            let pointRect       = MKMapRect.init(x: annotationPoint.x, y: annotationPoint.y, width: 0.01, height: 0.01)
-            zoomRect            = zoomRect.union(pointRect);
-        }
-        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets.init(top: 100, left: 100, bottom: 100, right: 100), animated: true)
-    }
-    
-    /// we call this function and give it the annotations we want added to the map. we display the annotations if necessary
-    func fitAll(in annotations: [MKAnnotation], andShow show: Bool) {
-        
-        var zoomRect:MKMapRect  = MKMapRect.null
-        
-        for annotation in annotations {
-            let aPoint          = MKMapPoint.init(annotation.coordinate)
-            let rect            = MKMapRect.init(x: aPoint.x, y: aPoint.y, width: 0.071, height: 0.071)
-            
-            if zoomRect.isNull {
-                zoomRect = rect
-            } else {
-                zoomRect = zoomRect.union(rect)
-            }
-        }
-        if(show) {
-            addAnnotations(annotations)
-        }
-        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100), animated: true)
-    }
-}
+
+

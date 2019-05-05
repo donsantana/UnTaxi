@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
+import AVFoundation
 
 
 extension InicioController: UITextFieldDelegate{
@@ -37,12 +38,12 @@ extension InicioController: UITextFieldDelegate{
                     self.RecordarView.isHidden = true
                 }
             }else{
-                if !(self.origenText.text?.isEmpty)! && textField.isEqual(self.referenciaText){
+                if !(self.origenText.text?.isEmpty)!{
                     textField.text?.removeAll()
-                    animateViewMoving(true, moveValue: 100, view: self.view)
+                    animateViewMoving(true, moveValue: 130, view: self.view)
                 }else{
                     self.view.resignFirstResponder()
-                    animateViewMoving(true, moveValue: 100, view: self.view)
+                    animateViewMoving(true, moveValue: 130, view: self.view)
                     let alertaDos = UIAlertController (title: "Dirección de Origen", message: "Debe teclear la dirección de recogida para orientar al conductor.", preferredStyle: .alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         self.origenText.becomeFirstResponder()
@@ -62,8 +63,8 @@ extension InicioController: UITextFieldDelegate{
             }
             self.animateViewMoving(false, moveValue: 190, view: view)
         }else{
-            if textfield.isEqual(self.referenciaText){
-                self.animateViewMoving(false, moveValue: 100, view: view)
+            if textfield.isEqual(self.referenciaText) || textfield.isEqual(self.destinoText){
+                self.animateViewMoving(false, moveValue: 130, view: view)
             }
         }
         self.TablaDirecciones.isHidden = true
@@ -168,6 +169,15 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
                 {
                     // show alert for not available
                 }
+            case "Cerrar Sesion":
+                let fileManager = FileManager()
+                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+                do {
+                    try fileManager.removeItem(atPath: filePath)
+                }catch{
+                    
+                }
+                self.CloseAPP()
             default:
                 self.CloseAPP()
             }
@@ -283,8 +293,6 @@ extension InicioController{
                     self.EnviarSocket(telefonos)
                     self.idusuario = temporal[2]
                     self.SolicitarBtn.isHidden = false
-                    //self.LoginView.isHidden = true
-                    //self.LoginView.endEditing(true)
                     myvariables.cliente = CCliente(idUsuario: temporal[2],idcliente: temporal[4], user: self.login[1], nombre: temporal[5],email : temporal[3], empresa: temporal[temporal.count - 2] )
                     if temporal[6] != "0"{
                         self.ListSolicitudPendiente(temporal)
@@ -322,6 +330,7 @@ extension InicioController{
                 }))
                 self.present(alertaDos, animated: true, completion: nil)
             }else{
+                self.showFormularioSolicitud()
                 self.MostrarTaxi(temporal)
             }
         }
@@ -493,11 +502,12 @@ extension InicioController{
                     myvariables.SMSVoz.ReproducirVozConductor(myvariables.urlconductor)
                 }
             }else{
-                if myvariables.SMSProceso{
+                if  myvariables.SMSProceso{
+                    myvariables.SMSProceso = true
                     myvariables.SMSVoz.ReproducirMusica()
                     myvariables.SMSVoz.ReproducirVozConductor(myvariables.urlconductor)
                 }else{
-                    print("Esta en background")
+                    let session = AVAudioSession.sharedInstance()
                 }
                 let localNotification = UILocalNotification()
                 localNotification.alertAction = "Mensaje del Conductor"
