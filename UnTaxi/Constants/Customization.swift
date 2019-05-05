@@ -12,7 +12,7 @@ import UIKit
 struct Customization {
     static var serverData: String!
     static var appName: String!
-    static var nameShowed: String = "Andy Taxi"
+    static var nameShowed: String = "UnTaxi"
     static var logo: UIImage!
     static var primaryColor: UIColor = UIColor(red: 250/255, green: 225/255, blue: 84/255, alpha: 1) //#1f1f1f
     static var textColor: UIColor = UIColor.black

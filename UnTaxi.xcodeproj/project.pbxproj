@@ -99,6 +99,11 @@
 		B5FB646E1D1C60C3006A2C70 /* solicitudespcopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */; };
 		B5FB646F1D1C60C3006A2C70 /* Tarifariocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */; };
 		B5FB64701D1C60C3006A2C70 /* Taximetrocopia.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */; };
+		C63A6FA9227F60D50095AF3C /* InicioControllerSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FA8227F60D50095AF3C /* InicioControllerSocketExt.swift */; };
+		C63A6FAB227F62660095AF3C /* LoginControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FAA227F62660095AF3C /* LoginControllerExt.swift */; };
+		C63A6FAD227F63160095AF3C /* LoginControllerSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FAC227F63160095AF3C /* LoginControllerSocketExt.swift */; };
+		C63A6FAF227F65A00095AF3C /* PerfilControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FAE227F65A00095AF3C /* PerfilControllerExt.swift */; };
+		C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */; };
 		C63D220821D56150007378D7 /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
 		C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
 		C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
@@ -221,6 +226,11 @@
 		B5FB64691D1C60C3006A2C70 /* solicitudespcopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solicitudespcopia.png; sourceTree = "<group>"; };
 		B5FB646A1D1C60C3006A2C70 /* Tarifariocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tarifariocopia.png; sourceTree = "<group>"; };
 		B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetrocopia.png; sourceTree = "<group>"; };
+		C63A6FA8227F60D50095AF3C /* InicioControllerSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerSocketExt.swift; sourceTree = "<group>"; };
+		C63A6FAA227F62660095AF3C /* LoginControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerExt.swift; sourceTree = "<group>"; };
+		C63A6FAC227F63160095AF3C /* LoginControllerSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerSocketExt.swift; sourceTree = "<group>"; };
+		C63A6FAE227F65A00095AF3C /* PerfilControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilControllerExt.swift; sourceTree = "<group>"; };
+		C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestController.swift; sourceTree = "<group>"; };
 		C63D220721D56150007378D7 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
 		C68DA297227E12D40029CD0B /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		C68DA299227E13030029CD0B /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
@@ -417,6 +427,7 @@
 				B58F1E5D1E635D2B008F07AC /* LoginController.swift */,
 				B5054D761E66051500FEEDE4 /* SolPendController.swift */,
 				B50482A01E6883B100D5236C /* InicioController.swift */,
+				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -469,6 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */,
+				C63A6FA8227F60D50095AF3C /* InicioControllerSocketExt.swift */,
+				C63A6FAA227F62660095AF3C /* LoginControllerExt.swift */,
+				C63A6FAC227F63160095AF3C /* LoginControllerSocketExt.swift */,
+				C63A6FAE227F65A00095AF3C /* PerfilControllerExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -693,8 +708,11 @@
 				B50482A11E6883B100D5236C /* InicioController.swift in Sources */,
 				C6AFBD1122186DC100CC060A /* InicioControllerExt.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
+				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
+				C63A6FAD227F63160095AF3C /* LoginControllerSocketExt.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
 				C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */,
+				C63A6FAB227F62660095AF3C /* LoginControllerExt.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
@@ -710,6 +728,7 @@
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
 				B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
+				C63A6FA9227F60D50095AF3C /* InicioControllerSocketExt.swift in Sources */,
 				AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */,
 				AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
@@ -720,6 +739,7 @@
 				AFD6563E1F9D42E100C8A5BD /* CEvaluacion.swift in Sources */,
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */,
+				C63A6FAF227F65A00095AF3C /* PerfilControllerExt.swift in Sources */,
 				AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 			);

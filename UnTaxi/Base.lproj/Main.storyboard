@@ -86,7 +86,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="origen2" translatesAutoresizingMaskIntoConstraints="NO" id="1ja-NQ-35U">
-                                <rect key="frame" x="167" y="318" width="79" height="148"/>
+                                <rect key="frame" x="149" y="373" width="79" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="148" id="GeM-Qy-Dt2"/>
                                     <constraint firstAttribute="width" constant="79" id="VNG-YW-KAa"/>
@@ -383,7 +383,6 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="295" height="43.666666666666664"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
-                                                        <color key="backgroundColor" red="0.97724437710000001" green="0.93420761819999998" blue="0.4547607005" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
@@ -964,14 +963,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="distancia" translatesAutoresizingMaskIntoConstraints="NO" id="jJf-lW-do3">
-                                        <rect key="frame" x="5" y="31" width="70" height="70"/>
+                                        <rect key="frame" x="5" y="31" width="65.333333333333329" height="65.333333333333329"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="51h-TV-Gdw"/>
-                                            <constraint firstAttribute="height" constant="70" id="obm-Iv-wpy"/>
+                                            <constraint firstAttribute="width" secondItem="jJf-lW-do3" secondAttribute="height" multiplier="1:1" id="y9x-Xd-oGl"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VK-QV-Npc">
-                                        <rect key="frame" x="75" y="55.666666666666671" width="95.666666666666686" height="21"/>
+                                        <rect key="frame" x="70.333333333333343" y="53" width="100.33333333333334" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="1sE-OB-a99"/>
                                         </constraints>
@@ -984,6 +982,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rq3-2F-wFI" secondAttribute="trailing" id="888-1G-oye"/>
                                     <constraint firstItem="jJf-lW-do3" firstAttribute="leading" secondItem="dEv-1s-D5I" secondAttribute="leading" constant="5" id="Byq-bn-UnU"/>
+                                    <constraint firstAttribute="bottom" secondItem="jJf-lW-do3" secondAttribute="bottom" constant="5" id="JET-uZ-1LQ"/>
                                     <constraint firstItem="8VK-QV-Npc" firstAttribute="leading" secondItem="jJf-lW-do3" secondAttribute="trailing" id="LnL-wy-vhq"/>
                                     <constraint firstAttribute="trailing" secondItem="8VK-QV-Npc" secondAttribute="trailing" id="SnT-LE-dak"/>
                                     <constraint firstItem="rq3-2F-wFI" firstAttribute="top" secondItem="dEv-1s-D5I" secondAttribute="top" constant="5" id="XdC-c6-ziU"/>
@@ -2028,7 +2027,7 @@
         <image name="origen2" width="30" height="60"/>
         <image name="salir2" width="48" height="48"/>
         <image name="smsvoz.png" width="200" height="60"/>
-        <image name="stargris" width="50" height="50"/>
+        <image name="stargris" width="35" height="35"/>
         <image name="tiempo" width="40" height="40"/>
         <image name="uctglogo.png" width="65" height="65"/>
         <image name="xoalogo.png" width="160" height="60"/>

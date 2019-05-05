@@ -10,7 +10,7 @@ import UIKit
 import SocketIO
 import CoreLocation
 
-class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate{
+class LoginController: UIViewController, CLLocationManagerDelegate{
     
     var login = [String]()
     var solitudespdtes = [CSolicitud]()
@@ -28,7 +28,9 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     var currentDictionary = [String : String]()    // the current dictionary
     var currentValue: String = ""                   // the current value for one of the keys in the dictionary
     
-    let socketIOManager = SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
+    var socketIOManager: SocketManager!//SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
+    
+    var apiRequestService = ApiRequestController()
     
     //MARK:- VARIABLES INTERFAZ
     
@@ -71,6 +73,11 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.apiRequestService.delegate = self
+        
+        self.apiRequestService.loginToAPIService()
+        
         
         self.coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -116,127 +123,49 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
 
         self.movilClaveRecoverHeight.constant = 40
         
-        if CConexionInternet.isConnectedToNetwork() == true{
-            myvariables.socket = self.socketIOManager.defaultSocket
-            myvariables.socket.connect()
-                
-            myvariables.socket.on("connect"){data, ack in
-                var loginData = "Vacio"
-                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                do {
-                    loginData = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-                }catch {
-                }
-                if loginData != "Vacio"{
-                    self.Login(loginData: loginData)
-                }else{
-                    self.AutenticandoView.isHidden = true
-                }
-                self.SocketEventos()
-            }
-        }else{
-            ErrorConexion()
-        }
+//        if CConexionInternet.isConnectedToNetwork() == true{
+//            myvariables.socket = self.socketIOManager.defaultSocket
+//            myvariables.socket.connect()
+//
+//            myvariables.socket.on("connect"){data, ack in
+//                var loginData = "Vacio"
+//                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+//                do {
+//                    loginData = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
+//                }catch {
+//                }
+//                if loginData != "Vacio"{
+//                    self.Login(loginData: loginData)
+//                }else{
+//                    self.AutenticandoView.isHidden = true
+//                }
+//                self.SocketEventos()
+//            }
+//        }else{
+//            ErrorConexion()
+//        }
         self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
-
-    func SocketEventos(){
-        myvariables.socket.on("LoginPassword"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "Terminado")
-            let temporal = String(describing: data).components(separatedBy: ",")
-                switch temporal[1]{
-                case "loginok":
-                    myvariables.cliente = CCliente(idUsuario: temporal[2],idcliente: temporal[4], user: self.login[1], nombre: temporal[5],email: temporal[3],empresa: temporal[temporal.count - 2])
-                    if temporal[6] != "0"{
-                        self.ListSolicitudPendiente(temporal)
-                    }
-                    if CLLocationManager.locationServicesEnabled(){
-                        switch(CLLocationManager.authorizationStatus()) {
-                        case .notDetermined, .restricted, .denied:
-                            let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
-                            locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                                UIApplication.shared.openURL(NSURL(string:UIApplication.openSettingsURLString)! as URL)
-                                //self.Login()
-                            }))
-                            locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-                                exit(0)
-                            }))
-                            self.present(locationAlert, animated: true, completion: nil)
-                        case .authorizedAlways, .authorizedWhenInUse:
-                            DispatchQueue.main.async {
-                                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
-                                self.navigationController?.setNavigationBarHidden(false, animated: false)
-                                self.navigationController?.show(vc, sender: nil)
-                            }
-                            break
-                        }
-                    }else{
-                        let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
-                        locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                            UIApplication.shared.openURL(NSURL(string:"App-Prefs:root=Privacy&path=LOCATION_SERVICES")! as URL)
-                        }))
-                        locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-                            exit(0)
-                        }))
-                        self.present(locationAlert, animated: true, completion: nil)
-                    }
-                case "loginerror":
-                    let fileManager = FileManager()
-                    let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                    do {
-                        try fileManager.removeItem(atPath: filePath)
-                    }catch{
-                        
-                    }
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
-                    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                        self.AutenticandoView.isHidden = true
-                        self.Usuario.text?.removeAll()
-                        self.Usuario.text?.removeAll()
-                    }))
-                    self.present(alertaDos, animated: true, completion: nil)
-                default: print("Problemas de conexion")
-                }
-        }
+    
+    func connectToSocket(){
+        //print(Customization.serverData!)
+        self.socketIOManager = SocketManager(socketURL: URL(string: Customization.serverData! )!, config: [.log(false), .forcePolling(true)]) //Customization.serverData
         
-        myvariables.socket.on("NR") {data, ack in
-            self.EnviarTimer(estado: 0, datos: "Terminado")
-            let temporal = String(describing: data).components(separatedBy: ",")
-            if temporal[1] == "registrook"{
-                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                    self.RegistroView.isHidden = true
-                }))
-                alertaDos.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
-                    exit(0)
-                }))
-                self.present(alertaDos, animated: true, completion: nil)
-            }
-            else{
-                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertController.Style.alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                    self.AutenticandoView.isHidden = true
-                }))
-                self.present(alertaDos, animated: true, completion: nil)
-            }
-        }
-        
-        //RECUPERAR CLAVES
-        myvariables.socket.on("Recuperarclave"){data, ack in
-            self.EnviarTimer(estado: 0, datos: "Terminado")
-            let temporal = String(describing: data).components(separatedBy: ",")
-            if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
-                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                }))
-                self.present(alertaDos, animated: true, completion: nil)
-            }
+        if CConexionInternet.isConnectedToNetwork() == true{
+            myvariables.socket = self.socketIOManager.socket(forNamespace: "/")
+            
+            myvariables.socket.connect()
+            
+            self.SocketEventos()
+        }else{
+            ErrorConexion()
         }
     }
+
     
     //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
     func ListSolicitudPendiente(_ listado : [String]){
@@ -337,6 +266,7 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         self.present(alertaDos, animated: true, completion: nil)
     }
 
+    
     //MARK:- ACCIONES DE LOS BOTONES
     //LOGIN Y REGISTRO DE CLIENTE
     @IBAction func Autenticar(_ sender: AnyObject) {
@@ -439,184 +369,77 @@ class LoginController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
 
 
-    //MARK:- CONTROL DE TECLADO VIRTUAL
-    //Funciones para mover los elementos para que no queden detrás del teclado
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = UIColor.black
-        textField.text?.removeAll()
-            if textField.isEqual(claveText) || textField.isEqual(Clave){
-                animateViewMoving(true, moveValue: 80, view: self.view)
-            }
-            else{
-                if textField.isEqual(movilClaveRecover){
-                    textField.text?.removeAll()
-                    animateViewMoving(true, moveValue: 105, view: self.view)
-                }
-                else{
-                    if textField.isEqual(confirmarClavText) || textField.isEqual(correoText) || textField.isEqual(RecomendadoText){
-                        if textField.isEqual(confirmarClavText){
-                            textField.isSecureTextEntry = true
-                        }
-                            textField.tintColor = UIColor.black
-                            animateViewMoving(true, moveValue: 200, view: self.view)
-                        }else{
-                        if textField.isEqual(self.telefonoText){
-                            textField.textColor = UIColor.black
-                            //textField.text = ""
-                            animateViewMoving(true, moveValue: 70, view: self.view)
-                        }
-                    }
-        }
-        }
-    }
-    func textFieldDidEndEditing(_ textfield: UITextField) {
-        if !textfield.isEqual(RecomendadoText) && textfield.text!.isEmpty{
-            textfield.text = "Campo requerido"
-        }
-        textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
-            if textfield.isEqual(claveText) || textfield.isEqual(Clave){
-                    animateViewMoving(false, moveValue: 80, view: self.view)
-            }else{
-                if textfield.isEqual(confirmarClavText) || textfield.isEqual(correoText) || textfield.isEqual(RecomendadoText){
-                    if textfield.text != claveText.text && textfield.isEqual(confirmarClavText){
-                            textfield.textColor = UIColor.red
-                            textfield.text = "Las claves no coinciden"
-                            textfield.isSecureTextEntry = false
-                            RegistroBtn.isEnabled = false
-                        }
-                        else{
-                            RegistroBtn.isEnabled = true
-                        }
-                    animateViewMoving(false, moveValue: 200, view: self.view)
-                    }else{
-                        if textfield.isEqual(telefonoText) || textfield.isEqual(RecomendadoText){
-        
-                            if textfield.text?.count != 10{
-                                textfield.textColor = UIColor.red
-                                textfield.text = "Número de Teléfono Incorrecto"
-                            }
-                            animateViewMoving(false, moveValue: 70, view: self.view)
-                        }else{
-                            if textfield.isEqual(movilClaveRecover){
-                                if movilClaveRecover.text?.count != 10{
-                                    textfield.text = "Número de Teléfono Incorrecto"
-                                }else{
-                                    self.RecuperarClaveBtn.isEnabled = true
-                                }
-                                animateViewMoving(false, moveValue: 105, view: self.view)
-                            }
-                        }
-                    }
-                }
-    }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-
-    }
-
-    func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
-        let movementDuration:TimeInterval = 0.3
-        let movement:CGFloat = ( up ? -moveValue : moveValue)
-        UIView.beginAnimations( "animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
-        UIView.commitAnimations()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        if textField.isEqual(self.Clave){
-            let loginData = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
-            //CREAR EL FICHERO DE LOGÍN
-            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-            
-            do {
-                _ = try loginData.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
-                
-            } catch {
-                
-            }
-            self.Login(loginData: loginData)
-        }
-        return true
-    }
-    
-    @objc func ocultarTeclado(){
-        self.ClaveRecover.endEditing(true)
-        self.DatosView.endEditing(true)
-        self.RegistroView.endEditing(true)
-    }
 }
 
-extension LoginController: XMLParserDelegate {
-    func parserDidEndDocument(_ parser: XMLParser) {
-        //print("Person str is:: " + self.serverStr)
-        //TODO: You have to build your json object from the PersonStr now
-    }
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        currentValue += string
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        if elementName == "untaxi" {
-            self.recordKey = "untaxi"
-            self.currentDictionary = [String : String]()
-        } else if dictionaryKeys.contains(elementName) {
-            self.currentValue = String()
-        }
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "cliente"{
-            if self.recordKey == "untaxi"{
-            self.results.append(self.currentDictionary)
-            self.currentDictionary = [String:String]()
-                self.recordKey = ""
-            }
-        } else if dictionaryKeys.contains(elementName) {
-            self.currentDictionary[elementName] = currentValue
-            self.currentValue = ""
-        }
-    }
-    // Just in case, if there's an error, report it. (We don't want to fly blind here.)
-    
-    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        self.currentValue = ""
-        self.currentDictionary = [String:String]()
-        self.results = [[String:String]]()
-    }
-    
-    func ServerSelect(completionHandler:@escaping (Bool)->()){
-        let url = NSURL(string: "http://www.xoait.com/dirtablesios.xml")
-        let ServerXml = XMLParser(contentsOf: url! as URL)
-        //print(ServerXml)
-        ServerXml?.delegate = self
-        let result = ServerXml?.parse()
-        var writeString = "http://www.xoait.com:5803"
-        if result!{
-            for server in results {
-                writeString = server["ip"]!+":"+server["p"]!+","
-            }
-            //CREAR EL FICHERO DE LOGÍN
-        }
-        let filePath = NSHomeDirectory() + "/Library/Caches/servers.txt"
-        
-        do {
-            _ = try writeString.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            
-        }
-        self.ServersData = String(describing: writeString).components(separatedBy: ",")
-        completionHandler(true)
-    }
-    func ServerConect(completionHandler:@escaping (Bool)->()){
-        var i = 0
-        while i < self.ServersData.count - 1{
-            myvariables.socket = self.socketIOManager.defaultSocket
-            myvariables.socket.connect()
-            i += 1
-        }
-        completionHandler(true)
-    }
-}
+//extension LoginController: XMLParserDelegate {
+//    func parserDidEndDocument(_ parser: XMLParser) {
+//        //print("Person str is:: " + self.serverStr)
+//        //TODO: You have to build your json object from the PersonStr now
+//    }
+//    func parser(_ parser: XMLParser, foundCharacters string: String) {
+//        currentValue += string
+//    }
+//
+//    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+//        if elementName == "untaxi" {
+//            self.recordKey = "untaxi"
+//            self.currentDictionary = [String : String]()
+//        } else if dictionaryKeys.contains(elementName) {
+//            self.currentValue = String()
+//        }
+//    }
+//
+//    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+//        if elementName == "cliente"{
+//            if self.recordKey == "untaxi"{
+//            self.results.append(self.currentDictionary)
+//            self.currentDictionary = [String:String]()
+//                self.recordKey = ""
+//            }
+//        } else if dictionaryKeys.contains(elementName) {
+//            self.currentDictionary[elementName] = currentValue
+//            self.currentValue = ""
+//        }
+//    }
+//    // Just in case, if there's an error, report it. (We don't want to fly blind here.)
+//
+//    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+//        self.currentValue = ""
+//        self.currentDictionary = [String:String]()
+//        self.results = [[String:String]]()
+//    }
+//
+//    func ServerSelect(completionHandler:@escaping (Bool)->()){
+//        let url = NSURL(string: "http://www.xoait.com/dirtablesios.xml")
+//        let ServerXml = XMLParser(contentsOf: url! as URL)
+//        //print(ServerXml)
+//        ServerXml?.delegate = self
+//        let result = ServerXml?.parse()
+//        var writeString = "http://www.xoait.com:5803"
+//        if result!{
+//            for server in results {
+//                writeString = server["ip"]!+":"+server["p"]!+","
+//            }
+//            //CREAR EL FICHERO DE LOGÍN
+//        }
+//        let filePath = NSHomeDirectory() + "/Library/Caches/servers.txt"
+//
+//        do {
+//            _ = try writeString.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
+//        } catch {
+//
+//        }
+//        self.ServersData = String(describing: writeString).components(separatedBy: ",")
+//        completionHandler(true)
+//    }
+//    func ServerConect(completionHandler:@escaping (Bool)->()){
+//        var i = 0
+//        while i < self.ServersData.count - 1{
+//            myvariables.socket = self.socketIOManager.defaultSocket
+//            myvariables.socket.connect()
+//            i += 1
+//        }
+//        completionHandler(true)
+//    }
+//}

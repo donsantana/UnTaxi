@@ -244,7 +244,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
     
     func appUpdateAvailable() -> Bool
     {
-        let storeInfoURL: String = "http://itunes.apple.com/lookup?bundleId=com.xoait.UnTaxi"
+        let storeInfoURL: String = GlobalConstants.storeInfoURL
         var upgradeAvailable = false
         
         // Get the main bundle of the app so that we can determine the app's version number
