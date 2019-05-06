@@ -636,7 +636,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
         // (3):
         let regex = try! NSRegularExpression(pattern: pat, options: [])
         // (4):
-        let matches = regex.matches(in: name, options: [], range: NSRange(location: 0, length: name.characters.count))
+        let matches = regex.matches(in: name, options: [], range: NSRange(location: 0, length: name.count))
         print(matches.count)
         if matches.count == 0{
             return true

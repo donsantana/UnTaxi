@@ -87,7 +87,7 @@ if let text = xml.ResultSet.Result.Hit[0].Name.text {
 }
 
 // access XML Attribute
-if let index = xml["ResultSet", "Result", "Hit"].attributes["index"] {
+if let index = xml["ResultSet", "Result", "Hit", 0].attributes["index"] {
     print(index)
 }
 
@@ -148,7 +148,7 @@ let srt = "<xmlopening>@ß123\u{1c}</xmlopening>"
 
 let xml = XML.parse(str.data(using: .utf8))
 
-if case .failure(XMLError.intrupptedParseError) = xml {
+if case .failure(XMLError.interruptedParseError) = xml {
   print("invalid character")
 }
 
@@ -222,6 +222,10 @@ struct Entity {
 let entity = Entity()
 entity.names ?<< xml.ResultSet.Result.Hit[1].Name.text // assign if it has text
 ```
+### 7. Count child Elements
+```swift
+let numberOfHits = xml.ResultSet.Result.Hit.all?.count 
+```
 ### Check error
 ```swift
 print(xml.ResultSet.Result.TypoKey) // -> "TypoKey not found."
@@ -255,7 +259,7 @@ Alamofire.request(.GET, "https://itunes.apple.com/us/rss/topgrossingapplications
         }
 ```
 
-In addition, there is the extension of Alamofire to combine with SwiftyXMLPraser. 
+In addition, there is the extension of Alamofire to combine with SwiftyXMLParser. 
 
 * [Alamofire-SwiftyXMLParser](https://github.com/kazuhiro4949/Alamofire-SwiftyXMLParser)
 

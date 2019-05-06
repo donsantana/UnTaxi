@@ -138,7 +138,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
                 try audioSession.setActive(false)
                 let filePath = NSHomeDirectory() + "/Library/Caches/Audio" + name
                 let audio = try? Data(contentsOf: directoryURL()!)
-                try? audio?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
+                ((try? audio?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])) as ()??)
                 
             } catch {
             }

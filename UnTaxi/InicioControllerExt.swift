@@ -57,7 +57,7 @@ extension InicioController: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textfield: UITextField) {
         if textfield.isEqual(self.NombreContactoText) || textfield.isEqual(self.TelefonoContactoText){
-            if textfield.isEqual(self.TelefonoContactoText) && textfield.text?.characters.count != 10 && textfield.text?.characters.count != 9 && !((self.NombreContactoText.text?.isEmpty)!){
+            if textfield.isEqual(self.TelefonoContactoText) && textfield.text?.count != 10 && textfield.text?.count != 9 && !((self.NombreContactoText.text?.isEmpty)!){
                 textfield.textColor = UIColor.red
                 textfield.text = "Número de teléfono incorrecto"
             }

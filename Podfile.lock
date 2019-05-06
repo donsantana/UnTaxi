@@ -15,25 +15,25 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
-  - MaterialComponents/AnimationTiming (70.0.0)
-  - MaterialComponents/Palettes (70.0.0)
-  - MaterialComponents/private/Application (70.0.0)
-  - MaterialComponents/private/Math (70.0.0)
-  - MaterialComponents/TextFields (70.0.0):
+  - MaterialComponents/AnimationTiming (84.0.0)
+  - MaterialComponents/Palettes (84.0.0)
+  - MaterialComponents/private/Application (84.0.0)
+  - MaterialComponents/private/Math (84.0.0)
+  - MaterialComponents/TextFields (84.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (70.0.0):
+  - MaterialComponents/Typography (84.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
-  - MDFInternationalization (1.1.0)
-  - Socket.IO-Client-Swift (13.4.0):
-    - Starscream (~> 3.0.2)
-  - Starscream (3.0.6)
-  - SwiftyJSON (4.2.0)
-  - SwiftyXMLParser (4.3.0)
+  - MDFInternationalization (2.0.0)
+  - Socket.IO-Client-Swift (15.0.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.0)
+  - SwiftyJSON (5.0.0)
+  - SwiftyXMLParser (5.0.0)
   - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
@@ -60,14 +60,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
-  MaterialComponents: 7c107af5ae6566de2f1ba94bde3db99d1b874bab
-  MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
-  Socket.IO-Client-Swift: 2b2720f14c92ff1237ced09bc2f2da2022624fee
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  SwiftyXMLParser: b2e0b0dd0e0fb1ac39869dd4a0c6181847af2945
+  MaterialComponents: ea6e7d777ca716eed90e44700be40a91f4c9c4d5
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyXMLParser: 5ebb8793192f403fa8cc691045143906122a7a75
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
 PODFILE CHECKSUM: 0f2d789f6dc5ea2c82cbf62163febb61f25f39a2
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.6.0.beta.2

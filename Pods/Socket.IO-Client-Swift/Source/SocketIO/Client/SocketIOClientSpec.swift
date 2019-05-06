@@ -237,7 +237,7 @@ public protocol SocketIOClientSpec : AnyObject {
 
 public extension SocketIOClientSpec {
     /// Default implementation.
-    public func didError(reason: String) {
+    func didError(reason: String) {
         DefaultSocketLogger.Logger.error("\(reason)", type: "SocketIOClient")
 
         handleClientEvent(.error, data: [reason])
@@ -326,6 +326,9 @@ public enum SocketClientEvent : String {
     case reconnectAttempt
 
     /// Emitted every time there is a change in the client's status.
+    ///
+    /// The payload for data is [SocketIOClientStatus, Int]. Where the second item is the raw value. Use the second one
+    /// if you are working in Objective-C.
     ///
     /// Usage:
     ///

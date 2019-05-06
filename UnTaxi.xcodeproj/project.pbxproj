@@ -66,7 +66,6 @@
 		AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
 		AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */; };
 		AFD6564F1F9D42E100C8A5BD /* CConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* CConductor.swift */; };
-		AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656351F9D42E000C8A5BD /* LocationManager.swift */; };
 		AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */; };
 		AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
 		AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
@@ -186,7 +185,6 @@
 		AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = claxon.mp3; sourceTree = "<group>"; };
 		AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSolicitud.swift; sourceTree = "<group>"; };
 		AFD656321F9D42E000C8A5BD /* CConductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConductor.swift; sourceTree = "<group>"; };
-		AFD656351F9D42E000C8A5BD /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6565C1FA0003B00C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,7 +373,6 @@
 				AFD6562A1F9D42DE00C8A5BD /* beep.wav */,
 				AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */,
 				AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard */,
-				AFD656351F9D42E000C8A5BD /* LocationManager.swift */,
 				AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */,
 				AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */,
 			);
@@ -531,7 +528,7 @@
 					84F571421BCE958200FC18D5 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 2VMNV5JH5M;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -729,7 +726,6 @@
 				B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
 				C63A6FA9227F60D50095AF3C /* InicioControllerSocketExt.swift in Sources */,
-				AFD656521F9D42E100C8A5BD /* LocationManager.swift in Sources */,
 				AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
 				AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */,
@@ -906,7 +902,7 @@
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -942,7 +938,7 @@
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
