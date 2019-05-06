@@ -14,14 +14,13 @@ extension LoginController{
     
     func SocketEventos(){
         myvariables.socket.on("connect"){data, ack in
-            var read = "Vacio"
-            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-            do {
-                read = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
-            }catch {
-            }
-            if read != "Vacio"
-            {
+            let read = myvariables.userDefaults.string(forKey: "loginData") ?? "Vacio"
+//            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+//            do {
+//                read = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
+//            }catch {
+//            }
+            if read != "Vacio"{
                 self.AutenticandoView.isHidden = false
                 self.Login(loginData: read)
             }
@@ -45,8 +44,17 @@ extension LoginController{
                     case .notDetermined, .restricted, .denied:
                         let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
                         locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                            UIApplication.shared.openURL(NSURL(string:UIApplication.openSettingsURLString)! as URL)
-                            //self.Login()
+                            if #available(iOS 10.0, *) {
+                                let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+                                UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+                                    exit(0)
+                                })
+                            } else {
+                                if let url = NSURL(string:UIApplication.openSettingsURLString) {
+                                    UIApplication.shared.openURL(url as URL)
+                                    exit(0)
+                                }
+                            }
                         }))
                         locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
                             exit(0)
@@ -63,7 +71,17 @@ extension LoginController{
                 }else{
                     let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
                     locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                        UIApplication.shared.openURL(NSURL(string:"App-Prefs:root=Privacy&path=LOCATION_SERVICES")! as URL)
+                        if #available(iOS 10.0, *) {
+                            let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+                                exit(0)
+                            })
+                        } else {
+                            if let url = NSURL(string:UIApplication.openSettingsURLString) {
+                                UIApplication.shared.openURL(url as URL)
+                                exit(0)
+                            }
+                        }
                     }))
                     locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
                         exit(0)
@@ -71,13 +89,15 @@ extension LoginController{
                     self.present(locationAlert, animated: true, completion: nil)
                 }
             case "loginerror":
-                let fileManager = FileManager()
-                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                do {
-                    try fileManager.removeItem(atPath: filePath)
-                }catch{
-                    
-                }
+//                let fileManager = FileManager()
+//                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+//                do {
+//                    try fileManager.removeItem(atPath: filePath)
+//                }catch{
+//
+//                }
+                myvariables.userDefaults.set(nil, forKey: "loginData")
+                
                 let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.AutenticandoView.isHidden = true

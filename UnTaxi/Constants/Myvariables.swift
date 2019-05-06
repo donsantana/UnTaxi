@@ -20,4 +20,5 @@ struct myvariables {
     static var UrlSubirVoz:String!
     static var SMSVoz = CSMSVoz()
     static var urlconductor = ""
+    static var userDefaults: UserDefaults!
 }

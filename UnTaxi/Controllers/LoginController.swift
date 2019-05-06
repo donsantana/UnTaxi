@@ -19,16 +19,16 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     var emitTimer = Timer()
    // var conexion = CSocket()
     
-    var ServersData = [String]()
-    var ServerParser = XMLParser()
-    var recordKey = ""
-    let dictionaryKeys = ["ip","p"]
+//    var ServersData = [String]()
+//    var ServerParser = XMLParser()
+//    var recordKey = ""
+//    let dictionaryKeys = ["ip","p"]
     
     var results = [[String: String]]()                // the whole array of dictionaries
     var currentDictionary = [String : String]()    // the current dictionary
     var currentValue: String = ""                   // the current value for one of the keys in the dictionary
     
-    var socketIOManager: SocketManager!//SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
+    var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
     
     var apiRequestService = ApiRequestController()
     
@@ -78,6 +78,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
         
         self.apiRequestService.loginToAPIService()
         
+        myvariables.userDefaults = UserDefaults.standard
         
         self.coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -272,15 +273,18 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     @IBAction func Autenticar(_ sender: AnyObject) {
         
         let loginData = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
+        
+        myvariables.userDefaults.set(loginData, forKey: "loginData")
+        
         self.Clave.endEditing(true)
         //CREAR EL FICHERO DE LOGÍN
-        let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"        
-        do {
-            _ = try loginData.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
-            
-        } catch {
-            
-        }
+//        let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+//        do {
+//            _ = try loginData.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
+//
+//        } catch {
+//
+//        }
         self.Login(loginData: loginData)
     }
     

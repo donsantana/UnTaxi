@@ -225,6 +225,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, URLSessionD
         default:
             break
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool){

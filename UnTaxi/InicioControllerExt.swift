@@ -170,13 +170,14 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
                     // show alert for not available
                 }
             case "Cerrar Sesion":
-                let fileManager = FileManager()
-                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
-                do {
-                    try fileManager.removeItem(atPath: filePath)
-                }catch{
-                    
-                }
+//                let fileManager = FileManager()
+//                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
+//                do {
+//                    try fileManager.removeItem(atPath: filePath)
+//                }catch{
+//
+//                }
+                myvariables.userDefaults.set(nil, forKey: "loginData")
                 self.CloseAPP()
             default:
                 self.CloseAPP()
