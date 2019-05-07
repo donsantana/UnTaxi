@@ -288,4 +288,7 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
         MostrarMotivoCancelacion()
     }
 
+    @IBAction func cerrarDatosConductor(_ sender: Any) {
+        self.DatosConductor.isHidden = true
+    }
 }

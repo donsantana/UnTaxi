@@ -83,7 +83,6 @@
 		B5EE14C41D5282520050ADAD /* destino@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE14C31D5282520050ADAD /* destino@3x.png */; };
 		B5EE14C81D5286010050ADAD /* origen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE14C71D5286010050ADAD /* origen@3x.png */; };
 		B5EE74FC1D5D976F00DC8D77 /* callcenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE74FB1D5D976F00DC8D77 /* callcenter.png */; };
-		B5EFF1B31D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF1B21D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png */; };
 		B5EFF1B51D5C46D8007C4C30 /* uctglogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF1B41D5C46D8007C4C30 /* uctglogo.png */; };
 		B5F1D4AC1DA4B5C0006BF1AE /* compartir.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F1D4AB1DA4B5C0006BF1AE /* compartir.png */; };
 		B5F2A86F1D73EB030050F564 /* xoalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F2A86E1D73EB030050F564 /* xoalogo.png */; };
@@ -207,7 +206,6 @@
 		B5EE14C31D5282520050ADAD /* destino@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "destino@3x.png"; sourceTree = "<group>"; };
 		B5EE14C71D5286010050ADAD /* origen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "origen@3x.png"; sourceTree = "<group>"; };
 		B5EE74FB1D5D976F00DC8D77 /* callcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callcenter.png; sourceTree = "<group>"; };
-		B5EFF1B21D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = looooooooooooooggggggggggggggggggggo.png; sourceTree = "<group>"; };
 		B5EFF1B41D5C46D8007C4C30 /* uctglogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uctglogo.png; sourceTree = "<group>"; };
 		B5F1D4AB1DA4B5C0006BF1AE /* compartir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compartir.png; sourceTree = "<group>"; };
 		B5F2A86E1D73EB030050F564 /* xoalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo.png; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 				B5F753D71D5CDD8300FFDFD0 /* mensajes.png */,
 				B5F753D51D5CCB3700FFDFD0 /* evaluar.png */,
 				B5EFF1B41D5C46D8007C4C30 /* uctglogo.png */,
-				B5EFF1B21D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png */,
 				B5EE14C71D5286010050ADAD /* origen@3x.png */,
 				B5EE14C31D5282520050ADAD /* destino@3x.png */,
 				B5EE14BF1D527B040050ADAD /* destino@2x.png */,
@@ -572,7 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F304241CC7F875009EAEF8 /* logpassfondo@3x.png in Resources */,
-				B5EFF1B31D5C3FA0007C4C30 /* looooooooooooooggggggggggggggggggggo.png in Resources */,
 				B5EE14BC1D527A7C0050ADAD /* origen2@2x.png in Resources */,
 				B5F753DA1D5CDED200FFDFD0 /* llamar.png in Resources */,
 				B5F2A86F1D73EB030050F564 /* xoalogo.png in Resources */,

@@ -1167,16 +1167,35 @@
                                                     <action selector="AceptarCond:" destination="1BQ-9B-H05" eventType="touchUpInside" id="aia-UB-SIh"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datos del Vehículo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQt-7a-9ck">
-                                                <rect key="frame" x="8" y="8" width="260" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datos del Vehículo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQt-7a-9ck">
+                                                <rect key="frame" x="8" y="8" width="239" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="ekU-cz-CsR"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-VM-fsM">
+                                                <rect key="frame" x="255" y="5" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="Awe-Dg-UiP"/>
+                                                    <constraint firstAttribute="width" constant="35" id="tw8-dj-vvg"/>
+                                                </constraints>
+                                                <state key="normal" image="close"/>
+                                                <connections>
+                                                    <action selector="cerrarDatosConductor:" destination="1BQ-9B-H05" eventType="touchUpInside" id="ndz-j7-ENQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="5uv-qi-6gw"/>
+                                            <constraint firstItem="qqy-VM-fsM" firstAttribute="top" secondItem="zCc-zz-NUO" secondAttribute="top" constant="5" id="bfA-Yz-hZJ"/>
+                                            <constraint firstItem="qqy-VM-fsM" firstAttribute="leading" secondItem="IQt-7a-9ck" secondAttribute="trailing" constant="8" id="cYn-Tn-xLu"/>
+                                            <constraint firstItem="IQt-7a-9ck" firstAttribute="top" secondItem="zCc-zz-NUO" secondAttribute="top" constant="8" id="ees-Fz-oGR"/>
+                                            <constraint firstItem="IQt-7a-9ck" firstAttribute="leading" secondItem="zCc-zz-NUO" secondAttribute="leading" constant="8" id="ek8-km-2WW"/>
+                                            <constraint firstAttribute="trailing" secondItem="qqy-VM-fsM" secondAttribute="trailing" constant="10" id="hR9-QP-Zn3"/>
                                             <constraint firstAttribute="width" constant="300" id="z6I-M9-eng"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -2017,6 +2036,7 @@
     </scenes>
     <resources>
         <image name="chofer.png" width="150" height="150"/>
+        <image name="close" width="40" height="40"/>
         <image name="costo" width="40" height="40"/>
         <image name="distancia" width="70" height="70"/>
         <image name="llamar.png" width="50" height="50"/>
