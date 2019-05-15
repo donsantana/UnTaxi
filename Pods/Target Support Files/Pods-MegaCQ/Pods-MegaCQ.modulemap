@@ -1,0 +1,6 @@
+framework module Pods_MegaCQ {
+  umbrella header "Pods-MegaCQ-umbrella.h"
+
+  export *
+  module * { export * }
+}

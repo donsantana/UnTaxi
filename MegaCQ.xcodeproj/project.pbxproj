@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184A8CBA8E3AF6178685B7BA /* Pods_MegaCQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6256FA66237B2C4C700B52C3 /* Pods_MegaCQ.framework */; };
 		845C0F521C7633EF0050F852 /* chofer.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C0F511C7633EF0050F852 /* chofer.png */; };
 		84609F321C758E6F0056A282 /* dclock.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EED1C758E6F0056A282 /* dclock.png */; };
 		84609F331C758E6F0056A282 /* ddistancia.png in Resources */ = {isa = PBXBuildFile; fileRef = 84609EEE1C758E6F0056A282 /* ddistancia.png */; };
@@ -52,11 +53,9 @@
 		AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */; };
 		AFD655D91F9D391000C8A5BD /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D41F9D391000C8A5BD /* PerfilController.swift */; };
 		AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D51F9D391000C8A5BD /* CompletadaController.swift */; };
-		AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */; };
 		AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */; };
 		AFD6563E1F9D42E100C8A5BD /* CEvaluacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */; };
 		AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656221F9D42DC00C8A5BD /* CRuta.swift */; };
-		AFD656421F9D42E100C8A5BD /* PantallaSolic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */; };
 		AFD656431F9D42E100C8A5BD /* CCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656261F9D42DD00C8A5BD /* CCliente.swift */; };
 		AFD656441F9D42E100C8A5BD /* CTelefono.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656271F9D42DD00C8A5BD /* CTelefono.swift */; };
 		AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
 		AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */; };
 		AFD6564F1F9D42E100C8A5BD /* CConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* CConductor.swift */; };
-		AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */; };
 		AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
 		AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
 		AFD656721FA17CD100C8A5BD /* ds_digital in Resources */ = {isa = PBXBuildFile; fileRef = AFD656711FA17CD000C8A5BD /* ds_digital */; };
@@ -114,7 +112,9 @@
 
 /* Begin PBXFileReference section */
 		24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		54C5CFB6EF345F188BE71471 /* Pods-MegaCQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaCQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MegaCQ/Pods-MegaCQ.debug.xcconfig"; sourceTree = "<group>"; };
 		614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6256FA66237B2C4C700B52C3 /* Pods_MegaCQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaCQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C0F511C7633EF0050F852 /* chofer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chofer.png; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84609EED1C758E6F0056A282 /* dclock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dclock.png; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		84F304231CC7F875009EAEF8 /* logpassfondo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logpassfondo@3x.png"; sourceTree = "<group>"; };
 		84F493D21CA11C8800A54C36 /* encabezadosIOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = encabezadosIOS.png; sourceTree = "<group>"; };
 		84F493D61CA137AD00A54C36 /* solpendientes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solpendientes.png; sourceTree = "<group>"; };
-		84F571431BCE958200FC18D5 /* UnTaxi.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F571431BCE958200FC18D5 /* MegaCQ.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegaCQ.temp_caseinsensitive_rename.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F571521BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F5715B1BCE958200FC18D5 /* XtaxiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiTests.swift; sourceTree = "<group>"; };
 		84F5715D1BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,11 +171,9 @@
 		AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656191F9D3C5300C8A5BD /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6561A1F9D3C5300C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantallaInicio.swift; sourceTree = "<group>"; };
 		AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSMSVoz.swift; sourceTree = "<group>"; };
 		AFD656211F9D42DC00C8A5BD /* CEvaluacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEvaluacion.swift; sourceTree = "<group>"; };
 		AFD656221F9D42DC00C8A5BD /* CRuta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRuta.swift; sourceTree = "<group>"; };
-		AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantallaSolic.swift; sourceTree = "<group>"; };
 		AFD656261F9D42DD00C8A5BD /* CCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCliente.swift; sourceTree = "<group>"; };
 		AFD656271F9D42DD00C8A5BD /* CTelefono.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTelefono.swift; sourceTree = "<group>"; };
 		AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 		AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6565C1FA0003B00C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterViewCell.swift; sourceTree = "<group>"; };
 		AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolViewCell.swift; sourceTree = "<group>"; };
 		AFD656711FA17CD000C8A5BD /* ds_digital */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ds_digital; sourceTree = "<group>"; };
@@ -237,6 +234,7 @@
 		C6915F20228500420048C00C /* SMSVoz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVoz.swift; sourceTree = "<group>"; };
 		C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
 		E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		F18D0F51ECE5296987858EDD /* Pods-MegaCQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaCQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-MegaCQ/Pods-MegaCQ.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */,
+				184A8CBA8E3AF6178685B7BA /* Pods_MegaCQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +252,6 @@
 		806E675426FD1B3FEF7755DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */,
-				AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */,
-				AFD6565C1FA0003B00C8A5BD /* Pods_UnTaxi.framework */,
 				AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */,
 				AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */,
 				AFD656191F9D3C5300C8A5BD /* Canvas.framework */,
@@ -268,6 +263,7 @@
 				84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
 				614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */,
+				6256FA66237B2C4C700B52C3 /* Pods_MegaCQ.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -350,7 +346,7 @@
 		84F571441BCE958200FC18D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84F571431BCE958200FC18D5 /* UnTaxi.temp_caseinsensitive_rename.app */,
+				84F571431BCE958200FC18D5 /* MegaCQ.temp_caseinsensitive_rename.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,8 +368,6 @@
 				AFD6562A1F9D42DE00C8A5BD /* beep.wav */,
 				AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */,
 				AFD6562C1F9D42DE00C8A5BD /* Launch Screen.storyboard */,
-				AFD6561F1F9D42DB00C8A5BD /* PantallaInicio.swift */,
-				AFD656251F9D42DD00C8A5BD /* PantallaSolic.swift */,
 			);
 			path = UnTaxi;
 			sourceTree = "<group>";
@@ -490,6 +484,8 @@
 			children = (
 				24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */,
 				E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */,
+				54C5CFB6EF345F188BE71471 /* Pods-MegaCQ.debug.xcconfig */,
+				F18D0F51ECE5296987858EDD /* Pods-MegaCQ.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -497,9 +493,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84F571421BCE958200FC18D5 /* UnTaxi */ = {
+		84F571421BCE958200FC18D5 /* MegaCQ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
+			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "MegaCQ" */;
 			buildPhases = (
 				C5C30425544E29BFD217055A /* [CP] Check Pods Manifest.lock */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
@@ -511,9 +507,9 @@
 			);
 			dependencies = (
 			);
-			name = UnTaxi;
+			name = MegaCQ;
 			productName = Xtaxi;
-			productReference = 84F571431BCE958200FC18D5 /* UnTaxi.temp_caseinsensitive_rename.app */;
+			productReference = 84F571431BCE958200FC18D5 /* MegaCQ.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -547,7 +543,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "UnTaxi" */;
+			buildConfigurationList = 84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "MegaCQ" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -561,7 +557,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84F571421BCE958200FC18D5 /* UnTaxi */,
+				84F571421BCE958200FC18D5 /* MegaCQ */,
 			);
 		};
 /* End PBXProject section */
@@ -652,7 +648,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MegaCQ-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -665,7 +661,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MegaCQ/Pods-MegaCQ-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -692,7 +688,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MegaCQ/Pods-MegaCQ-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -716,7 +712,6 @@
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* CTelefono.swift in Sources */,
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
-				AFD656421F9D42E100C8A5BD /* PantallaSolic.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolPendController.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
 				C68DA29C227E39BE0029CD0B /* Myvariables.swift in Sources */,
@@ -738,7 +733,6 @@
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */,
 				C63A6FAF227F65A00095AF3C /* PerfilControllerExt.swift in Sources */,
-				AFD6563C1F9D42E100C8A5BD /* PantallaInicio.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,7 +868,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = 54C5CFB6EF345F188BE71471 /* Pods-MegaCQ.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -899,9 +893,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
-				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.MegaCQ;
+				PRODUCT_NAME = MegaCQ.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -911,7 +905,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = F18D0F51ECE5296987858EDD /* Pods-MegaCQ.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -935,9 +929,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
-				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.MegaCQ;
+				PRODUCT_NAME = MegaCQ.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -948,7 +942,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "UnTaxi" */ = {
+		84F5713E1BCE958200FC18D5 /* Build configuration list for PBXProject "MegaCQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F571691BCE958200FC18D5 /* Debug */,
@@ -957,7 +951,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */ = {
+		84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "MegaCQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84F5716C1BCE958200FC18D5 /* Debug */,

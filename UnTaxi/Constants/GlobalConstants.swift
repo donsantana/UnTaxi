@@ -10,7 +10,7 @@ import Foundation
 
 struct GlobalConstants {
     static var apiLoginUrl:String = "https://xoamail.xoaserver.com/login"
-    static var apiServerPortUrl: String = "https://xoamail.xoaserver.com/address/ios/untaxi"
+    static var apiServerPortUrl: String = "https://xoamail.xoaserver.com/address/ios/megacq"
     
     static var apiUser: String = "oinergb@xoait.com"
     static var apiPassword: String = "kmbz2vCVKzHLNChd"

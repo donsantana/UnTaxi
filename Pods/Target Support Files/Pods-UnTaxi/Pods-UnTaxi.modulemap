@@ -1,6 +1,0 @@
-framework module Pods_UnTaxi {
-  umbrella header "Pods-UnTaxi-umbrella.h"
-
-  export *
-  module * { export * }
-}

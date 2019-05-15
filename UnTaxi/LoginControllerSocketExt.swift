@@ -14,7 +14,7 @@ extension LoginController{
     
     func SocketEventos(){
         myvariables.socket.on("connect"){data, ack in
-            let read = myvariables.userDefaults.string(forKey: "loginData") ?? "Vacio"
+            let read = myvariables.userDefaults.string(forKey: "\(Customization.nameShowed)-loginData") ?? "Vacio"
 //            let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
 //            do {
 //                read = try NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
@@ -96,7 +96,7 @@ extension LoginController{
 //                }catch{
 //
 //                }
-                myvariables.userDefaults.set(nil, forKey: "loginData")
+                myvariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
                 
                 let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in

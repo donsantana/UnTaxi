@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_UnTaxiVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_UnTaxiVersionString[];
+FOUNDATION_EXPORT double Pods_MegaCQVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MegaCQVersionString[];
 

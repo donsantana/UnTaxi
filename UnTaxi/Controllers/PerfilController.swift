@@ -34,7 +34,7 @@ class PerfilController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         //self.perfilBackground.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
-        let readString = myvariables.userDefaults.string(forKey: "loginData") ?? ""
+        let readString = myvariables.userDefaults.string(forKey: "\(Customization.nameShowed)-loginData") ?? ""
         
         self.login = String(readString).components(separatedBy: ",")
         

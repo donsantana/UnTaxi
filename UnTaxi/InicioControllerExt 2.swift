@@ -177,7 +177,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
 //                }catch{
 //
 //                }
-                myvariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
+                myvariables.userDefaults.set(nil, forKey: "loginData")
                 self.CloseAPP()
             default:
                 self.CloseAPP()

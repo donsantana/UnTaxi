@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0BBFF94FBB5A01DD85EE8611B0056093"
-               BuildableName = "Pods_UnTaxi.framework"
-               BlueprintName = "Pods-UnTaxi"
+               BlueprintIdentifier = "3346039770B8536F2488241ADCD31662"
+               BuildableName = "Pods_MegaCQ.framework"
+               BlueprintName = "Pods-MegaCQ"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0BBFF94FBB5A01DD85EE8611B0056093"
-            BuildableName = "Pods_UnTaxi.framework"
-            BlueprintName = "Pods-UnTaxi"
+            BlueprintIdentifier = "3346039770B8536F2488241ADCD31662"
+            BuildableName = "Pods_MegaCQ.framework"
+            BlueprintName = "Pods-MegaCQ"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -275,7 +275,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
         
         let loginData = "#LoginPassword," + self.Usuario.text! + "," + self.Clave.text! + ",# \n"
         
-        myvariables.userDefaults.set(loginData, forKey: "loginData")
+        myvariables.userDefaults.set(loginData, forKey: "\(Customization.nameShowed)-loginData")
         
         self.Clave.endEditing(true)
         //CREAR EL FICHERO DE LOGÍN

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/donelkys/Documents/Desarrollo/UnTaxi/MegaCQ.xcodeproj">
+      location = "group:MegaCQ.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
