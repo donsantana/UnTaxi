@@ -9,9 +9,9 @@
 
 import UIKit
 import CoreLocation
-import SocketIO
 import AVFoundation
 import GoogleMobileAds
+import SocketIO
 
 
 @UIApplicationMain

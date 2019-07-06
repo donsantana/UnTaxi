@@ -66,7 +66,6 @@
 		AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
 		AFD6564C1F9D42E100C8A5BD /* CSolicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */; };
 		AFD6564F1F9D42E100C8A5BD /* CConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* CConductor.swift */; };
-		AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */; };
 		AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
 		AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
 		AFD656721FA17CD100C8A5BD /* ds_digital in Resources */ = {isa = PBXBuildFile; fileRef = AFD656711FA17CD000C8A5BD /* ds_digital */; };
@@ -110,11 +109,11 @@
 		C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29F227E3A240029CD0B /* GlobalConstants.swift */; };
 		C6915F21228500420048C00C /* SMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6915F20228500420048C00C /* SMSVoz.swift */; };
 		C6AFBD1122186DC100CC060A /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */; };
+		E6396C1E9E12F7D730D1797A /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F83058B1F8F7738B412F4B9 /* Pods_UnTaxi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74CF33D0F24118109820F02D /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		845C0F511C7633EF0050F852 /* chofer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chofer.png; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84609EED1C758E6F0056A282 /* dclock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dclock.png; sourceTree = "<group>"; };
@@ -154,6 +153,8 @@
 		84F7E3821CB389A6008D4713 /* stargris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stargris.png; sourceTree = "<group>"; };
 		84F7E3841CB38C04008D4713 /* stardorada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stardorada.png; sourceTree = "<group>"; };
 		84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		9E0134E86398678799BDD3DD /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		9F83058B1F8F7738B412F4B9 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCenterViewCell.xib; sourceTree = "<group>"; };
 		AF3D9E101FA510E70019432B /* CLARO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CLARO.png; sourceTree = "<group>"; };
 		AF3D9E111FA510E80019432B /* MOVISTAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MOVISTAR.png; sourceTree = "<group>"; };
@@ -186,9 +187,6 @@
 		AFD6562F1F9D42DF00C8A5BD /* CSolicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSolicitud.swift; sourceTree = "<group>"; };
 		AFD656321F9D42E000C8A5BD /* CConductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConductor.swift; sourceTree = "<group>"; };
 		AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD6565C1FA0003B00C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterViewCell.swift; sourceTree = "<group>"; };
 		AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolViewCell.swift; sourceTree = "<group>"; };
 		AFD656711FA17CD000C8A5BD /* ds_digital */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ds_digital; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 		C68DA29F227E3A240029CD0B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		C6915F20228500420048C00C /* SMSVoz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVoz.swift; sourceTree = "<group>"; };
 		C6AFBD1022186DC100CC060A /* InicioControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
-		E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFD6565F1FA0023500C8A5BD /* Pods_UnTaxi.framework in Frameworks */,
+				E6396C1E9E12F7D730D1797A /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +251,6 @@
 		806E675426FD1B3FEF7755DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFD656601FA0023500C8A5BD /* Pods_UnTaxi.framework */,
-				AFD6565E1FA000A500C8A5BD /* Pods_UnTaxi.framework */,
-				AFD6565C1FA0003B00C8A5BD /* Pods_UnTaxi.framework */,
 				AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */,
 				AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */,
 				AFD656191F9D3C5300C8A5BD /* Canvas.framework */,
@@ -267,7 +261,7 @@
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */,
+				9F83058B1F8F7738B412F4B9 /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,7 +337,7 @@
 				84F571651BCE958200FC18D5 /* XtaxiUITests */,
 				84F571441BCE958200FC18D5 /* Products */,
 				806E675426FD1B3FEF7755DC /* Frameworks */,
-				CE1476283A03C36D4A975E6E /* Pods */,
+				A95940EDACC7B3B80D042255 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -394,6 +388,15 @@
 				84F571681BCE958200FC18D5 /* Info.plist */,
 			);
 			path = XtaxiUITests;
+			sourceTree = "<group>";
+		};
+		A95940EDACC7B3B80D042255 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E0134E86398678799BDD3DD /* Pods-UnTaxi.debug.xcconfig */,
+				74CF33D0F24118109820F02D /* Pods-UnTaxi.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		AFD656631FA1734300C8A5BD /* Views */ = {
@@ -485,15 +488,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		CE1476283A03C36D4A975E6E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */,
-				E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -501,11 +495,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				C5C30425544E29BFD217055A /* [CP] Check Pods Manifest.lock */,
+				37699E61953A05A9370D57BD /* [CP] Check Pods Manifest.lock */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				FB70014521068CA649096A7D /* [CP] Embed Pods Frameworks */,
+				86A5030601370A7E41B7BCA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -641,16 +635,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C5C30425544E29BFD217055A /* [CP] Check Pods Manifest.lock */ = {
+		37699E61953A05A9370D57BD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-checkManifestLockResult.txt",
 			);
@@ -659,7 +657,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FB70014521068CA649096A7D /* [CP] Embed Pods Frameworks */ = {
+		86A5030601370A7E41B7BCA6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -874,7 +872,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = 9E0134E86398678799BDD3DD /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -899,7 +897,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
@@ -911,7 +909,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = 74CF33D0F24118109820F02D /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -935,7 +933,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";

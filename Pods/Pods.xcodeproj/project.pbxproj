@@ -34,17 +34,18 @@
 		00071B6D7FA0C0A0240908C255DA807E /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D00E55E6C92CE59C7E27699CB16E71 /* Compression.swift */; };
 		005699A7EC351FCB6BD8591F24B602B7 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659377978EB65921DF639BA8BAEF953D /* Starscream.framework */; };
 		01A50E17677A4CB10A6A7EC562BC88DE /* MDCPaletteExpansions.h in Headers */ = {isa = PBXBuildFile; fileRef = 97288BBBA028FC03D7C3C770C0F41111 /* MDCPaletteExpansions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		01C5CC5195440F8178CE07FB8E4C9FDE /* GULNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 041ABCE47C369D80BA425B9BD8B246EB /* GULNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		021D2F2C9CE3FC47EA0354280369D4A9 /* CSBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2F018FF30AAACB5B813CCA88B207F0 /* CSBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02C09854E1EF3EA43CFA34D3D774C3F8 /* MDCTextInputControllerFloatingPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 26CC2A364BB03EBD1F67F949E99343FE /* MDCTextInputControllerFloatingPlaceholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03760110B091E68219A3F8F99F5D9257 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA54A7DD5A59D65C18E361B44DF3D77 /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		051D7FD6EF2577067F84F2786395F401 /* GULAppEnvironmentUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 573B0D75CA668BB60DB4785FFC36CA94 /* GULAppEnvironmentUtil.m */; };
+		051D7FD6EF2577067F84F2786395F401 /* GULAppEnvironmentUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D04814AD75DE6C8C43EB5D531EBED838 /* GULAppEnvironmentUtil.m */; };
 		06EA7C70AD5CBD5A0B9A543A10D0A96B /* MDCTextInputControllerFullWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E3FFA9D52F75DB6A04F409391BA432 /* MDCTextInputControllerFullWidth.m */; };
 		072B3D46FE6A5B02D19687E7F21E0039 /* MDCPalettes.m in Sources */ = {isa = PBXBuildFile; fileRef = E4123679F2A02EC0915ABFDA75ACCEC6 /* MDCPalettes.m */; };
 		081265CE752CE9E51B5E3CAF0619529D /* MDCTextInputControllerFilled.m in Sources */ = {isa = PBXBuildFile; fileRef = 430AC30A2638C1BB524E5F351660B99A /* MDCTextInputControllerFilled.m */; };
 		08F27618DE77460F5C06081A03D05F9C /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ECE7CE87A259BCD863161921E11764 /* SocketEngineClient.swift */; };
+		091B44ABBF9E5486644D596F55AD58A3 /* GULAppDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1ED8DD887544BC912ECC767D78CDEE /* GULAppDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		09470BF8ADC809177E931ECC8DBF0449 /* MDCTextInputControllerLegacyFullWidth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E32DB689271CA793961CD12A7D02FB6 /* MDCTextInputControllerLegacyFullWidth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0957074D4946DEA106E71DBC2ED97125 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A50F31C1AF6061E8C3865C3A7EB4B57B /* AFAutoPurgingImageCache.m */; };
-		0AB27DCAC3687BA7EA31899971E3E0BE /* GULSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = C42A67510B9B2D6E9433537F0E92E41E /* GULSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0AC69DB42387C75431772FCD85E77E14 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E3358CE711A0EB82D9505EE9C5E41FFC /* UIActivityIndicatorView+AFNetworking.m */; };
 		0BE1AFBD1F4545D10076DE25EC561272 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCD44605CA34026FE71349694533D7 /* UIButton+AFNetworking.m */; };
 		0C8F8747EF4E52502E9BFF3CB967BE50 /* MDFRTL.h in Headers */ = {isa = PBXBuildFile; fileRef = B3A9205E007EBC2229A674A055A5E6D4 /* MDFRTL.h */; };
@@ -64,6 +65,7 @@
 		1D208720A4D975B6A168E399EED4EE4E /* UIView+MDCTimingFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A4DD9C2D190030FD5552B811D9F4BFB /* UIView+MDCTimingFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1ED5045425BF90D3D50C12703F12C4F3 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8C940BCD739CA75452B4399788D7 /* WebSocket.swift */; };
 		1F99C0E3460516BBC14C68800917D702 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AFEB8A6DC5E7792501B79240E2D3E /* HoshiTextField.swift */; };
+		201E7ACF86A45876A5BFAC68B115CBF4 /* GULNetworkURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 7808F0505CB066908AAAA48A7BA1DC1C /* GULNetworkURLSession.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		20492D2581626B75E20520EE406DA15C /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD0E31AC004BCCFA0DED7F6AFBF1A8 /* SocketPacket.swift */; };
 		2322F574FD2D311F0E5DC64B41DA9E46 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE59E48A05B227EE1C9C6F0FDCB52CA /* AFNetworking-dummy.m */; };
 		234E5115AA1A6D11643160C34C220EC8 /* MDCTextInputCharacterCounter.h in Headers */ = {isa = PBXBuildFile; fileRef = AF441D8006796BD2AB688571F2D14881 /* MDCTextInputCharacterCounter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,8 +89,8 @@
 		379516A0CFA27EFE4D97F4CD35487D1C /* MDCTypographyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBED2F67CD105A776374DC5B11F5E5 /* MDCTypographyUtilities.m */; };
 		39022346EB3519D2DD92B3D79BFF30F2 /* MDCTextInputControllerFilled.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BC9224161B78CF4F6B15C759A5ED0C /* MDCTextInputControllerFilled.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		394922DA356F67BB8E9F59DBA22788B0 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 417AB3A43CA6E602B6F9EFFD014EA3F7 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39A815A4F8112222186B72E481BB9643 /* GULNetworkConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BC367928D423BE975AB35CDCBA7E60C9 /* GULNetworkConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A9DCEA4A865630BCF3FDEF0CD23AF8D /* UIFont+MaterialSimpleEquality.m in Sources */ = {isa = PBXBuildFile; fileRef = AA95F78AA971E2BF4D31DF8268E44790 /* UIFont+MaterialSimpleEquality.m */; };
+		3AD772DF626469AC7B1B9A93EC9D3820 /* GULReachabilityChecker+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EC76575560C2C72B1F9C0B4B2C19F18B /* GULReachabilityChecker+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3B5D273AA86C486E145F64997D8543B2 /* UITextField+PlaceholderColor.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B2FAF29D022682584786E2D1EE53EC /* UITextField+PlaceholderColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B72168E0471BCCA675316F434E6309A /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B41FA3AF13C3F71705D9036DBB1DF56 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3C07C02280135F644197F60782B70AE4 /* UIFont+MaterialTypography.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A64D7AFFDE537572C885356CEF4D489 /* UIFont+MaterialTypography.m */; };
@@ -97,7 +99,8 @@
 		3E6D6CB1796E3852FB5D40E51ECE0000 /* NSString+MaterialBidi.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 03119D6CB795555A8FDC81AEC2018573 /* NSString+MaterialBidi.h */; };
 		3F56102CA7579C84B55BB943E0D2CBE2 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6D7B77F8E390BB8885ABA076EDA7C /* UIProgressView+AFNetworking.m */; };
 		42E1D9128F4302A66E445BC24FABFB57 /* CSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C24AE2FD49BED6F293E918CE573D14F2 /* CSNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42E6C55FF5CA9F75E2FF35A41C78F14F /* GULNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCC1CD0EEC0071B1028D63089FF932A /* GULNetworkConstants.m */; };
+		42E6C55FF5CA9F75E2FF35A41C78F14F /* GULNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BEF78FB5A0A2260A91FCFAA6B2BFE /* GULNetworkConstants.m */; };
+		43F06A006398F991734E8709CF997226 /* GULLoggerCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 044573E495F5F9BCF841B1ABB07CCD57 /* GULLoggerCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		442722187ED0635E11000557C10FF78A /* UIFont+MaterialScalable.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1A43AC624E9B5CE0A07EDF3A914A15 /* UIFont+MaterialScalable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45052CC7126DE86118B238A7C87F6DA9 /* MaterialComponents-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4701308261355A0E3E692484B3E7FE /* MaterialComponents-dummy.m */; };
 		452EC931E18F8E0599129786E877D95F /* MaterialMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D3A59D8D4B5C10805131FF9A4E9818F /* MaterialMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,7 +109,6 @@
 		46B26BB3B64816F471CF61C6F7426041 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B4C5B19A707B200DD92D7C463AE479 /* SocketTypes.swift */; };
 		474768F8AA59908E44D3EA475538BF61 /* NSLocale+MaterialRTL.h in Headers */ = {isa = PBXBuildFile; fileRef = B7BE5670886A62A0C77C64389A814BD9 /* NSLocale+MaterialRTL.h */; };
 		4755BA75766C06412C44F9EB4E98E860 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54839E9B2C73480338C1A067EFBF85D9 /* SocketStringReader.swift */; };
-		4760AD256DF866E1E49328FB5C85596F /* GULNetworkURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DABF08AD86282271ADE6D9534B1DC8E /* GULNetworkURLSession.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		47D993407BD1C6692C26A9E3ED98C30E /* MDFInternationalization.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 8B7DD8EE84C50F6FD1191847F1C4740E /* MDFInternationalization.h */; };
 		481B827A7E8377D1B92B1C7231E4F5EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
 		4970BE910AC9D0C7E4522D131B963A7A /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE65B6A1BAF6DF618AF31E9107449DB /* TextFieldEffects.swift */; };
@@ -114,30 +116,27 @@
 		4AA571F647F5F141C952913744D870B2 /* MDCTypographyUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FD92B6ACDDD2BC5DA6EA8295C8CCC940 /* MDCTypographyUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4AD017B3ECCBF5EFCB29A9171D673C84 /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 071293A5367558AC8A0B1921638B7F1A /* Starscream-dummy.m */; };
 		4AE57FF6D4C732CC31913474AE2849A5 /* MDFRTL.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = B3A9205E007EBC2229A674A055A5E6D4 /* MDFRTL.h */; };
-		4BD6BD00A416263C113602DD640F0B9F /* GULNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 550C637569B79CE60386F5427E311A6D /* GULNetwork.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4D0B0C78342D628FA6168CA94BE2AEAF /* SocketManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2569551EA4221C49B42A5C757D004FF8 /* SocketManagerSpec.swift */; };
-		4D3A8CE143D070B692D0528B916B939C /* GULAppEnvironmentUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C8549FEE7BE9007B2FF65E06EEAA6E /* GULAppEnvironmentUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4DD87B43E35F46EF346BF3B68B7C8B21 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195AF02A66202EAF7ADDF94073D3BC9 /* MinoruTextField.swift */; };
 		4EF0640D4E54B8F4ABCF080A4BA179EC /* MDCTypography.m in Sources */ = {isa = PBXBuildFile; fileRef = 127B35EE02BB89D5C51D394D900C5D6F /* MDCTypography.m */; };
-		4F1809CA476C0C025CD34257BDCB69A8 /* GULMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = F6177BE6C9E0EA098230F59DC6782695 /* GULMutableDictionary.m */; };
+		4F1809CA476C0C025CD34257BDCB69A8 /* GULMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B9D6CC11B0D1F2D4C792DE00E1EDC7 /* GULMutableDictionary.m */; };
 		4FDDE4F974698A2CE0CEE9BDF7699B68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048DC3C1FB41F4B1D2AEC2B443D9DD8A /* CoreGraphics.framework */; };
-		4FE1964B3AD6C00254464E2DB856A671 /* GULOriginalIMPConvenienceMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B38E4644C898D644C3853F5AF500601 /* GULOriginalIMPConvenienceMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		51C2BAFB3A00484D3D4B2D48E6586580 /* GULReachabilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DCDE1A5ADBCB2DC6700C0B51EA72A4 /* GULReachabilityChecker.m */; };
+		51C2BAFB3A00484D3D4B2D48E6586580 /* GULReachabilityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 20869F862BF0D7F6E36926BC7B46B6D9 /* GULReachabilityChecker.m */; };
 		5308FC498A191214E22F2008C54BB9A9 /* Pods-UnTaxi-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAE6B4AD059555541CF8B7501CD2664 /* Pods-UnTaxi-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5332E80788A0B376CB22FC2F04EAC26F /* CSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 484BE38B43D30A6EB915F1C1FA9AF870 /* CSBlurView.m */; };
 		53CDDE56D25DB4F1FAB650ABCAFC32EA /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF6EB2B06ECE1F33AD8DC45F1B0E8D /* SocketIOClientConfiguration.swift */; };
 		56BBF0460295FC0CE4DAACBC8BBACEA5 /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896BF669FAB70F50E5C17F16F51E2FB4 /* MadokaTextField.swift */; };
-		56F8C98A3ED689E26880C38B98FAE4A8 /* GULNetworkURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E8F0E292A72EF630BF859794EF0A7A /* GULNetworkURLSession.m */; };
+		56F8C98A3ED689E26880C38B98FAE4A8 /* GULNetworkURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = DE84CA505C240641C6A564AE7678D14E /* GULNetworkURLSession.m */; };
+		58277A864770C2F4B7D9BFA0261C2B07 /* GULNetworkConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A49441711DDDBDA1E8E636699296FB1 /* GULNetworkConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5886DF7B1D490E540011DE057569FBE3 /* MaterialComponents-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2754FA926A3EF3D9CBB178BE7F88B98A /* MaterialComponents-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59EC3619014263EA77F6EFFFE6A3A3EB /* pb_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = BCA42051862FA93569EAC5B836EA3B5E /* pb_decode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
 		5A96267D7E732DB00F9ECDFBB82EEF39 /* TextFieldEffects-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F06403CD7FED719AA0FD55FE7568B954 /* TextFieldEffects-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5AECD58492A76411598FFC1D482A9DC5 /* GULNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 10B3937A64D36DCF1E021C4578930C01 /* GULNetwork.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5C772BDAA6AB37883B04FCE28E3EE68A /* MDCTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CA53B1F690C3FAAF78FB9F852E92C46 /* MDCTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CD724B10DED2301DE937B1976890829 /* MDCPaletteNames.h in Headers */ = {isa = PBXBuildFile; fileRef = EB21F24B56217BAED771D721E525FFFF /* MDCPaletteNames.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5D2E055257C8FFD584AEB3A097EFE519 /* MDFRTL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5EC04401C2C06F2CFDE671C7E3E711 /* MDFRTL.m */; };
 		5D98055FEF03F1E8F03BC569A24BFC48 /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020A585984A25D044A3557E269F54FE7 /* SocketEngineWebsocket.swift */; };
-		5EC93C2E9FB7A14B8ECD697A945C1B94 /* GULAppDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 48A240BBB9CDABBB4ED731B90E0673BC /* GULAppDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6205D9687D9661900CACF033B62D313E /* MDCTextInputControllerUnderline.h in Headers */ = {isa = PBXBuildFile; fileRef = 97EC89B2A3F834F41815FECD18136339 /* MDCTextInputControllerUnderline.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62167DE797575A3D1B3F07671DB64C0C /* GULAppDelegateSwizzler_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 033081C933F61B46DC033F3EB30408BA /* GULAppDelegateSwizzler_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		62DBBD1FEFCEA5F8FBC11BFD3A45F761 /* MaterialPalettes.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5AB5F895C6B3DAC90FDE6B00DEA169 /* MaterialPalettes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		639A383AB1997536003285834D72F051 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 553789F3ABA40EF66757AC1643489CE6 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63FB62B1AB4361F126E87D2F8756CBC0 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C56E3E3F1715916351266C26FA6765B /* SocketIOClient.swift */; };
@@ -146,12 +145,13 @@
 		6711DF50BB88FE27ED5486E7DE8B4442 /* MDCTextInputUnderlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C06A401EA7EDA4467B59AFE276958E /* MDCTextInputUnderlineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		687FD04FEAFE2C7B06220D69E626D6CE /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F4627C59267D718E695480C57E31A5FB /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69971FE4B4CA4DB9829461EF39CC1C52 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42EFEBD436875B774BF349073708A7 /* SocketEngine.swift */; };
-		6AEF443FE437F2F3BE14B5D30FDCEE84 /* GULSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5374F88DE4133592A89AAB8D5866E3 /* GULSwizzler.m */; };
-		6CDFFD2746C5054BD8CCE798A1A20FB0 /* GULNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 0312FFF5B4067BCA4BA1AD3B83E6DB8F /* GULNSData+zlib.m */; };
+		6AEF443FE437F2F3BE14B5D30FDCEE84 /* GULSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 592BEBC2E25658BB82774DAA173FF168 /* GULSwizzler.m */; };
+		6CDFFD2746C5054BD8CCE798A1A20FB0 /* GULNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6292F5F7EBBE90B4DB644B2D30684C /* GULNSData+zlib.m */; };
 		6D548145B22BB5FE22DBEB33B8972848 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BDBEC4E847747C89F6516156EF72BC /* Security.framework */; };
 		6D686D55FFDA3594B7EE3F9EA66FB2E0 /* Socket.IO-Client-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 370966CDE134295E48FBA1D7F76C9C6C /* Socket.IO-Client-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70332DFCEBB1A0538FA67CD834DE6DC2 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15197571C7DFC6B78FB59E397B1AC6BB /* AFURLSessionManager.m */; };
 		703F44072205DEDC20662B5F18F5F32F /* MDCIntrinsicHeightTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFA3E916C2B30B8C194A8FFA30D120 /* MDCIntrinsicHeightTextView.m */; };
+		735F80A3DAF7C26DC74E410FBA536668 /* GULNetworkLoggerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 496AE4381F507599465142BAED27A63A /* GULNetworkLoggerProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		73A3A808462AD85ABB4B9DB8301EE165 /* TextFieldEffects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F8EE6946277D44566598229FAFCB8C /* TextFieldEffects-dummy.m */; };
 		7481EA583E5CF25601148711C6873BF6 /* UILabel+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4EDFB92FF4A33B41435D0689D20D31 /* UILabel+TCCustomFont.m */; };
 		74867FD217BCE3D2B85297EA027107D6 /* MDCTextInputControllerUnderline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7974B48E84DC75021316FB17544D5D63 /* MDCTextInputControllerUnderline.m */; };
@@ -159,6 +159,7 @@
 		7724FB3BA6FB94C36A46DE0EA49395BE /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CF728AC3D0A2D695F80D43A26C54E7 /* SocketIOClientSpec.swift */; };
 		77615ADC70E1C1574DA8C5F289028E8A /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75018A50A4101B0C363BC811DE0FB44 /* SocketEngineSpec.swift */; };
 		788519AA64536147BAA2B2E149915372 /* SocketIOStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E18DD5586194F6F80571746258D4E2 /* SocketIOStatus.swift */; };
+		78DD4E110829D7CD01E01CDBE97BEF70 /* GULReachabilityMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 33BB8649095C0FE101482754E1F0EB3F /* GULReachabilityMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7A39A75D979DDB0B62EBB2D416EBB2CE /* MDCTextInputControllerOutlinedTextArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAA3AA693F2EB6A49E1C8EFA7592092 /* MDCTextInputControllerOutlinedTextArea.m */; };
 		7EBDAB42453F8048D0B48285A2867F5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
 		7FAC731FC0E0EAEFCA433DE1AD7F512E /* MDCTextInputControllerOutlined.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C873ECFE9B285ABE5CA57A11EDD13 /* MDCTextInputControllerOutlined.m */; };
@@ -166,11 +167,9 @@
 		80D726373D6A1D5853F3DA070E223487 /* MDCMultilineTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B61A0212A584869D1A53C367C2F4AD3 /* MDCMultilineTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81402468B132DFD99589CD29D1313127 /* MDCTextInputControllerBase+Subclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 12AC5CBD52611190250606EFA036B7BD /* MDCTextInputControllerBase+Subclassing.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		81959B44E94A88EACF8BF1E95F981725 /* UIFont+MaterialSimpleEquality.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D98D58CDC5A8DD389AABFBC0CBDC7B /* UIFont+MaterialSimpleEquality.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83A721951FC5CED92F2EE132197E4059 /* GULMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803B36E048EB0F7F8A7060EB12DF553 /* GULMutableDictionary.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		842D651DDC63D990009A81CB4613041C /* MDCTextInputUnderlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8EF0003A97ECBE3A79D136D79252BA /* MDCTextInputUnderlineView.m */; };
 		8444B1F60315831683A0573C0B76B65F /* UIApplication+AppExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 513AD552CC618EDD2BD586DCE4E45B70 /* UIApplication+AppExtensions.m */; };
 		84E803E9E9D294E3A09D9FFD773FC957 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F81B57799184F260E41E9074BA152 /* AkiraTextField.swift */; };
-		85BC1DA5E2604B7B80186CA6A934A9BD /* GULLoggerLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7565F36FABDD750318C67D7F7637818C /* GULLoggerLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		879E7EB94FF0E70D57C07C072E0B6749 /* pb.h in Headers */ = {isa = PBXBuildFile; fileRef = E347796C9E9EB6C41DB448CFF4BA1865 /* pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		882B73607214BE1653D3858A8E145B6D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074914FA8463380F7C37CA09A3E9F57B /* SystemConfiguration.framework */; };
 		8895CA97A5170D4B9F5F1FF04DEB24FD /* MDCTextInputCommonFundament.m in Sources */ = {isa = PBXBuildFile; fileRef = FA10AEEF18A6BAD2C540A7E045017704 /* MDCTextInputCommonFundament.m */; };
@@ -182,7 +181,6 @@
 		8D9D7A4352CD0F769464A22C602616B7 /* NSLocale+MaterialRTL.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = B7BE5670886A62A0C77C64389A814BD9 /* NSLocale+MaterialRTL.h */; };
 		8DE6D1EA096876757DBD5736C81DFC3A /* MDCPaletteExpansions.m in Sources */ = {isa = PBXBuildFile; fileRef = 536745F13C06150CEF207E999C4A562E /* MDCPaletteExpansions.m */; };
 		9028B7B20D83FA752632EBCF78170636 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBFEE2D45A71663D5F7661913987855 /* SocketAnyEvent.swift */; };
-		90600450077F0F215E849CE9A6448524 /* GULNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 98F5BEDF62A3839AC7DA67ED476746C3 /* GULNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		909E65FE918C87DB67D5F4031B73E23E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66448E3EBFCF55941B7C941C72D59AFC /* MobileCoreServices.framework */; };
 		91E3A93577528ED1E9A3E009E1B2A839 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
 		92BC22DD56BD07487798E5B224D0596C /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AEF88290B6E661D3F21A582A08D2DC /* JiroTextField.swift */; };
@@ -195,15 +193,15 @@
 		966E181CB5B9FBE7A46F7933F412067A /* Socket.IO-Client-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B39ADCEAEAF83435048F51437D0FBED /* Socket.IO-Client-Swift-dummy.m */; };
 		96D75CD99406A35A39AC40590D2FB81B /* MDCTextInputControllerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B571CFD58420966468C510BD2AC3085 /* MDCTextInputControllerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96EB8ECEF89CF095DFBB2114C66A0BEC /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7FC4377D4767909768683B457692A8 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98131C2335C6A0009FEBC98BF958F29A /* GULNetworkLoggerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DE403A82B994D7CECCB3167E21C228A /* GULNetworkLoggerProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		986D2AB4FB94FE2036DFC3B9B01192D0 /* UILabel+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 093A56373CA3A4D7C3CE876BCAF2FFDB /* UILabel+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99AFC32DE6932AED9B73E23C99BF243E /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EA8F4C910115963323248D01D4391 /* AFImageDownloader.m */; };
 		9A8C0E775C1A52BBC1C2656CE7E28D08 /* NSString+MaterialBidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 03119D6CB795555A8FDC81AEC2018573 /* NSString+MaterialBidi.h */; };
+		9B04CBB25304C3D7373F2DE0DB1D1354 /* GULSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E5668260ADEC8894AB2C05C4B0D7527 /* GULSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9C0ED30B740724675C1C1547DF83E733 /* MDCTextInputController.h in Headers */ = {isa = PBXBuildFile; fileRef = 66626A764C6B4D83EF926BDCB1DB16F7 /* MDCTextInputController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D525CF7FFE8B51B479F0CA886D47171 /* GULOriginalIMPConvenienceMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE532F0AF7930BB0944051FEC725DA9 /* GULOriginalIMPConvenienceMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9EEA38B7403F720407C2D6F7A1473F16 /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 5913F87F122BB66DD594E88D7D208E85 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EEEBC198667C1C036FC927846895B6E /* MDCFontScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 66620FBF1FE0F9FD7E140053BEB14F7F /* MDCFontScaler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A11E6BAC521FC1C3CD23637F42E97CCE /* UIFont+MaterialScalable.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D324AE03A5BFE053AE5AAF1E898719 /* UIFont+MaterialScalable.m */; };
-		A6ED8E5DED07D9217DA47413C22B3757 /* GoogleUtilities-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3911C30B7E7F720D33142C011B4CC24B /* GoogleUtilities-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70563660986C955E813E136DBBF5236 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FDEE397CF558656D530491638A246939 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8235A19D92F631C23F32E59DA937B1F /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1B46CC5FAE9269FB841F9EF131328 /* SocketAckEmitter.swift */; };
 		A871DC51BCA067B05518645590A878DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
@@ -212,7 +210,7 @@
 		AD9B7EC6DF53B58F27E0EEA237244934 /* UIButton+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 46136C79C85D0234919A44367E7C04F1 /* UIButton+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADB9B0131985B1D2A3B2DB8693141400 /* MDCTextInputBorderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA0E01F9933AB9034BB03A1A4880852 /* MDCTextInputBorderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADBB1C2361434D974C2F866E44FFD9AF /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F653A83F1826FF56C74EFDA4F75FC492 /* SSLSecurity.swift */; };
-		AF019FADFE39757B22977A2DEE5E8064 /* GoogleUtilities-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D7914A10245B83F727F0F4E15DCA3 /* GoogleUtilities-dummy.m */; };
+		AF019FADFE39757B22977A2DEE5E8064 /* GoogleUtilities-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 691BADEC39189B777E882227AB7DE545 /* GoogleUtilities-dummy.m */; };
 		AF03D9E336B274AE94A1C3815A997D25 /* Canvas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B2D867105F04A120430C1BB9324561 /* Canvas-dummy.m */; };
 		AF561ECF7CFC817919D4A47B0A09C6E4 /* MDCTextInputControllerFullWidth.h in Headers */ = {isa = PBXBuildFile; fileRef = EE1EED8B728212C7A0C21B43EEA8A325 /* MDCTextInputControllerFullWidth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF61AE05692AEEA5D8F4618BF2B2B633 /* CSAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A841F8C575DD606623C09D160D9027 /* CSAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -222,7 +220,6 @@
 		B50A7C83E4CC95E9496672BFC3DF5DDC /* UIView+MDCTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3052B3B28B9DE1EDB7D5FBD37F816 /* UIView+MDCTimingFunction.m */; };
 		B5299D926C45D48B75B1C19FF86D0122 /* UIImage+MaterialRTL.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EDAD65607DFECEFDCCB3BD1B802894 /* UIImage+MaterialRTL.m */; };
 		B635FD2C23E0F1AB252D128387DA5B88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
-		B75726C342ACDECAAFD30BE7C19DD338 /* GULNetworkMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F22911E6510095938A44D693F6300DA /* GULNetworkMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B79E6AD5BFBD3B2E9319650F5131A59C /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 48936B3F13FD028F5634001E599295AA /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7F6642BBED480574913C6C4D4E529E4 /* UIView+MaterialRTL.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = D961FECFCCFF18DE917847F2AE9D6064 /* UIView+MaterialRTL.h */; };
 		B8822C9EDC71F0F60091524A2D07FA03 /* MDCTextInputControllerOutlinedTextArea.h in Headers */ = {isa = PBXBuildFile; fileRef = C62B173A908C9A33EC1AB5250B52D6E2 /* MDCTextInputControllerOutlinedTextArea.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -231,13 +228,14 @@
 		B973CC14AF4CFE5F3498F64FB242B7D0 /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FEAE38842CC180EEC9F9B6E6905F7 /* SocketParsable.swift */; };
 		BA6D4D69802EBF7C16A65FAE1F8965C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
 		BB73244CFCD5310B914BD0CEF37A1B7E /* pb_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C81115022F2D3E398BDF8FA6BBC41F2 /* pb_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BBB144C8C1152B483FB2C56CB3CEFA7C /* GULLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EACD084E0199A641F15D78FB9B8B0EA4 /* GULLogger.m */; };
+		BBB144C8C1152B483FB2C56CB3CEFA7C /* GULLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D89F82D66BB9AA63D25079692D334 /* GULLogger.m */; };
+		BC79740B63FC8116160D7F5F019F1C7A /* GULMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B6F04297D8725AB07C9832230FD6C9 /* GULMutableDictionary.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C0191362BCA2BA1F475848F493595716 /* pb_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = EB1C355956BF3DF2D7EFB2E74D9E1E73 /* pb_encode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
+		C1210090B6D66295F304766203A3D27E /* GoogleUtilities-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6F24766BBA69F2FD9D50B1232AFFAD /* GoogleUtilities-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C19BBA932C8C58458241A12380947E16 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDA054F3FD3B0A8DD13FF77ECB261A /* AFURLRequestSerialization.m */; };
-		C316009F88802DE192DC78F0E65F956E /* GULReachabilityChecker+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = E32ED6BAB21ADB2B9F1CA770B71FCCC2 /* GULReachabilityChecker+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C3EDBABD276C8D4A65D564B8124CD25E /* SSLClientCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF51E849CAC19DB00308D0BD356D49E /* SSLClientCertificate.swift */; };
 		C50E42F9877278FADC3731BB743DCAF7 /* MDCTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = F31EE321C3F97F08B547FA439C9F842D /* MDCTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C556553176D01014DB23DC1BB346FEE2 /* GULReachabilityMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BD9AC97DE0754E872BF83899186E96 /* GULReachabilityMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C6C72230BA09671D9DB17263F4635BE2 /* GULLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 30FF03617387626D250CB8D2773E6DFB /* GULLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C84B33DB124FD736AF7BE5F5A6470F86 /* UIFontDescriptor+MaterialTypography.h in Headers */ = {isa = PBXBuildFile; fileRef = 7651949B577C692F5029B87AEE8DDDAA /* UIFontDescriptor+MaterialTypography.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C860803EFE2211C1F381F22011B20727 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B417944747E8829CF00EA256DB12829 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA11DEEA7677625730EF8715F8FA0CD6 /* CAMediaTimingFunction+MDCAnimationTiming.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FB03FCEDE5FCFE35FCA6AAE831E0611 /* CAMediaTimingFunction+MDCAnimationTiming.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -246,22 +244,23 @@
 		CB428CE1C34726425F5D41B6CC183AD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
 		CCC9E08DD50A9AC4E57BC0B0B1611B77 /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A8A1A993C2DB4AE8F2EDAD962CE58B7 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDC7B571603773AFF8D0CAECA62888A8 /* UITextView+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = F257B2DB5442F7833439A485304C6FC8 /* UITextView+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE40F6552D7378BB3AAECD5E82B544A2 /* GULNetworkMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = D37A0EBA8B4367F91C690CFD01CABD79 /* GULNetworkMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		CE60DA0E725438E4A7035A3429209E37 /* MDCPalettes.h in Headers */ = {isa = PBXBuildFile; fileRef = AB8951BEC3E7ABE698559CB231A0B8E2 /* MDCPalettes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE8022BC628FE0C06B569B967AACC69A /* MDCTextInputCommonFundament.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB20593DFFE1AA0B118B7A6AD4C08A5 /* MDCTextInputCommonFundament.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CF70215215576E6C966A5A5D6DC8A060 /* GULNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C149F8B330B8C6535649111830E09153 /* GULNetwork.m */; };
+		CF70215215576E6C966A5A5D6DC8A060 /* GULNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 408C475F4D55A12CE509ADE9C47A923E /* GULNetwork.m */; };
 		CF83E474D92B250468BB88DE6356B775 /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 092826D132A717E6B95D83B94811F057 /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07C79FE045D199BF138F4AD60B54E38 /* NSLocale+MaterialRTL.m in Sources */ = {isa = PBXBuildFile; fileRef = F943A80B8062C049C98869F3EDA8B07E /* NSLocale+MaterialRTL.m */; };
 		D127F3ECC81EB2E08CE9435AF24CCAF4 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 964C5DAAEF6F3FD06B82E647223BCD01 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D188F85BAA13D18248F4859CAB82C6AA /* pb_encode.h in Headers */ = {isa = PBXBuildFile; fileRef = DAB86D7C8C892A803877284BFE3ECAB8 /* pb_encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D18B78146153615D472E8E90135C018A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */; };
+		D1C98B41CF6BA6A4E31E6EA5FF750BA2 /* GULReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = FC6011A6A605F49E79CE41150A1CDF98 /* GULReachabilityChecker.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D1EC77081736584ED609D2E2A7236DDA /* UIView+MaterialRTL.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BCA9AC10ABC7FA9F40C5F3499CF8D /* UIView+MaterialRTL.m */; };
-		D24B48AC29D6C7E6A7FC2B23A70568A2 /* GULLoggerCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = D6AF1E5F2AC2AC7EC8E2336817A9BDB9 /* GULLoggerCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4391E2F0603863C84CFA0E502EB8735 /* GULLoggerLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = A8F523F427C9D6820460FCEC1E9081A7 /* GULLoggerLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D49F8F8019A5EAEBF79C75D878907E4F /* Canvas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80F620FB5B3BBAD3D82CF897090340D5 /* Canvas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D7F479BD31D1AAE3A4B89FAB0E2F5B /* MDFInternationalization-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E555FD5327A8F00A7E2484A0FE7488DE /* MDFInternationalization-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D51EF84D8C9743D6C5382092DD3CD649 /* UITextField+PlaceholderColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2289DB069420499D4CBE501E1535927 /* UITextField+PlaceholderColor.m */; };
-		D584AED96B91E42D4CFA054FED0911AA /* GULLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = EC180A54F3B38C8615CEF345C8761D07 /* GULLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D8DD97F3DBA29749501E5308C59ABF0D /* UIFont+MaterialTypographyPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CEE9252E0637472D5A982F7E2F878DDB /* UIFont+MaterialTypographyPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D907B49713ED40B1D38DBD17A9CEF87C /* GULAppDelegateSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE4268148AFBA8D158ACF8A0C97610F /* GULAppDelegateSwizzler.m */; };
+		D907B49713ED40B1D38DBD17A9CEF87C /* GULAppDelegateSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FF1084917992097D813652EF9DE309 /* GULAppDelegateSwizzler.m */; };
 		D94B2A37FC96BE94D8FD5E4E3D2983BA /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AC05D944FC559810763A260FC637654 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAE3A85A7DE4999C56804232A0071F40 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DA45554DF8E50B469ECA569013FC69 /* SocketEventHandler.swift */; };
 		DB1A6DD6CE64AE9764BC63D613A4FDF8 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA6D28B9CD6CD3BC298DA772D9A4FAC /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -283,19 +282,21 @@
 		ED2D3BA2C24DC81B61D915CACFAF8965 /* MDCTextInputArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8BC7C1FE8B7210A6B83770AD752A35 /* MDCTextInputArt.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		ED73D04570D66A56288851FB711FFCB0 /* MDCIntrinsicHeightTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B4634137BF404EFC05CF62E141BA45 /* MDCIntrinsicHeightTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EECB663C61393A2F03FF48B2134A3988 /* CSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E4CA2E46C7E8BF626AF05E1713667 /* CSNavigationController.m */; };
+		EF61FD7F310E7360527E2F33D48564FE /* GULApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = F29C2E538B1357E6B043AD14A392D63F /* GULApplication.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F1790B62861886A74355EEB9D8819E04 /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15B32D6003C1CF605BC7E393E14905 /* SSLSecurity.swift */; };
 		F183F8C302387078A50913AB210951A8 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC3E75532560FF1F490A8F3F197DD6 /* SocketAckManager.swift */; };
 		F6B7B941263AABD7E44939E20E0938D4 /* MDCTypography.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E7CDDAA5C982C188C319E2A5EF5AB64 /* MDCTypography.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F6E0E4AE1A02D75282BE09B984B44B91 /* UITextField+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 715DB7C25BBE88A39A3D7D2612639E2A /* UITextField+TCCustomFont.m */; };
 		F74F45C9206F920BEA27DAA6DB6658F0 /* MDFInternationalization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A651E68506A37D12E564BB2B8AC500F /* MDFInternationalization.framework */; };
+		F763ABA5903CF88B078E48B6852F167F /* GULAppDelegateSwizzler_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 1234D4CFA96027C959226B02A4D5F54C /* GULAppDelegateSwizzler_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F8AFF5D2D484A62087CCEB704AA9CDF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BDBEC4E847747C89F6516156EF72BC /* Security.framework */; };
 		F8BE972E47ACEA1B3734F113836374D4 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C45FDA26050DAC17CD3A5AD6E9A57C1 /* IsaoTextField.swift */; };
 		F9E840597854F09F222152D68854FE76 /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A6D9E0D4F6D355B12A3D269058979DF /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACF4D50608E53B15FBDD036ADFC5B8D /* MDCTextField+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1C43B68EF495DA32E9AC9650AA3153 /* MDCTextField+Testing.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FB88735F0A9A9D85F267DC22B1EB5E91 /* MDCMultilineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F7713CAF1B89AA4D1609E66849B2BAF5 /* MDCMultilineTextField.m */; };
+		FC7B0AC1A54C2EE7DB577C117DB85D06 /* GULAppEnvironmentUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C62F52955C53C8378AF88EB15732C911 /* GULAppEnvironmentUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FD97F652000364ABA869ED03ADA96ED7 /* MDCTextInputAllCharactersCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC33DBAD9915009DDA8D68555C5BF1 /* MDCTextInputAllCharactersCounter.m */; };
 		FF42F7D4D8367A6381A85A650C58D0BA /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEA17BB13435E6BB27A472BE93C937 /* YokoTextField.swift */; };
-		FF9362D496223DB17B3452BB31375721 /* GULReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FDF3EB64FAE5804FA5632507CB5B759 /* GULReachabilityChecker.h */; settings = {ATTRIBUTES = (Private, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,26 +449,26 @@
 		02BA2D0A71141BC3748AE44609367B4D /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
 		02D00E55E6C92CE59C7E27699CB16E71 /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Starscream/Compression.swift; sourceTree = "<group>"; };
 		03119D6CB795555A8FDC81AEC2018573 /* NSString+MaterialBidi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+MaterialBidi.h"; path = "Sources/NSString+MaterialBidi.h"; sourceTree = "<group>"; };
-		0312FFF5B4067BCA4BA1AD3B83E6DB8F /* GULNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GULNSData+zlib.m"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.m"; sourceTree = "<group>"; };
-		033081C933F61B46DC033F3EB30408BA /* GULAppDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler_Private.h; path = GoogleUtilities/AppDelegateSwizzler/Internal/GULAppDelegateSwizzler_Private.h; sourceTree = "<group>"; };
+		041ABCE47C369D80BA425B9BD8B246EB /* GULNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULNSData+zlib.h"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.h"; sourceTree = "<group>"; };
+		044573E495F5F9BCF841B1ABB07CCD57 /* GULLoggerCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerCodes.h; path = GoogleUtilities/Common/GULLoggerCodes.h; sourceTree = "<group>"; };
+		046002C33A62DFD394A3758F3837245A /* GoogleUtilities.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleUtilities.xcconfig; sourceTree = "<group>"; };
 		046A1D8AB423AC65E6B2DFAA8FA4B57D /* Pods-UnTaxi-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UnTaxi-acknowledgements.markdown"; sourceTree = "<group>"; };
 		048DC3C1FB41F4B1D2AEC2B443D9DD8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		04EAA28A1C993DC25E50E0C4A3814797 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		052A3643104EB0DDB8411B68136AFCFB /* MDCMultilineTextInputDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCMultilineTextInputDelegate.h; path = components/TextFields/src/MDCMultilineTextInputDelegate.h; sourceTree = "<group>"; };
+		06B6F04297D8725AB07C9832230FD6C9 /* GULMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULMutableDictionary.h; path = GoogleUtilities/Network/Private/GULMutableDictionary.h; sourceTree = "<group>"; };
 		071293A5367558AC8A0B1921638B7F1A /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
 		074914FA8463380F7C37CA09A3E9F57B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		074FB7BC0309EDA49AF631F393AE3B4F /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MDFInternationalization.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C8D5B61EDEB41F4299469817085FBF /* MaterialApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialApplication.h; path = components/private/Application/src/MaterialApplication.h; sourceTree = "<group>"; };
 		092826D132A717E6B95D83B94811F057 /* Canvas.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Canvas.h; path = CanvasLibrary/Canvas.h; sourceTree = "<group>"; };
 		093A56373CA3A4D7C3CE876BCAF2FFDB /* UILabel+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+TCCustomFont.h"; path = "CanvasLibrary/UILabel+TCCustomFont.h"; sourceTree = "<group>"; };
-		09C8549FEE7BE9007B2FF65E06EEAA6E /* GULAppEnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppEnvironmentUtil.h; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.h; sourceTree = "<group>"; };
-		0B38E4644C898D644C3853F5AF500601 /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
-		0B6D7914A10245B83F727F0F4E15DCA3 /* GoogleUtilities-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleUtilities-dummy.m"; sourceTree = "<group>"; };
 		0C53DB5E5828E919F90EA9B678881108 /* MDCTextInputControllerLegacyDefault.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerLegacyDefault.m; path = components/TextFields/src/MDCTextInputControllerLegacyDefault.m; sourceTree = "<group>"; };
 		0CA3A7BF7B33D8952853CAEEDB1CADEB /* SocketIOClientOption.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientOption.swift; path = Source/SocketIO/Client/SocketIOClientOption.swift; sourceTree = "<group>"; };
 		0D986661089E84BFEDE9F31DA07978A1 /* Google-Mobile-Ads-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Google-Mobile-Ads-SDK.xcconfig"; sourceTree = "<group>"; };
 		0E5F2FE285DF8E2245B3C894C517B01B /* Socket.IO-Client-Swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Socket.IO-Client-Swift-Info.plist"; sourceTree = "<group>"; };
-		0F22911E6510095938A44D693F6300DA /* GULNetworkMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkMessageCode.h; path = GoogleUtilities/Network/Private/GULNetworkMessageCode.h; sourceTree = "<group>"; };
+		10B3937A64D36DCF1E021C4578930C01 /* GULNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetwork.h; path = GoogleUtilities/Network/Private/GULNetwork.h; sourceTree = "<group>"; };
+		1234D4CFA96027C959226B02A4D5F54C /* GULAppDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler_Private.h; path = GoogleUtilities/AppDelegateSwizzler/Internal/GULAppDelegateSwizzler_Private.h; sourceTree = "<group>"; };
 		127B35EE02BB89D5C51D394D900C5D6F /* MDCTypography.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTypography.m; path = components/Typography/src/MDCTypography.m; sourceTree = "<group>"; };
 		12A3E9AFAF6C935F24E4F2390BEF36EC /* pb_decode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_decode.h; sourceTree = "<group>"; };
 		12AC5CBD52611190250606EFA036B7BD /* MDCTextInputControllerBase+Subclassing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MDCTextInputControllerBase+Subclassing.h"; path = "components/TextFields/src/private/MDCTextInputControllerBase+Subclassing.h"; sourceTree = "<group>"; };
@@ -479,15 +480,19 @@
 		191B9ACC5ED2B69B7344E75F0859389C /* Pods-UnTaxi-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UnTaxi-acknowledgements.plist"; sourceTree = "<group>"; };
 		1AA0E01F9933AB9034BB03A1A4880852 /* MDCTextInputBorderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputBorderView.h; path = components/TextFields/src/MDCTextInputBorderView.h; sourceTree = "<group>"; };
 		1AC05D944FC559810763A260FC637654 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		1AFFD41CF2CD83A5132C4A01D4687CE4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		1B3D65450557AEFD321C2DF6CE3A6286 /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Canvas.framework; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C4EC8C5B769BE0E0E1309C18C38F619 /* MDCTextFieldPositioningDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextFieldPositioningDelegate.h; path = components/TextFields/src/MDCTextFieldPositioningDelegate.h; sourceTree = "<group>"; };
 		1C81115022F2D3E398BDF8FA6BBC41F2 /* pb_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_common.h; sourceTree = "<group>"; };
 		1CEB513801E2EC4625C7912E90D1A346 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		1ECD2BFC326C9061D3E231895367C5EA /* Canvas.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Canvas.modulemap; sourceTree = "<group>"; };
+		1F1ED8DD887544BC912ECC767D78CDEE /* GULAppDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h; sourceTree = "<group>"; };
 		1FA6D28B9CD6CD3BC298DA772D9A4FAC /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		20869F862BF0D7F6E36926BC7B46B6D9 /* GULReachabilityChecker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULReachabilityChecker.m; path = GoogleUtilities/Reachability/GULReachabilityChecker.m; sourceTree = "<group>"; };
 		21D8CE51EE4606D2021DEA2D43FE1F05 /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
 		22FABD4787A922EACA905168BA99D2DD /* SocketLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = Source/SocketIO/Util/SocketLogger.swift; sourceTree = "<group>"; };
 		2569551EA4221C49B42A5C757D004FF8 /* SocketManagerSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketManagerSpec.swift; path = Source/SocketIO/Manager/SocketManagerSpec.swift; sourceTree = "<group>"; };
+		25B9D6CC11B0D1F2D4C792DE00E1EDC7 /* GULMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULMutableDictionary.m; path = GoogleUtilities/Network/GULMutableDictionary.m; sourceTree = "<group>"; };
 		2672FE224D4E113DFC4E59C7CEB9C5A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		26CC2A364BB03EBD1F67F949E99343FE /* MDCTextInputControllerFloatingPlaceholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerFloatingPlaceholder.h; path = components/TextFields/src/MDCTextInputControllerFloatingPlaceholder.h; sourceTree = "<group>"; };
 		26F0316F5D2D57F95D83BBDD7A8C2CA7 /* Canvas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Canvas.xcconfig; sourceTree = "<group>"; };
@@ -497,19 +502,20 @@
 		2A64D7AFFDE537572C885356CEF4D489 /* UIFont+MaterialTypography.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+MaterialTypography.m"; path = "components/Typography/src/UIFont+MaterialTypography.m"; sourceTree = "<group>"; };
 		2C45FDA26050DAC17CD3A5AD6E9A57C1 /* IsaoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsaoTextField.swift; path = TextFieldEffects/TextFieldEffects/IsaoTextField.swift; sourceTree = "<group>"; };
 		2D77EEEDE4031E2AF3EB378C644D374C /* MDCFontTraits.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFontTraits.m; path = components/Typography/src/private/MDCFontTraits.m; sourceTree = "<group>"; };
-		2DE403A82B994D7CECCB3167E21C228A /* GULNetworkLoggerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkLoggerProtocol.h; path = GoogleUtilities/Network/Private/GULNetworkLoggerProtocol.h; sourceTree = "<group>"; };
 		2E32DB689271CA793961CD12A7D02FB6 /* MDCTextInputControllerLegacyFullWidth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerLegacyFullWidth.h; path = components/TextFields/src/MDCTextInputControllerLegacyFullWidth.h; sourceTree = "<group>"; };
 		2FB03FCEDE5FCFE35FCA6AAE831E0611 /* CAMediaTimingFunction+MDCAnimationTiming.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CAMediaTimingFunction+MDCAnimationTiming.h"; path = "components/AnimationTiming/src/CAMediaTimingFunction+MDCAnimationTiming.h"; sourceTree = "<group>"; };
+		30FF03617387626D250CB8D2773E6DFB /* GULLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLogger.h; path = GoogleUtilities/Logger/Private/GULLogger.h; sourceTree = "<group>"; };
 		3179BF150B43EE5A0C02A5722868F597 /* MDCTextInputControllerLegacyFullWidth.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerLegacyFullWidth.m; path = components/TextFields/src/MDCTextInputControllerLegacyFullWidth.m; sourceTree = "<group>"; };
+		322D89F82D66BB9AA63D25079692D334 /* GULLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULLogger.m; path = GoogleUtilities/Logger/GULLogger.m; sourceTree = "<group>"; };
+		33BB8649095C0FE101482754E1F0EB3F /* GULReachabilityMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityMessageCode.h; path = GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h; sourceTree = "<group>"; };
 		370966CDE134295E48FBA1D7F76C9C6C /* Socket.IO-Client-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-umbrella.h"; sourceTree = "<group>"; };
-		3803B36E048EB0F7F8A7060EB12DF553 /* GULMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULMutableDictionary.h; path = GoogleUtilities/Network/Private/GULMutableDictionary.h; sourceTree = "<group>"; };
-		3911C30B7E7F720D33142C011B4CC24B /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		3A5EC04401C2C06F2CFDE671C7E3E711 /* MDFRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDFRTL.m; path = Sources/MDFRTL.m; sourceTree = "<group>"; };
 		3B41FA3AF13C3F71705D9036DBB1DF56 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		3B8EF0003A97ECBE3A79D136D79252BA /* MDCTextInputUnderlineView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputUnderlineView.m; path = components/TextFields/src/MDCTextInputUnderlineView.m; sourceTree = "<group>"; };
 		3D1F22178FFFB2E58CA96E73C8B1148E /* Pods-UnTaxi-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UnTaxi-frameworks.sh"; sourceTree = "<group>"; };
 		3F10E5CA15470F440192CFBCC9E4EE87 /* Canvas-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Canvas-prefix.pch"; sourceTree = "<group>"; };
 		3FAE6B4AD059555541CF8B7501CD2664 /* Pods-UnTaxi-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UnTaxi-umbrella.h"; sourceTree = "<group>"; };
+		408C475F4D55A12CE509ADE9C47A923E /* GULNetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetwork.m; path = GoogleUtilities/Network/GULNetwork.m; sourceTree = "<group>"; };
 		40BD0E31AC004BCCFA0DED7F6AFBF1A8 /* SocketPacket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = Source/SocketIO/Parse/SocketPacket.swift; sourceTree = "<group>"; };
 		40F7AF66B09066C2D3DFD499AAA3A69E /* Pods-UnTaxi-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UnTaxi-Info.plist"; sourceTree = "<group>"; };
 		417AB3A43CA6E602B6F9EFFD014EA3F7 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
@@ -522,7 +528,7 @@
 		47C06A401EA7EDA4467B59AFE276958E /* MDCTextInputUnderlineView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputUnderlineView.h; path = components/TextFields/src/MDCTextInputUnderlineView.h; sourceTree = "<group>"; };
 		484BE38B43D30A6EB915F1C1FA9AF870 /* CSBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSBlurView.m; path = CanvasLibrary/CSBlurView.m; sourceTree = "<group>"; };
 		48936B3F13FD028F5634001E599295AA /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		48A240BBB9CDABBB4ED731B90E0673BC /* GULAppDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h; sourceTree = "<group>"; };
+		496AE4381F507599465142BAED27A63A /* GULNetworkLoggerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkLoggerProtocol.h; path = GoogleUtilities/Network/Private/GULNetworkLoggerProtocol.h; sourceTree = "<group>"; };
 		496DE7D1B098C1A5AD16C06A90ADEE47 /* TextFieldEffects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TextFieldEffects.framework; path = TextFieldEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B73D02DD4F7D148BC147F42D2C610E /* MaterialComponents.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MaterialComponents.xcconfig; sourceTree = "<group>"; };
 		4A651E68506A37D12E564BB2B8AC500F /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,24 +538,24 @@
 		4C5ED47F3DC727ED89F2BA997AB49635 /* CSAnimationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimationView.m; path = CanvasLibrary/CSAnimationView.m; sourceTree = "<group>"; };
 		4F40FBDE3D40CB918B6D0FF9D6466D9B /* YoshikoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YoshikoTextField.swift; path = TextFieldEffects/TextFieldEffects/YoshikoTextField.swift; sourceTree = "<group>"; };
 		4FBBED2F67CD105A776374DC5B11F5E5 /* MDCTypographyUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTypographyUtilities.m; path = components/Typography/src/private/MDCTypographyUtilities.m; sourceTree = "<group>"; };
-		4FDF3EB64FAE5804FA5632507CB5B759 /* GULReachabilityChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityChecker.h; path = GoogleUtilities/Reachability/Private/GULReachabilityChecker.h; sourceTree = "<group>"; };
 		5099E9B16BAB8C1F8A2A5D20A010BC7E /* MDCTextInputControllerOutlined.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerOutlined.h; path = components/TextFields/src/MDCTextInputControllerOutlined.h; sourceTree = "<group>"; };
 		513AD552CC618EDD2BD586DCE4E45B70 /* UIApplication+AppExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+AppExtensions.m"; path = "components/private/Application/src/UIApplication+AppExtensions.m"; sourceTree = "<group>"; };
 		51DB418DE2F71F532F77C3B314F2F425 /* MDFInternationalization-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MDFInternationalization-Info.plist"; sourceTree = "<group>"; };
 		52DAE511EB4441020FB56EBD5A80CB48 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		536745F13C06150CEF207E999C4A562E /* MDCPaletteExpansions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCPaletteExpansions.m; path = components/Palettes/src/private/MDCPaletteExpansions.m; sourceTree = "<group>"; };
 		54839E9B2C73480338C1A067EFBF85D9 /* SocketStringReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = Source/SocketIO/Util/SocketStringReader.swift; sourceTree = "<group>"; };
-		550C637569B79CE60386F5427E311A6D /* GULNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetwork.h; path = GoogleUtilities/Network/Private/GULNetwork.h; sourceTree = "<group>"; };
 		553789F3ABA40EF66757AC1643489CE6 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
-		573B0D75CA668BB60DB4785FFC36CA94 /* GULAppEnvironmentUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppEnvironmentUtil.m; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m; sourceTree = "<group>"; };
+		57CF70F3E38B810831B2F1DFBBFE745E /* GoogleUtilities-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleUtilities-Info.plist"; sourceTree = "<group>"; };
 		57FCD44605CA34026FE71349694533D7 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		5913F87F122BB66DD594E88D7D208E85 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
+		592BEBC2E25658BB82774DAA173FF168 /* GULSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSwizzler.m; path = GoogleUtilities/MethodSwizzler/GULSwizzler.m; sourceTree = "<group>"; };
 		5A4DD9C2D190030FD5552B811D9F4BFB /* UIView+MDCTimingFunction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MDCTimingFunction.h"; path = "components/AnimationTiming/src/UIView+MDCTimingFunction.h"; sourceTree = "<group>"; };
 		5B5E8C940BCD739CA75452B4399788D7 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/Starscream/WebSocket.swift; sourceTree = "<group>"; };
+		5DBCDB2B413E15EE8AEBC707749DF12D /* GoogleUtilities.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleUtilities.modulemap; sourceTree = "<group>"; };
 		5F1C43B68EF495DA32E9AC9650AA3153 /* MDCTextField+Testing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MDCTextField+Testing.h"; path = "components/TextFields/src/private/MDCTextField+Testing.h"; sourceTree = "<group>"; };
+		60FF1084917992097D813652EF9DE309 /* GULAppDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppDelegateSwizzler.m; path = GoogleUtilities/AppDelegateSwizzler/GULAppDelegateSwizzler.m; sourceTree = "<group>"; };
 		61E6BDA1C976AC6B3EFB7E814717437B /* UIButton+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+TCCustomFont.m"; path = "CanvasLibrary/UIButton+TCCustomFont.m"; sourceTree = "<group>"; };
 		6372163F1D3D8C2D23F640975CCB0866 /* nanopb-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "nanopb-Info.plist"; sourceTree = "<group>"; };
-		63F4EA0724E71B1877AE12332EAC206F /* GoogleUtilities.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleUtilities.modulemap; sourceTree = "<group>"; };
 		64D98D58CDC5A8DD389AABFBC0CBDC7B /* UIFont+MaterialSimpleEquality.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialSimpleEquality.h"; path = "components/Typography/src/UIFont+MaterialSimpleEquality.h"; sourceTree = "<group>"; };
 		652C873ECFE9B285ABE5CA57A11EDD13 /* MDCTextInputControllerOutlined.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerOutlined.m; path = components/TextFields/src/MDCTextInputControllerOutlined.m; sourceTree = "<group>"; };
 		658BD13A07970CAD9AF02F79466DB07E /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -557,6 +563,7 @@
 		66448E3EBFCF55941B7C941C72D59AFC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		66620FBF1FE0F9FD7E140053BEB14F7F /* MDCFontScaler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFontScaler.h; path = components/Typography/src/MDCFontScaler.h; sourceTree = "<group>"; };
 		66626A764C6B4D83EF926BDCB1DB16F7 /* MDCTextInputController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputController.h; path = components/TextFields/src/MDCTextInputController.h; sourceTree = "<group>"; };
+		691BADEC39189B777E882227AB7DE545 /* GoogleUtilities-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleUtilities-dummy.m"; sourceTree = "<group>"; };
 		69EF6EB2B06ECE1F33AD8DC45F1B0E8D /* SocketIOClientConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientConfiguration.swift; path = Source/SocketIO/Client/SocketIOClientConfiguration.swift; sourceTree = "<group>"; };
 		6A52C1E1930013B794323658A42408ED /* UITextView+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+TCCustomFont.m"; path = "CanvasLibrary/UITextView+TCCustomFont.m"; sourceTree = "<group>"; };
 		6A6D9E0D4F6D355B12A3D269058979DF /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
@@ -564,11 +571,12 @@
 		6B39ADCEAEAF83435048F51437D0FBED /* Socket.IO-Client-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Socket.IO-Client-Swift-dummy.m"; sourceTree = "<group>"; };
 		6B60FDD364380403A5F5BEE37ECD8899 /* Starscream-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Starscream-Info.plist"; sourceTree = "<group>"; };
 		6C56E3E3F1715916351266C26FA6765B /* SocketIOClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = Source/SocketIO/Client/SocketIOClient.swift; sourceTree = "<group>"; };
+		6E5668260ADEC8894AB2C05C4B0D7527 /* GULSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSwizzler.h; path = GoogleUtilities/MethodSwizzler/Private/GULSwizzler.h; sourceTree = "<group>"; };
 		703226859492A3FAAA2F49171AE68B92 /* SocketExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketExtensions.swift; path = Source/SocketIO/Util/SocketExtensions.swift; sourceTree = "<group>"; };
 		715DB7C25BBE88A39A3D7D2612639E2A /* UITextField+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+TCCustomFont.m"; path = "CanvasLibrary/UITextField+TCCustomFont.m"; sourceTree = "<group>"; };
 		72925451F678090A774AF39248E641CF /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
-		7565F36FABDD750318C67D7F7637818C /* GULLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerLevel.h; path = GoogleUtilities/Logger/Public/GULLoggerLevel.h; sourceTree = "<group>"; };
 		7651949B577C692F5029B87AEE8DDDAA /* UIFontDescriptor+MaterialTypography.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFontDescriptor+MaterialTypography.h"; path = "components/Typography/src/UIFontDescriptor+MaterialTypography.h"; sourceTree = "<group>"; };
+		7808F0505CB066908AAAA48A7BA1DC1C /* GULNetworkURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkURLSession.h; path = GoogleUtilities/Network/Private/GULNetworkURLSession.h; sourceTree = "<group>"; };
 		780CFC4E44CD59B603B6CB934B1A11BA /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		785C8932A69D33B8B51037DE18A3F9AD /* MaterialComponents.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MaterialComponents.modulemap; sourceTree = "<group>"; };
 		7974B48E84DC75021316FB17544D5D63 /* MDCTextInputControllerUnderline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerUnderline.m; path = components/TextFields/src/MDCTextInputControllerUnderline.m; sourceTree = "<group>"; };
@@ -586,21 +594,19 @@
 		85E3FFA9D52F75DB6A04F409391BA432 /* MDCTextInputControllerFullWidth.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerFullWidth.m; path = components/TextFields/src/MDCTextInputControllerFullWidth.m; sourceTree = "<group>"; };
 		86FF0396CC0F5C64AAC2A2D053426A8E /* MaterialTypography.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialTypography.h; path = components/Typography/src/MaterialTypography.h; sourceTree = "<group>"; };
 		87A8704AA950D400FD1491982E2A1883 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilities.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87DCDE1A5ADBCB2DC6700C0B51EA72A4 /* GULReachabilityChecker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULReachabilityChecker.m; path = GoogleUtilities/Reachability/GULReachabilityChecker.m; sourceTree = "<group>"; };
 		88889B528BD2AC36983A6FA44EEB797D /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		893F81B57799184F260E41E9074BA152 /* AkiraTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AkiraTextField.swift; path = TextFieldEffects/TextFieldEffects/AkiraTextField.swift; sourceTree = "<group>"; };
 		896BF669FAB70F50E5C17F16F51E2FB4 /* MadokaTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MadokaTextField.swift; path = TextFieldEffects/TextFieldEffects/MadokaTextField.swift; sourceTree = "<group>"; };
+		8A49441711DDDBDA1E8E636699296FB1 /* GULNetworkConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkConstants.h; path = GoogleUtilities/Network/Private/GULNetworkConstants.h; sourceTree = "<group>"; };
 		8B7DD8EE84C50F6FD1191847F1C4740E /* MDFInternationalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFInternationalization.h; path = Sources/MDFInternationalization.h; sourceTree = "<group>"; };
 		8BED601516425CE55D550F7030C6110D /* TextFieldEffects-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TextFieldEffects-Info.plist"; sourceTree = "<group>"; };
 		8C0E14B513A1AF1367743A8C7005464C /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		8CA53B1F690C3FAAF78FB9F852E92C46 /* MDCTextInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInput.h; path = components/TextFields/src/MDCTextInput.h; sourceTree = "<group>"; };
 		8DAA3AA693F2EB6A49E1C8EFA7592092 /* MDCTextInputControllerOutlinedTextArea.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerOutlinedTextArea.m; path = components/TextFields/src/MDCTextInputControllerOutlinedTextArea.m; sourceTree = "<group>"; };
-		8DABF08AD86282271ADE6D9534B1DC8E /* GULNetworkURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkURLSession.h; path = GoogleUtilities/Network/Private/GULNetworkURLSession.h; sourceTree = "<group>"; };
 		8DE59E48A05B227EE1C9C6F0FDCB52CA /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		8E3AE0A0A4E92AF27F18D53F3F86B9E0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
 		8FA9DECC8A3DE574767CD2E94B44747A /* UIFont+MaterialTypographyPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+MaterialTypographyPrivate.m"; path = "components/Typography/src/private/UIFont+MaterialTypographyPrivate.m"; sourceTree = "<group>"; };
 		92DE44CCBD11E8C882BE416B780DEBD1 /* SocketRawView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketRawView.swift; path = Source/SocketIO/Client/SocketRawView.swift; sourceTree = "<group>"; };
-		93E8F0E292A72EF630BF859794EF0A7A /* GULNetworkURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkURLSession.m; path = GoogleUtilities/Network/GULNetworkURLSession.m; sourceTree = "<group>"; };
 		94F8EE6946277D44566598229FAFCB8C /* TextFieldEffects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TextFieldEffects-dummy.m"; sourceTree = "<group>"; };
 		9634C708929AAA3C462658605F9423C9 /* UIApplication+AppExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+AppExtensions.h"; path = "components/private/Application/src/UIApplication+AppExtensions.h"; sourceTree = "<group>"; };
 		964C5DAAEF6F3FD06B82E647223BCD01 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -611,8 +617,6 @@
 		9825B7B3170A73F3C371BA622C941DF6 /* MDCFontTextStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFontTextStyle.h; path = components/Typography/src/MDCFontTextStyle.h; sourceTree = "<group>"; };
 		9841565E9DF246796078200B2E2F25BD /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		98B4C5B19A707B200DD92D7C463AE479 /* SocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = Source/SocketIO/Util/SocketTypes.swift; sourceTree = "<group>"; };
-		98F5BEDF62A3839AC7DA67ED476746C3 /* GULNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULNSData+zlib.h"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.h"; sourceTree = "<group>"; };
-		99EBAA4EAD03F19FEA3BB249C895619B /* GoogleUtilities-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-prefix.pch"; sourceTree = "<group>"; };
 		9A2891C5409816767B1FB04F2D2A1057 /* NSString+MaterialBidi.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MaterialBidi.m"; path = "Sources/NSString+MaterialBidi.m"; sourceTree = "<group>"; };
 		9A8BC7C1FE8B7210A6B83770AD752A35 /* MDCTextInputArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputArt.h; path = components/TextFields/src/private/MDCTextInputArt.h; sourceTree = "<group>"; };
 		9B417944747E8829CF00EA256DB12829 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
@@ -635,12 +639,14 @@
 		A786F9D94905D01F92BC612BC66674C8 /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePacketType.swift; path = Source/SocketIO/Engine/SocketEnginePacketType.swift; sourceTree = "<group>"; };
 		A86B9592D3C54A1A08CAB767458A4F9D /* MaterialTextFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialTextFields.h; path = components/TextFields/src/MaterialTextFields.h; sourceTree = "<group>"; };
 		A8D7DD77093EBEAE8AE7A136AE12EC48 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		A8F523F427C9D6820460FCEC1E9081A7 /* GULLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerLevel.h; path = GoogleUtilities/Logger/Public/GULLoggerLevel.h; sourceTree = "<group>"; };
 		A9FBA8417D819D0D2075DDF4BAA914AD /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		AA7FC4377D4767909768683B457692A8 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		AA95F78AA971E2BF4D31DF8268E44790 /* UIFont+MaterialSimpleEquality.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+MaterialSimpleEquality.m"; path = "components/Typography/src/UIFont+MaterialSimpleEquality.m"; sourceTree = "<group>"; };
 		AB8951BEC3E7ABE698559CB231A0B8E2 /* MDCPalettes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCPalettes.h; path = components/Palettes/src/MDCPalettes.h; sourceTree = "<group>"; };
 		ACBFEE2D45A71663D5F7661913987855 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = Source/SocketIO/Client/SocketAnyEvent.swift; sourceTree = "<group>"; };
 		ACD297A1ABFE6CA0FF72271345B2B5D8 /* MaterialAnimationTiming.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialAnimationTiming.h; path = components/AnimationTiming/src/MaterialAnimationTiming.h; sourceTree = "<group>"; };
+		AD54C03C765621E3DB775E5EAA3AFF4E /* GoogleUtilities-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-prefix.pch"; sourceTree = "<group>"; };
 		AD5AB5F895C6B3DAC90FDE6B00DEA169 /* MaterialPalettes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialPalettes.h; path = components/Palettes/src/MaterialPalettes.h; sourceTree = "<group>"; };
 		ADC6250A69EA7024575B1E333E282A5E /* MDCTextInputControllerBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputControllerBase.m; path = components/TextFields/src/MDCTextInputControllerBase.m; sourceTree = "<group>"; };
 		ADE65B6A1BAF6DF618AF31E9107449DB /* TextFieldEffects.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFieldEffects.swift; path = TextFieldEffects/TextFieldEffects/TextFieldEffects.swift; sourceTree = "<group>"; };
@@ -655,26 +661,24 @@
 		B7BE5670886A62A0C77C64389A814BD9 /* NSLocale+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLocale+MaterialRTL.h"; path = "Sources/NSLocale+MaterialRTL.h"; sourceTree = "<group>"; };
 		B7CF728AC3D0A2D695F80D43A26C54E7 /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientSpec.swift; path = Source/SocketIO/Client/SocketIOClientSpec.swift; sourceTree = "<group>"; };
 		B7F626150324C347E59010EBF670A540 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		B91BEF78FB5A0A2260A91FCFAA6B2BFE /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
 		B98B56D8AFA36CFCA8AC4278C2EC1412 /* MDCTextInputBorderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputBorderView.m; path = components/TextFields/src/MDCTextInputBorderView.m; sourceTree = "<group>"; };
 		B9B4634137BF404EFC05CF62E141BA45 /* MDCIntrinsicHeightTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCIntrinsicHeightTextView.h; path = components/TextFields/src/MDCIntrinsicHeightTextView.h; sourceTree = "<group>"; };
-		BA02600BDC088AF86E59CA89E2A3345D /* GoogleUtilities.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleUtilities.xcconfig; sourceTree = "<group>"; };
 		BA15B32D6003C1CF605BC7E393E14905 /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Sources/Starscream/SSLSecurity.swift; sourceTree = "<group>"; };
-		BAE4268148AFBA8D158ACF8A0C97610F /* GULAppDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppDelegateSwizzler.m; path = GoogleUtilities/AppDelegateSwizzler/GULAppDelegateSwizzler.m; sourceTree = "<group>"; };
 		BB4E4CA2E46C7E8BF626AF05E1713667 /* CSNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNavigationController.m; path = CanvasLibrary/CSNavigationController.m; sourceTree = "<group>"; };
-		BC367928D423BE975AB35CDCBA7E60C9 /* GULNetworkConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkConstants.h; path = GoogleUtilities/Network/Private/GULNetworkConstants.h; sourceTree = "<group>"; };
+		BC6292F5F7EBBE90B4DB644B2D30684C /* GULNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GULNSData+zlib.m"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.m"; sourceTree = "<group>"; };
 		BC83F7CA1BC5F029C2420CB9F81A44DF /* CSAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimation.m; path = CanvasLibrary/CSAnimation.m; sourceTree = "<group>"; };
 		BCA42051862FA93569EAC5B836EA3B5E /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
 		C0FBA53A77A1DF8D2095108AD08830B1 /* Pods-UnTaxi-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UnTaxi-dummy.m"; sourceTree = "<group>"; };
-		C149F8B330B8C6535649111830E09153 /* GULNetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetwork.m; path = GoogleUtilities/Network/GULNetwork.m; sourceTree = "<group>"; };
 		C207421F16C3A50C23F3F1CAB9879D7E /* KaedeTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KaedeTextField.swift; path = TextFieldEffects/TextFieldEffects/KaedeTextField.swift; sourceTree = "<group>"; };
 		C2289DB069420499D4CBE501E1535927 /* UITextField+PlaceholderColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+PlaceholderColor.m"; path = "CanvasLibrary/UITextField+PlaceholderColor.m"; sourceTree = "<group>"; };
 		C24AE2FD49BED6F293E918CE573D14F2 /* CSNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNavigationController.h; path = CanvasLibrary/CSNavigationController.h; sourceTree = "<group>"; };
 		C3B2FAF29D022682584786E2D1EE53EC /* UITextField+PlaceholderColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+PlaceholderColor.h"; path = "CanvasLibrary/UITextField+PlaceholderColor.h"; sourceTree = "<group>"; };
 		C3E8FBC93EDDA56FFE8155941883516A /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		C42A67510B9B2D6E9433537F0E92E41E /* GULSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSwizzler.h; path = GoogleUtilities/MethodSwizzler/Private/GULSwizzler.h; sourceTree = "<group>"; };
 		C439764B8E3F2E5425960DC529990A02 /* MDFInternationalization.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MDFInternationalization.xcconfig; sourceTree = "<group>"; };
 		C4AB6627208666F7D89529E8E819C08B /* MDCTextInputControllerLegacyDefault.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerLegacyDefault.h; path = components/TextFields/src/MDCTextInputControllerLegacyDefault.h; sourceTree = "<group>"; };
 		C62B173A908C9A33EC1AB5250B52D6E2 /* MDCTextInputControllerOutlinedTextArea.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerOutlinedTextArea.h; path = components/TextFields/src/MDCTextInputControllerOutlinedTextArea.h; sourceTree = "<group>"; };
+		C62F52955C53C8378AF88EB15732C911 /* GULAppEnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppEnvironmentUtil.h; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.h; sourceTree = "<group>"; };
 		C689FE6925195D750DE7E3AC1BF0D966 /* MDFInternationalization-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MDFInternationalization-dummy.m"; sourceTree = "<group>"; };
 		C7170439EB89663F563C697CFE8891B0 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		C8E18DD5586194F6F80571746258D4E2 /* SocketIOStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOStatus.swift; path = Source/SocketIO/Client/SocketIOStatus.swift; sourceTree = "<group>"; };
@@ -686,14 +690,11 @@
 		CE1A43AC624E9B5CE0A07EDF3A914A15 /* UIFont+MaterialScalable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialScalable.h"; path = "components/Typography/src/UIFont+MaterialScalable.h"; sourceTree = "<group>"; };
 		CEE9252E0637472D5A982F7E2F878DDB /* UIFont+MaterialTypographyPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialTypographyPrivate.h"; path = "components/Typography/src/private/UIFont+MaterialTypographyPrivate.h"; sourceTree = "<group>"; };
 		CFBFA3E916C2B30B8C194A8FFA30D120 /* MDCIntrinsicHeightTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCIntrinsicHeightTextView.m; path = components/TextFields/src/MDCIntrinsicHeightTextView.m; sourceTree = "<group>"; };
-		CFCC1CD0EEC0071B1028D63089FF932A /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
 		CFF51E849CAC19DB00308D0BD356D49E /* SSLClientCertificate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLClientCertificate.swift; path = Sources/Starscream/SSLClientCertificate.swift; sourceTree = "<group>"; };
-		D062CCB89316C81495FAF226777815CD /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		D04814AD75DE6C8C43EB5D531EBED838 /* GULAppEnvironmentUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppEnvironmentUtil.m; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m; sourceTree = "<group>"; };
 		D12AFEB8A6DC5E7792501B79240E2D3E /* HoshiTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HoshiTextField.swift; path = TextFieldEffects/TextFieldEffects/HoshiTextField.swift; sourceTree = "<group>"; };
+		D37A0EBA8B4367F91C690CFD01CABD79 /* GULNetworkMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkMessageCode.h; path = GoogleUtilities/Network/Private/GULNetworkMessageCode.h; sourceTree = "<group>"; };
 		D3E67FDEAC61E0640534687DABB18A21 /* Canvas-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Canvas-Info.plist"; sourceTree = "<group>"; };
-		D515E444C3E0E4601CD019D2F706DFCA /* GoogleUtilities-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleUtilities-Info.plist"; sourceTree = "<group>"; };
-		D6AF1E5F2AC2AC7EC8E2336817A9BDB9 /* GULLoggerCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerCodes.h; path = GoogleUtilities/Common/GULLoggerCodes.h; sourceTree = "<group>"; };
-		D6BD9AC97DE0754E872BF83899186E96 /* GULReachabilityMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityMessageCode.h; path = GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h; sourceTree = "<group>"; };
 		D6E3052B3B28B9DE1EDB7D5FBD37F816 /* UIView+MDCTimingFunction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+MDCTimingFunction.m"; path = "components/AnimationTiming/src/UIView+MDCTimingFunction.m"; sourceTree = "<group>"; };
 		D961FECFCCFF18DE917847F2AE9D6064 /* UIView+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MaterialRTL.h"; path = "Sources/UIView+MaterialRTL.h"; sourceTree = "<group>"; };
 		D9FE8B83295652A9B468B0010613560F /* UITextField+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+TCCustomFont.h"; path = "CanvasLibrary/UITextField+TCCustomFont.h"; sourceTree = "<group>"; };
@@ -702,10 +703,10 @@
 		DAB86D7C8C892A803877284BFE3ECAB8 /* pb_encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_encode.h; sourceTree = "<group>"; };
 		DD1FD595E8E114F58B87853EA2AF226A /* GoogleAppMeasurement.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleAppMeasurement.xcconfig; sourceTree = "<group>"; };
 		DE5DC06B1F6DE363C50DE39ABFFD2973 /* SocketEnginePollable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePollable.swift; path = Source/SocketIO/Engine/SocketEnginePollable.swift; sourceTree = "<group>"; };
+		DE84CA505C240641C6A564AE7678D14E /* GULNetworkURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkURLSession.m; path = GoogleUtilities/Network/GULNetworkURLSession.m; sourceTree = "<group>"; };
 		E1D1B46CC5FAE9269FB841F9EF131328 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckEmitter.swift; path = Source/SocketIO/Ack/SocketAckEmitter.swift; sourceTree = "<group>"; };
 		E1FE4FAE5A9653ABAE42BA5C910212FB /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Starscream.modulemap; sourceTree = "<group>"; };
 		E2EF6540230D9EC30C61307CD8F9C01C /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		E32ED6BAB21ADB2B9F1CA770B71FCCC2 /* GULReachabilityChecker+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULReachabilityChecker+Internal.h"; path = "GoogleUtilities/Reachability/GULReachabilityChecker+Internal.h"; sourceTree = "<group>"; };
 		E3358CE711A0EB82D9505EE9C5E41FFC /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		E347796C9E9EB6C41DB448CFF4BA1865 /* pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
 		E4123679F2A02EC0915ABFDA75ACCEC6 /* MDCPalettes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCPalettes.m; path = components/Palettes/src/MDCPalettes.m; sourceTree = "<group>"; };
@@ -716,12 +717,12 @@
 		E7C3EAA2CD503F234E73FCF931B45325 /* TextFieldEffects.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TextFieldEffects.modulemap; sourceTree = "<group>"; };
 		E94EA8F4C910115963323248D01D4391 /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		E9F30C1F8F7FA7BA89CC070FB214387B /* Pods-UnTaxi.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-UnTaxi.modulemap"; sourceTree = "<group>"; };
-		EACD084E0199A641F15D78FB9B8B0EA4 /* GULLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULLogger.m; path = GoogleUtilities/Logger/GULLogger.m; sourceTree = "<group>"; };
 		EB1C355956BF3DF2D7EFB2E74D9E1E73 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
 		EB21F24B56217BAED771D721E525FFFF /* MDCPaletteNames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCPaletteNames.h; path = components/Palettes/src/private/MDCPaletteNames.h; sourceTree = "<group>"; };
 		EB42765B0AFD3EC5D88D1E662CBDDC59 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		EB4701308261355A0E3E692484B3E7FE /* MaterialComponents-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MaterialComponents-dummy.m"; sourceTree = "<group>"; };
-		EC180A54F3B38C8615CEF345C8761D07 /* GULLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLogger.h; path = GoogleUtilities/Logger/Private/GULLogger.h; sourceTree = "<group>"; };
+		EC76575560C2C72B1F9C0B4B2C19F18B /* GULReachabilityChecker+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULReachabilityChecker+Internal.h"; path = "GoogleUtilities/Reachability/GULReachabilityChecker+Internal.h"; sourceTree = "<group>"; };
+		ECE532F0AF7930BB0944051FEC725DA9 /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
 		EDE5B0F643D3CB2B9AB56B5438E4CF26 /* nanopb-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-umbrella.h"; sourceTree = "<group>"; };
 		EE1EED8B728212C7A0C21B43EEA8A325 /* MDCTextInputControllerFullWidth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerFullWidth.h; path = components/TextFields/src/MDCTextInputControllerFullWidth.h; sourceTree = "<group>"; };
 		EFA54A7DD5A59D65C18E361B44DF3D77 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -732,22 +733,23 @@
 		F1EDAD65607DFECEFDCCB3BD1B802894 /* UIImage+MaterialRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MaterialRTL.m"; path = "Sources/UIImage+MaterialRTL.m"; sourceTree = "<group>"; };
 		F1EEA17BB13435E6BB27A472BE93C937 /* YokoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YokoTextField.swift; path = TextFieldEffects/TextFieldEffects/YokoTextField.swift; sourceTree = "<group>"; };
 		F257B2DB5442F7833439A485304C6FC8 /* UITextView+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+TCCustomFont.h"; path = "CanvasLibrary/UITextView+TCCustomFont.h"; sourceTree = "<group>"; };
+		F29C2E538B1357E6B043AD14A392D63F /* GULApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULApplication.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULApplication.h; sourceTree = "<group>"; };
 		F31EE321C3F97F08B547FA439C9F842D /* MDCTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextField.h; path = components/TextFields/src/MDCTextField.h; sourceTree = "<group>"; };
 		F3321417CCDD61758EC54B7FA3B472DA /* MDCTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextField.m; path = components/TextFields/src/MDCTextField.m; sourceTree = "<group>"; };
 		F3529A986B4DD4353687AD339C539EBA /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
 		F4194AE644208B066C9528A57D5B2100 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		F4627C59267D718E695480C57E31A5FB /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		F5A1789480C8048A2D87302E70220A8F /* MDFInternationalization-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MDFInternationalization-prefix.pch"; sourceTree = "<group>"; };
-		F6177BE6C9E0EA098230F59DC6782695 /* GULMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULMutableDictionary.m; path = GoogleUtilities/Network/GULMutableDictionary.m; sourceTree = "<group>"; };
 		F653A83F1826FF56C74EFDA4F75FC492 /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Source/SocketIO/Util/SSLSecurity.swift; sourceTree = "<group>"; };
 		F7713CAF1B89AA4D1609E66849B2BAF5 /* MDCMultilineTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCMultilineTextField.m; path = components/TextFields/src/MDCMultilineTextField.m; sourceTree = "<group>"; };
 		F82D89955608FC26B68E8BD6898889F1 /* UIFont+MaterialTypography.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialTypography.h"; path = "components/Typography/src/UIFont+MaterialTypography.h"; sourceTree = "<group>"; };
 		F943A80B8062C049C98869F3EDA8B07E /* NSLocale+MaterialRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLocale+MaterialRTL.m"; path = "Sources/NSLocale+MaterialRTL.m"; sourceTree = "<group>"; };
 		F9DFE20326658B123871AEE339E2672A /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		FA10AEEF18A6BAD2C540A7E045017704 /* MDCTextInputCommonFundament.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextInputCommonFundament.m; path = components/TextFields/src/private/MDCTextInputCommonFundament.m; sourceTree = "<group>"; };
-		FC5374F88DE4133592A89AAB8D5866E3 /* GULSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSwizzler.m; path = GoogleUtilities/MethodSwizzler/GULSwizzler.m; sourceTree = "<group>"; };
+		FC6011A6A605F49E79CE41150A1CDF98 /* GULReachabilityChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityChecker.h; path = GoogleUtilities/Reachability/Private/GULReachabilityChecker.h; sourceTree = "<group>"; };
 		FD92B6ACDDD2BC5DA6EA8295C8CCC940 /* MDCTypographyUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTypographyUtilities.h; path = components/Typography/src/private/MDCTypographyUtilities.h; sourceTree = "<group>"; };
 		FDEE397CF558656D530491638A246939 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		FE6F24766BBA69F2FD9D50B1232AFFAD /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		FF34BDEFFB1263DE274D59F9789506B1 /* UINavigationBar+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+TCCustomFont.m"; path = "CanvasLibrary/UINavigationBar+TCCustomFont.m"; sourceTree = "<group>"; };
 		FF5FEAE38842CC180EEC9F9B6E6905F7 /* SocketParsable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketParsable.swift; path = Source/SocketIO/Parse/SocketParsable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -870,6 +872,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		02E717E55E4A4DAAE850D0B7255AEC77 /* AppDelegateSwizzler */ = {
+			isa = PBXGroup;
+			children = (
+				1F1ED8DD887544BC912ECC767D78CDEE /* GULAppDelegateSwizzler.h */,
+				60FF1084917992097D813652EF9DE309 /* GULAppDelegateSwizzler.m */,
+				1234D4CFA96027C959226B02A4D5F54C /* GULAppDelegateSwizzler_Private.h */,
+				F29C2E538B1357E6B043AD14A392D63F /* GULApplication.h */,
+				044573E495F5F9BCF841B1ABB07CCD57 /* GULLoggerCodes.h */,
+			);
+			name = AppDelegateSwizzler;
+			sourceTree = "<group>";
+		};
+		0380C1995D84DC613F34159125482427 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				FC6011A6A605F49E79CE41150A1CDF98 /* GULReachabilityChecker.h */,
+				20869F862BF0D7F6E36926BC7B46B6D9 /* GULReachabilityChecker.m */,
+				EC76575560C2C72B1F9C0B4B2C19F18B /* GULReachabilityChecker+Internal.h */,
+				33BB8649095C0FE101482754E1F0EB3F /* GULReachabilityMessageCode.h */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		0425B312B9842535CBA3FBB79CBF3AC5 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +948,15 @@
 			path = MaterialComponents;
 			sourceTree = "<group>";
 		};
+		0BD02FE0D4153223B7BCD80C1F5E23A3 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				C62F52955C53C8378AF88EB15732C911 /* GULAppEnvironmentUtil.h */,
+				D04814AD75DE6C8C43EB5D531EBED838 /* GULAppEnvironmentUtil.m */,
+			);
+			name = Environment;
+			sourceTree = "<group>";
+		};
 		0DA1CF4C06C01DC266A87308F02D6B80 /* TextFieldEffects */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,29 +976,12 @@
 			path = TextFieldEffects;
 			sourceTree = "<group>";
 		};
-		1FDAF15DE07AC7EEFD7C1D3B732A58B9 /* AppDelegateSwizzler */ = {
+		1672672A1FD703F332BA1A14C6D5FBE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48A240BBB9CDABBB4ED731B90E0673BC /* GULAppDelegateSwizzler.h */,
-				BAE4268148AFBA8D158ACF8A0C97610F /* GULAppDelegateSwizzler.m */,
-				033081C933F61B46DC033F3EB30408BA /* GULAppDelegateSwizzler_Private.h */,
-				D6AF1E5F2AC2AC7EC8E2336817A9BDB9 /* GULLoggerCodes.h */,
+				1AFFD41CF2CD83A5132C4A01D4687CE4 /* GoogleMobileAds.framework */,
 			);
-			name = AppDelegateSwizzler;
-			sourceTree = "<group>";
-		};
-		20B88DB736DF2FE57E58E217663FCE2F /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				63F4EA0724E71B1877AE12332EAC206F /* GoogleUtilities.modulemap */,
-				BA02600BDC088AF86E59CA89E2A3345D /* GoogleUtilities.xcconfig */,
-				0B6D7914A10245B83F727F0F4E15DCA3 /* GoogleUtilities-dummy.m */,
-				D515E444C3E0E4601CD019D2F706DFCA /* GoogleUtilities-Info.plist */,
-				99EBAA4EAD03F19FEA3BB249C895619B /* GoogleUtilities-prefix.pch */,
-				3911C30B7E7F720D33142C011B4CC24B /* GoogleUtilities-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GoogleUtilities";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		24CD0B2FB4A87D505A0B4AE22B1CE8B1 /* Support Files */ = {
@@ -989,23 +1006,6 @@
 			);
 			name = AFNetworking;
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		3034AD98EBA3BDC77A68441D833A8543 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				3803B36E048EB0F7F8A7060EB12DF553 /* GULMutableDictionary.h */,
-				F6177BE6C9E0EA098230F59DC6782695 /* GULMutableDictionary.m */,
-				550C637569B79CE60386F5427E311A6D /* GULNetwork.h */,
-				C149F8B330B8C6535649111830E09153 /* GULNetwork.m */,
-				BC367928D423BE975AB35CDCBA7E60C9 /* GULNetworkConstants.h */,
-				CFCC1CD0EEC0071B1028D63089FF932A /* GULNetworkConstants.m */,
-				2DE403A82B994D7CECCB3167E21C228A /* GULNetworkLoggerProtocol.h */,
-				0F22911E6510095938A44D693F6300DA /* GULNetworkMessageCode.h */,
-				8DABF08AD86282271ADE6D9534B1DC8E /* GULNetworkURLSession.h */,
-				93E8F0E292A72EF630BF859794EF0A7A /* GULNetworkURLSession.m */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 		322340A058D83E504A777EA061491E33 /* Support Files */ = {
@@ -1062,26 +1062,10 @@
 			path = "../Target Support Files/TextFieldEffects";
 			sourceTree = "<group>";
 		};
-		39E50F3442F35045C44B428833774C32 /* GoogleUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				1FDAF15DE07AC7EEFD7C1D3B732A58B9 /* AppDelegateSwizzler */,
-				D7B459BCF160A990DEC9E4A9F99BBAF6 /* Environment */,
-				7AEA3F991210D110CD7B28BDE17A1ACB /* Logger */,
-				993CBE8D26C291918DA1DFF938D8840C /* MethodSwizzler */,
-				3034AD98EBA3BDC77A68441D833A8543 /* Network */,
-				4582D09242084D4E9B95D8E4A97F4F71 /* NSData+zlib */,
-				E0C2B20C7BA15C89F191F38843AEB452 /* Reachability */,
-				20B88DB736DF2FE57E58E217663FCE2F /* Support Files */,
-			);
-			name = GoogleUtilities;
-			path = GoogleUtilities;
-			sourceTree = "<group>";
-		};
 		3B8442121C80B79BBC3B51560658B0B2 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				6071DABB8C5D6C9A3886522F92E0AAD6 /* Frameworks */,
+				1672672A1FD703F332BA1A14C6D5FBE1 /* Frameworks */,
 				593CD6E3593F136705F2F0A32E04093E /* Support Files */,
 			);
 			name = "Google-Mobile-Ads-SDK";
@@ -1100,15 +1084,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MDFInternationalization";
-			sourceTree = "<group>";
-		};
-		4582D09242084D4E9B95D8E4A97F4F71 /* NSData+zlib */ = {
-			isa = PBXGroup;
-			children = (
-				98F5BEDF62A3839AC7DA67ED476746C3 /* GULNSData+zlib.h */,
-				0312FFF5B4067BCA4BA1AD3B83E6DB8F /* GULNSData+zlib.m */,
-			);
-			name = "NSData+zlib";
 			sourceTree = "<group>";
 		};
 		4686ED92B9B0F2B2E3F49913B11DC8C0 /* NSURLSession */ = {
@@ -1212,14 +1187,6 @@
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
-		6071DABB8C5D6C9A3886522F92E0AAD6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D062CCB89316C81495FAF226777815CD /* GoogleMobileAds.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7148B01F305C72E889AFA9CBCA5DD2A6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1246,16 +1213,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/AFNetworking";
-			sourceTree = "<group>";
-		};
-		7AEA3F991210D110CD7B28BDE17A1ACB /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-				EC180A54F3B38C8615CEF345C8761D07 /* GULLogger.h */,
-				EACD084E0199A641F15D78FB9B8B0EA4 /* GULLogger.m */,
-				7565F36FABDD750318C67D7F7637818C /* GULLoggerLevel.h */,
-			);
-			name = Logger;
 			sourceTree = "<group>";
 		};
 		7C6A1F2956323CB20EBBE6A48481ED0A /* TextFields */ = {
@@ -1338,6 +1295,39 @@
 			path = "Socket.IO-Client-Swift";
 			sourceTree = "<group>";
 		};
+		8F82B8C3EFE8CC2703BFCA87B3B2A918 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				06B6F04297D8725AB07C9832230FD6C9 /* GULMutableDictionary.h */,
+				25B9D6CC11B0D1F2D4C792DE00E1EDC7 /* GULMutableDictionary.m */,
+				10B3937A64D36DCF1E021C4578930C01 /* GULNetwork.h */,
+				408C475F4D55A12CE509ADE9C47A923E /* GULNetwork.m */,
+				8A49441711DDDBDA1E8E636699296FB1 /* GULNetworkConstants.h */,
+				B91BEF78FB5A0A2260A91FCFAA6B2BFE /* GULNetworkConstants.m */,
+				496AE4381F507599465142BAED27A63A /* GULNetworkLoggerProtocol.h */,
+				D37A0EBA8B4367F91C690CFD01CABD79 /* GULNetworkMessageCode.h */,
+				7808F0505CB066908AAAA48A7BA1DC1C /* GULNetworkURLSession.h */,
+				DE84CA505C240641C6A564AE7678D14E /* GULNetworkURLSession.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		8F8720416F5227E559E2AB26173D51B1 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				02E717E55E4A4DAAE850D0B7255AEC77 /* AppDelegateSwizzler */,
+				0BD02FE0D4153223B7BCD80C1F5E23A3 /* Environment */,
+				D6758374F2F3B5BA7B31534033D523F5 /* Logger */,
+				DB6725C5CA988E7981F438342E3361D3 /* MethodSwizzler */,
+				8F82B8C3EFE8CC2703BFCA87B3B2A918 /* Network */,
+				D346B0D037C04F88A837437579D754BA /* NSData+zlib */,
+				0380C1995D84DC613F34159125482427 /* Reachability */,
+				A9677B4D7D9E33C07BFE5D06151A296F /* Support Files */,
+			);
+			name = GoogleUtilities;
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
 		92FD70B6D9F62BFC88898AB5CFB3B9FF /* AnimationTiming */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,16 +1358,6 @@
 			path = nanopb;
 			sourceTree = "<group>";
 		};
-		993CBE8D26C291918DA1DFF938D8840C /* MethodSwizzler */ = {
-			isa = PBXGroup;
-			children = (
-				0B38E4644C898D644C3853F5AF500601 /* GULOriginalIMPConvenienceMacros.h */,
-				C42A67510B9B2D6E9433537F0E92E41E /* GULSwizzler.h */,
-				FC5374F88DE4133592A89AAB8D5866E3 /* GULSwizzler.m */,
-			);
-			name = MethodSwizzler;
-			sourceTree = "<group>";
-		};
 		9DC2DA6EE9E20E12558DD01061F2BBB8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1399,6 +1379,20 @@
 				F0C50F2E6466594BA40B877AF6F49F43 /* AFNetworkReachabilityManager.m */,
 			);
 			name = Reachability;
+			sourceTree = "<group>";
+		};
+		A9677B4D7D9E33C07BFE5D06151A296F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DBCDB2B413E15EE8AEBC707749DF12D /* GoogleUtilities.modulemap */,
+				046002C33A62DFD394A3758F3837245A /* GoogleUtilities.xcconfig */,
+				691BADEC39189B777E882227AB7DE545 /* GoogleUtilities-dummy.m */,
+				57CF70F3E38B810831B2F1DFBBFE745E /* GoogleUtilities-Info.plist */,
+				AD54C03C765621E3DB775E5EAA3AFF4E /* GoogleUtilities-prefix.pch */,
+				FE6F24766BBA69F2FD9D50B1232AFFAD /* GoogleUtilities-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleUtilities";
 			sourceTree = "<group>";
 		};
 		AA3D173B0104E2BBC36643FC980C09CA /* Security */ = {
@@ -1497,6 +1491,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		D346B0D037C04F88A837437579D754BA /* NSData+zlib */ = {
+			isa = PBXGroup;
+			children = (
+				041ABCE47C369D80BA425B9BD8B246EB /* GULNSData+zlib.h */,
+				BC6292F5F7EBBE90B4DB644B2D30684C /* GULNSData+zlib.m */,
+			);
+			name = "NSData+zlib";
+			sourceTree = "<group>";
+		};
 		D35E296E572CA3BAB0C7DF5EAFA18B12 /* GoogleAppMeasurement */ = {
 			isa = PBXGroup;
 			children = (
@@ -1507,13 +1510,14 @@
 			path = GoogleAppMeasurement;
 			sourceTree = "<group>";
 		};
-		D7B459BCF160A990DEC9E4A9F99BBAF6 /* Environment */ = {
+		D6758374F2F3B5BA7B31534033D523F5 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				09C8549FEE7BE9007B2FF65E06EEAA6E /* GULAppEnvironmentUtil.h */,
-				573B0D75CA668BB60DB4785FFC36CA94 /* GULAppEnvironmentUtil.m */,
+				30FF03617387626D250CB8D2773E6DFB /* GULLogger.h */,
+				322D89F82D66BB9AA63D25079692D334 /* GULLogger.m */,
+				A8F523F427C9D6820460FCEC1E9081A7 /* GULLoggerLevel.h */,
 			);
-			name = Environment;
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		D8A1E53A053716717D5F8C022E6269DC /* Support Files */ = {
@@ -1530,15 +1534,14 @@
 			path = "../Target Support Files/Canvas";
 			sourceTree = "<group>";
 		};
-		E0C2B20C7BA15C89F191F38843AEB452 /* Reachability */ = {
+		DB6725C5CA988E7981F438342E3361D3 /* MethodSwizzler */ = {
 			isa = PBXGroup;
 			children = (
-				4FDF3EB64FAE5804FA5632507CB5B759 /* GULReachabilityChecker.h */,
-				87DCDE1A5ADBCB2DC6700C0B51EA72A4 /* GULReachabilityChecker.m */,
-				E32ED6BAB21ADB2B9F1CA770B71FCCC2 /* GULReachabilityChecker+Internal.h */,
-				D6BD9AC97DE0754E872BF83899186E96 /* GULReachabilityMessageCode.h */,
+				ECE532F0AF7930BB0944051FEC725DA9 /* GULOriginalIMPConvenienceMacros.h */,
+				6E5668260ADEC8894AB2C05C4B0D7527 /* GULSwizzler.h */,
+				592BEBC2E25658BB82774DAA173FF168 /* GULSwizzler.m */,
 			);
-			name = Reachability;
+			name = MethodSwizzler;
 			sourceTree = "<group>";
 		};
 		E19C292CD277DFA50A2A8C2A50C82095 /* decode */ = {
@@ -1605,7 +1608,7 @@
 				EB43B5CAE1611086FE35B9390FC5E0F0 /* Canvas */,
 				3B8442121C80B79BBC3B51560658B0B2 /* Google-Mobile-Ads-SDK */,
 				D35E296E572CA3BAB0C7DF5EAFA18B12 /* GoogleAppMeasurement */,
-				39E50F3442F35045C44B428833774C32 /* GoogleUtilities */,
+				8F8720416F5227E559E2AB26173D51B1 /* GoogleUtilities */,
 				0A373004029F655602304F0094C6CBDF /* MaterialComponents */,
 				B233E4522AB4D2AA2B08165653B7C226 /* MDFInternationalization */,
 				93553A75FCBF27D44AFD5B700769CC97 /* nanopb */,
@@ -1724,6 +1727,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF513FBA5DC39C14B19198D9083BC404 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1210090B6D66295F304766203A3D27E /* GoogleUtilities-umbrella.h in Headers */,
+				091B44ABBF9E5486644D596F55AD58A3 /* GULAppDelegateSwizzler.h in Headers */,
+				F763ABA5903CF88B078E48B6852F167F /* GULAppDelegateSwizzler_Private.h in Headers */,
+				FC7B0AC1A54C2EE7DB577C117DB85D06 /* GULAppEnvironmentUtil.h in Headers */,
+				EF61FD7F310E7360527E2F33D48564FE /* GULApplication.h in Headers */,
+				C6C72230BA09671D9DB17263F4635BE2 /* GULLogger.h in Headers */,
+				43F06A006398F991734E8709CF997226 /* GULLoggerCodes.h in Headers */,
+				D4391E2F0603863C84CFA0E502EB8735 /* GULLoggerLevel.h in Headers */,
+				BC79740B63FC8116160D7F5F019F1C7A /* GULMutableDictionary.h in Headers */,
+				5AECD58492A76411598FFC1D482A9DC5 /* GULNetwork.h in Headers */,
+				58277A864770C2F4B7D9BFA0261C2B07 /* GULNetworkConstants.h in Headers */,
+				735F80A3DAF7C26DC74E410FBA536668 /* GULNetworkLoggerProtocol.h in Headers */,
+				CE40F6552D7378BB3AAECD5E82B544A2 /* GULNetworkMessageCode.h in Headers */,
+				201E7ACF86A45876A5BFAC68B115CBF4 /* GULNetworkURLSession.h in Headers */,
+				01C5CC5195440F8178CE07FB8E4C9FDE /* GULNSData+zlib.h in Headers */,
+				9D525CF7FFE8B51B479F0CA886D47171 /* GULOriginalIMPConvenienceMacros.h in Headers */,
+				3AD772DF626469AC7B1B9A93EC9D3820 /* GULReachabilityChecker+Internal.h in Headers */,
+				D1C98B41CF6BA6A4E31E6EA5FF750BA2 /* GULReachabilityChecker.h in Headers */,
+				78DD4E110829D7CD01E01CDBE97BEF70 /* GULReachabilityMessageCode.h in Headers */,
+				9B04CBB25304C3D7373F2DE0DB1D1354 /* GULSwizzler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D5FD500616E7B3585CDC612B217AB8EF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1783,32 +1813,6 @@
 				D8DD97F3DBA29749501E5308C59ABF0D /* UIFont+MaterialTypographyPrivate.h in Headers */,
 				C84B33DB124FD736AF7BE5F5A6470F86 /* UIFontDescriptor+MaterialTypography.h in Headers */,
 				1D208720A4D975B6A168E399EED4EE4E /* UIView+MDCTimingFunction.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4A0615F2D79FE7FE3972005F64DFA11 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6ED8E5DED07D9217DA47413C22B3757 /* GoogleUtilities-umbrella.h in Headers */,
-				5EC93C2E9FB7A14B8ECD697A945C1B94 /* GULAppDelegateSwizzler.h in Headers */,
-				62167DE797575A3D1B3F07671DB64C0C /* GULAppDelegateSwizzler_Private.h in Headers */,
-				4D3A8CE143D070B692D0528B916B939C /* GULAppEnvironmentUtil.h in Headers */,
-				D584AED96B91E42D4CFA054FED0911AA /* GULLogger.h in Headers */,
-				D24B48AC29D6C7E6A7FC2B23A70568A2 /* GULLoggerCodes.h in Headers */,
-				85BC1DA5E2604B7B80186CA6A934A9BD /* GULLoggerLevel.h in Headers */,
-				83A721951FC5CED92F2EE132197E4059 /* GULMutableDictionary.h in Headers */,
-				4BD6BD00A416263C113602DD640F0B9F /* GULNetwork.h in Headers */,
-				39A815A4F8112222186B72E481BB9643 /* GULNetworkConstants.h in Headers */,
-				98131C2335C6A0009FEBC98BF958F29A /* GULNetworkLoggerProtocol.h in Headers */,
-				B75726C342ACDECAAFD30BE7C19DD338 /* GULNetworkMessageCode.h in Headers */,
-				4760AD256DF866E1E49328FB5C85596F /* GULNetworkURLSession.h in Headers */,
-				90600450077F0F215E849CE9A6448524 /* GULNSData+zlib.h in Headers */,
-				4FE1964B3AD6C00254464E2DB856A671 /* GULOriginalIMPConvenienceMacros.h in Headers */,
-				C316009F88802DE192DC78F0E65F956E /* GULReachabilityChecker+Internal.h in Headers */,
-				FF9362D496223DB17B3452BB31375721 /* GULReachabilityChecker.h in Headers */,
-				C556553176D01014DB23DC1BB346FEE2 /* GULReachabilityMessageCode.h in Headers */,
-				0AB27DCAC3687BA7EA31899971E3E0BE /* GULSwizzler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1886,7 +1890,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24AD58548498431C008D4ED382E0D7A0 /* Build configuration list for PBXNativeTarget "GoogleUtilities" */;
 			buildPhases = (
-				F4A0615F2D79FE7FE3972005F64DFA11 /* Headers */,
+				CF513FBA5DC39C14B19198D9083BC404 /* Headers */,
 				710FFAD42019836ED4051BEC0E06AEAA /* Sources */,
 				A992DD056071BE791BC515930BC007C0 /* Frameworks */,
 				8671F0B17418800DB283738AEF1F63F6 /* Resources */,
@@ -2894,7 +2898,7 @@
 		};
 		99F4538DA64ABF8F78B5F3DA25FD8258 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA02600BDC088AF86E59CA89E2A3345D /* GoogleUtilities.xcconfig */;
+			baseConfigurationReference = 046002C33A62DFD394A3758F3837245A /* GoogleUtilities.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3020,7 +3024,7 @@
 		};
 		B7BF23FAF16625654ADCD126C5E05B4B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA02600BDC088AF86E59CA89E2A3345D /* GoogleUtilities.xcconfig */;
+			baseConfigurationReference = 046002C33A62DFD394A3758F3837245A /* GoogleUtilities.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
