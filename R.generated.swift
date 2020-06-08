@@ -140,8 +140,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 10 files.
+  /// This `R.file` struct is generated, and contains static references to 11 files.
   struct file {
+    /// Resource file `.gitignore`.
+    static let gitignore = Rswift.FileResource(bundle: R.hostingBundle, name: ".gitignore", pathExtension: "")
     /// Resource file `CLARO.png`.
     static let claroPng = Rswift.FileResource(bundle: R.hostingBundle, name: "CLARO", pathExtension: "png")
     /// Resource file `CNT.png`.
@@ -162,6 +164,12 @@ struct R: Rswift.Validatable {
     static let xoalogoPng = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo", pathExtension: "png")
     /// Resource file `xoalogo1.png`.
     static let xoalogo1Png = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo1", pathExtension: "png")
+
+    /// `bundle.url(forResource: ".gitignore", withExtension: "")`
+    static func gitignore(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.gitignore
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "CLARO", withExtension: "png")`
     static func claroPng(_: Void = ()) -> Foundation.URL? {
