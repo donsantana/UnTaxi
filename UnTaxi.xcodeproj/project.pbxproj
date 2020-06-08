@@ -44,6 +44,7 @@
 		C60C16582302760B0090F4E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
 		C6122892247034710041BB2D /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
 		C6122894247034A70041BB2D /* DestinoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6122893247034A70041BB2D /* DestinoCell.swift */; };
+		C61F3478248E7FD2006A07F6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3477248E7FD2006A07F6 /* .gitignore */; };
 		C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C15230B9CBE0010F6A3 /* BaseController.swift */; };
 		C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */; };
 		C6384BEA22A43A46000EB156 /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384BE922A43A46000EB156 /* UIToolbar.swift */; };
@@ -152,6 +153,7 @@
 		C60C16572302760B0090F4E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C6122891247034710041BB2D /* DestinoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinoCell.xib; sourceTree = "<group>"; };
 		C6122893247034A70041BB2D /* DestinoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinoCell.swift; sourceTree = "<group>"; };
+		C61F3477248E7FD2006A07F6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C6253C15230B9CBE0010F6A3 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesSocketExt.swift; sourceTree = "<group>"; };
 		C6384BE922A43A46000EB156 /* UIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		84F5713A1BCE958200FC18D5 = {
 			isa = PBXGroup;
 			children = (
+				C61F3477248E7FD2006A07F6 /* .gitignore */,
 				C68ED7C02298B94400E2F8AC /* R.generated.swift */,
 				84609EE21C758E6F0056A282 /* icons */,
 				8462408E1BEABBB800F272D5 /* Entitlements.plist */,
@@ -626,6 +629,7 @@
 				AF3D9E141FA510E80019432B /* MOVISTAR.png in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
 				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
+				C61F3478248E7FD2006A07F6 /* .gitignore in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
