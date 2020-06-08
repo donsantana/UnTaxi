@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrigenViewCell" customModule="UnTaxi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Dirección de recogida" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rTu-04-cuZ" customClass="HoshiTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="20" y="10" width="344" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="AHs-Xz-XHs"/>
+                    </constraints>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                            <color key="value" red="0.81176470590000005" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                            <color key="value" red="0.81176470590000005" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Referencia" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-Kt-KKg" customClass="HoshiTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="20" y="55" width="344" height="40"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vp-3P-qvk">
+                    <rect key="frame" x="0.0" y="110" width="414" height="10"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="OgF-ad-Mnk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rTu-04-cuZ" secondAttribute="trailing" constant="50" id="99Y-G8-GVu"/>
+                <constraint firstItem="rTu-04-cuZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="BeB-X3-zFI"/>
+                <constraint firstItem="rZQ-Kt-KKg" firstAttribute="top" secondItem="rTu-04-cuZ" secondAttribute="bottom" constant="5" id="CG8-EN-q2d"/>
+                <constraint firstItem="rZQ-Kt-KKg" firstAttribute="trailing" secondItem="rTu-04-cuZ" secondAttribute="trailing" id="JrB-s8-PRN"/>
+                <constraint firstItem="rZQ-Kt-KKg" firstAttribute="leading" secondItem="rTu-04-cuZ" secondAttribute="leading" id="c85-Zt-OZr"/>
+                <constraint firstItem="5vp-3P-qvk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fot-ch-C5W"/>
+                <constraint firstItem="rTu-04-cuZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="hWf-eB-L2j"/>
+                <constraint firstItem="5vp-3P-qvk" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="paT-qQ-VWh"/>
+                <constraint firstItem="rZQ-Kt-KKg" firstAttribute="height" secondItem="rTu-04-cuZ" secondAttribute="height" id="sDo-Xd-Nv0"/>
+                <constraint firstAttribute="bottom" secondItem="5vp-3P-qvk" secondAttribute="bottom" id="xlQ-eG-hQj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="origenText" destination="rTu-04-cuZ" id="fZv-vK-gE4"/>
+                <outlet property="referenciaText" destination="rZQ-Kt-KKg" id="Yck-X0-a3T"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="-83.705357142857139"/>
+        </view>
+    </objects>
+</document>
