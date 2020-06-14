@@ -366,7 +366,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func tipoSolicitudSwitchChanged(_ sender: Any) {
-    self.updateOfertaView.isHidden = self.tipoSolicitudSwitch.selectedSegmentIndex == 1
+    self.updateOfertaView.isHidden =
+      !(self.tipoSolicitudSwitch.selectedSegmentIndex == 0)
     self.loadFormularioData()
   }
   

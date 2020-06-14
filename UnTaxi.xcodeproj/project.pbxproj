@@ -340,6 +340,7 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C61F347B248EE6B5006A07F6 /* OfertaList */,
 				C626F508248D8ECB0062C0BA /* Call Center */,
 				C626F507248D8EAE0062C0BA /* Completada */,
 				C6EBD80B24874E1D00219E6D /* Detalles Solicitud */,
@@ -347,12 +348,19 @@
 				C6C3A4ED245F32640084F409 /* Login */,
 				C6C3A4F7245F32A00084F409 /* Inicio */,
 				C6C3A503245F335A0084F409 /* Perfil */,
-				C6AFBD0F22186D6400CC060A /* Extensions */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
-				C643639F22EBC44E0006F235 /* OfertasController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C61F347B248EE6B5006A07F6 /* OfertaList */ = {
+			isa = PBXGroup;
+			children = (
+				C643639F22EBC44E0006F235 /* OfertasController.swift */,
+				C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */,
+			);
+			path = OfertaList;
 			sourceTree = "<group>";
 		};
 		C626F507248D8EAE0062C0BA /* Completada */ = {
@@ -448,14 +456,6 @@
 				C6F580E623AB412D002D69E5 /* UIImage.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		C6AFBD0F22186D6400CC060A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C6C3A4ED245F32640084F409 /* Login */ = {

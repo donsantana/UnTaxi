@@ -122,7 +122,6 @@ extension LoginController{
       
       if !(data["taxi"] is NSNull){
         let taxi = data["taxi"] as! [String: Any]
-        print("taxi ok")
         let newTaxi = Taxi(id: taxi["idtaxi"] as! Int, matricula: taxi["matriculataxi"] as! String, codigo: taxi["codigotaxi"] as! String, marca: taxi["marcataxi"] as! String, color: taxi["colortaxi"] as! String, lat: taxi["lattaxi"] as! Double, long: taxi["lngtaxi"] as! Double, conductor: Conductor(idConductor: taxi["idconductor"] as! Int, nombre: taxi["nombreapellidosconductor"] as! String, telefono: taxi["telefonoconductor"] as! String, urlFoto: taxi["foto"] as! String, calificacion: taxi["calificacion"] as! Double))
         solicitudpdte.DatosTaxiConductor(taxi: newTaxi)
       }
@@ -144,7 +143,6 @@ extension LoginController{
   }
   
   func createNewPassword(codigo: String, newPassword: String){
-    print(globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String)
     self.apiService.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
       "nombreusuario": globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String,
       "codigo": codigo,

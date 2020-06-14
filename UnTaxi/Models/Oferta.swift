@@ -14,6 +14,7 @@ struct Oferta {
   
   var id: Int
   var idTaxi: Int
+  var idConductor: Int
   var codigo: String
   var nombreConductor: String
   var movilConductor: String
@@ -27,9 +28,10 @@ struct Oferta {
   var marca :String
   var color :String
   
-  init(id: Int, idTaxi: Int, codigo: String, nombreConductor: String, movilConductor: String, lat: Double, lng: Double, valorOferta: Double, tiempoLLegada: Int, calificacion: Double, totalCalif: Int,urlFoto: String, matricula :String, marca :String, color :String){
+  init(id: Int, idTaxi: Int,idConductor: Int, codigo: String, nombreConductor: String, movilConductor: String, lat: Double, lng: Double, valorOferta: Double, tiempoLLegada: Int, calificacion: Double, totalCalif: Int,urlFoto: String, matricula :String, marca :String, color :String){
     self.id = id
     self.idTaxi = idTaxi
+    self.idConductor = idConductor
     self.codigo = codigo
     self.nombreConductor = nombreConductor
     self.movilConductor = movilConductor

@@ -13,17 +13,18 @@ import SocketIO
 extension SolPendController{
   func socketEventos(){
     //MASK:- EVENTOS SOCKET
-    globalVariables.socket.on("Transporte"){data, ack in
+    globalVariables.socket.on("cargardatosdevehiculo"){data, ack in
       //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
-      let datosConductor = String(describing: data).components(separatedBy: ",")
+      let temporal = data[0] as! [String: Any]
+      let datosConductor = temporal["datos"] as! [String: Any]
       print(datosConductor)
-      self.NombreCond.text! = "Conductor: \(datosConductor[1])"
-      self.MarcaAut.text! = "Marca: \(datosConductor[4])"
-      self.ColorAut.text! = "Color: \(datosConductor[5])"
-      self.matriculaAut.text! = "Matrícula: \(datosConductor[6])"
-      self.MovilCond.text! = "Movil: \(datosConductor[2])"
-      if datosConductor[7 ] != "null" && datosConductor[7] != ""{
-        let url = URL(string:datosConductor[7])
+      self.NombreCond.text! = "Conductor: \(datosConductor["conductor"] as! String)"
+      self.MarcaAut.text! = "Marca: \(datosConductor["marca"] as! String)"
+      self.ColorAut.text! = "Color: \(datosConductor["color"] as! String)"
+      self.matriculaAut.text! = "Matrícula: \(datosConductor["matricula"] as! String)"
+      self.MovilCond.text! = "Movil: \(datosConductor["movil"] as! String)"
+      if datosConductor["urlfoto"] != nil && datosConductor["urlfoto"] as! String != ""{
+        let url = URL(string:datosConductor["urlfoto"] as! String)
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
           guard let data = data, error == nil else { return }
@@ -36,7 +37,7 @@ extension SolPendController{
       }else{
         self.ImagenCond.image = UIImage(named: "chofer")
       }
-      self.AlertaEsperaView.isHidden = true
+      //self.AlertaEsperaView.isHidden = true
       self.DatosConductor.isHidden = false
     }
     
@@ -47,7 +48,7 @@ extension SolPendController{
     
     //GEOPOSICION DE TAXIS
     globalVariables.socket.on("geocliente"){data, ack in
-      
+      print("Taxi Geo")
       let temporal = data[0] as! [String: Any]
       
       if globalVariables.solpendientes.count != 0 {

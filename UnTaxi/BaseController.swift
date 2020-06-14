@@ -82,7 +82,10 @@ class BaseController: UIViewController {
   }
   
   @objc func homeBtnAction(){
-    
+    if hideMenuBtn{
+      let vc = R.storyboard.main.inicioView()
+      self.navigationController?.show(vc!, sender: nil)
+    }
   }
 }
 

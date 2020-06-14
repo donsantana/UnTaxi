@@ -15,7 +15,7 @@ struct Customization {
   static var nameShowed: String = "UnTaxi"
   static var logo: UIImage!
   static var primaryColor: UIColor = UIColor(red: 250/255, green: 225/255, blue: 84/255, alpha: 1) //#1f1f1f
-  static var textColor: UIColor = UIColor.gray
+  static var textColor: UIColor = UIColor.darkGray
   static var buttonActionColor: UIColor = UIColor(red: 243/255, green: 217/255, blue: 8/255, alpha: 1)
   static var usaVoucher: Bool = true
   static var buttonsTitleColor = UIColor.systemYellow

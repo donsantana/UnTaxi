@@ -12,7 +12,7 @@ import SocketIO
 import AVFoundation
 import GoogleMobileAds
 
-class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
+class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
   
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
@@ -56,22 +56,31 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
   @IBOutlet weak var MensajeEspera: UITextView!
   
   @IBOutlet weak var valorOfertaIcon: UIImageView!
+  @IBOutlet weak var destinoIcon: UIImageView!
+  
   @IBOutlet weak var adsBannerView: GADBannerView!
 
   override func viewDidLoad() {
+    super.hideMenuBtn = true
+    super.barTitle = ""
+    //super.topMenu.bringSubviewToFront(self.formularioSolicitud)
+    super.viewDidLoad()
+    
     self.solicitudPendiente = globalVariables.solpendientes[solicitudIndex]
+    print(solicitudPendiente.id)
     self.MapaSolPen.delegate = self
     self.OrigenSolicitud.coordinate = self.solicitudPendiente.origenCoord
     self.OrigenSolicitud.title = "origen"
     self.detallesView.addShadow()
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()
-    self.transpIcon.image = UIImage(named: "logo")
+    self.transpIcon.image = UIImage(named: "chofer")
     
     self.LlamarCondBtn.addShadow()
     
     self.valorOferta.isHidden = solicitudPendiente.valorOferta == 0.0
     self.valorOfertaIcon.isHidden = solicitudPendiente.valorOferta == 0.0
+    self.destinoIcon.isHidden = ((self.direccionDestino.text?.isEmpty) != nil)
     
     let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
     longGesture.minimumPressDuration = 0.2
@@ -271,6 +280,12 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
 //    self.EnviarSocket(datos)
 //    MensajeEspera.text = "Procesando..."
 //    AlertaEsperaView.isHidden = false
+    let datos = [
+      "idtaxi": self.solicitudPendiente.taxi.id
+    ]
+    let vc = R.storyboard.main.inicioView()!
+    vc.socketEmit("cargardatosdevehiculo", datos: datos)
+    self.DatosConductor.isHidden = false
   }
   
   @IBAction func AceptarCond(_ sender: UIButton) {
