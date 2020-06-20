@@ -32,7 +32,6 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
   
   var apiService = ApiService()
-  var responsive = Responsive()
   
   //MARK:- VARIABLES INTERFAZ
   
@@ -122,7 +121,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.crearNewPasswordText.addShadow()
     
     self.autenticarBtn.heightAnchor 
-    self.loginDatosViewHeight.constant = CGFloat(responsive.heightPercent(percent: 30))
+    self.loginDatosViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 30))
     self.newPasswordFormHeight.constant = 40
     
     //Put Background image to View

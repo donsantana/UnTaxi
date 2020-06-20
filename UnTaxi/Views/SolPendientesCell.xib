@@ -17,7 +17,7 @@
                     <rect key="frame" x="15" y="5" width="384" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVl-7q-iPo">
-                            <rect key="frame" x="10" y="49.5" width="354" height="21"/>
+                            <rect key="frame" x="15" y="49.5" width="349" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="49l-yu-1cu"/>
                             </constraints>
@@ -56,7 +56,7 @@
                         <constraint firstItem="sJC-To-2CG" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="centerX" constant="5" id="MkV-Gx-H7Q"/>
                         <constraint firstAttribute="bottom" secondItem="Fdf-RL-sbr" secondAttribute="bottom" id="ORG-QK-D3L"/>
                         <constraint firstItem="oVl-7q-iPo" firstAttribute="centerY" secondItem="Vhu-jx-HbO" secondAttribute="centerY" id="Vgv-EH-LrT"/>
-                        <constraint firstItem="oVl-7q-iPo" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="leading" constant="10" id="ZZh-f4-9KY"/>
+                        <constraint firstItem="oVl-7q-iPo" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="leading" constant="15" id="ZZh-f4-9KY"/>
                         <constraint firstAttribute="trailing" secondItem="Fdf-RL-sbr" secondAttribute="trailing" constant="5" id="h72-PE-bXh"/>
                         <constraint firstAttribute="trailing" secondItem="sJC-To-2CG" secondAttribute="trailing" constant="20" id="hZJ-ur-EyU"/>
                     </constraints>

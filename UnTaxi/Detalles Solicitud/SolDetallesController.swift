@@ -20,19 +20,17 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   var TaxiSolicitud = MKPointAnnotation()
   var grabando = false
   var fechahora: String!
-  var UrlSubirVoz = globalVariables.UrlSubirVoz
+  var urlSubirVoz = globalVariables.urlSubirVoz
   
   
   //MASK:- VARIABLES INTERFAZ
   //@IBOutlet weak var MapaSolPen: GMSMapView!
-  @IBOutlet weak var headerView: UIView!
   @IBOutlet weak var MapaSolPen: MKMapView!
   @IBOutlet weak var detallesView: UIView!
   @IBOutlet weak var distanciaText: UILabel!
   @IBOutlet weak var valorOferta: UILabel!
   @IBOutlet weak var direccionOrigen: UILabel!
   @IBOutlet weak var direccionDestino: UILabel!
-  @IBOutlet weak var transpIcon: UIImageView!
   
   @IBOutlet weak var ComentarioEvalua: UIView!
   
@@ -67,20 +65,18 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     super.viewDidLoad()
     
     self.solicitudPendiente = globalVariables.solpendientes[solicitudIndex]
-    print(solicitudPendiente.id)
     self.MapaSolPen.delegate = self
     self.OrigenSolicitud.coordinate = self.solicitudPendiente.origenCoord
     self.OrigenSolicitud.title = "origen"
     self.detallesView.addShadow()
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()
-    self.transpIcon.image = UIImage(named: "chofer")
     
     self.LlamarCondBtn.addShadow()
     
     self.valorOferta.isHidden = solicitudPendiente.valorOferta == 0.0
     self.valorOfertaIcon.isHidden = solicitudPendiente.valorOferta == 0.0
-    self.destinoIcon.isHidden = ((self.direccionDestino.text?.isEmpty) != nil)
+    self.destinoIcon.isHidden = self.direccionDestino.text!.isEmpty
     
     let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
     longGesture.minimumPressDuration = 0.2
@@ -92,7 +88,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.adsBannerView.load(GADRequest())
     self.adsBannerView.delegate = self
 
-    if globalVariables.urlconductor != ""{
+    if globalVariables.urlConductor != ""{
       self.MensajesBtn.isHidden = false
       self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
     }
@@ -167,7 +163,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
         self.fechahora = dateFormato.string(from: Date())
         let name = "\(self.solicitudPendiente.id)-\(self.solicitudPendiente.taxi.id)-\(fechahora).m4a"
         globalVariables.SMSVoz.TerminarMensaje(name)
-        globalVariables.SMSVoz.SubirAudio(globalVariables.UrlSubirVoz, name: name)
+        globalVariables.SMSVoz.SubirAudio(GlobalConstants.urlHost, name: name)
         globalVariables.grabando = false
         globalVariables.SMSVoz.ReproducirMusica()
       }
@@ -269,8 +265,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     }
   }
   @IBAction func ReproducirMensajesCond(_ sender: AnyObject) {
-    if globalVariables.urlconductor != ""{
-      globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlconductor)
+    if globalVariables.urlConductor != ""{
+      globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
     }
   }
   
@@ -285,7 +281,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     ]
     let vc = R.storyboard.main.inicioView()!
     vc.socketEmit("cargardatosdevehiculo", datos: datos)
-    self.DatosConductor.isHidden = false
   }
   
   @IBAction func AceptarCond(_ sender: UIButton) {
@@ -307,10 +302,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.present(alertaCompartir, animated: true, completion: nil)
   }
   
-  @IBAction func NuevaSolicitud(_ sender: Any) {
-    let vc = R.storyboard.main.inicioView()
-    self.navigationController?.show(vc!, sender: nil)
-  }
 
   @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
     MostrarMotivoCancelacion()

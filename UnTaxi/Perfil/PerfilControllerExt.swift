@@ -35,7 +35,6 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource{
             (cell as! Perfil2ViewCell).NuevoValor.delegate = self
         case 2:
             cell = Bundle.main.loadNibNamed("Perfil3ViewCell", owner: self, options: nil)?.first as! Perfil3ViewCell
-            (cell as! Perfil3ViewCell).ClaveActualText.text = self.ClaveActual
             //(cell as! Perfil3ViewCell).ClaveActualText.delegate = self
             (cell as! Perfil3ViewCell).NuevaClaveText.delegate = self
             (cell as! Perfil3ViewCell).ConfirmeClaveText.delegate = self
@@ -59,7 +58,6 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource{
             (tableView.cellForRow(at: indexPath) as! Perfil2ViewCell).NuevoValor.isHidden = !(tableView.cellForRow(at: indexPath) as! Perfil2ViewCell).NuevoValor.isHidden
             tableView.cellForRow(at: indexPath)?.isSelected = false
         case 2:
-            (tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).ClaveActualText.isHidden = !(tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).ClaveActualText.isHidden
             (tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).NuevaClaveText.isHidden = !(tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).NuevaClaveText.isHidden
             (tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).ConfirmeClaveText.isHidden = !(tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).ConfirmeClaveText.isHidden
             (tableView.cellForRow(at: indexPath) as! Perfil3ViewCell).NuevaClaveText.text?.removeAll()

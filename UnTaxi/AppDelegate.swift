@@ -123,10 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   
   func applicationWillEnterForeground(_ application: UIApplication) {
     if backgrounTaskIdentifier != UIBackgroundTaskIdentifier.invalid{
-      if globalVariables.urlconductor != ""{
+      if globalVariables.urlConductor != ""{
         globalVariables.SMSProceso = true
         globalVariables.SMSVoz.ReproducirMusica()
-        globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlconductor)
+        globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
       }
       if let timer = self.myTimer{
         timer.invalidate()

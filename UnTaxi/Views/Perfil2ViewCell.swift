@@ -9,28 +9,28 @@
 import UIKit
 
 class Perfil2ViewCell: UITableViewCell, UITextFieldDelegate {
+  
+  @IBOutlet weak var NombreCampo: UILabel!
+  @IBOutlet weak var ValorActual: UILabel!
+  @IBOutlet weak var NuevoValor: UITextField!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    self.NuevoValor.delegate = self
+    self.NuevoValor.setBottomBorder(borderColor: UIColor.black)
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    @IBOutlet weak var NombreCampo: UILabel!
-    @IBOutlet weak var ValorActual: UILabel!
-    @IBOutlet weak var NuevoValor: UITextField!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        self.NuevoValor.delegate = self
-        self.NuevoValor.setBottomBorder(borderColor: UIColor.black)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
+    // Configure the view for the selected state
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+  
 }
 

@@ -14,8 +14,9 @@ extension SolPendController{
   func socketEventos(){
     //MASK:- EVENTOS SOCKET
     globalVariables.socket.on("cargardatosdevehiculo"){data, ack in
-      //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
+  
       let temporal = data[0] as! [String: Any]
+      if temporal["code"] as! Int == 1{
       let datosConductor = temporal["datos"] as! [String: Any]
       print(datosConductor)
       self.NombreCond.text! = "Conductor: \(datosConductor["conductor"] as! String)"
@@ -24,11 +25,10 @@ extension SolPendController{
       self.matriculaAut.text! = "Matrícula: \(datosConductor["matricula"] as! String)"
       self.MovilCond.text! = "Movil: \(datosConductor["movil"] as! String)"
       if datosConductor["urlfoto"] != nil && datosConductor["urlfoto"] as! String != ""{
-        let url = URL(string:datosConductor["urlfoto"] as! String)
+        let url = URL(string:"\(GlobalConstants.urlHost)/\(datosConductor["urlfoto"] as! String)")
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
           guard let data = data, error == nil else { return }
-          
           DispatchQueue.main.sync() {
             self.ImagenCond.image = UIImage(data: data)
           }
@@ -37,11 +37,17 @@ extension SolPendController{
       }else{
         self.ImagenCond.image = UIImage(named: "chofer")
       }
-      //self.AlertaEsperaView.isHidden = true
       self.DatosConductor.isHidden = false
+      }else{
+        let alertaDos = UIAlertController (title: "Datos del vehículo", message: temporal["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
     }
     
-    globalVariables.socket.on("V"){data, ack in
+    globalVariables.socket.on("voz"){data, ack in
       self.MensajesBtn.isHidden = false
       self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
     }
@@ -53,7 +59,6 @@ extension SolPendController{
       
       if globalVariables.solpendientes.count != 0 {
         if (temporal["idtaxi"] as! Int) == self.solicitudPendiente.taxi.id{
-     
           self.MapaSolPen.removeAnnotation(self.TaxiSolicitud)
           self.solicitudPendiente.taxi.updateLocation(newLocation: CLLocationCoordinate2DMake(temporal["lat"] as! Double, temporal["lng"] as! Double))
           self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(temporal["lat"] as! Double, temporal["lng"] as! Double)
@@ -85,23 +90,5 @@ extension SolPendController{
         }
       }
     }
-    
-    //RESPUESTA DE CANCELAR SOLICITUD
-//    globalVariables.socket.on("CSO"){data, ack in
-//      let vc = R.storyboard.main.inicioView()!
-//      vc.EnviarTimer(estado: 0, datos: "Terminado")
-//      let temporal = String(describing: data).components(separatedBy: ",")
-//      if temporal[1] == "ok"{
-////        let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertController.Style.alert)
-////        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-////          //self.Inicio()
-////          if globalVariables.solpendientes.count != 0{
-////            self.SolPendientesView.isHidden = true
-////
-////          }
-//        }))
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }
-//    }
   }
 }

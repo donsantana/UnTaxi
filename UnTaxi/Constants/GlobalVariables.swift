@@ -18,10 +18,11 @@ struct globalVariables {
   static var ofertasList: [Oferta] = []
   static var grabando = false
   static var SMSProceso = false
-  static var UrlSubirVoz:String!
+  static var urlSubirVoz:String!
   static var SMSVoz = CSMSVoz()
-  static var urlconductor = ""
+  static var urlConductor = ""
   static var userDefaults: UserDefaults!
   static var TelefonosCallCenter: [Telefono] = []
   static var tipoSolicitud: Int = 0
+  static var responsive = Responsive()
 }

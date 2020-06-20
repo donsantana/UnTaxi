@@ -91,6 +91,7 @@
 		C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */; };
 		C6D04CFF2398CD1900ACD70C /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
 		C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */; };
+		C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D0597E24997BC10020CFE6 /* UILabel.swift */; };
 		C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */; };
 		C6F0BB1923B7049E00266396 /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
 		C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
@@ -200,6 +201,7 @@
 		C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertaViewCell.swift; sourceTree = "<group>"; };
 		C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfertaDataCell.xib; sourceTree = "<group>"; };
 		C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertaDataViewCell.swift; sourceTree = "<group>"; };
+		C6D0597E24997BC10020CFE6 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SolPendientesCell.xib; sourceTree = "<group>"; };
 		C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolPendientesViewCell.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				C60C16572302760B0090F4E0 /* UIButton.swift */,
 				C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */,
 				C6F580E623AB412D002D69E5 /* UIImage.swift */,
+				C6D0597E24997BC10020CFE6 /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -485,8 +488,8 @@
 		C6C3A503245F335A0084F409 /* Perfil */ = {
 			isa = PBXGroup;
 			children = (
-				C6C3A504245F335A0084F409 /* PerfilControllerExt.swift */,
 				C6C3A505245F335A0084F409 /* PerfilController.swift */,
+				C6C3A504245F335A0084F409 /* PerfilControllerExt.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
 				C6C3A4F5245F32640084F409 /* LoginFunctionsExt.swift in Sources */,
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
+				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
 				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,

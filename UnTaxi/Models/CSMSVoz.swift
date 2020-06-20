@@ -189,7 +189,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     myMusica.play()
   }
   
-  func SubirAudio(_ UrlSubirVoz: String, name: String){
+  func SubirAudio(_ urlSubirVoz: String, name: String){
     // The variable "recordedFileURL" is defined earlier in the code like this
     
     globalVariables.SMSProceso = true
@@ -205,7 +205,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     // This recording stored at "recordedFileURL" can be played back fine.
     
-    let sendToPath = UrlSubirVoz
+    let sendToPath = urlSubirVoz
     let sendToURL = URL(string: sendToPath)
     let recording: Data? = try? Data(contentsOf: recordedFileURL)
     let boundary = "--------14737809831466499882746641449----"

@@ -81,14 +81,14 @@ extension InicioController{
       self.formularioDataCellList.append(self.destinoCell)
       self.ofertaDataCell.initContent(precioInicial: 2.0)
       self.formularioDataCellList.append(self.ofertaDataCell)
-      self.formularioSolicitudHeight.constant = CGFloat(responsive.heightPercent(percent: 80))
+      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
     }else{
-      self.formularioSolicitudHeight.constant = CGFloat(responsive.heightPercent(percent:65))
+      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
       if globalVariables.cliente.empresa != "null"{
         self.formularioDataCellList.append(self.voucherCell)
         if self.isVoucherSelected{
           self.formularioDataCellList.append(self.destinoCell)
-          self.formularioSolicitudHeight.constant = CGFloat(responsive.heightPercent(percent: 75))
+          self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 75))
         }
         self.tipoSolicitudSwitch.isHidden = false
       }

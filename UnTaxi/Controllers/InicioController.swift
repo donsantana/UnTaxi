@@ -56,14 +56,12 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
   
   //Menu variables
-  var MenuArray = [MenuData(imagen: "solicitud", title: "Solicitudes en proceso"), MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app"), MenuData(imagen: "sesion", title: "Cerrar Sesion"), MenuData(imagen: "salir2", title: "Salir")]
+  var MenuArray = [MenuData(imagen: "solicitud", title: "Solicitudes en proceso"), MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app")]
   
   //variables de interfaz
   var TelefonoContactoText: UITextField!
   
   var TablaDirecciones = UITableView()
-  
-  let responsive = Responsive()
   
   //CONSTRAINTS
   var btnViewTop: NSLayoutConstraint!
@@ -142,9 +140,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //    self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.lightGray)
     
     self.SolicitudView.addShadow()
-    
-    self.MenuView1.backgroundColor = Customization.primaryColor
-    //self.SolPendientesView.backgroundColor = Customization.primaryColor
     
     coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
@@ -370,6 +365,16 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       !(self.tipoSolicitudSwitch.selectedSegmentIndex == 0)
     self.loadFormularioData()
   }
+  
+  @IBAction func cerrarSesion(_ sender: Any) {
+    globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
+    self.CloseAPP()
+  }
+  
+  @IBAction func cerrarApp(_ sender: Any) {
+    self.CloseAPP()
+  }
+  
   
 }
 
