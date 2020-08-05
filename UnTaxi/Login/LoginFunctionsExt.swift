@@ -10,6 +10,7 @@ import Foundation
 import SocketIO
 import CoreLocation
 import Rswift
+import LocalAuthentication
 
 
 extension LoginController{
@@ -36,8 +37,8 @@ extension LoginController{
     let clientData = datos["cliente"] as! [String: Any]
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
     let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""
-    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: !(clientData["idempresa"] != nil) ? clientData["idempresa"] as! Int : 0,empresa: clientData["empresa"] as! String,foto: fotoUrl)
-    
+    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: clientData["idempresa"] as! Int,empresa: clientData["empresa"] as! String,foto: fotoUrl)
+    globalVariables.appConfig = globalVariables.userDefaults.value(forKey: "appConfig") != nil ? AppConfig(config: globalVariables.userDefaults.value(forKey: "appConfig") as! [String: Any]) : AppConfig()
     if solicitudesEnProceso.count > 0{
       self.ListSolicitudPendiente(solicitudesEnProceso)
     }
@@ -148,6 +149,32 @@ extension LoginController{
       "codigo": codigo,
       "password": newPassword,
     ])
+  }
+  
+  func checkifBioAuth(){
+    let myLocalizedReasonString = "Biometric Authntication testing !! "
+    
+    var authError: NSError?
+    if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+      myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
+        
+        DispatchQueue.main.async {
+          if success {
+            print("success")
+            // User authenticated successfully, take appropriate action
+            //self.successLabel.text = "Awesome!!... User authenticated successfully"
+          } else {
+            print("Unsuccess")
+            // User did not authenticate successfully, look at error and take appropriate action
+            //self.successLabel.text = "Sorry!!... User did not authenticate successfully"
+          }
+        }
+      }
+    } else {
+      print("evaluation error")
+      // Could not evaluate policy; look at authError and present an appropriate message to user
+      //successLabel.text = "Sorry!!.. Could not evaluate policy."
+    }
   }
   
   //FUNCTION ENVIO CON TIMER

@@ -93,15 +93,16 @@ extension InicioController{
       
       let temporal = data[0] as! [String: Any]
       print(temporal)
-      let solicitud = globalVariables.solpendientes.filter{$0.id == (temporal["idsolicitud"] as! Int)}.first
+      print("solicitudes en aceptada: \(globalVariables.solpendientes.count)")
       
       let newTaxi = Taxi(id: temporal["idtaxi"] as! Int, matricula: temporal["matriculataxi"] as! String, codigo: temporal["codigotaxi"] as! String, marca: temporal["marcataxi"] as! String,color: temporal["colortaxi"] as! String, lat: temporal["lattaxi"] as! Double, long: temporal["lngtaxi"] as! Double, conductor: Conductor(idConductor: temporal["idconductor"] as! Int, nombre: temporal["nombreapellidosconductor"] as! String, telefono:  temporal["telefonoconductor"] as! String, urlFoto: temporal["foto"] as! String, calificacion: temporal["calificacion"] as! Double))
 
-      solicitud!.DatosTaxiConductor(taxi: newTaxi)
-      
+      globalVariables.solpendientes.first{$0.id == (temporal["idsolicitud"] as! Int)}!.DatosTaxiConductor(taxi: newTaxi)
+      //solicitud!.DatosTaxiConductor(taxi: newTaxi)
+      print("solicitudes despues de aceptada: \(globalVariables.solpendientes.count)")
       DispatchQueue.main.async {
         let vc = R.storyboard.main.solDetalles()!
-        vc.solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == solicitud?.id}
+        vc.solicitudPendiente = globalVariables.solpendientes.first{$0.id == (temporal["idsolicitud"] as! Int)}
         self.navigationController?.show(vc, sender: nil)
       }
     }
@@ -129,7 +130,8 @@ extension InicioController{
       let array = globalVariables.ofertasList.map{$0.idTaxi}
 
       if !array.contains(temporal["idtaxi"] as! Int){
-        let newOferta = Oferta(id: temporal["idsolicitud"] as! Int, idTaxi: temporal["idtaxi"] as! Int, idConductor: temporal["idconductor"] as! Int, codigo: temporal["codigotaxi"] as! String, nombreConductor: temporal["nombreapellidosconductor"] as! String, movilConductor: temporal["movilconductor"] as! String, lat: temporal["lattaxi"] as! Double, lng: temporal["lngtaxi"] as! Double, valorOferta: temporal["valoroferta"] as! Double, tiempoLLegada: temporal["tiempollegada"] as! Int, calificacion: temporal["calificacion"] as! Double, totalCalif: temporal["cantidaddecalificacion"] as! Int, urlFoto: temporal["foto"] as! String, matricula: temporal["matriculataxi"] as! String, marca: temporal["marcataxi"] as! String, color: temporal["colortaxi"] as! String)
+        print(temporal["codigotaxi"] as! String)
+        let newOferta = Oferta(id: temporal["idsolicitud"] as! Int, idTaxi: temporal["idtaxi"] as! Int, idConductor: temporal["idconductor"] as! Int, codigo: temporal["codigotaxi"] as! String, nombreConductor: temporal["nombreapellidosconductor"] as! String, movilConductor: temporal["telefonoconductor"] as! String, lat: temporal["lattaxi"] as! Double, lng: temporal["lngtaxi"] as! Double, valorOferta: temporal["valoroferta"] as! Double, tiempoLLegada: temporal["tiempollegada"] as! Int, calificacion: temporal["calificacion"] as! Double, totalCalif: temporal["cantidaddecalificacion"] as! Int, urlFoto: temporal["foto"] as! String, matricula: temporal["matriculataxi"] as! String, marca: temporal["marcataxi"] as! String, color: temporal["colortaxi"] as! String)
 
         globalVariables.ofertasList.append(newOferta)
 
@@ -158,10 +160,13 @@ extension InicioController{
     globalVariables.socket.on("taximetroiniciado"){data, ack in
       
       let response = data[0] as! [String: Any]
-      if globalVariables.solpendientes.firstIndex{$0.id == response["idsolicitud"] as! Int}! >= 0 {
+      let solicitud = globalVariables.solpendientes.first{$0.id == response["idsolicitud"] as! Int}!
+      if solicitud != nil {
         //self.MensajeEspera.text = temporal
         //self.AlertaEsperaView.hidden = false
-        let alertaDos = UIAlertController (title: "Taximetro Activado", message: "Estimado Cliente: El conductor ha iniciado el Taximetro a las: \(OurDate(stringDate: response["fechacambioestado"] as! String).timeToShow()).", preferredStyle: .alert)
+        let title = solicitud.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
+        let mensaje = solicitud.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
+        let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: response["fechacambioestado"] as! String).timeToShow()).", preferredStyle: .alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
               
             }))
@@ -227,6 +232,40 @@ extension InicioController{
       //            }
 
       globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
+    }
+    //
+    globalVariables.socket.on("direccionespactadas"){data, ack in
+      globalVariables.direccionesPactadas = []
+      let temporal = data[0] as! [String: Any]
+      print("pactadas \(temporal["datos"])")
+      if temporal["code"] as! Int == 1{
+        let pactadasList = temporal["datos"] as! [[String: Any]]
+        for direccionPactada in pactadasList{
+          globalVariables.direccionesPactadas.append(DireccionesPactadas(data: direccionPactada))
+        }
+      }
+      self.addressPicker.reloadAllComponents()
+      self.destinoAddressPicker.reloadAllComponents()
+      //myvariables.UrlSubirVoz = temporal[1]
+      
+    }
+    
+    globalVariables.socket.on("serviciocompletado"){data, ack in
+      
+      let result = data[0] as! [String: Any]
+      print("solicitudes en completadas: \(globalVariables.solpendientes.count)")
+      if globalVariables.solpendientes.count > 0 {
+        let solicitudCompletadaIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
+        if solicitudCompletadaIndex >= 0{
+          let solicitudCompletada = globalVariables.solpendientes.remove(at: solicitudCompletadaIndex)
+          DispatchQueue.main.async {
+            let vc = R.storyboard.main.completadaView()!
+            vc.id = solicitudCompletada.id
+            vc.idConductor = solicitudCompletada.taxi.conductor.idConductor
+            self.navigationController?.show(vc, sender: nil)
+          }
+        }
+      }
     }
   }
 }

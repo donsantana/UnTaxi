@@ -112,13 +112,12 @@ extension LoginController: UITextFieldDelegate{
 }
 
 extension LoginController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, getLoginToken token: String) {
-    print("msg \(token)")
-    globalVariables.userDefaults.set(token, forKey: "accessToken")
+  func apiRequest(_ controller: ApiService, getLoginData data: [String:Any]) {
+    print("msg \(data["token"] as! String)")
+    print("config \(data["config"] as! [String:Any])")
+    globalVariables.userDefaults.set(data["token"] as! String, forKey: "accessToken")
+    globalVariables.userDefaults.set(data["config"] as Any, forKey: "appConfig")
     self.startSocketConnection()
-    DispatchQueue.main.async {
-      self.AutenticandoView.isHidden = true
-    }
   }
   
   func apiRequest(_ controller: ApiService, registerUserAPI msg: String) {
@@ -146,6 +145,16 @@ extension LoginController: ApiServiceDelegate{
       let alertaDos = UIAlertController (title: "Nueva clave creada", message: "Su clave ha sido creada satisfactoriamente, en este momento puede usarla para entrar a la aplicación.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.claveRecoverView.isHidden = true
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
+  }
+  
+  func apiRequest(_ controller: ApiService, getLoginError msg: String) {
+    DispatchQueue.main.async {
+      let alertaDos = UIAlertController (title: "Error de Autenticación", message: msg, preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.AutenticandoView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }

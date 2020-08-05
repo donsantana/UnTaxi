@@ -24,5 +24,8 @@ struct globalVariables {
   static var userDefaults: UserDefaults!
   static var TelefonosCallCenter: [Telefono] = []
   static var tipoSolicitud: Int = 0
+  static var cardList:[Card] = []
   static var responsive = Responsive()
+  static var appConfig = AppConfig()
+  static var direccionesPactadas: [DireccionesPactadas] = []
 }

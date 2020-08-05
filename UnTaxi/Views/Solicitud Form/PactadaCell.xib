@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PactadaCell" customModule="UnTaxi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiL-Dd-clf">
+                    <rect key="frame" x="0.0" y="70" width="414" height="10"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="2u9-aG-Pd8"/>
+                        <constraint firstAttribute="height" constant="10" id="U0E-ia-fte"/>
+                    </constraints>
+                </view>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gLl-ks-bCz">
+                    <rect key="frame" x="20" y="20" width="187" height="31"/>
+                    <segments>
+                        <segment title="Solo ida"/>
+                        <segment title="Ida y vuelta"/>
+                    </segments>
+                    <color key="selectedSegmentTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="onValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="sqG-cv-rpc"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSk-uj-Aey">
+                    <rect key="frame" x="227" y="26" width="127" height="24"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voucher" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-as-aFW">
+                    <rect key="frame" x="364" y="27.5" width="40" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="S2Z-mV-Kmd"/>
+                        <constraint firstAttribute="height" constant="25" id="x4M-nA-xrj"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pago con Voucher" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jir-Jb-Wcu">
+                    <rect key="frame" x="212" y="0.0" width="192" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="z2L-39-Xwv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Jir-Jb-Wcu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Qp-XM-6Mq"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="leading" secondItem="gLl-ks-bCz" secondAttribute="trailing" constant="20" id="4yW-mP-yFF"/>
+                <constraint firstItem="gLl-ks-bCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="6le-Kn-d3p"/>
+                <constraint firstAttribute="bottom" secondItem="BiL-Dd-clf" secondAttribute="bottom" id="9UM-eG-ADJ"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="trailing" secondItem="Dgp-as-aFW" secondAttribute="leading" constant="-10" id="DXE-mq-Fsz"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="height" secondItem="gLl-ks-bCz" secondAttribute="height" multiplier="0.8" id="G0t-p1-LDB"/>
+                <constraint firstAttribute="trailing" secondItem="Dgp-as-aFW" secondAttribute="trailing" constant="10" id="KHd-rT-e2O"/>
+                <constraint firstItem="Dgp-as-aFW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ka2-o6-aQO"/>
+                <constraint firstItem="BiL-Dd-clf" firstAttribute="top" secondItem="gLl-ks-bCz" secondAttribute="bottom" constant="20" id="LBh-4L-YWW"/>
+                <constraint firstItem="gLl-ks-bCz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Oz9-rL-Ud3"/>
+                <constraint firstItem="Jir-Jb-Wcu" firstAttribute="trailing" secondItem="Dgp-as-aFW" secondAttribute="trailing" id="R1p-9Y-BfE"/>
+                <constraint firstItem="BiL-Dd-clf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vrd-T3-3eR"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="bottom" secondItem="gLl-ks-bCz" secondAttribute="bottom" id="fN4-FC-jYt"/>
+                <constraint firstItem="Jir-Jb-Wcu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="5" id="hul-ZJ-Jis"/>
+                <constraint firstItem="gLl-ks-bCz" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" id="n3H-vw-92t"/>
+                <constraint firstAttribute="trailing" secondItem="BiL-Dd-clf" secondAttribute="trailing" id="sR8-e5-cAj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="idaVueltaSwitch" destination="gLl-ks-bCz" id="emz-Yp-rVZ"/>
+                <outlet property="precioText" destination="kSk-uj-Aey" id="1R1-EX-8Qk"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-143.30357142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="voucher" width="40" height="25"/>
+    </resources>
+</document>

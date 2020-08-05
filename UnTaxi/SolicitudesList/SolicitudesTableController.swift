@@ -54,6 +54,16 @@ class SolicitudesTableController: UITableViewController {
     self.tableView.tableHeaderView = view
   }
   
+  func CancelarSolicitud(_ motivo: String, solicitud: Solicitud){
+    //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
+    let datos = solicitud.crearTramaCancelar(motivo: motivo)
+    globalVariables.solpendientes.removeAll{$0.id == solicitud.id}
+    //EnviarSocket(Datos)
+    let vc = R.storyboard.main.inicioView()!
+    vc.socketEmit("cancelarservicio", datos: datos)
+    self.navigationController?.show(vc, sender: nil)
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -81,6 +91,7 @@ class SolicitudesTableController: UITableViewController {
     
     //let cell = tableView.dequeueReusableCell(withIdentifier: "Solicitudes", for: indexPath)
     let cell = Bundle.main.loadNibNamed("SolPendientesCell", owner: self, options: nil)?.first as! SolPendientesViewCell
+    cell.delegate = self
     cell.initContent(solicitud: self.solicitudesMostrar[indexPath.row])
     //cell.textLabel?.text = self.solicitudesMostrar[indexPath.row].fechaHora
     
@@ -89,8 +100,32 @@ class SolicitudesTableController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = R.storyboard.main.solDetalles()
-    //vc.solicitudPendiente = self.solicitudesMostrar[indexPath.row]
-    vc!.solicitudIndex = indexPath.row
+    vc!.solicitudPendiente = self.solicitudesMostrar[indexPath.row]
     self.navigationController?.show(vc!, sender: nil)
   }
+}
+
+extension SolicitudesTableController: SolPendientesDelegate{
+  func cancelRequest(_ controller: SolPendientesViewCell, cancelarSolicitud solicitud: Solicitud) {
+    let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
+      motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
+        self.CancelarSolicitud("No necesito", solicitud: solicitud)
+      }))
+      motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
+        self.CancelarSolicitud("Demora el servicio", solicitud: solicitud)
+      }))
+      motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
+        self.CancelarSolicitud("Tarifa incorrecta", solicitud: solicitud)
+      }))
+      motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
+        self.CancelarSolicitud("Vehículo en mal estado", solicitud: solicitud)
+      }))
+      motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
+        self.CancelarSolicitud("Solo probaba el servicio", solicitud: solicitud)
+      }))
+      motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
+      }))
+      
+      self.present(motivoAlerta, animated: true, completion: nil)
+    }
 }

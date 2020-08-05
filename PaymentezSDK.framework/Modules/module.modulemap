@@ -1,0 +1,11 @@
+framework module PaymentezSDK {
+  umbrella header "PaymentezSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module PaymentezSDK.Swift {
+    header "PaymentezSDK-Swift.h"
+    requires objc
+}

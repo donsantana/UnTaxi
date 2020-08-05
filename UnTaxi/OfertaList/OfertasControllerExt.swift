@@ -26,7 +26,7 @@ extension OfertasController: UITableViewDelegate, UITableViewDataSource{
   
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+   
     let cell = Bundle.main.loadNibNamed("OfertaViewCell", owner: self, options: nil)?.first as! OfertaViewCell
     
     cell.initContent(oferta: globalVariables.ofertasList[indexPath.row])
@@ -63,7 +63,8 @@ extension OfertasController{
         solicitudCreada!.DatosTaxiConductor(taxi: newTaxi)
         DispatchQueue.main.async {
           let vc = R.storyboard.main.solDetalles()
-          vc!.solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == solicitudCreada?.id}
+          //vc!.solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == solicitudCreada?.id}
+          vc!.solicitudPendiente = solicitudCreada
           self.navigationController?.show(vc!, sender: nil)
         }
       }else{

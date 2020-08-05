@@ -11,12 +11,14 @@ import Foundation
 struct GlobalConstants {
   static var urlHost: String = "https://untaxi.xoaserver.com"
   static var socketurlHost: String = "https://client-untaxi.xoaserver.com"
+  static var paymentsUrl = "https://pay-untaxi.xoaserver.com"
   
   static var apiLoginUrl:String = "\(urlHost)/auth/client-login"
   static var passRecoverUrl:String = "\(urlHost)/recover-password"
   static var createPassUrl:String = "\(urlHost)/verify"
   static var passChangeUrl:String = "\(urlHost)/change-password"
   static var registerUrl:String = "\(urlHost)/register"
+  static var listCardsUrl:String = "\(paymentsUrl)/card"
   
   
   static var apiUser: String = "oinergb@xoait.com"

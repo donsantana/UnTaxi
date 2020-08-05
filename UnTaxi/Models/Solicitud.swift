@@ -252,7 +252,7 @@ class Solicitud {
         tramaBase["detalleoferta"] = self.detalleOferta
       }
     }
-    
+    print(tramaBase)
     return tramaBase
   }
   

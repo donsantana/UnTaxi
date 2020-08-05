@@ -10,6 +10,7 @@ import UIKit
 import SocketIO
 import CoreLocation
 import GoogleMobileAds
+import LocalAuthentication
 
 class LoginController: UIViewController, CLLocationManagerDelegate{
   
@@ -32,6 +33,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
   
   var apiService = ApiService()
+  
+  let myContext = LAContext()
   
   //MARK:- VARIABLES INTERFAZ
   
@@ -146,6 +149,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.recomendadoTextTop.constant = 5
     self.registrarTop.constant = spaceBetween
     
+    self.myContext.localizedCancelTitle = "Autenticar con Usuario/Clave"
     
     NSLayoutConstraint(item: self.codigoText, attribute: .bottom, relatedBy: .equal, toItem: self.newPasswordText, attribute: .top, multiplier: 1, constant: -spaceBetween).isActive = true
     
@@ -165,6 +169,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       ErrorConexion()
     }
     self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    
+    self.checkifBioAuth()
   }
   
   override func viewWillAppear(_ animated: Bool) {

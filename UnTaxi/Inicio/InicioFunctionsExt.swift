@@ -77,22 +77,46 @@ extension InicioController{
   func loadFormularioData(){
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
-    if self.tipoSolicitudSwitch.selectedSegmentIndex == 0{
+    
+//    switch self.tipoSolicitudSwitch.selectedSegmentIndex {
+//    case 0:
+//      self.formularioDataCellList.append(self.destinoCell)
+//      self.ofertaDataCell.initContent(precioInicial: 2.0)
+//      self.formularioDataCellList.append(self.ofertaDataCell)
+//      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+//    case 1:
+//      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
+//    case 3:
+//      
+//    default:
+//      <#code#>
+//    }
+    
+
+    if self.tipoSolicitudSwitch.selectedSegmentIndex == 0 || self.tipoSolicitudSwitch.selectedSegmentIndex == 3{
       self.formularioDataCellList.append(self.destinoCell)
-      self.ofertaDataCell.initContent(precioInicial: 2.0)
-      self.formularioDataCellList.append(self.ofertaDataCell)
-      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+      if self.tipoSolicitudSwitch.selectedSegmentIndex == 0{
+        self.ofertaDataCell.initContent(precioInicial: 2.0)
+        self.formularioDataCellList.append(self.ofertaDataCell)
+        self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+      }
     }else{
       self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
-      if globalVariables.cliente.empresa != "null"{
+      if globalVariables.cliente.idEmpresa != 0{
         self.formularioDataCellList.append(self.voucherCell)
         if self.isVoucherSelected{
           self.formularioDataCellList.append(self.destinoCell)
           self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 75))
         }
         self.tipoSolicitudSwitch.isHidden = false
+    
       }
     }
+    
+    if self.tipoSolicitudSwitch.selectedSegmentIndex == 3{
+      self.formularioDataCellList.append(self.pactadaCell)
+    }
+    
     self.formularioDataCellList.append(self.contactoCell)
     self.solicitudFormTable.reloadData()
 
@@ -221,116 +245,13 @@ extension InicioController{
     SolPendientesView.isHidden = true
     CancelarSolicitudProceso.isHidden = true
     AlertaEsperaView.isHidden = true
+    self.tipoSolicitudSwitch.selectedSegmentIndex = 0
     super.topMenu.isHidden = false
     self.viewDidLoad()
   }
   
-  //DIRECCIONES FAVORITAS
-//  func CargarFavoritas(){
-//    let path = NSHomeDirectory() + "/Library/Caches/"
-//    let url = NSURL(fileURLWithPath: path)
-//    let filePath = url.appendingPathComponent("dir.plist")?.path
-//    let fileManager = FileManager.default
-//    if fileManager.fileExists(atPath: filePath!) {
-//      let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist") as URL
-//      do {
-//        self.DireccionesArray = NSArray(contentsOf: filePath) as! [[String]]
-//      }catch{
-//
-//      }
-//    }
-//  }
-  
-  //  func GuardarFavorita(newFavorita: [String]){
-  //    self.DireccionesArray.append(newFavorita)
-  //    //CREAR EL FICHERO DE LOGÍN
-  //    let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist")
-  //
-  //    do {
-  //      _ = try (self.DireccionesArray as NSArray).write(to: filePath as URL, atomically: true)
-  //
-  //    } catch {
-  //
-  //    }
-  //  }
-  //
-  //  func EliminarFavorita(posFavorita: Int){
-  //    self.DireccionesArray.remove(at: posFavorita)
-  //    //CREAR EL FICHERO DE LOGÍN
-  //    let filePath = NSURL(fileURLWithPath: NSHomeDirectory() + "/Library/Caches/dir.plist")
-  //
-  //    do {
-  //      _ = try (self.DireccionesArray as NSArray).write(to: filePath as URL, atomically: true)
-  //    } catch {
-  //
-  //    }
-  //  }
-  
-  //  func getCoordinatesFromAddress(address: String)->CLLocationCoordinate2D {
-  //    var resultCoordinates = CLLocationCoordinate2D()
-  //    let geocoder = CLGeocoder()
-  //    geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
-  //      if((error) != nil){
-  //        print("Error", error ?? "")
-  //      }
-  //      if let placemark = placemarks?.first {
-  //        resultCoordinates = placemark.location!.coordinate
-  //        print("Lat: \(resultCoordinates.latitude) -- Long: \(resultCoordinates.longitude)")
-  //      }
-  //    })
-  //    return resultCoordinates
-  //  }
-  
-  
-  //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
-//  func ListSolicitudPendiente(_ listado : [String: Any]){
-//    /*#LoginPassword, loginok, idusuario, email, idcliente, nombreapellidos, foto, empresa, cantidadSolicitudes
-//
-//     idsolicitud, idtaxi, cadenafecha, lattaxi, lngtaxi, latorigen, lngorigen, latdestino, lngdestino, dirorigen, dirdestino, cadfecha, importe, voucher, detalleoferta, tiempotaxiorigen */
-//    globalVariables.solpendientes.removeAll()
-//    var lattaxi = String()
-//    var longtaxi = String()
-//    var i = 9
-//
-////    while i <= listado.count-16 {
-////      let solicitudpdte = Solicitud()
-////      if listado[i+4] == "null"{
-////        lattaxi = "0"
-////        longtaxi = "0"
-////      }else{
-////        lattaxi = listado[i + 3]
-////        longtaxi = listado[i + 4]
-////      }
-////      solicitudpdte.DatosCliente(cliente: globalVariables.cliente)
-////      solicitudpdte.DatosSolicitud(id: listado[i], fechaHora: listado[i+2], dirOrigen: listado[i+9], referenciaOrigen: "", dirDestino: listado[i + 6], latOrigen: Double(listado[i + 5])!, lngOrigen: Double(listado[i + 6])!, latDestino: Double(listado[i + 7])!, lngDestino: Double(listado[i+8])!, valorOferta: listado[i+12], detalleOferta: listado[i+14],fechaReserva: OurDate(stringDate: listado[i + 11]).date, useVoucher: "0")
-////      if listado[i + 1] != "null"{
-////        solicitudpdte.DatosTaxiConductor(idtaxi: listado[i + 1], matricula: "", codigovehiculo: "", marca: "", color: "", lattaxi: Double(lattaxi)!, lngtaxi: Double(longtaxi)!, idconductor: "", nombreapellidosconductor: "", movilconductor: "", foto: "")
-////      }
-////      globalVariables.solpendientes.append(solicitudpdte)
-////      if solicitudpdte.idTaxi != ""{
-////        globalVariables.solicitudesproceso = true
-////      }
-////      i += 16
-////    }
-//  }
-  
-  //Funcion para Mostrar Datos del Taxi seleccionado
-  //  func AgregarTaxiSolicitud(_ temporal : [String]){
-  //    //#Aceptada, idsolicitud, idconductor, nombreApellidosConductor, movilConductor, URLfoto, idTaxi, Codvehiculo, matricula, marca_modelo, color, latTaxi, lngTaxi
-  //    for solicitud in globalVariables.solpendientes{
-  //      if solicitud.id == temporal[1]{
-  //        globalVariables.solicitudesproceso = true
-  //        solicitud.DatosTaxiConductor(idtaxi: temporal[6], matricula: temporal[8], codigovehiculo: temporal[7], marca: temporal[9],color: temporal[10], lattaxi: temporal[11], lngtaxi: temporal[12], idconductor: temporal[2], nombreapellidosconductor: temporal[3], movilconductor: temporal[4], foto: temporal[5])
-  //      }
-  //    }
-  //  }
-  
   
   //FUNCIÓN BUSCA UNA SOLICITUD DENTRO DEL ARRAY DE SOLICITUDES PENDIENTES DADO SU ID
-  func BuscarSolicitudID(_ id : String)->Solicitud{
-    return globalVariables.solpendientes.filter{String($0.id) == id}.first!
-  }
-  
   //devolver posicion de solicitud
   func BuscarPosSolicitudID(_ id : String)->Int{
     var temporal = 0
@@ -421,6 +342,7 @@ extension InicioController{
       try fileAudio.removeItem(atPath: AudioPath)
     }catch{
     }
+    print("closing app")
     let datos = "#SocketClose,\(globalVariables.cliente.id),# \n"
     EnviarSocket(datos)
     exit(3)
@@ -478,6 +400,7 @@ extension InicioController{
     
     //enviarBtnView.addSubview(separatorView)
     enviarBtnView.addSubview(button)
+    self.solicitudFormTable.backgroundColor = .none
     self.solicitudFormTable.tableFooterView = enviarBtnView
   }
   
@@ -516,9 +439,9 @@ extension InicioController{
     
     if !self.origenCell.origenText.text!.isEmpty{
       
-      let nombreContactar = self.contactoCell.contactoNameText.text!.isEmpty ? globalVariables.cliente.nombreApellidos : self.cleanTextField(textfield: self.contactoCell.contactoNameText)
+      let nombreContactar = globalVariables.cliente.nombreApellidos
       
-      let telefonoContactar = self.contactoCell.telefonoText.text!.isEmpty ? globalVariables.cliente.user : self.cleanTextField(textfield: self.contactoCell.telefonoText)
+      let telefonoContactar = globalVariables.cliente.user
       
       let origen = self.cleanTextField(textfield: self.origenCell.origenText)
       
@@ -536,13 +459,17 @@ extension InicioController{
       
       let fechaReserva = ""
       
-      let valorOferta = self.tipoSolicitudSwitch.selectedSegmentIndex == 0 ? self.ofertaDataCell.valorOferta : 0.0
+      let valorOferta = self.tipoSolicitudSwitch.selectedSegmentIndex == 0 ? self.ofertaDataCell.valorOferta : self.tipoSolicitudSwitch.selectedSegmentIndex == 3 ? pactadaCell.importe : 0.0
       
       mapView.removeAnnotations(mapView!.annotations!)
       
       let nuevaSolicitud = Solicitud()
       self.contactoCell.contactoNameText.text!.isEmpty ? nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!) : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
       nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoSolicitudSwitch.selectedSegmentIndex + 1)
+      
+      if !self.contactoCell.telefonoText.text!.isEmpty{
+        nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
+      }
       
       self.crearTramaSolicitud(nuevaSolicitud)
       view.endEditing(true)

@@ -78,15 +78,17 @@ extension SolPendController{
 //      tiempodeespera: data.tiempodeespera
       
       let result = data[0] as! [String: Any]
-      print(result)
-      let solicitudCompletada = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}!
-      if globalVariables.solpendientes.count != 0{
-        globalVariables.solpendientes.removeAll{$0.id == result["idsolicitud"] as! Int}
-        DispatchQueue.main.async {
-          let vc = R.storyboard.main.completadaView()!
-          vc.id = result["idsolicitud"] as! Int
-          vc.idConductor = solicitudCompletada.taxi.conductor.idConductor
-          self.navigationController?.show(vc, sender: nil)
+      print("solicitudes en completadas: \(globalVariables.solpendientes.count)")
+      if globalVariables.solpendientes.count > 0 {
+        let solicitudCompletadaIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
+        if solicitudCompletadaIndex >= 0{
+          let solicitudCompletada = globalVariables.solpendientes.remove(at: solicitudCompletadaIndex)
+          DispatchQueue.main.async {
+            let vc = R.storyboard.main.completadaView()!
+            vc.id = solicitudCompletada.id
+            vc.idConductor = solicitudCompletada.taxi.conductor.idConductor
+            self.navigationController?.show(vc, sender: nil)
+          }
         }
       }
     }

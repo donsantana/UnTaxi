@@ -78,5 +78,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>La app permite utilizar Face ID para autenticarse.</string>
 </dict>
 </plist>

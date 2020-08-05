@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +35,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR4-Gt-Wrt">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR4-Gt-Wrt">
                     <rect key="frame" x="364" y="15" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="A1i-hT-hsT"/>
@@ -54,17 +53,16 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="c9B-BQ-Cf1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="0JP-rg-oRP"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Z2k-I7-gLN" secondAttribute="bottom" id="Am2-aL-LlO"/>
+                <constraint firstItem="c9B-BQ-Cf1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="0JP-rg-oRP"/>
+                <constraint firstAttribute="bottom" secondItem="Z2k-I7-gLN" secondAttribute="bottom" id="Am2-aL-LlO"/>
                 <constraint firstItem="c9B-BQ-Cf1" firstAttribute="centerY" secondItem="sR4-Gt-Wrt" secondAttribute="centerY" id="Jqv-nS-8G9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sR4-Gt-Wrt" secondAttribute="trailing" constant="20" id="Qc3-2O-6GF"/>
-                <constraint firstItem="Z2k-I7-gLN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Uqe-0X-hP6"/>
+                <constraint firstAttribute="trailing" secondItem="sR4-Gt-Wrt" secondAttribute="trailing" constant="20" id="Qc3-2O-6GF"/>
+                <constraint firstItem="Z2k-I7-gLN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uqe-0X-hP6"/>
                 <constraint firstItem="sR4-Gt-Wrt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="eg4-OM-rH0"/>
-                <constraint firstItem="Z2k-I7-gLN" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ejW-UM-iGg"/>
+                <constraint firstItem="Z2k-I7-gLN" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="ejW-UM-iGg"/>
                 <constraint firstItem="sR4-Gt-Wrt" firstAttribute="leading" secondItem="c9B-BQ-Cf1" secondAttribute="trailing" constant="10" id="hHR-WB-inG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="destinoText" destination="c9B-BQ-Cf1" id="3Vg-zz-Kx6"/>
             </connections>

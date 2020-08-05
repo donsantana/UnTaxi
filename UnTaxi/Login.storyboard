@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1kc-k3-1NC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1kc-k3-1NC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -87,7 +87,7 @@
                                         <rect key="frame" x="27" y="290.5" width="360" height="213"/>
                                         <subviews>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Número de Teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQP-xb-v5Y" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="41.5" width="320" height="40"/>
+                                                <rect key="frame" x="40" y="41.5" width="280" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="IyH-S6-A2T"/>
@@ -110,7 +110,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-rA-MSZ" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="96.5" width="320" height="40"/>
+                                                <rect key="frame" x="40" y="96.5" width="280" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="uIJ-by-ZeY"/>
@@ -151,17 +151,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="J7N-rA-MSZ" firstAttribute="leading" secondItem="ZXM-6u-efE" secondAttribute="leading" constant="20" id="1eg-cV-Li0"/>
+                                            <constraint firstItem="J7N-rA-MSZ" firstAttribute="leading" secondItem="qQP-xb-v5Y" secondAttribute="leading" id="1eg-cV-Li0"/>
                                             <constraint firstItem="sGV-sz-Gj8" firstAttribute="centerX" secondItem="ZXM-6u-efE" secondAttribute="centerX" id="Ccz-dQ-12q"/>
                                             <constraint firstItem="sGV-sz-Gj8" firstAttribute="width" secondItem="J7N-rA-MSZ" secondAttribute="width" constant="-20" id="D7f-zx-zVj"/>
                                             <constraint firstItem="qQP-xb-v5Y" firstAttribute="bottom" secondItem="ZXM-6u-efE" secondAttribute="centerY" constant="-25" id="DDK-6A-WNy"/>
                                             <constraint firstItem="sGV-sz-Gj8" firstAttribute="top" secondItem="J7N-rA-MSZ" secondAttribute="bottom" constant="25" id="KI2-jm-8FI"/>
                                             <constraint firstItem="J7N-rA-MSZ" firstAttribute="top" secondItem="qQP-xb-v5Y" secondAttribute="bottom" constant="15" id="T0v-lF-HFL"/>
-                                            <constraint firstItem="qQP-xb-v5Y" firstAttribute="leading" secondItem="ZXM-6u-efE" secondAttribute="leading" constant="20" id="UhI-xS-rPB"/>
+                                            <constraint firstItem="qQP-xb-v5Y" firstAttribute="leading" secondItem="ZXM-6u-efE" secondAttribute="leading" constant="40" id="UhI-xS-rPB"/>
                                             <constraint firstAttribute="height" constant="212.66999999999999" id="VZZ-xs-u7N"/>
                                             <constraint firstItem="sGV-sz-Gj8" firstAttribute="height" secondItem="J7N-rA-MSZ" secondAttribute="height" multiplier="0.875" id="ahA-gk-5jp"/>
-                                            <constraint firstAttribute="trailing" secondItem="qQP-xb-v5Y" secondAttribute="trailing" constant="20" id="g93-Pc-5Qc"/>
-                                            <constraint firstAttribute="trailing" secondItem="J7N-rA-MSZ" secondAttribute="trailing" constant="20" id="v0K-oi-XyQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="qQP-xb-v5Y" secondAttribute="trailing" constant="40" id="g93-Pc-5Qc"/>
+                                            <constraint firstItem="J7N-rA-MSZ" firstAttribute="trailing" secondItem="qQP-xb-v5Y" secondAttribute="trailing" id="v0K-oi-XyQ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">

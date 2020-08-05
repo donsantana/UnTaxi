@@ -22,8 +22,9 @@ class VoucherViewCell: UITableViewCell {
   func initContent(isCorporativo: Bool){
     self.formaPagoSwitch.tintColor = .gray
     if isCorporativo && self.formaPagoSwitch.numberOfSegments == 2{
-      self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
-      self.formaPagoSwitch.selectedSegmentIndex = 2
+      //self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
+      self.formaPagoSwitch.selectedSegmentIndex = 1
+      self.formaPagoImg.image = UIImage(named: "voucher")
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     }
   }
@@ -34,11 +35,12 @@ class VoucherViewCell: UITableViewCell {
       formaPagoImg.image = UIImage(named: "bill")
       self.delegate?.voucherSwitch(self, voucherSelected: false)
     case 1:
-      self.formaPagoImg.image = UIImage(named: "card")
-      self.delegate?.voucherSwitch(self, voucherSelected: false)
-    case 2:
       self.formaPagoImg.image = UIImage(named: "voucher")
       self.delegate?.voucherSwitch(self, voucherSelected: true)
+//      
+//    case 2:
+//      self.formaPagoImg.image = UIImage(named: "card")
+//      self.delegate?.voucherSwitch(self, voucherSelected: false)
     default:
       break
     }

@@ -14,6 +14,7 @@ import AddressBook
 import AVFoundation
 import CoreData
 import Mapbox
+import PaymentezSDK
 
 struct MenuData {
   var imagen: String
@@ -33,12 +34,15 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var transporteIndex: Int! = -1
   var tipoTransporte: String!
   var isVoucherSelected = false
+  var apiService = ApiService()
+  var destinoPactadas:[DireccionesPactadas] = []
   
   var origenCell = Bundle.main.loadNibNamed("OrigenCell", owner: self, options: nil)?.first as! OrigenViewCell
   var destinoCell = Bundle.main.loadNibNamed("DestinoCell", owner: self, options: nil)?.first as! DestinoCell
   var ofertaDataCell = Bundle.main.loadNibNamed("OfertaDataCell", owner: self, options: nil)?.first as! OfertaDataViewCell
   var voucherCell = Bundle.main.loadNibNamed("VoucherCell", owner: self, options: nil)?.first as! VoucherViewCell
   var contactoCell = Bundle.main.loadNibNamed("ContactoCell", owner: self, options: nil)?.first as! ContactoViewCell
+  var pactadaCell = Bundle.main.loadNibNamed("PactadaCell", owner: self, options: nil)?.first as! PactadaCell
   
   var formularioDataCellList: [UITableViewCell] = []
   //var SMSVoz = CSMSVoz()
@@ -56,7 +60,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
   
   //Menu variables
-  var MenuArray = [MenuData(imagen: "solicitud", title: "Solicitudes en proceso"), MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "clave", title: "Perfil"),MenuData(imagen: "compartir", title: "Compartir app")]
+  var menuArray = [MenuData(imagen: "solicitud", title: "Solicitudes en proceso"), MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "clave", title: "Perfil"), MenuData(imagen: "compartir", title: "Compartir app")]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
   //variables de interfaz
   var TelefonoContactoText: UITextField!
@@ -106,6 +110,12 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   @IBOutlet weak var tipoSolicitudSwitch: UISegmentedControl!
   
+  @IBOutlet weak var addressView: UIView!
+  @IBOutlet weak var addressPicker: UIPickerView!
+  
+  @IBOutlet weak var destinoAddressView: UIView!
+  @IBOutlet weak var destinoAddressPicker: UIPickerView!
+  
   override func viewDidLoad() {
     super.hideMenuBtn = false
     super.barTitle = Customization.nameShowed
@@ -118,11 +128,15 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     coreLocationManager.delegate = self
     self.contactoCell.contactoNameText.delegate = self
     self.contactoCell.telefonoText.delegate = self
-    //    self.origenCell.origenText.delegate = self
-    //    self.origenCell.destinoText.delegate = self
+    self.origenCell.origenText.delegate = self
+    self.destinoCell.destinoText.delegate = self
     //    self.solicitudFormTable.delegate = self
     self.ofertaDataCell.detallesText.delegate = self
     self.voucherCell.delegate = self
+    self.apiService.delegate = self
+    
+    self.addressPicker.delegate = self
+    self.destinoAddressPicker.delegate = self
     
     self.navigationItem.title = Customization.nameShowed
     //solicitud de autorización para acceder a la localización del usuario
@@ -166,16 +180,22 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       self.origenAnotacion.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
       coreLocationManager.requestWhenInUseAuthorization()
     }
-    
     self.initMapView()
     
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
     self.voucherCell.initContent(isCorporativo: true)
     
-    if globalVariables.cliente.empresa != ""{
-      self.tipoSolicitudSwitch.insertSegment(withTitle: "Pactada", at: 3, animated: false)
+    print("pactadas en inicio \(globalVariables.cliente.idEmpresa)")
+    if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
+      if self.tipoSolicitudSwitch.numberOfSegments == 3{
+        self.tipoSolicitudSwitch.insertSegment(withTitle: "Pactada", at: 3, animated: false)
+      }
+      
+      self.socketEmit("direccionespactadas", datos: [
+      "idempresa": globalVariables.cliente.idEmpresa!
+      ] as [String: Any])
     }
-   
+  
     self.addEnvirSolictudBtn()
     
     globalVariables.socket.on("disconnect"){data, ack in
@@ -240,6 +260,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.socketEventos()
     self.loadFormularioData()
     self.loadCallCenter()
+    
+    self.apiService.listCardsAPIService()
+    
   }
   
   override func viewDidAppear(_ animated: Bool){
@@ -272,7 +295,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //SOLICITAR BUTTON
   @IBAction func Solicitar(_ sender: AnyObject) {
     //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
-    
     self.direccionDeCoordenada(mapView.centerCoordinate, directionText: self.origenCell.origenText)
     super.topMenu.isHidden = true
     self.addEnvirSolictudBtn()
@@ -366,14 +388,31 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.loadFormularioData()
   }
   
+  @IBAction func hideAddressView(_ sender: Any) {
+    self.addressView.isHidden = true
+  }
+  
+  @IBAction func hideDestinoAddressView(_ sender: Any) {
+    self.destinoAddressView.isHidden = true
+  }
+  
+  @IBAction func takeOrigenAddress(_ sender: Any) {
+    self.addressView.isHidden = true
+  }
+  
+  @IBAction func takeDestinoAddress(_ sender: Any) {
+    self.destinoAddressView.isHidden = true
+  }
+  
   @IBAction func cerrarSesion(_ sender: Any) {
-    globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
+    globalVariables.userDefaults.set(nil, forKey: "accessToken")
     self.CloseAPP()
   }
   
   @IBAction func cerrarApp(_ sender: Any) {
     self.CloseAPP()
   }
+  
   
   
 }

@@ -40,6 +40,14 @@
 		B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
 		B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
 		B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
+		C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6024F9524A79CA100C91725 /* CallCenterUI.swift */; };
+		C602557C24A7A9B200C91725 /* PaymentezSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */; };
+		C602557D24A7A9B200C91725 /* PaymentezSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C602558124A7AB7600C91725 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558024A7AB7600C91725 /* PaymentController.swift */; };
+		C602558324A7F60A00C91725 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
+		C602558624AAEA1300C91725 /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
+		C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
+		C602558A24AC37FA00C91725 /* PaymentTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558924AC37FA00C91725 /* PaymentTableExt.swift */; };
 		C60C16562302736B0090F4E0 /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
 		C60C16582302760B0090F4E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
 		C6122892247034710041BB2D /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
@@ -47,6 +55,9 @@
 		C61F347A248E8F66006A07F6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
 		C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C15230B9CBE0010F6A3 /* BaseController.swift */; };
 		C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */; };
+		C62E593D24B80F1400FFB26B /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E593C24B80F1400FFB26B /* AppConfig.swift */; };
+		C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
+		C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E594024BB669F00FFB26B /* PactadaCell.swift */; };
 		C6384BEA22A43A46000EB156 /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384BE922A43A46000EB156 /* UIToolbar.swift */; };
 		C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B1B245F5E18007B0EE5 /* Login.storyboard */; };
 		C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B1E245F63BC007B0EE5 /* apiService.swift */; };
@@ -97,7 +108,23 @@
 		C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
 		C6F27B08238F2C5400679E07 /* SolicitudOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F27B07238F2C5400679E07 /* SolicitudOld.swift */; };
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
+		C6FF3165249E581F00727200 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6FF3164249E581F00727200 /* Payment.storyboard */; };
+		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C602557E24A7A9B200C91725 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C602557D24A7A9B200C91725 /* PaymentezSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		31F73D020FE0B92313358D2A /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +177,13 @@
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PaymentezSDK.framework; sourceTree = "<group>"; };
+		C6024F9524A79CA100C91725 /* CallCenterUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterUI.swift; sourceTree = "<group>"; };
+		C602558024A7AB7600C91725 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
+		C602558224A7F60A00C91725 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		C602558524AAEA1300C91725 /* CardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardRow.xib; sourceTree = "<group>"; };
+		C602558724AAEA4700C91725 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		C602558924AC37FA00C91725 /* PaymentTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableExt.swift; sourceTree = "<group>"; };
 		C60C16552302736B0090F4E0 /* OurDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurDate.swift; sourceTree = "<group>"; };
 		C60C16572302760B0090F4E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C6122891247034710041BB2D /* DestinoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinoCell.xib; sourceTree = "<group>"; };
@@ -157,6 +191,9 @@
 		C61F3479248E8F65006A07F6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C6253C15230B9CBE0010F6A3 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesSocketExt.swift; sourceTree = "<group>"; };
+		C62E593C24B80F1400FFB26B /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		C62E593E24BB5D7800FFB26B /* PactadaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PactadaCell.xib; sourceTree = "<group>"; };
+		C62E594024BB669F00FFB26B /* PactadaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PactadaCell.swift; sourceTree = "<group>"; };
 		C6384BE922A43A46000EB156 /* UIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
 		C63A6B1B245F5E18007B0EE5 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C63A6B1E245F63BC007B0EE5 /* apiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiService.swift; sourceTree = "<group>"; };
@@ -207,6 +244,8 @@
 		C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolPendientesViewCell.swift; sourceTree = "<group>"; };
 		C6F27B07238F2C5400679E07 /* SolicitudOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudOld.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		C6FF3164249E581F00727200 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
 		E83305129F1AEC1B8B1168FE /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -216,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				723CE23CEC0A76791DE507BB /* Pods_UnTaxi.framework in Frameworks */,
+				C602557C24A7A9B200C91725 /* PaymentezSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +265,7 @@
 		806E675426FD1B3FEF7755DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */,
 				AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */,
 				AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */,
 				AFD656191F9D3C5300C8A5BD /* Canvas.framework */,
@@ -284,6 +325,7 @@
 			children = (
 				C63A6B1B245F5E18007B0EE5 /* Login.storyboard */,
 				B5F753E31D5D045500FFDFD0 /* Main.storyboard */,
+				C6FF3164249E581F00727200 /* Payment.storyboard */,
 				C68DA295227E0C8F0029CD0B /* Constants */,
 				C65F9F3922A0E65900E3E304 /* Models */,
 				C68DA296227E12A50029CD0B /* Extensions */,
@@ -322,17 +364,13 @@
 		AFD656631FA1734300C8A5BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6293F1F24C3A2750007E52F /* Perfil */,
+				C602558424AAE9F300C91725 /* Payments */,
 				C6CACFAE22D2BD2F00702430 /* Oferta Table */,
 				C65F9F28229BA0ED00E3E304 /* Solicitud Form */,
 				AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */,
 				AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */,
 				AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */,
-				AF3D9E161FA51A190019432B /* PerfilViewCell.swift */,
-				AF3D9E171FA51A190019432B /* PerfilViewCell.xib */,
-				AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */,
-				AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */,
-				AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */,
-				AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */,
 				C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */,
 				C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */,
 			);
@@ -342,18 +380,37 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C61F347B248EE6B5006A07F6 /* OfertaList */,
-				C626F508248D8ECB0062C0BA /* Call Center */,
-				C626F507248D8EAE0062C0BA /* Completada */,
-				C6EBD80B24874E1D00219E6D /* Detalles Solicitud */,
-				C6EFC3D024846F50006FA99B /* SolicitudesList */,
-				C6C3A4ED245F32640084F409 /* Login */,
-				C6C3A4F7245F32A00084F409 /* Inicio */,
-				C6C3A503245F335A0084F409 /* Perfil */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
+				C6C3A4ED245F32640084F409 /* Login */,
+				C6C3A4F7245F32A00084F409 /* Inicio */,
+				C626F508248D8ECB0062C0BA /* Call Center */,
+				C6EFC3D024846F50006FA99B /* SolicitudesList */,
+				C6EBD80B24874E1D00219E6D /* Detalles Solicitud */,
+				C61F347B248EE6B5006A07F6 /* OfertaList */,
+				C6C3A503245F335A0084F409 /* Perfil */,
+				C626F507248D8EAE0062C0BA /* Completada */,
+				C602557F24A7AB3800C91725 /* Payment */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C602557F24A7AB3800C91725 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				C602558024A7AB7600C91725 /* PaymentController.swift */,
+				C602558924AC37FA00C91725 /* PaymentTableExt.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		C602558424AAE9F300C91725 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				C602558524AAEA1300C91725 /* CardRow.xib */,
+				C602558724AAEA4700C91725 /* CardViewCell.swift */,
+			);
+			path = Payments;
 			sourceTree = "<group>";
 		};
 		C61F347B248EE6B5006A07F6 /* OfertaList */ = {
@@ -377,8 +434,22 @@
 			isa = PBXGroup;
 			children = (
 				AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */,
+				C6024F9524A79CA100C91725 /* CallCenterUI.swift */,
 			);
 			path = "Call Center";
+			sourceTree = "<group>";
+		};
+		C6293F1F24C3A2750007E52F /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				AF3D9E161FA51A190019432B /* PerfilViewCell.swift */,
+				AF3D9E171FA51A190019432B /* PerfilViewCell.xib */,
+				AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */,
+				AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */,
+				AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */,
+				AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */,
+			);
+			path = Perfil;
 			sourceTree = "<group>";
 		};
 		C63A6B1D245F63BC007B0EE5 /* services */ = {
@@ -411,6 +482,8 @@
 				C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */,
 				C6122891247034710041BB2D /* DestinoCell.xib */,
 				C6122893247034A70041BB2D /* DestinoCell.swift */,
+				C62E593E24BB5D7800FFB26B /* PactadaCell.xib */,
+				C62E594024BB669F00FFB26B /* PactadaCell.swift */,
 			);
 			path = "Solicitud Form";
 			sourceTree = "<group>";
@@ -432,6 +505,9 @@
 				C6915F20228500420048C00C /* SMSVoz.swift */,
 				C6CACFAC22D26A9300702430 /* Oferta.swift */,
 				C60C16552302736B0090F4E0 /* OurDate.swift */,
+				C602558224A7F60A00C91725 /* Card.swift */,
+				C62E593C24B80F1400FFB26B /* AppConfig.swift */,
+				C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -543,6 +619,8 @@
 				84F571411BCE958200FC18D5 /* Resources */,
 				569F72D6070528E2F5C797F1 /* [CP] Embed Pods Frameworks */,
 				741EBD6FFA95011B3602E955 /* [CP] Copy Pods Resources */,
+				C602557B24A7A94A00C91725 /* ShellScript */,
+				C602557E24A7A9B200C91725 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -592,6 +670,10 @@
 				English,
 				en,
 				Base,
+				es,
+				"es-419",
+				"pt-BR",
+				"es-MX",
 			);
 			mainGroup = 84F5713A1BCE958200FC18D5;
 			productRefGroup = 84F571441BCE958200FC18D5 /* Products */;
@@ -617,10 +699,12 @@
 				C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
+				C6FF3165249E581F00727200 /* Payment.storyboard in Resources */,
 				C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */,
 				C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */,
 				C65F9F2A229BA44900E3E304 /* OrigenCell.xib in Resources */,
 				AF3D9E131FA510E80019432B /* CLARO.png in Resources */,
+				C602558624AAEA1300C91725 /* CardRow.xib in Resources */,
 				AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */,
 				C6CACFB022D2BD5000702430 /* OfertaViewCell.xib in Resources */,
 				C63A6B26245F6A31007B0EE5 /* uctglogo.png in Resources */,
@@ -632,6 +716,7 @@
 				AF3D9E141FA510E80019432B /* MOVISTAR.png in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
 				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
+				C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */,
 				C61F347A248E8F66006A07F6 /* .gitignore in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
 			);
@@ -691,6 +776,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
@@ -736,6 +823,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C602557B24A7A94A00C91725 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PaymentezSDK.framework/install_dynamic.sh\"\n";
+		};
 		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -772,6 +876,7 @@
 				C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
 				C6C3A4F5245F32640084F409 /* LoginFunctionsExt.swift in Sources */,
+				C62E593D24B80F1400FFB26B /* AppConfig.swift in Sources */,
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
@@ -786,11 +891,14 @@
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
+				C602558A24AC37FA00C91725 /* PaymentTableExt.swift in Sources */,
+				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* Telefono.swift in Sources */,
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */,
 				C6F27B08238F2C5400679E07 /* SolicitudOld.swift in Sources */,
+				C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
 				C68DA29C227E39BE0029CD0B /* GlobalVariables.swift in Sources */,
 				C65F9F2C229BA46F00E3E304 /* OrigenViewCell.swift in Sources */,
@@ -803,10 +911,14 @@
 				C6122894247034A70041BB2D /* DestinoCell.swift in Sources */,
 				C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */,
 				C63A6B2A245F7AB0007B0EE5 /* InicioController.swift in Sources */,
+				C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */,
 				C64363A022EBC44E0006F235 /* OfertasController.swift in Sources */,
 				C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */,
+				C602558324A7F60A00C91725 /* Card.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
+				C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */,
 				C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */,
+				C602558124A7AB7600C91725 /* PaymentController.swift in Sources */,
 				C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */,
 				C60C16562302736B0090F4E0 /* OurDate.swift in Sources */,
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
@@ -963,12 +1075,14 @@
 			baseConfigurationReference = 6452802E70C3E4B9F49D4A19 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -980,11 +1094,54 @@
 					"$(PROJECT_DIR)/build/Release-iphoneos/Socket.IO-Client-Swift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Release-iphoneos/Canvas",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphoneos",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
 				);
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paymentez-ios/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+				);
 				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
@@ -1001,11 +1158,13 @@
 			baseConfigurationReference = 31F73D020FE0B92313358D2A /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1017,11 +1176,54 @@
 					"$(PROJECT_DIR)/build/Release-iphoneos/Socket.IO-Client-Swift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Release-iphoneos/Canvas",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphoneos",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
 				);
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/paymentez-ios/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
+					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
+				);
 				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;

@@ -64,7 +64,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     //super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
     
-    self.solicitudPendiente = globalVariables.solpendientes[solicitudIndex]
+    //self.solicitudPendiente = globalVariables.solpendientes[solicitudIndex]
     self.MapaSolPen.delegate = self
     self.OrigenSolicitud.coordinate = self.solicitudPendiente.origenCoord
     self.OrigenSolicitud.title = "origen"

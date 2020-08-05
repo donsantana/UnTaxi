@@ -14,6 +14,7 @@ import AVFoundation
 import GoogleMobileAds
 import GooglePlaces
 import UserNotifications
+import PaymentezSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
@@ -73,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // Set the Google Place API's autocomplete UI control
     GMSPlacesClient.provideAPIKey("AIzaSyDOVTQUV2OeugiuBd3pAVGJbTx2aZ445Ws")
     
+    PaymentezSDKClient.setEnvironment("MERCURIO-EC-CLIENT", secretKey: "8uGTqVeiRBW8oMfAVwHyN51aEsNyM5", testMode: false)
     
     return true
   }
