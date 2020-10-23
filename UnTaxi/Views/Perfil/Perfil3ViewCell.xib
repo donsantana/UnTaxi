@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="155" id="eoJ-yL-oO6" customClass="Perfil3ViewCell" customModule="UnTaxi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eoJ-yL-oO6" id="GzY-V4-FEE">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clave de Acceso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nku-8q-NID">
+                        <rect key="frame" x="20" y="11" width="260" height="18.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nku-8q-NID" secondAttribute="height" multiplier="296:21" constant="1.1428571428571672" id="rGD-aK-hM7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" systemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NuevaClave" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nueva clave" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y3O-vs-tTp">
+                        <rect key="frame" x="20" y="97" width="260" height="45"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    </textField>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ConfirmeClave" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirme la clave" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jau-tp-PAA">
+                        <rect key="frame" x="20" y="157" width="260" height="45"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Clave actual" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxU-wj-6mE">
+                        <rect key="frame" x="20" y="37" width="260" height="45"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="bzz-ex-y79"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qc-No-joc">
+                        <rect key="frame" x="240" y="164.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="XLT-Fu-SRJ"/>
+                            <constraint firstAttribute="height" constant="30" id="kYs-Su-YBH"/>
+                        </constraints>
+                        <state key="normal" image="showClave"/>
+                        <connections>
+                            <action selector="showHideConfirmarClave:" destination="eoJ-yL-oO6" eventType="touchUpInside" id="pz6-7d-d8v"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG5-e8-EJb">
+                        <rect key="frame" x="240" y="104.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="CFT-Yt-bCe"/>
+                            <constraint firstAttribute="height" constant="30" id="qDl-SN-v50"/>
+                        </constraints>
+                        <state key="normal" image="showClave"/>
+                        <connections>
+                            <action selector="showHideNuevaClave:" destination="eoJ-yL-oO6" eventType="touchUpInside" id="rz3-8Y-84D"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zco-lX-wQ5">
+                        <rect key="frame" x="240" y="44.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Exn-uR-7Qy"/>
+                            <constraint firstAttribute="height" constant="30" id="v4n-uP-hnH"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="showClave"/>
+                        <connections>
+                            <action selector="showHideClaveActual:" destination="eoJ-yL-oO6" eventType="touchUpInside" id="2JM-de-75E"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="3Qc-No-joc" firstAttribute="centerY" secondItem="jau-tp-PAA" secondAttribute="centerY" id="0ra-ym-54e"/>
+                    <constraint firstItem="jau-tp-PAA" firstAttribute="trailing" secondItem="y3O-vs-tTp" secondAttribute="trailing" id="26Y-1n-gcI"/>
+                    <constraint firstItem="YxU-wj-6mE" firstAttribute="trailing" secondItem="y3O-vs-tTp" secondAttribute="trailing" id="3iX-1Z-n7Q"/>
+                    <constraint firstItem="YxU-wj-6mE" firstAttribute="leading" secondItem="y3O-vs-tTp" secondAttribute="leading" id="DsP-oa-Q79"/>
+                    <constraint firstItem="YxU-wj-6mE" firstAttribute="top" secondItem="nku-8q-NID" secondAttribute="bottom" constant="7.5" id="Ise-wS-1tF"/>
+                    <constraint firstItem="bG5-e8-EJb" firstAttribute="trailing" secondItem="y3O-vs-tTp" secondAttribute="trailing" constant="-10" id="Qza-Yh-9v3"/>
+                    <constraint firstItem="zco-lX-wQ5" firstAttribute="centerY" secondItem="YxU-wj-6mE" secondAttribute="centerY" id="Tjo-sd-YuE"/>
+                    <constraint firstItem="jau-tp-PAA" firstAttribute="top" secondItem="y3O-vs-tTp" secondAttribute="bottom" constant="15" id="UOd-2b-ij5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nku-8q-NID" secondAttribute="trailing" constant="4" id="YBD-CB-6yG"/>
+                    <constraint firstItem="zco-lX-wQ5" firstAttribute="trailing" secondItem="YxU-wj-6mE" secondAttribute="trailing" constant="-10" id="eZr-3x-O7a"/>
+                    <constraint firstItem="y3O-vs-tTp" firstAttribute="leading" secondItem="GzY-V4-FEE" secondAttribute="leading" constant="20" id="g9g-na-tIU"/>
+                    <constraint firstItem="nku-8q-NID" firstAttribute="top" secondItem="GzY-V4-FEE" secondAttribute="top" constant="11" id="hcV-P8-iK5"/>
+                    <constraint firstItem="jau-tp-PAA" firstAttribute="height" secondItem="y3O-vs-tTp" secondAttribute="height" id="jaw-2C-fSG"/>
+                    <constraint firstItem="y3O-vs-tTp" firstAttribute="height" secondItem="YxU-wj-6mE" secondAttribute="height" id="lSz-dv-NUo"/>
+                    <constraint firstItem="y3O-vs-tTp" firstAttribute="trailing" secondItem="GzY-V4-FEE" secondAttribute="trailing" constant="-20" id="lYo-Kh-fe0"/>
+                    <constraint firstItem="y3O-vs-tTp" firstAttribute="top" secondItem="YxU-wj-6mE" secondAttribute="bottom" constant="15" id="mPD-DH-Mb1"/>
+                    <constraint firstItem="nku-8q-NID" firstAttribute="leading" secondItem="GzY-V4-FEE" secondAttribute="leadingMargin" constant="4" id="o3G-p1-AYl"/>
+                    <constraint firstItem="jau-tp-PAA" firstAttribute="leading" secondItem="y3O-vs-tTp" secondAttribute="leading" id="uj0-sp-gFh"/>
+                    <constraint firstItem="bG5-e8-EJb" firstAttribute="centerY" secondItem="y3O-vs-tTp" secondAttribute="centerY" id="xHR-pH-EnK"/>
+                    <constraint firstItem="3Qc-No-joc" firstAttribute="trailing" secondItem="jau-tp-PAA" secondAttribute="trailing" constant="-10" id="yjJ-lr-LPH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ConfirmeClaveText" destination="jau-tp-PAA" id="Lux-w0-bEH"/>
+                <outlet property="NombreCampo" destination="nku-8q-NID" id="KP8-YF-n0C"/>
+                <outlet property="NuevaClaveText" destination="y3O-vs-tTp" id="xCF-q3-O2g"/>
+                <outlet property="claveActualText" destination="YxU-wj-6mE" id="euD-vr-b1P"/>
+                <outlet property="showHideClaveActualBtn" destination="zco-lX-wQ5" id="tf1-Rt-lo2"/>
+                <outlet property="showHideConfirmBtn" destination="3Qc-No-joc" id="ih8-Me-sOd"/>
+                <outlet property="showHideNuevaClaveBtn" destination="bG5-e8-EJb" id="qaw-08-U2B"/>
+            </connections>
+            <point key="canvasLocation" x="41.600000000000001" y="24.287856071964018"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="showClave" width="40" height="40"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

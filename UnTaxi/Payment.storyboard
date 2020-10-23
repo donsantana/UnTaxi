@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ShowPayments-->
+        <scene sceneID="EHz-7a-Kiw">
+            <objects>
+                <viewController storyboardIdentifier="ShowPayments" title="ShowPayments" id="6je-eG-5Ja" customClass="PaymentController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9r3-qQ-v9b"/>
+                        <viewControllerLayoutGuide type="bottom" id="MYa-Xz-hVS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xhy-Sy-SG1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lo6-hQ-y0M">
+                                <rect key="frame" x="40" y="74" width="45" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="A5l-PY-s3H"/>
+                                    <constraint firstAttribute="height" constant="45" id="YKV-NV-mhK"/>
+                                </constraints>
+                                <state key="normal" image="home">
+                                    <color key="titleColor" red="0.95288223029999997" green="0.85101968049999999" blue="0.035437099639999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goToHomeScreen:" destination="6je-eG-5Ja" eventType="touchUpInside" id="5X6-6t-N3q"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0CJ-zl-McT">
+                                <rect key="frame" x="20" y="129" width="374" height="733"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jbR-yJ-OQT">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jbR-yJ-OQT" id="9OO-S1-NW1">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6je-eG-5Ja" id="1ak-aN-MFa"/>
+                                    <outlet property="delegate" destination="6je-eG-5Ja" id="ubo-8R-Fy0"/>
+                                </connections>
+                            </tableView>
+                            <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCl-KG-WnA">
+                                <rect key="frame" x="107" y="762" width="200" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="INb-AM-UeV"/>
+                                    <constraint firstAttribute="width" constant="200" id="fbn-Ej-QGn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Agregar tarjeta">
+                                    <color key="titleColor" red="0.95288223029999997" green="0.85101968049999999" blue="0.035437099639999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showAddCardView:" destination="6je-eG-5Ja" eventType="touchUpInside" id="jgo-da-saI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0CJ-zl-McT" firstAttribute="top" secondItem="Lo6-hQ-y0M" secondAttribute="bottom" constant="10" id="9dI-ex-d62"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GCl-KG-WnA" secondAttribute="bottom" constant="50" id="Fbo-pk-nMO"/>
+                            <constraint firstItem="Lo6-hQ-y0M" firstAttribute="top" secondItem="Xhy-Sy-SG1" secondAttribute="topMargin" constant="30" id="Wvu-jO-mQu"/>
+                            <constraint firstAttribute="trailing" secondItem="0CJ-zl-McT" secondAttribute="trailing" constant="20" id="aXB-9O-MxC"/>
+                            <constraint firstItem="MYa-Xz-hVS" firstAttribute="top" secondItem="0CJ-zl-McT" secondAttribute="bottom" id="h7e-zl-tgC"/>
+                            <constraint firstItem="GCl-KG-WnA" firstAttribute="centerX" secondItem="Xhy-Sy-SG1" secondAttribute="centerX" id="vig-1K-hpd"/>
+                            <constraint firstItem="0CJ-zl-McT" firstAttribute="leading" secondItem="Xhy-Sy-SG1" secondAttribute="leading" constant="20" id="yfV-27-qWT"/>
+                            <constraint firstItem="Lo6-hQ-y0M" firstAttribute="leading" secondItem="Xhy-Sy-SG1" secondAttribute="leadingMargin" constant="20" id="zLi-7W-dh9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCardBtn" destination="GCl-KG-WnA" id="0du-ih-1gf"/>
+                        <outlet property="cardsTableView" destination="0CJ-zl-McT" id="uU2-fD-jOP"/>
+                        <outlet property="homeBtn" destination="Lo6-hQ-y0M" id="xCk-YR-NOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNT-mw-MFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68.115942028985515" y="-143.30357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home" width="40" height="40"/>
+    </resources>
+</document>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PactadaCell" customModule="UnTaxi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gLl-ks-bCz">
+                    <rect key="frame" x="213" y="20" width="181" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <segments>
+                        <segment title="Solo ida"/>
+                        <segment title="Ida y vuelta"/>
+                    </segments>
+                    <color key="selectedSegmentTintColor" red="0.98823529409999999" green="0.81568627449999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="onValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="sqG-cv-rpc"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSk-uj-Aey">
+                    <rect key="frame" x="50" y="26.5" width="147" height="26.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagar con Voucher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jir-Jb-Wcu">
+                    <rect key="frame" x="50" y="5" width="119.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="z2L-39-Xwv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voucherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-as-aFW">
+                    <rect key="frame" x="10" y="25" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="PRw-Kv-06g"/>
+                        <constraint firstAttribute="width" constant="30" id="at1-yj-44N"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Jir-Jb-Wcu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="3Qp-XM-6Mq"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="leading" secondItem="Dgp-as-aFW" secondAttribute="trailing" constant="10" id="4yW-mP-yFF"/>
+                <constraint firstItem="gLl-ks-bCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="6le-Kn-d3p"/>
+                <constraint firstItem="Dgp-as-aFW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="8pR-FE-bp4"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="height" secondItem="gLl-ks-bCz" secondAttribute="height" multiplier="0.8" id="G0t-p1-LDB"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="bottom" secondItem="gLl-ks-bCz" secondAttribute="bottom" id="fN4-FC-jYt"/>
+                <constraint firstItem="kSk-uj-Aey" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-10" id="g6x-Iu-Xth"/>
+                <constraint firstItem="Dgp-as-aFW" firstAttribute="centerY" secondItem="kSk-uj-Aey" secondAttribute="centerY" id="gTa-aX-ZcL"/>
+                <constraint firstItem="Jir-Jb-Wcu" firstAttribute="leading" secondItem="Dgp-as-aFW" secondAttribute="trailing" constant="10" id="hul-ZJ-Jis"/>
+                <constraint firstItem="gLl-ks-bCz" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-20" id="n3H-vw-92t"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="idaVueltaSwitch" destination="gLl-ks-bCz" id="emz-Yp-rVZ"/>
+                <outlet property="precioText" destination="kSk-uj-Aey" id="1R1-EX-8Qk"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-149.66517857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="voucherIcon" width="30" height="30"/>
+    </resources>
+</document>
