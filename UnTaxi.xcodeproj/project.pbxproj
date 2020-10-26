@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1AC25B5FCF98C95E0A7F3F /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E131FA510E80019432B /* CLARO.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E101FA510E70019432B /* CLARO.png */; };
@@ -39,15 +40,10 @@
 		B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
 		B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
 		B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
-		B7B9E1FB6EC2FA4E86BE619B /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83E44130B69E69A9F87CF21 /* Pods_UnTaxi.framework */; };
 		C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6024F9524A79CA100C91725 /* CallCenterUI.swift */; };
-		C602557C24A7A9B200C91725 /* PaymentezSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */; };
-		C602557D24A7A9B200C91725 /* PaymentezSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C602558124A7AB7600C91725 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558024A7AB7600C91725 /* PaymentController.swift */; };
 		C602558324A7F60A00C91725 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
 		C602558624AAEA1300C91725 /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
 		C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
-		C602558A24AC37FA00C91725 /* PaymentTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558924AC37FA00C91725 /* PaymentTableExt.swift */; };
 		C60C16562302736B0090F4E0 /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
 		C60C16582302760B0090F4E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
 		C6122892247034710041BB2D /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
@@ -116,24 +112,8 @@
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C602557E24A7A9B200C91725 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C602557D24A7A9B200C91725 /* PaymentezSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		31F73D020FE0B92313358D2A /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
-		6452802E70C3E4B9F49D4A19 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		72AA2D0CAD927D876E3533F1 /* Pods-PremiumCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PremiumCar.debug.xcconfig"; path = "Target Support Files/Pods-PremiumCar/Pods-PremiumCar.debug.xcconfig"; sourceTree = "<group>"; };
+		020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,8 +122,6 @@
 		84F5715D1BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F571661BCE958200FC18D5 /* XtaxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiUITests.swift; sourceTree = "<group>"; };
 		84F571681BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		8AEC673BDF8ABB17D5FF8D07 /* Pods-PremiumCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PremiumCar.release.xcconfig"; path = "Target Support Files/Pods-PremiumCar/Pods-PremiumCar.release.xcconfig"; sourceTree = "<group>"; };
 		AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCenterViewCell.xib; sourceTree = "<group>"; };
 		AF3D9E101FA510E70019432B /* CLARO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CLARO.png; sourceTree = "<group>"; };
 		AF3D9E111FA510E80019432B /* MOVISTAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MOVISTAR.png; sourceTree = "<group>"; };
@@ -157,9 +135,6 @@
 		AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallCenterController.swift; path = "../New Group/CallCenterController.swift"; sourceTree = "<group>"; };
 		AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolicitudesTableController.swift; sourceTree = "<group>"; };
 		AFD655D51F9D391000C8A5BD /* CompletadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletadaController.swift; sourceTree = "<group>"; };
-		AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD656191F9D3C5300C8A5BD /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD6561A1F9D3C5300C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSMSVoz.swift; sourceTree = "<group>"; };
 		AFD656211F9D42DC00C8A5BD /* Evaluacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluacion.swift; sourceTree = "<group>"; };
 		AFD656221F9D42DC00C8A5BD /* CRuta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRuta.swift; sourceTree = "<group>"; };
@@ -171,25 +146,21 @@
 		AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = claxon.mp3; sourceTree = "<group>"; };
 		AFD6562F1F9D42DF00C8A5BD /* Solicitud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solicitud.swift; sourceTree = "<group>"; };
 		AFD656321F9D42E000C8A5BD /* Conductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
-		AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterViewCell.swift; sourceTree = "<group>"; };
 		AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolViewCell.swift; sourceTree = "<group>"; };
 		AFD656711FA17CD000C8A5BD /* ds_digital */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ds_digital; sourceTree = "<group>"; };
 		AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo1.png; sourceTree = "<group>"; };
 		B5054D761E66051500FEEDE4 /* SolDetallesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolDetallesController.swift; sourceTree = "<group>"; };
-		B52CA4991DE0B69300E9782C /* Canvas.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Canvas.framework; path = "Pods/../build/Release-iphoneos/Canvas/Canvas.framework"; sourceTree = "<group>"; };
-		B5BF37841DDCB48400301DA4 /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = "../../../../../Users/dsantana/Library/Developer/Xcode/DerivedData/UnTaxi-bhdseouykvmypecitlgrgswqblii/Build/Products/Debug-iphonesimulator/Socket.IO-Client-Swift/SocketIO.framework"; sourceTree = "<group>"; };
 		B5EDE1331D6517B20014130F /* CConexionInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConexionInternet.swift; sourceTree = "<group>"; };
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PaymentezSDK.framework; sourceTree = "<group>"; };
+		B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		C6024F9524A79CA100C91725 /* CallCenterUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterUI.swift; sourceTree = "<group>"; };
-		C602558024A7AB7600C91725 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
 		C602558224A7F60A00C91725 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C602558524AAEA1300C91725 /* CardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardRow.xib; sourceTree = "<group>"; };
 		C602558724AAEA4700C91725 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
-		C602558924AC37FA00C91725 /* PaymentTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableExt.swift; sourceTree = "<group>"; };
 		C60C16552302736B0090F4E0 /* OurDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurDate.swift; sourceTree = "<group>"; };
 		C60C16572302760B0090F4E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C6122891247034710041BB2D /* DestinoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinoCell.xib; sourceTree = "<group>"; };
@@ -256,7 +227,6 @@
 		C6F27B07238F2C5400679E07 /* SolicitudOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudOld.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		F83E44130B69E69A9F87CF21 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,8 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C602557C24A7A9B200C91725 /* PaymentezSDK.framework in Frameworks */,
-				B7B9E1FB6EC2FA4E86BE619B /* Pods_UnTaxi.framework in Frameworks */,
+				7D1AC25B5FCF98C95E0A7F3F /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,18 +244,10 @@
 		806E675426FD1B3FEF7755DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C6024F9324A6F2C500C91725 /* PaymentezSDK.framework */,
-				AFD6565A1FA0002A00C8A5BD /* SocketIO.framework */,
-				AFD656181F9D3C5300C8A5BD /* AFNetworking.framework */,
-				AFD656191F9D3C5300C8A5BD /* Canvas.framework */,
-				AFD6561A1F9D3C5300C8A5BD /* SocketIO.framework */,
-				B52CA4991DE0B69300E9782C /* Canvas.framework */,
-				B5BF37841DDCB48400301DA4 /* SocketIO.framework */,
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
-				84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				F83E44130B69E69A9F87CF21 /* Pods_UnTaxi.framework */,
+				B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -399,18 +360,8 @@
 				C61F347B248EE6B5006A07F6 /* OfertaList */,
 				C6C3A503245F335A0084F409 /* Perfil */,
 				C626F507248D8EAE0062C0BA /* Completada */,
-				C602557F24A7AB3800C91725 /* Payment */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		C602557F24A7AB3800C91725 /* Payment */ = {
-			isa = PBXGroup;
-			children = (
-				C602558024A7AB7600C91725 /* PaymentController.swift */,
-				C602558924AC37FA00C91725 /* PaymentTableExt.swift */,
-			);
-			path = Payment;
 			sourceTree = "<group>";
 		};
 		C602558424AAE9F300C91725 /* Payments */ = {
@@ -621,10 +572,8 @@
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6452802E70C3E4B9F49D4A19 /* Pods-UnTaxi.debug.xcconfig */,
-				31F73D020FE0B92313358D2A /* Pods-UnTaxi.release.xcconfig */,
-				72AA2D0CAD927D876E3533F1 /* Pods-PremiumCar.debug.xcconfig */,
-				8AEC673BDF8ABB17D5FF8D07 /* Pods-PremiumCar.release.xcconfig */,
+				020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */,
+				C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -636,15 +585,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				18D1BC73067A538FC329D4A5 /* [CP] Check Pods Manifest.lock */,
+				1AC0E66EB815C4BDB1E68B14 /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				569F72D6070528E2F5C797F1 /* [CP] Embed Pods Frameworks */,
-				C602557B24A7A94A00C91725 /* ShellScript */,
-				C602557E24A7A9B200C91725 /* Embed Frameworks */,
-				FD36F994452DC4C4352DF301 /* [CP] Copy Pods Resources */,
+				49A6E17D340E55759A3215A7 /* [CP] Embed Pods Frameworks */,
+				E623CDB0852B5621BA8FC16B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -747,7 +694,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18D1BC73067A538FC329D4A5 /* [CP] Check Pods Manifest.lock */ = {
+		1AC0E66EB815C4BDB1E68B14 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -769,7 +716,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		569F72D6070528E2F5C797F1 /* [CP] Embed Pods Frameworks */ = {
+		49A6E17D340E55759A3215A7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -783,9 +730,6 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/0DEC04F2-39CE-30A5-ABA3-C8A0C31461C2.bcsymbolmap",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/B952BDC9-D9B8-3E32-A512-2265616D60B1.bcsymbolmap",
 				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
@@ -805,9 +749,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
-				"${BUILT_PRODUCTS_DIR}/0DEC04F2-39CE-30A5-ABA3-C8A0C31461C2.bcsymbolmap",
-				"${BUILT_PRODUCTS_DIR}/B952BDC9-D9B8-3E32-A512-2265616D60B1.bcsymbolmap",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
@@ -822,23 +763,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C602557B24A7A94A00C91725 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/PaymentezSDK.framework/install_dynamic.sh\"\n";
 		};
 		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -860,7 +784,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		FD36F994452DC4C4352DF301 /* [CP] Copy Pods Resources */ = {
+		E623CDB0852B5621BA8FC16B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -911,7 +835,6 @@
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
-				C602558A24AC37FA00C91725 /* PaymentTableExt.swift in Sources */,
 				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* Telefono.swift in Sources */,
@@ -938,7 +861,6 @@
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
 				C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */,
 				C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */,
-				C602558124A7AB7600C91725 /* PaymentController.swift in Sources */,
 				C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */,
 				C60C16562302736B0090F4E0 /* OurDate.swift in Sources */,
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
@@ -1029,7 +951,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1085,7 +1007,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1099,9 +1021,8 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6452802E70C3E4B9F49D4A19 /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = 020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -1113,63 +1034,14 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/GoogleMaps/Frameworks",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/TSVoiceConverter",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Canvas",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Socket.IO-Client-Swift",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Socket.IO-Client-Swift",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Canvas",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphoneos",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/paymentez-ios/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-					"$(PROJECT_DIR)/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
@@ -1183,9 +1055,8 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31F73D020FE0B92313358D2A /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -1196,63 +1067,14 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/GoogleMaps/Frameworks",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/TSVoiceConverter",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Canvas",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Socket.IO-Client-Swift",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Socket.IO-Client-Swift",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Release-iphoneos/Canvas",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios/build/Release-iphoneos",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKSwift",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDKObjC/PaymentezSDKObjC",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-universal",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphonesimulator",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/Release-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/paymentez-ios/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-					"$(PROJECT_DIR)/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/CardIO",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK/DeviceCollectorLibrary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/PaymentezSDK",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/i386/Binary",
-					"$(PROJECT_DIR)/paymentez-ios\\ copy/build/PaymentezSDK.build/Release-iphonesimulator/PaymentezSDK.build/Objects-normal/x86_64/Binary",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;

@@ -9,9 +9,10 @@
 import UIKit
 
 extension UIButton{
-  func addBorder() {
+  func addBorder(color: UIColor) {
     self.layer.borderWidth = 1
     self.layer.cornerRadius = 5
+    self.layer.borderColor = color.cgColor
   }
   
   func addUnderline(){

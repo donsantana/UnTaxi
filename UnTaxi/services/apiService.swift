@@ -13,6 +13,7 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, registerUserAPI msg: String)
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI msg: String)
+  func apiRequest(_ controller: ApiService, changeClaveAPI msg: String)
   func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool)
   func apiRequest(_ controller: ApiService, getLoginToken token: String)
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any])
@@ -92,6 +93,32 @@ final class ApiService {
         do {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           self.delegate?.apiRequest(self, createNewClaveAPI: json["msg"] as! String)
+        } catch {
+          print("error")
+        }
+      }else{
+        self.handlerExceptions(error: "API error")
+      }
+    })
+    
+    task.resume()
+  }
+  
+  func changeClaveAPI(params: Dictionary<String, String>){
+    var request = URLRequest(url: URL(string: GlobalConstants.passChangeUrl)!)
+    request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "POST"
+    request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+      let response = response as! HTTPURLResponse
+      print("heree \(error) \(response.statusCode)")
+      if error == nil && response.statusCode == 200{
+        do {
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          self.delegate?.apiRequest(self, changeClaveAPI: json["msg"] as! String)
         } catch {
           print("error")
         }
@@ -231,78 +258,6 @@ final class ApiService {
     let parameters = ["idsolicitud": solicitud.id, "idtaxi": solicitud.taxi.id] as [String: AnyObject]
     
     self.uploadFile(serverUrl: GlobalConstants.subiraudioUrl, parameters: parameters, localFilePath: recordedFilePath, fileName: name, mimetype: mimetype)
-//    var request : NSMutableURLRequest = NSMutableURLRequest()
-//    request = URLRequest(url: URL(string:GlobalConstants.subiraudioUrl as String)!) as! NSMutableURLRequest
-//    request.httpMethod = "POST"
-//    let boundary = "--------14737809831466499882746641449----"
-//    //define the multipart request type
-//    request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-//    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
-//    let currentFilename = name
-//    let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-//    //let docsDir: AnyObject=dirPaths[0]
-//    let recordedFilePath = NSHomeDirectory() + "/Library/Caches/Audio" + name
-//    //docsDir.stringByAppendingPathComponent(self.currentFilename)
-//    let recordedFileURL = URL(fileURLWithPath: recordedFilePath)
-//    let recordedAudio: Data? = try? Data(contentsOf: recordedFileURL)
-//    //    let image_data = UIImage(named: "clave")!.pngData()!
-//    //    if(image_data == nil){
-//    //      return
-//    //    }
-//    let body = NSMutableData()
-//    let fname = name
-//    let mimetype = "audio/x-m4a"
-//
-//    let header1 = "Content-Disposition: form-data; name=\"idsolicitud\"\r\n\r\n".data(using: .utf8)
-//    let header2 = "Content-Disposition: form-data; name=\"idtaxi\"\r\n\r\n".data(using: .utf8)
-//
-//    //define the data post parameter
-//    body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
-//    body.append("Content-Disposition:form-data; name=\"file\"\r\n\r\n".data(using: String.Encoding.utf8)!)
-//    body.append("hi\r\n".data(using: String.Encoding.utf8)!)
-//    body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
-//    body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".data(using: String.Encoding.utf8)!)
-//    body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
-//    body.append(recordedAudio!)
-//    body.append("\r\n".data(using: String.Encoding.utf8)!)
-//
-//    body.append(("--\(boundary)\r\n").data(using: .utf8)!)
-//    body.append(header1!)
-//    body.append(("\(solicitud.id)\r\n").data(using: .utf8)!)
-//
-//    body.append(("--\(boundary)\r\n").data(using: .utf8)!)
-//    body.append(header2!)
-//    body.append(("\(solicitud.taxi.id)\r\n").data(using: .utf8)!)
-//
-//    body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
-//    request.httpBody = body as Data
-//    print("subiendo audio")
-//    let session = URLSession.shared
-//    let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-//      print("API \(response as? HTTPURLResponse)")
-//      guard let data = data, error == nil else {
-//        print("SUbida")
-//        // check for fundamental networking error
-//        // print("error=\(String(describing: error))")
-//        return
-//      }
-//      if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-//        // print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//        print("response = \(String(describing: response))")
-//      }
-//      //                }else{
-//      //                    do {
-//      //                        self.responseDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
-//      //                        // self.Responsedata = data as NSData
-//      //                        //self.responseDictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: AnyObject] as NSDictionary;
-//      //
-//      //                        self.delegate?.responseReceived()
-//      //                    } catch {
-//      //                        //print("error serializing JSON: \(error)")
-//      //                    }
-//      //                }
-//    }
-//    task.resume()
   }
   
   func listCardsAPIService(){
@@ -392,6 +347,7 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, registerUserAPI msg: String){}
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI msg: String){}
+  func apiRequest(_ controller: ApiService, changeClaveAPI msg: String){}
   func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool){}
   func apiRequest(_ controller: ApiService, getServerData serverData: String){}
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}

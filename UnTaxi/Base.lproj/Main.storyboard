@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1251,8 +1251,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EUu-lI-KvT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWN-9L-IWf">
-                                <rect key="frame" x="333" y="494" width="50" height="50"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWN-9L-IWf">
+                                <rect key="frame" x="324" y="386" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Gpm-P4-iOc"/>
                                     <constraint firstAttribute="height" constant="50" id="TOs-RV-hcn"/>
@@ -1593,12 +1593,14 @@
                             <constraint firstItem="abh-oA-1dD" firstAttribute="trailing" secondItem="ZXY-vy-45L" secondAttribute="trailing" id="4gg-Bg-m1Y"/>
                             <constraint firstItem="EUu-lI-KvT" firstAttribute="top" secondItem="ZXY-vy-45L" secondAttribute="topMargin" constant="-44" id="9GA-e4-wR7"/>
                             <constraint firstItem="EUu-lI-KvT" firstAttribute="trailing" secondItem="ZXY-vy-45L" secondAttribute="trailing" id="AZD-E8-xwf"/>
+                            <constraint firstItem="eWN-9L-IWf" firstAttribute="bottom" secondItem="uCv-a2-JFK" secondAttribute="top" constant="-10" id="LU7-or-Lxy"/>
                             <constraint firstItem="uCv-a2-JFK" firstAttribute="bottom" secondItem="ZXY-vy-45L" secondAttribute="bottom" constant="-380" id="Rig-Sy-bdf"/>
                             <constraint firstItem="abh-oA-1dD" firstAttribute="bottom" secondItem="ZXY-vy-45L" secondAttribute="bottom" id="a2g-Ib-XWf"/>
                             <constraint firstItem="abh-oA-1dD" firstAttribute="leading" secondItem="ZXY-vy-45L" secondAttribute="leading" id="gqZ-od-5zI"/>
                             <constraint firstAttribute="bottom" secondItem="1Vg-hY-3BY" secondAttribute="bottom" constant="15" id="qaJ-dt-9t6"/>
                             <constraint firstAttribute="trailing" secondItem="1Vg-hY-3BY" secondAttribute="trailing" id="rjz-b8-VI0"/>
                             <constraint firstItem="EUu-lI-KvT" firstAttribute="leading" secondItem="ZXY-vy-45L" secondAttribute="leading" id="vgI-ZN-NBd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eWN-9L-IWf" secondAttribute="trailing" constant="20" id="yf4-AH-OqF"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1860,7 +1862,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFm-ZK-aI2">
-                                                <rect key="frame" x="106.5" y="647" width="177.5" height="40"/>
+                                                <rect key="frame" x="62" y="647" width="266" height="40"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.81568627449999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nHL-mY-b8f"/>
@@ -1899,7 +1901,7 @@
                                             <constraint firstItem="kSb-JE-atr" firstAttribute="trailing" secondItem="HMX-na-iJR" secondAttribute="trailing" id="ZNO-F0-cld"/>
                                             <constraint firstItem="sFm-ZK-aI2" firstAttribute="centerX" secondItem="FrD-7j-UnX" secondAttribute="centerX" constant="-2" id="Zje-OD-pQD"/>
                                             <constraint firstItem="HMX-na-iJR" firstAttribute="top" secondItem="Q2c-3R-i2R" secondAttribute="bottom" constant="7" id="cC0-4B-RRA"/>
-                                            <constraint firstItem="sFm-ZK-aI2" firstAttribute="width" secondItem="kSb-JE-atr" secondAttribute="width" multiplier="0.5" constant="0.5" id="dcH-af-FaL"/>
+                                            <constraint firstItem="sFm-ZK-aI2" firstAttribute="width" secondItem="kSb-JE-atr" secondAttribute="width" multiplier="0.75" constant="0.5" id="dcH-af-FaL"/>
                                             <constraint firstItem="kSb-JE-atr" firstAttribute="leading" secondItem="Q2c-3R-i2R" secondAttribute="leading" id="eZl-gh-Mjk"/>
                                             <constraint firstItem="Q2c-3R-i2R" firstAttribute="top" secondItem="FrD-7j-UnX" secondAttribute="top" constant="5" id="s7e-ax-LIA"/>
                                             <constraint firstItem="sFm-ZK-aI2" firstAttribute="top" secondItem="kSb-JE-atr" secondAttribute="bottom" constant="20" id="tZw-hL-i9s"/>
@@ -1926,9 +1928,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84A-te-Seh">
-                                <rect key="frame" x="116" y="802" width="179" height="30"/>
+                                <rect key="frame" x="73" y="802" width="264" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Cambiar contraseña"/>
+                                <state key="normal" title="Cambiar contraseña">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="changePassword:" destination="d0f-sE-lC7" eventType="touchUpInside" id="MT8-Qu-Z7H"/>
                                 </connections>
@@ -1941,7 +1950,7 @@
                             <constraint firstItem="84A-te-Seh" firstAttribute="top" secondItem="sFm-ZK-aI2" secondAttribute="bottom" constant="20" id="UDj-Wv-MEX"/>
                             <constraint firstAttribute="trailing" secondItem="ojg-L1-iY2" secondAttribute="trailing" constant="10" id="eAn-F4-GZK"/>
                             <constraint firstItem="84A-te-Seh" firstAttribute="leading" secondItem="sFm-ZK-aI2" secondAttribute="leading" id="iIV-fD-6wr"/>
-                            <constraint firstItem="84A-te-Seh" firstAttribute="height" secondItem="sFm-ZK-aI2" secondAttribute="height" multiplier="0.75" id="pn9-3p-CbL"/>
+                            <constraint firstItem="84A-te-Seh" firstAttribute="height" secondItem="sFm-ZK-aI2" secondAttribute="height" id="pn9-3p-CbL"/>
                             <constraint firstItem="84A-te-Seh" firstAttribute="trailing" secondItem="sFm-ZK-aI2" secondAttribute="trailing" id="rZY-ZT-5yW"/>
                         </constraints>
                     </view>
@@ -1949,6 +1958,7 @@
                         <outlet property="ActualizarBtn" destination="sFm-ZK-aI2" id="GTI-jp-ucY"/>
                         <outlet property="NombreApellidoText" destination="HMX-na-iJR" id="XRq-gF-pkX"/>
                         <outlet property="PerfilTable" destination="kSb-JE-atr" id="6BX-bf-reI"/>
+                        <outlet property="changePassBtn" destination="84A-te-Seh" id="0ZC-FP-ELD"/>
                         <outlet property="perfilBackground" destination="ojg-L1-iY2" id="BU2-zA-6Pn"/>
                         <outlet property="perfilViewHeight" destination="kuN-xq-fLU" id="LY0-bu-JjR"/>
                     </connections>
@@ -2011,10 +2021,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkQ-tp-EBe">
-                                <rect key="frame" x="10" y="94.5" width="394" height="707"/>
+                                <rect key="frame" x="10" y="244.5" width="394" height="407"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4d-hr-0B2">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="707"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="407"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cambiar contraseña" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wq-5l-IdX">
                                                 <rect key="frame" x="20" y="34.5" width="354" height="25.5"/>
@@ -2026,7 +2036,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h7k-t0-DBF">
-                                                <rect key="frame" x="20" y="80" width="354" height="547"/>
+                                                <rect key="frame" x="20" y="80" width="354" height="247"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <sections/>
                                                 <userDefinedRuntimeAttributes>
@@ -2040,7 +2050,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWW-CP-ocO">
-                                                <rect key="frame" x="106.5" y="647" width="177.5" height="40"/>
+                                                <rect key="frame" x="62" y="347" width="266" height="40"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.81568627449999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="G6S-UC-fKq"/>
@@ -2054,6 +2064,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="updatePassword:" destination="bOF-Hu-GE2" eventType="touchUpInside" id="6FN-B3-nVD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2064,7 +2077,7 @@
                                             <constraint firstItem="h7k-t0-DBF" firstAttribute="top" secondItem="0wq-5l-IdX" secondAttribute="bottom" constant="20" id="Abg-lm-n6w"/>
                                             <constraint firstAttribute="trailing" secondItem="0wq-5l-IdX" secondAttribute="trailing" constant="20" id="Vgx-Od-Fg9"/>
                                             <constraint firstAttribute="bottom" secondItem="IWW-CP-ocO" secondAttribute="bottom" constant="20" id="VrN-i8-gBd"/>
-                                            <constraint firstItem="IWW-CP-ocO" firstAttribute="width" secondItem="h7k-t0-DBF" secondAttribute="width" multiplier="0.5" constant="0.5" id="W76-6i-6CN"/>
+                                            <constraint firstItem="IWW-CP-ocO" firstAttribute="width" secondItem="h7k-t0-DBF" secondAttribute="width" multiplier="0.75" constant="0.5" id="W76-6i-6CN"/>
                                             <constraint firstItem="IWW-CP-ocO" firstAttribute="centerX" secondItem="y4d-hr-0B2" secondAttribute="centerX" constant="-2" id="cb0-vR-txu"/>
                                             <constraint firstItem="h7k-t0-DBF" firstAttribute="trailing" secondItem="0wq-5l-IdX" secondAttribute="trailing" id="ihJ-mD-Vz0"/>
                                             <constraint firstItem="0wq-5l-IdX" firstAttribute="leading" secondItem="y4d-hr-0B2" secondAttribute="leading" constant="20" id="t1Z-si-A82"/>
@@ -2078,7 +2091,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="707" id="AV2-mf-eIE"/>
+                                    <constraint firstAttribute="height" constant="407" id="AV2-mf-eIE"/>
                                     <constraint firstAttribute="bottom" secondItem="y4d-hr-0B2" secondAttribute="bottom" id="QXF-Wa-UFd"/>
                                     <constraint firstItem="y4d-hr-0B2" firstAttribute="leading" secondItem="bkQ-tp-EBe" secondAttribute="leading" id="iIV-i7-HtK"/>
                                     <constraint firstAttribute="trailing" secondItem="y4d-hr-0B2" secondAttribute="trailing" id="kpc-FQ-6QC"/>

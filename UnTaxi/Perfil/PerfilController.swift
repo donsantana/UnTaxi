@@ -31,6 +31,7 @@ class PerfilController: BaseController {
   @IBOutlet weak var NombreApellidoText: UILabel!
   @IBOutlet weak var PerfilTable: UITableView!
   @IBOutlet weak var ActualizarBtn: UIButton!
+  @IBOutlet weak var changePassBtn: UIButton!
   
   @IBOutlet weak var perfilViewHeight: NSLayoutConstraint!
   
@@ -39,6 +40,7 @@ class PerfilController: BaseController {
     super.barTitle = Customization.nameShowed
     super.viewDidLoad()
     
+    self.changePassBtn.addBorder(color: Customization.buttonActionColor)
     ApiService().delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     

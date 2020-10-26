@@ -42,7 +42,7 @@ class OrigenViewCell: UITableViewCell {
 //    self.destinoAddressTable.delegate = self
 //    self.destinoAddressTable.dataSource = self
 //    self.destinoAddressTable.allowsSelection = true
-    self.reservaBtn.addBorder()
+    self.reservaBtn.addBorder(color: Customization.buttonActionColor)
     self.fechaReserva.text = "Al Momento"
 
     //binding textfield with datePicker
