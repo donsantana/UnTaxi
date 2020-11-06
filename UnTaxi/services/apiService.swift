@@ -106,9 +106,9 @@ final class ApiService {
   
   func changeClaveAPI(params: Dictionary<String, String>){
     var request = URLRequest(url: URL(string: GlobalConstants.passChangeUrl)!)
-    request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
     request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
     request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
     
     let session = URLSession.shared
@@ -120,9 +120,11 @@ final class ApiService {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           self.delegate?.apiRequest(self, changeClaveAPI: json["msg"] as! String)
         } catch {
+          self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
           print("error")
         }
       }else{
+        self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
         self.handlerExceptions(error: "API error")
       }
     })
@@ -130,33 +132,56 @@ final class ApiService {
     task.resume()
   }
   
-  func updateProfileAPI(params: [String: AnyObject]){
-    let recordedFilePath = NSHomeDirectory() + "/Library/Caches/ProfilePhoto"
+  func updateProfileAPI(parameters: [String: AnyObject]){
+    print(globalVariables.cliente.user)
+    //let recordedFilePath = NSHomeDirectory() + "/Library/Caches/Image"
     let mimetype = "image/jpeg"
     
-    self.uploadFile(serverUrl: GlobalConstants.updateProfileUrl, parameters: params, localFilePath: recordedFilePath, fileName: params["movil"] as! String, mimetype: mimetype)
+    var request : NSMutableURLRequest = NSMutableURLRequest()
+    let body = NSMutableData()
+    let boundary = "--------14737809831466499882746641449----"
+    //Add extra parameters
+    
+    for (key, value) in parameters {
+      body.append(("--\(boundary)\r\n").data(using: .utf8)!)
+      body.append(("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n").data(using: .utf8)!)
+      body.append(("\(value)\r\n").data(using: .utf8)!)
+    }
+    
+    request = URLRequest(url: URL(string: GlobalConstants.updateProfileUrl)!) as! NSMutableURLRequest
+    request.httpMethod = "POST"
+    request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+    
+    let fileData: Data = globalVariables.cliente.fotoImage.jpegData(compressionQuality: 1.0)!
+    
+    //Add File to body
+    
+    body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+    body.append("Content-Disposition:form-data; name=\"file\"\r\n\r\n".data(using: .utf8)!)
+    body.append("hi\r\n".data(using: String.Encoding.utf8)!)
+    body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+    body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(globalVariables.cliente.idUsuario).png\"\r\n".data(using: .utf8)!)
+    body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: .utf8)!)
+    body.append(fileData)
+    body.append("\r\n".data(using: String.Encoding.utf8)!)
+    body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+    request.httpBody = body as Data
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+      let statusCode = (response as? HTTPURLResponse)?.statusCode
+      if error == nil && statusCode == 200{
+          self.delegate?.apiRequest(self, updatedProfileAPI: true)
+        print("file uploaded")
+      }else{
+        self.delegate?.apiRequest(self, updatedProfileAPI: false)
+        print("error uploading file")
+      }
+    }
+    task.resume()
   }
-  
-//  func changePasswordAPI(url: String, params: Dictionary<String, String>){
-//    let request = self.apiPOSTRequest(url: url, params: params)
-//    let session = URLSession.shared
-//    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-//      let response = response as! HTTPURLResponse
-//      print("heree \(error) \(response.statusCode)")
-//      if error == nil && response.statusCode == 200{
-//        do {
-//          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-//          self.delegate?.apiRequest(self, createNewClaveAPI: json["msg"] as! String)
-//        } catch {
-//          print("error")
-//        }
-//      }else{
-//        self.handlerExceptions(error: "API error")
-//      }
-//    })
-//
-//    task.resume()
-//  }
   
   func loginToAPIService(user: String, password: String){
     let params = ["user": user, "password": password, "version": "1.0.0"] as Dictionary<String, String>
@@ -175,7 +200,7 @@ final class ApiService {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           print(json["config"] as! [String: Any])
           //self.delegate?.apiRequest(self, getLoginToken: json["token"] as! String)
-          self.delegate?.apiRequest(self, getLoginData: json as! [String: Any])
+          self.delegate?.apiRequest(self, getLoginData: json as [String: Any])
         } catch {
           print("error")
         }
@@ -211,11 +236,11 @@ final class ApiService {
     request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
     
     let recordedFilePath = localFilePath + fileName
-    //docsDir.stringByAppendingPathComponent(self.currentFilename)
     let recordedFileURL = URL(fileURLWithPath: recordedFilePath)
     let fileData: Data? = try? Data(contentsOf: recordedFileURL)
     
     //Add File to body
+    
     body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
     body.append("Content-Disposition:form-data; name=\"file\"\r\n\r\n".data(using: .utf8)!)
     body.append("hi\r\n".data(using: String.Encoding.utf8)!)
@@ -225,7 +250,7 @@ final class ApiService {
     body.append(fileData!)
     body.append("\r\n".data(using: String.Encoding.utf8)!)
     body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-   
+
     request.httpBody = body as Data
     
     let session = URLSession.shared

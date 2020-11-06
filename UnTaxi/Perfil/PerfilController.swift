@@ -8,28 +8,27 @@
 
 import UIKit
 import SocketIO
+import CoreImage
 
 class PerfilController: BaseController {
   
   var userperfil : Cliente!
-  var NuevoTelefonoText: String = ""
-  var NuevoEmailText: String = ""
-  var ClaveActual: String = ""
-  var NuevaClaveText: String = ""
-  var ConfirmeClaveText: String = ""
-  
+
   var login = [String]()
   
-  var perfil2 : UITextField!
+  var camaraController: UIImagePickerController!
   
-  var perfilNombreCell = Bundle.main.loadNibNamed("PerfilNombreCell", owner: self, options: nil)?.first as! PerfilNombreCell
-  var userViewCell = Bundle.main.loadNibNamed("PerfilViewCell", owner: self, options: nil)?.first as! PerfilViewCell
-  var emailViewCell = Bundle.main.loadNibNamed("Perfil2ViewCell", owner: self, options: nil)?.first as! Perfil2ViewCell
+  var apiService = ApiService()
+  
+  var isPhotoUpdated = false
   
   @IBOutlet weak var perfilBackground: UIView!
+  @IBOutlet weak var nombreApellidosText: UITextField!
+  @IBOutlet weak var usuarioText: UITextField!
+  @IBOutlet weak var emailText: UITextField!
+  @IBOutlet weak var userPerfilPhoto: UIImageView!
+  @IBOutlet weak var waitingView: UIVisualEffectView!
   
-  @IBOutlet weak var NombreApellidoText: UILabel!
-  @IBOutlet weak var PerfilTable: UITableView!
   @IBOutlet weak var ActualizarBtn: UIButton!
   @IBOutlet weak var changePassBtn: UIButton!
   
@@ -41,7 +40,7 @@ class PerfilController: BaseController {
     super.viewDidLoad()
     
     self.changePassBtn.addBorder(color: Customization.buttonActionColor)
-    ApiService().delegate = self
+    apiService.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     
     let readString = globalVariables.userDefaults.string(forKey: "loginData") ?? ""
@@ -49,30 +48,17 @@ class PerfilController: BaseController {
     self.login = String(readString).components(separatedBy: ",")
     self.perfilViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 70))
     
-    self.NombreApellidoText.text = globalVariables.cliente.nombreApellidos
-    //MASK: - PARA MOSTRAR Y OCULTAR EL TECLADO
-    //NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    self.nombreApellidosText.text = globalVariables.cliente.nombreApellidos
+    self.usuarioText.text = globalVariables.cliente.user
+    self.emailText.text = globalVariables.cliente.email
+    globalVariables.cliente.cargarPhoto(imageView: self.userPerfilPhoto)
+    self.camaraController = UIImagePickerController()
+    self.camaraController.delegate = self
     
-//    globalVariables.socket.on("UpdateUser"){data, ack in
-//      let temporal = String(describing: data).components(separatedBy: ",")
-//      if temporal[1] == "ok"{
-//        let alertaDos = UIAlertController (title: "Perfil Actualizado", message: "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación.", preferredStyle: UIAlertController.Style.alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//          let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
-//          self.navigationController?.show(vc, sender: nil)
-//        }))
-//
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }else{
-//        let alertaDos = UIAlertController (title: "Error de Perfil", message: "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//
-//        }))
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }
-//    }
-    
-    
+  }
+  
+  func isProfileUpdated()->Bool{
+    return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.user != self.usuarioText.text || globalVariables.cliente.email != self.emailText.text
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,7 +96,7 @@ class PerfilController: BaseController {
   }
   
   func EnviarActualizacion() {
-    if self.NuevoTelefonoText == "" && self.NuevoEmailText == ""{
+    if self.usuarioText.text!.isEmpty && self.emailText.text!.isEmpty{
       let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando en enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         
@@ -120,20 +106,34 @@ class PerfilController: BaseController {
       
     }else{
       let params = [
-        "nombreapellidos": self.perfilNombreCell.nombreApellidosText.text,
-        "movil": self.userViewCell.NuevoValor.text,
-        "email": self.emailViewCell.NuevoValor.text,
-      ]
-      ApiService().updateProfileAPI(params: params as [String: AnyObject])
-      //        let datos = "#UpdateUser," + globalVariables.cliente.idUsuario + "," + globalVariables.cliente.user + "," + self.NuevoTelefonoText + "," + globalVariables.cliente.email + "," + self.NuevoEmailText + "," + self.ClaveActual + ,\(self.NuevaClaveText),# \n"
-      //        EnviarSocket(datos)
+        "nombreapellidos": self.nombreApellidosText.text as Any,
+        "movil": self.usuarioText.text as Any,
+        "email": self.emailText.text as Any,
+      ] as [String : Any]
+      
+      apiService.updateProfileAPI(parameters: params as [String: AnyObject])
     }
   }
 
+  @IBAction func actualizarPhto(_ sender: Any) {
+    self.camaraController.sourceType = .camera
+    self.camaraController.cameraCaptureMode = .photo
+    self.camaraController.cameraDevice = .front
+    self.present(self.camaraController, animated: true, completion: nil)
+  }
+  
   @IBAction func ActualizarPerfil(_ sender: Any) {
-    if self.ConfirmeClaveText != "Las Claves Nuevas no coinciden"{
+    if isPhotoUpdated || self.isProfileUpdated(){
       self.view.endEditing(true)
+      self.waitingView.isHidden = false
       self.EnviarActualizacion()
+    }else{
+      let alertaDos = UIAlertController (title: "Mensaje Error", message: "No se han modificado los datos del perfil. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        
+      }))
+      
+      self.present(alertaDos, animated: true, completion: nil)
     }
   }
   

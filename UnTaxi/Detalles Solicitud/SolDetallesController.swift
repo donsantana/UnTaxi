@@ -266,21 +266,35 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   //CANCELAR SOLICITUDES
   func MostrarMotivoCancelacion(){
     //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-    let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
-    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-      self.CancelarSolicitud("No necesito")
+    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+//    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
+//      self.CancelarSolicitud("No necesito")
+//    }))
+    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
+      self.CancelarSolicitud("Mucho tiempo de espera")
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
-      self.CancelarSolicitud("Demora el servicio")
+    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
+      self.CancelarSolicitud("El taxi no se mueve")
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Tarifa incorrecta")
+    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
+      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
-      self.CancelarSolicitud("Vehículo en mal estado")
+    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
+      self.CancelarSolicitud("Ubicación incorrecta")
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
-      self.CancelarSolicitud("Solo probaba el servicio")
+    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
+      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
+      ac.addTextField()
+      
+      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+        if !ac.textFields![0].text!.isEmpty{
+          self.CancelarSolicitud(ac.textFields![0].text!)
+        }
+      }
+      
+      ac.addAction(submitAction)
+      
+      self.present(ac, animated: true)
     }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
     }))

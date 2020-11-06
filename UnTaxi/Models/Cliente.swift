@@ -6,9 +6,9 @@
 //  Copyright © 2015 Done Santana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Cliente{
+class Cliente{
   var idUsuario: Int!
   var id: Int!
   var user : String!
@@ -18,6 +18,7 @@ struct Cliente{
   var empresa: String!
   var foto: String
   var yapa: Double
+  var fotoImage: UIImage!
   
   //Constructor
   init(){
@@ -39,6 +40,7 @@ struct Cliente{
     self.empresa = empresa
     self.foto = foto
     self.yapa = yapa
+    self.fotoImage = UIImage(named: "chofer")
   }
   
   init(jsonData: [String: Any]){
@@ -51,6 +53,40 @@ struct Cliente{
     self.empresa = jsonData["empresa"] as? String
     self.foto = (jsonData["foto"] != nil) ? jsonData["foto"] as! String : ""
     self.yapa = jsonData["yapa"] as! Double
+    self.fotoImage = UIImage(named: "chofer")
+    
+    let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
+    
+    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+      guard let data = data, error == nil else { return }
+      DispatchQueue.main.sync() {
+        self.fotoImage = UIImage(data: data)
+      }
+    }
+    task.resume()
+  }
+  
+  func updatePhoto(newPhoto: UIImage){
+    self.fotoImage = newPhoto
+  }
+  
+  func cargarPhoto(imageView: UIImageView){
+    if self.foto != ""{
+      let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
+      
+      let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+        guard let data = data, error == nil else { return }
+        DispatchQueue.main.sync() {
+          imageView.contentMode = .scaleAspectFill
+          imageView.image = UIImage(data: data)
+//          imageView.layer.cornerRadius = imageView.bounds.height/2
+//          imageView.clipsToBounds = true
+        }
+      }
+      task.resume()
+    }else{
+      imageView.image = UIImage(named: "chofer")
+    }
   }
   
 }

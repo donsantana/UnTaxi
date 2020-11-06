@@ -38,8 +38,9 @@ extension LoginController{
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
-    let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""
-    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: clientData["idempresa"] as! Int,empresa: clientData["empresa"] as! String,foto: fotoUrl,yapa: clientData["yapa"] as! Double)
+//    let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""
+//    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: clientData["idempresa"] as! Int,empresa: clientData["empresa"] as! String,foto: fotoUrl,yapa: clientData["yapa"] as! Double)
+    globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
     if solicitudesEnProceso.count > 0{
       self.ListSolicitudPendiente(solicitudesEnProceso)

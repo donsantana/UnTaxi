@@ -121,13 +121,11 @@ extension InicioController{
     
     self.formularioDataCellList.append(self.contactoCell)
     self.solicitudFormTable.reloadData()
-
   }
   
   func loadCallCenter(){
     self.socketEmit("telefonosdelcallcenter", datos: [:])
   }
-  
   
   //FUNCTION ENVIO CON TIMER
   func EnviarTimer(estado: Int, datos: String){
@@ -272,52 +270,62 @@ extension InicioController{
   }
   
   //CANCELAR SOLICITUDES
-  func MostrarMotivoCancelacion(idSolicitud: Int){
+  func MostrarMotivoCancelacion(solicitud: Solicitud){
     //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-    let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
-    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-      
-      self.CancelarSolicitudes(idSolicitud, motivo: "No necesito")
-      
+    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+//    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
+//      self.CancelarSolicitud("No necesito", solicitud: solicitud)
+//    }))
+    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
+      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
-      
-      self.CancelarSolicitudes(idSolicitud, motivo: "Demora el servicio")
-      
+    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
+      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
-      
-      self.CancelarSolicitudes(idSolicitud, motivo: "Tarifa incorrecta")
-      
+    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
+      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
-      
-      self.CancelarSolicitudes(idSolicitud, motivo: "Vehículo en mal estado")
-      
+    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
+      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
+    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
+      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
+      ac.addTextField()
       
-      self.CancelarSolicitudes(idSolicitud, motivo: "Solo probaba el servicio")
+      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+        if !ac.textFields![0].text!.isEmpty{
+          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
+        }
+      }
       
+      ac.addAction(submitAction)
+      
+      self.present(ac, animated: true)
     }))
-    
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
     }))
+    
     self.present(motivoAlerta, animated: true, completion: nil)
   }
   
-  func CancelarSolicitudes(_ idSolicitud: Int, motivo: String){
+  func CancelarSolicitud(_ motivo: String, solicitud: Solicitud){
     //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
-    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == idSolicitud}!
-    let datos = globalVariables.solpendientes[solicitudIndex].crearTramaCancelar(motivo: motivo)
-    globalVariables.solpendientes.remove(at: solicitudIndex)
-    if globalVariables.solpendientes.count == 0 {
-      globalVariables.solicitudesproceso = false
-    }
-    if motivo != "Conductor"{
-      self.socketEmit("cancelarservicio", datos: datos)
-    }
+    let datos = solicitud.crearTramaCancelar(motivo: motivo)
+    globalVariables.solpendientes.removeAll{$0.id == solicitud.id}
+    //EnviarSocket(Datos)
+    let vc = R.storyboard.main.inicioView()!
+    vc.socketEmit("cancelarservicio", datos: datos)
+    self.navigationController?.show(vc, sender: nil)
+//    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == idSolicitud}!
+//    let datos = globalVariables.solpendientes[solicitudIndex].crearTramaCancelar(motivo: motivo)
+//    globalVariables.solpendientes.remove(at: solicitudIndex)
+//    if globalVariables.solpendientes.count == 0 {
+//      globalVariables.solicitudesproceso = false
+//    }
+//    if motivo != "Conductor"{
+//      self.socketEmit("cancelarservicio", datos: datos)
+//    }
   }
   
   func CloseAPP(){

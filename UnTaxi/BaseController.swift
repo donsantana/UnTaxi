@@ -21,8 +21,6 @@ class BaseController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
-    
     //TOP MENU
     if !self.hideTopMenu{
       self.topMenu.removeFromSuperview()
@@ -91,6 +89,10 @@ class BaseController: UIViewController {
   
   func getTopMenuBottom() -> CGFloat{
     return (screenBounds.origin.y + 110)
+  }
+  
+  func hideShowMenuBar(isHidden: Bool){
+    self.topMenu.isHidden = isHidden
   }
 }
 

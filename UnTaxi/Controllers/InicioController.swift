@@ -92,6 +92,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var NombreUsuario: UILabel!
   @IBOutlet weak var TransparenciaView: UIVisualEffectView!
   @IBOutlet weak var yapaText: UILabel!
+  @IBOutlet weak var userProfilePhoto: UIImageView!
   
   @IBOutlet weak var SolPendientesView: UIView!
   
@@ -145,6 +146,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //solicitud de autorización para acceder a la localización del usuario
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = Customization.textColor
+    globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
 
     self.MenuTable.delegate = self
     self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
@@ -161,7 +163,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.SolicitudView.addShadow()
     self.SendOferta.addShadow()
     self.LocationBtn.addShadow()
+    self.newOfertaText.addBorder(color: Customization.buttonActionColor)
     self.MensajeEspera.centerVertically()
+    self.TransparenciaView.standardConfig()
     //    self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.lightGray)
     //    self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.lightGray)
     
@@ -334,11 +338,11 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   // CANCELAR LA SOL MIENTRAS SE ESPERA LA FONFIRMACI'ON DEL TAXI
   @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
-    MostrarMotivoCancelacion(idSolicitud: globalVariables.solpendientes.last!.id)
+    MostrarMotivoCancelacion(solicitud: globalVariables.solpendientes.last!)
   }
   
   @IBAction func cancelarSolicitudOferta(_ sender: Any) {
-    MostrarMotivoCancelacion(idSolicitud: globalVariables.solpendientes.last!.id)
+    MostrarMotivoCancelacion(solicitud: globalVariables.solpendientes.last!)
   }
   
   //  @IBAction func MostrarTelefonosCC(_ sender: AnyObject) {

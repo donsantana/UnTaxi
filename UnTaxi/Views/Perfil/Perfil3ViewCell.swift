@@ -47,6 +47,11 @@ class Perfil3ViewCell: UITableViewCell, UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField.isEqual(self.ConfirmeClaveText){
+      if self.ConfirmeClaveText.text != "Las Claves Nuevas no coinciden"{
+        //self.EnviarActualizacion()
+      }
+    }
     textField.resignFirstResponder()
     return true
   }

@@ -9,15 +9,22 @@
 import UIKit
 
 class PassController: BaseController, UIGestureRecognizerDelegate {
-  var passViewCell = Bundle.main.loadNibNamed("Perfil3ViewCell", owner: self, options: nil)?.first as! Perfil3ViewCell
   var apiService = ApiService()
   
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var claveActualText: UITextField!
+  @IBOutlet weak var NuevaClaveText: UITextField!
+  @IBOutlet weak var ConfirmeClaveText: UITextField!
+  @IBOutlet weak var showHideClaveActualBtn: UIButton!
+  @IBOutlet weak var showHideNuevaClaveBtn: UIButton!
+  @IBOutlet weak var showHideConfirmBtn: UIButton!
+  @IBOutlet weak var waitingView: UIVisualEffectView!
   
   override func viewDidLoad() {
-    self.tableView.delegate = self
     super.viewDidLoad()
     self.apiService.delegate = self
+    self.claveActualText.delegate = self
+    self.NuevaClaveText.delegate = self
+    self.ConfirmeClaveText.delegate = self
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
@@ -25,55 +32,90 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   }
   
   func sendUpdatePassword(){
-    self.apiService.changeClaveAPI(params: ["user": String(globalVariables.cliente.id), "password": self.passViewCell.claveActualText.text!, "newpassword": self.passViewCell.NuevaClaveText.text!])
+    self.waitingView.isHidden = false
+    self.apiService.changeClaveAPI(params: ["user": String(globalVariables.cliente.user), "password": self.claveActualText.text!, "newpassword": self.NuevaClaveText.text!])
   }
   
   @objc func ocultarTeclado(sender: UITapGestureRecognizer){
     self.view.endEditing(true)
   }
   
+  func showHidePassword(textField: UITextField){
+    textField.isSecureTextEntry = !textField.isSecureTextEntry
+  }
+  
+  @IBAction func showHideClaveActual(_ sender: Any) {
+    self.showHidePassword(textField: self.claveActualText)
+    self.showHideClaveActualBtn.setImage(UIImage(named: !self.claveActualText.isSecureTextEntry ? "hideClave" : "showClave"), for: .normal)
+  }
+  @IBAction func showHideNuevaClave(_ sender: Any) {
+    self.showHidePassword(textField: self.NuevaClaveText)
+    self.showHideNuevaClaveBtn.setImage(UIImage(named: !self.NuevaClaveText.isSecureTextEntry ? "hideClave" : "showClave"), for: .normal)
+  }
+  @IBAction func showHideConfirmarClave(_ sender: Any) {
+    self.showHidePassword(textField: self.ConfirmeClaveText)
+    self.showHideConfirmBtn.setImage(UIImage(named: !self.ConfirmeClaveText.isSecureTextEntry ? "hideClave" : "showClave"), for: .normal)
+  }
+  
   @IBAction func updatePassword(_ sender: Any) {
-    if self.passViewCell.NuevaClaveText.text != self.passViewCell.ConfirmeClaveText.text{
-      let alertaDos = UIAlertController (title: "Cambiar contraseña", message: "Las Claves Nuevas no coinciden.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }else{
+    if self.NuevaClaveText.text == self.ConfirmeClaveText.text{
       self.sendUpdatePassword()
     }
+    self.ConfirmeClaveText.resignFirstResponder()
   }
 }
 
-extension PassController: UITableViewDelegate, UITableViewDataSource{
-  func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return 1
+extension PassController: UITextFieldDelegate{
+  //CONTROL DE TECLADO VIRTUAL
+  //Funciones para mover los elementos para que no queden detrás del teclado
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    textField.textColor = UIColor.black
+    textField.text?.removeAll()
+    textField.isSecureTextEntry = true
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return 1
+  func textFieldDidEndEditing(_ textfield: UITextField) {
+    textfield.resignFirstResponder()
+    if textfield.isEqual(self.ConfirmeClaveText){
+      if self.NuevaClaveText.text != self.ConfirmeClaveText.text{
+        textfield.textColor = UIColor.red
+        textfield.text = "Las Claves Nuevas no coinciden"
+        textfield.isSecureTextEntry = false
+      }
+    }
   }
   
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = Bundle.main.loadNibNamed("Perfil3ViewCell", owner: self, options: nil)?.first as! Perfil3ViewCell
-    return cell
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField.isEqual(self.ConfirmeClaveText){
+      if self.NuevaClaveText.text == self.ConfirmeClaveText.text{
+        self.sendUpdatePassword()
+      }
+    }
+    textField.resignFirstResponder()
+    return true
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 210
+  func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
+    let movementDuration:TimeInterval = 0.3
+    let movement:CGFloat = ( up ? -moveValue : moveValue)
+    UIView.beginAnimations( "animateView", context: nil)
+    UIView.setAnimationBeginsFromCurrentState(true)
+    UIView.setAnimationDuration(movementDuration)
+    view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
+    UIView.commitAnimations()
   }
 }
 
 extension PassController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, createNewClaveAPI msg: String) {
-      let alertaDos = UIAlertController (title: "Nueva clave creada", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
- 
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-
+  func apiRequest(_ controller: ApiService, changeClaveAPI msg: String){
+    DispatchQueue.main.async {
+      self.waitingView.isHidden = true
+    }
+    let alertaDos = UIAlertController (title: "Cambio de clave", message: msg, preferredStyle: UIAlertController.Style.alert)
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      let vc = R.storyboard.main.inicioView()
+      self.navigationController?.show(vc!, sender: nil)
+    }))
+    self.present(alertaDos, animated: true, completion: nil)
   }
 }

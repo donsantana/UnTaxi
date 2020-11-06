@@ -9,44 +9,6 @@
 import Foundation
 import UIKit
 
-extension PerfilController: UITableViewDelegate, UITableViewDataSource{
-  func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return 1
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return 3
-  }
-  
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    var cell = UITableViewCell()
-    switch indexPath.row {
-    case 0:
-      cell = Bundle.main.loadNibNamed("PerfilNombreCell", owner: self, options: nil)?.first as! PerfilNombreCell
-      (cell as! PerfilNombreCell).nombreApellidosText.text = globalVariables.cliente.nombreApellidos
-    case 1:
-      cell = Bundle.main.loadNibNamed("PerfilViewCell", owner: self, options: nil)?.first as! PerfilViewCell
-      (cell as! PerfilViewCell).NuevoValor.text = globalVariables.cliente.user
-    case 2:
-      cell = Bundle.main.loadNibNamed("Perfil2ViewCell", owner: self, options: nil)?.first as! Perfil2ViewCell
-      (cell as! Perfil2ViewCell).NuevoValor.text = globalVariables.cliente.email
-      
-    default:
-      cell = Bundle.main.loadNibNamed("PerfilViewCell", owner: self, options: nil)?.first as! PerfilViewCell
-    }
-    
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 60
-  }
-}
-
 extension PerfilController: UITextFieldDelegate{
   //CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
@@ -59,44 +21,11 @@ extension PerfilController: UITextFieldDelegate{
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
-    if !(textfield.text?.isEmpty)!{
-      switch textfield.restorationIdentifier! {
-      case "NuevoTelefono":
-        self.NuevoTelefonoText = textfield.text!
-      case "NuevoCorreo":
-        self.NuevoEmailText = textfield.text!
-      case "ClaveActual":
-        self.ClaveActual = textfield.text!
-      case "NuevaClave":
-        self.NuevaClaveText = textfield.text!
-      case "ConfirmeClave":
-        if self.NuevaClaveText != textfield.text{
-          textfield.textColor = UIColor.red
-          textfield.text = "Las Claves Nuevas no coinciden"
-          self.ConfirmeClaveText = "Las Claves Nuevas no coinciden"
-          textfield.isSecureTextEntry = false
-        }else{
-          textfield.isSecureTextEntry = true
-          self.ConfirmeClaveText = textfield.text!
-        }
-      default:
-        self.ConfirmeClaveText = textfield.text!
-      }
-    }
     textfield.resignFirstResponder()
-    if textfield.restorationIdentifier != "NuevoTelefono" && textfield.restorationIdentifier != "NuevoCorreo"{
-      animateViewMoving(false, moveValue: 180, view: self.view)
-    }
-    
   }
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.endEditing(true)
-    if textField.restorationIdentifier == "ConfirmeClave"{
-      if self.ConfirmeClaveText != "Las Claves Nuevas no coinciden"{
-        self.EnviarActualizacion()
-      }
-    }
-    
     return true
   }
   
@@ -134,13 +63,74 @@ extension PerfilController: UITextFieldDelegate{
 
 extension PerfilController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool) {
+    DispatchQueue.main.async {
+      self.waitingView.isHidden = true
+    }
+    
     let alertaDos = UIAlertController (title: status ? "Perfil Actualizado" : "Error de Perfil", message: status ? "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación." : "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      //        let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Inicio") as! InicioController
-      //        self.navigationController?.show(vc, sender: nil)
+      let vc = R.storyboard.main.inicioView()
+      self.navigationController?.show(vc!, sender: nil)
     }))
     
     self.present(alertaDos, animated: true, completion: nil)
   }
 }
 
+extension PerfilController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    // Local variable inserted by Swift 4.2 migrator.
+    let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+    if camaraController.cameraDevice == .front{
+      //let stringType = type as String
+      self.camaraController.dismiss(animated: true, completion: nil)
+      let photoPreview = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
+      self.userPerfilPhoto.image = photoPreview
+      globalVariables.cliente.updatePhoto(newPhoto: photoPreview!)
+      self.isPhotoUpdated = true
+    }else{
+      self.camaraController.dismiss(animated: true, completion: nil)
+      let EditPhoto = UIAlertController (title: NSLocalizedString("Error",comment:"Cambiar la foto de perfil"), message: NSLocalizedString("The profile only accepts selfies photo.", comment:""), preferredStyle: UIAlertController.Style.alert)
+      
+      EditPhoto.addAction(UIAlertAction(title: NSLocalizedString("Take a picture again", comment:"Yes"), style: UIAlertAction.Style.default, handler: {alerAction in
+        self.camaraController.sourceType = .camera
+        self.camaraController.cameraCaptureMode = .photo
+        self.camaraController.cameraDevice = .front
+        self.present(self.camaraController, animated: true, completion: nil)
+      }))
+      EditPhoto.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment:"Cancelar"), style: UIAlertAction.Style.destructive, handler: { action in
+      }))
+      self.present(EditPhoto, animated: true, completion: nil)
+    }
+  }
+  
+  
+  //RENDER IMAGEN
+  func saveImageToFile(_ image: UIImage) -> URL
+  {
+    let filemgr = FileManager.default
+    
+    let dirPaths = filemgr.urls(for: .documentDirectory,
+                                in: .userDomainMask)
+    
+    let fileURL = dirPaths[0].appendingPathComponent(image.description)
+    
+    if let renderedJPEGData =
+      image.jpegData(compressionQuality: 0.5) {
+      try! renderedJPEGData.write(to: fileURL)
+    }
+    
+    return fileURL
+  }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+  return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+  return input.rawValue
+}
