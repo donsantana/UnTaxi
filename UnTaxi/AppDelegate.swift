@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //TabBar
     //UITabBar.appearance().barTintColor = .init(Customization.primaryColor)
     //UITabBar.appearance().tintColor = Customization.textColor
+    //UITabBar.appearance().shadowImage = .none
     
     UILabel.appearance().textColor = Customization.textColor
     //UIButton.appearance().setTitleColor(Customization.buttonsTitleColor,for: .normal)

@@ -62,6 +62,11 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //Menu variables
   var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Terminos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
+  var ofertaItem = UITabBarItem(title: "Oferta", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta"))
+  var taximetroItem = UITabBarItem(title: "Taxímetro", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro"))
+  var horasItem = UITabBarItem(title: "Por Horas", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras"))
+  var pactadaItem = UITabBarItem(title: "Pactada", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada"))
+  
   //variables de interfaz
   var TelefonoContactoText: UITextField!
   
@@ -109,8 +114,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   @IBOutlet weak var solicitudFormTable: UITableView!
   
-  @IBOutlet weak var tipoSolicitudSwitch: UISegmentedControl!
-  
   @IBOutlet weak var addressView: UIView!
   @IBOutlet weak var addressPicker: UIPickerView!
   
@@ -121,6 +124,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var menuCenterDistance: NSLayoutConstraint!
   @IBOutlet weak var yapaTextHeightConstraint: NSLayoutConstraint!
   
+  @IBOutlet weak var tabBar: UITabBar!
   
   override func viewDidLoad() {
     super.hideMenuBtn = false
@@ -128,6 +132,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
     
+    self.tabBar.delegate = self
+    self.tabBar.layer.borderColor = UIColor.clear.cgColor
+    self.tabBar.clipsToBounds = true
     mapView.delegate = self
     mapView.automaticallyAdjustsContentInset = true
     coreLocationManager = CLLocationManager()
@@ -180,7 +187,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
-    self.SolicitudView.addGestureRecognizer(tapGesture)
+    self.solicitudFormTable.addGestureRecognizer(tapGesture)
     
     let MenuTapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarMenu))
     self.TransparenciaView.addGestureRecognizer(MenuTapGesture)
@@ -201,17 +208,31 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
     
-    
     if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
-      if self.tipoSolicitudSwitch.numberOfSegments == 3{
-        self.tipoSolicitudSwitch.insertSegment(withTitle: "Pactada", at: 3, animated: false)
-      }
+//      if self.tipoSolicitudSwitch.numberOfSegments == 3{
+//        self.tipoSolicitudSwitch.insertSegment(withTitle: "Pactada", at: 3, animated: false)
+//      }
+      self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem, self.pactadaItem],animated: true)
+//      if self.tabBar.items?.count == 3{
+//
+//      }
       
       self.socketEmit("direccionespactadas", datos: [
       "idempresa": globalVariables.cliente.idEmpresa!
       ] as [String: Any])
+    }else{
+      self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
     }
   
+    for item in self.tabBar.items!{
+      if let image = item.image
+      {
+        item.image = image.withRenderingMode( .alwaysOriginal)
+        item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
+      }
+    }
+    self.tabBar.selectedItem = self.tabBar.items![0] as UITabBarItem
+    self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: Customization.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
     self.addEnvirSolictudBtn()
     
     globalVariables.socket.on("disconnect"){data, ack in
@@ -270,8 +291,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 //
 //      }
 //    }
-    
-    self.tipoSolicitudSwitch.customColor()
     
     self.socketEventos()
     self.loadFormularioData()
@@ -392,9 +411,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func tipoSolicitudSwitchChanged(_ sender: Any) {
-    self.updateOfertaView.isHidden =
-      !(self.tipoSolicitudSwitch.selectedSegmentIndex == 0)
-    self.loadFormularioData()
+//    self.updateOfertaView.isHidden =
+//      !(self.tabBar.selectedItem == 0)
+//    self.loadFormularioData()
   }
   
   @IBAction func showProfile(_ sender: Any) {

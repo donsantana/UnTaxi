@@ -38,8 +38,8 @@ class HistorialController: BaseController {
         self.tableView.reloadData()
       }
     }
+
   }
-  
   
   func loadHistorialSolicitudes(){
     let vc = R.storyboard.main.inicioView()!

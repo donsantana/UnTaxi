@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,13 +26,13 @@
                     </connections>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSk-uj-Aey">
-                    <rect key="frame" x="50" y="26.5" width="147" height="26.5"/>
+                    <rect key="frame" x="60" y="26.5" width="137" height="26.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagar con Voucher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jir-Jb-Wcu">
-                    <rect key="frame" x="50" y="5" width="119.5" height="21"/>
+                    <rect key="frame" x="60" y="5" width="119.5" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="z2L-39-Xwv"/>
                     </constraints>
@@ -41,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voucherIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-as-aFW">
-                    <rect key="frame" x="10" y="25" width="30" height="30"/>
+                    <rect key="frame" x="20" y="25" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="PRw-Kv-06g"/>
                         <constraint firstAttribute="width" constant="30" id="at1-yj-44N"/>
@@ -53,7 +53,7 @@
                 <constraint firstItem="Jir-Jb-Wcu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="3Qp-XM-6Mq"/>
                 <constraint firstItem="kSk-uj-Aey" firstAttribute="leading" secondItem="Dgp-as-aFW" secondAttribute="trailing" constant="10" id="4yW-mP-yFF"/>
                 <constraint firstItem="gLl-ks-bCz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="6le-Kn-d3p"/>
-                <constraint firstItem="Dgp-as-aFW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="8pR-FE-bp4"/>
+                <constraint firstItem="Dgp-as-aFW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="8pR-FE-bp4"/>
                 <constraint firstItem="kSk-uj-Aey" firstAttribute="height" secondItem="gLl-ks-bCz" secondAttribute="height" multiplier="0.8" id="G0t-p1-LDB"/>
                 <constraint firstItem="kSk-uj-Aey" firstAttribute="bottom" secondItem="gLl-ks-bCz" secondAttribute="bottom" id="fN4-FC-jYt"/>
                 <constraint firstItem="kSk-uj-Aey" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-10" id="g6x-Iu-Xth"/>

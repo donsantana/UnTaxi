@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Dirección de recogida" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rTu-04-cuZ" customClass="HoshiTextField" customModule="TextFieldEffects">
-                    <rect key="frame" x="50" y="0.0" width="344" height="40"/>
+                    <rect key="frame" x="60" y="0.0" width="334" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="AHs-Xz-XHs"/>
                     </constraints>
@@ -37,7 +37,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="origenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hsr-IY-CdD">
-                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                    <rect key="frame" x="20" y="10" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="JIl-e5-1It"/>
                         <constraint firstAttribute="height" constant="30" id="LYn-Li-LGL"/>
@@ -50,7 +50,7 @@
                 <constraint firstItem="rTu-04-cuZ" firstAttribute="leading" secondItem="Hsr-IY-CdD" secondAttribute="trailing" constant="10" id="BeB-X3-zFI"/>
                 <constraint firstItem="Hsr-IY-CdD" firstAttribute="bottom" secondItem="rTu-04-cuZ" secondAttribute="bottom" id="VxL-Bf-XD4"/>
                 <constraint firstItem="rTu-04-cuZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hWf-eB-L2j"/>
-                <constraint firstItem="Hsr-IY-CdD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="nnd-VQ-GJQ"/>
+                <constraint firstItem="Hsr-IY-CdD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="nnd-VQ-GJQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

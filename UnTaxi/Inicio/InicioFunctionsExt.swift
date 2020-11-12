@@ -78,25 +78,11 @@ extension InicioController{
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
     
+    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
     
-//    switch self.tipoSolicitudSwitch.selectedSegmentIndex {
-//    case 0:
-//      self.formularioDataCellList.append(self.destinoCell)
-//      self.ofertaDataCell.initContent(precioInicial: 2.0)
-//      self.formularioDataCellList.append(self.ofertaDataCell)
-//      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
-//    case 1:
-//      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
-//    case 3:
-//      
-//    default:
-//      <#code#>
-//    }
-    
-    self.voucherCell.updateVoucherOption(useVoucher: self.tipoSolicitudSwitch.selectedSegmentIndex != 0)
-    if self.tipoSolicitudSwitch.selectedSegmentIndex == 0 || self.tipoSolicitudSwitch.selectedSegmentIndex == 3{
+    if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.destinoCell)
-      if self.tipoSolicitudSwitch.selectedSegmentIndex == 0{
+      if self.tabBar.selectedItem == self.ofertaItem{
         self.ofertaDataCell.initContent(precioInicial: 2.0)
         self.formularioDataCellList.append(self.ofertaDataCell)
         self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
@@ -108,12 +94,12 @@ extension InicioController{
           self.formularioDataCellList.append(self.destinoCell)
           self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
         }
-        self.tipoSolicitudSwitch.isHidden = false
+        //self.tipoSolicitudSwitch.isHidden = false
     
       }
     }
     
-    if self.tipoSolicitudSwitch.selectedSegmentIndex == 3{
+    if self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.pactadaCell)
     }else{
       self.formularioDataCellList.append(self.voucherCell)
@@ -122,6 +108,55 @@ extension InicioController{
     self.formularioDataCellList.append(self.contactoCell)
     self.solicitudFormTable.reloadData()
   }
+  
+//  func loadFormularioData(){
+//    self.formularioDataCellList.removeAll()
+//    self.formularioDataCellList.append(self.origenCell)
+//
+//
+////    switch self.tabBar.selectedItem {
+////    case 0:
+////      self.formularioDataCellList.append(self.destinoCell)
+////      self.ofertaDataCell.initContent(precioInicial: 2.0)
+////      self.formularioDataCellList.append(self.ofertaDataCell)
+////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+////    case 1:
+////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
+////    case 3:
+////
+////    default:
+////      <#code#>
+////    }
+//
+//    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
+//    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
+//      self.formularioDataCellList.append(self.destinoCell)
+//      if self.tabBar.selectedItem == 0{
+//        self.ofertaDataCell.initContent(precioInicial: 2.0)
+//        self.formularioDataCellList.append(self.ofertaDataCell)
+//        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+//      }
+//    }else{
+//      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
+//      if globalVariables.cliente.idEmpresa != 0{
+//        if self.isVoucherSelected{
+//          self.formularioDataCellList.append(self.destinoCell)
+//          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+//        }
+//        self.tipoSolicitudSwitch.isHidden = false
+//
+//      }
+//    }
+//
+//    if self.tabBar.selectedItem == 3{
+//      self.formularioDataCellList.append(self.pactadaCell)
+//    }else{
+//      self.formularioDataCellList.append(self.voucherCell)
+//    }
+//
+//    self.formularioDataCellList.append(self.contactoCell)
+//    self.solicitudFormTable.reloadData()
+//  }
   
   func loadCallCenter(){
     self.socketEmit("telefonosdelcallcenter", datos: [:])
@@ -228,7 +263,7 @@ extension InicioController{
     SolPendientesView.isHidden = true
     CancelarSolicitudProceso.isHidden = true
     AlertaEsperaView.isHidden = true
-    self.tipoSolicitudSwitch.selectedSegmentIndex = 0
+    self.tabBar.selectedItem = self.ofertaItem
     super.topMenu.isHidden = false
     self.viewDidLoad()
   }
@@ -447,19 +482,20 @@ extension InicioController{
       
       let destinoCoord = self.converAddressToCoord(address: destino)
       
-      let voucher = self.tipoSolicitudSwitch.selectedSegmentIndex != 0 && self.voucherCell.formaPagoSwitch.selectedSegmentIndex == 2 ? "1" : "0"
+      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.voucherCell.formaPagoSwitch.selectedSegmentIndex == 2 ? "1" : "0"
       
       let detalleOferta = "No detalles"
       
       let fechaReserva = ""
       
-      let valorOferta = self.tipoSolicitudSwitch.selectedSegmentIndex == 0 ? Double((self.ofertaDataCell.valorOfertaText.text?.dropFirst())!)! : self.tipoSolicitudSwitch.selectedSegmentIndex == 3 ? pactadaCell.importe : 0.0
+      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text?.dropFirst())!)! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
       
-      mapView.removeAnnotations(mapView!.annotations!)
+      let tipoServicio = self.tabBar.items?.firstIndex(of: self.tabBar.selectedItem!)
+      mapView.removeAnnotations(mapView!.annotations!) 
       
       let nuevaSolicitud = Solicitud()
       self.contactoCell.contactoNameText.text!.isEmpty ? nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!) : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
-      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoSolicitudSwitch.selectedSegmentIndex + 1,yapa: voucherCell.pagarYapaSwitch.isOn)
+      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: voucherCell.pagarYapaSwitch.isOn)
       
       if !self.contactoCell.telefonoText.text!.isEmpty{
         nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
@@ -478,7 +514,7 @@ extension InicioController{
   }
   
   @objc func enviarSolicitud(){
-    if self.tipoSolicitudSwitch.selectedSegmentIndex == 0 {
+    if self.tabBar.selectedItem == self.ofertaItem {
       //if !(self.ofertaDataCell.ofertaText.text?.isEmpty)! && self.ofertaDataCell.ofertaTex != "0"{
       self.crearSolicitudOferta()
       //      }else{

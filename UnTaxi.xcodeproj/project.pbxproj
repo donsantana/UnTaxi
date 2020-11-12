@@ -95,6 +95,7 @@
 		C6A37F0F2554CB7200C79BFF /* DetallesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37F0E2554CB7200C79BFF /* DetallesViewCell.xib */; };
 		C6A37F122554CB8500C79BFF /* DetallesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F112554CB8500C79BFF /* DetallesCell.swift */; };
 		C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */; };
+		C6A37F192557327000C79BFF /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
 		C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
 		C6C3A4F2245F32640084F409 /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
 		C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */; };
@@ -217,6 +218,7 @@
 		C6A37F0E2554CB7200C79BFF /* DetallesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetallesViewCell.xib; sourceTree = "<group>"; };
 		C6A37F112554CB8500C79BFF /* DetallesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesCell.swift; sourceTree = "<group>"; };
 		C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialDetailsController.swift; sourceTree = "<group>"; };
+		C6A37F182557326F00C79BFF /* TerminosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminosController.swift; sourceTree = "<group>"; };
 		C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDelegatesExt.swift; sourceTree = "<group>"; };
 		C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketExt.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6A37F172557325400C79BFF /* Terminos */,
 				C619BE5B253FF97000611B4D /* Historial */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
@@ -538,6 +541,14 @@
 				C6A37F0A2554AB4C00C79BFF /* SolicitudStatus.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		C6A37F172557325400C79BFF /* Terminos */ = {
+			isa = PBXGroup;
+			children = (
+				C6A37F182557326F00C79BFF /* TerminosController.swift */,
+			);
+			path = Terminos;
 			sourceTree = "<group>";
 		};
 		C6C3A4ED245F32640084F409 /* Login */ = {
@@ -864,6 +875,7 @@
 				C63A6B32245F7AF1007B0EE5 /* InicioSocketExt.swift in Sources */,
 				C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */,
 				C6C3A506245F335A0084F409 /* PerfilControllerExt.swift in Sources */,
+				C6A37F192557327000C79BFF /* TerminosController.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,

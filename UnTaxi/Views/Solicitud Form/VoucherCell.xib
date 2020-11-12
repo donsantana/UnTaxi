@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagar con Yapa," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-S6-qqR">
-                            <rect key="frame" x="100" y="47.5" width="294" height="20"/>
+                            <rect key="frame" x="110" y="47.5" width="284" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="tsD-mL-UWI"/>
                             </constraints>
@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-vc-6qw">
-                            <rect key="frame" x="48" y="80" width="140" height="31"/>
+                            <rect key="frame" x="58" y="80" width="140" height="31"/>
                             <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="MHH-hv-EZp"/>
@@ -42,7 +42,7 @@
                             </connections>
                         </segmentedControl>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Información adicional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mZY-UW-aKJ" customClass="HoshiTextField" customModule="TextFieldEffects">
-                            <rect key="frame" x="48" y="0.0" width="346" height="40"/>
+                            <rect key="frame" x="58" y="0.0" width="336" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="3sh-aB-HRl"/>
                             </constraints>
@@ -64,13 +64,13 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="referenciaIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ib0-oj-pax">
-                            <rect key="frame" x="10" y="10" width="30" height="30"/>
+                            <rect key="frame" x="20" y="10" width="30" height="30"/>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ofertaIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zof-AZ-4Ps">
-                            <rect key="frame" x="10" y="80" width="30" height="30"/>
+                            <rect key="frame" x="20" y="80" width="30" height="30"/>
                         </imageView>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-YN-JxF">
-                            <rect key="frame" x="48" y="45" width="49" height="25"/>
+                            <rect key="frame" x="58" y="45" width="49" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="47" id="opJ-ch-jlZ"/>
                                 <constraint firstAttribute="height" constant="25" id="ykt-cu-SJ2"/>
@@ -80,7 +80,7 @@
                     <constraints>
                         <constraint firstItem="mZY-UW-aKJ" firstAttribute="top" secondItem="Jxd-pj-7Tg" secondAttribute="top" id="4OV-b4-X28"/>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="bottom" secondItem="5fJ-vc-6qw" secondAttribute="bottom" id="5mJ-dj-8fg"/>
-                        <constraint firstItem="Ib0-oj-pax" firstAttribute="leading" secondItem="Jxd-pj-7Tg" secondAttribute="leading" constant="10" id="FOg-IP-k4J"/>
+                        <constraint firstItem="Ib0-oj-pax" firstAttribute="leading" secondItem="Jxd-pj-7Tg" secondAttribute="leading" constant="20" id="FOg-IP-k4J"/>
                         <constraint firstItem="qbR-YN-JxF" firstAttribute="leading" secondItem="mZY-UW-aKJ" secondAttribute="leading" id="HVF-0N-m4R"/>
                         <constraint firstItem="rIz-S6-qqR" firstAttribute="trailing" secondItem="mZY-UW-aKJ" secondAttribute="trailing" id="JSU-mt-2Rd"/>
                         <constraint firstItem="5fJ-vc-6qw" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="leading" id="LcG-Ne-Aex"/>

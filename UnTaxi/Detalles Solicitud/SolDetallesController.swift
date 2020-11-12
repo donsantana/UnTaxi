@@ -49,13 +49,9 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var conductorPreview: UIView!
   @IBOutlet weak var ImagenCond: UIImageView!
   @IBOutlet weak var NombreCond: UILabel!
-  @IBOutlet weak var MovilCond: UILabel!
   @IBOutlet weak var MarcaAut: UILabel!
   @IBOutlet weak var ColorAut: UILabel!
   @IBOutlet weak var matriculaAut: UILabel!
-  
-  @IBOutlet weak var AlertaEsperaView: UIView!
-  @IBOutlet weak var MensajeEspera: UITextView!
   
   @IBOutlet weak var valorOfertaIcon: UIImageView!
   @IBOutlet weak var destinoIcon: UIImageView!
@@ -227,14 +223,13 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       self.direccionOrigen.text = solicitudPendiente.dirOrigen
       self.direccionDestino.text = solicitudPendiente.dirDestino
       self.distanciaText.text = "Su taxi está a \(temporal) KM"
-      self.valorOferta.text = "$\(String(format: "%.2f",solicitudPendiente.valorOferta))"
+      self.valorOferta.text = !(solicitudPendiente.valorOferta == 0.0) ? "$\(String(format: "%.2f",solicitudPendiente.valorOferta))" : "Importe \(self.solicitudPendiente.tipoServicio == 2 ? "del Taxímetro" : "por Horas")"
       
       self.reviewConductor.text = "\(solicitudPendiente.taxi.conductor.calificacion) (\(solicitudPendiente.taxi.conductor.cantidadcalificaciones))"
       self.NombreCond.text! = "Conductor: \(solicitudPendiente.taxi.conductor.nombreApellido)"
       self.MarcaAut.text! = "\(solicitudPendiente.taxi.marca) -"
       self.ColorAut.text! = "\(solicitudPendiente.taxi.color)"
       self.matriculaAut.text! = "\(solicitudPendiente.taxi.matricula)"
-      //self.MovilCond.text! = "Movil: \(datosConductor["movil"] as! String)"
       if solicitudPendiente.taxi.conductor.urlFoto != nil && solicitudPendiente.taxi.conductor.urlFoto != ""{
         let url = URL(string:"\(GlobalConstants.urlHost)/\(solicitudPendiente.taxi.conductor.urlFoto)")
         
@@ -251,11 +246,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       
       self.detallesView.isHidden = false
       self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControl.State())
-      
-      
-      self.valorOferta.isHidden = solicitudPendiente.valorOferta == 0.0
-      self.valorOfertaIcon.isHidden = solicitudPendiente.valorOferta == 0.0
-      self.destinoIcon.isHidden = self.direccionDestino.text!.isEmpty
       
     }else{
       self.MapaSolPen.addAnnotation(self.OrigenSolicitud)
@@ -356,10 +346,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   
   //MARK:- BOTNES ACTION
   @IBAction func DatosConductor(_ sender: AnyObject) {
-//    let datos = "#Transporte," + globalVariables.cliente.idUsuario + "," + self.solicitudPendiente.idTaxi + ",# \n"
-//    self.EnviarSocket(datos)
-//    MensajeEspera.text = "Procesando..."
-//    AlertaEsperaView.isHidden = false
     self.detallesView.removeShadow()
     self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 40 : 52) + 15)
     //self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenCell.origenText, attribute: .bottom, multiplier: 1, constant: 0)

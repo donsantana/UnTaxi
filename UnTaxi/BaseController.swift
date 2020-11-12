@@ -51,7 +51,7 @@ class BaseController: UIViewController {
       
       let homeBtn = UIButton(type: UIButton.ButtonType.system)
       homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
-      let homeImage = UIImage(named: hideMenuBtn ? "home" : "menu")?.withRenderingMode(.alwaysTemplate)
+      let homeImage = UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate)
       homeBtn.setImage(homeImage, for: UIControl.State())
       homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
       homeBtn.tintColor = Customization.buttonsTitleColor

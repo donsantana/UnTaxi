@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension HistorialController: UITableViewDelegate{
+extension HistorialController: UITableViewDelegate,UITableViewDataSource{
 
   func numberOfSections(in tableView: UITableView) -> Int {
     // #warning Incomplete implementation, return the number of sections
@@ -30,8 +30,8 @@ extension HistorialController: UITableViewDelegate{
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    if let url = URL(string: "tel://\(telefonosCallCenter[indexPath.row].numero)") {
-//      UIApplication.shared.open(url)
-//    }
+    let vc = R.storyboard.main.historyDetailView()!
+    vc.solicitud = self.historialSolicitudesList[indexPath.row]
+    self.navigationController?.show(vc, sender: nil)
   }
 }
