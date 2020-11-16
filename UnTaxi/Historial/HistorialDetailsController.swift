@@ -47,7 +47,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino
-    self.importeText.text = "$\(solicitud.importe), \(solicitud.)"
+    self.importeText.text = "$\(solicitud.importe)"
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
     

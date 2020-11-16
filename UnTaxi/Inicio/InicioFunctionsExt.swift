@@ -106,6 +106,7 @@ extension InicioController{
     }
     
     self.formularioDataCellList.append(self.contactoCell)
+    print(self.formularioDataCellList.count)
     self.solicitudFormTable.reloadData()
   }
   

@@ -296,7 +296,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.loadFormularioData()
     self.loadCallCenter()
     
-    self.apiService.listCardsAPIService()
+    //self.apiService.listCardsAPIService()
     
   }
   

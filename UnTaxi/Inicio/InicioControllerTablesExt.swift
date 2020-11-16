@@ -12,15 +12,22 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   //TABLA FUNCTIONS
   func numberOfSections(in tableView: UITableView) -> Int {
     // #warning Incomplete implementation, return the number of sections
-    return 1
+    switch tableView {
+    case self.MenuTable:
+      return self.menuArray.count
+    default:
+      return 1
+    }
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     switch tableView {
     case self.MenuTable:
-      return self.MenuArray.count
+      return self.menuArray[section].count
     default:
+      print(self.formularioDataCellList.count)
       return self.formularioDataCellList.count
     }
   }
@@ -30,12 +37,13 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     switch tableView {
     case self.MenuTable:
       let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
-      cell.textLabel?.text = self.MenuArray[indexPath.row].title
+      cell.textLabel?.text = self.menuArray[indexPath.section][indexPath.row].title
       cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 21)
       cell.textLabel?.textColor = Customization.textColor
-      cell.imageView?.image = UIImage(named: self.MenuArray[indexPath.row].imagen)?.imageWithColor(color1: Customization.textColor)
+      cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.textColor)
       return cell
     default:
+     
       return self.formularioDataCellList[indexPath.row]
     }
   }
@@ -45,7 +53,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
       self.TransparenciaView.isHidden = true
       tableView.deselectRow(at: indexPath, animated: false)
       switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
-      case "Solicitudes en proceso"?:
+      case "Viajes en proceso"?:
         if globalVariables.solpendientes.count > 0{
           let vc = R.storyboard.main.listaSolPdtes()
           vc!.solicitudesMostrar = globalVariables.solpendientes
@@ -55,13 +63,17 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
           self.viewDidLoad()
           self.SolPendientesView.isHidden = false
         }
+      case "Historial de Viajes":
+        let vc = R.storyboard.main.historyView()!
+        self.navigationController?.show(vc, sender: nil)
+        
       case "Operadora":
         let vc = R.storyboard.main.callCenter()!
         vc.telefonosCallCenter = globalVariables.TelefonosCallCenter
         self.navigationController?.show(vc, sender: nil)
         
-      case "Perfil":
-        let vc = R.storyboard.main.perfil()!
+      case "Terminos y condiciones":
+        let vc = R.storyboard.main.terminosView()!
         self.navigationController?.show(vc, sender: nil)
         
       case "Compartir app":
@@ -117,16 +129,34 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch tableView {
     case self.MenuTable:
-      return self.MenuTable.frame.height/CGFloat(self.MenuArray.count)
+      return self.MenuTable.frame.height/CGFloat(self.menuArray[0].count + self.menuArray[1].count)
     case self.solicitudFormTable:
-      switch indexPath.row {
-      case 0:
-        return 160
-      default:
-        return 70
-      }
+      print(self.formularioDataCellList[indexPath.row].bounds.height)
+      return self.formularioDataCellList[indexPath.row].bounds.height
+//      switch indexPath.row {
+//      case 0:
+//        return 150
+//      case 1:
+//        return self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem ? 50 : 120
+//      case 2:
+//        return 60
+//      default:
+//        return 80
+//      }
     default:
       return 44
     }
+  }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+      // UIView with darkGray background for section-separators as Section Footer
+      let v = UIView(frame: CGRect(x: 0, y:0, width: tableView.frame.width, height: 1))
+      v.backgroundColor = Customization.textFieldBackColor
+      return v
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+      // Section Footer height
+      return 1.0
   }
 }
