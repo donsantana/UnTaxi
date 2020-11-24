@@ -59,9 +59,9 @@
 	<string>YES</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DS-DIGIT.TTF</string>
-		<string>DS-DIGII.TTF</string>
-		<string>DS-DIGIB.TTF</string>
+		<string>Muli-Bold.ttf</string>
+		<string>Muli.ttf</string>
+		<string>Muli-SemiBold.ttf</string>
 		<string>DS-DIGI.TTF</string>
 	</array>
 	<key>UIBackgroundModes</key>

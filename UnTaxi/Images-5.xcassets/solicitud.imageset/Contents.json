@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "enproceso@2x-1.png",
+      "filename" : "enproceso@3x (2)-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "enproceso@2x.png",
+      "filename" : "enproceso@3x (2).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "enproceso@3x.png",
+      "filename" : "enproceso@3x (1).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

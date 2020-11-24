@@ -38,9 +38,9 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     case self.MenuTable:
       let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
       cell.textLabel?.text = self.menuArray[indexPath.section][indexPath.row].title
-      cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 21)
+      cell.textLabel?.font = AppFont.normalFont
       cell.textLabel?.textColor = Customization.textColor
-      cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.textColor)
+      cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.iconColor)
       return cell
     default:
      
@@ -87,7 +87,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
         {
           // show alert for not available
         }
-      case "Cerrar Sesion":
+      case "Salir":
         //                let fileManager = FileManager()
         //                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
         //                do {
@@ -95,7 +95,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
         //                }catch{
         //
         //                }
-        globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
+        //globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
         self.CloseAPP()
       default:
         print("nada")
@@ -129,9 +129,8 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch tableView {
     case self.MenuTable:
-      return self.MenuTable.frame.height/CGFloat(self.menuArray[0].count + self.menuArray[1].count)
+      return self.MenuTable.frame.height/CGFloat(self.menuArray[0].count + self.menuArray[1].count + self.menuArray[2].count)
     case self.solicitudFormTable:
-      print(self.formularioDataCellList[indexPath.row].bounds.height)
       return self.formularioDataCellList[indexPath.row].bounds.height
 //      switch indexPath.row {
 //      case 0:

@@ -1,5 +1,5 @@
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target "UnTaxi" do
@@ -13,6 +13,10 @@ target "UnTaxi" do
     pod 'GooglePlaces'
     pod 'R.swift'
     pod 'Mapbox-iOS-SDK'
+    pod 'MapboxSearch', ">= 1.0.0-beta"
+    pod 'MapboxSearchUI', ">= 1.0.0-beta"
+    pod 'MapboxGeocoder.swift'
     pod 'CurrencyTextField'
+    pod 'GoogleMaps', '4.0.0'
     
 end

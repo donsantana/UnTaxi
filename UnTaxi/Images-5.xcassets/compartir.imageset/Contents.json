@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "compartir@2x-1.png",
+      "filename" : "compartir@3x (1).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "compartir@2x.png",
+      "filename" : "compartir@3x (1)-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "compartir@3x.png",
+      "filename" : "compartir@3x (2).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

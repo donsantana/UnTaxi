@@ -50,7 +50,7 @@ class SolicitudHistorial {
     self.fechaHora = OurDate(stringDate: json["fechahora"] as! String)
     self.dirOrigen = json["dirorigen"] as! String
     self.dirDestino = (json["dirdestino"] as! String) != "" ? json["dirdestino"] as! String : "No especificado"
-    self.importe = json["importe"] as! Double
+    self.importe = !(json["importe"] is NSNull) ? json["importe"] as! Double : 0.0
     self.tarjeta = json["tarjeta"] as! Bool
     self.yapa =  json["yapa"] as! Bool
     self.matricula = json["matricula"] as! String

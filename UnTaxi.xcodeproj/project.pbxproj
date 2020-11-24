@@ -80,6 +80,17 @@
 		C67004552463B60900FF97AB /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
 		C670045924674BAA00FF97AB /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
+		C6807349256C68280093E4DE /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */; };
+		C680734A256C68280093E4DE /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C680733F256C68220093E4DE /* Muli-SemiBold.ttf */; };
+		C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */; };
+		C680734C256C68280093E4DE /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807341256C68230093E4DE /* Muli-LightItalic.ttf */; };
+		C680734D256C68280093E4DE /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807342256C68240093E4DE /* Muli.ttf */; };
+		C680734E256C68280093E4DE /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807343256C68250093E4DE /* Muli-Bold.ttf */; };
+		C680734F256C68280093E4DE /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */; };
+		C6807350256C68280093E4DE /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807345256C68260093E4DE /* Muli-Light.ttf */; };
+		C6807351256C68280093E4DE /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */; };
+		C6807352256C68280093E4DE /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6807347256C68270093E4DE /* SIL Open Font License.txt */; };
+		C6807353256C68280093E4DE /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807348256C68280093E4DE /* Muli-Italic.ttf */; };
 		C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
 		C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
 		C68DA29C227E39BE0029CD0B /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */; };
@@ -203,6 +214,17 @@
 		C67004542463B60900FF97AB /* Images-5.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-5.xcassets"; sourceTree = "<group>"; };
 		C6700456246612FE00FF97AB /* InicioMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioMapExt.swift; sourceTree = "<group>"; };
 		C670045824674BAA00FF97AB /* mapSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSevice.swift; sourceTree = "<group>"; };
+		C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Semi-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C680733F256C68220093E4DE /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6807341256C68230093E4DE /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6807342256C68240093E4DE /* Muli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Muli.ttf; sourceTree = "<group>"; };
+		C6807343256C68250093E4DE /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
+		C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6807345256C68260093E4DE /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
+		C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6807347256C68270093E4DE /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		C6807348256C68280093E4DE /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
 		C68DA297227E12D40029CD0B /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		C68DA299227E13030029CD0B /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
 		C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -278,6 +300,7 @@
 		84F5713A1BCE958200FC18D5 = {
 			isa = PBXGroup;
 			children = (
+				C680733D256C68030093E4DE /* fonts */,
 				C61F3479248E8F65006A07F6 /* .gitignore */,
 				C68ED7C02298B94400E2F8AC /* R.generated.swift */,
 				84609EE21C758E6F0056A282 /* icons */,
@@ -360,10 +383,10 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C6A37F172557325400C79BFF /* Terminos */,
-				C619BE5B253FF97000611B4D /* Historial */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
+				C619BE5B253FF97000611B4D /* Historial */,
+				C6A37F172557325400C79BFF /* Terminos */,
 				C6C3A4ED245F32640084F409 /* Login */,
 				C6C3A4F7245F32A00084F409 /* Inicio */,
 				C626F508248D8ECB0062C0BA /* Call Center */,
@@ -495,6 +518,24 @@
 				C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C680733D256C68030093E4DE /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C6807343256C68250093E4DE /* Muli-Bold.ttf */,
+				C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */,
+				C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */,
+				C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */,
+				C6807348256C68280093E4DE /* Muli-Italic.ttf */,
+				C6807345256C68260093E4DE /* Muli-Light.ttf */,
+				C6807341256C68230093E4DE /* Muli-LightItalic.ttf */,
+				C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */,
+				C680733F256C68220093E4DE /* Muli-SemiBold.ttf */,
+				C6807342256C68240093E4DE /* Muli.ttf */,
+				C6807347256C68270093E4DE /* SIL Open Font License.txt */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		C68DA295227E0C8F0029CD0B /* Constants */ = {
@@ -704,10 +745,13 @@
 			files = (
 				C6D04CFF2398CD1900ACD70C /* OfertaDataCell.xib in Resources */,
 				C6F0BB1923B7049E00266396 /* SolPendientesCell.xib in Resources */,
+				C680734C256C68280093E4DE /* Muli-LightItalic.ttf in Resources */,
 				C6122892247034710041BB2D /* DestinoCell.xib in Resources */,
 				AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */,
 				AFD656721FA17CD100C8A5BD /* ds_digital in Resources */,
+				C680734E256C68280093E4DE /* Muli-Bold.ttf in Resources */,
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
+				C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */,
 				C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
@@ -717,19 +761,27 @@
 				C6A37EE3254A1F4100C79BFF /* userPhoto.png in Resources */,
 				C602558624AAEA1300C91725 /* CardRow.xib in Resources */,
 				C619BE612541433700611B4D /* PerfilNombreCell.xib in Resources */,
+				C6807349256C68280093E4DE /* Muli-Semi-BoldItalic.ttf in Resources */,
 				AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */,
 				C6CACFB022D2BD5000702430 /* OfertaViewCell.xib in Resources */,
 				C6A37F00255211CC00C79BFF /* HistoryViewCell.xib in Resources */,
+				C6807350256C68280093E4DE /* Muli-Light.ttf in Resources */,
 				C6A37F0F2554CB7200C79BFF /* DetallesViewCell.xib in Resources */,
 				AFD656471F9D42E100C8A5BD /* beep.wav in Resources */,
+				C6807353256C68280093E4DE /* Muli-Italic.ttf in Resources */,
 				B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */,
+				C680734F256C68280093E4DE /* Muli-BoldItalic.ttf in Resources */,
 				AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */,
 				C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */,
+				C680734A256C68280093E4DE /* Muli-SemiBold.ttf in Resources */,
+				C6807351256C68280093E4DE /* Muli-ExtraLightItalic.ttf in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
 				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
 				C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */,
+				C680734D256C68280093E4DE /* Muli.ttf in Resources */,
 				C61F347A248E8F66006A07F6 /* .gitignore in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
+				C6807352256C68280093E4DE /* SIL Open Font License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +824,7 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
 				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
@@ -781,6 +834,8 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -791,6 +846,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
@@ -800,6 +856,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -820,7 +878,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -833,10 +891,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

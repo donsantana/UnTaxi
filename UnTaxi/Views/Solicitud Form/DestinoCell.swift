@@ -13,7 +13,7 @@ class DestinoCell: UITableViewCell {
   
   func initContent(){
     self.destinoText.delegate = self
-    
+    self.destinoText.setBottomBorder(borderColor: Customization.bottomBorderColor)
     self.destinoText.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
   }
   

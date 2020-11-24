@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "operadora@2x-1.png",
+      "filename" : "operadora@3x (2)-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "operadora@2x.png",
+      "filename" : "operadora@3x (2).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "operadora@3x.png",
+      "filename" : "operadora@3x (1).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

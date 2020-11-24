@@ -29,4 +29,5 @@ struct globalVariables {
   static var appConfig = AppConfig()
   static var direccionesPactadas: [DireccionesPactadas] = []
   static var isBigIphone = UIScreen.main.bounds.height > 750
+  
 }

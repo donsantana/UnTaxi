@@ -16,6 +16,7 @@ class BaseController: UIViewController {
   var barTitle = Customization.nameShowed
   var hideTopMenu = false
   var hideMenuBtn = true
+  var hideCloseBtn = true
   let screenBounds = UIScreen.main.bounds
   
   override func viewDidLoad() {
@@ -37,25 +38,26 @@ class BaseController: UIViewController {
 //      baseTitle.textColor = Customization.textColor//.white
 //      baseTitle.text = self.barTitle
 //      topMenu.addSubview(baseTitle)
-      
-      let closeBtn = UIButton(type: UIButton.ButtonType.system)
-      closeBtn.frame = CGRect(x: topMenu.frame.width - 60, y: 15, width: 45, height: 45)
-      let closeImage = UIImage(named: "salir2")?.withRenderingMode(.alwaysTemplate)
-      closeBtn.setImage(closeImage, for: UIControl.State())
-      closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
-      closeBtn.layer.cornerRadius = 5
-      closeBtn.backgroundColor = .white
-      closeBtn.tintColor = Customization.buttonsTitleColor
-      closeBtn.addShadow()
-      topMenu.addSubview(closeBtn)
+      if !hideCloseBtn {
+        let closeBtn = UIButton(type: UIButton.ButtonType.system)
+        closeBtn.frame = CGRect(x: topMenu.frame.width - 60, y: 15, width: 45, height: 45)
+        let closeImage = UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysOriginal)
+        closeBtn.setImage(closeImage, for: UIControl.State())
+        closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
+        closeBtn.layer.cornerRadius = 20
+        //closeBtn.backgroundColor = .white
+        //closeBtn.tintColor = Customization.buttonsTitleColor
+        closeBtn.addShadow()
+        topMenu.addSubview(closeBtn)
+      }
       
       let homeBtn = UIButton(type: UIButton.ButtonType.system)
       homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
       let homeImage = UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate)
       homeBtn.setImage(homeImage, for: UIControl.State())
       homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
-      homeBtn.tintColor = Customization.buttonsTitleColor
-      homeBtn.layer.cornerRadius = 5
+      homeBtn.tintColor = Customization.buttonActionColor
+      homeBtn.layer.cornerRadius = homeBtn.frame.height/2
       homeBtn.backgroundColor = .white
       topMenu.addSubview(homeBtn)
       
@@ -68,16 +70,18 @@ class BaseController: UIViewController {
   
   //MENU BUTTONS FUNCTIONS
   @objc func closeBtnAction(){
+    
     let fileAudio = FileManager()
     let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
     do {
       try fileAudio.removeItem(atPath: AudioPath)
     }catch{
     }
-    let datos = "#SocketClose,\(globalVariables.cliente.id),# \n"
+    let datos = "#SocketClose,\(String(describing: globalVariables.cliente.id)),# \n"
     let vc = R.storyboard.main.inicioView()
     vc!.EnviarSocket(datos)
     exit(3)
+    
   }
   
   @objc func homeBtnAction(){

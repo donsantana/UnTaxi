@@ -20,7 +20,7 @@ extension UILabel {
     }
   
   func addBorder(color: UIColor){
-    self.layer.cornerRadius = 15
+    self.layer.cornerRadius = 10
     self.layer.borderWidth = 1
     self.layer.borderColor = color.cgColor
   }

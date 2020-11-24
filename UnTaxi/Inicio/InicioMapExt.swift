@@ -65,6 +65,10 @@ extension InicioController: MGLMapViewDelegate{
       mapView.addAnnotation(self.origenAnotacion)
     }
   }
+  
+  func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+    //self.loadGeoJson()
+  }
 }
 
 // MGLAnnotationView subclass

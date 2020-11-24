@@ -15,10 +15,26 @@ struct Customization {
   static var nameShowed: String = "PremiumCar"
   static var logo: UIImage!
   static var primaryColor: UIColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1) //#1f1f1f
+  static var lightTextColor: UIColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
   static var textColor: UIColor = UIColor.darkGray
+  static var iconColor: UIColor = UIColor.lightGray
   static var buttonActionColor: UIColor = UIColor(red: 252/255, green: 208/255, blue: 23/255, alpha: 1)
   static var textFieldBackColor: UIColor = UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 1)
+  static var bottomBorderColor: UIColor = .lightGray
   static var usaVoucher: Bool = true
   static var buttonsTitleColor = UIColor.black
-  
 }
+
+struct AppFont {
+  static var appFontFamily = "Muli"
+  static var appBoldFontFamily = "Muli-Bold"
+  static var appMediumFontFamily = "Muli-MemiBold"
+  static var titleFont = UIFont(name: appBoldFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.6))
+  static var inputTextFont = UIFont(name: appFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.6))
+  static var subtitleFont = UIFont(name: appMediumFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.6))
+  static var buttonFont = UIFont(name: appMediumFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.6))
+  static var normalFont = UIFont(name: appFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.6))
+  static var smallFont = UIFont(name: appFontFamily, size: globalVariables.responsive.heightFloatPercent(percent: 1.5))
+}
+
+

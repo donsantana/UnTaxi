@@ -86,7 +86,7 @@ extension PerfilController: UINavigationControllerDelegate, UIImagePickerControl
       //let stringType = type as String
       self.camaraController.dismiss(animated: true, completion: nil)
       let photoPreview = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
-      self.userPerfilPhoto.image = photoPreview
+      self.userPerfilPhoto.image = photoPreview?.scalePreservingAspectRatio(targetSize: CGSize(width: 200, height: 200))
       globalVariables.cliente.updatePhoto(newPhoto: photoPreview!)
       self.isPhotoUpdated = true
     }else{

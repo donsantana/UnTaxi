@@ -25,6 +25,7 @@ class VoucherViewCell: UITableViewCell {
   
   func initContent(isCorporativo: Bool){
     self.formaPagoSwitch.customColor()
+    self.referenciaText.setBottomBorder(borderColor: Customization.bottomBorderColor)
     pagarYapaSwitch.isEnabled = globalVariables.cliente.yapa > 0
     if isCorporativo{
       self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
@@ -32,7 +33,7 @@ class VoucherViewCell: UITableViewCell {
       self.formaPagoImg.image = UIImage(named: "voucherIcon")
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     }
-  
+    
   }
   
   func updateVoucherOption(useVoucher: Bool){
@@ -66,6 +67,8 @@ class VoucherViewCell: UITableViewCell {
 }
 
 extension VoucherViewCell{
-  func voucherSwitch(_ controller: VoucherViewCell, voucherSelected isSelected: Bool){}
+  func voucherSwitch(_ controller: VoucherViewCell, voucherSelected isSelected: Bool){
+    
+  }
 }
 

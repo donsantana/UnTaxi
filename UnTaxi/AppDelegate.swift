@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     UINavigationBar.appearance().tintColor = Customization.textColor
     
     UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : Customization.textColor,
-                                                        .font : UIFont.init(name: "Helvetica Neue", size: 20.0)!]
+                                                        .font : UIFont.init(name: "Muli", size: 20.0)!]
     
     // ToolBar
     UIToolbar.appearance().barTintColor = .init(Customization.primaryColor)
@@ -62,10 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //UITabBar.appearance().shadowImage = .none
     
     UILabel.appearance().textColor = Customization.textColor
-    //UIButton.appearance().setTitleColor(Customization.buttonsTitleColor,for: .normal)
+    UILabel.appearance().font = AppFont.normalFont
+    
+    UITextField.appearance().clearButtonMode = .whileEditing
     UITextField.appearance().textColor = Customization.textColor
     UITextView.appearance().textColor = Customization.textColor
-    UITextField.appearance().font = UIFont(name: "Helvetica Neue", size: CGFloat(Responsive().heightPercent(percent: 1.8)))
+    UITextField.appearance().font = AppFont.inputTextFont
     
     UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Customization.buttonsTitleColor], for: .selected)
     UISegmentedControl.appearance().backgroundColor = .white

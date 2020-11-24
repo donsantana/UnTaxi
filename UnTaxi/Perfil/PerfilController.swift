@@ -28,6 +28,7 @@ class PerfilController: BaseController {
   @IBOutlet weak var emailText: UITextField!
   @IBOutlet weak var userPerfilPhoto: UIImageView!
   @IBOutlet weak var waitingView: UIVisualEffectView!
+  @IBOutlet weak var updatePhto: UIButton!
   
   @IBOutlet weak var ActualizarBtn: UIButton!
   @IBOutlet weak var changePassBtn: UIButton!
@@ -42,6 +43,7 @@ class PerfilController: BaseController {
     self.changePassBtn.addBorder(color: Customization.buttonActionColor)
     apiService.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
+    UILabel.appearance().textColor = .lightGray
     
     let readString = globalVariables.userDefaults.string(forKey: "loginData") ?? ""
     
@@ -54,6 +56,10 @@ class PerfilController: BaseController {
     globalVariables.cliente.cargarPhoto(imageView: self.userPerfilPhoto)
     self.camaraController = UIImagePickerController()
     self.camaraController.delegate = self
+    
+    let updateBtnImage = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+    self.updatePhto.setImage(updateBtnImage, for: UIControl.State())
+    self.updatePhto.tintColor = .white
     
   }
   
@@ -140,6 +146,11 @@ class PerfilController: BaseController {
   @IBAction func changePassword(_ sender: Any) {
     let vc = R.storyboard.main.password()
     self.navigationController?.show(vc!, sender: nil)
+  }
+  @IBAction func cerrarSesion(_ sender: Any) {
+    globalVariables.userDefaults.set(nil, forKey: "accessToken")
+    let vc = R.storyboard.main.inicioView()!
+    vc.CloseAPP()   
   }
   
 }

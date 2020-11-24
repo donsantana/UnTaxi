@@ -17,6 +17,8 @@ class OfertaDataViewCell: UITableViewCell {
   @IBOutlet weak var valorOfertaText: CurrencyTextField!
 
   func initContent(precioInicial: Double){
+    self.valorOfertaText.setBottomBorder(borderColor: .lightGray)
+    self.valorOfertaText.font = UIFont(name: "Muli", size: CGFloat(Responsive().heightPercent(percent: 1.8)))
     self.valorOfertaText.text = "$\(String(format: "%.2f", precioInicial))"
   }
 }

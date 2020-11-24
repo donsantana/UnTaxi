@@ -60,7 +60,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
   
   //Menu variables
-  var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Terminos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
+  var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
   var ofertaItem = UITabBarItem(title: "Oferta", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta"))
   var taximetroItem = UITabBarItem(title: "Taxímetro", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro"))
@@ -126,8 +126,13 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   @IBOutlet weak var tabBar: UITabBar!
   
+  @IBOutlet weak var llamar911Btn: UIButton!
+  @IBOutlet weak var panicoView: UIView!
+  
+  
   override func viewDidLoad() {
     super.hideMenuBtn = false
+    super.hideCloseBtn = false
     super.barTitle = Customization.nameShowed
     super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
@@ -144,6 +149,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.origenCell.origenText.delegate = self
     self.destinoCell.destinoText.delegate = self
     self.voucherCell.delegate = self
+    self.voucherCell.referenciaText.delegate = self
     self.apiService.delegate = self
     
     self.addressPicker.delegate = self
@@ -153,16 +159,18 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //solicitud de autorización para acceder a la localización del usuario
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = Customization.textColor
+    self.NombreUsuario.font = AppFont.subtitleFont
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
 
     self.MenuTable.delegate = self
     self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
     self.MenuView1.layer.borderWidth = 0.3
     self.MenuView1.layer.masksToBounds = false
-    self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 20)
+    self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.menuCenterDistance.constant = Responsive().heightFloatPercent(percent: 2)
-    self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 7)
+    self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: Customization.buttonActionColor)
+    self.yapaText.font = AppFont.titleFont
     
     self.updateOfertaView.addShadow()
     self.AlertaEsperaView.addShadow()
@@ -170,6 +178,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.SolicitudView.addShadow()
     self.SendOferta.addShadow()
     self.LocationBtn.addShadow()
+    self.llamar911Btn.addShadow()
     self.newOfertaText.addBorder(color: Customization.buttonActionColor)
     self.MensajeEspera.centerVertically()
     self.TransparenciaView.standardConfig()
@@ -205,7 +214,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       coreLocationManager.requestWhenInUseAuthorization()
     }
     self.initMapView()
-    
+    self.origenCell.initContent()
+    self.destinoCell.initContent()
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
     
     if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
@@ -318,6 +328,11 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
    self.TransparenciaView.startCanvasAnimation()
    super.topMenu.isHidden = true
  }
+  
+  override func closeBtnAction() {
+    self.panicoView.isHidden = false
+    super.hideShowMenuBar(isHidden: true)
+  }
  
   
   //MARK:- BOTONES GRAFICOS ACCIONES
@@ -437,15 +452,25 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.destinoAddressView.isHidden = true
   }
   
-  @IBAction func cerrarSesion(_ sender: Any) {
-    globalVariables.userDefaults.set(nil, forKey: "accessToken")
-    self.CloseAPP()
+//  @IBAction func cerrarSesion(_ sender: Any) {
+//    globalVariables.userDefaults.set(nil, forKey: "accessToken")
+//    self.CloseAPP()
+//  }
+//
+//  @IBAction func cerrarApp(_ sender: Any) {
+//    self.CloseAPP()
+//  }
+  
+  @IBAction func closePanicoView(_ sender: Any) {
+    self.panicoView.isHidden = true
+    super.hideShowMenuBar(isHidden: false)
   }
   
-  @IBAction func cerrarApp(_ sender: Any) {
-    self.CloseAPP()
+  @IBAction func llamar911(_ sender: Any) {
+    if let url = URL(string: "tel://911") {
+      UIApplication.shared.open(url)
+    }
   }
-  
   
   
 }
