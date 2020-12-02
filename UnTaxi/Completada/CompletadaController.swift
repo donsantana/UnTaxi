@@ -15,6 +15,7 @@ class CompletadaController: BaseController, UITextViewDelegate {
   var conductor = Conductor()
   var evaluacion: CEvaluacion!
   var importe: Double = 0.0
+  var socketService = SocketService()
   
   @IBOutlet weak var completadaBack: UIView!
   @IBOutlet weak var comentarioText: UITextView!
@@ -60,7 +61,8 @@ class CompletadaController: BaseController, UITextViewDelegate {
         "idsolicitud": self.solicitud.id,
         "idconductor": self.conductor.idConductor,
         ] as [String : Any]
-      self.socketEmit("evaluarservicio", datos: datos)
+      socketService.socketEmit("evaluarservicio", datos: datos)
+      //self.socketEmit("evaluarservicio", datos: datos)
     }
     DispatchQueue.main.async {
       let vc = R.storyboard.main.inicioView()!

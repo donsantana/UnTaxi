@@ -11,9 +11,10 @@ import MapKit
 import SocketIO
 import AVFoundation
 import GoogleMobileAds
+import SideMenu
 
 class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate {
-  
+  var socketService = SocketService()
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
   var OrigenSolicitud = MKPointAnnotation()
@@ -23,6 +24,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   var urlSubirVoz = globalVariables.urlSubirVoz
   var apiService = ApiService()
   var responsive = Responsive()
+  var sideMenu: SideMenuNavigationController!
   
   
   //MASK:- VARIABLES INTERFAZ
@@ -64,20 +66,26 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var detallesBottomConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
-    super.hideMenuBtn = true
+    super.hideMenuBtn = false
+    super.hideCloseBtn = false
     super.barTitle = ""
     //super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
     
-    //self.solicitudPendiente = globalVariables.solpendientes[solicitudIndex]
+    self.sideMenu = self.addSideMenu()
+
     self.MapaSolPen.delegate = self
+    self.socketService.delegate = self
+    self.socketService.initListenEventos()
+    
     self.OrigenSolicitud.coordinate = self.solicitudPendiente.origenCoord
     self.OrigenSolicitud.title = "origen"
     //self.detallesView.addShadow()
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()
-    print(self.solicitudPendiente.dirDestino)
-    
+    self.matriculaAut.font = CustomAppFont.titleFont
+    self.distanciaText.font = CustomAppFont.titleFont
+    self.reviewConductor.font = CustomAppFont.smallFont
     self.LlamarCondBtn.addShadow()
     
     let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
@@ -90,11 +98,11 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.adsBannerView.load(GADRequest())
     self.adsBannerView.delegate = self
     
-    self.detallesVHeightConstraint.constant = responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 23 : 28)
-    self.datosCondHeightConstraint.constant = responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 40 : 52)
+    self.detallesVHeightConstraint.constant = responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 20 : 24)
+    self.datosCondHeightConstraint.constant = responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 33 : 40)
     self.detallesBottomConstraint.constant = responsive.heightFloatPercent(percent: 3)
     
-    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 40 : 52) + 15)
+    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 33 : 40) + 15)
 
     if globalVariables.urlConductor != ""{
       self.MensajesBtn.isHidden = false
@@ -136,7 +144,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       break
     }
     
-    self.socketEventos()
+    //self.socketEventos()
   }
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -222,7 +230,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       let temporal = self.solicitudPendiente.DistanciaTaxi()
       self.direccionOrigen.text = solicitudPendiente.dirOrigen
       self.direccionDestino.text = solicitudPendiente.dirDestino
-      self.distanciaText.text = "Su taxi está a \(temporal) KM"
+      self.distanciaText.text = "SU TAXI ESTÁ A \(temporal) KM"
       self.valorOferta.text = !(solicitudPendiente.valorOferta == 0.0) ? "$\(String(format: "%.2f",solicitudPendiente.valorOferta))" : "Importe \(self.solicitudPendiente.tipoServicio == 2 ? "del Taxímetro" : "por Horas")"
       
       self.reviewConductor.text = "\(solicitudPendiente.taxi.conductor.calificacion) (\(solicitudPendiente.taxi.conductor.cantidadcalificaciones))"
@@ -230,7 +238,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       self.MarcaAut.text! = "\(solicitudPendiente.taxi.marca) -"
       self.ColorAut.text! = "\(solicitudPendiente.taxi.color)"
       self.matriculaAut.text! = "\(solicitudPendiente.taxi.matricula)"
-      if solicitudPendiente.taxi.conductor.urlFoto != nil && solicitudPendiente.taxi.conductor.urlFoto != ""{
+      if solicitudPendiente.taxi.conductor.urlFoto != ""{
         let url = URL(string:"\(GlobalConstants.urlHost)/\(solicitudPendiente.taxi.conductor.urlFoto)")
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -331,6 +339,10 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     }
   }
   
+  override func homeBtnAction() {
+    present(sideMenu!, animated: true)
+  }
+  
   //MASK:- ACCIONES DE BOTONES
   //LLAMAR CONDUCTOR
   @IBAction func LLamarConductor(_ sender: AnyObject) {
@@ -347,7 +359,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   //MARK:- BOTNES ACTION
   @IBAction func DatosConductor(_ sender: AnyObject) {
     self.detallesView.removeShadow()
-    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 40 : 52) + 15)
+    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 33 : 40) + 15)
     //self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenCell.origenText, attribute: .bottom, multiplier: 1, constant: 0)
     self.showConductorBtn.isHidden = true
     self.DatosConductor.isHidden = false
@@ -386,7 +398,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   
   @IBAction func cerrarDatosConductor(_ sender: Any) {
     self.detallesView.addShadow()
-    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 23 : 28) + 5)
+    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: UIScreen.main.bounds.height > 750 ? 20 : 24) + 5)
     self.showConductorBtn.isHidden = false
     self.DatosConductor.isHidden = true
   }

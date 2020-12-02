@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
   - CurrencyTextField (2.3)
+  - FloatingPanel (2.0.1)
   - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
@@ -123,6 +124,7 @@ PODS:
   - R.swift (5.3.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - SideMenu (6.5.0)
   - Socket.IO-Client-Swift (15.2.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
@@ -133,6 +135,7 @@ DEPENDENCIES:
   - AFNetworking
   - Canvas
   - CurrencyTextField
+  - FloatingPanel
   - Google-Mobile-Ads-SDK
   - GoogleMaps (= 4.0.0)
   - GooglePlaces
@@ -142,6 +145,7 @@ DEPENDENCIES:
   - MapboxSearchUI (>= 1.0.0-beta)
   - MaterialComponents/TextFields
   - R.swift
+  - SideMenu
   - Socket.IO-Client-Swift
   - SwiftyJSON
   - TextFieldEffects
@@ -151,6 +155,7 @@ SPEC REPOS:
     - AFNetworking
     - Canvas
     - CurrencyTextField
+    - FloatingPanel
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleMaps
@@ -169,6 +174,7 @@ SPEC REPOS:
     - PromisesObjC
     - R.swift
     - R.swift.Library
+    - SideMenu
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftyJSON
@@ -178,6 +184,7 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   CurrencyTextField: 75d8ee80cf245925684b34c9a49ba886f258e2dc
+  FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
@@ -196,11 +203,12 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: fad216d98663c2f350c186971ef860a43fed51d3
+PODFILE CHECKSUM: 22ac2bc73e700e297199088c4318c3211eddb69e
 
 COCOAPODS: 1.10.0

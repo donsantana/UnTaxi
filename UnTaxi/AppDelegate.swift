@@ -62,12 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //UITabBar.appearance().shadowImage = .none
     
     UILabel.appearance().textColor = Customization.textColor
-    UILabel.appearance().font = AppFont.normalFont
+    UILabel.appearance().font = CustomAppFont.normalFont
     
     UITextField.appearance().clearButtonMode = .whileEditing
     UITextField.appearance().textColor = Customization.textColor
+    UITextField.appearance().font = CustomAppFont.inputTextFont
+    
     UITextView.appearance().textColor = Customization.textColor
-    UITextField.appearance().font = AppFont.inputTextFont
+    UITextView.appearance().font = CustomAppFont.normalFont
     
     UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Customization.buttonsTitleColor], for: .selected)
     UISegmentedControl.appearance().backgroundColor = .white

@@ -71,6 +71,8 @@
 		C64363A022EBC44E0006F235 /* OfertasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C643639F22EBC44E0006F235 /* OfertasController.swift */; };
 		C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */; };
 		C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
+		C654899B257728F700BFDBE3 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807343256C68250093E4DE /* Muli-Bold.ttf */; };
+		C654899D257729EC00BFDBE3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F571521BCE958200FC18D5 /* Info.plist */; };
 		C65F9F2A229BA44900E3E304 /* OrigenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F29229BA44900E3E304 /* OrigenCell.xib */; };
 		C65F9F2C229BA46F00E3E304 /* OrigenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F2B229BA46F00E3E304 /* OrigenViewCell.swift */; };
 		C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* VoucherCell.xib */; };
@@ -85,12 +87,18 @@
 		C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */; };
 		C680734C256C68280093E4DE /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807341256C68230093E4DE /* Muli-LightItalic.ttf */; };
 		C680734D256C68280093E4DE /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807342256C68240093E4DE /* Muli.ttf */; };
-		C680734E256C68280093E4DE /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807343256C68250093E4DE /* Muli-Bold.ttf */; };
 		C680734F256C68280093E4DE /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */; };
 		C6807350256C68280093E4DE /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807345256C68260093E4DE /* Muli-Light.ttf */; };
 		C6807351256C68280093E4DE /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */; };
 		C6807352256C68280093E4DE /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6807347256C68270093E4DE /* SIL Open Font License.txt */; };
 		C6807353256C68280093E4DE /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807348256C68280093E4DE /* Muli-Italic.ttf */; };
+		C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
+		C6807397256E18250093E4DE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
+		C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
+		C68073F9256F30200093E4DE /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
+		C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807453256F73EE0093E4DE /* SideMenuTable.swift */; };
+		C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074732571CDDA0093E4DE /* EsperaChildVC.swift */; };
+		C68074772571E9410093E4DE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074762571E9410093E4DE /* SocketService.swift */; };
 		C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
 		C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
 		C68DA29C227E39BE0029CD0B /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */; };
@@ -225,6 +233,13 @@
 		C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		C6807347256C68270093E4DE /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		C6807348256C68280093E4DE /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
+		C680738C256DEAE50093E4DE /* SolicitudPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudPanel.swift; sourceTree = "<group>"; };
+		C6807396256E18250093E4DE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		C68073B7256E21A20093E4DE /* InicioPanelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioPanelExt.swift; sourceTree = "<group>"; };
+		C68073F8256F30200093E4DE /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
+		C6807453256F73EE0093E4DE /* SideMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTable.swift; sourceTree = "<group>"; };
+		C68074732571CDDA0093E4DE /* EsperaChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperaChildVC.swift; sourceTree = "<group>"; };
+		C68074762571E9410093E4DE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		C68DA297227E12D40029CD0B /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		C68DA299227E13030029CD0B /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
 		C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -383,6 +398,7 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C68073D7256E333D0093E4DE /* Menu */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
 				C619BE5B253FF97000611B4D /* Historial */,
@@ -464,6 +480,7 @@
 			children = (
 				C63A6B1E245F63BC007B0EE5 /* apiService.swift */,
 				C670045824674BAA00FF97AB /* mapSevice.swift */,
+				C68074762571E9410093E4DE /* SocketService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -538,6 +555,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		C68073D7256E333D0093E4DE /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C68073F8256F30200093E4DE /* SideMenuController.swift */,
+				C6807453256F73EE0093E4DE /* SideMenuTable.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		C68DA295227E0C8F0029CD0B /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +587,7 @@
 				C6D0597E24997BC10020CFE6 /* UILabel.swift */,
 				C62A20F125321022007BCE37 /* UISegmentedContol.swift */,
 				C6A37F0625546B2300C79BFF /* UIVisualEffectView.swift */,
+				C6807396256E18250093E4DE /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,6 +639,9 @@
 				C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */,
 				C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */,
 				C6700456246612FE00FF97AB /* InicioMapExt.swift */,
+				C680738C256DEAE50093E4DE /* SolicitudPanel.swift */,
+				C68073B7256E21A20093E4DE /* InicioPanelExt.swift */,
+				C68074732571CDDA0093E4DE /* EsperaChildVC.swift */,
 			);
 			path = Inicio;
 			sourceTree = "<group>";
@@ -749,13 +779,14 @@
 				C6122892247034710041BB2D /* DestinoCell.xib in Resources */,
 				AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */,
 				AFD656721FA17CD100C8A5BD /* ds_digital in Resources */,
-				C680734E256C68280093E4DE /* Muli-Bold.ttf in Resources */,
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
 				C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */,
+				C654899D257729EC00BFDBE3 /* Info.plist in Resources */,
 				C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
 				C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */,
+				C654899B257728F700BFDBE3 /* Muli-Bold.ttf in Resources */,
 				C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */,
 				C65F9F2A229BA44900E3E304 /* OrigenCell.xib in Resources */,
 				C6A37EE3254A1F4100C79BFF /* userPhoto.png in Resources */,
@@ -820,6 +851,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
 				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
@@ -829,6 +861,7 @@
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -842,6 +875,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
@@ -851,6 +885,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -878,7 +913,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -911,12 +946,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68073F9256F30200093E4DE /* SideMenuController.swift in Sources */,
 				C6C3A4F2245F32640084F409 /* LoginDelegatesExt.swift in Sources */,
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */,
 				C62A20F225321022007BCE37 /* UISegmentedContol.swift in Sources */,
 				C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */,
 				C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */,
+				C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */,
 				C60C16582302760B0090F4E0 /* UIButton.swift in Sources */,
 				C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
@@ -929,6 +966,7 @@
 				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
 				C6A37F0725546B2300C79BFF /* UIVisualEffectView.swift in Sources */,
+				C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */,
 				C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */,
 				C6C3A507245F335A0084F409 /* PerfilController.swift in Sources */,
 				C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */,
@@ -939,6 +977,7 @@
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
+				C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */,
 				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
 				AFD656441F9D42E100C8A5BD /* Telefono.swift in Sources */,
@@ -954,6 +993,7 @@
 				C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */,
 				AFD656431F9D42E100C8A5BD /* Cliente.swift in Sources */,
 				C63A6B3624610386007B0EE5 /* InicioFunctionsExt.swift in Sources */,
+				C6807397256E18250093E4DE /* UIViewController.swift in Sources */,
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
 				C6122894247034A70041BB2D /* DestinoCell.swift in Sources */,
 				C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */,
@@ -968,7 +1008,9 @@
 				C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */,
 				C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */,
 				C60C16562302736B0090F4E0 /* OurDate.swift in Sources */,
+				C68074772571E9410093E4DE /* SocketService.swift in Sources */,
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
+				C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
 				C670045924674BAA00FF97AB /* mapSevice.swift in Sources */,
 				C6A37F0B2554AB4C00C79BFF /* SolicitudStatus.swift in Sources */,

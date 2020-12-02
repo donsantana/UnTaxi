@@ -14,6 +14,21 @@ import Mapbox
 extension InicioController{
   //MARK:- FUNCIONES PROPIAS
   
+  func checkForNewVersions(){
+    if self.appUpdateAvailable(){
+      
+      let alertaVersion = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. ¿Desea hacerlo en este momento?", preferredStyle: .alert)
+      alertaVersion.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
+        
+        UIApplication.shared.open(URL(string: GlobalConstants.itunesURL)!)
+      }))
+      alertaVersion.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+        exit(0)
+      }))
+      self.present(alertaVersion, animated: true, completion: nil)
+    }
+  }
+  
   func appUpdateAvailable() -> Bool
   {
     let storeInfoURL: String = GlobalConstants.storeInfoURL
@@ -95,7 +110,7 @@ extension InicioController{
           self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 50 : 60)
         }
         //self.tipoSolicitudSwitch.isHidden = false
-    
+        
       }
     }
     
@@ -110,91 +125,92 @@ extension InicioController{
     self.solicitudFormTable.reloadData()
   }
   
-//  func loadFormularioData(){
-//    self.formularioDataCellList.removeAll()
-//    self.formularioDataCellList.append(self.origenCell)
-//
-//
-////    switch self.tabBar.selectedItem {
-////    case 0:
-////      self.formularioDataCellList.append(self.destinoCell)
-////      self.ofertaDataCell.initContent(precioInicial: 2.0)
-////      self.formularioDataCellList.append(self.ofertaDataCell)
-////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
-////    case 1:
-////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
-////    case 3:
-////
-////    default:
-////      <#code#>
-////    }
-//
-//    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
-//    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
-//      self.formularioDataCellList.append(self.destinoCell)
-//      if self.tabBar.selectedItem == 0{
-//        self.ofertaDataCell.initContent(precioInicial: 2.0)
-//        self.formularioDataCellList.append(self.ofertaDataCell)
-//        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-//      }
-//    }else{
-//      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
-//      if globalVariables.cliente.idEmpresa != 0{
-//        if self.isVoucherSelected{
-//          self.formularioDataCellList.append(self.destinoCell)
-//          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-//        }
-//        self.tipoSolicitudSwitch.isHidden = false
-//
-//      }
-//    }
-//
-//    if self.tabBar.selectedItem == 3{
-//      self.formularioDataCellList.append(self.pactadaCell)
-//    }else{
-//      self.formularioDataCellList.append(self.voucherCell)
-//    }
-//
-//    self.formularioDataCellList.append(self.contactoCell)
-//    self.solicitudFormTable.reloadData()
-//  }
+  //  func loadFormularioData(){
+  //    self.formularioDataCellList.removeAll()
+  //    self.formularioDataCellList.append(self.origenCell)
+  //
+  //
+  ////    switch self.tabBar.selectedItem {
+  ////    case 0:
+  ////      self.formularioDataCellList.append(self.destinoCell)
+  ////      self.ofertaDataCell.initContent(precioInicial: 2.0)
+  ////      self.formularioDataCellList.append(self.ofertaDataCell)
+  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+  ////    case 1:
+  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
+  ////    case 3:
+  ////
+  ////    default:
+  ////      <#code#>
+  ////    }
+  //
+  //    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
+  //    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
+  //      self.formularioDataCellList.append(self.destinoCell)
+  //      if self.tabBar.selectedItem == 0{
+  //        self.ofertaDataCell.initContent(precioInicial: 2.0)
+  //        self.formularioDataCellList.append(self.ofertaDataCell)
+  //        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+  //      }
+  //    }else{
+  //      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
+  //      if globalVariables.cliente.idEmpresa != 0{
+  //        if self.isVoucherSelected{
+  //          self.formularioDataCellList.append(self.destinoCell)
+  //          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+  //        }
+  //        self.tipoSolicitudSwitch.isHidden = false
+  //
+  //      }
+  //    }
+  //
+  //    if self.tabBar.selectedItem == 3{
+  //      self.formularioDataCellList.append(self.pactadaCell)
+  //    }else{
+  //      self.formularioDataCellList.append(self.voucherCell)
+  //    }
+  //
+  //    self.formularioDataCellList.append(self.contactoCell)
+  //    self.solicitudFormTable.reloadData()
+  //  }
   
   func loadCallCenter(){
-    self.socketEmit("telefonosdelcallcenter", datos: [:])
+    socketService.socketEmit("telefonosdelcallcenter", datos: [:])
+    //self.socketEmit("telefonosdelcallcenter", datos: [:])
   }
   
-  //FUNCTION ENVIO CON TIMER
-  func EnviarTimer(estado: Int, datos: String){
-    if estado == 1{
-      self.EnviarSocket(datos)
-      if !self.emitTimer.isValid{
-        self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
-      }
-    }else{
-      self.emitTimer.invalidate()
-      self.EnviosCount = 0
-    }
-  }
-  
-  //FUNCIÓN ENVIAR AL SOCKET
-  @objc func EnviarSocket(_ datos: String){
-    if CConexionInternet.isConnectedToNetwork() == true{
-      if globalVariables.socket.status.active && self.EnviosCount <= 3{
-        globalVariables.socket.emit("data",datos)
-        print(datos)
-        //self.EnviarTimer(estado: 1, datos: datos)
-      }else{
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          exit(0)
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    }else{
-      ErrorConexion()
-    }
-  }
-  
+//  //FUNCTION ENVIO CON TIMER
+//  func EnviarTimer(estado: Int, datos: String){
+//    if estado == 1{
+//      self.EnviarSocket(datos)
+//      if !self.emitTimer.isValid{
+//        self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+//      }
+//    }else{
+//      self.emitTimer.invalidate()
+//      self.EnviosCount = 0
+//    }
+//  }
+//
+//  //FUNCIÓN ENVIAR AL SOCKET
+//  @objc func EnviarSocket(_ datos: String){
+//    if CConexionInternet.isConnectedToNetwork() == true{
+//      if globalVariables.socket.status.active && self.EnviosCount <= 3{
+//        globalVariables.socket.emit("data",datos)
+//        print(datos)
+//        //self.EnviarTimer(estado: 1, datos: datos)
+//      }else{
+//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          exit(0)
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//    }else{
+//      ErrorConexion()
+//    }
+//  }
+//
   
   func socketEmit(_ eventName: String, datos: [String: Any]){
     if CConexionInternet.isConnectedToNetwork() == true{
@@ -218,31 +234,28 @@ extension InicioController{
     }
   }
   
-  @objc func EnviarSocket1(_ timer: Timer){
-    if CConexionInternet.isConnectedToNetwork() == true{
-      if globalVariables.socket.status.active && self.EnviosCount <= 3 {
-        self.EnviosCount += 1
-        let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
-        var datos = (userInfo["datos"] as! String)
-        globalVariables.socket.emit("data",datos)
-      }else{
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.EnviarTimer(estado: 0, datos: "Terminado")
-          exit(0)
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    }else{
-      ErrorConexion()
-    }
-  }
+//  @objc func EnviarSocket1(_ timer: Timer){
+//    if CConexionInternet.isConnectedToNetwork() == true{
+//      if globalVariables.socket.status.active && self.EnviosCount <= 3 {
+//        self.EnviosCount += 1
+//        let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+//        var datos = (userInfo["datos"] as! String)
+//        globalVariables.socket.emit("data",datos)
+//      }else{
+//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.EnviarTimer(estado: 0, datos: "Terminado")
+//          exit(0)
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//    }else{
+//      ErrorConexion()
+//    }
+//  }
   
   //FUNCIONES ESCUCHAR SOCKET
   func ErrorConexion(){
-    //self.CargarTelefonos()
-    //AlertaSinConexion.isHidden = false
-    
     let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
       exit(0)
@@ -251,7 +264,6 @@ extension InicioController{
   }
   
   func Inicio(){
-
     self.initMapView()
     self.view.endEditing(true)
     
@@ -262,8 +274,7 @@ extension InicioController{
     self.formularioSolicitud.isHidden = true
     self.SolicitarBtn.isHidden = false
     SolPendientesView.isHidden = true
-    CancelarSolicitudProceso.isHidden = true
-    AlertaEsperaView.isHidden = true
+    //AlertaEsperaView.isHidden = true
     self.tabBar.selectedItem = self.ofertaItem
     super.topMenu.isHidden = false
     self.viewDidLoad()
@@ -288,6 +299,9 @@ extension InicioController{
   func ConfirmaSolicitud(_ newSolicitud : [String:Any]){
     //Trama IN: #Solicitud, ok, idsolicitud, fechahora
     globalVariables.solpendientes.last!.RegistrarFechaHora(Id: newSolicitud["idsolicitud"] as! Int, FechaHora: newSolicitud["fechahora"]  as! String)
+    let vc = R.storyboard.main.esperaChildView()!
+    vc.solicitud = globalVariables.solpendientes.last!
+    self.navigationController?.show(vc, sender: nil)
   }
   
   //FUncion para mostrar los taxis
@@ -309,9 +323,9 @@ extension InicioController{
   func MostrarMotivoCancelacion(solicitud: Solicitud){
     //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
     let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-//    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-//      self.CancelarSolicitud("No necesito", solicitud: solicitud)
-//    }))
+    //    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
+    //      self.CancelarSolicitud("No necesito", solicitud: solicitud)
+    //    }))
     motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
       self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
     }))
@@ -350,18 +364,20 @@ extension InicioController{
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
     globalVariables.solpendientes.removeAll{$0.id == solicitud.id}
     //EnviarSocket(Datos)
-    let vc = R.storyboard.main.inicioView()!
-    vc.socketEmit("cancelarservicio", datos: datos)
-    self.navigationController?.show(vc, sender: nil)
-//    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == idSolicitud}!
-//    let datos = globalVariables.solpendientes[solicitudIndex].crearTramaCancelar(motivo: motivo)
-//    globalVariables.solpendientes.remove(at: solicitudIndex)
-//    if globalVariables.solpendientes.count == 0 {
-//      globalVariables.solicitudesproceso = false
-//    }
-//    if motivo != "Conductor"{
-//      self.socketEmit("cancelarservicio", datos: datos)
-//    }
+    self.socketService.socketEmit("cancelarservicio", datos: datos)
+//    let vc = R.storyboard.main.inicioView()!
+//    vc.socketEmit("cancelarservicio", datos: datos)
+//    self.navigationController?.show(vc, sender: nil)
+    
+    //    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == idSolicitud}!
+    //    let datos = globalVariables.solpendientes[solicitudIndex].crearTramaCancelar(motivo: motivo)
+    //    globalVariables.solpendientes.remove(at: solicitudIndex)
+    //    if globalVariables.solpendientes.count == 0 {
+    //      globalVariables.solicitudesproceso = false
+    //    }
+    //    if motivo != "Conductor"{
+    //      self.socketEmit("cancelarservicio", datos: datos)
+    //    }
   }
   
   func CloseAPP(){
@@ -372,8 +388,9 @@ extension InicioController{
     }catch{
     }
     print("closing app")
-    let datos = "#SocketClose,\(globalVariables.cliente.id),# \n"
-    EnviarSocket(datos)
+    self.socketService.socketEmit("SocketClose", datos: ["idcliente": globalVariables.cliente.id])
+//    let datos = "#SocketClose,\(globalVariables.cliente.id),# \n"
+//    EnviarSocket(datos)
     exit(3)
   }
   
@@ -456,12 +473,17 @@ extension InicioController{
     origenIcono.isHidden = true
     globalVariables.solpendientes.append(nuevaSolicitud)
     
-    self.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
-
-    MensajeEspera.text = "Buscando UnTaxi..."
-    self.AlertaEsperaView.isHidden = false
+    socketService.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
+    //self.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
+    
+    //MensajeEspera.text = "Buscando UnTaxi..."
+    //self.AlertaEsperaView.isHidden = false
     self.origenCell.origenText.text?.removeAll()
     self.voucherCell.referenciaText.text?.removeAll()
+    
+//    let vc = R.storyboard.main.esperaChildView()!
+//    vc.solicitud = nuevaSolicitud
+//    self.navigationController?.show(vc, sender: nil)
   }
   
   func crearSolicitudOferta(){
@@ -529,10 +551,7 @@ extension InicioController{
       self.crearSolicitudOferta()
     }
   }
-  
-  func updateOfertaValue(value: Double){
-    self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
-  }
+
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   
@@ -672,75 +691,75 @@ extension InicioController{
     globalVariables.socket.off("serviciocompletado")
   }
   
-//  func loadGeoJson() {
-//    DispatchQueue.global().async {
-//      // Get the path for example.geojson in the app’s bundle.
-//      guard let jsonUrl = Bundle.main.url(forResource: "example", withExtension: "geojson") else {
-//        preconditionFailure("Failed to load local GeoJSON file")
-//      }
-//
-//      guard let jsonData = try? Data(contentsOf: jsonUrl) else {
-//        preconditionFailure("Failed to parse GeoJSON file")
-//      }
-//
-//      DispatchQueue.main.async {
-//        self.drawPolyline(geoJson: jsonData)
-//      }
-//    }
-//  }
-//
-//  func drawPolyline(geoJson: Data) {
-//    // Add our GeoJSON data to the map as an MGLGeoJSONSource.
-//    // We can then reference this data from an MGLStyleLayer.
-//    // MGLMapView.style is optional, so you must guard against it not being set.
-//    guard let style = self.mapView.style else { return }
-//
-//    guard let shapeFromGeoJSON = try? MGLShape(data: geoJson, encoding: String.Encoding.utf8.rawValue) else {
-//      fatalError("Could not generate MGLShape")
-//    }
-//
-//    let source = MGLShapeSource(identifier: "polyline", shape: shapeFromGeoJSON, options: nil)
-//    style.addSource(source)
-//
-//    // Create new layer for the line.
-//    let layer = MGLLineStyleLayer(identifier: "polyline", source: source)
-//
-//    // Set the line join and cap to a rounded end.
-//    layer.lineJoin = NSExpression(forConstantValue: "round")
-//    layer.lineCap = NSExpression(forConstantValue: "round")
-//
-//    // Set the line color to a constant blue color.
-//    layer.lineColor = NSExpression(forConstantValue: UIColor(red: 59/255, green: 178/255, blue: 208/255, alpha: 1))
-//
-//    // Use `NSExpression` to smoothly adjust the line width from 2pt to 20pt between zoom levels 14 and 18. The `interpolationBase` parameter allows the values to interpolate along an exponential curve.
-//    layer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-//                                   [14: 2, 18: 20])
-//
-//    // We can also add a second layer that will draw a stroke around the original line.
-//    let casingLayer = MGLLineStyleLayer(identifier: "polyline-case", source: source)
-//    // Copy these attributes from the main line layer.
-//    casingLayer.lineJoin = layer.lineJoin
-//    casingLayer.lineCap = layer.lineCap
-//    // Line gap width represents the space before the outline begins, so should match the main line’s line width exactly.
-//    casingLayer.lineGapWidth = layer.lineWidth
-//    // Stroke color slightly darker than the line color.
-//    casingLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 41/255, green: 145/255, blue: 171/255, alpha: 1))
-//    // Use `NSExpression` to gradually increase the stroke width between zoom levels 14 and 18.
-//    casingLayer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)", [14: 1, 18: 4])
-//
-//    // Just for fun, let’s add another copy of the line with a dash pattern.
-//    let dashedLayer = MGLLineStyleLayer(identifier: "polyline-dash", source: source)
-//    dashedLayer.lineJoin = layer.lineJoin
-//    dashedLayer.lineCap = layer.lineCap
-//    dashedLayer.lineColor = NSExpression(forConstantValue: UIColor.white)
-//    dashedLayer.lineOpacity = NSExpression(forConstantValue: 0.5)
-//    dashedLayer.lineWidth = layer.lineWidth
-//    // Dash pattern in the format [dash, gap, dash, gap, ...]. You’ll want to adjust these values based on the line cap style.
-//    dashedLayer.lineDashPattern = NSExpression(forConstantValue: [0, 1.5])
-//
-//    style.addLayer(layer)
-//    style.addLayer(dashedLayer)
-//    style.insertLayer(casingLayer, below: layer)
-//  }
+  //  func loadGeoJson() {
+  //    DispatchQueue.global().async {
+  //      // Get the path for example.geojson in the app’s bundle.
+  //      guard let jsonUrl = Bundle.main.url(forResource: "example", withExtension: "geojson") else {
+  //        preconditionFailure("Failed to load local GeoJSON file")
+  //      }
+  //
+  //      guard let jsonData = try? Data(contentsOf: jsonUrl) else {
+  //        preconditionFailure("Failed to parse GeoJSON file")
+  //      }
+  //
+  //      DispatchQueue.main.async {
+  //        self.drawPolyline(geoJson: jsonData)
+  //      }
+  //    }
+  //  }
+  //
+  //  func drawPolyline(geoJson: Data) {
+  //    // Add our GeoJSON data to the map as an MGLGeoJSONSource.
+  //    // We can then reference this data from an MGLStyleLayer.
+  //    // MGLMapView.style is optional, so you must guard against it not being set.
+  //    guard let style = self.mapView.style else { return }
+  //
+  //    guard let shapeFromGeoJSON = try? MGLShape(data: geoJson, encoding: String.Encoding.utf8.rawValue) else {
+  //      fatalError("Could not generate MGLShape")
+  //    }
+  //
+  //    let source = MGLShapeSource(identifier: "polyline", shape: shapeFromGeoJSON, options: nil)
+  //    style.addSource(source)
+  //
+  //    // Create new layer for the line.
+  //    let layer = MGLLineStyleLayer(identifier: "polyline", source: source)
+  //
+  //    // Set the line join and cap to a rounded end.
+  //    layer.lineJoin = NSExpression(forConstantValue: "round")
+  //    layer.lineCap = NSExpression(forConstantValue: "round")
+  //
+  //    // Set the line color to a constant blue color.
+  //    layer.lineColor = NSExpression(forConstantValue: UIColor(red: 59/255, green: 178/255, blue: 208/255, alpha: 1))
+  //
+  //    // Use `NSExpression` to smoothly adjust the line width from 2pt to 20pt between zoom levels 14 and 18. The `interpolationBase` parameter allows the values to interpolate along an exponential curve.
+  //    layer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
+  //                                   [14: 2, 18: 20])
+  //
+  //    // We can also add a second layer that will draw a stroke around the original line.
+  //    let casingLayer = MGLLineStyleLayer(identifier: "polyline-case", source: source)
+  //    // Copy these attributes from the main line layer.
+  //    casingLayer.lineJoin = layer.lineJoin
+  //    casingLayer.lineCap = layer.lineCap
+  //    // Line gap width represents the space before the outline begins, so should match the main line’s line width exactly.
+  //    casingLayer.lineGapWidth = layer.lineWidth
+  //    // Stroke color slightly darker than the line color.
+  //    casingLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 41/255, green: 145/255, blue: 171/255, alpha: 1))
+  //    // Use `NSExpression` to gradually increase the stroke width between zoom levels 14 and 18.
+  //    casingLayer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)", [14: 1, 18: 4])
+  //
+  //    // Just for fun, let’s add another copy of the line with a dash pattern.
+  //    let dashedLayer = MGLLineStyleLayer(identifier: "polyline-dash", source: source)
+  //    dashedLayer.lineJoin = layer.lineJoin
+  //    dashedLayer.lineCap = layer.lineCap
+  //    dashedLayer.lineColor = NSExpression(forConstantValue: UIColor.white)
+  //    dashedLayer.lineOpacity = NSExpression(forConstantValue: 0.5)
+  //    dashedLayer.lineWidth = layer.lineWidth
+  //    // Dash pattern in the format [dash, gap, dash, gap, ...]. You’ll want to adjust these values based on the line cap style.
+  //    dashedLayer.lineDashPattern = NSExpression(forConstantValue: [0, 1.5])
+  //
+  //    style.addLayer(layer)
+  //    style.addLayer(dashedLayer)
+  //    style.insertLayer(casingLayer, below: layer)
+  //  }
   
 }

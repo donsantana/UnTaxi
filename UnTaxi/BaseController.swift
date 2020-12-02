@@ -77,9 +77,9 @@ class BaseController: UIViewController {
       try fileAudio.removeItem(atPath: AudioPath)
     }catch{
     }
-    let datos = "#SocketClose,\(String(describing: globalVariables.cliente.id)),# \n"
+    //let datos = "#SocketClose,\(String(describing: globalVariables.cliente.id)),# \n"
     let vc = R.storyboard.main.inicioView()
-    vc!.EnviarSocket(datos)
+    vc!.socketService.socketEmit("SocketClose", datos: ["idcliente": globalVariables.cliente.id])
     exit(3)
     
   }

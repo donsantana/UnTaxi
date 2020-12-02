@@ -18,5 +18,6 @@ target "UnTaxi" do
     pod 'MapboxGeocoder.swift'
     pod 'CurrencyTextField'
     pod 'GoogleMaps', '4.0.0'
-    
+    pod 'FloatingPanel'
+    pod 'SideMenu'
 end

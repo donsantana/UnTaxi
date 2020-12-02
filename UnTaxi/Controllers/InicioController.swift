@@ -14,6 +14,10 @@ import AddressBook
 import AVFoundation
 import CoreData
 import Mapbox
+import MapboxSearch
+import MapboxSearchUI
+import FloatingPanel
+import SideMenu
 //import PaymentezSDK
 
 struct MenuData {
@@ -22,6 +26,7 @@ struct MenuData {
 }
 
 class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UIGestureRecognizerDelegate {
+  var socketService = SocketService()
   var coreLocationManager : CLLocationManager!
   var origenAnotacion = MGLPointAnnotation()
   var taxiLocation = MGLPointAnnotation()
@@ -60,25 +65,32 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var DireccionesArray = [[String]]()//[["Dir 1", "Ref1"],["Dir2","Ref2"],["Dir3", "Ref3"],["Dir4","Ref4"],["Dir 5", "Ref5"]]//["Dir 1", "Dir2"]
   
   //Menu variables
+  var sideMenu: SideMenuNavigationController?
+  
   var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
-  var ofertaItem = UITabBarItem(title: "Oferta", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta"))
-  var taximetroItem = UITabBarItem(title: "Taxímetro", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro"))
-  var horasItem = UITabBarItem(title: "Por Horas", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras"))
-  var pactadaItem = UITabBarItem(title: "Pactada", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada"))
+  var ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOfertaSelected"))
+  var taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetroSelected"))
+  var horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHorasSelected"))
+  var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactadaSelected"))
   
   //variables de interfaz
   var TelefonoContactoText: UITextField!
   
   var TablaDirecciones = UITableView()
-  
+
   //CONSTRAINTS
   var btnViewTop: NSLayoutConstraint!
   @IBOutlet weak var formularioSolicitudHeight: NSLayoutConstraint!
   
   //MAP
-  @IBOutlet weak var mapView: MGLMapView!
+  let searchEngine = SearchEngine()
+  var searchController: MapboxSearchController!
+  var panelController: MapboxPanelController!
   
+  var nuevaSolicitud: Solicitud?
+  
+  @IBOutlet weak var mapView: MGLMapView!
   
   @IBOutlet weak var origenIcono: UIImageView!
 
@@ -102,15 +114,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var SolPendientesView: UIView!
   
   @IBOutlet weak var AlertaEsperaView: UIView!
-  @IBOutlet weak var MensajeEspera: UITextView!
-  @IBOutlet weak var updateOfertaView: UIView!
-  @IBOutlet weak var SendOferta: UIButton!
-  @IBOutlet weak var newOfertaText: UILabel!
-  @IBOutlet weak var up25: UIButton!
-  @IBOutlet weak var down25: UIButton!
-  @IBOutlet weak var solicitudInProcess: UILabel!
-  
-  @IBOutlet weak var CancelarSolicitudProceso: UIButton!
   
   @IBOutlet weak var solicitudFormTable: UITableView!
   
@@ -137,6 +140,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
     
+    self.checkForNewVersions()
+    self.socketService.delegate = self
     self.tabBar.delegate = self
     self.tabBar.layer.borderColor = UIColor.clear.cgColor
     self.tabBar.clipsToBounds = true
@@ -155,11 +160,21 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.addressPicker.delegate = self
     self.destinoAddressPicker.delegate = self
     
+    
+    //MARK:- MENU INITIALIZATION
+    self.sideMenu = self.addSideMenu()
+//    let viewController = storyboard?.instantiateViewController(withIdentifier: "MenuView")
+//    sideMenu = SideMenuNavigationController(rootViewController:viewController!)
+//    sideMenu?.leftSide = true
+//     
+//    SideMenuManager.default.leftMenuNavigationController = sideMenu
+//    SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+    
     self.navigationItem.title = Customization.nameShowed
     //solicitud de autorización para acceder a la localización del usuario
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = Customization.textColor
-    self.NombreUsuario.font = AppFont.subtitleFont
+    self.NombreUsuario.font = CustomAppFont.subtitleFont
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
 
     self.MenuTable.delegate = self
@@ -170,22 +185,42 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.menuCenterDistance.constant = Responsive().heightFloatPercent(percent: 2)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: Customization.buttonActionColor)
-    self.yapaText.font = AppFont.titleFont
+    self.yapaText.font = CustomAppFont.titleFont
     
-    self.updateOfertaView.addShadow()
-    self.AlertaEsperaView.addShadow()
+
+    //self.AlertaEsperaView.addShadow()
     self.SolicitarBtn.addShadow()
     self.SolicitudView.addShadow()
-    self.SendOferta.addShadow()
+
     self.LocationBtn.addShadow()
     self.llamar911Btn.addShadow()
-    self.newOfertaText.addBorder(color: Customization.buttonActionColor)
-    self.MensajeEspera.centerVertically()
+
     self.TransparenciaView.standardConfig()
     //    self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.lightGray)
     //    self.TelefonoContactoText.setBottomBorder(borderColor: UIColor.lightGray)
     
     //self.SolicitudView.addShadow()
+    
+    //MAPBOX SEARCH ADDRESS BAR
+    self.searchController = MapboxSearchController()
+    self.panelController = MapboxPanelController(rootViewController: self.searchController)
+    func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
+    let mapboxSFOfficeCoordinate = CLLocationCoordinate2D(latitude: 37.7911551, longitude: -122.3966103)
+    searchController.delegate = self
+    searchEngine.delegate = self
+    //addChild(panelController)
+    
+    //MARK:- PANEL DEFINITION
+    let solictudPanel = FloatingPanelController()
+    solictudPanel.delegate = self
+    
+    guard let contentPanel = storyboard?.instantiateViewController(withIdentifier: "SolicitudPanel") as? SolicitudPanel else{
+      return
+    }
+    
+    solictudPanel.set(contentViewController: contentPanel)
+    //solictudPanel.addPanel(toParent: self)
+    
     
     //MANTENER EL COLOR DE LOS ICONOS
     
@@ -227,9 +262,13 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 //
 //      }
       
-      self.socketEmit("direccionespactadas", datos: [
+      socketService.socketEmit("direccionespactadas", datos: [
       "idempresa": globalVariables.cliente.idEmpresa!
       ] as [String: Any])
+      
+//      self.socketEmit("direccionespactadas", datos: [
+//      "idempresa": globalVariables.cliente.idEmpresa!
+//      ] as [String: Any])
     }else{
       self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
     }
@@ -242,7 +281,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       }
     }
     self.tabBar.selectedItem = self.tabBar.items![0] as UITabBarItem
-    self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: Customization.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
+    //self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: Customization.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
     self.addEnvirSolictudBtn()
     
     globalVariables.socket.on("disconnect"){data, ack in
@@ -302,12 +341,12 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 //      }
 //    }
     
-    self.socketEventos()
+    self.socketService.initListenEventos()
     self.loadFormularioData()
     self.loadCallCenter()
     
     //self.apiService.listCardsAPIService()
-    
+
   }
   
   override func viewDidAppear(_ animated: Bool){
@@ -316,17 +355,27 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenCell.origenText, attribute: .bottom, multiplier: 1, constant: 0)
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    if segue.identifier == "esperaChildView" {
+//      if let childVC = segue.destination as? EsperaChildVC {
+//        //Some property on ChildVC that needs to be set
+//        childVC.solicitud = globalVariables.solpendientes.last
+//      }
+//    }
+  }
+  
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     self.origenAnotacion.coordinate = (locations.last?.coordinate)!
     self.SolicitarBtn.isHidden = false
   }
   
  override func homeBtnAction(){
-   self.MenuView1.isHidden = !self.MenuView1.isHidden
-   self.MenuView1.startCanvasAnimation()
-   self.TransparenciaView.isHidden = self.MenuView1.isHidden
-   self.TransparenciaView.startCanvasAnimation()
-   super.topMenu.isHidden = true
+  present(sideMenu!, animated: true)
+//   self.MenuView1.isHidden = !self.MenuView1.isHidden
+//   self.MenuView1.startCanvasAnimation()
+//   self.TransparenciaView.isHidden = self.MenuView1.isHidden
+//   self.TransparenciaView.startCanvasAnimation()
+//   super.topMenu.isHidden = true
  }
   
   override func closeBtnAction() {
@@ -345,6 +394,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //SOLICITAR BUTTON
   @IBAction func Solicitar(_ sender: AnyObject) {
     //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
+    //addChild(panelController)
     self.direccionDeCoordenada(mapView.centerCoordinate, directionText: self.origenCell.origenText)
     super.topMenu.isHidden = true
     self.addEnvirSolictudBtn()
@@ -355,7 +405,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       "longitud": self.origenAnotacion.coordinate.longitude
       ] as [String: Any]
     
-    self.socketEmit("cargarvehiculoscercanos", datos: data)
+    socketService.socketEmit("cargarvehiculoscercanos", datos: data)
+    //self.socketEmit("cargarvehiculoscercanos", datos: data)
   }
   
   //Boton para Cancelar Carrera
@@ -371,13 +422,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   // CANCELAR LA SOL MIENTRAS SE ESPERA LA FONFIRMACI'ON DEL TAXI
-  @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
-    MostrarMotivoCancelacion(solicitud: globalVariables.solpendientes.last!)
-  }
-  
-  @IBAction func cancelarSolicitudOferta(_ sender: Any) {
-    MostrarMotivoCancelacion(solicitud: globalVariables.solpendientes.last!)
-  }
+
   
   //  @IBAction func MostrarTelefonosCC(_ sender: AnyObject) {
   //    self.SolPendientesView.isHidden = true
@@ -408,22 +453,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     Inicio()
   }
   
-  @IBAction func downOferta(_ sender: Any) {
-    self.updateOfertaValue(value: -0.25)
-    self.down25.isEnabled = Double(self.newOfertaText!.text!.dropFirst())! > Double(self.ofertaDataCell.valorOfertaText.text!.dropFirst())!
-  }
-  
-  @IBAction func upOferta(_ sender: Any) {
-    self.down25.isEnabled = true
-    self.updateOfertaValue(value: +0.25)
-  }
-  @IBAction func enviarNuevoValorOferta(_ sender: Any) {
-    //#RSO.id,idcliente,nuevovaloroferta,#
-//    let datos = "#RSO,\(self.solicitudInProcess.text!),\(globalVariables.cliente.idCliente!),\(self.newOfertaText.text!),# \n"
-//    print(datos)
-//    self.EnviarSocket(datos)
-    self.socketEmit("subiroferta", datos: globalVariables.solpendientes.first{$0.id == Int(self.solicitudInProcess.text!)}!.updateValorOferta(newValor: self.newOfertaText.text!))
-  }
+
   
   @IBAction func tipoSolicitudSwitchChanged(_ sender: Any) {
 //    self.updateOfertaView.isHidden =

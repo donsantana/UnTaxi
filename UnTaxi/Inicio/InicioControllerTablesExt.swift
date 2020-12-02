@@ -38,7 +38,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     case self.MenuTable:
       let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
       cell.textLabel?.text = self.menuArray[indexPath.section][indexPath.row].title
-      cell.textLabel?.font = AppFont.normalFont
+      cell.textLabel?.font = CustomAppFont.normalFont
       cell.textLabel?.textColor = Customization.textColor
       cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.iconColor)
       return cell

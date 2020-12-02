@@ -388,7 +388,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 79 images.
+  /// This `R.image` struct is generated, and contains static references to 84 images.
   struct image {
     /// Image `CLARO`.
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
@@ -444,6 +444,8 @@ struct R: Rswift.Validatable {
     static let driverIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "driverIcon")
     /// Image `el`.
     static let el = Rswift.ImageResource(bundle: R.hostingBundle, name: "el")
+    /// Image `enProceso`.
+    static let enProceso = Rswift.ImageResource(bundle: R.hostingBundle, name: "enProceso")
     /// Image `evaluar`.
     static let evaluar = Rswift.ImageResource(bundle: R.hostingBundle, name: "evaluar")
     /// Image `header`.
@@ -478,6 +480,8 @@ struct R: Rswift.Validatable {
     static let mensajesnew = Rswift.ImageResource(bundle: R.hostingBundle, name: "mensajesnew")
     /// Image `menu`.
     static let menu = Rswift.ImageResource(bundle: R.hostingBundle, name: "menu")
+    /// Image `nuevaSolicitud`.
+    static let nuevaSolicitud = Rswift.ImageResource(bundle: R.hostingBundle, name: "nuevaSolicitud")
     /// Image `ofertaIcon`.
     static let ofertaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ofertaIcon")
     /// Image `origenIcon`.
@@ -504,8 +508,6 @@ struct R: Rswift.Validatable {
     static let smsvoz = Rswift.ImageResource(bundle: R.hostingBundle, name: "smsvoz")
     /// Image `so`.
     static let so = Rswift.ImageResource(bundle: R.hostingBundle, name: "so")
-    /// Image `solicitud`.
-    static let solicitud = Rswift.ImageResource(bundle: R.hostingBundle, name: "solicitud")
     /// Image `stardorada`.
     static let stardorada = Rswift.ImageResource(bundle: R.hostingBundle, name: "stardorada")
     /// Image `stargris`.
@@ -522,12 +524,20 @@ struct R: Rswift.Validatable {
     static let terminos = Rswift.ImageResource(bundle: R.hostingBundle, name: "terminos")
     /// Image `tiempo`.
     static let tiempo = Rswift.ImageResource(bundle: R.hostingBundle, name: "tiempo")
+    /// Image `tipoHorasSelected`.
+    static let tipoHorasSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoHorasSelected")
     /// Image `tipoHoras`.
     static let tipoHoras = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoHoras")
+    /// Image `tipoOfertaSelected`.
+    static let tipoOfertaSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoOfertaSelected")
     /// Image `tipoOferta`.
     static let tipoOferta = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoOferta")
+    /// Image `tipoPactadaSelected`.
+    static let tipoPactadaSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoPactadaSelected")
     /// Image `tipoPactada`.
     static let tipoPactada = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoPactada")
+    /// Image `tipoTaximetroSelected`.
+    static let tipoTaximetroSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetroSelected")
     /// Image `tipoTaximetro`.
     static let tipoTaximetro = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetro")
     /// Image `up`.
@@ -739,6 +749,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "enProceso", bundle: ..., traitCollection: ...)`
+    static func enProceso(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.enProceso, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "evaluar", bundle: ..., traitCollection: ...)`
     static func evaluar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.evaluar, compatibleWith: traitCollection)
@@ -858,6 +875,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nuevaSolicitud", bundle: ..., traitCollection: ...)`
+    static func nuevaSolicitud(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nuevaSolicitud, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "ofertaIcon", bundle: ..., traitCollection: ...)`
     static func ofertaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.ofertaIcon, compatibleWith: traitCollection)
@@ -949,13 +973,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "solicitud", bundle: ..., traitCollection: ...)`
-    static func solicitud(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.solicitud, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "stardorada", bundle: ..., traitCollection: ...)`
     static func stardorada(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.stardorada, compatibleWith: traitCollection)
@@ -1019,9 +1036,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tipoHorasSelected", bundle: ..., traitCollection: ...)`
+    static func tipoHorasSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tipoHorasSelected, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "tipoOferta", bundle: ..., traitCollection: ...)`
     static func tipoOferta(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tipoOferta, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tipoOfertaSelected", bundle: ..., traitCollection: ...)`
+    static func tipoOfertaSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tipoOfertaSelected, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1033,9 +1064,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tipoPactadaSelected", bundle: ..., traitCollection: ...)`
+    static func tipoPactadaSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tipoPactadaSelected, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "tipoTaximetro", bundle: ..., traitCollection: ...)`
     static func tipoTaximetro(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tipoTaximetro, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tipoTaximetroSelected", bundle: ..., traitCollection: ...)`
+    static func tipoTaximetroSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tipoTaximetroSelected, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1491,8 +1536,8 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'calendar' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
@@ -1528,10 +1573,10 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "distancia", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'distancia' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "distancia", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'distancia' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "driverIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'driverIcon' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -1649,8 +1694,8 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'VoucherCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "referenciaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'referenciaIcon' is used in nib 'VoucherCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'VoucherCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -1706,9 +1751,9 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "login", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "login", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "xoalogo.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'xoalogo.png' is used in storyboard 'Login', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
@@ -1724,16 +1769,19 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let callCenter = StoryboardViewControllerResource<CallCenterController>(identifier: "CallCenter")
       let completadaView = StoryboardViewControllerResource<CompletadaController>(identifier: "completadaView")
+      let esperaChildView = StoryboardViewControllerResource<EsperaChildVC>(identifier: "esperaChildView")
       let historyDetailView = StoryboardViewControllerResource<HistorialDetailsController>(identifier: "historyDetailView")
       let historyView = StoryboardViewControllerResource<HistorialController>(identifier: "historyView")
       let inicioNavController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "InicioNavController")
       let inicioView = StoryboardViewControllerResource<InicioController>(identifier: "InicioView")
       let listaSolPdtes = StoryboardViewControllerResource<SolicitudesTableController>(identifier: "ListaSolPdtes")
+      let menuView = StoryboardViewControllerResource<SideMenuController>(identifier: "MenuView")
       let name = "Main"
       let ofertasView = StoryboardViewControllerResource<OfertasController>(identifier: "ofertasView")
       let password = StoryboardViewControllerResource<PassController>(identifier: "Password")
       let perfil = StoryboardViewControllerResource<PerfilController>(identifier: "Perfil")
       let solDetalles = StoryboardViewControllerResource<SolPendController>(identifier: "SolDetalles")
+      let solicitudPanel = StoryboardViewControllerResource<SolicitudPanel>(identifier: "SolicitudPanel")
       let terminosView = StoryboardViewControllerResource<TerminosController>(identifier: "terminosView")
 
       func callCenter(_: Void = ()) -> CallCenterController? {
@@ -1742,6 +1790,10 @@ struct _R: Rswift.Validatable {
 
       func completadaView(_: Void = ()) -> CompletadaController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: completadaView)
+      }
+
+      func esperaChildView(_: Void = ()) -> EsperaChildVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: esperaChildView)
       }
 
       func historyDetailView(_: Void = ()) -> HistorialDetailsController? {
@@ -1764,6 +1816,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: listaSolPdtes)
       }
 
+      func menuView(_: Void = ()) -> SideMenuController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: menuView)
+      }
+
       func ofertasView(_: Void = ()) -> OfertasController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: ofertasView)
       }
@@ -1780,46 +1836,53 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: solDetalles)
       }
 
+      func solicitudPanel(_: Void = ()) -> SolicitudPanel? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: solicitudPanel)
+      }
+
       func terminosView(_: Void = ()) -> TerminosController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: terminosView)
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'whatsapp' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "up", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'up' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "menu", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'menu' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'down' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "smsvoz", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "mensajes", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'mensajes' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "stargris", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stargris' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "locationBtn", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'locationBtn' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "salir2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'salir2' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "llamar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'llamar' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "panicoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'panicoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "origen", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origen' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "tipoOfertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tipoOfertaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "chofer", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chofer' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "cancelar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'down' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "locationBtn", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'locationBtn' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "smsvoz", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "up", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'up' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'whatsapp' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "panicoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'panicoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "llamar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'llamar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "salir2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'salir2' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "mensajes", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'mensajes' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'calendar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "origen", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origen' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "stargris", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stargris' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "distancia", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'distancia' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "menu", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'menu' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "cancelar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().callCenter() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'callCenter' could not be loaded from storyboard 'Main' as 'CallCenterController'.") }
         if _R.storyboard.main().inicioNavController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'inicioNavController' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.main().inicioView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'inicioView' could not be loaded from storyboard 'Main' as 'InicioController'.") }
         if _R.storyboard.main().listaSolPdtes() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'listaSolPdtes' could not be loaded from storyboard 'Main' as 'SolicitudesTableController'.") }
+        if _R.storyboard.main().menuView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'menuView' could not be loaded from storyboard 'Main' as 'SideMenuController'.") }
         if _R.storyboard.main().password() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'password' could not be loaded from storyboard 'Main' as 'PassController'.") }
         if _R.storyboard.main().perfil() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'perfil' could not be loaded from storyboard 'Main' as 'PerfilController'.") }
         if _R.storyboard.main().solDetalles() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'solDetalles' could not be loaded from storyboard 'Main' as 'SolPendController'.") }
+        if _R.storyboard.main().solicitudPanel() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'solicitudPanel' could not be loaded from storyboard 'Main' as 'SolicitudPanel'.") }
         if _R.storyboard.main().completadaView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'completadaView' could not be loaded from storyboard 'Main' as 'CompletadaController'.") }
+        if _R.storyboard.main().esperaChildView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'esperaChildView' could not be loaded from storyboard 'Main' as 'EsperaChildVC'.") }
         if _R.storyboard.main().historyDetailView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'historyDetailView' could not be loaded from storyboard 'Main' as 'HistorialDetailsController'.") }
         if _R.storyboard.main().historyView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'historyView' could not be loaded from storyboard 'Main' as 'HistorialController'.") }
         if _R.storyboard.main().ofertasView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'ofertasView' could not be loaded from storyboard 'Main' as 'OfertasController'.") }
