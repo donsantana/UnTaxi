@@ -18,18 +18,24 @@ class EsperaChildVC: UIViewController {
   @IBOutlet weak var newOfertaText: UILabel!
   @IBOutlet weak var up25: UIButton!
   @IBOutlet weak var down25: UIButton!
+  @IBOutlet weak var titleText: UILabel!
+  @IBOutlet weak var subtitleText: UILabel!
   
   @IBOutlet weak var CancelarSolicitudProceso: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.socketService.delegate = self
-    //self.socketService.initListenEventos()
+    self.socketService.initListenEventos()
     
     self.updateOfertaView.addShadow()
     self.SendOferta.addShadow()
     self.newOfertaText.addBorder(color: Customization.buttonActionColor)
+    self.newOfertaText.font = CustomAppFont.bigFont
     self.MensajeEspera.centerVertically()
+    self.titleText.titleBlueStyle()
+    self.subtitleText.titleBlueStyle()
+    self.newOfertaText.bigTextBlueStyle()
    
     self.newOfertaText.text = "$\(Double(self.solicitud.valorOferta))"
     self.updateOfertaView.isHidden = self.solicitud!.valorOferta == 0.0
@@ -73,7 +79,7 @@ class EsperaChildVC: UIViewController {
       
       self.present(ac, animated: true)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
+    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
     self.present(motivoAlerta, animated: true, completion: nil)
@@ -147,6 +153,7 @@ extension EsperaChildVC: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, ofertadelconductor result: [String : Any]) {
+    print("hereeee \(self.solicitud.id)")
     let array = globalVariables.ofertasList.map{$0.id}
     if !array.contains(result["idsolicitud"] as! Int){
       let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
@@ -158,6 +165,20 @@ extension EsperaChildVC: SocketServiceDelegate{
         vc?.solicitud = self.solicitud
         self.navigationController?.show(vc!, sender: nil)
       }
+    }
+  }
+  
+  func socketResponse(_ controller: SocketService, sinvehiculo result: [String : Any]) {
+    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
+    if (solicitud != nil) {
+      let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.CancelarSolicitud("",solicitud: solicitud!)
+        let vc = R.storyboard.main.inicioView()!
+        self.navigationController?.show(vc, sender: nil)
+      }))
+      
+      self.present(alertaDos, animated: true, completion: nil)
     }
   }
 }

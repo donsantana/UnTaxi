@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D1AC25B5FCF98C95E0A7F3F /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */; };
+		7F7B6ED248C0E1E137BE8293 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D526C0E300B8BAFB10FC669 /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
@@ -57,6 +57,11 @@
 		C62E593D24B80F1400FFB26B /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E593C24B80F1400FFB26B /* AppConfig.swift */; };
 		C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
 		C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E594024BB669F00FFB26B /* PactadaCell.swift */; };
+		C62E84F8259A0C630048FB0C /* AddressMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E84F7259A0C630048FB0C /* AddressMapExt.swift */; };
+		C63272882588714C000A3931 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63272872588714C000A3931 /* Double.swift */; };
+		C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A425979EE900ABEC47 /* CGFloat.swift */; };
+		C63445A82597A11500ABEC47 /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
+		C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445B02597BB1E00ABEC47 /* AddressController.swift */; };
 		C6384BEA22A43A46000EB156 /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384BE922A43A46000EB156 /* UIToolbar.swift */; };
 		C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B1B245F5E18007B0EE5 /* Login.storyboard */; };
 		C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B1E245F63BC007B0EE5 /* apiService.swift */; };
@@ -71,27 +76,15 @@
 		C64363A022EBC44E0006F235 /* OfertasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C643639F22EBC44E0006F235 /* OfertasController.swift */; };
 		C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */; };
 		C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
-		C654899B257728F700BFDBE3 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807343256C68250093E4DE /* Muli-Bold.ttf */; };
-		C654899D257729EC00BFDBE3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F571521BCE958200FC18D5 /* Info.plist */; };
-		C65F9F2A229BA44900E3E304 /* OrigenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F29229BA44900E3E304 /* OrigenCell.xib */; };
-		C65F9F2C229BA46F00E3E304 /* OrigenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F2B229BA46F00E3E304 /* OrigenViewCell.swift */; };
-		C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* VoucherCell.xib */; };
-		C65F9F32229E39CE00E3E304 /* VoucherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* VoucherViewCell.swift */; };
+		C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* PagoCell.xib */; };
+		C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
 		C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
 		C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */; };
+		C66FC9CA2585242D0023425D /* Tarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9C92585242D0023425D /* Tarifa.swift */; };
+		C66FC9CD25852E5C0023425D /* Tarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9CC25852E5C0023425D /* Tarifario.swift */; };
 		C67004552463B60900FF97AB /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
 		C670045924674BAA00FF97AB /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
-		C6807349256C68280093E4DE /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */; };
-		C680734A256C68280093E4DE /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C680733F256C68220093E4DE /* Muli-SemiBold.ttf */; };
-		C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */; };
-		C680734C256C68280093E4DE /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807341256C68230093E4DE /* Muli-LightItalic.ttf */; };
-		C680734D256C68280093E4DE /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807342256C68240093E4DE /* Muli.ttf */; };
-		C680734F256C68280093E4DE /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */; };
-		C6807350256C68280093E4DE /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807345256C68260093E4DE /* Muli-Light.ttf */; };
-		C6807351256C68280093E4DE /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */; };
-		C6807352256C68280093E4DE /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6807347256C68270093E4DE /* SIL Open Font License.txt */; };
-		C6807353256C68280093E4DE /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6807348256C68280093E4DE /* Muli-Italic.ttf */; };
 		C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
 		C6807397256E18250093E4DE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
 		C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
@@ -99,6 +92,7 @@
 		C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807453256F73EE0093E4DE /* SideMenuTable.swift */; };
 		C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074732571CDDA0093E4DE /* EsperaChildVC.swift */; };
 		C68074772571E9410093E4DE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074762571E9410093E4DE /* SocketService.swift */; };
+		C68D05A4259CA2BF00E124AB /* MGLPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */; };
 		C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
 		C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
 		C68DA29C227E39BE0029CD0B /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */; };
@@ -106,6 +100,10 @@
 		C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29F227E3A240029CD0B /* GlobalConstants.swift */; };
 		C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68ED7C02298B94400E2F8AC /* R.generated.swift */; };
 		C6915F21228500420048C00C /* SMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6915F20228500420048C00C /* SMSVoz.swift */; };
+		C6977E7925775E040071625E /* YapaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7825775E040071625E /* YapaController.swift */; };
+		C6977E7C2577700D0071625E /* YapaPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7B2577700D0071625E /* YapaPanel.swift */; };
+		C69FB5602579F8CE00B311C4 /* OrigenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */; };
+		C69FB5612579F8CE00B311C4 /* OrigenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */; };
 		C6A37EE3254A1F4100C79BFF /* userPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EE2254A1F4100C79BFF /* userPhoto.png */; };
 		C6A37F00255211CC00C79BFF /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EFF255211CC00C79BFF /* HistoryViewCell.xib */; };
 		C6A37F03255211DA00C79BFF /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F02255211DA00C79BFF /* HistoryCell.swift */; };
@@ -115,7 +113,9 @@
 		C6A37F122554CB8500C79BFF /* DetallesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F112554CB8500C79BFF /* DetallesCell.swift */; };
 		C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */; };
 		C6A37F192557327000C79BFF /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
+		C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
 		C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
+		C6B4C5A22589E50E0054C1A7 /* SolDetallesMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */; };
 		C6C3A4F2245F32640084F409 /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
 		C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */; };
 		C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4F0245F32640084F409 /* LoginController.swift */; };
@@ -129,16 +129,28 @@
 		C6D04CFF2398CD1900ACD70C /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
 		C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */; };
 		C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D0597E24997BC10020CFE6 /* UILabel.swift */; };
+		C6D3198725916F8500A4BF1C /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197D25916F8300A4BF1C /* Muli-Italic.ttf */; };
+		C6D3198825916F8500A4BF1C /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197E25916F8400A4BF1C /* Muli-Semi-BoldItalic.ttf */; };
+		C6D3198925916F8500A4BF1C /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197F25916F8400A4BF1C /* Muli.ttf */; };
+		C6D3198A25916F8500A4BF1C /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198025916F8400A4BF1C /* Muli-SemiBold.ttf */; };
+		C6D3198B25916F8500A4BF1C /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198125916F8400A4BF1C /* Muli-ExtraLightItalic.ttf */; };
+		C6D3198C25916F8500A4BF1C /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198225916F8400A4BF1C /* Muli-BoldItalic.ttf */; };
+		C6D3198D25916F8500A4BF1C /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198325916F8400A4BF1C /* Muli-ExtraLight.ttf */; };
+		C6D3198E25916F8500A4BF1C /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198425916F8500A4BF1C /* Muli-Light.ttf */; };
+		C6D3198F25916F8500A4BF1C /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
+		C6D3199025916F8500A4BF1C /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */; };
 		C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */; };
 		C6F0BB1923B7049E00266396 /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
 		C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
 		C6F27B08238F2C5400679E07 /* SolicitudHistorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */; };
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
+		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		1D526C0E300B8BAFB10FC669 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F827E09F9747F43B08401A9 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,8 +189,6 @@
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		C6024F9524A79CA100C91725 /* CallCenterUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterUI.swift; sourceTree = "<group>"; };
 		C602558224A7F60A00C91725 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C602558524AAEA1300C91725 /* CardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardRow.xib; sourceTree = "<group>"; };
@@ -199,6 +209,11 @@
 		C62E593C24B80F1400FFB26B /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		C62E593E24BB5D7800FFB26B /* PactadaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PactadaCell.xib; sourceTree = "<group>"; };
 		C62E594024BB669F00FFB26B /* PactadaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PactadaCell.swift; sourceTree = "<group>"; };
+		C62E84F7259A0C630048FB0C /* AddressMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapExt.swift; sourceTree = "<group>"; };
+		C63272872588714C000A3931 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		C63445A425979EE900ABEC47 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutConstraint.swift; sourceTree = "<group>"; };
+		C63445B02597BB1E00ABEC47 /* AddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressController.swift; sourceTree = "<group>"; };
 		C6384BE922A43A46000EB156 /* UIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
 		C63A6B1B245F5E18007B0EE5 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C63A6B1E245F63BC007B0EE5 /* apiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiService.swift; sourceTree = "<group>"; };
@@ -213,26 +228,15 @@
 		C643639F22EBC44E0006F235 /* OfertasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertasController.swift; sourceTree = "<group>"; };
 		C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertasControllerExt.swift; sourceTree = "<group>"; };
 		C6445813255F78160000433E /* InicioControllerTablesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerTablesExt.swift; sourceTree = "<group>"; };
-		C65F9F29229BA44900E3E304 /* OrigenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrigenCell.xib; sourceTree = "<group>"; };
-		C65F9F2B229BA46F00E3E304 /* OrigenViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrigenViewCell.swift; sourceTree = "<group>"; };
-		C65F9F2F229E384200E3E304 /* VoucherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoucherCell.xib; sourceTree = "<group>"; };
-		C65F9F31229E39CE00E3E304 /* VoucherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherViewCell.swift; sourceTree = "<group>"; };
+		C65F9F2F229E384200E3E304 /* PagoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagoCell.xib; sourceTree = "<group>"; };
+		C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoViewCell.swift; sourceTree = "<group>"; };
 		C65F9F33229E3BA900E3E304 /* ContactoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoCell.xib; sourceTree = "<group>"; };
 		C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoViewCell.swift; sourceTree = "<group>"; };
+		C66FC9C92585242D0023425D /* Tarifa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifa.swift; sourceTree = "<group>"; };
+		C66FC9CC25852E5C0023425D /* Tarifario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifario.swift; sourceTree = "<group>"; };
 		C67004542463B60900FF97AB /* Images-5.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-5.xcassets"; sourceTree = "<group>"; };
 		C6700456246612FE00FF97AB /* InicioMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioMapExt.swift; sourceTree = "<group>"; };
 		C670045824674BAA00FF97AB /* mapSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSevice.swift; sourceTree = "<group>"; };
-		C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Semi-BoldItalic.ttf"; sourceTree = "<group>"; };
-		C680733F256C68220093E4DE /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBold.ttf"; sourceTree = "<group>"; };
-		C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLight.ttf"; sourceTree = "<group>"; };
-		C6807341256C68230093E4DE /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
-		C6807342256C68240093E4DE /* Muli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Muli.ttf; sourceTree = "<group>"; };
-		C6807343256C68250093E4DE /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
-		C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
-		C6807345256C68260093E4DE /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
-		C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		C6807347256C68270093E4DE /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
-		C6807348256C68280093E4DE /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
 		C680738C256DEAE50093E4DE /* SolicitudPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudPanel.swift; sourceTree = "<group>"; };
 		C6807396256E18250093E4DE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C68073B7256E21A20093E4DE /* InicioPanelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioPanelExt.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 		C6807453256F73EE0093E4DE /* SideMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTable.swift; sourceTree = "<group>"; };
 		C68074732571CDDA0093E4DE /* EsperaChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperaChildVC.swift; sourceTree = "<group>"; };
 		C68074762571E9410093E4DE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGLPointAnnotation.swift; sourceTree = "<group>"; };
 		C68DA297227E12D40029CD0B /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		C68DA299227E13030029CD0B /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
 		C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -247,6 +252,10 @@
 		C68DA29F227E3A240029CD0B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		C68ED7C02298B94400E2F8AC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C6915F20228500420048C00C /* SMSVoz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVoz.swift; sourceTree = "<group>"; };
+		C6977E7825775E040071625E /* YapaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaController.swift; sourceTree = "<group>"; };
+		C6977E7B2577700D0071625E /* YapaPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaPanel.swift; sourceTree = "<group>"; };
+		C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrigenViewCell.swift; sourceTree = "<group>"; };
+		C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrigenCell.xib; sourceTree = "<group>"; };
 		C6A37EE2254A1F4100C79BFF /* userPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = userPhoto.png; path = "UnTaxi/Images-5.xcassets/chofer.imageset/userPhoto.png"; sourceTree = SOURCE_ROOT; };
 		C6A37EFF255211CC00C79BFF /* HistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewCell.xib; sourceTree = "<group>"; };
 		C6A37F02255211DA00C79BFF /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
@@ -256,7 +265,10 @@
 		C6A37F112554CB8500C79BFF /* DetallesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesCell.swift; sourceTree = "<group>"; };
 		C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialDetailsController.swift; sourceTree = "<group>"; };
 		C6A37F182557326F00C79BFF /* TerminosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminosController.swift; sourceTree = "<group>"; };
+		C6A95B89257F3CF30028F11A /* PanicoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicoController.swift; sourceTree = "<group>"; };
+		C6AA476925916E0300870BF9 /* UnTaxi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnTaxi.entitlements; sourceTree = "<group>"; };
 		C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesMapExt.swift; sourceTree = "<group>"; };
 		C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDelegatesExt.swift; sourceTree = "<group>"; };
 		C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketExt.swift; sourceTree = "<group>"; };
 		C6C3A4F0245F32640084F409 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -270,12 +282,23 @@
 		C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfertaDataCell.xib; sourceTree = "<group>"; };
 		C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertaDataViewCell.swift; sourceTree = "<group>"; };
 		C6D0597E24997BC10020CFE6 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		C6D3197D25916F8300A4BF1C /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
+		C6D3197E25916F8400A4BF1C /* Muli-Semi-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Semi-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D3197F25916F8400A4BF1C /* Muli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Muli.ttf; sourceTree = "<group>"; };
+		C6D3198025916F8400A4BF1C /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D3198125916F8400A4BF1C /* Muli-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D3198225916F8400A4BF1C /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D3198325916F8400A4BF1C /* Muli-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D3198425916F8500A4BF1C /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
+		C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
 		C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SolPendientesCell.xib; sourceTree = "<group>"; };
 		C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolPendientesViewCell.swift; sourceTree = "<group>"; };
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
+		EFCA57AB6B5CD96AE19FABA2 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +306,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D1AC25B5FCF98C95E0A7F3F /* Pods_UnTaxi.framework in Frameworks */,
+				7F7B6ED248C0E1E137BE8293 /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +319,7 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				B71C90EF562AA5CF544CA5AA /* Pods_UnTaxi.framework */,
+				1D526C0E300B8BAFB10FC669 /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,7 +338,7 @@
 		84F5713A1BCE958200FC18D5 = {
 			isa = PBXGroup;
 			children = (
-				C680733D256C68030093E4DE /* fonts */,
+				C6FEC00B2591596C008EEF83 /* fonts */,
 				C61F3479248E8F65006A07F6 /* .gitignore */,
 				C68ED7C02298B94400E2F8AC /* R.generated.swift */,
 				84609EE21C758E6F0056A282 /* icons */,
@@ -341,6 +364,7 @@
 		84F571451BCE958200FC18D5 /* UnTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				C6AA476925916E0300870BF9 /* UnTaxi.entitlements */,
 				C63A6B1B245F5E18007B0EE5 /* Login.storyboard */,
 				B5F753E31D5D045500FFDFD0 /* Main.storyboard */,
 				C68DA295227E0C8F0029CD0B /* Constants */,
@@ -398,6 +422,9 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C63445AA2597BA9F00ABEC47 /* Address */,
+				C6A95B87257F3C510028F11A /* Panico */,
+				C6977E7625775DCE0071625E /* Yapa */,
 				C68073D7256E333D0093E4DE /* Menu */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
@@ -475,6 +502,15 @@
 			path = Perfil;
 			sourceTree = "<group>";
 		};
+		C63445AA2597BA9F00ABEC47 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				C63445B02597BB1E00ABEC47 /* AddressController.swift */,
+				C62E84F7259A0C630048FB0C /* AddressMapExt.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
 		C63A6B1D245F63BC007B0EE5 /* services */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +524,7 @@
 		C63A6B20245F68C9007B0EE5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C6977E70257753AC0071625E /* Design */,
 				C6A37F092554AB2100C79BFF /* Enums */,
 				C63A6B21245F68C9007B0EE5 /* Responsive.swift */,
 			);
@@ -497,10 +534,8 @@
 		C65F9F28229BA0ED00E3E304 /* Solicitud Form */ = {
 			isa = PBXGroup;
 			children = (
-				C65F9F29229BA44900E3E304 /* OrigenCell.xib */,
-				C65F9F2B229BA46F00E3E304 /* OrigenViewCell.swift */,
-				C65F9F2F229E384200E3E304 /* VoucherCell.xib */,
-				C65F9F31229E39CE00E3E304 /* VoucherViewCell.swift */,
+				C65F9F2F229E384200E3E304 /* PagoCell.xib */,
+				C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */,
 				C65F9F33229E3BA900E3E304 /* ContactoCell.xib */,
 				C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */,
 				C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */,
@@ -509,6 +544,8 @@
 				C6122893247034A70041BB2D /* DestinoCell.swift */,
 				C62E593E24BB5D7800FFB26B /* PactadaCell.xib */,
 				C62E594024BB669F00FFB26B /* PactadaCell.swift */,
+				C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */,
+				C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */,
 			);
 			path = "Solicitud Form";
 			sourceTree = "<group>";
@@ -533,26 +570,10 @@
 				C602558224A7F60A00C91725 /* Card.swift */,
 				C62E593C24B80F1400FFB26B /* AppConfig.swift */,
 				C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */,
+				C66FC9C92585242D0023425D /* Tarifa.swift */,
+				C66FC9CC25852E5C0023425D /* Tarifario.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C680733D256C68030093E4DE /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				C6807343256C68250093E4DE /* Muli-Bold.ttf */,
-				C6807344256C68250093E4DE /* Muli-BoldItalic.ttf */,
-				C6807340256C68220093E4DE /* Muli-ExtraLight.ttf */,
-				C6807346256C68260093E4DE /* Muli-ExtraLightItalic.ttf */,
-				C6807348256C68280093E4DE /* Muli-Italic.ttf */,
-				C6807345256C68260093E4DE /* Muli-Light.ttf */,
-				C6807341256C68230093E4DE /* Muli-LightItalic.ttf */,
-				C680733E256C68210093E4DE /* Muli-Semi-BoldItalic.ttf */,
-				C680733F256C68220093E4DE /* Muli-SemiBold.ttf */,
-				C6807342256C68240093E4DE /* Muli.ttf */,
-				C6807347256C68270093E4DE /* SIL Open Font License.txt */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		C68073D7256E333D0093E4DE /* Menu */ = {
@@ -588,8 +609,28 @@
 				C62A20F125321022007BCE37 /* UISegmentedContol.swift */,
 				C6A37F0625546B2300C79BFF /* UIVisualEffectView.swift */,
 				C6807396256E18250093E4DE /* UIViewController.swift */,
+				C63272872588714C000A3931 /* Double.swift */,
+				C63445A425979EE900ABEC47 /* CGFloat.swift */,
+				C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6977E70257753AC0071625E /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		C6977E7625775DCE0071625E /* Yapa */ = {
+			isa = PBXGroup;
+			children = (
+				C6977E7825775E040071625E /* YapaController.swift */,
+				C6977E7B2577700D0071625E /* YapaPanel.swift */,
+			);
+			path = Yapa;
 			sourceTree = "<group>";
 		};
 		C6A37EFE255210F600C79BFF /* History */ = {
@@ -617,6 +658,14 @@
 				C6A37F182557326F00C79BFF /* TerminosController.swift */,
 			);
 			path = Terminos;
+			sourceTree = "<group>";
+		};
+		C6A95B87257F3C510028F11A /* Panico */ = {
+			isa = PBXGroup;
+			children = (
+				C6A95B89257F3CF30028F11A /* PanicoController.swift */,
+			);
+			path = Panico;
 			sourceTree = "<group>";
 		};
 		C6C3A4ED245F32640084F409 /* Login */ = {
@@ -670,6 +719,7 @@
 			children = (
 				B5054D761E66051500FEEDE4 /* SolDetallesController.swift */,
 				C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */,
+				C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */,
 			);
 			path = "Detalles Solicitud";
 			sourceTree = "<group>";
@@ -682,11 +732,28 @@
 			path = SolicitudesList;
 			sourceTree = "<group>";
 		};
+		C6FEC00B2591596C008EEF83 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */,
+				C6D3198225916F8400A4BF1C /* Muli-BoldItalic.ttf */,
+				C6D3198325916F8400A4BF1C /* Muli-ExtraLight.ttf */,
+				C6D3198125916F8400A4BF1C /* Muli-ExtraLightItalic.ttf */,
+				C6D3197D25916F8300A4BF1C /* Muli-Italic.ttf */,
+				C6D3198425916F8500A4BF1C /* Muli-Light.ttf */,
+				C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */,
+				C6D3197E25916F8400A4BF1C /* Muli-Semi-BoldItalic.ttf */,
+				C6D3198025916F8400A4BF1C /* Muli-SemiBold.ttf */,
+				C6D3197F25916F8400A4BF1C /* Muli.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */,
-				C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */,
+				5F827E09F9747F43B08401A9 /* Pods-UnTaxi.debug.xcconfig */,
+				EFCA57AB6B5CD96AE19FABA2 /* Pods-UnTaxi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -698,13 +765,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				1AC0E66EB815C4BDB1E68B14 /* [CP] Check Pods Manifest.lock */,
+				98797B5A71D8BEB9FB9EC42F /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				49A6E17D340E55759A3215A7 /* [CP] Embed Pods Frameworks */,
-				E623CDB0852B5621BA8FC16B /* [CP] Copy Pods Resources */,
+				D61055F23AA557C5E2CD8D57 /* [CP] Embed Pods Frameworks */,
+				5DA0163B08F10D910D0EF027 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -727,7 +794,7 @@
 					84F571421BCE958200FC18D5 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 2VMNV5JH5M;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1230;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -775,51 +842,70 @@
 			files = (
 				C6D04CFF2398CD1900ACD70C /* OfertaDataCell.xib in Resources */,
 				C6F0BB1923B7049E00266396 /* SolPendientesCell.xib in Resources */,
-				C680734C256C68280093E4DE /* Muli-LightItalic.ttf in Resources */,
 				C6122892247034710041BB2D /* DestinoCell.xib in Resources */,
 				AFD6564A1F9D42E100C8A5BD /* claxon.mp3 in Resources */,
 				AFD656721FA17CD100C8A5BD /* ds_digital in Resources */,
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
-				C680734B256C68280093E4DE /* Muli-ExtraLight.ttf in Resources */,
-				C654899D257729EC00BFDBE3 /* Info.plist in Resources */,
-				C65F9F30229E384200E3E304 /* VoucherCell.xib in Resources */,
+				C6D3199025916F8500A4BF1C /* Muli-Bold.ttf in Resources */,
+				C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */,
+				C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
+				C6D3198825916F8500A4BF1C /* Muli-Semi-BoldItalic.ttf in Resources */,
 				C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */,
-				C654899B257728F700BFDBE3 /* Muli-Bold.ttf in Resources */,
+				C6D3198A25916F8500A4BF1C /* Muli-SemiBold.ttf in Resources */,
+				C69FB5612579F8CE00B311C4 /* OrigenCell.xib in Resources */,
+				C6D3198725916F8500A4BF1C /* Muli-Italic.ttf in Resources */,
 				C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */,
-				C65F9F2A229BA44900E3E304 /* OrigenCell.xib in Resources */,
 				C6A37EE3254A1F4100C79BFF /* userPhoto.png in Resources */,
 				C602558624AAEA1300C91725 /* CardRow.xib in Resources */,
 				C619BE612541433700611B4D /* PerfilNombreCell.xib in Resources */,
-				C6807349256C68280093E4DE /* Muli-Semi-BoldItalic.ttf in Resources */,
+				C6D3198D25916F8500A4BF1C /* Muli-ExtraLight.ttf in Resources */,
 				AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */,
 				C6CACFB022D2BD5000702430 /* OfertaViewCell.xib in Resources */,
+				C6D3198B25916F8500A4BF1C /* Muli-ExtraLightItalic.ttf in Resources */,
 				C6A37F00255211CC00C79BFF /* HistoryViewCell.xib in Resources */,
-				C6807350256C68280093E4DE /* Muli-Light.ttf in Resources */,
 				C6A37F0F2554CB7200C79BFF /* DetallesViewCell.xib in Resources */,
 				AFD656471F9D42E100C8A5BD /* beep.wav in Resources */,
-				C6807353256C68280093E4DE /* Muli-Italic.ttf in Resources */,
 				B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */,
-				C680734F256C68280093E4DE /* Muli-BoldItalic.ttf in Resources */,
 				AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */,
 				C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */,
-				C680734A256C68280093E4DE /* Muli-SemiBold.ttf in Resources */,
-				C6807351256C68280093E4DE /* Muli-ExtraLightItalic.ttf in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
+				C6D3198C25916F8500A4BF1C /* Muli-BoldItalic.ttf in Resources */,
+				C6D3198E25916F8500A4BF1C /* Muli-Light.ttf in Resources */,
 				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
 				C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */,
-				C680734D256C68280093E4DE /* Muli.ttf in Resources */,
+				C6D3198925916F8500A4BF1C /* Muli.ttf in Resources */,
 				C61F347A248E8F66006A07F6 /* .gitignore in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
-				C6807352256C68280093E4DE /* SIL Open Font License.txt in Resources */,
+				C6D3198F25916F8500A4BF1C /* Muli-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AC0E66EB815C4BDB1E68B14 /* [CP] Check Pods Manifest.lock */ = {
+		5DA0163B08F10D910D0EF027 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98797B5A71D8BEB9FB9EC42F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -839,64 +925,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		49A6E17D340E55759A3215A7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
@@ -919,24 +947,68 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		E623CDB0852B5621BA8FC16B /* [CP] Copy Pods Resources */ = {
+		D61055F23AA557C5E2CD8D57 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -947,9 +1019,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C68073F9256F30200093E4DE /* SideMenuController.swift in Sources */,
+				C63445A82597A11500ABEC47 /* AdaptiveLayoutConstraint.swift in Sources */,
 				C6C3A4F2245F32640084F409 /* LoginDelegatesExt.swift in Sources */,
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */,
+				C66FC9CD25852E5C0023425D /* Tarifario.swift in Sources */,
 				C62A20F225321022007BCE37 /* UISegmentedContol.swift in Sources */,
 				C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */,
 				C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */,
@@ -964,11 +1038,14 @@
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
 				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
+				C6977E7C2577700D0071625E /* YapaPanel.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
 				C6A37F0725546B2300C79BFF /* UIVisualEffectView.swift in Sources */,
 				C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */,
 				C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */,
+				C6977E7925775E040071625E /* YapaController.swift in Sources */,
 				C6C3A507245F335A0084F409 /* PerfilController.swift in Sources */,
+				C68D05A4259CA2BF00E124AB /* MGLPointAnnotation.swift in Sources */,
 				C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */,
 				C63A6B32245F7AF1007B0EE5 /* InicioSocketExt.swift in Sources */,
 				C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */,
@@ -976,6 +1053,7 @@
 				C6A37F192557327000C79BFF /* TerminosController.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
+				C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
 				C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */,
 				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
@@ -984,11 +1062,11 @@
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */,
 				C6F27B08238F2C5400679E07 /* SolicitudHistorial.swift in Sources */,
+				C62E84F8259A0C630048FB0C /* AddressMapExt.swift in Sources */,
 				C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
 				C6A37F122554CB8500C79BFF /* DetallesCell.swift in Sources */,
 				C68DA29C227E39BE0029CD0B /* GlobalVariables.swift in Sources */,
-				C65F9F2C229BA46F00E3E304 /* OrigenViewCell.swift in Sources */,
 				AFD656481F9D42E100C8A5BD /* Taxi.swift in Sources */,
 				C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */,
 				AFD656431F9D42E100C8A5BD /* Cliente.swift in Sources */,
@@ -1001,6 +1079,7 @@
 				C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */,
 				C64363A022EBC44E0006F235 /* OfertasController.swift in Sources */,
 				C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */,
+				C69FB5602579F8CE00B311C4 /* OrigenViewCell.swift in Sources */,
 				C602558324A7F60A00C91725 /* Card.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
 				C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */,
@@ -1014,15 +1093,19 @@
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
 				C670045924674BAA00FF97AB /* mapSevice.swift in Sources */,
 				C6A37F0B2554AB4C00C79BFF /* SolicitudStatus.swift in Sources */,
+				C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */,
 				C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */,
 				AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */,
 				C6CACFAD22D26A9300702430 /* Oferta.swift in Sources */,
-				C65F9F32229E39CE00E3E304 /* VoucherViewCell.swift in Sources */,
+				C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */,
 				AFD6564F1F9D42E100C8A5BD /* Conductor.swift in Sources */,
+				C6B4C5A22589E50E0054C1A7 /* SolDetallesMapExt.swift in Sources */,
 				C619BE5D253FF9A400611B4D /* HistorialController.swift in Sources */,
 				B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */,
+				C66FC9CA2585242D0023425D /* Tarifa.swift in Sources */,
 				C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */,
 				AFD655D61F9D391000C8A5BD /* CallCenterController.swift in Sources */,
+				C63272882588714C000A3931 /* Double.swift in Sources */,
 				C619BE5F253FFA7400611B4D /* HistorialTableExt.swift in Sources */,
 				C6384BEA22A43A46000EB156 /* UIToolbar.swift in Sources */,
 				C63A6B30245F7AF1007B0EE5 /* InicioControllerExt.swift in Sources */,
@@ -1033,6 +1116,7 @@
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 				C619BE6525414BC900611B4D /* PassController.swift in Sources */,
+				C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,11 +1255,12 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 020419DC273819CAB13DD1F4 /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = 5F827E09F9747F43B08401A9 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1198,6 +1283,7 @@
 				PRODUCT_NAME = UnTaxi;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1205,11 +1291,12 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3E81AF6D973AE08D3D5D968 /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = EFCA57AB6B5CD96AE19FABA2 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

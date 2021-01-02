@@ -46,5 +46,9 @@ class Responsive{
    func heightFloatPercent(percent: Double) -> CGFloat{
     return CGFloat(height * percent / 100)
   }
+  
+  func distanceBtwElement(elementWidth: Double, elementCount: Int)->CGFloat{
+    return CGFloat(width - (elementWidth * Double(elementCount))) / (CGFloat(elementCount) + 1.0)
+  }
 
 }

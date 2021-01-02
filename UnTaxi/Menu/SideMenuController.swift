@@ -21,7 +21,6 @@ class SideMenuController: UIViewController {
   @IBOutlet weak var userProfilePhoto: UIImageView!
   
   @IBOutlet weak var menuHeaderHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var menuCenterDistance: NSLayoutConstraint!
   @IBOutlet weak var yapaTextHeightConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
@@ -40,13 +39,20 @@ class SideMenuController: UIViewController {
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
     
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
-    //self.menuCenterDistance.constant = Responsive().heightFloatPercent(percent: 2)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: Customization.buttonActionColor)
-    self.yapaText.font = CustomAppFont.titleFont
+    self.yapaText.font = CustomAppFont.bigFont
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
+    //tapGesture.delegate = self
+    self.yapaText.addGestureRecognizer(tapGesture)
   }
   
   //MASK:- FUNCTIONS
+  @objc func showYapaView(){
+    let vc = R.storyboard.main.yapaView()!
+    self.navigationController?.show(vc, sender: nil)
+  }
   
   @objc func EnviarSocket(_ datos: String){
     if CConexionInternet.isConnectedToNetwork() == true{

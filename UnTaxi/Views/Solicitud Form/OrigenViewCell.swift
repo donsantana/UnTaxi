@@ -1,6 +1,6 @@
 //
 //  OrigenViewCell.swift
-//  MovilClub
+//  UnTaxi
 //
 //  Created by Donelkys Santana on 5/26/19.
 //  Copyright © 2019 Done Santana. All rights reserved.
@@ -28,7 +28,7 @@ class OrigenViewCell: UITableViewCell {
   private var datePicker: UIDatePicker?
   
   func initContent(){
-    self.origenText.delegate = self
+    //self.origenText.delegate = self
     self.origenText.setBottomBorder(borderColor: Customization.bottomBorderColor)
 
     //binding textfield with datePicker

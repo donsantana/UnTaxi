@@ -44,6 +44,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.origenSolicitud.title = "origen"
     self.destinoSolicitud.title = "destino"
     
+    self.statusText.font = CustomAppFont.titleFont
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino
@@ -82,7 +83,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
           self.ImagenCond.image = UIImage(named: "chofer")
         }
         
-        self.NombreCond.text = temporal["nombreapellidosconductor"] as! String
+        self.NombreCond.text = temporal["nombreapellidosconductor"] as? String
 
       }
     }
@@ -91,7 +92,6 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     var anotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView")
     anotationView = MKAnnotationView(annotation: self.origenSolicitud, reuseIdentifier: "annotationView")
-    print(annotation.title)
     if annotation.title! == "origen"{
       anotationView?.image = UIImage(named: "origen")
     }else{
@@ -101,7 +101,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   //Dibujar la ruta
-  func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+  private func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
     let renderer = MKPolylineRenderer(overlay: overlay)
     renderer.strokeColor = UIColor.red
     renderer.lineWidth = 4.0

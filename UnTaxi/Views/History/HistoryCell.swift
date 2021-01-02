@@ -19,6 +19,8 @@ class HistoryCell: UITableViewCell {
   func initContent(solicitud: SolicitudHistorial){
     
     self.dataView.addShadow()
+    UILabel.appearance().font = CustomAppFont.normalFont
+    
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino

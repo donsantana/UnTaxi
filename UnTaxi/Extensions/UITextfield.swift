@@ -11,13 +11,12 @@ import UIKit
 
 extension UITextField {
   func setBottomBorder(borderColor: UIColor) {
+    self.layer.masksToBounds = true
+    var bottomLine = CALayer()
+    bottomLine.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.layer.bounds.size.width , height: 1.0)
+    bottomLine.backgroundColor = borderColor.cgColor
     self.borderStyle = UITextField.BorderStyle.none
-    self.backgroundColor = UIColor.clear
-    let width = 1.0
-    let borderLine = UIView()
-    borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - width, width: Double(self.frame.width), height: width)
-    borderLine.backgroundColor = borderColor
-    self.addSubview(borderLine)
+    self.layer.addSublayer(bottomLine)
   }
   enum PaddingSide {
     case left(CGFloat)
@@ -51,5 +50,11 @@ extension UITextField {
       self.rightView = paddingView
       self.rightViewMode = .always
     }
+  }
+  
+  func addBorder(color: UIColor){
+    self.layer.cornerRadius = 10
+    self.layer.borderWidth = 1
+    self.layer.borderColor = color.cgColor
   }
 }

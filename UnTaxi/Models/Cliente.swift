@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 class Cliente{
   var idUsuario: Int!
@@ -19,6 +20,7 @@ class Cliente{
   var foto: String
   var yapa: Double
   var fotoImage: UIImage!
+  var annotation: MGLPointAnnotation!
   
   //Constructor
   init(){
@@ -51,9 +53,11 @@ class Cliente{
     self.email = jsonData["email"] as? String
     self.idEmpresa = jsonData["idempresa"] as? Int
     self.empresa = jsonData["empresa"] as? String
-    self.foto = (jsonData["foto"] != nil) ? jsonData["foto"] as! String : ""
+    self.foto = !(jsonData["foto"] is NSNull) ? jsonData["foto"] as! String : ""
     self.yapa = jsonData["yapa"] as! Double
     self.fotoImage = UIImage(named: "chofer")
+    self.annotation = MGLPointAnnotation()
+    annotation.subtitle = "origen"
     
     let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
     

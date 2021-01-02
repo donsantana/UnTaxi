@@ -1,6 +1,6 @@
 //
 //  OfertasController.swift
-//  MovilClub
+//  UnTaxi
 //
 //  Created by Donelkys Santana on 7/26/19.
 //  Copyright © 2019 Done Santana. All rights reserved.
@@ -24,6 +24,7 @@ class OfertasController: BaseController{
   @IBOutlet weak var ofertaFooterView: UIView!
   @IBOutlet weak var ofertaTableTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var titleText: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,7 +39,9 @@ class OfertasController: BaseController{
     self.mapView.setRegion(coordinateRegion, animated: true)
     
     self.ofertaFooterView.addShadow()
+    self.titleText.titleBlueStyle()
     self.ofertasTableView.delegate = self
+    self.ofertasTableView.backgroundColor = .clear
     
     // 1
     self.progressTimeBar.progress = 0.0
@@ -97,7 +100,7 @@ class OfertasController: BaseController{
       
       self.present(ac, animated: true)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
+    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
     self.present(motivoAlerta, animated: true, completion: nil)

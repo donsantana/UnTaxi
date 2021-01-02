@@ -22,6 +22,9 @@ class PerfilController: BaseController {
   
   var isPhotoUpdated = false
   
+  @IBOutlet weak var titleText: UILabel!
+  @IBOutlet weak var subtitleText: UILabel!
+  
   @IBOutlet weak var perfilBackground: UIView!
   @IBOutlet weak var nombreApellidosText: UITextField!
   @IBOutlet weak var usuarioText: UITextField!
@@ -49,6 +52,9 @@ class PerfilController: BaseController {
     
     self.login = String(readString).components(separatedBy: ",")
     self.perfilViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 70))
+    
+    self.titleText.font = CustomAppFont.titleFont
+    self.subtitleText.font = CustomAppFont.subtitleFont
     
     self.nombreApellidosText.text = globalVariables.cliente.nombreApellidos
     self.usuarioText.text = globalVariables.cliente.user

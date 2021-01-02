@@ -1,6 +1,6 @@
 //
 //  BaseController.swift
-//  MovilClub
+//  UnTaxi
 //
 //  Created by Donelkys Santana on 8/19/19.
 //  Copyright © 2019 Done Santana. All rights reserved.
@@ -92,10 +92,10 @@ class BaseController: UIViewController {
   }
   
   func getTopMenuBottom() -> CGFloat{
-    return (screenBounds.origin.y + 110)
+    return (screenBounds.origin.y + 100)
   }
   
-  func hideShowMenuBar(isHidden: Bool){
+  func hideMenuBar(isHidden: Bool){
     self.topMenu.isHidden = isHidden
   }
 }

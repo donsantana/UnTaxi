@@ -34,7 +34,7 @@ class SolicitudesTableController: UITableViewController {
     sectionTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
     sectionTitle.textAlignment = .center
     sectionTitle.textColor = Customization.textColor
-    sectionTitle.text = "Solicitudes"
+    //sectionTitle.text = "Solicitudes"
     
     
     let backBtn = UIButton()
@@ -85,7 +85,7 @@ class SolicitudesTableController: UITableViewController {
       
       self.present(ac, animated: true)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
+    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
       
     }))
     
@@ -148,15 +148,18 @@ class SolicitudesTableController: UITableViewController {
       vc?.solicitudPendiente = solicitud
       self.navigationController?.show(vc!, sender: nil)
     }else{
-      let alertaDos = UIAlertController (title: "Solicitud en proceso", message: "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor.", preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Esperar respuesta", style: .default, handler: {alerAction in
-        let vc = R.storyboard.main.inicioView()!
-        self.navigationController?.show(vc, sender: nil)
-      }))
-      alertaDos.addAction(UIAlertAction(title: "Cancelar la solicitud", style: .destructive, handler: {alerAction in
-        self.mostrarMotivosCancelacion(solicitud: solicitud)
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
+      let vc = R.storyboard.main.esperaChildView()
+      vc?.solicitud = solicitud
+      self.navigationController?.show(vc!, sender: nil)
+//      let alertaDos = UIAlertController (title: "Solicitud en proceso", message: "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor.", preferredStyle: .alert)
+//      alertaDos.addAction(UIAlertAction(title: "Esperar respuesta", style: .default, handler: {alerAction in
+//        let vc = R.storyboard.main.inicioView()!
+//        self.navigationController?.show(vc, sender: nil)
+//      }))
+//      alertaDos.addAction(UIAlertAction(title: "Cancelar la solicitud", style: .destructive, handler: {alerAction in
+//        self.mostrarMotivosCancelacion(solicitud: solicitud)
+//      }))
+//      self.present(alertaDos, animated: true, completion: nil)
     }
   } 
 }
@@ -164,25 +167,5 @@ class SolicitudesTableController: UITableViewController {
 extension SolicitudesTableController: SolPendientesDelegate{
   func cancelRequest(_ controller: SolPendientesViewCell, cancelarSolicitud solicitud: Solicitud) {
     self.mostrarMotivosCancelacion(solicitud: solicitud)
-//    let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
-//      motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-//        self.CancelarSolicitud("No necesito", solicitud: solicitud)
-//      }))
-//      motivoAlerta.addAction(UIAlertAction(title: "Demora el servicio", style: .default, handler: { action in
-//        self.CancelarSolicitud("Demora el servicio", solicitud: solicitud)
-//      }))
-//      motivoAlerta.addAction(UIAlertAction(title: "Tarifa incorrecta", style: .default, handler: { action in
-//        self.CancelarSolicitud("Tarifa incorrecta", solicitud: solicitud)
-//      }))
-//      motivoAlerta.addAction(UIAlertAction(title: "Vehículo en mal estado", style: .default, handler: { action in
-//        self.CancelarSolicitud("Vehículo en mal estado", solicitud: solicitud)
-//      }))
-//      motivoAlerta.addAction(UIAlertAction(title: "Solo probaba el servicio", style: .default, handler: { action in
-//        self.CancelarSolicitud("Solo probaba el servicio", solicitud: solicitud)
-//      }))
-//      motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
-//      }))
-//
-//      self.present(motivoAlerta, animated: true, completion: nil)
-    }
+  }
 }

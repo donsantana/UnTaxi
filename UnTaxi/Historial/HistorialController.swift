@@ -14,6 +14,7 @@ class HistorialController: BaseController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var waitingView: UIVisualEffectView!
   
+  @IBOutlet weak var titleText: UILabel!
   @IBOutlet weak var historyTopConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
@@ -23,6 +24,7 @@ class HistorialController: BaseController {
     self.waitingView.standardConfig()
     self.waitingView.isHidden = false
     self.loadHistorialSolicitudes()
+    self.titleText.font = CustomAppFont.titleFont
     
     
     globalVariables.socket.on("historialdesolicitudes"){data, ack in

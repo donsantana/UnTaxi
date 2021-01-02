@@ -17,6 +17,8 @@ class CompletadaController: BaseController, UITextViewDelegate {
   var importe: Double = 0.0
   var socketService = SocketService()
   
+  @IBOutlet weak var titleText: UILabel!
+   
   @IBOutlet weak var completadaBack: UIView!
   @IBOutlet weak var comentarioText: UITextView!
   @IBOutlet weak var completadaView: UIView!
@@ -32,8 +34,10 @@ class CompletadaController: BaseController, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.titleText.font = CustomAppFont.titleFont
+    self.importeText.font = CustomAppFont.bigFont
+    
     self.conductor = self.solicitud.taxi.conductor
-    //self.completadaBack.backgroundColor = Customization.primaryColor
     let url = URL(string:"\(GlobalConstants.urlHost)/\(self.conductor.urlFoto)")
     
     let task = URLSession.shared.dataTask(with: url!) { data, response, error in

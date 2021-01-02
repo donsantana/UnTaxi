@@ -6,12 +6,13 @@
 //  Copyright © 2019 Done Santana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SocketIO
 
 struct globalVariables {
   static var socket: SocketIOClient!
   static var cliente : Cliente!
+  static var tarifario: Tarifario!
   static var solicitudesproceso: Bool = false
   static var taximetroActive: Bool = false
   static var solpendientes: [Solicitud] = []
@@ -28,6 +29,6 @@ struct globalVariables {
   static var responsive = Responsive()
   static var appConfig = AppConfig()
   static var direccionesPactadas: [DireccionesPactadas] = []
-  static var isBigIphone = UIScreen.main.bounds.height > 750
+  static var isBigIphone = UIScreen.main.bounds.height >= 750
   
 }

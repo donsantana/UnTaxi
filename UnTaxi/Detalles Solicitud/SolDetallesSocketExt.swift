@@ -1,6 +1,6 @@
 //
 //  SolPendSocketExt.swift
-//  MovilClub
+//  UnTaxi
 //
 //  Created by Donelkys Santana on 8/21/19.
 //  Copyright © 2019 Done Santana. All rights reserved.
@@ -16,11 +16,11 @@ extension SolPendController: SocketServiceDelegate{
     print("Taxi Geo")
     if globalVariables.solpendientes.count != 0 {
       if (result["idtaxi"] as! Int) == self.solicitudPendiente.taxi.id{
-        self.MapaSolPen.removeAnnotation(self.TaxiSolicitud)
+        self.mapView.removeAnnotation(self.taxiAnnotation)
         self.solicitudPendiente.taxi.updateLocation(newLocation: CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double))
-        self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double)
-        self.MapaSolPen.addAnnotation(self.TaxiSolicitud)
-        self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
+        self.taxiAnnotation.coordinate = CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double)
+        self.mapView.addAnnotation(self.taxiAnnotation)
+        self.mapView.showAnnotations(self.mapView.annotations!, animated: true)
         self.MostrarDetalleSolicitud()
       }
     }
@@ -44,10 +44,9 @@ extension SolPendController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, taxiLLego result: [String : Any]) {
-    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
-    let solicitud = globalVariables.solpendientes[solicitudIndex]
-    if solicitudIndex >= 0{
-      let alertaDos = UIAlertController (title: "Su Taxi ha llegado", message: "Su taxi \(solicitud.taxi.marca), color \(solicitud.taxi.color), matrícula \(solicitud.taxi.matricula) ha llegado al punto de recogida.", preferredStyle: UIAlertController.Style.alert)
+    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}!
+    if solicitud != nil{
+      let alertaDos = UIAlertController (title: "Su Taxi ha llegado", message: "Su taxi \(solicitud.taxi.marca), color \(solicitud.taxi.color), matrícula \(solicitud.taxi.matricula) ha llegado al punto de recogida. Tiene un período de gracia de 5 min.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         
       }))
@@ -66,6 +65,54 @@ extension SolPendController: SocketServiceDelegate{
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
+  }
+  
+  func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
+    if (result["code"] as! Int) == 1 {
+      let alertaDos = UIAlertController (title: "Solicitud Cancelada", message: "Su solicitud fue cancelada con éxito.", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        
+        self.CancelarSolicitud("Conductor")
+        
+        DispatchQueue.main.async {
+          let vc = R.storyboard.main.inicioView()!
+          self.navigationController?.show(vc, sender: nil)
+        }
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
+  }
+  
+  func socketResponse(_ controller: SocketService, serviciocancelado result: [String : Any]) {
+    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
+    if solicitud != nil{
+      let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        
+        self.CancelarSolicitud("Conductor")
+        
+        DispatchQueue.main.async {
+          let vc = R.storyboard.main.inicioView()!
+          self.navigationController?.show(vc, sender: nil)
+        }
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
+  }
+  
+  func socketResponse(_ controller: SocketService, msgVozConductor result: [String : Any]) {
+    self.MensajesBtn.isHidden = false
+    self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
+    
+    globalVariables.urlConductor = "\(GlobalConstants.urlHost)/\(result["audio"] as! String)"
+    if UIApplication.shared.applicationState == .background {
+      let localNotification = UILocalNotification()
+      localNotification.alertAction = "Mensaje del Conductor"
+      localNotification.alertBody = "Mensaje del Conductor. Abra la aplicación para escucharlo."
+      localNotification.fireDate = Date(timeIntervalSinceNow: 4)
+      UIApplication.shared.scheduleLocalNotification(localNotification)
+    }
+    globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
   }
 }
   
@@ -132,10 +179,10 @@ extension SolPendController: SocketServiceDelegate{
 //
 //      if globalVariables.solpendientes.count != 0 {
 //        if (temporal["idtaxi"] as! Int) == self.solicitudPendiente.taxi.id{
-//          self.MapaSolPen.removeAnnotation(self.TaxiSolicitud)
+//          self.MapaSolPen.removeAnnotation(self.taxiAnnotation)
 //          self.solicitudPendiente.taxi.updateLocation(newLocation: CLLocationCoordinate2DMake(temporal["lat"] as! Double, temporal["lng"] as! Double))
-//          self.TaxiSolicitud.coordinate = CLLocationCoordinate2DMake(temporal["lat"] as! Double, temporal["lng"] as! Double)
-//          self.MapaSolPen.addAnnotation(self.TaxiSolicitud)
+//          self.taxiAnnotation.coordinate = CLLocationCoordinate2DMake(temporal["lat"] as! Double, temporal["lng"] as! Double)
+//          self.MapaSolPen.addAnnotation(self.taxiAnnotation)
 //          self.MapaSolPen.showAnnotations(self.MapaSolPen.annotations, animated: true)
 //          self.MostrarDetalleSolicitud()
 //        }

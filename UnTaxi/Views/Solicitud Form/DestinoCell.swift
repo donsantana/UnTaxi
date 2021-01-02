@@ -8,34 +8,24 @@
 
 import UIKit
 
-class DestinoCell: UITableViewCell {
-  @IBOutlet weak var destinoText: UITextField!
-  
-  func initContent(){
-    //self.destinoText.delegate = self
-    self.destinoText.setBottomBorder(borderColor: Customization.bottomBorderColor)
-    self.destinoText.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-  }
-  
-  @objc func textFieldDidChange(_ textField: UITextField) {
-  //    if !textField.text!.isEmpty{
-  //      GMSPlacesClient.shared().autocompleteQuery(textField.text!, bounds: nil, filter: filter, callback: {(result, error) in
-  //        if error == nil && result != nil{
-  //          self.arrayAddress = result!
-  //        }else{
-  //          print("here \(error.debugDescription)")
-  //        }
-  //      })
-  //    }else{
-  //      self.arrayAddress = [GMSAutocompletePrediction]()
-  //    }
-  //    self.origenAddressView.isHidden = self.arrayAddress.count == 0 || !textField.isEqual(self.origenText)
-  //    self.destinoAddressView.isHidden = self.arrayAddress.count == 0 || !textField.isEqual(self.destinoText)
-    }
+protocol DestinoCellDelegate: class {
+  func destinoCell(_ controller: DestinoCell, openSearchPanel result: Bool)
 }
 
-extension DestinoCell: UITextFieldDelegate{
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    textField.text?.removeAll()
+final class DestinoCell: UITableViewCell {
+  @IBOutlet weak var destinoText: UITextField!
+  @IBOutlet weak var showSearchBtn: UIButton!
+  
+  weak var delegate: DestinoCellDelegate?
+  
+  func initContent(){
+    self.destinoText.text?.removeAll()
+    self.destinoText.setBottomBorder(borderColor: Customization.bottomBorderColor)
   }
+  
+  @IBAction func openSearchPanel(_ sender: Any) {
+    self.destinoText.resignFirstResponder()
+    self.delegate?.destinoCell(self, openSearchPanel: true)
+  }
+  
 }

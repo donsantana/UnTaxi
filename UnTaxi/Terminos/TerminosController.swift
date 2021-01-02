@@ -12,10 +12,11 @@ import UIKit
 class TerminosController: BaseController {
   
   @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak var titleText: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.titleText.font = CustomAppFont.titleFont
     self.topViewConstraint.constant = super.getTopMenuBottom()
   }
   

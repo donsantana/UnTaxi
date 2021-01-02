@@ -55,7 +55,6 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         
       case "Operadora":
         let vc = R.storyboard.main.callCenter()!
-        vc.telefonosCallCenter = globalVariables.TelefonosCallCenter
         self.navigationController?.show(vc, sender: nil)
         
       case "Términos y condiciones":

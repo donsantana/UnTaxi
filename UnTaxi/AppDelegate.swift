@@ -17,7 +17,7 @@ import UserNotifications
 //import PaymentezSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
   
   var window: UIWindow?
   
@@ -43,10 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     //VISUAL CUSTOMIZATION
     //Navigation Bar
-    UINavigationBar.appearance().barTintColor = .init(Customization.primaryColor)
+    //UINavigationBar.appearance().barTintColor = .init(Customization.primaryColor)
     
     // To change colour of tappable items.
-    UINavigationBar.appearance().tintColor = Customization.textColor
+   // UINavigationBar.appearance().tintColor = Customization.textColor
     
     UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : Customization.textColor,
                                                         .font : UIFont.init(name: "Muli", size: 20.0)!]
@@ -73,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Customization.buttonsTitleColor], for: .selected)
     UISegmentedControl.appearance().backgroundColor = .white
+    
+    //UIButton.appearance().titleLabel?.font = CustomAppFont.buttonFont
     
     //GOOGLE ADS CODE
     GADMobileAds.sharedInstance().start(completionHandler: nil)

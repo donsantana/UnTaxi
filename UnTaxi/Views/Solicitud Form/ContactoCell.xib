@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ContactoViewCell" customModule="UnTaxi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-di-bdk">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para otra persona" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnN-zQ-1CA">
                             <rect key="frame" x="117" y="7.5" width="292" height="20"/>
@@ -33,15 +32,16 @@
                                 <constraint firstAttribute="width" constant="47" id="1UE-Qr-FkJ"/>
                                 <constraint firstAttribute="height" constant="31" id="Kn3-tc-b2q"/>
                             </constraints>
+                            <color key="onTintColor" red="0.99882358309999997" green="0.79328209159999996" blue="0.28607994320000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="showContactView:" destination="iN0-l3-epB" eventType="valueChanged" id="MFr-SA-2kN"/>
                             </connections>
                         </switch>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsY-b8-6OJ">
-                            <rect key="frame" x="55" y="34" width="359" height="17"/>
+                            <rect key="frame" x="60" y="34" width="354" height="31"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre a contactar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-VE-zS5">
-                                    <rect key="frame" x="0.0" y="-2" width="200.5" height="21"/>
+                                    <rect key="frame" x="0.0" y="5" width="198" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="xHY-AD-tmI"/>
                                     </constraints>
@@ -50,20 +50,17 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" returnKeyType="next"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8v-QX-37Q">
-                                    <rect key="frame" x="208.5" y="-2" width="1" height="21"/>
+                                    <rect key="frame" x="206" y="5" width="1" height="21"/>
                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="26" id="L1V-H9-pop"/>
-                                    </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Teléfono" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-wu-Hdg">
-                                    <rect key="frame" x="217.5" y="-2" width="121.5" height="21"/>
+                                    <rect key="frame" x="215" y="5" width="119" height="21"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Ynp-wu-Hdg" secondAttribute="trailing" constant="20" id="2UN-jA-zsk"/>
                                 <constraint firstItem="y8v-QX-37Q" firstAttribute="top" secondItem="Ynp-wu-Hdg" secondAttribute="top" id="5Zp-Yw-dwP"/>
@@ -88,7 +85,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="6bm-Dh-Zmz" firstAttribute="leading" secondItem="9Kg-wd-PSW" secondAttribute="trailing" constant="5" id="0K1-4N-HMp"/>
-                        <constraint firstItem="YsY-b8-6OJ" firstAttribute="leading" secondItem="6bm-Dh-Zmz" secondAttribute="leading" id="0kH-Qo-LUb"/>
+                        <constraint firstItem="YsY-b8-6OJ" firstAttribute="leading" secondItem="6bm-Dh-Zmz" secondAttribute="leading" constant="5" id="0kH-Qo-LUb"/>
                         <constraint firstAttribute="trailing" secondItem="YsY-b8-6OJ" secondAttribute="trailing" id="I9U-CV-fC4"/>
                         <constraint firstItem="EnN-zQ-1CA" firstAttribute="centerY" secondItem="6bm-Dh-Zmz" secondAttribute="centerY" id="InQ-NU-brf"/>
                         <constraint firstItem="9Kg-wd-PSW" firstAttribute="top" secondItem="6bm-Dh-Zmz" secondAttribute="top" id="XA2-8r-PND"/>
@@ -101,9 +98,9 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="xeR-di-bdk" secondAttribute="bottom" constant="9" id="3Xv-Cs-aOG"/>
+                <constraint firstAttribute="bottom" secondItem="xeR-di-bdk" secondAttribute="bottom" id="3Xv-Cs-aOG"/>
                 <constraint firstItem="xeR-di-bdk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="m4y-ua-IAR"/>
                 <constraint firstItem="xeR-di-bdk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mB6-6E-xQz"/>
                 <constraint firstAttribute="trailing" secondItem="xeR-di-bdk" secondAttribute="trailing" id="oBj-4f-YyD"/>
@@ -115,13 +112,10 @@
                 <outlet property="contactoNameText" destination="2sZ-VE-zS5" id="Tgb-XB-J5V"/>
                 <outlet property="telefonoText" destination="Ynp-wu-Hdg" id="VbG-wf-N0V"/>
             </connections>
-            <point key="canvasLocation" x="149" y="-127"/>
+            <point key="canvasLocation" x="150.72463768115944" y="-127.23214285714285"/>
         </view>
     </objects>
     <resources>
         <image name="contactoIcon" width="30" height="30"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

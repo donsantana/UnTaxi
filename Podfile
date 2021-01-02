@@ -16,6 +16,7 @@ target "UnTaxi" do
     pod 'MapboxSearch', ">= 1.0.0-beta"
     pod 'MapboxSearchUI', ">= 1.0.0-beta"
     pod 'MapboxGeocoder.swift'
+    pod 'MapboxDirections', '~> 0.33'
     pod 'CurrencyTextField'
     pod 'GoogleMaps', '4.0.0'
     pod 'FloatingPanel'

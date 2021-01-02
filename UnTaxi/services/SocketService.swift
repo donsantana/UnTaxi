@@ -26,6 +26,7 @@ protocol SocketServiceDelegate: class {
   func socketResponse(_ controller: SocketService, serviciocompletado result: [String: Any])
   func socketResponse(_ controller: SocketService, taxiLLego result: [String: Any])
   func socketResponse(_ controller: SocketService, geocliente result: [String: Any])
+  func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any])
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String)
   
 }
@@ -119,7 +120,14 @@ final class SocketService{
     
     globalVariables.socket.on("serviciocancelado"){data, ack in
       let result = data[0] as! [String: Any]
-      self.delegate?.socketResponse(self, cancelarservicio: result)
+      if UIApplication.shared.applicationState == .background {
+        let localNotification = UILocalNotification()
+        localNotification.alertAction = "Servicio cancelado"
+        localNotification.alertBody = "Servicio cancelado por el conductor"
+        localNotification.fireDate = Date(timeIntervalSinceNow: 4)
+        UIApplication.shared.scheduleLocalNotification(localNotification)
+      }
+      self.delegate?.socketResponse(self, serviciocancelado: result)
     }
     
     globalVariables.socket.on("ofertadelconductor"){data, ack in
@@ -171,7 +179,6 @@ final class SocketService{
     globalVariables.socket.on("serviciocompletado"){data, ack in
       print("Completada")
       let result = data[0] as! [String: Any]
-      print(result)
       self.delegate?.socketResponse(self, serviciocompletado: result)
     }
     
@@ -190,6 +197,12 @@ final class SocketService{
       print("Aceptada")
       let result = data[0] as! [String: Any]
       self.delegate?.socketResponse(self, aceptaroferta: result)
+    }
+    
+    globalVariables.socket.on("recargaryapa"){data, ack in
+      print("Yapa recargada")
+      let result = data[0] as! [String: Any]
+      self.delegate?.socketResponse(self, recargaryapa: result)
     }
     
   }
@@ -212,5 +225,6 @@ extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, serviciocompletado result: [String: Any]){}
   func socketResponse(_ controller: SocketService, taxiLLego result: [String: Any]){}
   func socketResponse(_ controller: SocketService, geocliente result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any]){}
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String){}
 }

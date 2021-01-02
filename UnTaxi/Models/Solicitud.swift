@@ -274,4 +274,10 @@ class Solicitud {
     ]
   }
   
+  func isAceptada()->Bool{
+    return self.taxi.location.latitude != 0.0
+  }
+  
+  
+  
 }

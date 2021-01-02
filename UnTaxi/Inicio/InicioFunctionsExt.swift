@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import MapKit
 import Mapbox
+import MapboxDirections
+import MapboxGeocoder
 
 extension InicioController{
   //MARK:- FUNCIONES PROPIAS
@@ -65,13 +67,63 @@ extension InicioController{
     return upgradeAvailable
   }
   
-  
   func initMapView(){
-    mapView.setCenter(self.origenAnotacion.coordinate, zoomLevel: 15, animated: false)
+    var annotationsToShow = [globalVariables.cliente.annotation!]
+    if self.origenAnnotation.coordinate.latitude != 0.0{
+      annotationsToShow = [self.origenAnnotation]
+    }
+    mapView.setCenter(annotationsToShow.first!.coordinate, zoomLevel: 15, animated: false)
     mapView.styleURL = MGLStyle.lightStyleURL
-    self.origenIcono.image = UIImage(named: "origen")
-    self.origenIcono.isHidden = true
-    self.mapView.addAnnotation(self.origenAnotacion)
+    self.locationIcono.image = UIImage(named: "origen")
+    self.locationIcono.isHidden = true
+    self.showAnnotation(annotationsToShow, isPOI: true)
+    self.loadFormularioData()
+    self.getTaxisCercanos()
+  }
+  
+//  func coordinatesToAddress(annotation: MGLPointAnnotation){
+//    print("mapbox \(annotation.coordinate)")
+//    let options = ReverseGeocodeOptions(coordinate: annotation.coordinate)
+//    // Or perhaps: ReverseGeocodeOptions(location: locationManager.location)
+//
+//    let task = self.geocoder.geocode(options) { (placemarks, attribution, error) in
+//        guard let placemark = placemarks?.first else {
+//            return
+//        }
+//      print("mapbox \(placemark.name)")
+//      annotation.title = placemark.name
+//      self.mapView.selectAnnotation(annotation, animated: true, completionHandler: nil)
+////        print(placemark.imageName ?? "")
+////            // telephone
+////        print(placemark.genres?.joined(separator: ", ") ?? "")
+////            // computer, electronic
+////        print(placemark.administrativeRegion?.name ?? "")
+////            // New York
+////        print(placemark.administrativeRegion?.code ?? "")
+////            // US-NY
+////        print(placemark.place?.wikidataItemIdentifier ?? "")
+////            // Q60
+//    }
+//  }
+  
+  func initTipoSolicitudBar(){
+    if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
+      self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem, self.pactadaItem],animated: true)
+      socketService.socketEmit("direccionespactadas", datos: [
+      "idempresa": globalVariables.cliente.idEmpresa!
+      ] as [String: Any])
+    }else{
+      self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
+    }
+  
+    for item in self.tabBar.items!{
+      if let image = item.image
+      {
+        item.image = image.withRenderingMode( .alwaysOriginal)
+        item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
+      }
+    }
+    self.tabBar.selectedItem = self.tabBar.items![0] as UITabBarItem
   }
   
   //RECONECT SOCKET
@@ -90,127 +142,79 @@ extension InicioController{
   }
   
   func loadFormularioData(){
+    print("Loading Formulario")
+    self.initTipoSolicitudBar()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
-    
-    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
-    
+//    if self.origenAnnotation.coordinate.latitude != 0.0{
+//      self.getAddressFromCoordinate(self.origenAnnotation)
+//    }else{
+//      self.getAddressFromCoordinate(globalVariables.cliente.annotation)
+//    }
+
     if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.destinoCell)
       if self.tabBar.selectedItem == self.ofertaItem{
         self.ofertaDataCell.initContent(precioInicial: 2.0)
         self.formularioDataCellList.append(self.ofertaDataCell)
-        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 50 : 65)
+        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 55).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 60)
+        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }else{
+        self.origenCell.origenText.text?.removeAll()
+        self.destinoCell.destinoText.text?.removeAll()
+        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 40).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 40 : 55)
       }
     }else{
-      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 35 : 55)
+      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 42).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
           self.formularioDataCellList.append(self.destinoCell)
-          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 50 : 60)
+          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 46).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
-        //self.tipoSolicitudSwitch.isHidden = false
-        
       }
     }
-    
+
     if self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.pactadaCell)
     }else{
-      self.formularioDataCellList.append(self.voucherCell)
+      self.formularioDataCellList.append(self.pagoCell)
+      self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
     }
+    self.destinoCell.showSearchBtn.isHidden = self.tabBar.selectedItem == self.pactadaItem
     
     self.formularioDataCellList.append(self.contactoCell)
-    print(self.formularioDataCellList.count)
     self.solicitudFormTable.reloadData()
+    
+    self.addEnvirSolictudBtn()
+    self.SolicitudView.isHidden = false
   }
   
-  //  func loadFormularioData(){
-  //    self.formularioDataCellList.removeAll()
-  //    self.formularioDataCellList.append(self.origenCell)
-  //
-  //
-  ////    switch self.tabBar.selectedItem {
-  ////    case 0:
-  ////      self.formularioDataCellList.append(self.destinoCell)
-  ////      self.ofertaDataCell.initContent(precioInicial: 2.0)
-  ////      self.formularioDataCellList.append(self.ofertaDataCell)
-  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
-  ////    case 1:
-  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
-  ////    case 3:
-  ////
-  ////    default:
-  ////      <#code#>
-  ////    }
-  //
-  //    self.voucherCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
-  //    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
-  //      self.formularioDataCellList.append(self.destinoCell)
-  //      if self.tabBar.selectedItem == 0{
-  //        self.ofertaDataCell.initContent(precioInicial: 2.0)
-  //        self.formularioDataCellList.append(self.ofertaDataCell)
-  //        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-  //      }
-  //    }else{
-  //      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
-  //      if globalVariables.cliente.idEmpresa != 0{
-  //        if self.isVoucherSelected{
-  //          self.formularioDataCellList.append(self.destinoCell)
-  //          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-  //        }
-  //        self.tipoSolicitudSwitch.isHidden = false
-  //
-  //      }
-  //    }
-  //
-  //    if self.tabBar.selectedItem == 3{
-  //      self.formularioDataCellList.append(self.pactadaCell)
-  //    }else{
-  //      self.formularioDataCellList.append(self.voucherCell)
-  //    }
-  //
-  //    self.formularioDataCellList.append(self.contactoCell)
-  //    self.solicitudFormTable.reloadData()
-  //  }
-  
-  func loadCallCenter(){
-    socketService.socketEmit("telefonosdelcallcenter", datos: [:])
-    //self.socketEmit("telefonosdelcallcenter", datos: [:])
+  //ADD FOOTER TO SOLICITDFORMTABLE
+  func addEnvirSolictudBtn(){
+    let enviarBtnView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.frame.width, height: 60))
+    let button:UIButton = UIButton.init(frame: CGRect(x: 20, y: 10, width: self.SolicitudView.frame.width - 40, height: 50))
+    button.backgroundColor = Customization.buttonActionColor
+    button.layer.cornerRadius = 5
+    button.setTitleColor(Customization.buttonsTitleColor, for: .normal)
+    button.setTitle("CONFIRMAR VIAJE", for: .normal)
+    button.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+    button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
+    button.addShadow()
+    
+    //enviarBtnView.addSubview(separatorView)
+    enviarBtnView.addSubview(button)
+    self.solicitudFormTable.backgroundColor = .none
+    self.solicitudFormTable.tableFooterView = enviarBtnView
   }
   
-//  //FUNCTION ENVIO CON TIMER
-//  func EnviarTimer(estado: Int, datos: String){
-//    if estado == 1{
-//      self.EnviarSocket(datos)
-//      if !self.emitTimer.isValid{
-//        self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
-//      }
-//    }else{
-//      self.emitTimer.invalidate()
-//      self.EnviosCount = 0
-//    }
-//  }
-//
-//  //FUNCIÓN ENVIAR AL SOCKET
-//  @objc func EnviarSocket(_ datos: String){
-//    if CConexionInternet.isConnectedToNetwork() == true{
-//      if globalVariables.socket.status.active && self.EnviosCount <= 3{
-//        globalVariables.socket.emit("data",datos)
-//        print(datos)
-//        //self.EnviarTimer(estado: 1, datos: datos)
-//      }else{
-//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//          exit(0)
-//        }))
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }
-//    }else{
-//      ErrorConexion()
-//    }
-//  }
-//
+  func getTaxisCercanos(){
+    let data = [
+      "idcliente": globalVariables.cliente.id!,
+      "latitud": self.origenAnnotation.coordinate.latitude,
+      "longitud": self.origenAnnotation.coordinate.longitude
+      ] as [String: Any]
+    socketService.socketEmit("cargarvehiculoscercanos", datos: data)
+  }
   
   func socketEmit(_ eventName: String, datos: [String: Any]){
     if CConexionInternet.isConnectedToNetwork() == true{
@@ -234,26 +238,6 @@ extension InicioController{
     }
   }
   
-//  @objc func EnviarSocket1(_ timer: Timer){
-//    if CConexionInternet.isConnectedToNetwork() == true{
-//      if globalVariables.socket.status.active && self.EnviosCount <= 3 {
-//        self.EnviosCount += 1
-//        let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
-//        var datos = (userInfo["datos"] as! String)
-//        globalVariables.socket.emit("data",datos)
-//      }else{
-//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//          self.EnviarTimer(estado: 0, datos: "Terminado")
-//          exit(0)
-//        }))
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }
-//    }else{
-//      ErrorConexion()
-//    }
-//  }
-  
   //FUNCIONES ESCUCHAR SOCKET
   func ErrorConexion(){
     let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
@@ -271,10 +255,7 @@ extension InicioController{
       mapView.removeAnnotations(self.mapView!.annotations!)
     }
     
-    self.formularioSolicitud.isHidden = true
-    self.SolicitarBtn.isHidden = false
-    SolPendientesView.isHidden = true
-    //AlertaEsperaView.isHidden = true
+    self.SolicitudView.isHidden = true
     self.tabBar.selectedItem = self.ofertaItem
     super.topMenu.isHidden = false
     self.viewDidLoad()
@@ -352,7 +333,7 @@ extension InicioController{
       
       self.present(ac, animated: true)
     }))
-    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
+    motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
     self.present(motivoAlerta, animated: true, completion: nil)
@@ -399,7 +380,7 @@ extension InicioController{
   
   func DibujarIconos(_ anotaciones: [MGLAnnotation]){
     if anotaciones.count == 1{
-      self.mapView.addAnnotations([self.origenAnotacion,anotaciones[0]])
+      self.mapView.addAnnotations([self.origenAnnotation,anotaciones[0]])
       //self.mapView.fitAll(in: self.mapView.annotations, andShow: true)
     }else{
       self.mapView.addAnnotations(anotaciones)
@@ -425,52 +406,11 @@ extension InicioController{
       return false
     }
   }
-  
-  @objc func ocultarMenu(){
-    self.MenuView1.isHidden = true
-    self.TransparenciaView.isHidden = true
-    self.Inicio()
-    super.topMenu.isHidden = false
-  }
-  
-  //ADD FOOTER TO SOLICITDFORMTABLE
-  func addEnvirSolictudBtn(){
-    let enviarBtnView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.frame.width, height: 60))
-    let button:UIButton = UIButton.init(frame: CGRect(x: 25, y: 10, width: self.SolicitudView.frame.width - 50, height: 40))
-    button.backgroundColor = Customization.buttonActionColor
-    button.layer.cornerRadius = 5
-    button.setTitleColor(Customization.buttonsTitleColor, for: .normal)
-    button.setTitle("ENVIAR SOLICITUD", for: .normal)
-    button.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
-    button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
-    button.addShadow()
-    
-    //enviarBtnView.addSubview(separatorView)
-    enviarBtnView.addSubview(button)
-    self.solicitudFormTable.backgroundColor = .none
-    self.solicitudFormTable.tableFooterView = enviarBtnView
-  }
-  
-  func converAddressToCoord(address: String)->CLLocationCoordinate2D{
-    var coordinates = self.origenAnotacion.coordinate
-    var geocoder = CLGeocoder()
-    if address != ""{
-      geocoder.geocodeAddressString(address) {
-        placemarks, error in
-        let placemark = placemarks?.first
-        coordinates = (placemark?.location!.coordinate)!
-        //      let lat = placemark?.location?.coordinate.latitude
-        //      let lon = placemark?.location?.coordinate.longitude
-      }
-    }
-    return coordinates
-    
-  }
-  
+
   func crearTramaSolicitud(_ nuevaSolicitud: Solicitud){
     //#Solicitud, idcliente, nombrecliente, movilcliente, dirorig, referencia, dirdest,latorig,lngorig, latdest, lngdest, distancia, costo, #
-    formularioSolicitud.isHidden = true
-    origenIcono.isHidden = true
+    SolicitudView.isHidden = true
+    locationIcono.isHidden = true
     globalVariables.solpendientes.append(nuevaSolicitud)
     
     socketService.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
@@ -479,7 +419,7 @@ extension InicioController{
     //MensajeEspera.text = "Buscando UnTaxi..."
     //self.AlertaEsperaView.isHidden = false
     self.origenCell.origenText.text?.removeAll()
-    self.voucherCell.referenciaText.text?.removeAll()
+    self.pagoCell.referenciaText.text?.removeAll()
     
 //    let vc = R.storyboard.main.esperaChildView()!
 //    vc.solicitud = nuevaSolicitud
@@ -497,15 +437,15 @@ extension InicioController{
       
       let origen = self.cleanTextField(textfield: self.origenCell.origenText)
       
-      let origenCoord = self.origenAnotacion.coordinate
+      let origenCoord = self.origenAnnotation.coordinate
       
-      let referencia = !self.voucherCell.referenciaText.text!.isEmpty ? self.cleanTextField(textfield: self.voucherCell.referenciaText) : "No referencia"
+      let referencia = !self.pagoCell.referenciaText.text!.isEmpty ? self.cleanTextField(textfield: self.pagoCell.referenciaText) : "No referencia"
       
       let destino = self.cleanTextField(textfield: self.destinoCell.destinoText)
       
-      let destinoCoord = self.converAddressToCoord(address: destino)
+      let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
       
-      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.voucherCell.formaPagoSwitch.selectedSegmentIndex == 2 ? "1" : "0"
+      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 2 ? "1" : "0"
       
       let detalleOferta = "No detalles"
       
@@ -518,7 +458,7 @@ extension InicioController{
       
       let nuevaSolicitud = Solicitud()
       self.contactoCell.contactoNameText.text!.isEmpty ? nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!) : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
-      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: voucherCell.pagarYapaSwitch.isOn)
+      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: pagoCell.pagarYapaSwitch.isOn)
       
       if !self.contactoCell.telefonoText.text!.isEmpty{
         nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
@@ -538,25 +478,113 @@ extension InicioController{
   
   @objc func enviarSolicitud(){
     if self.tabBar.selectedItem == self.ofertaItem {
-      //if !(self.ofertaDataCell.ofertaText.text?.isEmpty)! && self.ofertaDataCell.ofertaTex != "0"{
-      self.crearSolicitudOferta()
-      //      }else{
-      //        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe ofertar un valor $ por el servicio.", preferredStyle: UIAlertController.Style.alert)
-      //        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      //          //self.origenCell.destinoText.becomeFirstResponder()
-      //        }))
-      //        self.present(alertaDos, animated: true, completion: nil)
-      //      }
+      if !(self.destinoCell.destinoText.text!.isEmpty){
+        self.crearSolicitudOferta()
+      }else{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino y el ofertar un valor $ por el servicio.", preferredStyle: UIAlertController.Style.alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.destinoCell.destinoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
     }else{
       self.crearSolicitudOferta()
     }
   }
+  
+  func getDestinoFromSearch(annotation: MGLPointAnnotation){
+    let wp1 = Waypoint(coordinate: self.origenAnnotation.coordinate, name: self.origenAnnotation.title)
+    let wp2 = Waypoint(coordinate: annotation.coordinate, name: annotation.title)
+    let options = RouteOptions(waypoints: [wp1, wp2])
+    options.includesSteps = true
+    options.routeShapeResolution = .full
+    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
+    
+    Directions.shared.calculate(options) { (session, result) in
+      switch result {
+      case let .failure(error):
+        print("Error calculating directions: \(error)")
+      case let .success(response):
+        if let route = response.routes?.first, let leg = route.legs.first {
+          print("Route via \((route.distance/1000)):")
+          let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
+          self.panelController.removeContainer()
+          self.destinoAnnotation = annotation
+          self.destinoCell.destinoText.text = annotation.title
+          print("costo \(costo)")
+          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
+          self.SolicitudView.isHidden = false
+          
+          let distanceFormatter = LengthFormatter()
+          let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
 
+          let travelTimeFormatter = DateComponentsFormatter()
+          travelTimeFormatter.unitsStyle = .short
+          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
+
+          print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
+          
+          for step in leg.steps {
+            let direction = step.maneuverDirection?.rawValue ?? "none"
+            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
+            if step.distance > 0 {
+              let formattedDistance = distanceFormatter.string(fromMeters: step.distance)
+              print("— \(step.transportType) for \(formattedDistance) —")
+            }
+          }
+          
+//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
+//            // Convert the route’s coordinates into a polyline.
+//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+//
+//            // Add the polyline to the map.
+//            self.mapView.addAnnotation(routeLine)
+//
+//            // Fit the viewport to the polyline.
+//            let camera = self.mapView.cameraThatFitsShape(routeLine, direction: 0, edgePadding: .zero)
+//            self.mapView.setCamera(camera, animated: true)
+//          }
+        }
+      }
+    }
+  }
+  
+  func openSearchPanel(){
+    print("open SearchPanel")
+    super.hideMenuBar(isHidden: true)
+    self.panelController.setState(.opened)
+    self.view.endEditing(true)
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
+    openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
+    let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
+    openMapBtn.setImage(mapaImage, for: UIControl.State())
+    openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
+    //openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
+    openMapBtn.layer.cornerRadius = 10
+    openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
+    openMapBtn.backgroundColor = .white
+    openMapBtn.tintColor = .black
+    openMapBtn.addShadow()
+    panelController.view.addSubview(openMapBtn)
+    addChild(panelController)
+  }
+  
+  @objc func hideSearchPanel(){
+    print("Hiding Panel")
+    super.hideMenuBar(isHidden: false)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    self.panelController.removeContainer()
+    //self.destinoCell.destinoText.text = self.origenAnnotation.title
+    self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
+    //self.loadFormularioData()
+  }
+  
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+      self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
       self.keyboardHeight = keyboardSize.height
     }
   }
@@ -574,12 +602,13 @@ extension InicioController{
   }
   
   override func viewWillDisappear(_ animated: Bool) {
-    self.voucherCell.referenciaText.resignFirstResponder()
+    self.pagoCell.referenciaText.resignFirstResponder()
   }
   
   @objc func ocultarTeclado(sender: UITapGestureRecognizer){
     //sender.cancelsTouchesInView = false
     self.SolicitudView.endEditing(true)
+    self.panelController.removeContainer()
   }
   
   //  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -600,11 +629,87 @@ extension InicioController{
     return cleanedTextField!.folding(options: .diacriticInsensitive, locale: .current)
   }
   
+  @objc func dismissPicker() {
+    view.endEditing(true)
+  }
+  
+  //MARK:- FUNCION DETERMINAR DIRECCIÓN A PARTIR DE COORDENADAS
+  func getAddressFromCoordinate(_ annotation: MGLPointAnnotation){
+    if annotation.coordinate.latitude != 0.0{
+      print("google \(annotation.coordinate)")
+      let geocoder = CLGeocoder()
+      var address = ""
+      
+      let temporaLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+      geocoder.reverseGeocodeLocation(temporaLocation, completionHandler: {(placemarks, error) -> Void in
+        if error != nil {
+          print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+          return
+        }
+        
+        if (placemarks?.count)! > 0{
+          let placemark = (placemarks?.first)! as CLPlacemark
+          
+          if let name = placemark.addressDictionary?["Name"] as? String {
+            print("google \(name)")
+            address += name
+          }
+          
+          //            if let locality = placemark.addressDictionary?["City"] as? String {
+          //              address += " \(locality)"
+          //            }
+          //
+          //          if let state = placemark.addressDictionary?["State"] as? String {
+          //            address += " \(state)"
+          //          }
+          //
+          //          if let country = placemark.country{
+          //            address += " \(country)"
+          //          }
+          annotation.title = address
+          annotation.subtitle == "origen" ? (self.origenCell.origenText.text = address) : (self.destinoCell.destinoText.text = address)
+        }else {
+          annotation.title = "No disponible"
+        }
+      })
+    }
+  }
+  
+  func converAddressToCoord(address: String)->CLLocationCoordinate2D{
+    var coordinates = self.origenAnnotation.coordinate
+    let geocoder = CLGeocoder()
+    if address != ""{
+      geocoder.geocodeAddressString(address) {
+        placemarks, error in
+        let placemark = placemarks?.first
+        coordinates = (placemark?.location!.coordinate)!
+      }
+    }
+    return coordinates
+  }
+  
+  func offSocketEventos(){
+    globalVariables.socket.off("cargarvehiculoscercanos")
+    globalVariables.socket.off("solicitarservicio")
+    globalVariables.socket.off("cancelarservicio")
+    globalVariables.socket.off("sinvehiculo")
+    globalVariables.socket.off("solicitudaceptada")
+    globalVariables.socket.off("serviciocancelado")
+    globalVariables.socket.off("ofertadelconductor")
+    globalVariables.socket.off("telefonosdelcallcenter")
+    globalVariables.socket.off("taximetroiniciado")
+    globalVariables.socket.off("subiroferta")
+    globalVariables.socket.off("U")
+    globalVariables.socket.off("voz")
+    globalVariables.socket.off("direccionespactadas")
+    globalVariables.socket.off("serviciocompletado")
+  }
+  
   //  func showFormularioSolicitud(){
   //    self.CargarFavoritas()
   //    self.TablaDirecciones.reloadData()
-  //    self.origenIcono.isHidden = true
-  //    self.origenAnotacion.coordinate = mapView.centerCoordinate
+  //    self.locationIcono.isHidden = true
+  //    self.origenAnnotation.coordinate = mapView.centerCoordinate
   //    coreLocationManager.stopUpdatingLocation()
   //    self.SolicitarBtn.isHidden = true
   //    self.origenCell.origenText.becomeFirstResponder()
@@ -626,70 +731,93 @@ extension InicioController{
   //    //self.reservaDate.text = dateFormatter.string(from: datePicker.date)
   //  }
   //
-  @objc func dismissPicker() {
-    view.endEditing(true)
-  }
   
-  //FUNCION DETERMINAR DIRECCIÓN A PARTIR DE COORDENADAS
-  func direccionDeCoordenada(_ coordenada : CLLocationCoordinate2D, directionText : UITextField){
-    let geocoder = CLGeocoder()
-    var address = ""
-    if CConexionInternet.isConnectedToNetwork() == true {
-      let temporaLocation = CLLocation(latitude: coordenada.latitude, longitude: coordenada.longitude)
-      CLGeocoder().reverseGeocodeLocation(temporaLocation, completionHandler: {(placemarks, error) -> Void in
-        if error != nil {
-          print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-          return
-        }
-        
-        if (placemarks?.count)! > 0 {
-          let placemark = (placemarks?.first)! as CLPlacemark
-          
-          if let name = placemark.addressDictionary?["Name"] as? String {
-            address += name
-          }
-          
-          //            if let locality = placemark.addressDictionary?["City"] as? String {
-          //              address += " \(locality)"
-          //            }
-          //
-          //          if let state = placemark.addressDictionary?["State"] as? String {
-          //            address += " \(state)"
-          //          }
-          //
-          //          if let country = placemark.country{
-          //            address += " \(country)"
-          //          }
-          directionText.text = address
-          //self.GeolocalizandoView.isHidden = true
-        }
-        else {
-          directionText.text = "No disponible"
-          //self.GeolocalizandoView.isHidden = true
-        }
-      })
-      
-    }else{
-      ErrorConexion()
-    }
-  }
+  //  func loadFormularioData(){
+  //    self.formularioDataCellList.removeAll()
+  //    self.formularioDataCellList.append(self.origenCell)
+  //
+  //
+  ////    switch self.tabBar.selectedItem {
+  ////    case 0:
+  ////      self.formularioDataCellList.append(self.destinoCell)
+  ////      self.ofertaDataCell.initContent(precioInicial: 2.0)
+  ////      self.formularioDataCellList.append(self.ofertaDataCell)
+  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
+  ////    case 1:
+  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
+  ////    case 3:
+  ////
+  ////    default:
+  ////      <#code#>
+  ////    }
+  //
+  //    self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
+  //    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
+  //      self.formularioDataCellList.append(self.destinoCell)
+  //      if self.tabBar.selectedItem == 0{
+  //        self.ofertaDataCell.initContent(precioInicial: 2.0)
+  //        self.formularioDataCellList.append(self.ofertaDataCell)
+  //        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+  //      }
+  //    }else{
+  //      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
+  //      if globalVariables.cliente.idEmpresa != 0{
+  //        if self.isVoucherSelected{
+  //          self.formularioDataCellList.append(self.destinoCell)
+  //          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
+  //        }
+  //        self.tipoSolicitudSwitch.isHidden = false
+  //
+  //      }
+  //    }
+  //
+  //    if self.tabBar.selectedItem == 3{
+  //      self.formularioDataCellList.append(self.pactadaCell)
+  //    }else{
+  //      self.formularioDataCellList.append(self.pagoCell)
+  //    }
+  //
+  //    self.formularioDataCellList.append(self.contactoCell)
+  //    self.solicitudFormTable.reloadData()
+  //  }
   
-  func offSocketEventos(){
-    globalVariables.socket.off("cargarvehiculoscercanos")
-    globalVariables.socket.off("solicitarservicio")
-    globalVariables.socket.off("cancelarservicio")
-    globalVariables.socket.off("sinvehiculo")
-    globalVariables.socket.off("solicitudaceptada")
-    globalVariables.socket.off("serviciocancelado")
-    globalVariables.socket.off("ofertadelconductor")
-    globalVariables.socket.off("telefonosdelcallcenter")
-    globalVariables.socket.off("taximetroiniciado")
-    globalVariables.socket.off("subiroferta")
-    globalVariables.socket.off("U")
-    globalVariables.socket.off("voz")
-    globalVariables.socket.off("direccionespactadas")
-    globalVariables.socket.off("serviciocompletado")
-  }
+//  func loadCallCenter(){
+//    socketService.socketEmit("telefonosdelcallcenter", datos: [:])
+//    //self.socketEmit("telefonosdelcallcenter", datos: [:])
+//  }
+  
+//  //FUNCTION ENVIO CON TIMER
+//  func EnviarTimer(estado: Int, datos: String){
+//    if estado == 1{
+//      self.EnviarSocket(datos)
+//      if !self.emitTimer.isValid{
+//        self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+//      }
+//    }else{
+//      self.emitTimer.invalidate()
+//      self.EnviosCount = 0
+//    }
+//  }
+//
+//  //FUNCIÓN ENVIAR AL SOCKET
+//  @objc func EnviarSocket(_ datos: String){
+//    if CConexionInternet.isConnectedToNetwork() == true{
+//      if globalVariables.socket.status.active && self.EnviosCount <= 3{
+//        globalVariables.socket.emit("data",datos)
+//        print(datos)
+//        //self.EnviarTimer(estado: 1, datos: datos)
+//      }else{
+//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          exit(0)
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//    }else{
+//      ErrorConexion()
+//    }
+//  }
+//
   
   //  func loadGeoJson() {
   //    DispatchQueue.global().async {
