@@ -124,6 +124,7 @@ extension CallCenterController: SocketServiceDelegate{
       telefonoList.append(Telefono(numero: telefonoData["telefono2"] as! String, operadora: telefonoData["operadora"] as! String, email: "", tienewhatsapp: (telefonoData["whatsapp"] as! Int) == 1))
     }
     self.telefonosCallCenter = telefonoList
+    self.telefonosCallCenter.sort{$0.numero > $1.numero}
     self.callCenterTableView.reloadData()
   }
 }

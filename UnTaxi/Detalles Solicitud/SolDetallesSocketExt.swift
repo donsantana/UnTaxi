@@ -32,7 +32,7 @@ extension SolPendController: SocketServiceDelegate{
       let solicitudCompletadaIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
       if solicitudCompletadaIndex >= 0{
         let solicitudCompletada = globalVariables.solpendientes.remove(at: solicitudCompletadaIndex)
-        print(solicitudCompletada.valorOferta)
+        solicitudCompletada.yapaimporte = result["yapa"] as! Double
         DispatchQueue.main.async {
           let vc = R.storyboard.main.completadaView()!
           vc.solicitud = solicitudCompletada

@@ -44,23 +44,35 @@ class BaseController: UIViewController {
         let closeImage = UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysOriginal)
         closeBtn.setImage(closeImage, for: UIControl.State())
         closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
-        closeBtn.layer.cornerRadius = 20
+        closeBtn.layer.cornerRadius = closeBtn.frame.height/2
         //closeBtn.backgroundColor = .white
         //closeBtn.tintColor = Customization.buttonsTitleColor
-        closeBtn.addShadow()
+        //closeBtn.addShadow()
         topMenu.addSubview(closeBtn)
       }
       
-      let homeBtn = UIButton(type: UIButton.ButtonType.system)
-      homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
-      let homeImage = UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate)
-      homeBtn.setImage(homeImage, for: UIControl.State())
-      homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
-      homeBtn.tintColor = Customization.buttonActionColor
-      homeBtn.layer.cornerRadius = homeBtn.frame.height/2
-      homeBtn.backgroundColor = .white
-      topMenu.addSubview(homeBtn)
-      
+      if hideMenuBtn{
+        let backBtn = UIButton(type: UIButton.ButtonType.system)
+        backBtn.frame = CGRect(x: 10, y: 15, width: 40, height: 40)
+        let backImage = UIImage(named: "backIcon")?.withRenderingMode(.alwaysTemplate)
+        backBtn.setImage(backImage, for: UIControl.State())
+        backBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
+        backBtn.tintColor = hideMenuBtn ? .black : Customization.buttonActionColor
+        backBtn.layer.cornerRadius = backBtn.frame.height/2
+        backBtn.backgroundColor = .white
+        topMenu.addSubview(backBtn)
+        topMenu.removeShadow()
+      }else{
+        let homeBtn = UIButton(type: UIButton.ButtonType.system)
+        homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
+        let homeImage = UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate)
+        homeBtn.setImage(homeImage, for: UIControl.State())
+        homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
+        homeBtn.tintColor = hideMenuBtn ? .black : Customization.buttonActionColor
+        homeBtn.layer.cornerRadius = homeBtn.frame.height/2
+        homeBtn.backgroundColor = .white
+        topMenu.addSubview(homeBtn)
+      }
       
       self.view.addSubview(topMenu)
     }

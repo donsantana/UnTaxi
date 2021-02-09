@@ -23,7 +23,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
       cell.textLabel?.text = self.menuArray[indexPath.section][indexPath.row].title
-      cell.textLabel?.font = CustomAppFont.normalFont
+      //cell.textLabel?.font = CustomAppFont.normalFont
       cell.textLabel?.textColor = Customization.textColor
       cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.iconColor)
       return cell
@@ -35,6 +35,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
       case "Nuevo viaje":
         let vc = R.storyboard.main.inicioView()!
         self.navigationController?.show(vc, sender: nil)
+        
       case "Viajes en proceso":
         if globalVariables.solpendientes.count > 0{
           let vc = R.storyboard.main.listaSolPdtes()
@@ -49,6 +50,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
           
           self.present(alertaDos, animated: true, completion: nil)
         }
+        
       case "Historial de Viajes":
         let vc = R.storyboard.main.historyView()!
         self.navigationController?.show(vc, sender: nil)

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GooglePlaces
+//import GooglePlaces
 
 class OrigenViewCell: UITableViewCell {
   var reservaDate: OurDate!
@@ -17,11 +17,11 @@ class OrigenViewCell: UITableViewCell {
 //      self.destinoAddressTable.reloadData()
 //    }
 //  }
-  lazy var filter: GMSAutocompleteFilter = {
-    let filter = GMSAutocompleteFilter()
-    filter.type = .address
-    return filter
-  }()
+//  lazy var filter: GMSAutocompleteFilter = {
+//    let filter = GMSAutocompleteFilter()
+//    filter.type = .address
+//    return filter
+//  }()
   
   @IBOutlet weak var origenText: UITextField!
 

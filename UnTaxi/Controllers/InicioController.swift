@@ -77,7 +77,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactadaSelected"))
   
   //variables de interfaz
-  var TelefonoContactoText: UITextField!
   
   var TablaDirecciones = UITableView()
   
@@ -90,6 +89,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //CONSTRAINTS
   var btnViewTop: NSLayoutConstraint!
   @IBOutlet weak var formularioSolicitudHeight: NSLayoutConstraint!
+  @IBOutlet weak var formularioSolicitudBottomConstraint: NSLayoutConstraint!
   
   //MAP
   let searchEngine = SearchEngine()
@@ -144,7 +144,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.contactoCell.contactoNameText.delegate = self
     self.contactoCell.telefonoText.delegate = self
     self.origenCell.origenText.delegate = self
-    self.destinoCell.delegate = self
     self.destinoCell.destinoText.delegate = self
     self.pagoCell.delegate = self
     self.pagoCell.referenciaText.delegate = self
@@ -165,13 +164,14 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
     self.searchController = MapboxSearchController()
+    
     self.panelController = MapboxPanelController(rootViewController: self.searchController)
     func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
     let mapboxSFOfficeCoordinate = CLLocationCoordinate2D(latitude: 37.7911551, longitude: -122.3966103)
     
     searchController.delegate = self
+    
     //searchEngine.delegate = self
-    //addChild(panelController)
     
     //MARK:- PANEL DEFINITION
     //letsolicitudPanel = FloatingPanelController()
@@ -188,6 +188,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
     self.solicitudFormTable.addGestureRecognizer(tapGesture)
@@ -197,7 +199,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.mapView.addGestureRecognizer(mapTapGesture)
     
     //INITIALIZING INTERFACES VARIABLES
-    self.TelefonoContactoText = self.contactoCell.telefonoText
     self.pagoCell.initContent(isCorporativo: true)
     
     if let tempLocation = self.coreLocationManager.location?.coordinate{
@@ -257,6 +258,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     }
 
     self.socketService.initListenEventos()
+    self.initTipoSolicitudBar()
     //self.loadFormularioData()
     
     //self.apiService.listCardsAPIService()
@@ -270,13 +272,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenCell.origenText, attribute: .bottom, multiplier: 1, constant: 0)
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if segue.identifier == "esperaChildView" {
-//      if let childVC = segue.destination as? EsperaChildVC {
-//        //Some property on ChildVC that needs to be set
-//        childVC.solicitud = globalVariables.solpendientes.last
-//      }
-//    }
+  override func viewDidDisappear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -299,7 +296,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //MARK:- BOTONES GRAFICOS ACCIONES
   
   @IBAction func RelocateBtn(_ sender: Any) {
-    //self.origenAnnotation.coordinate = (self.coreLocationManager.location?.coordinate)!
     self.initMapView()
   }
   
@@ -352,13 +348,29 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func closeView(_ sender: Any) {
+    if self.searchingAddress == "origen" {
+      self.origenAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+    }else{
+      self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+    }
     self.hideSearchPanel()
+    self.getDestinoFromSearch(annotation: self.origenAnnotation)
   }
   
   @IBAction func getAddressText(_ sender: Any) {
-    
-  }
-  
+    if self.searchingAddress == "destino"{
+      if !(self.panelController.state == .collapsed){
+        self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.searchController.searchEngine.query)
+        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }else{
+        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }
+    }else{
+      self.origenAnnotation.title = self.searchController.searchEngine.query
+      self.origenCell.origenText.text = self.origenAnnotation.title
+    }
+    self.hideSearchPanel()
+  } 
 }
 
 

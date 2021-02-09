@@ -10,11 +10,9 @@ import UIKit
 
 class PanicoController: UIViewController {
   
-  @IBOutlet weak var titleText: UILabel!
   @IBOutlet weak var contentView: UIView!
   
   override func viewDidLoad() {
-    self.titleText.font = CustomAppFont.titleFont
     self.contentView.addShadow()
   }
   

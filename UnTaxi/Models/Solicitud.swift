@@ -35,6 +35,7 @@ class Solicitud {
   var destinoCoord = CLLocationCoordinate2D()
   var distancia = 0.0
   var importe = 0.0
+  var yapaimporte = 0.0
   
   var valorOferta = 0.0
   var detalleOferta = ""
@@ -277,7 +278,5 @@ class Solicitud {
   func isAceptada()->Bool{
     return self.taxi.location.latitude != 0.0
   }
-  
-  
   
 }

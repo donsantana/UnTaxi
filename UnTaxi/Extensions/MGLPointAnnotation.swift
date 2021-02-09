@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import CoreLocation
 import Mapbox
 import MapboxGeocoder
 
 extension MGLPointAnnotation{
   
-  func updateAnnotation(){
-    
+  func updateAnnotation(newCoordinate: CLLocationCoordinate2D, newTitle: String){
+    self.coordinate = newCoordinate
+    self.title = newTitle
   }
   
   func coordinatesToAddress(){

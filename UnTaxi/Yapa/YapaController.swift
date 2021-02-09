@@ -19,14 +19,16 @@ class YapaController: BaseController{
   @IBOutlet weak var subtitleText: UILabel!
   @IBOutlet weak var yapaText: UILabel!
   @IBOutlet weak var explicacionText: UITextView!
+  @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.titleText.font = CustomAppFont.titleFont
-    self.subtitleText.font = CustomAppFont.subtitleFont
-    self.yapaText.font = CustomAppFont.bigFont
+//    self.titleText.font = CustomAppFont.titleFont
+//    self.subtitleText.font = CustomAppFont.subtitleFont
+//    self.yapaText.font = CustomAppFont.bigFont
     self.yapaText.addBorder(color: Customization.buttonActionColor)
-    self.explicacionText.font = CustomAppFont.titleFont
+    self.imageHeightConstraint.constant = Responsive().heightFloatPercent(percent: 25)
+//    self.explicacionText.font = CustomAppFont.titleFont
     
     //MARK:- PANEL DEFINITION
     yapaPanel.delegate = self

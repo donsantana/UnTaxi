@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 class ContactoViewCell: UITableViewCell {
+  
+  let phoneNumberKit = PhoneNumberKit()
+  
   @IBOutlet weak var contactoNameText: UITextField!
   @IBOutlet weak var telefonoText: UITextField!
   @IBOutlet weak var contactarSwitch: UISwitch!
@@ -16,7 +20,12 @@ class ContactoViewCell: UITableViewCell {
   
   
   @IBAction func showContactView(_ sender: Any) {
+    self.telefonoText.placeholder = self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description)
     self.contactDataVIew.isHidden = !self.contactarSwitch.isOn
+  }
+  
+  func isValidPhone()->Bool{
+    return self.phoneNumberKit.isValidPhoneNumber(self.telefonoText.text!)
   }
   
 }

@@ -16,10 +16,10 @@ class OfertaDataViewCell: UITableViewCell {
 
   @IBOutlet weak var valorOfertaText: CurrencyTextField!
 
-  func initContent(precioInicial: Double){
+  func initContent(){
     self.valorOfertaText.setBottomBorder(borderColor: Customization.bottomBorderColor)
-    self.valorOfertaText.font = CustomAppFont.titleFont
-    self.valorOfertaText.text = "$\(String(format: "%.2f", precioInicial))"
+    //self.valorOfertaText.font = CustomAppFont.titleFont
+    //self.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
   }
 }
  

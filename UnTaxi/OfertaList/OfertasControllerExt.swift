@@ -68,7 +68,7 @@ extension OfertasController: SocketServiceDelegate{
   
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
     print("cancelada \(result)")
-    if (result["code"] as! Int) == 1 {
+    if (result["code"] as! Int) == 1 || (result["code"] as! Int) == 3{
       let vc = R.storyboard.main.inicioView()!
       self.navigationController?.show(vc, sender: nil)
     }

@@ -70,6 +70,10 @@ class Cliente{
     task.resume()
   }
   
+  func getName()->String{
+    return self.nombreApellidos.components(separatedBy: " ").first!
+  }
+  
   func updatePhoto(newPhoto: UIImage){
     self.fotoImage = newPhoto
   }

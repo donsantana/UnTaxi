@@ -16,8 +16,8 @@ class TerminosController: BaseController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.titleText.font = CustomAppFont.titleFont
+    //self.titleText.font = CustomAppFont.titleFont
     self.topViewConstraint.constant = super.getTopMenuBottom()
   }
-  
+
 }

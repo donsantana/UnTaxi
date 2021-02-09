@@ -15,7 +15,7 @@ class AdaptiveLayoutConstraint: NSLayoutConstraint {
     
     override func awakeFromNib() {
         if setAdaptiveLayout {
-            self.constant = self.constant.relativeToIphone8Width()
+            self.constant = self.constant.relativeToIphone8Height()//relativeToIphone8Width()
             
             if let firstView = self.firstItem as? UIView {
                 firstView.layoutIfNeeded()

@@ -23,11 +23,11 @@ class OfertaViewCell: UITableViewCell {
     let origenCoord = globalVariables.solpendientes.first{$0.id == oferta.id}?.origenCoord
     let origenLocation = CLLocation(latitude: Double(origenCoord!.latitude), longitude: Double(origenCoord!.longitude))
     let distance = origenLocation.distance(from: CLLocation(latitude: oferta.location.latitude, longitude: oferta.location.longitude))/1000
-    self.marcaModelo.font = CustomAppFont.normalFont
-    self.condNombreApellidos.normalTextBlueStyle()
-    self.distanciaTiempoText.font = CustomAppFont.normalFont
-    self.valorText.bigTextBlueStyle()
-    self.calificacionText.font = CustomAppFont.smallFont
+    //self.marcaModelo.font = CustomAppFont.normalFont
+    //self.condNombreApellidos.normalTextBlueStyle()
+    //self.distanciaTiempoText.font = CustomAppFont.normalFont
+    //self.valorText.bigTextBlueStyle()
+    //self.calificacionText.font = CustomAppFont.smallFont
     
     let url = URL(string:"\(GlobalConstants.urlHost)/\(oferta.urlFoto)")
     

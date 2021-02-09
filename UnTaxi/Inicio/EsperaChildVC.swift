@@ -31,11 +31,11 @@ class EsperaChildVC: UIViewController {
     self.updateOfertaView.addShadow()
     self.SendOferta.addShadow()
     self.newOfertaText.addBorder(color: Customization.buttonActionColor)
-    self.newOfertaText.font = CustomAppFont.bigFont
+    //self.newOfertaText.font = CustomAppFont.bigFont
     self.MensajeEspera.centerVertically()
-    self.titleText.titleBlueStyle()
-    self.subtitleText.titleBlueStyle()
-    self.newOfertaText.bigTextBlueStyle()
+    //self.titleText.titleBlueStyle()
+    //self.subtitleText.titleBlueStyle()
+    //self.newOfertaText.bigTextBlueStyle()
    
     self.newOfertaText.text = "$\(Double(self.solicitud.valorOferta))"
     self.updateOfertaView.isHidden = self.solicitud!.valorOferta == 0.0
@@ -47,23 +47,38 @@ class EsperaChildVC: UIViewController {
   }
   
   //CANCELAR SOLICITUDES
-  func MostrarMotivoCancelacion(solicitud: Solicitud){
-    //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-    //    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-    //      self.CancelarSolicitud("No necesito", solicitud: solicitud)
-    //    }))
+  func mostrarAdvertenciaCancelacion(){
+    let alertaDos = UIAlertController (title: "Aviso Importante", message: "Estimado usuario, la cancelación frecuente del servicio puede ser motivo de un bloqueo temporal de la aplicación.", preferredStyle: .alert)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.red]
+    let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
+    alertaDos.setValue(titleString, forKey: "attributedTitle")
+    
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+      MostrarMotivoCancelacion()
+    }))
+    
+    self.present(alertaDos, animated: true, completion: nil)
+  }
+  
+  func MostrarMotivoCancelacion(){
+    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: .actionSheet)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+    let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
+    motivoAlerta.setValue(titleString, forKey: "attributedTitle")
+    
     motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
+      self.CancelarSolicitud("Mucho tiempo de espera")
     }))
     motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
+      self.CancelarSolicitud("El taxi no se mueve")
     }))
     motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
+      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
     }))
     motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
+      self.CancelarSolicitud("Ubicación incorrecta")
     }))
     motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
       let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
@@ -71,7 +86,7 @@ class EsperaChildVC: UIViewController {
       
       let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
         if !ac.textFields![0].text!.isEmpty{
-          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
+          self.CancelarSolicitud(ac.textFields![0].text!)
         }
       }
       
@@ -85,11 +100,11 @@ class EsperaChildVC: UIViewController {
     self.present(motivoAlerta, animated: true, completion: nil)
   }
   
-  func CancelarSolicitud(_ motivo: String, solicitud: Solicitud){
+  func CancelarSolicitud(_ motivo: String){
     //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
-    globalVariables.solpendientes.removeAll{$0.id == solicitud.id}
+    globalVariables.solpendientes.removeAll{$0.id == self.solicitud.id}
     //EnviarSocket(Datos)
     self.socketService.socketEmit("cancelarservicio", datos: datos)
 //    let vc = R.storyboard.main.inicioView()!
@@ -125,11 +140,11 @@ class EsperaChildVC: UIViewController {
   }
   
   @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
-    MostrarMotivoCancelacion(solicitud: self.solicitud)
+    self.mostrarAdvertenciaCancelacion()
   }
   
   @IBAction func cancelarSolicitudOferta(_ sender: Any) {
-    MostrarMotivoCancelacion(solicitud: self.solicitud)
+    self.mostrarAdvertenciaCancelacion()
   }
 
 }
@@ -171,11 +186,11 @@ extension EsperaChildVC: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, sinvehiculo result: [String : Any]) {
     let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
     if (solicitud != nil) {
-      let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
+      let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.CancelarSolicitud("",solicitud: solicitud!)
-        let vc = R.storyboard.main.inicioView()!
-        self.navigationController?.show(vc, sender: nil)
+        self.CancelarSolicitud("")
+//        let vc = R.storyboard.main.inicioView()!
+//        self.navigationController?.show(vc, sender: nil)
       }))
       
       self.present(alertaDos, animated: true, completion: nil)

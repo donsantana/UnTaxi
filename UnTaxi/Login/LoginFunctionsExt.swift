@@ -17,20 +17,18 @@ extension LoginController{
   
   func startSocketConnection(){
     //print(Customization.serverData!)
-    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false), .forcePolling(true)]) //Customization.serverData
     let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    self.socketIOManager.config = SocketIOClientConfiguration(
-      arrayLiteral: .compress, .connectParams(["Authorization": "Bearer token", "token": accessToken])
-    )
-    if CConexionInternet.isConnectedToNetwork() == true{
-      globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
-      print("Trying connect socket \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)")
-      self.waitSocketConnection()
-      globalVariables.socket.connect()
+    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])]) //Customization.serverData
+    
+    print("token para socket \(accessToken)")
+//    self.socketIOManager.config = SocketIOClientConfiguration(
+//      arrayLiteral: .compress, .connectParams(["Authorization": "Bearer token", "token": accessToken])
+//    )
+    
+    globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
+    self.waitSocketConnection()
+    globalVariables.socket.connect()
 
-    }else{
-      ErrorConexion()
-    }
   }
   
   func initClientData(datos: [String: Any]){

@@ -22,8 +22,8 @@ class YapaPanel: UIViewController {
     self.socketService.delegate = self
     self.codigoText.delegate = self
     self.activeCodigoView.addShadow()
-    self.titleText.font = CustomAppFont.subtitleFont
-    self.codigoText.font = CustomAppFont.inputTextFont
+//    self.titleText.font = CustomAppFont.subtitleFont
+//    self.codigoText.font = CustomAppFont.inputTextFont
     self.codigoText.addBorder(color: Customization.buttonActionColor)
     // Do any additional setup after loading the view.
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))

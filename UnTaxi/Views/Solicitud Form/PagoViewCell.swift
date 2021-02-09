@@ -35,7 +35,7 @@ class PagoViewCell: UITableViewCell {
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     }
     
-    self.efectivoText.font = CustomAppFont.subtitleFont
+    //self.efectivoText.font = CustomAppFont.subtitleFont
     
     
   }

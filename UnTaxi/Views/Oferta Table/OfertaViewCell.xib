@@ -22,8 +22,8 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="KbT-3s-t9f"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0(10)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRO-1n-NLP">
@@ -61,7 +61,7 @@
                                 <constraint firstAttribute="height" constant="40" id="Qka-Zb-uEv"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marca Modelo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtP-Yq-LoG">
@@ -86,10 +86,10 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Y-MA-gzT">
-                            <rect key="frame" x="286" y="63.5" width="100" height="30"/>
+                            <rect key="frame" x="266" y="63.5" width="120" height="30"/>
                             <color key="backgroundColor" red="0.99882358309999997" green="0.79328209159999996" blue="0.28607994320000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="0Hg-hr-6z6"/>
+                                <constraint firstAttribute="width" constant="120" id="0Hg-hr-6z6"/>
                                 <constraint firstAttribute="height" constant="30" id="Oxo-SX-kup"/>
                             </constraints>
                             <state key="normal" title="Aceptar">

@@ -39,7 +39,7 @@ class OfertasController: BaseController{
     self.mapView.setRegion(coordinateRegion, animated: true)
     
     self.ofertaFooterView.addShadow()
-    self.titleText.titleBlueStyle()
+    //self.titleText.titleBlueStyle()
     self.ofertasTableView.delegate = self
     self.ofertasTableView.backgroundColor = .clear
     
@@ -69,11 +69,12 @@ class OfertasController: BaseController{
   }
   
   func MostrarMotivoCancelacion(){
-    //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-//    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-//      self.CancelarSolicitud("No necesito")
-//    }))
+    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: .actionSheet)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+    let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
+    motivoAlerta.setValue(titleString, forKey: "attributedTitle")
+    
     motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
       self.CancelarSolicitud("Mucho tiempo de espera")
     }))
@@ -114,8 +115,17 @@ class OfertasController: BaseController{
   }
   
   @IBAction func cancelarSolicitud(_ sender: Any) {
-    self.MostrarMotivoCancelacion()
+    let alertaDos = UIAlertController (title: "Aviso Importante", message: "Estimado usuario, la cancelación frecuente del servicio puede ser motivo de un bloqueo temporal de la aplicación.", preferredStyle: .alert)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.red]
+    let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
+    alertaDos.setValue(titleString, forKey: "attributedTitle")
+    
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+      self.MostrarMotivoCancelacion()
+    }))
+    
+    self.present(alertaDos, animated: true, completion: nil)
   }
-  
-  
+
 }

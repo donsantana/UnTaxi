@@ -12,7 +12,7 @@ import MapboxSearchUI
 
 //Mapbox
 extension SolPendController{
-  func showAnnotation(_ annotations: [MGLAnnotation], isPOI: Bool) {
+  func showAnnotation(_ annotations: [MGLAnnotation]) {
     guard !annotations.isEmpty else { return }
 
     if let existingAnnotations = mapView.annotations {
@@ -40,14 +40,14 @@ extension SolPendController: MGLMapViewDelegate{
     }
     
     // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
-    let reuseIdentifier = annotation.title
+    let reuseIdentifier = annotation.subtitle
     
     // For better performance, always try to reuse existing annotations.
     var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier!!)
     
     // If there’s no reusable annotation view available, initialize a new one.
     if annotationView == nil {
-      annotationView = CustomImageAnnotationView(reuseIdentifier: reuseIdentifier as! String, image: UIImage(named: annotation.title!!)!)
+      annotationView = CustomImageAnnotationView(reuseIdentifier: reuseIdentifier as! String, image: UIImage(named: annotation.subtitle!!)!)
     }
     return annotationView
   }

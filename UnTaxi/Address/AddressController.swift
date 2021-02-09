@@ -42,7 +42,7 @@ class AddressController: UIViewController {
     openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
     //openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
     openMapBtn.layer.cornerRadius = 10
-    openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
+    //openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
     openMapBtn.backgroundColor = .white
     openMapBtn.tintColor = .black
     openMapBtn.addShadow()

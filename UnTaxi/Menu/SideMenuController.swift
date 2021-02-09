@@ -35,13 +35,13 @@ class SideMenuController: UIViewController {
     
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = Customization.textColor
-    self.NombreUsuario.font = CustomAppFont.subtitleFont
+    //self.NombreUsuario.font = CustomAppFont.subtitleFont
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
     
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: Customization.buttonActionColor)
-    self.yapaText.font = CustomAppFont.bigFont
+    //self.yapaText.font = CustomAppFont.bigFont
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
     //tapGesture.delegate = self

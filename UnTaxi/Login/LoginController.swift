@@ -33,6 +33,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
   
   var apiService = ApiService()
+  var socketService = SocketService()
   
   let myContext = LAContext()
   
@@ -109,7 +110,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     clave.delegate = self
     self.RecomendadoText.delegate = self
     self.apiService.delegate = self
-    
+    self.socketService.delegate = self
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     
@@ -165,6 +166,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       print("login \(globalVariables.userDefaults.value(forKey: "accessToken"))")
       if globalVariables.userDefaults.value(forKey: "accessToken") != nil{
         self.startSocketConnection()
+        self.socketService.initLoginEventos()
       }else{
         self.AutenticandoView.isHidden = true
       }
@@ -298,13 +300,13 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   }
   
   @IBAction func CancelarRegistro(_ sender: AnyObject) {
+    RegistroView.endEditing(true)
     RegistroView.isHidden = true
     claveText.endEditing(true)
     confirmarClavText.endEditing(true)
     correoText.endEditing(true)
     nombreApText.text?.removeAll()
     telefonoText.text?.removeAll()
-    
     claveText.text?.removeAll()
     confirmarClavText.text?.removeAll()
     correoText.text?.removeAll()

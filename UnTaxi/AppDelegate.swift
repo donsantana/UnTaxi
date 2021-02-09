@@ -12,7 +12,7 @@ import CoreLocation
 import SocketIO
 import AVFoundation
 import GoogleMobileAds
-import GooglePlaces
+//import GooglePlaces
 import UserNotifications
 //import PaymentezSDK
 
@@ -61,15 +61,15 @@ import UserNotifications
     //UITabBar.appearance().tintColor = Customization.textColor
     //UITabBar.appearance().shadowImage = .none
     
-    UILabel.appearance().textColor = Customization.textColor
-    UILabel.appearance().font = CustomAppFont.normalFont
+    //UILabel.appearance().textColor = Customization.textColor
+    //UILabel.appearance().font = CustomAppFont.normalFont
     
     UITextField.appearance().clearButtonMode = .whileEditing
-    UITextField.appearance().textColor = Customization.textColor
-    UITextField.appearance().font = CustomAppFont.inputTextFont
+    //UITextField.appearance().textColor = Customization.textColor
+    //UITextField.appearance().font = CustomAppFont.inputTextFont
     
-    UITextView.appearance().textColor = Customization.textColor
-    UITextView.appearance().font = CustomAppFont.normalFont
+    //UITextView.appearance().textColor = Customization.textColor
+    //UITextView.appearance().font = CustomAppFont.normalFont
     
     UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Customization.buttonsTitleColor], for: .selected)
     UISegmentedControl.appearance().backgroundColor = .white
@@ -79,7 +79,7 @@ import UserNotifications
     //GOOGLE ADS CODE
     GADMobileAds.sharedInstance().start(completionHandler: nil)
     // Set the Google Place API's autocomplete UI control
-    GMSPlacesClient.provideAPIKey("AIzaSyDOVTQUV2OeugiuBd3pAVGJbTx2aZ445Ws")
+    //GMSPlacesClient.provideAPIKey("AIzaSyDOVTQUV2OeugiuBd3pAVGJbTx2aZ445Ws")
     
     //PaymentezSDKClient.setEnvironment("MERCURIO-EC-CLIENT", secretKey: "8uGTqVeiRBW8oMfAVwHyN51aEsNyM5", testMode: false)
     

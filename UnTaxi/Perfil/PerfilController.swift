@@ -46,15 +46,15 @@ class PerfilController: BaseController {
     self.changePassBtn.addBorder(color: Customization.buttonActionColor)
     apiService.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
-    UILabel.appearance().textColor = .lightGray
+    //UILabel.appearance().textColor = .lightGray
     
     let readString = globalVariables.userDefaults.string(forKey: "loginData") ?? ""
     
     self.login = String(readString).components(separatedBy: ",")
     self.perfilViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 70))
     
-    self.titleText.font = CustomAppFont.titleFont
-    self.subtitleText.font = CustomAppFont.subtitleFont
+    //self.titleText.font = CustomAppFont.titleFont
+    //self.subtitleText.font = CustomAppFont.subtitleFont
     
     self.nombreApellidosText.text = globalVariables.cliente.nombreApellidos
     self.usuarioText.text = globalVariables.cliente.user
@@ -67,7 +67,7 @@ class PerfilController: BaseController {
     self.updatePhto.setImage(updateBtnImage, for: UIControl.State())
     self.updatePhto.tintColor = .white
     
-    UILabel.appearance().font = CustomAppFont.titleFont
+    //UILabel.appearance().font = CustomAppFont.titleFont
     
   }
   

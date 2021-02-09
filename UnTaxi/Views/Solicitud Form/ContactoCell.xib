@@ -40,39 +40,50 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsY-b8-6OJ">
                             <rect key="frame" x="60" y="34" width="354" height="31"/>
                             <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactname" translatesAutoresizingMaskIntoConstraints="NO" id="W5c-aN-fVb">
+                                    <rect key="frame" x="0.0" y="5.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="N5F-9Z-fon"/>
+                                        <constraint firstAttribute="width" secondItem="W5c-aN-fVb" secondAttribute="height" multiplier="1:1" id="pom-9D-7bw"/>
+                                    </constraints>
+                                </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre a contactar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-VE-zS5">
-                                    <rect key="frame" x="0.0" y="5" width="198" height="21"/>
+                                    <rect key="frame" x="20" y="5" width="178" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="xHY-AD-tmI"/>
                                     </constraints>
-                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" returnKeyType="next"/>
                                 </textField>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8v-QX-37Q">
-                                    <rect key="frame" x="206" y="5" width="1" height="21"/>
-                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Teléfono" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-wu-Hdg">
-                                    <rect key="frame" x="215" y="5" width="119" height="21"/>
-                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Teléfono" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-wu-Hdg" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                    <rect key="frame" x="218" y="6.5" width="116" height="18"/>
+                                    <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES"/>
                                 </textField>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactphone" translatesAutoresizingMaskIntoConstraints="NO" id="46j-9N-f2G">
+                                    <rect key="frame" x="198" y="5.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="46j-9N-f2G" secondAttribute="height" multiplier="1:1" id="ZQn-UU-BsI"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Ynp-wu-Hdg" secondAttribute="trailing" constant="20" id="2UN-jA-zsk"/>
-                                <constraint firstItem="y8v-QX-37Q" firstAttribute="top" secondItem="Ynp-wu-Hdg" secondAttribute="top" id="5Zp-Yw-dwP"/>
+                                <constraint firstItem="46j-9N-f2G" firstAttribute="leading" secondItem="2sZ-VE-zS5" secondAttribute="trailing" id="5we-b6-ZNc"/>
                                 <constraint firstItem="Ynp-wu-Hdg" firstAttribute="centerY" secondItem="YsY-b8-6OJ" secondAttribute="centerY" id="6kJ-kw-qiI"/>
-                                <constraint firstItem="Ynp-wu-Hdg" firstAttribute="leading" secondItem="y8v-QX-37Q" secondAttribute="trailing" constant="8" id="9cS-I4-zlE"/>
-                                <constraint firstItem="y8v-QX-37Q" firstAttribute="bottom" secondItem="Ynp-wu-Hdg" secondAttribute="bottom" id="Dpa-Yw-1wK"/>
-                                <constraint firstItem="y8v-QX-37Q" firstAttribute="leading" secondItem="2sZ-VE-zS5" secondAttribute="trailing" constant="8" id="Pwz-LT-mKt"/>
-                                <constraint firstItem="Ynp-wu-Hdg" firstAttribute="leading" secondItem="YsY-b8-6OJ" secondAttribute="centerX" constant="38" id="Sps-OJ-WTF"/>
+                                <constraint firstItem="Ynp-wu-Hdg" firstAttribute="leading" secondItem="46j-9N-f2G" secondAttribute="trailing" id="9cS-I4-zlE"/>
+                                <constraint firstItem="W5c-aN-fVb" firstAttribute="centerY" secondItem="YsY-b8-6OJ" secondAttribute="centerY" id="FhO-kj-HCr"/>
+                                <constraint firstItem="W5c-aN-fVb" firstAttribute="leading" secondItem="YsY-b8-6OJ" secondAttribute="leading" id="HbZ-oa-LWf"/>
+                                <constraint firstItem="46j-9N-f2G" firstAttribute="top" secondItem="W5c-aN-fVb" secondAttribute="top" id="Jqd-h7-NaR"/>
+                                <constraint firstItem="2sZ-VE-zS5" firstAttribute="trailing" secondItem="46j-9N-f2G" secondAttribute="leading" id="Pwz-LT-mKt"/>
+                                <constraint firstItem="Ynp-wu-Hdg" firstAttribute="height" secondItem="2sZ-VE-zS5" secondAttribute="height" multiplier="0.857143" id="UgV-Bh-Bun"/>
                                 <constraint firstItem="2sZ-VE-zS5" firstAttribute="trailing" secondItem="YsY-b8-6OJ" secondAttribute="centerX" constant="21" id="Uoo-lg-LpH"/>
+                                <constraint firstItem="46j-9N-f2G" firstAttribute="bottom" secondItem="W5c-aN-fVb" secondAttribute="bottom" id="WEr-xW-Zmz"/>
                                 <constraint firstItem="2sZ-VE-zS5" firstAttribute="centerY" secondItem="YsY-b8-6OJ" secondAttribute="centerY" id="Ymg-q0-2Zc"/>
-                                <constraint firstItem="y8v-QX-37Q" firstAttribute="height" secondItem="2sZ-VE-zS5" secondAttribute="height" id="Z2n-oY-f7K"/>
-                                <constraint firstItem="2sZ-VE-zS5" firstAttribute="leading" secondItem="YsY-b8-6OJ" secondAttribute="leading" id="zz8-9a-eH1"/>
+                                <constraint firstItem="2sZ-VE-zS5" firstAttribute="leading" secondItem="W5c-aN-fVb" secondAttribute="trailing" id="zz8-9a-eH1"/>
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-wd-PSW">
@@ -116,6 +127,8 @@
         </view>
     </objects>
     <resources>
+        <image name="contactname" width="20" height="20"/>
         <image name="contactoIcon" width="30" height="30"/>
+        <image name="contactphone" width="20" height="20"/>
     </resources>
 </document>

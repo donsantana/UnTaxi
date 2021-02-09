@@ -25,7 +25,7 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
     self.claveActualText.delegate = self
     self.NuevaClaveText.delegate = self
     self.ConfirmeClaveText.delegate = self
-    UILabel.appearance().font = CustomAppFont.titleFont
+    //UILabel.appearance().font = CustomAppFont.titleFont
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self

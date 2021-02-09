@@ -19,6 +19,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Ieg-IV-lIT"/>
                     </constraints>
+                    <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                     <userDefinedRuntimeAttributes>
@@ -49,39 +50,24 @@
                         <constraint firstAttribute="width" constant="30" id="M9T-Nh-7wh"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKw-ih-Z8c">
-                    <rect key="frame" x="374" y="7.5" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="1We-9l-aKX"/>
-                        <constraint firstAttribute="width" secondItem="DKw-ih-Z8c" secondAttribute="height" multiplier="1:1" id="kIJ-W3-Dpr"/>
-                    </constraints>
-                    <state key="normal" image="search"/>
-                    <connections>
-                        <action selector="openSearchPanel:" destination="iN0-l3-epB" eventType="touchUpInside" id="IEv-79-QTU"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="c9B-BQ-Cf1" firstAttribute="leading" secondItem="6ff-Wq-zTv" secondAttribute="trailing" constant="10" id="0JP-rg-oRP"/>
-                <constraint firstAttribute="trailing" secondItem="DKw-ih-Z8c" secondAttribute="trailing" constant="15" id="ALm-gR-JNT"/>
                 <constraint firstItem="6ff-Wq-zTv" firstAttribute="centerY" secondItem="c9B-BQ-Cf1" secondAttribute="centerY" id="DKe-I1-pIj"/>
-                <constraint firstItem="c9B-BQ-Cf1" firstAttribute="trailing" secondItem="DKw-ih-Z8c" secondAttribute="leading" constant="-5" id="WIW-Do-NeT"/>
+                <constraint firstItem="c9B-BQ-Cf1" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-45" id="WIW-Do-NeT"/>
                 <constraint firstItem="6ff-Wq-zTv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ZUU-4w-bKM"/>
-                <constraint firstItem="DKw-ih-Z8c" firstAttribute="centerY" secondItem="c9B-BQ-Cf1" secondAttribute="centerY" id="jK5-K8-qWB"/>
                 <constraint firstItem="6ff-Wq-zTv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wjE-F1-MK0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="destinoText" destination="c9B-BQ-Cf1" id="3Vg-zz-Kx6"/>
-                <outlet property="showSearchBtn" destination="DKw-ih-Z8c" id="dml-Pc-5Ou"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="152.34375"/>
         </view>
     </objects>
     <resources>
         <image name="destinoIcon" width="30" height="30"/>
-        <image name="search" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

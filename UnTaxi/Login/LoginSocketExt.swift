@@ -10,11 +10,26 @@ import Foundation
 import UIKit
 import CoreLocation
 
+
+extension LoginController: SocketServiceDelegate{
+  func socketResponse(_ controller: SocketService, startEvent result: [String : Any]) {
+    switch result["code"] as! Int{
+    case 1:
+      self.initClientData(datos: result["datos"] as! [String: Any])
+      DispatchQueue.main.async {
+        self.AutenticandoView.isHidden = true
+      }
+    default:
+      self.initConnectionError(message: result["msg"] as! String)
+    }
+  }
+}
+
 extension LoginController{
   
   func waitSocketConnection(){
     globalVariables.socket.on("start"){data, ack in
-      
+
       let result = data[0] as! [String: Any]
       print("start \(result["datos"])")
       switch result["code"] as! Int{

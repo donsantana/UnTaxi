@@ -10,6 +10,7 @@ import Foundation
 import SocketIO
 
 protocol SocketServiceDelegate: class {
+  func socketResponse(_ controller: SocketService, startEvent result: [String: Any])
   func socketResponse(_ controller: SocketService, cargarvehiculoscercanos result: [String: Any])
   func socketResponse(_ controller: SocketService, solicitarservicio result: [String: Any])
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String: Any])
@@ -27,6 +28,7 @@ protocol SocketServiceDelegate: class {
   func socketResponse(_ controller: SocketService, taxiLLego result: [String: Any])
   func socketResponse(_ controller: SocketService, geocliente result: [String: Any])
   func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any])
+  func socketResponse(_ controller: SocketService, historialdesolicitudes result: [String: Any])
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String)
   
 }
@@ -35,7 +37,7 @@ protocol SocketServiceDelegate: class {
 final class SocketService{
   
   weak var delegate: SocketServiceDelegate?
-  
+
   func socketEmit(_ eventName: String, datos: [String: Any]){
     if CConexionInternet.isConnectedToNetwork() == true{
       if globalVariables.socket.status.active{
@@ -72,6 +74,15 @@ final class SocketService{
     globalVariables.socket.off("llegue")
     globalVariables.socket.off("geocliente")
     globalVariables.socket.off("aceptaroferta")
+    globalVariables.socket.off("historialdesolicitudes")
+  }
+  
+  func initLoginEventos(){
+    globalVariables.socket.on("start"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("start \(result["datos"])")
+      self.delegate?.socketResponse(self, startEvent: result)
+    }
   }
   
   func initListenEventos(){
@@ -205,10 +216,17 @@ final class SocketService{
       self.delegate?.socketResponse(self, recargaryapa: result)
     }
     
+    globalVariables.socket.on("historialdesolicitudes"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("hereeeeee \(result)")
+      self.delegate?.socketResponse(self, historialdesolicitudes: result)
+    }
+    
   }
 }
 
 extension SocketServiceDelegate{
+  func socketResponse(_ controller: SocketService, startEvent result: [String: Any]){}
   func socketResponse(_ controller: SocketService, cargarvehiculoscercanos result: [String: Any]){}
   func socketResponse(_ controller: SocketService, solicitarservicio result: [String: Any]){}
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String: Any]){}
@@ -226,5 +244,6 @@ extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, taxiLLego result: [String: Any]){}
   func socketResponse(_ controller: SocketService, geocliente result: [String: Any]){}
   func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, historialdesolicitudes result: [String: Any]){}
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String){}
 }

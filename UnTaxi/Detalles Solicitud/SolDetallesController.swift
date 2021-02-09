@@ -100,7 +100,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.MostrarDetalleSolicitud()
     self.matriculaAut.titleBlueStyle()
     self.distanciaText.titleBlueStyle()
-    self.reviewConductor.font = CustomAppFont.smallFont
+    //self.reviewConductor.font = CustomAppFont.smallFont
     self.valorOferta.titleBlueStyle()
     self.LlamarCondBtn.addShadow()
     
@@ -120,10 +120,10 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.radioBtnLoadingConstraint.constant = distanceBtwBtns
     
     self.detallesVHeightConstraint.constant = responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 20 : 24)
-    self.datosCondHeightConstraint.constant = responsive.heightFloatPercent(percent:  globalVariables.isBigIphone ? 33 : 40)
+    self.datosCondHeightConstraint.constant = responsive.heightFloatPercent(percent:  globalVariables.isBigIphone ? 35 : 40)
     self.detallesBottomConstraint.constant = responsive.heightFloatPercent(percent: 3)
     
-    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 33 : 40) + 15)
+    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 35 : 40) + 15)
     
     if globalVariables.urlConductor != ""{
       self.MensajesBtn.isHidden = false
@@ -269,7 +269,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     var annotationsToShow = [self.origenAnnotation]
     if self.solicitudPendiente.taxi.id != 0{
       self.taxiAnnotation.coordinate = self.solicitudPendiente.taxi.location
-      self.taxiAnnotation.title = "taxi_libre"
+      self.taxiAnnotation.subtitle = "taxi_libre"
       annotationsToShow.append(taxiAnnotation)
       //self.MapaSolPen.addAnnotations([self.origenAnnotation, self.taxiAnnotation])
       
@@ -308,7 +308,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       annotationsToShow.append(self.destinoAnnotation)
     }
     
-    self.showAnnotation(annotationsToShow, isPOI: true)
+    self.showAnnotation(annotationsToShow)
     self.drawRoute(from: self.origenAnnotation, to: self.taxiAnnotation)
     self.waitingView.isHidden = true
     //self.mapView.addAnnotations(annotationsToShow)
@@ -318,11 +318,12 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   
   //CANCELAR SOLICITUDES
   func MostrarMotivoCancelacion(){
-    //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
-    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-    //    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-    //      self.CancelarSolicitud("No necesito")
-    //    }))
+    let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: .actionSheet)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+    let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
+    motivoAlerta.setValue(titleString, forKey: "attributedTitle")
+    
     motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
       self.CancelarSolicitud("Mucho tiempo de espera")
     }))
@@ -344,14 +345,11 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
           self.CancelarSolicitud(ac.textFields![0].text!)
         }
       }
-      
       ac.addAction(submitAction)
-      
       self.present(ac, animated: true)
     }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
-    
     self.present(motivoAlerta, animated: true, completion: nil)
   }
   
@@ -359,9 +357,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
     let datos = self.solicitudPendiente.crearTramaCancelar(motivo: motivo)
     globalVariables.solpendientes.removeAll{$0.id == self.solicitudPendiente.id}
-    //let vc = R.storyboard.main.inicioView()!
     socketService.socketEmit("cancelarservicio", datos: datos)
-    //self.navigationController?.show(vc, sender: nil)
   }
   
   func offSocketEventos(){
@@ -394,6 +390,20 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     }
   }
   
+  func mostrarAdvertenciaCancelacion(){
+    let alertaDos = UIAlertController (title: "Aviso Importante", message: "Estimado usuario, la cancelación frecuente del servicio puede ser motivo de un bloqueo temporal de la aplicación.", preferredStyle: .alert)
+    
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.red]
+    let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
+    alertaDos.setValue(titleString, forKey: "attributedTitle")
+    
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+      self.MostrarMotivoCancelacion()
+    }))
+    
+    self.present(alertaDos, animated: true, completion: nil)
+  }
+  
   override func homeBtnAction() {
     present(sideMenu!, animated: true)
   }
@@ -420,7 +430,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   //MARK:- BOTNES ACTION
   @IBAction func DatosConductor(_ sender: AnyObject) {
     self.detallesView.removeShadow()
-    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 33 : 40) + 15)
+    self.bannerBottomConstraint.constant = -(responsive.heightFloatPercent(percent:  UIScreen.main.bounds.height > 750 ? 35 : 40) + 15)
     //self.btnViewTop = NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.origenCell.origenText, attribute: .bottom, multiplier: 1, constant: 0)
     self.showConductorBtn.isHidden = true
     self.DatosConductor.isHidden = false
@@ -454,7 +464,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   
   
   @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {
-    MostrarMotivoCancelacion()
+    self.mostrarAdvertenciaCancelacion()
   }
   
   @IBAction func cerrarDatosConductor(_ sender: Any) {
@@ -471,7 +481,7 @@ extension SolPendController: GADBannerViewDelegate{
     print("get the ads")
   }
   
-  func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-    print("Error receiving the ads \(error.description)")
-  }
+//  private func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+//    print("Error receiving the ads \(error.description)")
+//  }
 }

@@ -67,20 +67,6 @@ extension InicioController{
     return upgradeAvailable
   }
   
-  func initMapView(){
-    var annotationsToShow = [globalVariables.cliente.annotation!]
-    if self.origenAnnotation.coordinate.latitude != 0.0{
-      annotationsToShow = [self.origenAnnotation]
-    }
-    mapView.setCenter(annotationsToShow.first!.coordinate, zoomLevel: 15, animated: false)
-    mapView.styleURL = MGLStyle.lightStyleURL
-    self.locationIcono.image = UIImage(named: "origen")
-    self.locationIcono.isHidden = true
-    self.showAnnotation(annotationsToShow, isPOI: true)
-    self.loadFormularioData()
-    self.getTaxisCercanos()
-  }
-  
 //  func coordinatesToAddress(annotation: MGLPointAnnotation){
 //    print("mapbox \(annotation.coordinate)")
 //    let options = ReverseGeocodeOptions(coordinate: annotation.coordinate)
@@ -124,6 +110,7 @@ extension InicioController{
       }
     }
     self.tabBar.selectedItem = self.tabBar.items![0] as UITabBarItem
+    self.loadFormularioData()
   }
   
   //RECONECT SOCKET
@@ -142,34 +129,30 @@ extension InicioController{
   }
   
   func loadFormularioData(){
-    print("Loading Formulario")
-    self.initTipoSolicitudBar()
+    self.initMapView()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
-//    if self.origenAnnotation.coordinate.latitude != 0.0{
-//      self.getAddressFromCoordinate(self.origenAnnotation)
-//    }else{
-//      self.getAddressFromCoordinate(globalVariables.cliente.annotation)
-//    }
-
+    
+    print(self.tabBar.selectedItem?.title)
     if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.destinoCell)
+      self.destinoCell.initContent()
       if self.tabBar.selectedItem == self.ofertaItem{
-        self.ofertaDataCell.initContent(precioInicial: 2.0)
+        self.ofertaDataCell.initContent()
         self.formularioDataCellList.append(self.ofertaDataCell)
         self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 55).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 60)
-        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+        //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }else{
         self.origenCell.origenText.text?.removeAll()
         self.destinoCell.destinoText.text?.removeAll()
-        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 40).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 40 : 55)
+        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 43).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 40 : 55)
       }
     }else{
-      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 42).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
+      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 45).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
           self.formularioDataCellList.append(self.destinoCell)
-          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 46).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
+          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
       }
     }
@@ -180,13 +163,13 @@ extension InicioController{
       self.formularioDataCellList.append(self.pagoCell)
       self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
     }
-    self.destinoCell.showSearchBtn.isHidden = self.tabBar.selectedItem == self.pactadaItem
-    
+ 
     self.formularioDataCellList.append(self.contactoCell)
     self.solicitudFormTable.reloadData()
     
     self.addEnvirSolictudBtn()
-    self.SolicitudView.isHidden = false
+    self.addHeaderTitle()
+    //self.SolicitudView.isHidden = false
   }
   
   //ADD FOOTER TO SOLICITDFORMTABLE
@@ -205,6 +188,17 @@ extension InicioController{
     enviarBtnView.addSubview(button)
     self.solicitudFormTable.backgroundColor = .none
     self.solicitudFormTable.tableFooterView = enviarBtnView
+  }
+  
+  func addHeaderTitle(){
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.bounds.width, height: 21))
+    let baseTitle = UILabel.init(frame: CGRect(x: 40, y: 0, width: self.SolicitudView.bounds.width - 40, height: 21))
+    baseTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+    baseTitle.textColor = Customization.customBlueColor
+    baseTitle.text = "Hola, \(globalVariables.cliente.getName())"
+    
+    headerView.addSubview(baseTitle)
+    self.solicitudFormTable.tableHeaderView = headerView
   }
   
   func getTaxisCercanos(){
@@ -302,11 +296,12 @@ extension InicioController{
   
   //CANCELAR SOLICITUDES
   func MostrarMotivoCancelacion(solicitud: Solicitud){
-    //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
     let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-    //    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
-    //      self.CancelarSolicitud("No necesito", solicitud: solicitud)
-    //    }))
+
+    let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+    let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
+    motivoAlerta.setValue(titleString, forKey: "attributedTitle")
+    
     motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
       self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
     }))
@@ -409,7 +404,6 @@ extension InicioController{
 
   func crearTramaSolicitud(_ nuevaSolicitud: Solicitud){
     //#Solicitud, idcliente, nombrecliente, movilcliente, dirorig, referencia, dirdest,latorig,lngorig, latdest, lngdest, distancia, costo, #
-    SolicitudView.isHidden = true
     locationIcono.isHidden = true
     globalVariables.solpendientes.append(nuevaSolicitud)
     
@@ -499,7 +493,11 @@ extension InicioController{
     options.includesSteps = true
     options.routeShapeResolution = .full
     options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
-    
+
+    self.destinoAnnotation = annotation
+    self.destinoCell.destinoText.text = annotation.title
+    //self.showAnnotation([self.origenAnnotation, self.destinoAnnotation], isPOI: true)
+
     Directions.shared.calculate(options) { (session, result) in
       switch result {
       case let .failure(error):
@@ -508,13 +506,11 @@ extension InicioController{
         if let route = response.routes?.first, let leg = route.legs.first {
           print("Route via \((route.distance/1000)):")
           let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
-          self.panelController.removeContainer()
-          self.destinoAnnotation = annotation
-          self.destinoCell.destinoText.text = annotation.title
+
           print("costo \(costo)")
           self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
           self.SolicitudView.isHidden = false
-          
+
           let distanceFormatter = LengthFormatter()
           let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
 
@@ -523,7 +519,7 @@ extension InicioController{
           let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
 
           print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
-          
+
           for step in leg.steps {
             let direction = step.maneuverDirection?.rawValue ?? "none"
             print("\(step.instructions) [\(step.maneuverType) \(direction)]")
@@ -532,51 +528,126 @@ extension InicioController{
               print("— \(step.transportType) for \(formattedDistance) —")
             }
           }
-          
-//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
-//            // Convert the route’s coordinates into a polyline.
-//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
-//
-//            // Add the polyline to the map.
-//            self.mapView.addAnnotation(routeLine)
-//
-//            // Fit the viewport to the polyline.
-//            let camera = self.mapView.cameraThatFitsShape(routeLine, direction: 0, edgePadding: .zero)
-//            self.mapView.setCamera(camera, animated: true)
-//          }
+
+          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
+            // Convert the route’s coordinates into a polyline.
+            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+
+            // Add the polyline to the map.
+            if route.distance > 500{
+              self.mapView.addAnnotation(routeLine)
+              self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: true)
+            }
+          }
         }
       }
     }
   }
   
+//  func getDetailsBeetwen(annotation1: MGLPointAnnotation, annotation2: MGLPointAnnotation){
+//    let wp1 = Waypoint(coordinate: annotation1.coordinate, name: annotation1.title)
+//    let wp2 = Waypoint(coordinate: annotation2.coordinate, name: annotation2.title)
+//    let options = RouteOptions(waypoints: [wp1, wp2])
+//    options.includesSteps = true
+//    options.routeShapeResolution = .full
+//    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
+//
+//    self.destinoAnnotation = annotation
+//    self.destinoCell.destinoText.text = annotation.title
+//    //self.showAnnotation([self.origenAnnotation, self.destinoAnnotation], isPOI: true)
+//
+//    Directions.shared.calculate(options) { (session, result) in
+//      switch result {
+//      case let .failure(error):
+//        print("Error calculating directions: \(error)")
+//      case let .success(response):
+//        if let route = response.routes?.first, let leg = route.legs.first {
+//          print("Route via \((route.distance/1000)):")
+//          let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
+//          //self.panelController.removeContainer()
+//
+//
+//          print("costo \(costo)")
+//          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
+//          self.SolicitudView.isHidden = false
+//
+//          let distanceFormatter = LengthFormatter()
+//          let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
+//
+//          let travelTimeFormatter = DateComponentsFormatter()
+//          travelTimeFormatter.unitsStyle = .short
+//          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
+//
+//          print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
+//
+//          for step in leg.steps {
+//            let direction = step.maneuverDirection?.rawValue ?? "none"
+//            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
+//            if step.distance > 0 {
+//              let formattedDistance = distanceFormatter.string(fromMeters: step.distance)
+//              print("— \(step.transportType) for \(formattedDistance) —")
+//            }
+//          }
+//
+//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
+//            // Convert the route’s coordinates into a polyline.
+//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+//
+//            // Add the polyline to the map.
+//            if route.distance > 500{
+//              self.mapView.addAnnotation(routeLine)
+//              self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: true)
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+
   func openSearchPanel(){
     print("open SearchPanel")
     super.hideMenuBar(isHidden: true)
     self.panelController.setState(.opened)
+    self.mapBottomConstraint.constant = self.formularioSolicitudHeight.constant
     self.view.endEditing(true)
+    if searchingAddress == "destino"{
+      print(self.origenAnnotation.title)
+      self.destinoAnnotation.title = self.origenAnnotation.title
+      self.destinoAnnotation.coordinate = self.origenAnnotation.coordinate
+    }
+    self.destinoCell.destinoText.text?.removeAll()
+    
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
     let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
     openMapBtn.setImage(mapaImage, for: UIControl.State())
     openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
-    //openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
+    openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
     openMapBtn.layer.cornerRadius = 10
-    openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
+    //openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
     openMapBtn.backgroundColor = .white
     openMapBtn.tintColor = .black
     openMapBtn.addShadow()
     panelController.view.addSubview(openMapBtn)
+    
     addChild(panelController)
   }
   
-  @objc func hideSearchPanel(){
-    print("Hiding Panel")
-    super.hideMenuBar(isHidden: false)
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
+  @objc func openMapBtnAction(){
     self.panelController.removeContainer()
+  }
+  
+  @objc func hideSearchPanel(){
+    if !self.navigationController!.isNavigationBarHidden{
+      super.hideMenuBar(isHidden: false)
+      self.navigationController?.setNavigationBarHidden(true, animated: true)
+      self.panelController.removeContainer()
+      self.mapBottomConstraint.constant = 0
+    }
     //self.destinoCell.destinoText.text = self.origenAnnotation.title
-    self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
+    //    self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
     //self.loadFormularioData()
+    
   }
   
   //MARK:- CONTROL DE TECLADO VIRTUAL
@@ -584,9 +655,25 @@ extension InicioController{
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-      self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
-      self.keyboardHeight = keyboardSize.height
+      if self.navigationController?.isNavigationBarHidden == false {
+        print("moviendo panel")
+        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
+      }else{
+        self.view.frame.origin.y = -keyboardSize.height
+        self.keyboardHeight = keyboardSize.height
+      }
     }
+  }
+  
+  @objc func keyboardWillHide(notification: NSNotification) {
+    if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+      if self.navigationController?.isNavigationBarHidden == false {
+        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
+      }else{
+        self.view.frame.origin.y = 0
+      }
+    }
+    
   }
   
   func textViewDidBeginEditing(_ textView: UITextView) {
@@ -606,9 +693,9 @@ extension InicioController{
   }
   
   @objc func ocultarTeclado(sender: UITapGestureRecognizer){
+    print("ocultar teclado")
     //sender.cancelsTouchesInView = false
     self.SolicitudView.endEditing(true)
-    self.panelController.removeContainer()
   }
   
   //  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

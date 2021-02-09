@@ -12,7 +12,20 @@ import MapboxSearchUI
 
 //Mapbox
 extension InicioController{
-  func showAnnotation(_ annotations: [MGLPointAnnotation], isPOI: Bool) {
+  func initMapView(){
+    var annotationsToShow = [globalVariables.cliente.annotation!]
+    if self.origenAnnotation.coordinate.latitude != 0.0{
+      annotationsToShow = [self.origenAnnotation]
+    }
+    mapView.setCenter(annotationsToShow.first!.coordinate, zoomLevel: 15, animated: false)
+    mapView.styleURL = MGLStyle.lightStyleURL
+    self.locationIcono.image = UIImage(named: "origen")
+    self.locationIcono.isHidden = true
+    self.showAnnotation(annotationsToShow)
+    self.getAddressFromCoordinate(annotationsToShow.first!)
+  }
+  
+  func showAnnotation(_ annotations: [MGLPointAnnotation]) {
     guard !annotations.isEmpty else { return }
 
     if let existingAnnotations = mapView.annotations {
@@ -25,6 +38,7 @@ extension InicioController{
     } else {
       mapView.showAnnotations(annotations, animated: true)
     }
+  
   }
 }
 
@@ -38,6 +52,7 @@ extension InicioController: MGLMapViewDelegate{
     guard annotation is MGLPointAnnotation else {
       return nil
     }
+
     if annotation.isEqual(self.origenAnnotation){
       print("origen Annotation \(self.origenAnnotation.subtitle)")
     }
@@ -56,7 +71,7 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-    return true
+    return annotation.responds(to: #selector(getter: MGLAnnotation.title))
   }
   
   func mapView(_ mapView: MGLMapView, rightCalloutAccessoryViewFor annotation: MGLAnnotation) -> UIView? {
@@ -84,45 +99,38 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, regionWillChangeAnimated animated: Bool) {
-    
-    if self.mapView.annotations != nil{
-      self.mapView.removeAnnotations(self.mapView!.annotations!)
+    if !self.navigationController!.isNavigationBarHidden{
+      print("moving map")
+      if self.mapView.annotations != nil{
+        self.mapView.removeAnnotations(self.mapView!.annotations!)
+      }
+      self.coreLocationManager.stopUpdatingLocation()
+      self.locationIcono.image = UIImage(named: searchingAddress)
+      self.locationIcono.isHidden = false
+      self.mapView.addAnnotation(self.origenAnnotation)
+      self.panelController.removeContainer()
     }
-    self.origenAnnotation.subtitle = self.searchingAddress
-    self.coreLocationManager.stopUpdatingLocation()
-    self.locationIcono.image = UIImage(named: searchingAddress)
-    self.locationIcono.isHidden = false
-
-//    if searchingAddress == "origen" {
-//      if self.mapView.annotations != nil{
-//        self.mapView.removeAnnotations(self.mapView!.annotations!)
-//      }
-//      self.origenAnnotation.subtitle = "origen"
-//      self.coreLocationManager.stopUpdatingLocation()
-//      self.locationIcono.isHidden = false
-//    }
   }
   
   func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-    locationIcono.isHidden = true
-    let tempAnnotation = MGLPointAnnotation()
-    tempAnnotation.coordinate = (self.mapView.centerCoordinate)
-    tempAnnotation.subtitle = self.searchingAddress
-    mapView.addAnnotation(tempAnnotation)
-    if searchingAddress == "origen"{
-      self.origenAnnotation = tempAnnotation
+    if !self.navigationController!.isNavigationBarHidden{
+      locationIcono.isHidden = true
+      let tempAnnotation = MGLPointAnnotation()
+      tempAnnotation.coordinate = (self.mapView.centerCoordinate)
+      tempAnnotation.subtitle = self.searchingAddress
       self.getAddressFromCoordinate(tempAnnotation)
       
-    }else{
-      
-      self.destinoAnnotation = tempAnnotation
-      self.getDestinoFromSearch(annotation: tempAnnotation)
+      if searchingAddress == "origen"{
+        mapView.removeAnnotation(self.origenAnnotation)
+        self.origenAnnotation = tempAnnotation
+        mapView.addAnnotation(self.origenAnnotation)
+      }else{
+        self.destinoAnnotation = tempAnnotation
+        mapView.addAnnotation(self.destinoAnnotation)
+        //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }
+      mapView.selectAnnotation(tempAnnotation, animated: true, completionHandler: nil)
     }
-//    if SolicitarBtn.isHidden == false {
-//      self.origenAnnotation.coordinate = (self.mapView.centerCoordinate)
-//      self.origenAnnotation.subtitle = "origen"
-//      mapView.addAnnotation(self.origenAnnotation)
-//    }
   }
   
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
@@ -150,12 +158,14 @@ extension InicioController: SearchControllerDelegate {
     
     //showAnnotation([self.origenAnnotation, annotation], isPOI: searchResult.type == .POI)
     if searchingAddress == "origen"{
-      
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
+      self.initMapView()
     }else{
-      
       annotation.subtitle = "destino"
+      self.destinoAnnotation = annotation
+      self.mapView.removeAnnotations(self.mapView.annotations!)
+      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
       self.getDestinoFromSearch(annotation: annotation)
     }
     self.hideSearchPanel()
@@ -171,20 +181,23 @@ extension InicioController: SearchControllerDelegate {
     if searchingAddress == "origen"{
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
+      self.initMapView()
     }else{
-      print("destino")
       annotation.subtitle = "destino"
+      self.destinoAnnotation = annotation
+      self.mapView.removeAnnotations(self.mapView.annotations!)
+      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
       self.getDestinoFromSearch(annotation: annotation)
     }
     self.hideSearchPanel()
   }
-  
 
 }
 
 extension InicioController: SearchEngineDelegate {
   func resultsUpdated(searchEngine: SearchEngine) {
     print("Number of search results: \(searchEngine.items.count)")
+    print(searchEngine.query)
 
     /// Simulate user selection with random algorithm
     guard let randomSuggestion: SearchSuggestion = searchEngine.items.randomElement() else {

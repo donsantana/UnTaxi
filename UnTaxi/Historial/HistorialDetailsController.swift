@@ -44,7 +44,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.origenSolicitud.title = "origen"
     self.destinoSolicitud.title = "destino"
     
-    self.statusText.font = CustomAppFont.titleFont
+    //self.statusText.font = CustomAppFont.titleFont
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino
