@@ -107,7 +107,7 @@ final class SocketService{
       //          fechahora: fechahora
       //        }
       //      }
-      
+      print("result \(data)")
       let result = data[0] as! [String: Any]
       print("result \(result)")
       self.delegate?.socketResponse(self, solicitarservicio: result)

@@ -13,6 +13,7 @@ import CoreLocation
 
 extension LoginController: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, startEvent result: [String : Any]) {
+    print("rwult \(result)")
     switch result["code"] as! Int{
     case 1:
       self.initClientData(datos: result["datos"] as! [String: Any])
@@ -28,20 +29,20 @@ extension LoginController: SocketServiceDelegate{
 extension LoginController{
   
   func waitSocketConnection(){
-    globalVariables.socket.on("start"){data, ack in
-
-      let result = data[0] as! [String: Any]
-      print("start \(result["datos"])")
-      switch result["code"] as! Int{
-      case 1:
-        self.initClientData(datos: result["datos"] as! [String: Any])
-        DispatchQueue.main.async {
-          self.AutenticandoView.isHidden = true
-        }
-      default:
-        self.initConnectionError(message: result["msg"] as! String)
-      }
-    }
+//    globalVariables.socket.on("start"){data, ack in
+//
+//      let result = data[0] as! [String: Any]
+//      print("start \(result["datos"])")
+//      switch result["code"] as! Int{
+//      case 1:
+//        self.initClientData(datos: result["datos"] as! [String: Any])
+//        DispatchQueue.main.async {
+//          self.AutenticandoView.isHidden = true
+//        }
+//      default:
+//        self.initConnectionError(message: result["msg"] as! String)
+//      }
+//    }
   }
   
   
@@ -86,39 +87,39 @@ extension LoginController{
 //      }
 //    }
 //
-    globalVariables.socket.on("NR") {data, ack in
-      self.EnviarTimer(estado: 0, datos: "Terminado")
-      let temporal = String(describing: data).components(separatedBy: ",")
-      if temporal[1] == "registrook"{
-        let alertaDos = UIAlertController (title: "Registro de usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.RegistroView.isHidden = true
-        }))
-        alertaDos.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
-          exit(0)
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-      else{
-        let alertaDos = UIAlertController (title: "Registro de usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.AutenticandoView.isHidden = true
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    }
-    
-    //RECUPERAR CLAVES
-    globalVariables.socket.on("Recuperarclave"){data, ack in
-      self.EnviarTimer(estado: 0, datos: "Terminado")
-      let temporal = String(describing: data).components(separatedBy: ",")
-      if temporal[1] == "ok"{
-        let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    }
+//    globalVariables.socket.on("NR") {data, ack in
+//      self.EnviarTimer(estado: 0, datos: "Terminado")
+//      let temporal = String(describing: data).components(separatedBy: ",")
+//      if temporal[1] == "registrook"{
+//        let alertaDos = UIAlertController (title: "Registro de usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación, ¿Desea ingresar a la Aplicación?", preferredStyle: .alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.RegistroView.isHidden = true
+//        }))
+//        alertaDos.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
+//          exit(0)
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//      else{
+//        let alertaDos = UIAlertController (title: "Registro de usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertController.Style.alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.AutenticandoView.isHidden = true
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//    }
+//
+//    //RECUPERAR CLAVES
+//    globalVariables.socket.on("Recuperarclave"){data, ack in
+//      self.EnviarTimer(estado: 0, datos: "Terminado")
+//      let temporal = String(describing: data).components(separatedBy: ",")
+//      if temporal[1] == "ok"{
+//        let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+//    }
   }
 }
 

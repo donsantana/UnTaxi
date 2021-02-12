@@ -17,7 +17,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagar con Yapa," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-S6-qqR">
-                            <rect key="frame" x="110" y="34" width="259" height="20"/>
+                            <rect key="frame" x="120" y="34" width="249" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="tsD-mL-UWI"/>
                             </constraints>
@@ -105,7 +105,7 @@
                         <constraint firstItem="yKo-NN-X6X" firstAttribute="bottom" secondItem="5fJ-vc-6qw" secondAttribute="bottom" id="ejM-5R-8jW"/>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="leading" secondItem="Ib0-oj-pax" secondAttribute="leading" id="iWj-n8-3oI"/>
                         <constraint firstItem="Ib0-oj-pax" firstAttribute="centerY" secondItem="mZY-UW-aKJ" secondAttribute="centerY" id="lLH-h9-ggR"/>
-                        <constraint firstItem="rIz-S6-qqR" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="trailing" constant="5" id="oD1-eV-OnD"/>
+                        <constraint firstItem="rIz-S6-qqR" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="trailing" constant="15" id="oD1-eV-OnD"/>
                         <constraint firstAttribute="trailing" secondItem="mZY-UW-aKJ" secondAttribute="trailing" constant="45" id="ueJ-3A-fE9"/>
                         <constraint firstItem="yKo-NN-X6X" firstAttribute="leading" secondItem="5fJ-vc-6qw" secondAttribute="leading" id="vIe-88-RZf"/>
                     </constraints>

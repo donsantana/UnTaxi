@@ -27,13 +27,13 @@
                                     <constraint firstAttribute="height" constant="30" id="BgA-wy-y50"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Direccion de origen" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="16x-fO-L5X">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dirección de origen" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="16x-fO-L5X">
                                 <rect key="frame" x="60" y="3" width="309" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="6h7-c0-2V3"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">

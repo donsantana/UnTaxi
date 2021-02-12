@@ -366,7 +366,11 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
         self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }
     }else{
-      self.origenAnnotation.title = self.searchController.searchEngine.query
+      if !(self.panelController.state == .collapsed){
+        self.origenAnnotation.title = self.searchController.searchEngine.query
+      }else{
+        self.getAddressFromCoordinate(self.origenAnnotation)
+      }
       self.origenCell.origenText.text = self.origenAnnotation.title
     }
     self.hideSearchPanel()

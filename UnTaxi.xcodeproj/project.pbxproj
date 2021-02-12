@@ -79,6 +79,7 @@
 		C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
 		C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
 		C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */; };
+		C665F21525D2DECB00044480 /* InicioSearchExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665F21425D2DECB00044480 /* InicioSearchExt.swift */; };
 		C66FC9CA2585242D0023425D /* Tarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9C92585242D0023425D /* Tarifa.swift */; };
 		C66FC9CD25852E5C0023425D /* Tarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9CC25852E5C0023425D /* Tarifario.swift */; };
 		C67004552463B60900FF97AB /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
@@ -235,6 +236,7 @@
 		C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoViewCell.swift; sourceTree = "<group>"; };
 		C65F9F33229E3BA900E3E304 /* ContactoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoCell.xib; sourceTree = "<group>"; };
 		C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoViewCell.swift; sourceTree = "<group>"; };
+		C665F21425D2DECB00044480 /* InicioSearchExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSearchExt.swift; sourceTree = "<group>"; };
 		C66FC9C92585242D0023425D /* Tarifa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifa.swift; sourceTree = "<group>"; };
 		C66FC9CC25852E5C0023425D /* Tarifario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifario.swift; sourceTree = "<group>"; };
 		C67004542463B60900FF97AB /* Images-5.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-5.xcassets"; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				C680738C256DEAE50093E4DE /* SolicitudPanel.swift */,
 				C68073B7256E21A20093E4DE /* InicioPanelExt.swift */,
 				C68074732571CDDA0093E4DE /* EsperaChildVC.swift */,
+				C665F21425D2DECB00044480 /* InicioSearchExt.swift */,
 			);
 			path = Inicio;
 			sourceTree = "<group>";
@@ -1024,7 +1027,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1114,6 +1117,7 @@
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
 				C670045924674BAA00FF97AB /* mapSevice.swift in Sources */,
 				C68D05B725A66A4300E124AB /* ComentarioCollectionCell.swift in Sources */,
+				C665F21525D2DECB00044480 /* InicioSearchExt.swift in Sources */,
 				C6A37F0B2554AB4C00C79BFF /* SolicitudStatus.swift in Sources */,
 				C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */,
 				C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */,

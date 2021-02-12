@@ -109,7 +109,7 @@ extension InicioController{
         item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
       }
     }
-    self.tabBar.selectedItem = self.tabBar.items![0] as UITabBarItem
+    self.tabBar.selectedItem = self.tabBar.items![1] as UITabBarItem
     self.loadFormularioData()
   }
   
@@ -152,7 +152,7 @@ extension InicioController{
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
           self.formularioDataCellList.append(self.destinoCell)
-          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
+          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 50).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
       }
     }
@@ -195,7 +195,7 @@ extension InicioController{
     let baseTitle = UILabel.init(frame: CGRect(x: 40, y: 0, width: self.SolicitudView.bounds.width - 40, height: 21))
     baseTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
     baseTitle.textColor = Customization.customBlueColor
-    baseTitle.text = "Hola, \(globalVariables.cliente.getName())"
+    baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(globalVariables.cliente.empresa == "" ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
     
     headerView.addSubview(baseTitle)
     self.solicitudFormTable.tableHeaderView = headerView
@@ -406,7 +406,6 @@ extension InicioController{
     //#Solicitud, idcliente, nombrecliente, movilcliente, dirorig, referencia, dirdest,latorig,lngorig, latdest, lngdest, distancia, costo, #
     locationIcono.isHidden = true
     globalVariables.solpendientes.append(nuevaSolicitud)
-    
     socketService.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
     //self.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
     
@@ -462,20 +461,20 @@ extension InicioController{
       view.endEditing(true)
       
     }else{
-      let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe llegar todos los campos subrayados con una línea roja porque son requeridos.", preferredStyle: UIAlertController.Style.alert)
+      let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe llegar el campo origen.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        //self.origenCell.destinoText.becomeFirstResponder()
+        self.origenCell.origenText.becomeFirstResponder()
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
   }
   
   @objc func enviarSolicitud(){
-    if self.tabBar.selectedItem == self.ofertaItem {
+    if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
       if !(self.destinoCell.destinoText.text!.isEmpty){
         self.crearSolicitudOferta()
       }else{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino y el ofertar un valor $ por el servicio.", preferredStyle: UIAlertController.Style.alert)
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.destinoCell.destinoText.becomeFirstResponder()
         }))

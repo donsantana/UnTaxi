@@ -97,7 +97,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-rA-MSZ" customClass="JiroTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="10" y="85" width="340" height="50"/>
+                                                <rect key="frame" x="10" y="85" width="340" height="45"/>
                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
@@ -114,7 +114,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd2-BD-bDO">
-                                                <rect key="frame" x="315" y="100" width="30" height="30"/>
+                                                <rect key="frame" x="320" y="100" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gd2-BD-bDO" secondAttribute="height" multiplier="1:1" id="g5j-O6-YO1"/>
                                                 </constraints>
@@ -149,7 +149,7 @@
                                             <constraint firstItem="qQP-xb-v5Y" firstAttribute="top" secondItem="ZXM-6u-efE" secondAttribute="top" constant="20" id="DDK-6A-WNy"/>
                                             <constraint firstItem="gd2-BD-bDO" firstAttribute="trailing" secondItem="J7N-rA-MSZ" secondAttribute="trailing" constant="-5" id="HTp-qP-PlD"/>
                                             <constraint firstItem="sGV-sz-Gj8" firstAttribute="top" secondItem="J7N-rA-MSZ" secondAttribute="bottom" constant="25" id="KI2-jm-8FI"/>
-                                            <constraint firstItem="J7N-rA-MSZ" firstAttribute="height" secondItem="qQP-xb-v5Y" secondAttribute="height" multiplier="1.11111" id="QhH-mT-6yI"/>
+                                            <constraint firstItem="J7N-rA-MSZ" firstAttribute="height" secondItem="qQP-xb-v5Y" secondAttribute="height" id="QhH-mT-6yI"/>
                                             <constraint firstItem="J7N-rA-MSZ" firstAttribute="top" secondItem="qQP-xb-v5Y" secondAttribute="bottom" constant="20" id="T0v-lF-HFL"/>
                                             <constraint firstItem="qQP-xb-v5Y" firstAttribute="leading" secondItem="ZXM-6u-efE" secondAttribute="leading" constant="10" id="UhI-xS-rPB"/>
                                             <constraint firstAttribute="height" constant="250" id="VZZ-xs-u7N"/>
@@ -192,7 +192,7 @@
                                                         </attributedString>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-He-6sH" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-He-6sH" customClass="JiroTextField" customModule="TextFieldEffects">
                                                         <rect key="frame" x="20" y="186.5" width="344" height="45"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -285,7 +285,7 @@
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Código recibido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uUO-Nv-ZZU" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Código recibido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uUO-Nv-ZZU" customClass="JiroTextField" customModule="TextFieldEffects">
                                                         <rect key="frame" x="27" y="97" width="332" height="34"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -302,7 +302,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teclee la nueva clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-E3-N1k" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teclee la nueva clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-E3-N1k" customClass="JiroTextField" customModule="TextFieldEffects">
                                                         <rect key="frame" x="25" y="154" width="334" height="45"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -322,7 +322,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confime la clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-sD-B91" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confime la clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-sD-B91" customClass="JiroTextField" customModule="TextFieldEffects">
                                                         <rect key="frame" x="27" y="216" width="332" height="34"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -834,6 +834,44 @@
             <point key="canvasLocation" x="-2459.4202898550725" y="-1718.3035714285713"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="DEC-dU-v6b">
+            <size key="intrinsicContentSize" width="114" height="34"/>
+        </designable>
+        <designable name="J7N-rA-MSZ">
+            <size key="intrinsicContentSize" width="52" height="34"/>
+        </designable>
+        <designable name="Khn-aB-4Gh">
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
+        </designable>
+        <designable name="Lh8-DI-Ohu">
+            <size key="intrinsicContentSize" width="133" height="19"/>
+        </designable>
+        <designable name="SPg-He-6sH">
+            <size key="intrinsicContentSize" width="147" height="34"/>
+        </designable>
+        <designable name="Wu3-BO-R1v">
+            <size key="intrinsicContentSize" width="137.5" height="34"/>
+        </designable>
+        <designable name="X8m-E3-N1k">
+            <size key="intrinsicContentSize" width="175" height="34"/>
+        </designable>
+        <designable name="kDx-sD-B91">
+            <size key="intrinsicContentSize" width="140" height="34"/>
+        </designable>
+        <designable name="kFQ-VB-f0J">
+            <size key="intrinsicContentSize" width="186" height="19"/>
+        </designable>
+        <designable name="qQP-xb-v5Y">
+            <size key="intrinsicContentSize" width="149.5" height="34"/>
+        </designable>
+        <designable name="uUO-Nv-ZZU">
+            <size key="intrinsicContentSize" width="135.5" height="34"/>
+        </designable>
+        <designable name="xNp-BX-Yuh">
+            <size key="intrinsicContentSize" width="189.5" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="close" width="40" height="40"/>
         <image name="login" width="240" height="266.5"/>

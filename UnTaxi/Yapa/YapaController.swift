@@ -26,6 +26,7 @@ class YapaController: BaseController{
 //    self.titleText.font = CustomAppFont.titleFont
 //    self.subtitleText.font = CustomAppFont.subtitleFont
 //    self.yapaText.font = CustomAppFont.bigFont
+    self.yapaText.text = "$\(globalVariables.cliente.yapa)"
     self.yapaText.addBorder(color: Customization.buttonActionColor)
     self.imageHeightConstraint.constant = Responsive().heightFloatPercent(percent: 25)
 //    self.explicacionText.font = CustomAppFont.titleFont

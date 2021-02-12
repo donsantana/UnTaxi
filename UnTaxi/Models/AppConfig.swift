@@ -39,17 +39,18 @@ struct AppConfig {
   }
   
   init(config: [String: Any]) {
-    oferta = config["oferta"] as! Bool
-    taximetro = config["taximetro"] as! Bool
-    horas = config["horas"] as! Bool
-    cardpay = config["cardpay"] as! Bool
-    advertising = config["advertising"] as! Bool
-    pactadas = config["pactadas"] as! Bool
-    recargas = config["recargas"] as! Bool
-    reserva = config["reserva"] as! Bool
-    sms = config["sms"] as! Bool
+    print(config["oferta"])
+    oferta = (config["oferta"] != nil)
+    taximetro = (config["taximetro"] != nil)
+    horas = (config["horas"] != nil)
+    cardpay = (config["cardpay"] != nil)
+    advertising = (config["advertising"] != nil)
+    pactadas = (config["pactadas"] != nil)
+    recargas = (config["recargas"] != nil)
+    reserva = (config["reserva"] != nil)
+    sms = (config["sms"] != nil)
     tiemposolicitud = config["tiemposolicitud"] as! Int
-    yapa = config["yapa"] as! Bool
+    yapa = (config["yapa"] != nil)
     uso_yapa = config["uso_yapa"] as! Double
     
   }

@@ -118,19 +118,17 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.claveRecoverView.addGestureRecognizer(tapGesture)
     self.RegistroView.addGestureRecognizer(tapGesture)
     self.view.addGestureRecognizer(tapGesture)
-    //self.DatosView.addShadow()
+ 
     self.autenticarBtn.addShadow()
-    //self.recoverDataView.addShadow()
     self.RecuperarClaveBtn.addShadow()
-    //self.registerDataView.addShadow()
     self.crearCuentaBtn.addShadow()
-    //self.NewPasswordView.addShadow()
     self.crearNewPasswordText.addShadow()
     
     self.autenticarBtn.heightAnchor 
     self.loginDatosViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 30))
     self.newPasswordFormHeight.constant = 40
     
+    self.clave.clearButtonMode = .never
     //Put Background image to View
     //self.loginBackView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     
@@ -165,8 +163,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     if CConexionInternet.isConnectedToNetwork() == true{
       print("login \(globalVariables.userDefaults.value(forKey: "accessToken"))")
       if globalVariables.userDefaults.value(forKey: "accessToken") != nil{
+        //self.socketService.initLoginEventos()
         self.startSocketConnection()
-        self.socketService.initLoginEventos()
       }else{
         self.AutenticandoView.isHidden = true
       }

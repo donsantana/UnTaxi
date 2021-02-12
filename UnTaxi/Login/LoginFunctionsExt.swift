@@ -26,14 +26,17 @@ extension LoginController{
 //    )
     
     globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
-    self.waitSocketConnection()
+    //self.waitSocketConnection()
+    self.socketService.initLoginEventos()
     globalVariables.socket.connect()
 
   }
   
   func initClientData(datos: [String: Any]){
+    
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
+    print(appConfig)
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
     globalVariables.tarifario = Tarifario(json:datos["tarifas"] as! [String: Any])
 //    let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""

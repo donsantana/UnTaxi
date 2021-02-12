@@ -243,7 +243,9 @@ class Solicitud {
       "yapa": self.yapa,
       "dirdestino": self.dirDestino,
       "latdestino": self.destinoCoord.latitude,
-      "lngdestino": self.destinoCoord.longitude
+      "lngdestino": self.destinoCoord.longitude,
+      "importe": self.valorOferta,
+      "detalleoferta": self.detalleOferta
     ]
     
     if self.otroTelefono != ""{
@@ -252,10 +254,10 @@ class Solicitud {
       tramaBase["movilcliente"] = self.otroTelefono
     }
     
-    if self.tipoServicio == 1{
-      tramaBase["importe"] = self.valorOferta
-      tramaBase["detalleoferta"] = self.detalleOferta
-    }
+//    if self.tipoServicio == 1{
+//      tramaBase["importe"] = self.valorOferta
+//      tramaBase["detalleoferta"] = self.detalleOferta
+//    }
     print("trama \(tramaBase)")
     return tramaBase
   }

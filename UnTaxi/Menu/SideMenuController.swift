@@ -41,6 +41,7 @@ class SideMenuController: UIViewController {
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: Customization.buttonActionColor)
+    self.yapaText.text = "$\(globalVariables.cliente.yapa)"
     //self.yapaText.font = CustomAppFont.bigFont
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
