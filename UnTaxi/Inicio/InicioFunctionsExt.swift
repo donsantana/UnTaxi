@@ -411,8 +411,8 @@ extension InicioController{
     
     //MensajeEspera.text = "Buscando UnTaxi..."
     //self.AlertaEsperaView.isHidden = false
-    self.origenCell.origenText.text?.removeAll()
-    self.pagoCell.referenciaText.text?.removeAll()
+    //self.origenCell.origenText.text?.removeAll()
+    //self.pagoCell.referenciaText.text?.removeAll()
     
 //    let vc = R.storyboard.main.esperaChildView()!
 //    vc.solicitud = nuevaSolicitud

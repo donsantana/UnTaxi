@@ -33,7 +33,7 @@ extension SolPendController: MGLMapViewDelegate{
   //  // MARK: - MGLMapViewDelegate methods
   //
   //  // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
-  func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
+  @nonobjc func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
     // This example is only concerned with point annotations.
     guard annotation is MGLPointAnnotation else {
       return nil
@@ -58,7 +58,7 @@ extension SolPendController: MGLMapViewDelegate{
   
   //ONLY WHEN YOU ADD MGLANNOTATION NOT MGLANNOTATIONVIEW
   func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-    return MGLAnnotationImage(image: UIImage(named: annotation.title!!)!, reuseIdentifier: annotation.title!!)
+    return MGLAnnotationImage(image: UIImage(named: annotation.subtitle!!)!, reuseIdentifier: annotation.subtitle!!)
   }
   
   func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
