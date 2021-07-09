@@ -18,9 +18,15 @@ class ContactoViewCell: UITableViewCell {
   @IBOutlet weak var contactarSwitch: UISwitch!
   @IBOutlet weak var contactDataVIew: UIView!
   
+  func clearContacto(){
+    self.contactarSwitch.isOn = false
+    self.contactDataVIew.isHidden = true
+    self.contactoNameText.text?.removeAll()
+    self.telefonoText.text?.removeAll()
+  }
   
   @IBAction func showContactView(_ sender: Any) {
-    self.telefonoText.placeholder = self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description)
+    self.telefonoText.placeholder = Locale.current.regionCode != nil ? self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description,withPrefix: false) : "Número de teléfono"
     self.contactDataVIew.isHidden = !self.contactarSwitch.isOn
   }
   

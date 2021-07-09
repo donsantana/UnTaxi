@@ -25,6 +25,7 @@ class EsperaChildVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
     self.socketService.delegate = self
     self.socketService.initListenEventos()
     
@@ -37,11 +38,10 @@ class EsperaChildVC: UIViewController {
     //self.subtitleText.titleBlueStyle()
     //self.newOfertaText.bigTextBlueStyle()
    
-    self.newOfertaText.text = "$\(Double(self.solicitud.valorOferta))"
+    self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.valorOferta)))"
     self.updateOfertaView.isHidden = self.solicitud!.valorOferta == 0.0
   }
-  
-  
+
   func updateOfertaValue(value: Double){
     self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
   }
@@ -68,32 +68,55 @@ class EsperaChildVC: UIViewController {
     let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
     motivoAlerta.setValue(titleString, forKey: "attributedTitle")
     
-    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-      self.CancelarSolicitud("Mucho tiempo de espera")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-      self.CancelarSolicitud("El taxi no se mueve")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Ubicación incorrecta")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
-      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
-      ac.addTextField()
-      
-      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
-        if !ac.textFields![0].text!.isEmpty{
-          self.CancelarSolicitud(ac.textFields![0].text!)
-        }
+    for i in 0...Customization.motivosCancelacion.count - 1{
+      if i == Customization.motivosCancelacion.count - 1{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          let ac = UIAlertController(title: Customization.motivosCancelacion[i], message: nil, preferredStyle: .alert)
+          ac.addTextField()
+          
+          let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+            if !ac.textFields![0].text!.isEmpty{
+              self.CancelarSolicitud(ac.textFields![0].text!)
+            }
+          }
+          
+          ac.addAction(submitAction)
+          
+          self.present(ac, animated: true)
+        }))
+      }else{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          self.CancelarSolicitud(Customization.motivosCancelacion[i])
+        }))
       }
-      
-      ac.addAction(submitAction)
-      
-      self.present(ac, animated: true)
-    }))
+    }
+//
+//    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
+//      self.CancelarSolicitud("Mucho tiempo de espera")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
+//      self.CancelarSolicitud("El taxi no se mueve")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
+//      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
+//      self.CancelarSolicitud("Ubicación incorrecta")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
+//      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
+//      ac.addTextField()
+//
+//      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+//        if !ac.textFields![0].text!.isEmpty{
+//          self.CancelarSolicitud(ac.textFields![0].text!)
+//        }
+//      }
+//
+//      ac.addAction(submitAction)
+//
+//      self.present(ac, animated: true)
+//    }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
@@ -105,7 +128,6 @@ class EsperaChildVC: UIViewController {
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
     globalVariables.solpendientes.removeAll{$0.id == self.solicitud.id}
-    //EnviarSocket(Datos)
     self.socketService.socketEmit("cancelarservicio", datos: datos)
 //    let vc = R.storyboard.main.inicioView()!
 //    vc.socketEmit("cancelarservicio", datos: datos)
@@ -146,13 +168,26 @@ class EsperaChildVC: UIViewController {
   @IBAction func cancelarSolicitudOferta(_ sender: Any) {
     self.mostrarAdvertenciaCancelacion()
   }
-
 }
 
 extension EsperaChildVC: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
+    print("cancelarservicio")
+//    let viewcontrollers = self.navigationController?.viewControllers
+//
+//    viewcontrollers?.forEach({ (vc) in
+//      if  let inventoryListVC = vc as? InicioController {
+//        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+//      }
+//    })
+//
+    globalVariables.ofertasList.removeAll()
     let vc = R.storyboard.main.inicioView()!
     self.navigationController?.show(vc, sender: nil)
+//    let navigationController = UINavigationController(rootViewController: vc)
+//    //self.present(navigationController, animated: false, completion: nil)
+//    self.navigationController?.popToViewController(vc, animated: false)//show(vc, sender: nil)
+//    self.dismiss(animated: false, completion: nil)
   }
   
   func socketResponse(_ controller: SocketService, solicitudaceptada result: [String : Any]) {
@@ -169,6 +204,7 @@ extension EsperaChildVC: SocketServiceDelegate{
   
   func socketResponse(_ controller: SocketService, ofertadelconductor result: [String : Any]) {
     print("hereeee \(self.solicitud.id)")
+    print("oferta \(result)")
     let array = globalVariables.ofertasList.map{$0.id}
     if !array.contains(result["idsolicitud"] as! Int){
       let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)

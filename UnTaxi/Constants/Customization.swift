@@ -24,6 +24,7 @@ struct Customization {
   static var bottomBorderColor: UIColor = .lightGray
   static var usaVoucher: Bool = true
   static var buttonsTitleColor = UIColor.black
+  static var motivosCancelacion = ["Mucho tiempo de espera","Me solicitó el conductor","El conductor no se comunica","Ubicación incorrecta","Ya no lo necesito","Solo probaba la aplición","otro"]
 }
 
 struct CustomAppFont {

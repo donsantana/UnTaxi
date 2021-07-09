@@ -20,4 +20,7 @@ class TerminosController: BaseController {
     self.topViewConstraint.constant = super.getTopMenuBottom()
   }
 
+  override func homeBtnAction() {
+    self.dismiss(animated: false, completion: nil)
+  }
 }

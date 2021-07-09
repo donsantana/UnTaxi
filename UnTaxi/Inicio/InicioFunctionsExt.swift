@@ -132,8 +132,7 @@ extension InicioController{
     self.initMapView()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
-    
-    print(self.tabBar.selectedItem?.title)
+
     if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
       self.formularioDataCellList.append(self.destinoCell)
       self.destinoCell.initContent()
@@ -302,32 +301,55 @@ extension InicioController{
     let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
     motivoAlerta.setValue(titleString, forKey: "attributedTitle")
     
-    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
-      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
-      ac.addTextField()
-      
-      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
-        if !ac.textFields![0].text!.isEmpty{
-          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
-        }
+    for i in 0...Customization.motivosCancelacion.count - 1{
+      if i == Customization.motivosCancelacion.count - 1{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          let ac = UIAlertController(title: Customization.motivosCancelacion[i], message: nil, preferredStyle: .alert)
+          ac.addTextField()
+          
+          let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+            if !ac.textFields![0].text!.isEmpty{
+              self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
+            }
+          }
+          
+          ac.addAction(submitAction)
+          
+          self.present(ac, animated: true)
+        }))
+      }else{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          self.CancelarSolicitud(Customization.motivosCancelacion[i], solicitud: solicitud)
+        }))
       }
-      
-      ac.addAction(submitAction)
-      
-      self.present(ac, animated: true)
-    }))
+    }
+    
+//    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
+//      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
+//      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
+//      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
+//      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
+//      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
+//      ac.addTextField()
+//      
+//      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+//        if !ac.textFields![0].text!.isEmpty{
+//          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
+//        }
+//      }
+//
+//      ac.addAction(submitAction)
+//
+//      self.present(ac, animated: true)
+//    }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
@@ -338,7 +360,6 @@ extension InicioController{
     //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
-    globalVariables.solpendientes.removeAll{$0.id == solicitud.id}
     //EnviarSocket(Datos)
     self.socketService.socketEmit("cancelarservicio", datos: datos)
 //    let vc = R.storyboard.main.inicioView()!
@@ -412,7 +433,7 @@ extension InicioController{
     //MensajeEspera.text = "Buscando UnTaxi..."
     //self.AlertaEsperaView.isHidden = false
     //self.origenCell.origenText.text?.removeAll()
-    //self.pagoCell.referenciaText.text?.removeAll()
+    self.destinoCell.destinoText.text?.removeAll()
     
 //    let vc = R.storyboard.main.esperaChildView()!
 //    vc.solicitud = nuevaSolicitud
@@ -438,24 +459,29 @@ extension InicioController{
       
       let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
       
-      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 2 ? "1" : "0"
-      
+      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
+      print("Forma de pago \(self.pagoCell.formaPagoSwitch.selectedSegmentIndex)")
+      print("voucher \(voucher)")
       let detalleOferta = "No detalles"
       
       let fechaReserva = ""
-      
-      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text?.dropFirst())!)! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
+      //var valorOferta = self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".")
+   
+      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
       
       let tipoServicio = self.tabBar.items?.firstIndex(of: self.tabBar.selectedItem!)
       mapView.removeAnnotations(mapView!.annotations!) 
       
       let nuevaSolicitud = Solicitud()
-      self.contactoCell.contactoNameText.text!.isEmpty ? nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!) : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
+      nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
+      self.contactoCell.contactoNameText.text!.isEmpty ? nil : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
       nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: pagoCell.pagarYapaSwitch.isOn)
       
       if !self.contactoCell.telefonoText.text!.isEmpty{
         nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
+        self.contactoCell.clearContacto()
       }
+
       
       self.crearTramaSolicitud(nuevaSolicitud)
       view.endEditing(true)
@@ -476,6 +502,7 @@ extension InicioController{
       }else{
         let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.view.endEditing(true)
           self.destinoCell.destinoText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -615,7 +642,6 @@ extension InicioController{
       self.destinoAnnotation.coordinate = self.origenAnnotation.coordinate
     }
     self.destinoCell.destinoText.text?.removeAll()
-    
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
     let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
@@ -633,11 +659,12 @@ extension InicioController{
   }
   
   @objc func openMapBtnAction(){
+    print("Go to map")
     self.panelController.removeContainer()
   }
   
   @objc func hideSearchPanel(){
-    if !self.navigationController!.isNavigationBarHidden{
+    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
       super.hideMenuBar(isHidden: false)
       self.navigationController?.setNavigationBarHidden(true, animated: true)
       self.panelController.removeContainer()
@@ -654,8 +681,7 @@ extension InicioController{
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-      if self.navigationController?.isNavigationBarHidden == false {
-        print("moviendo panel")
+      if self.navigationController != nil && self.navigationController?.isNavigationBarHidden == false {
         self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
       }else{
         self.view.frame.origin.y = -keyboardSize.height
@@ -737,7 +763,7 @@ extension InicioController{
           let placemark = (placemarks?.first)! as CLPlacemark
           
           if let name = placemark.addressDictionary?["Name"] as? String {
-            print("google \(name)")
+            print("google \(name) \(annotation.subtitle)")
             address += name
           }
           
@@ -754,6 +780,7 @@ extension InicioController{
           //          }
           annotation.title = address
           annotation.subtitle == "origen" ? (self.origenCell.origenText.text = address) : (self.destinoCell.destinoText.text = address)
+          print("direccion \(self.destinoCell.destinoText.text)")
         }else {
           annotation.title = "No disponible"
         }
@@ -790,190 +817,5 @@ extension InicioController{
     globalVariables.socket.off("direccionespactadas")
     globalVariables.socket.off("serviciocompletado")
   }
-  
-  //  func showFormularioSolicitud(){
-  //    self.CargarFavoritas()
-  //    self.TablaDirecciones.reloadData()
-  //    self.locationIcono.isHidden = true
-  //    self.origenAnnotation.coordinate = mapView.centerCoordinate
-  //    coreLocationManager.stopUpdatingLocation()
-  //    self.SolicitarBtn.isHidden = true
-  //    self.origenCell.origenText.becomeFirstResponder()
-  //    if globalVariables.cliente.empresa != "null"{
-  //      self.VoucherView.isHidden = false
-  //      self.VoucherEmpresaName.text = globalVariables.cliente.empresa
-  //      NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.VoucherView, attribute:.bottom, multiplier: 1.0, constant:43.0).isActive = true
-  //    }else{
-  //      NSLayoutConstraint(item: self.BtnsView, attribute: .top, relatedBy: .equal, toItem: self.ContactoView, attribute:.bottom, multiplier: 1.0, constant:10.0).isActive = true
-  //
-  //    }
-  //    self.formularioSolicitud.isHidden = false
-  //  }
-  
-  //Date picker functions
-  //  @objc func dateChange( datePicker: UIDatePicker) {
-  //    let dateFormatter = DateFormatter()
-  //    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
-  //    //self.reservaDate.text = dateFormatter.string(from: datePicker.date)
-  //  }
-  //
-  
-  //  func loadFormularioData(){
-  //    self.formularioDataCellList.removeAll()
-  //    self.formularioDataCellList.append(self.origenCell)
-  //
-  //
-  ////    switch self.tabBar.selectedItem {
-  ////    case 0:
-  ////      self.formularioDataCellList.append(self.destinoCell)
-  ////      self.ofertaDataCell.initContent(precioInicial: 2.0)
-  ////      self.formularioDataCellList.append(self.ofertaDataCell)
-  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 80))
-  ////    case 1:
-  ////      self.formularioSolicitudHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent:65))
-  ////    case 3:
-  ////
-  ////    default:
-  ////      <#code#>
-  ////    }
-  //
-  //    self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != 0)
-  //    if self.tabBar.selectedItem == 0 || self.tabBar.selectedItem == 3{
-  //      self.formularioDataCellList.append(self.destinoCell)
-  //      if self.tabBar.selectedItem == 0{
-  //        self.ofertaDataCell.initContent(precioInicial: 2.0)
-  //        self.formularioDataCellList.append(self.ofertaDataCell)
-  //        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-  //      }
-  //    }else{
-  //      self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 70)
-  //      if globalVariables.cliente.idEmpresa != 0{
-  //        if self.isVoucherSelected{
-  //          self.formularioDataCellList.append(self.destinoCell)
-  //          self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 65 : 80)
-  //        }
-  //        self.tipoSolicitudSwitch.isHidden = false
-  //
-  //      }
-  //    }
-  //
-  //    if self.tabBar.selectedItem == 3{
-  //      self.formularioDataCellList.append(self.pactadaCell)
-  //    }else{
-  //      self.formularioDataCellList.append(self.pagoCell)
-  //    }
-  //
-  //    self.formularioDataCellList.append(self.contactoCell)
-  //    self.solicitudFormTable.reloadData()
-  //  }
-  
-//  func loadCallCenter(){
-//    socketService.socketEmit("telefonosdelcallcenter", datos: [:])
-//    //self.socketEmit("telefonosdelcallcenter", datos: [:])
-//  }
-  
-//  //FUNCTION ENVIO CON TIMER
-//  func EnviarTimer(estado: Int, datos: String){
-//    if estado == 1{
-//      self.EnviarSocket(datos)
-//      if !self.emitTimer.isValid{
-//        self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
-//      }
-//    }else{
-//      self.emitTimer.invalidate()
-//      self.EnviosCount = 0
-//    }
-//  }
-//
-//  //FUNCIÓN ENVIAR AL SOCKET
-//  @objc func EnviarSocket(_ datos: String){
-//    if CConexionInternet.isConnectedToNetwork() == true{
-//      if globalVariables.socket.status.active && self.EnviosCount <= 3{
-//        globalVariables.socket.emit("data",datos)
-//        print(datos)
-//        //self.EnviarTimer(estado: 1, datos: datos)
-//      }else{
-//        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//          exit(0)
-//        }))
-//        self.present(alertaDos, animated: true, completion: nil)
-//      }
-//    }else{
-//      ErrorConexion()
-//    }
-//  }
-//
-  
-  //  func loadGeoJson() {
-  //    DispatchQueue.global().async {
-  //      // Get the path for example.geojson in the app’s bundle.
-  //      guard let jsonUrl = Bundle.main.url(forResource: "example", withExtension: "geojson") else {
-  //        preconditionFailure("Failed to load local GeoJSON file")
-  //      }
-  //
-  //      guard let jsonData = try? Data(contentsOf: jsonUrl) else {
-  //        preconditionFailure("Failed to parse GeoJSON file")
-  //      }
-  //
-  //      DispatchQueue.main.async {
-  //        self.drawPolyline(geoJson: jsonData)
-  //      }
-  //    }
-  //  }
-  //
-  //  func drawPolyline(geoJson: Data) {
-  //    // Add our GeoJSON data to the map as an MGLGeoJSONSource.
-  //    // We can then reference this data from an MGLStyleLayer.
-  //    // MGLMapView.style is optional, so you must guard against it not being set.
-  //    guard let style = self.mapView.style else { return }
-  //
-  //    guard let shapeFromGeoJSON = try? MGLShape(data: geoJson, encoding: String.Encoding.utf8.rawValue) else {
-  //      fatalError("Could not generate MGLShape")
-  //    }
-  //
-  //    let source = MGLShapeSource(identifier: "polyline", shape: shapeFromGeoJSON, options: nil)
-  //    style.addSource(source)
-  //
-  //    // Create new layer for the line.
-  //    let layer = MGLLineStyleLayer(identifier: "polyline", source: source)
-  //
-  //    // Set the line join and cap to a rounded end.
-  //    layer.lineJoin = NSExpression(forConstantValue: "round")
-  //    layer.lineCap = NSExpression(forConstantValue: "round")
-  //
-  //    // Set the line color to a constant blue color.
-  //    layer.lineColor = NSExpression(forConstantValue: UIColor(red: 59/255, green: 178/255, blue: 208/255, alpha: 1))
-  //
-  //    // Use `NSExpression` to smoothly adjust the line width from 2pt to 20pt between zoom levels 14 and 18. The `interpolationBase` parameter allows the values to interpolate along an exponential curve.
-  //    layer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-  //                                   [14: 2, 18: 20])
-  //
-  //    // We can also add a second layer that will draw a stroke around the original line.
-  //    let casingLayer = MGLLineStyleLayer(identifier: "polyline-case", source: source)
-  //    // Copy these attributes from the main line layer.
-  //    casingLayer.lineJoin = layer.lineJoin
-  //    casingLayer.lineCap = layer.lineCap
-  //    // Line gap width represents the space before the outline begins, so should match the main line’s line width exactly.
-  //    casingLayer.lineGapWidth = layer.lineWidth
-  //    // Stroke color slightly darker than the line color.
-  //    casingLayer.lineColor = NSExpression(forConstantValue: UIColor(red: 41/255, green: 145/255, blue: 171/255, alpha: 1))
-  //    // Use `NSExpression` to gradually increase the stroke width between zoom levels 14 and 18.
-  //    casingLayer.lineWidth = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)", [14: 1, 18: 4])
-  //
-  //    // Just for fun, let’s add another copy of the line with a dash pattern.
-  //    let dashedLayer = MGLLineStyleLayer(identifier: "polyline-dash", source: source)
-  //    dashedLayer.lineJoin = layer.lineJoin
-  //    dashedLayer.lineCap = layer.lineCap
-  //    dashedLayer.lineColor = NSExpression(forConstantValue: UIColor.white)
-  //    dashedLayer.lineOpacity = NSExpression(forConstantValue: 0.5)
-  //    dashedLayer.lineWidth = layer.lineWidth
-  //    // Dash pattern in the format [dash, gap, dash, gap, ...]. You’ll want to adjust these values based on the line cap style.
-  //    dashedLayer.lineDashPattern = NSExpression(forConstantValue: [0, 1.5])
-  //
-  //    style.addLayer(layer)
-  //    style.addLayer(dashedLayer)
-  //    style.insertLayer(casingLayer, below: layer)
-  //  }
   
 }

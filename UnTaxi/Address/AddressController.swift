@@ -69,7 +69,9 @@ class AddressController: UIViewController {
       }else{
         vc.destinoAnnotation = self.annotationTemp
       }
-      self.navigationController?.show(vc, sender: nil)
+      self.dismiss(animated: false, completion: nil)
+      //self.present(vc, animated: false, completion: nil)
+      //self.navigationController?.show(vc, sender: nil)
     }
   }
   

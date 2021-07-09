@@ -32,6 +32,10 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
     self.view.addGestureRecognizer(tapGesture)
   }
   
+  override func homeBtnAction() {
+    self.dismiss(animated: false, completion: nil)
+  }
+  
   func sendUpdatePassword(){
     self.waitingView.isHidden = false
     self.apiService.changeClaveAPI(params: ["user": String(globalVariables.cliente.user), "password": self.claveActualText.text!, "newpassword": self.NuevaClaveText.text!])
@@ -114,8 +118,11 @@ extension PassController: ApiServiceDelegate{
     }
     let alertaDos = UIAlertController (title: "Cambio de clave", message: msg, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      let vc = R.storyboard.main.inicioView()
-      self.navigationController?.show(vc!, sender: nil)
+      self.dismiss(animated: false, completion: nil)
+//      let vc = R.storyboard.main.inicioView()!
+//      let navigationController = UINavigationController(rootViewController: vc)
+//      self.present(navigationController, animated: false, completion: nil)
+      //self.navigationController?.show(vc!, sender: nil)
     }))
     self.present(alertaDos, animated: true, completion: nil)
   }

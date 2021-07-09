@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                     <rect key="frame" x="15" y="5" width="384" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVl-7q-iPo">
-                            <rect key="frame" x="15" y="49.5" width="349" height="21"/>
+                            <rect key="frame" x="20" y="49.5" width="344" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="49l-yu-1cu"/>
                             </constraints>
@@ -57,7 +57,7 @@
                         <constraint firstItem="sJC-To-2CG" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="centerX" constant="5" id="MkV-Gx-H7Q"/>
                         <constraint firstAttribute="bottom" secondItem="Fdf-RL-sbr" secondAttribute="bottom" id="ORG-QK-D3L"/>
                         <constraint firstItem="oVl-7q-iPo" firstAttribute="centerY" secondItem="Vhu-jx-HbO" secondAttribute="centerY" id="Vgv-EH-LrT"/>
-                        <constraint firstItem="oVl-7q-iPo" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="leading" constant="15" id="ZZh-f4-9KY"/>
+                        <constraint firstItem="oVl-7q-iPo" firstAttribute="leading" secondItem="Vhu-jx-HbO" secondAttribute="leading" constant="20" id="ZZh-f4-9KY"/>
                         <constraint firstAttribute="trailing" secondItem="Fdf-RL-sbr" secondAttribute="trailing" constant="5" id="h72-PE-bXh"/>
                         <constraint firstAttribute="trailing" secondItem="sJC-To-2CG" secondAttribute="trailing" constant="20" id="hZJ-ur-EyU"/>
                     </constraints>

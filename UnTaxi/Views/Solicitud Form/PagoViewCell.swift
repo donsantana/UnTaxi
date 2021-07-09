@@ -28,7 +28,8 @@ class PagoViewCell: UITableViewCell {
     self.formaPagoSwitch.customColor()
     self.referenciaText.setBottomBorder(borderColor: Customization.bottomBorderColor)
     pagarYapaSwitch.isEnabled = globalVariables.cliente.yapa > 0
-    if globalVariables.cliente.empresa != ""{
+    self.pagarYapaSwitch.isOn = false
+    if globalVariables.cliente.empresa != "" && isCorporativo{
       //self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
       self.formaPagoSwitch.selectedSegmentIndex = 1
       self.formaPagoImg.image = UIImage(named: "voucherIcon")
@@ -41,14 +42,10 @@ class PagoViewCell: UITableViewCell {
   }
   
   func updateVoucherOption(useVoucher: Bool){
+    print("voucher \(useVoucher)")
+
     self.formaPagoSwitch.isHidden = !useVoucher || globalVariables.cliente.empresa == ""
-//    if useVoucher{
-//      if globalVariables.cliente.empresa != ""{
-//        //self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
-//      }
-//    }else{
-//      //self.formaPagoSwitch.removeSegment(at: 2, animated: false)
-//    }
+    self.formaPagoImg.image = UIImage(named: useVoucher && self.formaPagoSwitch.selectedSegmentIndex != 0 ? "voucherIcon" : "ofertaIcon")
     self.yapaValue.text = ("Pagar con Yapa, $\(String(format: "%.2f", globalVariables.cliente.yapa))")
     self.formaPagoSwitchWidth.constant = CGFloat(70 * self.formaPagoSwitch.numberOfSegments)
   }
@@ -67,7 +64,6 @@ class PagoViewCell: UITableViewCell {
     default:
       break
     }
-    
   }
 }
 

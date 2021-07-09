@@ -36,13 +36,19 @@ extension LoginController{
     
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
-    print(appConfig)
+    print("appConfig \(appConfig)")
+    let publicidad = appConfig["publicidad"] as! [String: Any]
+    print("publicidades \(publicidad["images"] as! [[String: Any]])")
+    globalVariables.publicidadService = PublicidadService(publicidades: publicidad["images"] as! [[String: Any]])
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
     globalVariables.tarifario = Tarifario(json:datos["tarifas"] as! [String: Any])
 //    let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""
 //    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: clientData["idempresa"] as! Int,empresa: clientData["empresa"] as! String,foto: fotoUrl,yapa: clientData["yapa"] as! Double)
     globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
+    
+    print("appConfig \(globalVariables.appConfig)")
+    
     if solicitudesEnProceso.count > 0{
       self.ListSolicitudPendiente(solicitudesEnProceso)
     }
@@ -84,26 +90,13 @@ extension LoginController{
         }))
         self.present(locationAlert, animated: true, completion: nil)
       case .authorizedAlways, .authorizedWhenInUse:
-        var vc: UIViewController
-        switch globalVariables.solpendientes.count {
-        case 0:
-          vc = R.storyboard.main.inicioView()!
-          break
-        case 1:
-          if globalVariables.solpendientes.first!.isAceptada(){
-          vc = R.storyboard.main.solDetalles()!
-          (vc as! SolPendController).solicitudPendiente = globalVariables.solpendientes.first!
-          }else{
-            vc = R.storyboard.main.esperaChildView()!
-            (vc as! EsperaChildVC).solicitud = globalVariables.solpendientes.first!
-          }
-          break
-        default:
-          vc = R.storyboard.main.listaSolPdtes()!
-        }
-        DispatchQueue.main.async {
-          self.navigationController?.show(vc, sender: nil)
-        }
+        self.checkSolPendientes()
+//        DispatchQueue.main.async {
+//          //self.AutenticandoView.isHidden = true
+//          //self.navigationController?.show(vc, sender: nil)
+//          let vc = R.storyboard.main.inicioView()!
+//          self.navigationController?.show(vc, sender: nil)
+//        }
         break
       default:
         break
@@ -130,9 +123,38 @@ extension LoginController{
     }
   }
   
+  func checkSolPendientes(){
+    print("checkSolPendientes")
+    var vc = UIViewController()
+    switch globalVariables.solpendientes.count {
+    case 0:
+      vc = R.storyboard.main.inicioView()!
+      break
+    case 1:
+      if globalVariables.solpendientes.first!.isAceptada(){
+        vc = R.storyboard.main.solDetalles()!
+        (vc as! SolPendController).solicitudPendiente = globalVariables.solpendientes.first!
+      }else{
+        vc = R.storyboard.main.esperaChildView()!
+        (vc as! EsperaChildVC).solicitud = globalVariables.solpendientes.first!
+      }
+      //self.navigationController?.show(vc, sender: self)
+      break
+    default:
+      let vc = R.storyboard.main.listaSolPdtes()!
+      
+    }
+    
+    self.navigationController?.show(vc, sender: self)
+    
+  }
+  
+  
+  
   //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
   func ListSolicitudPendiente(_ listado : [[String: Any]]){
     //#LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi, latorig,lngorig,latdest,lngdest,telefonoconductor
+    globalVariables.solpendientes.removeAll()
     var i = 0
     while i < listado.count {
       let data = listado[i]

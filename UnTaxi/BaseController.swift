@@ -53,13 +53,14 @@ class BaseController: UIViewController {
       
       if hideMenuBtn{
         let backBtn = UIButton(type: UIButton.ButtonType.system)
-        backBtn.frame = CGRect(x: 10, y: 15, width: 40, height: 40)
+        backBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
         let backImage = UIImage(named: "backIcon")?.withRenderingMode(.alwaysTemplate)
         backBtn.setImage(backImage, for: UIControl.State())
         backBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
         backBtn.tintColor = hideMenuBtn ? .black : Customization.buttonActionColor
         backBtn.layer.cornerRadius = backBtn.frame.height/2
         backBtn.backgroundColor = .white
+        backBtn.addShadow()
         topMenu.addSubview(backBtn)
         topMenu.removeShadow()
       }else{
@@ -77,7 +78,34 @@ class BaseController: UIViewController {
       self.view.addSubview(topMenu)
     }
     
+  }
+  
+  func goToInicioView(){
+    var inicioVC: [UIViewController] = []
+
+    let viewcontrollers = self.navigationController?.viewControllers
+    viewcontrollers?.forEach({ (vc) in
+      if  let inventoryListVC = vc as? InicioController {
+        //self.navigationController!.popToViewController(inventoryListVC, animated: true)
+        inicioVC.append(inventoryListVC)
+      }
+    })
     
+    if inicioVC.count != 0{
+      print("Hay inicio")
+      self.navigationController!.popToViewController(inicioVC.first!, animated: true)
+    }else{
+      print("No hay inicio")
+      let vc = R.storyboard.main.inicioView()!
+      self.navigationController?.show(vc, sender: self)
+    }
+    
+//    let viewcontrollers = self.navigationController?.viewControllers
+//    viewcontrollers?.forEach({ (vc) in
+//      if  let inventoryListVC = vc as? InicioController {
+//        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+//      }
+//    })
   }
   
   //MENU BUTTONS FUNCTIONS
@@ -98,8 +126,13 @@ class BaseController: UIViewController {
   
   @objc func homeBtnAction(){
     if hideMenuBtn{
-      let vc = R.storyboard.main.inicioView()
-      self.navigationController?.show(vc!, sender: nil)
+      self.goToInicioView()
+      //self.dismiss(animated: false, completion: nil)
+      print("here back to inicio")
+//      let vc = R.storyboard.main.inicioView()!
+//      let navigationController = UINavigationController(rootViewController: vc)
+//      self.present(navigationController, animated: false, completion: nil)
+      //self.navigationController?.show(vc!, sender: nil)
     }
   }
   

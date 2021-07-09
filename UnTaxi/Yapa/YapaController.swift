@@ -9,10 +9,22 @@
 import UIKit
 import FloatingPanel
 
+struct YapaMenu {
+  var icon: UIImage
+  var title: String
+  var subtitle: String
+  
+  init (iconName: String, title: String, subtitle: String){
+    self.icon = UIImage(named: iconName)!
+    self.title = title
+    self.subtitle = subtitle
+  }
+}
 
 class YapaController: BaseController{
 
   let yapaPanel = FloatingPanelController()
+  let yapaActionsArray = [YapaMenu(iconName: "yapaIcon", title: "Pasa YAPA", subtitle: "Pasa tu YAPA a otros contactos"), YapaMenu(iconName: "yapaCodeIcon", title: "Código promocional", subtitle:"Ingresa el código promocional")]
   lazy var contentPanel = storyboard?.instantiateViewController(withIdentifier: "YapaPanel") as? YapaPanel
   
   @IBOutlet weak var titleText: UILabel!
@@ -20,13 +32,15 @@ class YapaController: BaseController{
   @IBOutlet weak var yapaText: UILabel!
   @IBOutlet weak var explicacionText: UITextView!
   @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var yapaMenuTable: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
 //    self.titleText.font = CustomAppFont.titleFont
 //    self.subtitleText.font = CustomAppFont.subtitleFont
 //    self.yapaText.font = CustomAppFont.bigFont
-    self.yapaText.text = "$\(globalVariables.cliente.yapa)"
+    self.yapaMenuTable.delegate = self
+    self.yapaText.text = "$\(String(format: "%.2f", globalVariables.cliente.yapa))"
     self.yapaText.addBorder(color: Customization.buttonActionColor)
     self.imageHeightConstraint.constant = Responsive().heightFloatPercent(percent: 25)
 //    self.explicacionText.font = CustomAppFont.titleFont
@@ -35,22 +49,28 @@ class YapaController: BaseController{
     yapaPanel.delegate = self
     yapaPanel.isRemovalInteractionEnabled = true
     yapaPanel.contentMode = .fitToBounds
+
 //    guard let contentPanel = storyboard?.instantiateViewController(withIdentifier: "YapaPanel") as? YapaPanel else{
 //      return
 //    }
-    yapaPanel.set(contentViewController: contentPanel)
+    
     //yapaPanel.track(scrollView: contentPanel!.activeCodigoView as! UIScrollView)
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    contentPanel!.codigoText.delegate = self
   }
   
-  @IBAction func activePromoCode(_ sender: Any) {
+  override func homeBtnAction() {
+    self.dismiss(animated: false, completion: nil)
+  }
+ 
+  func expandPanel(isExpanded: Bool){
+    yapaPanel.set(contentViewController: contentPanel)
     yapaPanel.addPanel(toParent: self)
+    yapaPanel.move(to: .full, animated: true)
   }
-  
+
 }
 
 extension YapaController: UITextFieldDelegate{
@@ -84,5 +104,8 @@ extension YapaController: UITextFieldDelegate{
 }
 
 extension YapaController: FloatingPanelControllerDelegate{
-
+  func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+    print(fpc.state)
+    self.yapaText.text = "$\(String(format: "%.2f", globalVariables.cliente.yapa))"
+  }
 }

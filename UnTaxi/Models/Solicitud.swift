@@ -47,73 +47,13 @@ class Solicitud {
   var yapa = false
   
   var taxi = Taxi()
-//  var idTaxi = 0
-//  var matricula = ""
-//  var codTaxi = ""
-//  var marca = ""
-//  var color = ""
-//  var taximarker = CLLocationCoordinate2D()
-//
-//  var idConductor = 0
-//  var nombreApellidosConductor = ""
-//  var movil = ""
-//  var urlFoto = ""
-  
+
   var useVoucher = "0"
   var otroNombre = ""
   var otroTelefono = ""
   
-  
-  //Taxi
-  //  var idTaxi: String
-  //  var matricula :String
-  //  var codTaxi :String
-  //  var marca :String
-  //  var color :String
-  //  var taximarker: CLLocationCoordinate2D
-  //  //Conductor
-  //  var idConductor :String
-  //  var nombreApellido :String
-  //  var movil :String
-  //  var urlFoto :String
-  
-  
-  //  //Constructor
-  //  init(){
-  //    super.init()
-  //    self.idCliente = ""
-  //    self.user = ""
-  //    self.nombreApellidos = ""
-  //
-  //    self.id = ""
-  //    self.fechaHora = ""
-  //    self.dirOrigen = ""
-  //    self.origenCoord = CLLocationCoordinate2D()
-  //    self.referenciaorigen = ""
-  //    self.dirDestino = ""
-  //    self.destinoCoord = CLLocationCoordinate2D()
-  //    self.distancia = 0.0
-  //    self.valorOferta = "0"
-  //    self.detalleOferta = ""
-  //    self.fechaReserva = Date()
-  //
-  //    //Taxi
-  //    self.idTaxi = ""
-  //    self.matricula = ""
-  //    self.codTaxi = ""
-  //    self.marca = ""
-  //    self.color = ""
-  //    taximarker = CLLocationCoordinate2D()
-  //
-  //    self.idConductor = ""
-  //    self.nombreApellido = ""
-  //    self.movil = ""
-  //    self.urlFoto = ""
-  //
-  //  }
-  
   //Agregar datos de la solicitud
-  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool){
+  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String, tipoServicio: Int, yapa: Bool){
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
@@ -126,7 +66,6 @@ class Solicitud {
     self.useVoucher = useVoucher
     self.tipoServicio = tipoServicio
     self.yapa = yapa
-    print("creating")
     if fechaReserva != ""{
       let fechaFormatted = fechaReserva.replacingOccurrences(of: "/", with: "-")
       self.fechaReserva = OurDate(stringDate: fechaFormatted)
@@ -235,8 +174,8 @@ class Solicitud {
       "latorigen": self.origenCoord.latitude,
       "lngorigen": self.origenCoord.longitude,
       "so": 2,
-      "idempresa": self.cliente.idEmpresa ?? 0,
-      "empresa": self.cliente.empresa ?? "",
+      "idempresa": self.useVoucher != "0" ? self.cliente.idEmpresa! : 0,
+      "empresa": self.useVoucher != "0" ? self.cliente.empresa! : "",
       "idtipovehiculo": 1,
       "tipovehiculo": "Taxi",
       "tarjeta": self.tarjeta,
@@ -244,7 +183,7 @@ class Solicitud {
       "dirdestino": self.dirDestino,
       "latdestino": self.destinoCoord.latitude,
       "lngdestino": self.destinoCoord.longitude,
-      "importe": self.valorOferta,
+      "importe": "\(self.valorOferta)",
       "detalleoferta": self.detalleOferta
     ]
     

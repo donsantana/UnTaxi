@@ -39,19 +39,19 @@ struct AppConfig {
   }
   
   init(config: [String: Any]) {
-    print(config["oferta"])
-    oferta = (config["oferta"] != nil)
-    taximetro = (config["taximetro"] != nil)
-    horas = (config["horas"] != nil)
-    cardpay = (config["cardpay"] != nil)
-    advertising = (config["advertising"] != nil)
-    pactadas = (config["pactadas"] != nil)
-    recargas = (config["recargas"] != nil)
-    reserva = (config["reserva"] != nil)
-    sms = (config["sms"] != nil)
-    tiemposolicitud = config["tiemposolicitud"] as! Int
-    yapa = (config["yapa"] != nil)
-    uso_yapa = config["uso_yapa"] as! Double
+    print("config \(config["tiemposolicitud"] is NSNull)")
+    oferta = !(config["oferta"] is NSNull) ? (config["oferta"] as! Bool) : false
+      taximetro = !(config["taximetro"] is NSNull) ? (config["taximetro"] as! Bool) : false
+      horas = !(config["horas"] is NSNull) ? (config["horas"] as! Bool) : false
+      cardpay = !(config["cardpay"] is NSNull) ? (config["cardpay"] as! Bool) : false
+      advertising = !(config["advertising"] is NSNull) ? (config["advertising"] as! Bool) : false
+      pactadas = !(config["pactadas"] is NSNull) ? (config["pactadas"] as! Bool) : false
+      recargas = !(config["recargas"] is NSNull) ? (config["recargas"] as! Bool) : false
+      reserva = !(config["reserva"] is NSNull) ? (config["reserva"] as! Bool) : false
+      sms = !(config["sms"] is NSNull) ? (config["sms"] as! Bool) : false
+      tiemposolicitud = !(config["tiemposolicitud"] == nil) ? config["tiemposolicitud"] as! Int : 90
+      yapa = !(config["yapa"] is NSNull) ? (config["yapa"] as! Bool) : false
+    uso_yapa = !(config["uso_yapa"] is NSNull) ? (config["uso_yapa"] as! Double) : 0.0
     
   }
 }

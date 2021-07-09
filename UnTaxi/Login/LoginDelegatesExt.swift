@@ -114,7 +114,6 @@ extension LoginController: UITextFieldDelegate{
 extension LoginController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getLoginData data: [String:Any]) {
     print("msg \(data["token"] as! String)")
-    print("config \(data["config"] as! [String:Any])")
     globalVariables.userDefaults.set(data["token"] as! String, forKey: "accessToken")
     self.startSocketConnection()
   }

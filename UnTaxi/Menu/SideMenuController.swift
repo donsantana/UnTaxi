@@ -10,8 +10,8 @@ import UIKit
 import SideMenu
 
 class SideMenuController: UIViewController {
-  
-  var menuArray = [[MenuData(imagen: "nuevaSolicitud", title: "Nuevo viaje"),MenuData(imagen: "enProceso", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
+  //MenuData(imagen: "nuevaSolicitud", title: "Nuevo viaje"),
+  var menuArray = [[MenuData(imagen: "enProceso", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
   
   @IBOutlet weak var MenuView1: UIView!
@@ -51,8 +51,9 @@ class SideMenuController: UIViewController {
   
   //MASK:- FUNCTIONS
   @objc func showYapaView(){
+    globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.yapaView()!
-    self.navigationController?.show(vc, sender: nil)
+    self.present(vc, animated: false, completion: nil)//self.navigationController?.show(vc, sender: nil)
   }
   
   @objc func EnviarSocket(_ datos: String){
@@ -99,7 +100,8 @@ class SideMenuController: UIViewController {
   }
   
   @IBAction func showProfile(_ sender: Any) {
+    globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.perfil()!
-    self.navigationController?.show(vc, sender: nil)
+    self.navigationController!.show(vc, sender: nil)
   }
 }

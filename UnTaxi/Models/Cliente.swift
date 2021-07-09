@@ -84,6 +84,7 @@ class Cliente{
       
       let task = URLSession.shared.dataTask(with: url!) { data, response, error in
         guard let data = data, error == nil else { return }
+
         DispatchQueue.main.sync() {
           imageView.contentMode = .scaleAspectFill
           imageView.image = UIImage(data: data)

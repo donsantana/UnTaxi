@@ -34,6 +34,7 @@ class SolicitudHistorial {
   var pagado = 0
   var idEstado = 0
   //Details
+  var evaluacion = 0
   var calificacion = 0.0
   var cantidadcalificacion = 0
   var foto = ""
@@ -59,6 +60,7 @@ class SolicitudHistorial {
   }
   
   func addDetails(details: [String: Any]){
+    print(details)
     self.calificacion = details["calificacion"] as! Double
     self.cantidadcalificacion = details["cantidadcalificacion"] as! Int
     self.foto = details["foto"] as! String

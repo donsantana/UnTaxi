@@ -31,37 +31,48 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at: indexPath, animated: false)
+    globalVariables.publicidadService?.stopPublicidad()
+
+    var vc: UIViewController!// = R.storyboard.main.inicioView()!
       switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
       case "Nuevo viaje":
-        let vc = R.storyboard.main.inicioView()!
-        self.navigationController?.show(vc, sender: nil)
+        let viewcontrollers = self.navigationController?.viewControllers
+        print("cantidad de viewcontrollers \(viewcontrollers?.count)")
+        
+        vc = R.storyboard.main.inicioView()!
+        //let navigationController = UINavigationController(rootViewController: vc)
+        //self.present(navigationController, animated: false, completion: nil)
+        self.navigationController?.show(vc, sender: self)
         
       case "Viajes en proceso":
         if globalVariables.solpendientes.count > 0{
-          let vc = R.storyboard.main.listaSolPdtes()
-          vc!.solicitudesMostrar = globalVariables.solpendientes
+          vc = R.storyboard.main.listaSolPdtes()
+          (vc as! SolicitudesTableController).solicitudesMostrar = globalVariables.solpendientes
+          //self.present(vc, animated: false, completion: nil)
           self.navigationController?.show(vc!, sender: nil)
         }else{
           let alertaDos = UIAlertController (title: "Solicitudes en proceso", message: "Usted no tiene viajes en proceso.", preferredStyle: UIAlertController.Style.alert)
           alertaDos.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: {alerAction in
-            let vc = R.storyboard.main.inicioView()!
-            self.navigationController?.show(vc, sender: nil)
+    
           }))
           
           self.present(alertaDos, animated: true, completion: nil)
         }
         
       case "Historial de Viajes":
-        let vc = R.storyboard.main.historyView()!
+        vc = R.storyboard.main.historyView()!
+        //self.present(vc, animated: false, completion: nil)
         self.navigationController?.show(vc, sender: nil)
         
       case "Operadora":
-        let vc = R.storyboard.main.callCenter()!
-        self.navigationController?.show(vc, sender: nil)
+        vc = R.storyboard.main.callCenter()!
+        self.present(vc, animated: false, completion: nil)
+        //self.navigationController?.show(vc, sender: nil)
         
       case "Términos y condiciones":
-        let vc = R.storyboard.main.terminosView()!
-        self.navigationController?.show(vc, sender: nil)
+        vc = R.storyboard.main.terminosView()!
+        self.present(vc, animated: false, completion: nil)
+        //self.navigationController?.show(vc, sender: nil)
         
       case "Compartir app":
         if let name = URL(string: GlobalConstants.itunesURL) {
@@ -69,10 +80,6 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
           let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
           
           self.present(activityVC, animated: true, completion: nil)
-        }
-        else
-        {
-          // show alert for not available
         }
       case "Salir":
         //                let fileManager = FileManager()
@@ -87,6 +94,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
       default:
         print("nada")
       }
+    
   }
   
   //FUNCIONES Y EVENTOS PARA ELIMIMAR CELLS, SE NECESITA AGREGAR UITABLEVIEWDATASOURCE

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YapaCell" customModule="UnTaxi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDj-cv-Nal">
+                    <rect key="frame" x="90" y="14" width="304" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KGe-cR-UaC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UE2-Em-GIq">
+                    <rect key="frame" x="90" y="45" width="304" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="8DA-sj-092"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j26-Ij-goR">
+                    <rect key="frame" x="20" y="14" width="58" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="any-dR-P7L"/>
+                        <constraint firstAttribute="width" constant="50" id="tGm-Xt-zkd"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-yO-VoO">
+                    <rect key="frame" x="379" y="25" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Amv-aC-WZC"/>
+                        <constraint firstAttribute="width" constant="30" id="itW-OD-Z5h"/>
+                    </constraints>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="UDj-cv-Nal" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-5" id="4CT-uo-LE8"/>
+                <constraint firstItem="UE2-Em-GIq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="5" id="8fL-xJ-bE7"/>
+                <constraint firstAttribute="trailing" secondItem="5gZ-yO-VoO" secondAttribute="trailing" constant="5" id="9lS-iI-zPK"/>
+                <constraint firstAttribute="trailing" secondItem="UE2-Em-GIq" secondAttribute="trailing" constant="20" id="BbS-am-dl8"/>
+                <constraint firstItem="5gZ-yO-VoO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PWX-Mh-qRE"/>
+                <constraint firstItem="j26-Ij-goR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bUF-D7-QLk"/>
+                <constraint firstAttribute="trailing" secondItem="UDj-cv-Nal" secondAttribute="trailing" constant="20" id="oN1-ps-Xeu"/>
+                <constraint firstItem="UDj-cv-Nal" firstAttribute="leading" secondItem="j26-Ij-goR" secondAttribute="trailing" constant="20" id="pB6-w9-lS2"/>
+                <constraint firstItem="j26-Ij-goR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="vsv-0e-0aA"/>
+                <constraint firstItem="UE2-Em-GIq" firstAttribute="leading" secondItem="j26-Ij-goR" secondAttribute="trailing" constant="20" id="z4F-38-4Tn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconImag" destination="j26-Ij-goR" id="hiJ-0N-KQG"/>
+                <outlet property="subtitleText" destination="UE2-Em-GIq" id="Dea-la-6Si"/>
+                <outlet property="titleText" destination="UDj-cv-Nal" id="MvR-BD-ttP"/>
+            </connections>
+            <point key="canvasLocation" x="21.739130434782609" y="-119.86607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="next" width="40" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

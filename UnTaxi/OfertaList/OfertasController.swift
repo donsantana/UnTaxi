@@ -13,7 +13,6 @@ class OfertasController: BaseController{
   var socketService = SocketService()
   let progress = Progress(totalUnitCount: 80)
   var progressTimer = Timer()
-  let inicioController = R.storyboard.main.inicioView()
   var ofertaSeleccionada: Oferta!
   var solicitud: Solicitud!
   
@@ -68,6 +67,10 @@ class OfertasController: BaseController{
     }
   }
   
+  override func viewDidDisappear(_ animated: Bool) {
+    //globalVariables.ofertasList.removeAll()
+  }
+  
   func MostrarMotivoCancelacion(){
     let motivoAlerta = UIAlertController(title: "¿Por qué cancela el viaje?", message: "", preferredStyle: .actionSheet)
     
@@ -75,32 +78,55 @@ class OfertasController: BaseController{
     let titleString = NSAttributedString(string: "¿Por qué cancela el viaje?", attributes: titleAttributes)
     motivoAlerta.setValue(titleString, forKey: "attributedTitle")
     
-    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-      self.CancelarSolicitud("Mucho tiempo de espera")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-      self.CancelarSolicitud("El taxi no se mueve")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Ubicación incorrecta")
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
-      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
-      ac.addTextField()
-      
-      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
-        if !ac.textFields![0].text!.isEmpty{
-          self.CancelarSolicitud(ac.textFields![0].text!)
-        }
+    for i in 0...Customization.motivosCancelacion.count - 1{
+      if i == Customization.motivosCancelacion.count - 1{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          let ac = UIAlertController(title: Customization.motivosCancelacion[i], message: nil, preferredStyle: .alert)
+          ac.addTextField()
+          
+          let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+            if !ac.textFields![0].text!.isEmpty{
+              self.CancelarSolicitud(ac.textFields![0].text!)
+            }
+          }
+          
+          ac.addAction(submitAction)
+          
+          self.present(ac, animated: true)
+        }))
+      }else{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          self.CancelarSolicitud(Customization.motivosCancelacion[i])
+        }))
       }
-      
-      ac.addAction(submitAction)
-      
-      self.present(ac, animated: true)
-    }))
+    }
+    
+//    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
+//      self.CancelarSolicitud("Mucho tiempo de espera")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
+//      self.CancelarSolicitud("El taxi no se mueve")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
+//      self.CancelarSolicitud("El conductor se fue a una dirección equivocada")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
+//      self.CancelarSolicitud("Ubicación incorrecta")
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
+//      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
+//      ac.addTextField()
+//
+//      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+//        if !ac.textFields![0].text!.isEmpty{
+//          self.CancelarSolicitud(ac.textFields![0].text!)
+//        }
+//      }
+//
+//      ac.addAction(submitAction)
+//
+//      self.present(ac, animated: true)
+//    }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     

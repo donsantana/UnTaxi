@@ -15,6 +15,7 @@ class SolicitudesTableController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     //self.navigationController?.navigationBar.tintColor = UIColor.black
+    print("SolPendientes \(globalVariables.solpendientes.count)")
     self.solicitudesMostrar = globalVariables.solpendientes
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
@@ -59,32 +60,42 @@ class SolicitudesTableController: UITableViewController {
 //    motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
 //      self.CancelarSolicitud("No necesito", solicitud: solicitud)
 //    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
-    }))
-    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
-      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
-      ac.addTextField()
-      
-      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
-        if !ac.textFields![0].text!.isEmpty{
-          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
-        }
+    
+    for i in 0...Customization.motivosCancelacion.count - 1{
+      if i == Customization.motivosCancelacion.count - 1{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          let ac = UIAlertController(title: Customization.motivosCancelacion[i], message: nil, preferredStyle: .alert)
+          ac.addTextField()
+          
+          let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
+            if !ac.textFields![0].text!.isEmpty{
+              self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
+            }
+          }
+          
+          ac.addAction(submitAction)
+          
+          self.present(ac, animated: true)
+        }))
+      }else{
+        motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
+          self.CancelarSolicitud(Customization.motivosCancelacion[i], solicitud: solicitud)
+        }))
       }
-      
-      ac.addAction(submitAction)
-      
-      self.present(ac, animated: true)
-    }))
+    }
+//    motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[0], style: .default, handler: { action in
+//      self.CancelarSolicitud(Customization.motivosCancelacion[0], solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[1], style: .default, handler: { action in
+//      self.CancelarSolicitud(Customization.motivosCancelacion[1], solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[2], style: .default, handler: { action in
+//      self.CancelarSolicitud(Customization.motivosCancelacion[2], solicitud: solicitud)
+//    }))
+//    motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[3], style: .default, handler: { action in
+//      self.CancelarSolicitud(Customization.motivosCancelacion[3], solicitud: solicitud)
+//    }))
+//
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
       
     }))
@@ -108,8 +119,15 @@ class SolicitudesTableController: UITableViewController {
   }
   
   @objc func backBtnAction(){
-    let vc = R.storyboard.main.inicioView()
-    self.navigationController?.pushViewController(vc!, animated: true)
+    let viewcontrollers = self.navigationController?.viewControllers
+    viewcontrollers?.forEach({ (vc) in
+      if  let inventoryListVC = vc as? InicioController {
+        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+      }
+    })
+    //self.dismiss(animated: false, completion: nil)
+//    let vc = R.storyboard.main.inicioView()
+//    self.navigationController?.pushViewController(vc!, animated: true)
   }
   
   // MARK: - Table view data source
@@ -144,22 +162,24 @@ class SolicitudesTableController: UITableViewController {
     let solicitud = self.solicitudesMostrar[indexPath.row]
     if solicitud.taxi.id != 0{
       let vc = R.storyboard.main.solDetalles()
-      //vc.solicitudPendiente = self.solicitudesMostrar[indexPath.row]
       vc?.solicitudPendiente = solicitud
       self.navigationController?.show(vc!, sender: nil)
     }else{
-      let vc = R.storyboard.main.esperaChildView()
-      vc?.solicitud = solicitud
-      self.navigationController?.show(vc!, sender: nil)
-//      let alertaDos = UIAlertController (title: "Solicitud en proceso", message: "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor.", preferredStyle: .alert)
-//      alertaDos.addAction(UIAlertAction(title: "Esperar respuesta", style: .default, handler: {alerAction in
-//        let vc = R.storyboard.main.inicioView()!
-//        self.navigationController?.show(vc, sender: nil)
-//      }))
-//      alertaDos.addAction(UIAlertAction(title: "Cancelar la solicitud", style: .destructive, handler: {alerAction in
-//        self.mostrarMotivosCancelacion(solicitud: solicitud)
-//      }))
-//      self.present(alertaDos, animated: true, completion: nil)
+      let array = globalVariables.ofertasList.map{$0.id}
+      if array.contains(solicitud.id){
+        print("oferta encontrada")
+        let vc = R.storyboard.main.ofertasView()
+        vc?.solicitud = solicitud
+        self.navigationController?.show(vc!, sender: nil)
+      }else{
+        print("oferta encontrada")
+        let vc = R.storyboard.main.esperaChildView()!
+        vc.solicitud = solicitud
+        self.navigationController?.show(vc, sender: nil)
+      }
+//      let vc = R.storyboard.main.esperaChildView()!
+//      vc.solicitud = solicitud
+//      self.navigationController?.show(vc, sender: nil)
     }
   } 
 }

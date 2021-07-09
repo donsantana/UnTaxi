@@ -71,6 +71,10 @@ class PerfilController: BaseController {
     
   }
   
+//  override func homeBtnAction() {
+//    self.goToInicioView()
+//  }
+  
   func isProfileUpdated()->Bool{
     return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.user != self.usuarioText.text || globalVariables.cliente.email != self.emailText.text
   }
@@ -153,7 +157,8 @@ class PerfilController: BaseController {
   
   @IBAction func changePassword(_ sender: Any) {
     let vc = R.storyboard.main.password()
-    self.navigationController?.show(vc!, sender: nil)
+    self.present(vc!, animated: false, completion: nil)
+    //self.navigationController?.show(vc!, sender: nil)
   }
   @IBAction func cerrarSesion(_ sender: Any) {
     globalVariables.userDefaults.set(nil, forKey: "accessToken")

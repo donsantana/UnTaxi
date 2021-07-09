@@ -13,6 +13,7 @@ import UIKit
 class CompletadaController: BaseController, UITextFieldDelegate {
   var solicitud: Solicitud!
   var conductor = Conductor()
+  var idConductor = 0
   var evaluacion: CEvaluacion!
   var importe: Double = 0.0
   var socketService = SocketService()
@@ -49,7 +50,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
     self.comentariosCollection.delegate = self
     self.comentarioText.delegate = self
     
@@ -70,14 +71,15 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
     self.importeText.addBorder(color: Customization.buttonActionColor)
     self.importeText.text = "$\(self.importe)"
-    self.efectivoText.text = "$\(self.importe - solicitud.yapaimporte),Efevtivo"
-    self.yapaText.text = "$\(solicitud.yapaimporte),Yapa"
+    self.efectivoText.text = "$\(self.importe - solicitud.yapaimporte)\(self.solicitud.useVoucher == "" ? "" : self.solicitud.useVoucher == "1" ? ", Voucher" : ", Efectivo")"
+    self.yapaText.text = "$\(solicitud.yapaimporte), Yapa"
     
     self.origenAddressText.text = solicitud.dirOrigen
     self.destinoAddressText.text = solicitud.dirDestino
+    print("Solicitud completada \(self.solicitud.useVoucher)")
     
   }
-  
+
   func updateEvalucion(evaluation: Int){
     self.evaluacionView.isHidden = false
     self.evaluacion.EvaluarCarrera(evaluation)
@@ -86,6 +88,15 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.comentariosCollection.reloadData()
   }
   
+//  override func goToInicioView(){
+//    let viewcontrollers = self.navigationController?.viewControllers
+//    viewcontrollers?.forEach({ (vc) in
+//      if  let inventoryListVC = vc as? InicioController {
+//        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+//      }
+//    })
+//  }
+  
   //ENVIAR EVALUACIÓN
   func EnviarEvaluacion(_ evaluacion: Int, comentario: String){
     if evaluacion != 0 {
@@ -93,49 +104,16 @@ class CompletadaController: BaseController, UITextFieldDelegate {
         "evaluacion": self.evaluacion.ptoEvaluacion,
         "comentario": comentario,
         "idsolicitud": self.solicitud.id,
-        "idconductor": self.conductor.idConductor,
+        "idconductor": idConductor == 0 ? self.conductor.idConductor : idConductor,
         ] as [String : Any]
       print("datos \(datos)")
       socketService.socketEmit("evaluarservicio", datos: datos)
-      //self.socketEmit("evaluarservicio", datos: datos)
     }
     DispatchQueue.main.async {
-      let vc = R.storyboard.main.inicioView()!
-      self.navigationController?.show(vc, sender: nil)
+      self.goToInicioView()
     }
     
   }
-  
-//  func socketEmit(_ eventName: String, datos: [String: Any]){
-//      if CConexionInternet.isConnectedToNetwork() == true{
-//        if globalVariables.socket.status.active{
-//          globalVariables.socket.emitWithAck(eventName, datos).timingOut(after: 3) {respond in
-//            if respond[0] as! String == "OK"{
-//              print(respond)
-//            }else{
-//              print("error en socket")
-//            }
-//          }
-//        }else{
-//          let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-//          alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//            exit(0)
-//          }))
-//          self.present(alertaDos, animated: true, completion: nil)
-//        }
-//      }else{
-//        ErrorConexion()
-//      }
-//    }
-//
-//  func ErrorConexion(){
-//    let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
-//    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//      exit(0)
-//    }))
-//
-//    self.present(alertaDos, animated: true, completion: nil)
-//  }
   
   @IBAction func Star1(_ sender: AnyObject) {
     self.updateEvalucion(evaluation: 1)
@@ -154,8 +132,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   }
   
   override func homeBtnAction() {
-    let vc = R.storyboard.main.inicioView()
-    self.navigationController?.show(vc!, sender: nil)
+    self.goToInicioView()
   }
   
   //Enviar comentario

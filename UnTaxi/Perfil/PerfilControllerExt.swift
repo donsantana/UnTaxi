@@ -69,8 +69,11 @@ extension PerfilController: ApiServiceDelegate{
     
     let alertaDos = UIAlertController (title: status ? "Perfil Actualizado" : "Error de Perfil", message: status ? "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación." : "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      let vc = R.storyboard.main.inicioView()
-      self.navigationController?.show(vc!, sender: nil)
+//      let vc = R.storyboard.main.inicioView()!
+//      let navigationController = UINavigationController(rootViewController: vc)
+//      //self.present(navigationController, animated: false, completion: nil)
+//      self.navigationController?.show(vc, sender: nil)
+      self.goToInicioView()
     }))
     
     self.present(alertaDos, animated: true, completion: nil)

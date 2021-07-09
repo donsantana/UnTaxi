@@ -14,6 +14,11 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   var solicitud: SolicitudHistorial!
   var origenSolicitud = MKPointAnnotation()
   var destinoSolicitud = MKPointAnnotation()
+  var socketService = SocketService()
+  var regionRadius: CLLocationDistance = 1000
+  var idConductor = 0
+  
+  let inicioVC = InicioController()
 
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
@@ -30,16 +35,15 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   @IBOutlet weak var destinoText: UILabel!
   @IBOutlet weak var importeText: UILabel!
   @IBOutlet weak var statusText: UILabel!
+  @IBOutlet weak var evaluarBtn: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.viewTopConstraint.constant = super.getTopMenuBottom()
     
     self.mapView.delegate = self
-    //self.mapView.centerCoordinate = solicitud.origenCoord
+    self.socketService.delegate = self
     self.mapView.showsUserLocation = false
-    let regionRadius: CLLocationDistance = 1000
-    self.loadHistorialSolicitudes()
     
     self.origenSolicitud.title = "origen"
     self.destinoSolicitud.title = "destino"
@@ -52,41 +56,14 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
     
-    globalVariables.socket.on("detallehistorialdesolicitud"){data, ack in
-      self.waitingView.isHidden = true
-      let result = data[0] as! [String: Any]
-      print(result)
-      if result["code"] as! Int == 1{
-        let temporal = result["datos"] as! [String: Any]
-        self.solicitud.addDetails(details: temporal)
-        self.reviewConductor.text = "\(temporal["calificacion"] as! Double)(\(temporal["cantidadcalificacion"] as! Int))"
-
-        self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
-        self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
-        
-        let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen), latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
-        
-        self.updateMap()
-        self.mapView.setRegion(coordinateRegion, animated: true)
-
-        if temporal["foto"] as! String != ""{
-          let url = URL(string:"\(GlobalConstants.urlHost)/\(temporal["foto"] as! String)")
-          
-          let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.sync() {
-              self.ImagenCond.image = UIImage(data: data)
-            }
-          }
-          task.resume()
-        }else{
-          self.ImagenCond.image = UIImage(named: "chofer")
-        }
-        
-        self.NombreCond.text = temporal["nombreapellidosconductor"] as? String
-
-      }
-    }
+    evaluarBtn.backgroundColor = Customization.buttonActionColor
+    evaluarBtn.layer.cornerRadius = 5
+    evaluarBtn.setTitleColor(Customization.buttonsTitleColor, for: .normal)
+    self.loadHistorialSolicitudes()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    self.loadHistorialSolicitudes()
   }
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -117,13 +94,78 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   func loadHistorialSolicitudes(){
-    let vc = R.storyboard.main.inicioView()!
-    vc.socketEmit("detallehistorialdesolicitud", datos: ["idsolicitud": self.solicitud.id])
+    self.socketService.socketEmit("detallehistorialdesolicitud", datos: ["idsolicitud": self.solicitud.id])
+    self.socketService.initHistorialDetallesEvents()
   }
   
+  
   override func homeBtnAction() {
-    let vc = R.storyboard.main.historyView()
-    self.navigationController?.show(vc!, sender: nil)
+    let viewcontrollers = self.navigationController?.viewControllers
+    viewcontrollers?.forEach({ (vc) in
+      if  let inventoryListVC = vc as? HistorialController {
+        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+      }
+    })
+    
+//    self.dismiss(animated: true, completion: nil)
+    //let vc = R.storyboard.main.historyView()
+    //self.navigationController?.present(vc!, animated: true, completion: nil)//pushViewController(vc!, animated: true)//show(vc!, sender: nil)
   }
+  
+  @IBAction func evaluarConductor(_ sender: Any) {
+    
+    let viewcontrollers = self.navigationController?.viewControllers
+    print("cantidad de viewcontrollers \(viewcontrollers?.count)")
+    
+    let tempSolicitud = Solicitud()
+    tempSolicitud.DatosSolicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, valorOferta: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
+    let vc = R.storyboard.main.completadaView()!
+    vc.solicitud = tempSolicitud
+    vc.importe = solicitud.importe
+    vc.idConductor = self.idConductor
+    
+    self.navigationController?.show(vc, sender: self)
+  }
+  
+}
 
+extension HistorialDetailsController: SocketServiceDelegate{
+  
+  func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String : Any]) {
+
+    self.waitingView.isHidden = true
+    if result["code"] as! Int == 1{
+      let datos = result["datos"] as! [String: Any]
+      print("Details result \(datos)")
+      self.solicitud.addDetails(details: datos)
+      self.idConductor = datos["idconductor"] as! Int
+      self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
+      evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
+
+      self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
+      self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
+      
+      let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen), latitudinalMeters: self.regionRadius * 2.0, longitudinalMeters: self.regionRadius * 2.0)
+      
+      self.updateMap()
+      self.mapView.setRegion(coordinateRegion, animated: true)
+
+      if datos["foto"] as! String != ""{
+        let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
+        
+        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+          guard let data = data, error == nil else { return }
+          DispatchQueue.main.sync() {
+            self.ImagenCond.image = UIImage(data: data)
+          }
+        }
+        task.resume()
+      }else{
+        self.ImagenCond.image = UIImage(named: "chofer")
+      }
+      
+      self.NombreCond.text = datos["nombreapellidosconductor"] as? String
+
+    }
+  }
 }

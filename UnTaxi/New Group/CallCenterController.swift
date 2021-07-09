@@ -19,7 +19,6 @@ class CallCenterController: BaseController {
     super.viewDidLoad()
     self.socketService.delegate = self
     self.callCenterTableView.delegate = self
-    self.socketService.initListenEventos()
     self.topViewConstraint.constant = super.getTopMenuBottom()
 //    self.navigationController?.navigationBar.tintColor = Customization.textColor//UIColor.black
 //    navigationItem.setHidesBackButton(false, animated: false)
@@ -28,6 +27,7 @@ class CallCenterController: BaseController {
   
   func loadCallCenter(){
     socketService.socketEmit("telefonosdelcallcenter", datos: [:])
+    self.socketService.initCallcenterEvents()
   }
   
   func openWhatsApp(number : String){
@@ -59,23 +59,28 @@ class CallCenterController: BaseController {
   }
   
   override func homeBtnAction() {
-    let vc = R.storyboard.main.inicioView()
-    self.navigationController?.pushViewController(vc!, animated: true)
+    self.dismiss(animated: false, completion: nil)
   }
 
 }
 
 extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
   // MARK: - Table view data source
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return self.telefonosCallCenter.count
+    let seccionName = section == 0 ? "CALLCENTER" : "PUBLICIDAD"
+    return self.telefonosCallCenter.filter({$0.seccion == seccionName}).count
   }
   
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = Bundle.main.loadNibNamed("CallCenterViewCell", owner: self, options: nil)?.first as! CallCenterViewCell
-    cell.initContent(telefono: self.telefonosCallCenter[indexPath.row])
+    let seccionName = indexPath.section == 0 ? "CALLCENTER" : "PUBLICIDAD"
+    cell.initContent(telefono: self.telefonosCallCenter.filter({$0.seccion == seccionName})[indexPath.row])
     // Configure the cell...
     
     return cell
@@ -114,16 +119,20 @@ extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
     }
     tableView.deselectRow(at: indexPath, animated: false)
   }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return section == 0 ? "CALLCENTER" : "PUBLICIDAD"
+  }
 }
 
 extension CallCenterController: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, telefonosdelcallcenter result: [[String: Any]]) {
-    print("hereeeeeeee")
     var telefonoList:[Telefono] = []
     for telefonoData in result{
-      telefonoList.append(Telefono(numero: telefonoData["telefono2"] as! String, operadora: telefonoData["operadora"] as! String, email: "", tienewhatsapp: (telefonoData["whatsapp"] as! Int) == 1))
+      telefonoList.append(Telefono(numero: telefonoData["telefono2"] as! String, operadora: telefonoData["operadora"] as! String, seccion: telefonoData["seccion"] as! String, tienewhatsapp: (telefonoData["whatsapp"] as! Int) == 1))
     }
     self.telefonosCallCenter = telefonoList
+    self.telefonosCallCenter.sort{$0.seccion > $1.seccion}
     self.telefonosCallCenter.sort{$0.numero > $1.numero}
     self.callCenterTableView.reloadData()
   }

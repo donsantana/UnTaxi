@@ -27,7 +27,7 @@ extension SolPendController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, serviciocompletado result: [String: Any]){
-    print(result)
+    print("completada \(result)")
     if globalVariables.solpendientes.count > 0 {
       let solicitudCompletadaIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
       if solicitudCompletadaIndex >= 0{
@@ -37,6 +37,7 @@ extension SolPendController: SocketServiceDelegate{
           let vc = R.storyboard.main.completadaView()!
           vc.solicitud = solicitudCompletada
           vc.importe = !(result["importe"] is NSNull) ? result["importe"] as! Double : solicitudCompletada.valorOferta
+          
           self.navigationController?.show(vc, sender: nil)
         }
       }
@@ -55,10 +56,10 @@ extension SolPendController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, taximetroiniciado result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}!
+    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
     if solicitud != nil {
-      let title = solicitud.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
-      let mensaje = solicitud.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
+      let title = solicitud!.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
+      let mensaje = solicitud!.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
       let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: result["fechacambioestado"] as! String).timeToShow()).", preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         
@@ -68,19 +69,23 @@ extension SolPendController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
-    if (result["code"] as! Int) == 1 {
-      let alertaDos = UIAlertController (title: "Solicitud Cancelada", message: "Su solicitud fue cancelada con éxito.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        
-        self.CancelarSolicitud("Conductor")
-        
+    let title = (result["code"] as! Int) == 1 ? "Solicitud Cancelada" : "Error Cancelar"
+    let message = (result["code"] as! Int) == 1 ? "Su solicitud fue cancelada con éxito." : result["msg"] as! String
+
+    let alertaDos = UIAlertController (title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      if (result["code"] as! Int) == 1{
+        //self.CancelarSolicitud("Conductor")
+        globalVariables.solpendientes.removeAll{$0.id == self.solicitudPendiente.id}
         DispatchQueue.main.async {
-          let vc = R.storyboard.main.inicioView()!
-          self.navigationController?.show(vc, sender: nil)
+          self.goToInicioView()
+//          let vc = R.storyboard.main.inicioView()!
+//          self.navigationController?.show(vc, sender: nil)
         }
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+      }
+    }))
+    self.present(alertaDos, animated: true, completion: nil)
+
   }
   
   func socketResponse(_ controller: SocketService, serviciocancelado result: [String : Any]) {
@@ -92,6 +97,7 @@ extension SolPendController: SocketServiceDelegate{
         self.CancelarSolicitud("Conductor")
         
         DispatchQueue.main.async {
+          self.goToInicioView()
           let vc = R.storyboard.main.inicioView()!
           self.navigationController?.show(vc, sender: nil)
         }

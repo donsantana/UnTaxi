@@ -32,6 +32,8 @@ extension HistorialController: UITableViewDelegate,UITableViewDataSource{
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = R.storyboard.main.historyDetailView()!
     vc.solicitud = self.historialSolicitudesList[indexPath.row]
-    self.navigationController?.show(vc, sender: nil)
+    self.navigationController!.show(vc, sender: nil)
+    //self.navigationController!.present(vc, animated: false, completion: nil)//show(vc, sender: nil)
+    tableView.deselectRow(at: indexPath, animated: false)
   }
 }

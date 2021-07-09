@@ -40,6 +40,8 @@
 		C602558324A7F60A00C91725 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
 		C602558624AAEA1300C91725 /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
 		C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
+		C6088500265BFDF90038303A /* contactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60884FF265BFDF90038303A /* contactService.swift */; };
+		C6088502265C01850038303A /* YapaPanelTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088501265C01850038303A /* YapaPanelTableExt.swift */; };
 		C60C16562302736B0090F4E0 /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
 		C60C16582302760B0090F4E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
 		C6122892247034710041BB2D /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
@@ -57,6 +59,7 @@
 		C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
 		C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E594024BB669F00FFB26B /* PactadaCell.swift */; };
 		C62E84F8259A0C630048FB0C /* AddressMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E84F7259A0C630048FB0C /* AddressMapExt.swift */; };
+		C630E6C526715B7100700F8D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630E6C426715B7100700F8D /* Character.swift */; };
 		C63272882588714C000A3931 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63272872588714C000A3931 /* Double.swift */; };
 		C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A425979EE900ABEC47 /* CGFloat.swift */; };
 		C63445A82597A11500ABEC47 /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
@@ -80,11 +83,19 @@
 		C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
 		C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */; };
 		C665F21525D2DECB00044480 /* InicioSearchExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665F21425D2DECB00044480 /* InicioSearchExt.swift */; };
+		C66984142677EF9700C0C353 /* PublicidadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984132677EF9700C0C353 /* PublicidadService.swift */; };
+		C66984172679515900C0C353 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984162679515900C0C353 /* WeatherService.swift */; };
+		C66984192679526E00C0C353 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984182679526E00C0C353 /* Weather.swift */; };
+		C669841B267CF15A00C0C353 /* SolDetallesFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */; };
+		C66F2513265AA070004716AF /* YapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C66F2512265AA070004716AF /* YapaViewCell.xib */; };
+		C66F2515265AA09D004716AF /* YapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2514265AA09D004716AF /* YapaCell.swift */; };
+		C66F2517265AACC3004716AF /* YapaTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2516265AACC3004716AF /* YapaTableExt.swift */; };
 		C66FC9CA2585242D0023425D /* Tarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9C92585242D0023425D /* Tarifa.swift */; };
 		C66FC9CD25852E5C0023425D /* Tarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9CC25852E5C0023425D /* Tarifario.swift */; };
 		C67004552463B60900FF97AB /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
 		C670045924674BAA00FF97AB /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
+		C673EC442672A2CC004EFC39 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673EC432672A2CC004EFC39 /* String.swift */; };
 		C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
 		C6807397256E18250093E4DE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
 		C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
@@ -197,6 +208,8 @@
 		C602558224A7F60A00C91725 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C602558524AAEA1300C91725 /* CardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardRow.xib; sourceTree = "<group>"; };
 		C602558724AAEA4700C91725 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		C60884FF265BFDF90038303A /* contactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactService.swift; sourceTree = "<group>"; };
+		C6088501265C01850038303A /* YapaPanelTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaPanelTableExt.swift; sourceTree = "<group>"; };
 		C60C16552302736B0090F4E0 /* OurDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurDate.swift; sourceTree = "<group>"; };
 		C60C16572302760B0090F4E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C6122891247034710041BB2D /* DestinoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinoCell.xib; sourceTree = "<group>"; };
@@ -214,6 +227,7 @@
 		C62E593E24BB5D7800FFB26B /* PactadaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PactadaCell.xib; sourceTree = "<group>"; };
 		C62E594024BB669F00FFB26B /* PactadaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PactadaCell.swift; sourceTree = "<group>"; };
 		C62E84F7259A0C630048FB0C /* AddressMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapExt.swift; sourceTree = "<group>"; };
+		C630E6C426715B7100700F8D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C63272872588714C000A3931 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		C63445A425979EE900ABEC47 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutConstraint.swift; sourceTree = "<group>"; };
@@ -224,8 +238,8 @@
 		C63A6B21245F68C9007B0EE5 /* Responsive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responsive.swift; sourceTree = "<group>"; };
 		C63A6B23245F6A21007B0EE5 /* xoalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo.png; sourceTree = "<group>"; };
 		C63A6B29245F7AB0007B0EE5 /* InicioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioController.swift; path = ../Controllers/InicioController.swift; sourceTree = "<group>"; };
-		C63A6B2C245F7AF0007B0EE5 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioControllerExt.swift; path = ../premiumcar/PremiumCar/InicioControllerExt.swift; sourceTree = SOURCE_ROOT; };
-		C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioSocketExt.swift; path = ../premiumcar/PremiumCar/InicioSocketExt.swift; sourceTree = SOURCE_ROOT; };
+		C63A6B2C245F7AF0007B0EE5 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioControllerExt.swift; path = ../premiumcar/PremiumCar/Inicio/InicioControllerExt.swift; sourceTree = SOURCE_ROOT; };
+		C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioSocketExt.swift; path = ../premiumcar/PremiumCar/Inicio/InicioSocketExt.swift; sourceTree = SOURCE_ROOT; };
 		C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioFunctionsExt.swift; sourceTree = "<group>"; };
 		C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestController.swift; sourceTree = "<group>"; };
 		C63D220721D56150007378D7 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
@@ -237,11 +251,19 @@
 		C65F9F33229E3BA900E3E304 /* ContactoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoCell.xib; sourceTree = "<group>"; };
 		C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoViewCell.swift; sourceTree = "<group>"; };
 		C665F21425D2DECB00044480 /* InicioSearchExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSearchExt.swift; sourceTree = "<group>"; };
+		C66984132677EF9700C0C353 /* PublicidadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicidadService.swift; sourceTree = "<group>"; };
+		C66984162679515900C0C353 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		C66984182679526E00C0C353 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesFunctionsExt.swift; sourceTree = "<group>"; };
+		C66F2512265AA070004716AF /* YapaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YapaViewCell.xib; sourceTree = "<group>"; };
+		C66F2514265AA09D004716AF /* YapaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaCell.swift; sourceTree = "<group>"; };
+		C66F2516265AACC3004716AF /* YapaTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaTableExt.swift; sourceTree = "<group>"; };
 		C66FC9C92585242D0023425D /* Tarifa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifa.swift; sourceTree = "<group>"; };
 		C66FC9CC25852E5C0023425D /* Tarifario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarifario.swift; sourceTree = "<group>"; };
 		C67004542463B60900FF97AB /* Images-5.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-5.xcassets"; sourceTree = "<group>"; };
 		C6700456246612FE00FF97AB /* InicioMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioMapExt.swift; sourceTree = "<group>"; };
 		C670045824674BAA00FF97AB /* mapSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSevice.swift; sourceTree = "<group>"; };
+		C673EC432672A2CC004EFC39 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C680738C256DEAE50093E4DE /* SolicitudPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudPanel.swift; sourceTree = "<group>"; };
 		C6807396256E18250093E4DE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C68073B7256E21A20093E4DE /* InicioPanelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioPanelExt.swift; sourceTree = "<group>"; };
@@ -413,6 +435,7 @@
 		AFD656631FA1734300C8A5BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C66F2511265A9EDB004716AF /* Yapa */,
 				C68D05B425A666DA00E124AB /* Completada */,
 				C6A37EFE255210F600C79BFF /* History */,
 				C6293F1F24C3A2750007E52F /* Perfil */,
@@ -458,6 +481,14 @@
 				C602558724AAEA4700C91725 /* CardViewCell.swift */,
 			);
 			path = Payments;
+			sourceTree = "<group>";
+		};
+		C60884FE265BFDA00038303A /* contacts */ = {
+			isa = PBXGroup;
+			children = (
+				C60884FF265BFDF90038303A /* contactService.swift */,
+			);
+			path = contacts;
 			sourceTree = "<group>";
 		};
 		C619BE5B253FF97000611B4D /* Historial */ = {
@@ -524,6 +555,9 @@
 		C63A6B1D245F63BC007B0EE5 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C66984152679513B00C0C353 /* weather */,
+				C66984122677EF6E00C0C353 /* publicidad */,
+				C60884FE265BFDA00038303A /* contacts */,
 				C63A6B1E245F63BC007B0EE5 /* apiService.swift */,
 				C670045824674BAA00FF97AB /* mapSevice.swift */,
 				C68074762571E9410093E4DE /* SocketService.swift */,
@@ -583,8 +617,34 @@
 				C66FC9C92585242D0023425D /* Tarifa.swift */,
 				C66FC9CC25852E5C0023425D /* Tarifario.swift */,
 				C68D05B925A7E52600E124AB /* CustomCalloutView.swift */,
+				C66984182679526E00C0C353 /* Weather.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C66984122677EF6E00C0C353 /* publicidad */ = {
+			isa = PBXGroup;
+			children = (
+				C66984132677EF9700C0C353 /* PublicidadService.swift */,
+			);
+			path = publicidad;
+			sourceTree = "<group>";
+		};
+		C66984152679513B00C0C353 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				C66984162679515900C0C353 /* WeatherService.swift */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		C66F2511265A9EDB004716AF /* Yapa */ = {
+			isa = PBXGroup;
+			children = (
+				C66F2512265AA070004716AF /* YapaViewCell.xib */,
+				C66F2514265AA09D004716AF /* YapaCell.swift */,
+			);
+			path = Yapa;
 			sourceTree = "<group>";
 		};
 		C68073D7256E333D0093E4DE /* Menu */ = {
@@ -631,6 +691,8 @@
 				C63272872588714C000A3931 /* Double.swift */,
 				C63445A425979EE900ABEC47 /* CGFloat.swift */,
 				C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */,
+				C630E6C426715B7100700F8D /* Character.swift */,
+				C673EC432672A2CC004EFC39 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -648,6 +710,8 @@
 			children = (
 				C6977E7825775E040071625E /* YapaController.swift */,
 				C6977E7B2577700D0071625E /* YapaPanel.swift */,
+				C66F2516265AACC3004716AF /* YapaTableExt.swift */,
+				C6088501265C01850038303A /* YapaPanelTableExt.swift */,
 			);
 			path = Yapa;
 			sourceTree = "<group>";
@@ -740,6 +804,7 @@
 				B5054D761E66051500FEEDE4 /* SolDetallesController.swift */,
 				C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */,
 				C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */,
+				C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */,
 			);
 			path = "Detalles Solicitud";
 			sourceTree = "<group>";
@@ -891,6 +956,7 @@
 				AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */,
 				C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
+				C66F2513265AA070004716AF /* YapaViewCell.xib in Resources */,
 				C6D3198C25916F8500A4BF1C /* Muli-BoldItalic.ttf in Resources */,
 				C6D3198E25916F8500A4BF1C /* Muli-Light.ttf in Resources */,
 				AF3D9E211FA61F580019432B /* Perfil3ViewCell.xib in Resources */,
@@ -1050,6 +1116,7 @@
 				C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */,
 				C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */,
 				C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */,
+				C66984142677EF9700C0C353 /* PublicidadService.swift in Sources */,
 				C60C16582302760B0090F4E0 /* UIButton.swift in Sources */,
 				C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
@@ -1059,12 +1126,17 @@
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
+				C6088502265C01850038303A /* YapaPanelTableExt.swift in Sources */,
 				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
+				C66F2515265AA09D004716AF /* YapaCell.swift in Sources */,
 				C6977E7C2577700D0071625E /* YapaPanel.swift in Sources */,
+				C669841B267CF15A00C0C353 /* SolDetallesFunctionsExt.swift in Sources */,
 				AFD6563D1F9D42E100C8A5BD /* CSMSVoz.swift in Sources */,
+				C673EC442672A2CC004EFC39 /* String.swift in Sources */,
 				C6A37F0725546B2300C79BFF /* UIVisualEffectView.swift in Sources */,
 				C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */,
 				C68DA29A227E13030029CD0B /* UITextfield.swift in Sources */,
+				C630E6C526715B7100700F8D /* Character.swift in Sources */,
 				C6977E7925775E040071625E /* YapaController.swift in Sources */,
 				C6C3A507245F335A0084F409 /* PerfilController.swift in Sources */,
 				C68D05A4259CA2BF00E124AB /* MGLPointAnnotation.swift in Sources */,
@@ -1085,6 +1157,7 @@
 				AF3D9E1C1FA51D910019432B /* Perfil2ViewCell.swift in Sources */,
 				B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */,
 				C6F27B08238F2C5400679E07 /* SolicitudHistorial.swift in Sources */,
+				C6088500265BFDF90038303A /* contactService.swift in Sources */,
 				C62E84F8259A0C630048FB0C /* AddressMapExt.swift in Sources */,
 				C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */,
 				AF3D9E201FA61F580019432B /* Perfil3ViewCell.swift in Sources */,
@@ -1122,6 +1195,7 @@
 				C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */,
 				C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */,
 				AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */,
+				C66F2517265AACC3004716AF /* YapaTableExt.swift in Sources */,
 				C6CACFAD22D26A9300702430 /* Oferta.swift in Sources */,
 				C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */,
 				AFD6564F1F9D42E100C8A5BD /* Conductor.swift in Sources */,
@@ -1137,11 +1211,13 @@
 				C63A6B30245F7AF1007B0EE5 /* InicioControllerExt.swift in Sources */,
 				C6915F21228500420048C00C /* SMSVoz.swift in Sources */,
 				C6A37F03255211DA00C79BFF /* HistoryCell.swift in Sources */,
+				C66984192679526E00C0C353 /* Weather.swift in Sources */,
 				AFD6563E1F9D42E100C8A5BD /* Evaluacion.swift in Sources */,
 				C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */,
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 				C619BE6525414BC900611B4D /* PassController.swift in Sources */,
+				C66984172679515900C0C353 /* WeatherService.swift in Sources */,
 				C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1303,7 +1379,7 @@
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -1338,7 +1414,7 @@
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;

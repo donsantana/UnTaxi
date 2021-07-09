@@ -18,8 +18,9 @@ class OfertaDataViewCell: UITableViewCell {
 
   func initContent(){
     self.valorOfertaText.setBottomBorder(borderColor: Customization.bottomBorderColor)
+    print("Init Currency")
     //self.valorOfertaText.font = CustomAppFont.titleFont
-    //self.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
+    self.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
   }
 }
  

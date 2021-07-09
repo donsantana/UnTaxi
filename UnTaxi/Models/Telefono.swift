@@ -12,13 +12,13 @@ struct Telefono{
     //#Telefonos,cantidad,numerotelefono1,operadora1,siesmovil1,sitienewassap1,numerotelefono2,operadora2.......,#
     var numero: String
     var operadora: String
-    var email: String
+    var seccion: String
     var tienewhatsapp: Bool
     
-    init(numero: String,operadora: String,email: String,tienewhatsapp: Bool){
+    init(numero: String,operadora: String,seccion: String,tienewhatsapp: Bool){
         self.numero = numero
         self.operadora = operadora
-        self.email = email
+        self.seccion = seccion
         self.tienewhatsapp = tienewhatsapp
     }
 }

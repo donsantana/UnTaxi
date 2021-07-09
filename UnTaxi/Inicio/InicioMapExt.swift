@@ -106,7 +106,7 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, regionWillChangeAnimated animated: Bool) {
-    if !self.navigationController!.isNavigationBarHidden{
+    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
       print("moving map")
       if self.mapView.annotations != nil{
         self.mapView.removeAnnotations(self.mapView!.annotations!)
@@ -120,7 +120,7 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-    if !self.navigationController!.isNavigationBarHidden{
+    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
       locationIcono.isHidden = true
       let tempAnnotation = MGLPointAnnotation()
       tempAnnotation.coordinate = (self.mapView.centerCoordinate)

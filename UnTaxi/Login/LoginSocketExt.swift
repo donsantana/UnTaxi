@@ -17,9 +17,9 @@ extension LoginController: SocketServiceDelegate{
     switch result["code"] as! Int{
     case 1:
       self.initClientData(datos: result["datos"] as! [String: Any])
-      DispatchQueue.main.async {
-        self.AutenticandoView.isHidden = true
-      }
+//      DispatchQueue.main.async {
+//        self.AutenticandoView.isHidden = true
+//      }
     default:
       self.initConnectionError(message: result["msg"] as! String)
     }

@@ -30,6 +30,11 @@ protocol SocketServiceDelegate: class {
   func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any])
   func socketResponse(_ controller: SocketService, historialdesolicitudes result: [String: Any])
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String)
+  func socketResponse(_ controller: SocketService, buscarCliente result: [String: Any])
+  func socketResponse(_ controller: SocketService, pasarYapa result: [String: Any])
+  func socketResponse(_ controller: SocketService, visualizapublicidad result: [String: Any])
+  func socketResponse(_ controller: SocketService, accedeapublicidad result: [String: Any])
+  func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any])
   
 }
 
@@ -41,6 +46,7 @@ final class SocketService{
   func socketEmit(_ eventName: String, datos: [String: Any]){
     if CConexionInternet.isConnectedToNetwork() == true{
       if globalVariables.socket.status.active{
+        print("trama \(datos)")
         globalVariables.socket.emitWithAck(eventName, datos).timingOut(after: 3) {respond in
           if respond[0] as! String == "OK"{
             print(respond)
@@ -57,6 +63,7 @@ final class SocketService{
   }
   
   func offSocketEventos(){
+    print("Cerrando eventos")
     globalVariables.socket.off("cargarvehiculoscercanos")
     globalVariables.socket.off("solicitarservicio")
     globalVariables.socket.off("cancelarservicio")
@@ -75,6 +82,11 @@ final class SocketService{
     globalVariables.socket.off("geocliente")
     globalVariables.socket.off("aceptaroferta")
     globalVariables.socket.off("historialdesolicitudes")
+    globalVariables.socket.off("buscarclientepormovil")
+    globalVariables.socket.off("pasaryapa")
+    globalVariables.socket.off("visualizapublicidad")
+    globalVariables.socket.off("accedeapublicidad")
+    globalVariables.socket.off("detallehistorialdesolicitud")
   }
   
   func initLoginEventos(){
@@ -107,14 +119,15 @@ final class SocketService{
       //          fechahora: fechahora
       //        }
       //      }
-      print("result \(data)")
       let result = data[0] as! [String: Any]
       print("result \(result)")
       self.delegate?.socketResponse(self, solicitarservicio: result)
     }
     
     globalVariables.socket.on("cancelarservicio"){data, ack in
+      
       let result = data[0] as! [String: Any]
+      print("cancelarservicio \(result)")
       self.delegate?.socketResponse(self, cancelarservicio: result)
     }
     
@@ -146,15 +159,7 @@ final class SocketService{
       let result = data[0] as! [String: Any]
       self.delegate?.socketResponse(self, ofertadelconductor: result)
     }
-    
-    globalVariables.socket.on("telefonosdelcallcenter"){data, ack in
-      let response = data[0] as! [String: Any]
-      if response["code"] as! Int == 1{
-        let result = response["datos"] as! [[String: Any]]
-        self.delegate?.socketResponse(self, telefonosdelcallcenter: result)
-      }
-    }
-    
+
     //ACTIVACION DEL TAXIMETRO
     globalVariables.socket.on("taximetroiniciado"){data, ack in
       let result = data[0] as! [String: Any]
@@ -194,6 +199,7 @@ final class SocketService{
     }
     
     globalVariables.socket.on("llegue"){data, ack in
+      print("llegue")
       let result = data[0] as! [String: Any]
       self.delegate?.socketResponse(self, taxiLLego: result)
     }
@@ -210,18 +216,66 @@ final class SocketService{
       self.delegate?.socketResponse(self, aceptaroferta: result)
     }
     
+    globalVariables.socket.on("visualizapublicidad"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("publicidad \(result)")
+      self.delegate?.socketResponse(self, visualizapublicidad: result)
+    }
+    
+    globalVariables.socket.on("accedeapublicidad"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("publicidad \(result)")
+      self.delegate?.socketResponse(self, accedeapublicidad: result)
+    }
+  }
+  
+  func initYapaEvents() {
     globalVariables.socket.on("recargaryapa"){data, ack in
       print("Yapa recargada")
       let result = data[0] as! [String: Any]
       self.delegate?.socketResponse(self, recargaryapa: result)
     }
     
-    globalVariables.socket.on("historialdesolicitudes"){data, ack in
+    globalVariables.socket.on("buscarclientepormovil"){data, ack in
       let result = data[0] as! [String: Any]
-      print("hereeeeee \(result)")
-      self.delegate?.socketResponse(self, historialdesolicitudes: result)
+      print("cliente \(result)")
+      self.delegate?.socketResponse(self, buscarCliente: result)
     }
     
+    globalVariables.socket.on("pasaryapa"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("cliente \(result)")
+      self.delegate?.socketResponse(self, pasarYapa: result)
+    }
+  }
+  
+  func initCallcenterEvents(){
+    globalVariables.socket.off("telefonosdelcallcenter")
+    globalVariables.socket.on("telefonosdelcallcenter"){data, ack in
+      let response = data[0] as! [String: Any]
+      if response["code"] as! Int == 1{
+        let result = response["datos"] as! [[String: Any]]
+        self.delegate?.socketResponse(self, telefonosdelcallcenter: result)
+      }
+    }
+  }
+  
+  func initHistorialEvents(){
+    globalVariables.socket.off("historialdesolicitudes")
+    globalVariables.socket.on("historialdesolicitudes"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("historialdesolicitudes \(result)")
+      self.delegate?.socketResponse(self, historialdesolicitudes: result)
+    }
+  }
+  
+  func initHistorialDetallesEvents(){
+    globalVariables.socket.off("detallehistorialdesolicitud")
+    globalVariables.socket.on("detallehistorialdesolicitud"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("detallesHistorial \(result)")
+      self.delegate?.socketResponse(self, detallehistorialdesolicitud: result)
+    }
   }
 }
 
@@ -246,4 +300,9 @@ extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, recargaryapa result: [String: Any]){}
   func socketResponse(_ controller: SocketService, historialdesolicitudes result: [String: Any]){}
   func socketResponse(_ controller: SocketService, conectionError errorMessage: String){}
+  func socketResponse(_ controller: SocketService, buscarCliente result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, pasarYapa result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, visualizapublicidad result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, accedeapublicidad result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any]){}
 }
