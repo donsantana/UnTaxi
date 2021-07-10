@@ -46,13 +46,13 @@ class PublicidadService {
       let newPublicidad = Publicidad(publicidad: publicidad)
       publicidadesArray.append(newPublicidad)
     }
-    publicidadesArray.append(Publicidad(publicidad: [
-      "idpublicidad":600,
-      "img":"2brice",
-      "time":6,
-      "title":"Publicidad 2brice",
-      "url":"https://apps.apple.com/us/app/2brice/id1290022053"
-  ]))
+//    publicidadesArray.append(Publicidad(publicidad: [
+//      "idpublicidad":600,
+//      "img":"2brice",
+//      "time":6,
+//      "title":"Publicidad 2brice",
+//      "url":"https://apps.apple.com/us/app/2brice/id1290022053"
+//  ]))
     self.publicidadToShow = publicidadesArray.first!
   }
   
@@ -76,7 +76,7 @@ class PublicidadService {
   }
   
   func updateBannerViem(bannerView: UIView){
-    if publicidadToShow.img != "2brice"{
+    //if publicidadToShow.img != "2brice"{
       self.socketService.socketEmit("visualizapublicidad", datos: [
                                       "idpublicidad": self.publicidadToShow.idpublicidad,
                                       "idcliente": globalVariables.cliente.id!,])
@@ -94,12 +94,12 @@ class PublicidadService {
         }
       }
       task.resume()
-    }else{
-      let backImage = UIImageView(image: UIImage(named: "publicidadBanner"))
-      backImage.frame = CGRect(x: 0, y: 0, width: bannerView.bounds.width, height: bannerView.bounds.height)
-      backImage.contentMode = .scaleToFill
-      bannerView.addSubview(backImage)  
-    }
+//    }else{
+//      let backImage = UIImageView(image: UIImage(named: "publicidadBanner"))
+//      backImage.frame = CGRect(x: 0, y: 0, width: bannerView.bounds.width, height: bannerView.bounds.height)
+//      backImage.contentMode = .scaleToFill
+//      bannerView.addSubview(backImage)
+//    }
   }
   
   func goToPublicidad(){

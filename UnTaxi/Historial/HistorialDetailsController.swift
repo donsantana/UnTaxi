@@ -138,10 +138,27 @@ extension HistorialDetailsController: SocketServiceDelegate{
       let datos = result["datos"] as! [String: Any]
       print("Details result \(datos)")
       self.solicitud.addDetails(details: datos)
-      self.idConductor = datos["idconductor"] as! Int
-      self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
-      evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
-
+      if !(datos["idconductor"] is NSNull) && datos["idconductor"] != nil{
+        self.idConductor = datos["idconductor"] as! Int
+        self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
+        evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
+        
+        if datos["foto"] as! String != ""{
+          let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
+          
+          let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.sync() {
+              self.ImagenCond.image = UIImage(data: data)
+            }
+          }
+          task.resume()
+        }else{
+          self.ImagenCond.image = UIImage(named: "chofer")
+        }
+        
+        self.NombreCond.text = datos["nombreapellidosconductor"] as? String
+      }
       self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
       self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
       
@@ -149,22 +166,6 @@ extension HistorialDetailsController: SocketServiceDelegate{
       
       self.updateMap()
       self.mapView.setRegion(coordinateRegion, animated: true)
-
-      if datos["foto"] as! String != ""{
-        let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
-        
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-          guard let data = data, error == nil else { return }
-          DispatchQueue.main.sync() {
-            self.ImagenCond.image = UIImage(data: data)
-          }
-        }
-        task.resume()
-      }else{
-        self.ImagenCond.image = UIImage(named: "chofer")
-      }
-      
-      self.NombreCond.text = datos["nombreapellidosconductor"] as? String
 
     }
   }

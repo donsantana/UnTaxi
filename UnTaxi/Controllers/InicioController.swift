@@ -315,7 +315,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   //Boton para Cancelar Carrera
   @IBAction func CancelarSol(_ sender: UIButton) {
-    self.SolicitudView.isHidden = true
+    self.hideSolicitudView(isHidden: true)
+    //self.SolicitudView.isHidden = true
     self.pagoCell.referenciaText.endEditing(true)
     self.Inicio()
     self.origenCell.origenText.text?.removeAll()

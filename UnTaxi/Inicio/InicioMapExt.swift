@@ -137,6 +137,12 @@ extension InicioController: MGLMapViewDelegate{
         //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }
       //mapView.selectAnnotation(tempAnnotation, animated: true, completionHandler: nil)
+    }else{
+      if searchingAddress == "origen"{
+        print("Init Map")
+        self.getTaxisCercanos()
+      }
+     
     }
   }
   

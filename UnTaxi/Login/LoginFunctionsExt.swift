@@ -37,13 +37,15 @@ extension LoginController{
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
     print("appConfig \(appConfig)")
-    let publicidad = appConfig["publicidad"] as! [String: Any]
-    print("publicidades \(publicidad["images"] as! [[String: Any]])")
-    globalVariables.publicidadService = PublicidadService(publicidades: publicidad["images"] as! [[String: Any]])
+    
+    if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil{
+      let publicidad = !(appConfig["publicidad"] is NSNull) ? appConfig["publicidad"] as! [String: Any] : nil
+      print("publicidades \(publicidad!["images"] as! [[String: Any]])")
+      globalVariables.publicidadService = PublicidadService(publicidades: publicidad!["images"] as! [[String: Any]])
+    }
+    
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
     globalVariables.tarifario = Tarifario(json:datos["tarifas"] as! [String: Any])
-//    let fotoUrl = !(clientData["foto"] != nil) ? clientData["foto"] as! String : ""
-//    globalVariables.cliente = Cliente(idUsuario: clientData["idusuario"] as! Int, id: clientData["idcliente"] as! Int, user: clientData["movil"] as! String, nombre: clientData["nombreapellidos"] as! String,email: clientData["email"] as! String, idEmpresa: clientData["idempresa"] as! Int,empresa: clientData["empresa"] as! String,foto: fotoUrl,yapa: clientData["yapa"] as! Double)
     globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
     

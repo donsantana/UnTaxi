@@ -129,6 +129,7 @@ extension InicioController{
   }
   
   func loadFormularioData(){
+
     self.initMapView()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
@@ -248,10 +249,16 @@ extension InicioController{
       mapView.removeAnnotations(self.mapView!.annotations!)
     }
     
-    self.SolicitudView.isHidden = true
+    //self.SolicitudView.isHidden = true
+    self.hideSolicitudView(isHidden: true)
     self.tabBar.selectedItem = self.ofertaItem
     super.topMenu.isHidden = false
     self.viewDidLoad()
+  }
+  
+  func hideSolicitudView(isHidden: Bool){
+    print("Hidding Solicitud View \(isHidden)")
+    self.SolicitudView.isHidden = isHidden
   }
   
   
@@ -535,7 +542,8 @@ extension InicioController{
 
           print("costo \(costo)")
           self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
-          self.SolicitudView.isHidden = false
+          self.hideSolicitudView(isHidden: false)
+          //self.SolicitudView.isHidden = false
 
           let distanceFormatter = LengthFormatter()
           let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
@@ -569,66 +577,6 @@ extension InicioController{
       }
     }
   }
-  
-//  func getDetailsBeetwen(annotation1: MGLPointAnnotation, annotation2: MGLPointAnnotation){
-//    let wp1 = Waypoint(coordinate: annotation1.coordinate, name: annotation1.title)
-//    let wp2 = Waypoint(coordinate: annotation2.coordinate, name: annotation2.title)
-//    let options = RouteOptions(waypoints: [wp1, wp2])
-//    options.includesSteps = true
-//    options.routeShapeResolution = .full
-//    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
-//
-//    self.destinoAnnotation = annotation
-//    self.destinoCell.destinoText.text = annotation.title
-//    //self.showAnnotation([self.origenAnnotation, self.destinoAnnotation], isPOI: true)
-//
-//    Directions.shared.calculate(options) { (session, result) in
-//      switch result {
-//      case let .failure(error):
-//        print("Error calculating directions: \(error)")
-//      case let .success(response):
-//        if let route = response.routes?.first, let leg = route.legs.first {
-//          print("Route via \((route.distance/1000)):")
-//          let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
-//          //self.panelController.removeContainer()
-//
-//
-//          print("costo \(costo)")
-//          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
-//          self.SolicitudView.isHidden = false
-//
-//          let distanceFormatter = LengthFormatter()
-//          let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
-//
-//          let travelTimeFormatter = DateComponentsFormatter()
-//          travelTimeFormatter.unitsStyle = .short
-//          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
-//
-//          print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
-//
-//          for step in leg.steps {
-//            let direction = step.maneuverDirection?.rawValue ?? "none"
-//            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
-//            if step.distance > 0 {
-//              let formattedDistance = distanceFormatter.string(fromMeters: step.distance)
-//              print("— \(step.transportType) for \(formattedDistance) —")
-//            }
-//          }
-//
-//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
-//            // Convert the route’s coordinates into a polyline.
-//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
-//
-//            // Add the polyline to the map.
-//            if route.distance > 500{
-//              self.mapView.addAnnotation(routeLine)
-//              self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: true)
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
 
   func openSearchPanel(){
     print("open SearchPanel")
@@ -801,21 +749,81 @@ extension InicioController{
     return coordinates
   }
   
-  func offSocketEventos(){
-    globalVariables.socket.off("cargarvehiculoscercanos")
-    globalVariables.socket.off("solicitarservicio")
-    globalVariables.socket.off("cancelarservicio")
-    globalVariables.socket.off("sinvehiculo")
-    globalVariables.socket.off("solicitudaceptada")
-    globalVariables.socket.off("serviciocancelado")
-    globalVariables.socket.off("ofertadelconductor")
-    globalVariables.socket.off("telefonosdelcallcenter")
-    globalVariables.socket.off("taximetroiniciado")
-    globalVariables.socket.off("subiroferta")
-    globalVariables.socket.off("U")
-    globalVariables.socket.off("voz")
-    globalVariables.socket.off("direccionespactadas")
-    globalVariables.socket.off("serviciocompletado")
-  }
+//  func getDetailsBeetwen(annotation1: MGLPointAnnotation, annotation2: MGLPointAnnotation){
+//    let wp1 = Waypoint(coordinate: annotation1.coordinate, name: annotation1.title)
+//    let wp2 = Waypoint(coordinate: annotation2.coordinate, name: annotation2.title)
+//    let options = RouteOptions(waypoints: [wp1, wp2])
+//    options.includesSteps = true
+//    options.routeShapeResolution = .full
+//    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
+//
+//    self.destinoAnnotation = annotation
+//    self.destinoCell.destinoText.text = annotation.title
+//    //self.showAnnotation([self.origenAnnotation, self.destinoAnnotation], isPOI: true)
+//
+//    Directions.shared.calculate(options) { (session, result) in
+//      switch result {
+//      case let .failure(error):
+//        print("Error calculating directions: \(error)")
+//      case let .success(response):
+//        if let route = response.routes?.first, let leg = route.legs.first {
+//          print("Route via \((route.distance/1000)):")
+//          let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
+//          //self.panelController.removeContainer()
+//
+//
+//          print("costo \(costo)")
+//          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
+//          self.SolicitudView.isHidden = false
+//
+//          let distanceFormatter = LengthFormatter()
+//          let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
+//
+//          let travelTimeFormatter = DateComponentsFormatter()
+//          travelTimeFormatter.unitsStyle = .short
+//          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
+//
+//          print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
+//
+//          for step in leg.steps {
+//            let direction = step.maneuverDirection?.rawValue ?? "none"
+//            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
+//            if step.distance > 0 {
+//              let formattedDistance = distanceFormatter.string(fromMeters: step.distance)
+//              print("— \(step.transportType) for \(formattedDistance) —")
+//            }
+//          }
+//
+//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
+//            // Convert the route’s coordinates into a polyline.
+//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+//
+//            // Add the polyline to the map.
+//            if route.distance > 500{
+//              self.mapView.addAnnotation(routeLine)
+//              self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: true)
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
   
+//  func offSocketEventos(){
+//    globalVariables.socket.off("cargarvehiculoscercanos")
+//    globalVariables.socket.off("solicitarservicio")
+//    globalVariables.socket.off("cancelarservicio")
+//    globalVariables.socket.off("sinvehiculo")
+//    globalVariables.socket.off("solicitudaceptada")
+//    globalVariables.socket.off("serviciocancelado")
+//    globalVariables.socket.off("ofertadelconductor")
+//    globalVariables.socket.off("telefonosdelcallcenter")
+//    globalVariables.socket.off("taximetroiniciado")
+//    globalVariables.socket.off("subiroferta")
+//    globalVariables.socket.off("U")
+//    globalVariables.socket.off("voz")
+//    globalVariables.socket.off("direccionespactadas")
+//    globalVariables.socket.off("serviciocompletado")
+//  }
+//
 }

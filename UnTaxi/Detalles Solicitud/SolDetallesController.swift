@@ -269,7 +269,7 @@ extension SolPendController: SideMenuNavigationControllerDelegate {
   //    }
   
   func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
-    //globalVariables.publicidadService?.stopPublicidad()
+    //globalVariables.publicidadService?.stopPublicidad()k
     print("SideMenu Appeared! (animated: \(animated))")
   }
   
@@ -280,6 +280,5 @@ extension SolPendController: SideMenuNavigationControllerDelegate {
   func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
     //globalVariables.publicidadService?.showPublicidad(bannerView: self.adsBannerView)
     print("SideMenu Disappeared! (animated: \(self.isBeingDismissed))")
-    
   }
 }

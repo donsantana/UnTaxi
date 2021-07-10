@@ -40,6 +40,16 @@ class EsperaChildVC: UIViewController {
    
     self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.valorOferta)))"
     self.updateOfertaView.isHidden = self.solicitud!.valorOferta == 0.0
+    
+//    let array = globalVariables.ofertasList.map{$0.id}
+//    print("ofertas \(array) \(solicitud.id)")
+//    if array.contains(solicitud.id){
+//      print("oferta encontrada")
+//      let vc = R.storyboard.main.ofertasView()
+//      vc?.solicitud = solicitud
+//      self.navigationController?.show(vc!, sender: nil)
+//    }
+    
   }
 
   func updateOfertaValue(value: Double){

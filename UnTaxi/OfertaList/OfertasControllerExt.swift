@@ -48,8 +48,11 @@ extension OfertasController: UITableViewDelegate, UITableViewDataSource{
 extension OfertasController: SocketServiceDelegate{
   
   func socketResponse(_ controller: SocketService, ofertadelconductor result: [String : Any]) {
-    let array = globalVariables.ofertasList.map{$0.id}
-    if !array.contains(result["idsolicitud"] as! Int){
+    
+    //let array = globalVariables.ofertasList.map{$0.id}
+    let arrayTaxiId = globalVariables.ofertasList.map{$0.idTaxi}
+    
+    if (self.solicitud.id == (result["idsolicitud"] as! Int)) && !arrayTaxiId.contains(result["idtaxi"] as! Int){
       let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
 
       globalVariables.ofertasList.append(newOferta)

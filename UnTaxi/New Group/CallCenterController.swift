@@ -129,7 +129,7 @@ extension CallCenterController: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, telefonosdelcallcenter result: [[String: Any]]) {
     var telefonoList:[Telefono] = []
     for telefonoData in result{
-      telefonoList.append(Telefono(numero: telefonoData["telefono2"] as! String, operadora: telefonoData["operadora"] as! String, seccion: telefonoData["seccion"] as! String, tienewhatsapp: (telefonoData["whatsapp"] as! Int) == 1))
+      telefonoList.append(Telefono(numero: telefonoData["telefono2"] as! String, operadora: telefonoData["operadora"] as! String, seccion: !(telefonoData["seccion"] is NSNull) && telefonoData["seccion"] != nil ? telefonoData["seccion"] as! String : "CALLCENTER", tienewhatsapp: (telefonoData["whatsapp"] as! Int) == 1))
     }
     self.telefonosCallCenter = telefonoList
     self.telefonosCallCenter.sort{$0.seccion > $1.seccion}

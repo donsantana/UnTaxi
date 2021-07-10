@@ -194,6 +194,7 @@ class YapaPanel: UIViewController {
   
   @IBAction func sendYapa(_ sender: Any) {
     self.view.endEditing(true)
+    print("Yapa value \((self.montoText.text!.digitsAndPeriods as NSString).doubleValue)-\(globalVariables.cliente.yapa)")
     if (self.montoText.text!.digitsAndPeriods as NSString).doubleValue <= globalVariables.cliente.yapa{
     socketService.socketEmit("pasaryapa", datos: [
       "idclientenew": self.idReceptorYapa,

@@ -51,7 +51,7 @@ class SideMenuController: UIViewController {
   
   //MASK:- FUNCTIONS
   @objc func showYapaView(){
-    globalVariables.publicidadService?.stopPublicidad()
+    //globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.yapaView()!
     self.present(vc, animated: false, completion: nil)//self.navigationController?.show(vc, sender: nil)
   }
@@ -100,7 +100,7 @@ class SideMenuController: UIViewController {
   }
   
   @IBAction func showProfile(_ sender: Any) {
-    globalVariables.publicidadService?.stopPublicidad()
+    //globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.perfil()!
     self.navigationController!.show(vc, sender: nil)
   }

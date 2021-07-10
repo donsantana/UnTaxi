@@ -31,7 +31,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at: indexPath, animated: false)
-    globalVariables.publicidadService?.stopPublicidad()
+    //globalVariables.publicidadService?.stopPublicidad()
 
     var vc: UIViewController!// = R.storyboard.main.inicioView()!
       switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
