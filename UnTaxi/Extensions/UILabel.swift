@@ -27,22 +27,22 @@ extension UILabel {
   
   func normalTextBlueStyle(){
     self.font = CustomAppFont.normalFont
-    self.textColor = Customization.customBlueColor
+    self.textColor = CustomAppColor.customBlueColor
   }
   
   func titleBlueStyle(){
     self.font = CustomAppFont.titleFont
-    self.textColor = Customization.customBlueColor
+    self.textColor = CustomAppColor.customBlueColor
   }
   
   func subTitleBlueStyle(){
     self.font = CustomAppFont.subtitleFont
-    self.textColor = Customization.customBlueColor
+    self.textColor = CustomAppColor.customBlueColor
   }
   
   func bigTextBlueStyle(){
     self.font = CustomAppFont.bigFont
-    self.textColor = Customization.customBlueColor
+    self.textColor = CustomAppColor.customBlueColor
   }
   
   

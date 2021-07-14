@@ -29,7 +29,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
 //  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //      // UIView with darkGray background for section-separators as Section Footer
 //      let v = UIView(frame: CGRect(x: 0, y:0, width: tableView.frame.width, height: 1))
-//      v.backgroundColor = Customization.textFieldBackColor
+//      v.backgroundColor = CustomAppColor.textFieldBackColor
 //      return v
 //  }
 //

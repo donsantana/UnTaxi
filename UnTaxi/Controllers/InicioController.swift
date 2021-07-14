@@ -211,7 +211,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       coreLocationManager.requestWhenInUseAuthorization()
     }
 
-    //self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: Customization.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
+    //self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: CustomAppColor.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
     
     globalVariables.socket.on("disconnect"){data, ack in
       self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)

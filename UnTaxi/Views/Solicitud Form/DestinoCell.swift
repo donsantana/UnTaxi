@@ -13,7 +13,7 @@ class DestinoCell: UITableViewCell {
 
   func initContent(){
     self.destinoText.text?.removeAll()
-    self.destinoText.setBottomBorder(borderColor: Customization.bottomBorderColor)
+    self.destinoText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
   }
 
 }

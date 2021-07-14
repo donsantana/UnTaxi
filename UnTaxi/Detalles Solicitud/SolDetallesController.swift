@@ -135,7 +135,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     
     let homeImage = UIImage(named: "compartir")?.withRenderingMode(.alwaysTemplate)
     compartirDetallesBtn.setImage(homeImage, for: UIControl.State())
-    compartirDetallesBtn.tintColor = Customization.buttonActionColor
+    compartirDetallesBtn.tintColor = CustomAppColor.buttonActionColor
     compartirDetallesBtn.layer.cornerRadius = compartirDetallesBtn.frame.height/2
     compartirDetallesBtn.backgroundColor = .white
     compartirDetallesBtn.addShadow()

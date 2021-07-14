@@ -29,7 +29,7 @@ class OrigenViewCell: UITableViewCell {
   
   func initContent(){
     //self.origenText.delegate = self
-    self.origenText.setBottomBorder(borderColor: Customization.bottomBorderColor)
+    self.origenText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
 
     //binding textfield with datePicker
     datePicker = UIDatePicker()

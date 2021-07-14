@@ -35,7 +35,7 @@ extension CompletadaController: UICollectionViewDataSource, UICollectionViewDele
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if !self.comentariosSelected.contains(self.evaluacion.getComentariosOptions()[indexPath.row]){
       self.comentariosSelected.append(self.evaluacion.getComentariosOptions()[indexPath.row])
-      (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.backgroundColor =  Customization.buttonActionColor
+      (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.backgroundColor =  CustomAppColor.buttonActionColor
     }else{
       self.comentariosSelected.removeAll{$0 == self.evaluacion.getComentariosOptions()[indexPath.row]}
       (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.backgroundColor =  .white

@@ -176,9 +176,9 @@ extension InicioController{
   func addEnvirSolictudBtn(){
     let enviarBtnView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.frame.width, height: 60))
     let button:UIButton = UIButton.init(frame: CGRect(x: 20, y: 10, width: self.SolicitudView.frame.width - 40, height: 50))
-    button.backgroundColor = Customization.buttonActionColor
+    button.backgroundColor = CustomAppColor.buttonActionColor
     button.layer.cornerRadius = 5
-    button.setTitleColor(Customization.buttonsTitleColor, for: .normal)
+    button.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
     button.setTitle("CONFIRMAR VIAJE", for: .normal)
     button.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
     button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
@@ -194,7 +194,7 @@ extension InicioController{
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.bounds.width, height: 21))
     let baseTitle = UILabel.init(frame: CGRect(x: 40, y: 0, width: self.SolicitudView.bounds.width - 40, height: 21))
     baseTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
-    baseTitle.textColor = Customization.customBlueColor
+    baseTitle.textColor = CustomAppColor.customBlueColor
     baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(globalVariables.cliente.empresa == "" ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
     
     headerView.addSubview(baseTitle)

@@ -24,14 +24,13 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
       let cell = tableView.dequeueReusableCell(withIdentifier: "MENUCELL", for: indexPath)
       cell.textLabel?.text = self.menuArray[indexPath.section][indexPath.row].title
       //cell.textLabel?.font = CustomAppFont.normalFont
-      cell.textLabel?.textColor = Customization.textColor
-      cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: Customization.iconColor)
+      cell.textLabel?.textColor = CustomAppColor.textColor
+      cell.imageView?.image = UIImage(named: self.menuArray[indexPath.section][indexPath.row].imagen)?.imageWithColor(color1: CustomAppColor.iconColor)
       return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at: indexPath, animated: false)
-    //globalVariables.publicidadService?.stopPublicidad()
 
     var vc: UIViewController!// = R.storyboard.main.inicioView()!
       switch tableView.cellForRow(at: indexPath)?.textLabel?.text{
@@ -66,6 +65,8 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         
       case "Operadora":
         vc = R.storyboard.main.callCenter()!
+        vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+
         self.present(vc, animated: false, completion: nil)
         //self.navigationController?.show(vc, sender: nil)
         
@@ -128,7 +129,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
       // UIView with darkGray background for section-separators as Section Footer
       let v = UIView(frame: CGRect(x: 0, y:0, width: tableView.frame.width, height: 1))
-      v.backgroundColor = Customization.textFieldBackColor
+      v.backgroundColor = CustomAppColor.textFieldBackColor
       return v
   }
 

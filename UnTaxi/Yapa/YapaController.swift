@@ -41,7 +41,7 @@ class YapaController: BaseController{
 //    self.yapaText.font = CustomAppFont.bigFont
     self.yapaMenuTable.delegate = self
     self.yapaText.text = "$\(String(format: "%.2f", globalVariables.cliente.yapa))"
-    self.yapaText.addBorder(color: Customization.buttonActionColor)
+    self.yapaText.addBorder(color: CustomAppColor.buttonActionColor)
     self.imageHeightConstraint.constant = Responsive().heightFloatPercent(percent: 25)
 //    self.explicacionText.font = CustomAppFont.titleFont
     
@@ -59,10 +59,6 @@ class YapaController: BaseController{
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-  }
-  
-  override func homeBtnAction() {
-    self.dismiss(animated: false, completion: nil)
   }
  
   func expandPanel(isExpanded: Bool){

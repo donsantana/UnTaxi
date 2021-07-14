@@ -13,11 +13,11 @@ extension UISegmentedControl{
   
   func customColor(){
     if #available(iOS 13.0, *) {
-      self.selectedSegmentTintColor = Customization.buttonActionColor
-      self.backgroundColor = Customization.textFieldBackColor
+      self.selectedSegmentTintColor = CustomAppColor.buttonActionColor
+      self.backgroundColor = CustomAppColor.textFieldBackColor
     } else {
-      self.tintColor = Customization.buttonActionColor
-      self.backgroundColor = Customization.textFieldBackColor
+      self.tintColor = CustomAppColor.buttonActionColor
+      self.backgroundColor = CustomAppColor.textFieldBackColor
       self.setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
       self.removeBorders()
     }
@@ -26,7 +26,7 @@ extension UISegmentedControl{
   }
   
   func removeBorders(andBackground:Bool=false) {
-    setBackgroundImage(imageWithColor(color: Customization.textFieldBackColor), for: .normal, barMetrics: .default)
+    setBackgroundImage(imageWithColor(color: CustomAppColor.textFieldBackColor), for: .normal, barMetrics: .default)
     setBackgroundImage(imageWithColor(color: tintColor!), for: .selected, barMetrics: .default)
     setDividerImage(imageWithColor(color: .white), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     

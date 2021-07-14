@@ -62,7 +62,7 @@ extension SolPendController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
-    return Customization.buttonActionColor
+    return CustomAppColor.buttonActionColor
   }
   
   func mapView(_ mapView: MGLMapView, lineWidthForPolylineAnnotation annotation: MGLPolyline) -> CGFloat {

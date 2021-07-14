@@ -56,9 +56,9 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
     
-    evaluarBtn.backgroundColor = Customization.buttonActionColor
+    evaluarBtn.backgroundColor = CustomAppColor.buttonActionColor
     evaluarBtn.layer.cornerRadius = 5
-    evaluarBtn.setTitleColor(Customization.buttonsTitleColor, for: .normal)
+    evaluarBtn.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
     self.loadHistorialSolicitudes()
   }
   

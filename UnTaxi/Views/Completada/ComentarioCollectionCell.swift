@@ -19,7 +19,7 @@ class ComentarioCollectionCell: UICollectionViewCell, UIGestureRecognizerDelegat
   @IBOutlet weak var comentarioText: UILabel!
   
   func initContent(){
-    self.comentarioText.addBorder(color: Customization.buttonActionColor)
+    self.comentarioText.addBorder(color: CustomAppColor.buttonActionColor)
   }
   
   func apiRequest(_ controller: ComentarioCollectionDelegate, didHideUser userId: String){}

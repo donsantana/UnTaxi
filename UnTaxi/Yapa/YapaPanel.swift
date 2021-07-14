@@ -41,9 +41,9 @@ class YapaPanel: UIViewController {
     self.activeCodigoView.addShadow()
 //    self.titleText.font = CustomAppFont.subtitleFont
 //    self.codigoText.font = CustomAppFont.inputTextFont
-    self.codigoText.addBorder(color: Customization.buttonActionColor)
-    self.movilNumberText.addBorder(color: Customization.buttonActionColor)
-    self.montoText.addBorder(color: Customization.buttonActionColor)
+    self.codigoText.addBorder(color: CustomAppColor.buttonActionColor)
+    self.movilNumberText.addBorder(color: CustomAppColor.buttonActionColor)
+    self.montoText.addBorder(color: CustomAppColor.buttonActionColor)
     
     self.movilNumberText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     

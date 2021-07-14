@@ -20,7 +20,7 @@ class CallCenterViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.elementsView.addShadow()
-    //self.NumeroTelefono.textColor = Customization.textColor
+    //self.NumeroTelefono.textColor = CustomAppColor.textColor
     // Initialization code
   }
   

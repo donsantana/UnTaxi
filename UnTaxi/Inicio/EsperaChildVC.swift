@@ -31,7 +31,7 @@ class EsperaChildVC: UIViewController {
     
     self.updateOfertaView.addShadow()
     self.SendOferta.addShadow()
-    self.newOfertaText.addBorder(color: Customization.buttonActionColor)
+    self.newOfertaText.addBorder(color: CustomAppColor.buttonActionColor)
     //self.newOfertaText.font = CustomAppFont.bigFont
     self.MensajeEspera.centerVertically()
     //self.titleText.titleBlueStyle()

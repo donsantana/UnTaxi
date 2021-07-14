@@ -43,35 +43,35 @@ import UserNotifications
     
     //VISUAL CUSTOMIZATION
     //Navigation Bar
-    //UINavigationBar.appearance().barTintColor = .init(Customization.primaryColor)
+    //UINavigationBar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
     
     // To change colour of tappable items.
-   // UINavigationBar.appearance().tintColor = Customization.textColor
+   // UINavigationBar.appearance().tintColor = CustomAppColor.textColor
     
-    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : Customization.textColor,
+    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : CustomAppColor.textColor,
                                                         .font : UIFont.init(name: "Muli", size: 20.0)!]
     
     // ToolBar
-    UIToolbar.appearance().barTintColor = .init(Customization.primaryColor)
+    UIToolbar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
     
-    UIToolbar.appearance().tintColor = Customization.textColor
+    UIToolbar.appearance().tintColor = CustomAppColor.textColor
     
     //TabBar
-    //UITabBar.appearance().barTintColor = .init(Customization.primaryColor)
-    //UITabBar.appearance().tintColor = Customization.textColor
+    //UITabBar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
+    //UITabBar.appearance().tintColor = CustomAppColor.textColor
     //UITabBar.appearance().shadowImage = .none
     
-    //UILabel.appearance().textColor = Customization.textColor
+    //UILabel.appearance().textColor = CustomAppColor.textColor
     //UILabel.appearance().font = CustomAppFont.normalFont
     
     UITextField.appearance().clearButtonMode = .whileEditing
-    //UITextField.appearance().textColor = Customization.textColor
+    //UITextField.appearance().textColor = CustomAppColor.textColor
     //UITextField.appearance().font = CustomAppFont.inputTextFont
     
-    //UITextView.appearance().textColor = Customization.textColor
+    //UITextView.appearance().textColor = CustomAppColor.textColor
     //UITextView.appearance().font = CustomAppFont.normalFont
     
-    UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Customization.buttonsTitleColor], for: .selected)
+    UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: CustomAppColor.buttonsTitleColor], for: .selected)
     UISegmentedControl.appearance().backgroundColor = .white
     
     //UIButton.appearance().titleLabel?.font = CustomAppFont.buttonFont

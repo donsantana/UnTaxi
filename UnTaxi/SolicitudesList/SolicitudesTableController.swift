@@ -28,24 +28,24 @@ class SolicitudesTableController: UITableViewController {
     headerView.frame = CGRect(x: 15, y: 5, width: view.frame.width - 30, height: 50)
     headerView.layer.cornerRadius = 10
     headerView.addShadow()
-    //headerView.backgroundColor = Customization.primaryColor//UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
-    headerView.tintColor = Customization.textColor
+    //headerView.backgroundColor = CustomAppColor.primaryColor//UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+    headerView.tintColor = CustomAppColor.textColor
     
     let sectionTitle: UILabel = UILabel.init(frame: CGRect(x: headerView.frame.width / 2 - 60, y: 15, width: self.tableView.frame.width/3, height: 20))
     sectionTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
     sectionTitle.textAlignment = .center
-    sectionTitle.textColor = Customization.textColor
+    sectionTitle.textColor = CustomAppColor.textColor
     //sectionTitle.text = "Solicitudes"
     
     
     let backBtn = UIButton()
     backBtn.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
-    backBtn.setTitleColor(Customization.textColor, for: .normal)
+    backBtn.setTitleColor(CustomAppColor.textColor, for: .normal)
     //backBtn.setTitleColor(.black, for: .normal)
     //      backBtn.setTitle("<", for: .normal)
     //      backBtn.titleLabel?.font = UIFont(name: "Helvetica", size: 35.0)
     //nextBtn.addBorder()
-    backBtn.setImage(UIImage(named: "backIcon")?.imageWithColor(color1: Customization.textColor), for: UIControl.State())
+    backBtn.setImage(UIImage(named: "backIcon")?.imageWithColor(color1: CustomAppColor.textColor), for: UIControl.State())
     backBtn.addTarget(self, action: #selector(backBtnAction), for: .touchUpInside)
     
     headerView.addSubview(sectionTitle)

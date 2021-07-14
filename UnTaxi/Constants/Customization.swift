@@ -14,6 +14,11 @@ struct Customization {
   static var appName: String!
   static var nameShowed: String = "UnTaxi"
   static var logo: UIImage!
+  static var usaVoucher: Bool = true
+  static var motivosCancelacion = ["Mucho tiempo de espera","Me solicitó el conductor","El conductor no se comunica","Ubicación incorrecta","Ya no lo necesito","Solo probaba la aplición","otro"]
+}
+
+struct CustomAppColor {
   static var primaryColor: UIColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1) //#1f1f1f
   static var lightTextColor: UIColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
   static var textColor: UIColor = UIColor.darkGray
@@ -22,9 +27,7 @@ struct Customization {
   static var textFieldBackColor: UIColor = UIColor(red: 235/255, green: 238/255, blue: 245/255, alpha: 1)
   static var customBlueColor: UIColor = UIColor(red: 14/255, green: 37/255, blue: 92/255, alpha: 1)
   static var bottomBorderColor: UIColor = .lightGray
-  static var usaVoucher: Bool = true
   static var buttonsTitleColor = UIColor.black
-  static var motivosCancelacion = ["Mucho tiempo de espera","Me solicitó el conductor","El conductor no se comunica","Ubicación incorrecta","Ya no lo necesito","Solo probaba la aplición","otro"]
 }
 
 struct CustomAppFont {

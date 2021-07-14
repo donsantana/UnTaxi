@@ -20,7 +20,7 @@ class CallCenterController: BaseController {
     self.socketService.delegate = self
     self.callCenterTableView.delegate = self
     self.topViewConstraint.constant = super.getTopMenuBottom()
-//    self.navigationController?.navigationBar.tintColor = Customization.textColor//UIColor.black
+//    self.navigationController?.navigationBar.tintColor = CustomAppColor.textColor//UIColor.black
 //    navigationItem.setHidesBackButton(false, animated: false)
     self.loadCallCenter()
   }

@@ -26,7 +26,7 @@ class PagoViewCell: UITableViewCell {
   
   func initContent(isCorporativo: Bool){
     self.formaPagoSwitch.customColor()
-    self.referenciaText.setBottomBorder(borderColor: Customization.bottomBorderColor)
+    self.referenciaText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
     pagarYapaSwitch.isEnabled = globalVariables.cliente.yapa > 0
     self.pagarYapaSwitch.isOn = false
     if globalVariables.cliente.empresa != "" && isCorporativo{

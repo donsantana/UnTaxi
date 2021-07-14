@@ -13,7 +13,7 @@
         <!--Call Center-->
         <scene sceneID="1Mg-7S-fyN">
             <objects>
-                <viewController storyboardIdentifier="callCenter" title="Call Center" id="84K-jP-cec" customClass="CallCenterController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="callCenter" title="Call Center" modalPresentationStyle="fullScreen" id="84K-jP-cec" customClass="CallCenterController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HLz-PF-rf0"/>
                         <viewControllerLayoutGuide type="bottom" id="nvh-uE-JTR"/>
@@ -2027,7 +2027,7 @@
         <!--Terminos Controller-->
         <scene sceneID="3En-p4-j1s">
             <objects>
-                <viewController storyboardIdentifier="terminosView" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="terminosView" modalPresentationStyle="fullScreen" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PnT-1D-0YJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEh-Pj-KXD"/>
@@ -2418,7 +2418,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Change Password-->
         <scene sceneID="Vtx-r8-1Nj">
             <objects>
-                <viewController storyboardIdentifier="Password" title="Change Password" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Password" title="Change Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aXD-Us-GmI"/>
                         <viewControllerLayoutGuide type="bottom" id="wHw-4h-8wR"/>
@@ -3040,7 +3040,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="X6g-AB-1Tn" firstAttribute="trailing" secondItem="KOt-px-sjX" secondAttribute="trailing" constant="-20" id="23t-AP-Emw"/>
                             <constraint firstItem="32E-Xg-P1y" firstAttribute="top" secondItem="bwF-q2-wAI" secondAttribute="bottom" constant="6" id="25g-8j-YcR"/>

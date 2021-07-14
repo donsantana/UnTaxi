@@ -34,13 +34,13 @@ class SideMenuController: UIViewController {
     self.MenuView1.layer.masksToBounds = false
     
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
-    self.NombreUsuario.textColor = Customization.textColor
+    self.NombreUsuario.textColor = CustomAppColor.textColor
     //self.NombreUsuario.font = CustomAppFont.subtitleFont
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
     
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
-    self.yapaText.addBorder(color: Customization.buttonActionColor)
+    self.yapaText.addBorder(color: CustomAppColor.buttonActionColor)
     self.yapaText.text = "$\(globalVariables.cliente.yapa)"
     //self.yapaText.font = CustomAppFont.bigFont
     
@@ -53,7 +53,7 @@ class SideMenuController: UIViewController {
   @objc func showYapaView(){
     //globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.yapaView()!
-    self.present(vc, animated: false, completion: nil)//self.navigationController?.show(vc, sender: nil)
+    self.navigationController?.show(vc, sender: nil)
   }
   
   @objc func EnviarSocket(_ datos: String){

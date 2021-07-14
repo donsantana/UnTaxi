@@ -43,7 +43,7 @@ class PerfilController: BaseController {
     super.barTitle = Customization.nameShowed
     super.viewDidLoad()
     
-    self.changePassBtn.addBorder(color: Customization.buttonActionColor)
+    self.changePassBtn.addBorder(color: CustomAppColor.buttonActionColor)
     apiService.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     //UILabel.appearance().textColor = .lightGray
@@ -160,6 +160,7 @@ class PerfilController: BaseController {
     self.present(vc!, animated: false, completion: nil)
     //self.navigationController?.show(vc!, sender: nil)
   }
+  
   @IBAction func cerrarSesion(_ sender: Any) {
     globalVariables.userDefaults.set(nil, forKey: "accessToken")
     let vc = R.storyboard.main.inicioView()!

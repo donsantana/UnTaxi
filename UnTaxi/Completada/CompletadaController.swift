@@ -69,7 +69,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.conductorName.text = conductor.nombreApellido
     //self.comentarioText.delegate = self
     self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
-    self.importeText.addBorder(color: Customization.buttonActionColor)
+    self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
     self.importeText.text = "$\(self.importe)"
     self.efectivoText.text = "$\(self.importe - solicitud.yapaimporte)\(self.solicitud.useVoucher == "" ? "" : self.solicitud.useVoucher == "1" ? ", Voucher" : ", Efectivo")"
     self.yapaText.text = "$\(solicitud.yapaimporte), Yapa"
