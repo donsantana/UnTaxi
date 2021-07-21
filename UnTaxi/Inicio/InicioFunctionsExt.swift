@@ -608,6 +608,7 @@ extension InicioController{
   
   @objc func openMapBtnAction(){
     print("Go to map")
+    self.view.endEditing(true)
     self.panelController.removeContainer()
   }
   

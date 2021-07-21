@@ -12,6 +12,7 @@ import MapboxSearch
 import MapboxSearchUI
 
 extension InicioController: SearchControllerDelegate {
+  
   func categorySearchResultsReceived(results: [SearchResult]) {
     let annotations = results.map { searchResult -> MGLPointAnnotation in
       let annotation = MGLPointAnnotation()

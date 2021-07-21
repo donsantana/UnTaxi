@@ -30,6 +30,7 @@ class AddressController: UIViewController {
     self.mapView.delegate = self
     mapView.automaticallyAdjustsContentInset = true
     searchController.delegate = self
+
     let panelController = MapboxPanelController(rootViewController: searchController)
     panelController.setState(.opened)
     self.startLocation = globalVariables.cliente.annotation.coordinate
@@ -92,30 +93,30 @@ class AddressController: UIViewController {
   
 }
 
-//extension AddressController: SearchEngineDelegate {
-//  func resultsUpdated(searchEngine: SearchEngine) {
-//    print("Number of search results: \(searchEngine.items.count) for query: \(searchEngine.query)")
-//    self.searchResultItems = searchEngine.items
-//    //responseLabel.text = "q: \(searchEngine.query), count: \(searchEngine.items.count)"
-//  }
-//
-//  func resolvedResult(result: SearchResult) {
-//    print("Dumping resolved result:", dump(result))
-//    var annotationView = MGLPointAnnotation()
-//    annotationView.coordinate = result.coordinate
-//    annotationView.subtitle = result.address?.formattedAddress(style: .medium)
-//    annotationView.title = self.annotationTemp.title
-//    DispatchQueue.main.async {
-//      let vc = R.storyboard.main.inicioView()!
-//      vc.destinoAnnotation = annotationView
-//      self.navigationController?.show(vc, sender: nil)
-//    }
-//  }
-//
-//  func searchErrorHappened(searchError: SearchError) {
-//    print("Error during search: \(searchError)")
-//  }
-//}
+extension AddressController: SearchEngineDelegate {
+  func resultsUpdated(searchEngine: SearchEngine) {
+    print("Number of search results: \(searchEngine.items.count) for query: \(searchEngine.query)")
+    //self.searchResultItems = searchEngine.items
+    //responseLabel.text = "q: \(searchEngine.query), count: \(searchEngine.items.count)"
+  }
+
+  func resolvedResult(result: SearchResult) {
+    print("Dumping resolved result:", dump(result))
+    var annotationView = MGLPointAnnotation()
+    annotationView.coordinate = result.coordinate
+    annotationView.subtitle = result.address?.formattedAddress(style: .medium)
+    annotationView.title = self.annotationTemp.title
+    DispatchQueue.main.async {
+      let vc = R.storyboard.main.inicioView()!
+      vc.destinoAnnotation = annotationView
+      self.navigationController?.show(vc, sender: nil)
+    }
+  }
+
+  func searchErrorHappened(searchError: SearchError) {
+    print("Error during search: \(searchError)")
+  }
+}
 
 extension AddressController: SearchControllerDelegate {
   func searchResultSelected(_ searchResult: SearchResult) {
@@ -124,7 +125,7 @@ extension AddressController: SearchControllerDelegate {
     self.annotationTemp.title = searchResult.address?.formattedAddress(style: .medium)
     self.goToInicioView()
   }
-  
+
   func categorySearchResultsReceived(results: [SearchResult]) { }
   func userFavoriteSelected(_ userFavorite: FavoriteRecord) { }
 }

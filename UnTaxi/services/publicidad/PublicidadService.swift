@@ -54,6 +54,7 @@ class PublicidadService {
 //      "url":"https://apps.apple.com/us/app/2brice/id1290022053"
 //  ]))
     self.publicidadToShow = publicidadesArray.first!
+    
   }
   
   func showPublicidad(bannerView: UIView){

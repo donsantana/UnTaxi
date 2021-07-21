@@ -98,7 +98,6 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.socketService.initHistorialDetallesEvents()
   }
   
-  
   override func homeBtnAction() {
     let viewcontrollers = self.navigationController?.viewControllers
     viewcontrollers?.forEach({ (vc) in
@@ -106,10 +105,6 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
         self.navigationController!.popToViewController(inventoryListVC, animated: true)
       }
     })
-    
-//    self.dismiss(animated: true, completion: nil)
-    //let vc = R.storyboard.main.historyView()
-    //self.navigationController?.present(vc!, animated: true, completion: nil)//pushViewController(vc!, animated: true)//show(vc!, sender: nil)
   }
   
   @IBAction func evaluarConductor(_ sender: Any) {

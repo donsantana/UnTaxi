@@ -163,7 +163,10 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.TransparenciaView.standardConfig()
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
+    //searchEngine.sea
     self.searchController = MapboxSearchController()
+    
+    //searchController.searchTextFieldBeginEditing()//searchEngine.delegate = self
     
     self.panelController = MapboxPanelController(rootViewController: self.searchController)
     func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
@@ -171,7 +174,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     searchController.delegate = self
     
-    //searchEngine.delegate = self
+   
     
     //MARK:- PANEL DEFINITION
     //letsolicitudPanel = FloatingPanelController()

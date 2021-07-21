@@ -57,7 +57,7 @@ class Solicitud {
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
-    self.referenciaorigen = !referenciaOrigen.isEmpty ? referenciaorigen : "No especificado"
+    self.referenciaorigen = !referenciaOrigen.isEmpty ? referenciaOrigen : "No especificado"
     self.dirDestino = !dirDestino.isEmpty ? dirDestino : "No especificado"
     self.origenCoord = CLLocationCoordinate2D(latitude: latOrigen, longitude: lngOrigen)
     self.destinoCoord = CLLocationCoordinate2D(latitude: latDestino, longitude: lngDestino)
