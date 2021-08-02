@@ -48,17 +48,35 @@ class Cliente{
   init(jsonData: [String: Any]){
     self.idUsuario = jsonData["idusuario"] as? Int
     self.id = jsonData["idcliente"] as? Int
-    self.user = jsonData["movil"] as? String
+    self.user = !(jsonData["movil"] is NSNull) ? jsonData["movil"] as! String : ""
     self.nombreApellidos = jsonData["nombreapellidos"] as? String
-    self.email = jsonData["email"] as? String
-    self.idEmpresa = jsonData["idempresa"] as? Int
-    self.empresa = jsonData["empresa"] as? String
+    self.email = !(jsonData["email"] is NSNull) ? jsonData["email"] as! String : ""
+    self.idEmpresa = !(jsonData["idempresa"] is NSNull) ? jsonData["idempresa"] as! Int : 0
+    self.empresa = !(jsonData["empresa"] is NSNull) ? jsonData["empresa"] as! String : ""
     self.foto = !(jsonData["foto"] is NSNull) ? jsonData["foto"] as! String : ""
-    self.yapa = jsonData["yapa"] as! Double
+    self.yapa = !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Double : 0.0
     self.fotoImage = UIImage(named: "chofer")
     self.annotation = MGLPointAnnotation()
     annotation.subtitle = "origen"
     
+    let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
+    
+    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+      guard let data = data, error == nil else { return }
+      DispatchQueue.main.sync() {
+        self.fotoImage = UIImage(data: data)
+      }
+    }
+    task.resume()
+  }
+  
+  func updateProfile(jsonData: [String: Any]){
+    self.idUsuario = !(jsonData["idusuario"] is NSNull) ? jsonData["idusuario"] as! Int : 0
+    self.id = !(jsonData["idcliente"] is NSNull) ? jsonData["idcliente"] as! Int : 0
+    self.nombreApellidos = !(jsonData["nombreapellidos"] is NSNull) ? jsonData["nombreapellidos"] as! String : ""
+    self.email = !(jsonData["email"] is NSNull) ? jsonData["email"] as! String : ""
+    self.foto = !(jsonData["foto"] is NSNull) ? jsonData["foto"] as! String : ""
+    self.fotoImage = UIImage(named: "chofer")
     let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
     
     let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -84,12 +102,9 @@ class Cliente{
       
       let task = URLSession.shared.dataTask(with: url!) { data, response, error in
         guard let data = data, error == nil else { return }
-
         DispatchQueue.main.sync() {
           imageView.contentMode = .scaleAspectFill
           imageView.image = UIImage(data: data)
-//          imageView.layer.cornerRadius = imageView.bounds.height/2
-//          imageView.clipsToBounds = true
         }
       }
       task.resume()

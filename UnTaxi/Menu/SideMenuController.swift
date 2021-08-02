@@ -36,7 +36,6 @@ class SideMenuController: UIViewController {
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = CustomAppColor.textColor
     //self.NombreUsuario.font = CustomAppFont.subtitleFont
-    globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
     
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
@@ -51,6 +50,7 @@ class SideMenuController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     self.yapaText.text = "$\(globalVariables.cliente.yapa)"
+    globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
   }
   
   //MASK:- FUNCTIONS

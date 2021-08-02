@@ -62,17 +62,23 @@ extension PerfilController: UITextFieldDelegate{
 }
 
 extension PerfilController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool) {
+  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]) {
     DispatchQueue.main.async {
       self.waitingView.isHidden = true
     }
     
-    let alertaDos = UIAlertController (title: status ? "Perfil Actualizado" : "Error de Perfil", message: status ? "Su perfil se actualizo con ÉXITO. Los cambios se verán reflejados una vez que vuelva ingresar a la aplicación." : "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
+    let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//      let vc = R.storyboard.main.inicioView()!
-//      let navigationController = UINavigationController(rootViewController: vc)
-//      //self.present(navigationController, animated: false, completion: nil)
-//      self.navigationController?.show(vc, sender: nil)
+      globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
+      self.goToInicioView()
+    }))
+    
+    self.present(alertaDos, animated: true, completion: nil)
+  }
+  
+  func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
+    let alertaDos = UIAlertController (title: "Error de Perfil", message: "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
+    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
       self.goToInicioView()
     }))
     

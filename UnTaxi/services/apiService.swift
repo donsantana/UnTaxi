@@ -6,6 +6,7 @@
 //  Copyright © 2020 Done Santana. All rights reserved.
 //
 
+
 import Foundation
 
 protocol ApiServiceDelegate: class {
@@ -14,7 +15,8 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI msg: String)
   func apiRequest(_ controller: ApiService, changeClaveAPI msg: String)
-  func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool)
+  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any])
+  func apiRequest(_ controller: ApiService, updatedProfileError msg: String)
   func apiRequest(_ controller: ApiService, getLoginToken token: String)
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any])
   func apiRequest(_ controller: ApiService, getServerData serverData: String)
@@ -35,7 +37,7 @@ final class ApiService {
     request.httpMethod = "POST"
     request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer token", forHTTPHeaderField: "Authorization") 
+    request.addValue("Bearer token", forHTTPHeaderField: "Authorization")
     
     return request
   }
@@ -171,12 +173,25 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+      
       let statusCode = (response as? HTTPURLResponse)?.statusCode
       if error == nil && statusCode == 200{
-          self.delegate?.apiRequest(self, updatedProfileAPI: true)
+        do{
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          print("photo \(json)")
+          self.delegate?.apiRequest(self, updatedProfileAPI: json)
+        }catch{
+          self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+        }
         print("file uploaded")
       }else{
-        self.delegate?.apiRequest(self, updatedProfileAPI: false)
+        do{
+        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+        print("photo \(json)")
+        self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
+        }catch{
+          self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+        }
         print("error uploading file")
       }
     }
@@ -194,6 +209,7 @@ final class ApiService {
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
       let response = response as! HTTPURLResponse
+      print("login error \(response.statusCode)")
       if error == nil && response.statusCode == 200{
         print(response)
         do {
@@ -202,14 +218,14 @@ final class ApiService {
           //self.delegate?.apiRequest(self, getLoginToken: json["token"] as! String)
           self.delegate?.apiRequest(self, getLoginData: json as [String: Any])
         } catch {
-          print("error")
+          self.delegate?.apiRequest(self, getLoginError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
       }else{
         do {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           self.delegate?.apiRequest(self, getLoginError: json["msg"] as! String)
         } catch {
-          print("error")
+          self.delegate?.apiRequest(self, getLoginError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
       }
     })
@@ -258,14 +274,26 @@ final class ApiService {
       let statusCode = (response as? HTTPURLResponse)?.statusCode
       if error == nil && statusCode == 200{
         if mimetype == "image/jpeg" {
-          self.delegate?.apiRequest(self, updatedProfileAPI: true)
+          do{
+            let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+            print("photo \(json)")
+            self.delegate?.apiRequest(self, updatedProfileAPI: json)
+          }catch{
+            self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          }
         }else{
           self.delegate?.apiRequest(self, fileUploaded: statusCode == 200)
         }
         print("file uploaded")
       }else{
         if mimetype == "image/jpeg" {
-          self.delegate?.apiRequest(self, updatedProfileAPI: false)
+          do{
+            let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+            print("photo \(json)")
+            self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
+          }catch{
+            self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          }
         }else{
           self.delegate?.apiRequest(self, fileUploaded: false)
         }
@@ -340,7 +368,7 @@ final class ApiService {
 //    request.httpMethod = "GET"
 //    request.allHTTPHeaderFields = header
 //    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//    
+//
 //    let session = URLSession.shared
 //    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
 //      if error == nil{
@@ -373,7 +401,8 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI msg: String){}
   func apiRequest(_ controller: ApiService, changeClaveAPI msg: String){}
-  func apiRequest(_ controller: ApiService, updatedProfileAPI status: Bool){}
+  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]){}
+  func apiRequest(_ controller: ApiService, updatedProfileError msg: String){}
   func apiRequest(_ controller: ApiService, getServerData serverData: String){}
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]]){}
