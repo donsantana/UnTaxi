@@ -22,6 +22,7 @@ target "UnTaxi" do
     pod 'GoogleMaps', '4.0.0'
     pod 'FloatingPanel'
     pod 'SideMenu'
+    pod 'CountryPickerSwift'
 end
 
 post_install do |installer|

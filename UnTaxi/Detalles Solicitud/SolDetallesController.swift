@@ -87,6 +87,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.socketService.delegate = self
     self.socketService.initListenEventos()
     
+    waitingView.addStandardConfig()
+    
     self.origenAnnotation.coordinate = self.solicitudPendiente.origenCoord
     self.origenAnnotation.subtitle = "origen"
     self.initMapView()
@@ -140,40 +142,40 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     compartirDetallesBtn.backgroundColor = .white
     compartirDetallesBtn.addShadow()
     
-    //PEDIR PERMISO PARA EL MICROPHONO
-    switch AVAudioSession.sharedInstance().recordPermission {
-    case AVAudioSession.RecordPermission.granted:
-      print("Permission granted")
-    case AVAudioSession.RecordPermission.denied:
-      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
-      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        if #available(iOS 10.0, *) {
-          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-            exit(0)
-          })
-        } else {
-          if let url = NSURL(string:UIApplication.openSettingsURLString) {
-            UIApplication.shared.openURL(url as URL)
-            exit(0)
-          }
-        }
-      }))
-      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-        exit(0)
-      }))
-      self.present(locationAlert, animated: true, completion: nil)
-    case AVAudioSession.RecordPermission.undetermined:
-      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-        if granted {
-          
-        } else{
-          
-        }
-      })
-    default:
-      break
-    }
+//    //PEDIR PERMISO PARA EL MICROPHONO
+//    switch AVAudioSession.sharedInstance().recordPermission {
+//    case AVAudioSession.RecordPermission.granted:
+//      print("Permission granted")
+//    case AVAudioSession.RecordPermission.denied:
+//      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
+//      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        if #available(iOS 10.0, *) {
+//          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+//          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+//            exit(0)
+//          })
+//        } else {
+//          if let url = NSURL(string:UIApplication.openSettingsURLString) {
+//            UIApplication.shared.openURL(url as URL)
+//            exit(0)
+//          }
+//        }
+//      }))
+//      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+//        exit(0)
+//      }))
+//      self.present(locationAlert, animated: true, completion: nil)
+//    case AVAudioSession.RecordPermission.undetermined:
+//      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+//        if granted {
+//
+//        } else{
+//
+//        }
+//      })
+//    default:
+//      break
+//    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -186,11 +188,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     print("parar la publicidad")
     globalVariables.publicidadService?.stopPublicidad()
   }
-
-//  override func homeBtnAction() {
-//    present(sideMenu!, animated: true)
-//    //self.dismiss(animated: false, completion: nil)
-//  }
   
   override func closeBtnAction() {
     let panicoViewController = storyboard?.instantiateViewController(withIdentifier: "panicoChildVC") as! PanicoController

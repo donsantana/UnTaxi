@@ -440,7 +440,7 @@ extension InicioController{
     //MensajeEspera.text = "Buscando UnTaxi..."
     //self.AlertaEsperaView.isHidden = false
     //self.origenCell.origenText.text?.removeAll()
-    self.destinoCell.destinoText.text?.removeAll()
+    //self.destinoCell.destinoText.text?.removeAll()
     
 //    let vc = R.storyboard.main.esperaChildView()!
 //    vc.solicitud = nuevaSolicitud
@@ -473,25 +473,50 @@ extension InicioController{
       
       let fechaReserva = ""
       //var valorOferta = self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".")
-   
       let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
       
-      let tipoServicio = self.tabBar.items?.firstIndex(of: self.tabBar.selectedItem!)
-      mapView.removeAnnotations(mapView!.annotations!) 
+      var tipoServicio = 1
       
-      let nuevaSolicitud = Solicitud()
+      switch self.tabBar.selectedItem {
+      case self.taximetroItem:
+        tipoServicio = 2
+      case self.horasItem:
+        tipoServicio = 3
+      case self.pactadaItem:
+        tipoServicio = 4
+      default:
+        tipoServicio = 1
+      }
+      print(tipoServicio)
+      
+      let isYapa = globalVariables.appConfig.yapa ? pagoCell.pagarYapaSwitch.isOn : false
+      let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio,yapa: isYapa)
       nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
-      self.contactoCell.contactoNameText.text!.isEmpty ? nil : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
-      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: pagoCell.pagarYapaSwitch.isOn)
       
       if !self.contactoCell.telefonoText.text!.isEmpty{
         nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
-        self.contactoCell.clearContacto()
       }
-
       
       self.crearTramaSolicitud(nuevaSolicitud)
       view.endEditing(true)
+//      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
+//
+//      let tipoServicio = self.tabBar.items?.firstIndex(of: self.tabBar.selectedItem!)
+//      mapView.removeAnnotations(mapView!.annotations!)
+//
+//      let nuevaSolicitud = Solicitud()
+//      nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
+//      self.contactoCell.contactoNameText.text!.isEmpty ? nil : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
+//      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: pagoCell.pagarYapaSwitch.isOn)
+//
+//      if !self.contactoCell.telefonoText.text!.isEmpty{
+//        nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
+//        self.contactoCell.clearContacto()
+//      }
+//
+//
+//      self.crearTramaSolicitud(nuevaSolicitud)
+//      view.endEditing(true)
       
     }else{
       let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe llegar el campo origen.", preferredStyle: UIAlertController.Style.alert)
@@ -589,7 +614,7 @@ extension InicioController{
       self.destinoAnnotation.title = self.origenAnnotation.title
       self.destinoAnnotation.coordinate = self.origenAnnotation.coordinate
     }
-    self.destinoCell.destinoText.text?.removeAll()
+    //self.destinoCell.destinoText.text?.removeAll()
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
     let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
@@ -608,6 +633,7 @@ extension InicioController{
   
   @objc func openMapBtnAction(){
     print("Go to map")
+    self.addressPreviewText.isHidden = false
     self.view.endEditing(true)
     self.panelController.removeContainer()
   }
@@ -618,6 +644,7 @@ extension InicioController{
       self.navigationController?.setNavigationBarHidden(true, animated: true)
       self.panelController.removeContainer()
       self.mapBottomConstraint.constant = 0
+      self.addressPreviewText.isHidden = true
     }
     //self.destinoCell.destinoText.text = self.origenAnnotation.title
     //    self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
@@ -702,7 +729,7 @@ extension InicioController{
       var address = ""
       
       let temporaLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-      geocoder.reverseGeocodeLocation(temporaLocation, completionHandler: {(placemarks, error) -> Void in
+      geocoder.reverseGeocodeLocation(temporaLocation, completionHandler: { [self](placemarks, error) -> Void in
         if error != nil {
           print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
           return
@@ -729,6 +756,7 @@ extension InicioController{
           //          }
           annotation.title = address
           annotation.subtitle == "origen" ? (self.origenCell.origenText.text = address) : (self.destinoCell.destinoText.text = address)
+          self.addressPreviewText.text = address
           print("direccion \(self.destinoCell.destinoText.text)")
         }else {
           annotation.title = "No disponible"

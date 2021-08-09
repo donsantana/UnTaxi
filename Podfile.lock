@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
+  - CountryPickerSwift (1.8.2)
   - CurrencyTextField (2.3)
   - FloatingPanel (2.2.0)
   - Google-Mobile-Ads-SDK (8.0.0):
@@ -145,6 +146,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Canvas
+  - CountryPickerSwift
   - CurrencyTextField
   - FloatingPanel
   - Google-Mobile-Ads-SDK
@@ -167,6 +169,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Canvas
+    - CountryPickerSwift
     - CurrencyTextField
     - FloatingPanel
     - Google-Mobile-Ads-SDK
@@ -200,6 +203,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
   CurrencyTextField: 75d8ee80cf245925684b34c9a49ba886f258e2dc
   FloatingPanel: 54b478292da5340317ce78afcaca88fab6f3b57e
   Google-Mobile-Ads-SDK: 9509c62617e8d77e2524833eed0b73dd028f0bc6
@@ -230,6 +234,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   Turf: bdcfefe60df3ca8dc5f742681c178e47f8c5a567
 
-PODFILE CHECKSUM: da6ec596e2e27615ca822850aabd67534419924b
+PODFILE CHECKSUM: 1d80d18350aa102bc9d2c9f7225693cd2cc8d827
 
 COCOAPODS: 1.10.1

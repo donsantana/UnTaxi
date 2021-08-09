@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIVisualEffectView{
-  func standardConfig(){
-    let blur = UIBlurEffect(style: .light)
+  func addStandardConfig(){
+    let blur = UIBlurEffect(style: .dark)
     self.effect = blur
-    self.alpha = 0.7
+    self.alpha = 0.8
   }
 }

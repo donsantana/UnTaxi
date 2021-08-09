@@ -90,6 +90,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var btnViewTop: NSLayoutConstraint!
   @IBOutlet weak var formularioSolicitudHeight: NSLayoutConstraint!
   @IBOutlet weak var formularioSolicitudBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var addressViewTop: NSLayoutConstraint!
   
   //MAP
   let searchEngine = SearchEngine()
@@ -106,6 +107,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var LocationBtn: UIButton!
   @IBOutlet weak var SolicitudView: UIView!
   
+  @IBOutlet weak var addressPreviewText: UILabel!
   
   
   //MENU BUTTONS
@@ -138,7 +140,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.tabBar.layer.borderColor = UIColor.clear.cgColor
     self.tabBar.clipsToBounds = true
     mapView.delegate = self
-    mapView.automaticallyAdjustsContentInset = true
+    //mapView.automaticallyAdjustsContentInset = true
     coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
     self.contactoCell.contactoNameText.delegate = self
@@ -160,7 +162,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 
     self.LocationBtn.addShadow()
 
-    self.TransparenciaView.standardConfig()
+    self.TransparenciaView.addStandardConfig()
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
     //searchEngine.sea
@@ -193,6 +195,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     
+    addressViewTop.constant = super.getTopMenuCenter()
+    
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
     self.solicitudFormTable.addGestureRecognizer(tapGesture)
@@ -218,42 +222,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     globalVariables.socket.on("disconnect"){data, ack in
       self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)
-    }
-    
-    //PEDIR PERMISO PARA MICROPHONE
-    switch AVAudioSession.sharedInstance().recordPermission {
-    case AVAudioSession.RecordPermission.granted:
-      print("Permission granted")
-    case AVAudioSession.RecordPermission.denied:
-      print("Pemission denied")
-      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
-      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        if #available(iOS 10.0, *) {
-          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-            exit(0)
-          })
-        } else {
-          if let url = NSURL(string:UIApplication.openSettingsURLString) {
-            UIApplication.shared.openURL(url as URL)
-            exit(0)
-          }
-        }
-      }))
-      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-        exit(0)
-      }))
-      self.present(locationAlert, animated: true, completion: nil)
-    case AVAudioSession.RecordPermission.undetermined:
-      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-        if granted {
-          
-        } else{
-          
-        }
-      })
-    default:
-      break
     }
     //self.loadFormularioData()
     

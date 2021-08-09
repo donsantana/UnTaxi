@@ -55,6 +55,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.importeText.text = "$\(solicitud.importe)"
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
+    waitingView.addStandardConfig()
     
     evaluarBtn.backgroundColor = CustomAppColor.buttonActionColor
     evaluarBtn.layer.cornerRadius = 5
@@ -72,7 +73,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     if annotation.title! == "origen"{
       anotationView?.image = UIImage(named: "origen")
     }else{
-      anotationView?.image = UIImage(named: "destinoIcon")
+      anotationView?.image = UIImage(named: "destino")
     }
     return anotationView
   }
@@ -87,9 +88,10 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   func updateMap(){
-    self.mapView.addAnnotation(self.origenSolicitud)
-    if self.solicitud.lngdestino == 0.0{
-      self.mapView.addAnnotation(self.destinoSolicitud)
+    if self.solicitud.lngdestino != 0.0{
+      self.mapView.showAnnotations([self.origenSolicitud,self.destinoSolicitud], animated: true)
+    }else{
+      self.mapView.showAnnotations([self.origenSolicitud], animated: true)
     }
   }
   
@@ -108,18 +110,26 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   @IBAction func evaluarConductor(_ sender: Any) {
+    let tempSolicitud = Solicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, valorOferta: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
     
-    let viewcontrollers = self.navigationController?.viewControllers
-    print("cantidad de viewcontrollers \(viewcontrollers?.count)")
-    
-    let tempSolicitud = Solicitud()
-    tempSolicitud.DatosSolicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, valorOferta: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
     let vc = R.storyboard.main.completadaView()!
     vc.solicitud = tempSolicitud
     vc.importe = solicitud.importe
     vc.idConductor = self.idConductor
     
     self.navigationController?.show(vc, sender: self)
+    
+//    let viewcontrollers = self.navigationController?.viewControllers
+//    print("cantidad de viewcontrollers \(viewcontrollers?.count)")
+//
+//    let tempSolicitud = Solicitud()
+//    tempSolicitud.DatosSolicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, valorOferta: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
+//    let vc = R.storyboard.main.completadaView()!
+//    vc.solicitud = tempSolicitud
+//    vc.importe = solicitud.importe
+//    vc.idConductor = self.idConductor
+//
+//    self.navigationController?.show(vc, sender: self)
   }
   
 }
@@ -157,11 +167,7 @@ extension HistorialDetailsController: SocketServiceDelegate{
       self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
       self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
       
-      let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen), latitudinalMeters: self.regionRadius * 2.0, longitudinalMeters: self.regionRadius * 2.0)
-      
       self.updateMap()
-      self.mapView.setRegion(coordinateRegion, animated: true)
-
     }
   }
 }

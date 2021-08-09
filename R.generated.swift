@@ -1896,9 +1896,14 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let loginView = StoryboardViewControllerResource<LoginController>(identifier: "LoginView")
       let name = "Login"
+      let registroView = StoryboardViewControllerResource<RegistroController>(identifier: "registroView")
 
       func loginView(_: Void = ()) -> LoginController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginView)
+      }
+
+      func registroView(_: Void = ()) -> RegistroController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: registroView)
       }
 
       static func validate() throws {
@@ -1909,6 +1914,7 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.login().loginView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginView' could not be loaded from storyboard 'Login' as 'LoginController'.") }
+        if _R.storyboard.login().registroView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'registroView' could not be loaded from storyboard 'Login' as 'RegistroController'.") }
       }
 
       fileprivate init() {}

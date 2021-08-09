@@ -47,17 +47,16 @@ class Solicitud {
   var yapa = false
   
   var taxi = Taxi()
-
+  
   var useVoucher = "0"
   var otroNombre = ""
   var otroTelefono = ""
-  
-  //Agregar datos de la solicitud
-  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String, tipoServicio: Int, yapa: Bool){
+//
+  init(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool) {
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
-    self.referenciaorigen = !referenciaOrigen.isEmpty ? referenciaOrigen : "No especificado"
+    self.referenciaorigen = !referenciaOrigen.isEmpty ? referenciaorigen : "No especificado"
     self.dirDestino = !dirDestino.isEmpty ? dirDestino : "No especificado"
     self.origenCoord = CLLocationCoordinate2D(latitude: latOrigen, longitude: lngOrigen)
     self.destinoCoord = CLLocationCoordinate2D(latitude: latDestino, longitude: lngDestino)
@@ -66,6 +65,45 @@ class Solicitud {
     self.useVoucher = useVoucher
     self.tipoServicio = tipoServicio
     self.yapa = yapa
+    print("creating")
+    if fechaReserva != ""{
+      let fechaFormatted = fechaReserva.replacingOccurrences(of: "/", with: "-")
+      self.fechaReserva = OurDate(stringDate: fechaFormatted)
+    }
+  }
+  
+  init(jsonData: [String: Any]) {
+    self.id = !(jsonData["idsolicitud"] is NSNull) ? jsonData["idsolicitud"] as! Int : 0
+    self.fechaHora = !(jsonData["fechahora"] is NSNull) ? OurDate(stringDate:jsonData["fechahora"] as? String) : OurDate(date: Date())
+    self.dirOrigen = !(jsonData["dirorigen"] is NSNull) ? jsonData["dirorigen"] as! String : ""
+    self.referenciaorigen = !(jsonData["referenciaorigen"] is NSNull) ? jsonData["referenciaorigen"] as! String : ""
+    self.dirDestino = !(jsonData["dirdestino"] is NSNull) ? jsonData["dirdestino"] as! String : ""
+    self.origenCoord = CLLocationCoordinate2D(latitude: !(jsonData["latorigen"] is NSNull) ? jsonData["latorigen"] as! Double : 0.0, longitude: !(jsonData["lngorigen"] is NSNull) ? jsonData["lngorigen"] as! Double : 0.0)
+    self.destinoCoord = CLLocationCoordinate2D(latitude: !(jsonData["latdestino"] is NSNull) ? jsonData["latdestino"] as! Double : 0.0, longitude: !(jsonData["lngdestino"] is NSNull) ? jsonData["lngdestino"] as! Double : 0.0)
+    self.valorOferta = !(jsonData["importe"] is NSNull) ? jsonData["importe"] as! Double : 0.0
+    self.detalleOferta = !(jsonData["detalleoferta"] is NSNull) ? jsonData["detalleoferta"] as! String : ""
+    self.useVoucher = !(jsonData["nvoucher"] is NSNull) ? "1" : "0"
+    self.tipoServicio = !(jsonData["tiposervicio"] is NSNull) ? jsonData["tiposervicio"] as! Int : 0
+    self.yapa = !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Bool : false
+    self.fechaReserva = !(jsonData["fechareserva"] is NSNull) ? OurDate(stringDate:jsonData["fechareserva"] as? String) : OurDate(date: Date())
+    self.taxi = !(jsonData["taxi"] is NSNull) ? Taxi(jsonData: jsonData["taxi"] as! [String: Any]) : Taxi()
+  }
+  
+  //Agregar datos de la solicitud
+  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool){
+    self.id = id
+    self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
+    self.dirOrigen = dirOrigen
+    self.referenciaorigen = !referenciaOrigen.isEmpty ? referenciaorigen : "No especificado"
+    self.dirDestino = !dirDestino.isEmpty ? dirDestino : "No especificado"
+    self.origenCoord = CLLocationCoordinate2D(latitude: latOrigen, longitude: lngOrigen)
+    self.destinoCoord = CLLocationCoordinate2D(latitude: latDestino, longitude: lngDestino)
+    self.valorOferta = valorOferta
+    self.detalleOferta = detalleOferta
+    self.useVoucher = useVoucher
+    self.tipoServicio = tipoServicio
+    self.yapa = yapa
+    print("creating")
     if fechaReserva != ""{
       let fechaFormatted = fechaReserva.replacingOccurrences(of: "/", with: "-")
       self.fechaReserva = OurDate(stringDate: fechaFormatted)
@@ -87,16 +125,6 @@ class Solicitud {
   //Agregar datos del Conductor
   func DatosTaxiConductor(taxi: Taxi){
     self.taxi = taxi
-//    self.idConductor = idconductor
-//    self.nombreApellidosConductor = nombreapellidosconductor
-//    self.movil = movilconductor
-//    self.urlFoto = foto
-//    self.idTaxi = idtaxi
-//    self.matricula = matricula
-//    self.codTaxi = codigovehiculo
-//    self.marca = marca
-//    self.color = color
-//    taximarker = CLLocationCoordinate2D(latitude: lattaxi, longitude: lngtaxi)
   }
   
   //REGISTRAR FECHA Y HORA
@@ -109,20 +137,6 @@ class Solicitud {
     let ruta = CRuta(origen: self.origenCoord, taxi: self.taxi.location)
     return ruta.CalcularDistancia()
   }
-  
-//  func getFechaISO() -> String {
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//    return dateFormatter.string(from: self.fechaReserva)
-//  }
-//  //
-//  func showFecha()->String{
-//    let formatter = DateFormatter()
-//    formatter.dateFormat = "MMMM dd HH:mm:ss"
-//    formatter.dateStyle = .medium
-//    formatter.timeStyle = .short
-//    return formatter.string(from: self.fechaReserva)
-//  }
   
   func updateValorOferta(newValor: String)->[String: Any]{
     self.valorOferta = (newValor as NSString).doubleValue
@@ -174,8 +188,8 @@ class Solicitud {
       "latorigen": self.origenCoord.latitude,
       "lngorigen": self.origenCoord.longitude,
       "so": 2,
-      "idempresa": self.useVoucher != "0" ? self.cliente.idEmpresa! : 0,
-      "empresa": self.useVoucher != "0" ? self.cliente.empresa! : "",
+      "idempresa": self.cliente.idEmpresa ?? 0,
+      "empresa": self.cliente.empresa ?? "",
       "idtipovehiculo": 1,
       "tipovehiculo": "Taxi",
       "tarjeta": self.tarjeta,
@@ -183,7 +197,7 @@ class Solicitud {
       "dirdestino": self.dirDestino,
       "latdestino": self.destinoCoord.latitude,
       "lngdestino": self.destinoCoord.longitude,
-      "importe": "\(self.valorOferta)",
+      "importe": self.valorOferta,
       "detalleoferta": self.detalleOferta
     ]
     
@@ -200,14 +214,6 @@ class Solicitud {
     print("trama \(tramaBase)")
     return tramaBase
   }
-  
-  //  func crearTrama(voucher: String) -> String{
-  //    if self.valorOferta != "0"{
-  //    return "#SO,\(self.idCliente),\(self.nombreApellidos),\(self.user),\(self.dirOrigen),\(self.referenciaorigen),\(self.dirDestino),\(self.origenCoord.latitude),\(self.origenCoord.longitude),\(self.destinoCoord.latitude),\(self.destinoCoord.longitude),\(self.distancia),\(self.valorOferta),\(voucher),\(self.detalleOferta),\(self.getFechaISO()),1,# \n"
-  //    }else{
-  //      return "#Solicitud,\(self.idCliente),\(self.nombreApellidos),\(self.user),\(self.dirOrigen),\(self.referenciaorigen),\(self.dirDestino),\(String(self.origenCoord.latitude)),\(String(self.origenCoord.longitude)),0.0,0.0,\(String(self.distancia)),\(self.importe),\(voucher),# \n"
-  //    }
-  //  }
   
   func crearTramaCancelar(motivo: String) -> [String:Any] {
     return [

@@ -50,9 +50,14 @@ class OfertasController: BaseController{
     // 2
     self.progressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
       guard self.progress.isFinished == false else {
+        //TODO:- ELIMINAR LA SOLICITUD
+        
         let alertaDos = UIAlertController (title: "Ofertas no Aceptadas", message: "El tiempo para aceptar alguna oferta ha concluido. Por favor vuelva a enviar su solicitud.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.CancelarSolicitud("")
+          //self.CancelarSolicitud("")
+          globalVariables.solpendientes.removeAll(where: {$0.id == self.solicitud.id})
+          globalVariables.ofertasList.removeAll()
+          self.goToInicioView()
         }))
         self.present(alertaDos, animated: true, completion: nil)
         timer.invalidate()

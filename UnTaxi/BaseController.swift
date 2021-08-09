@@ -140,6 +140,10 @@ class BaseController: UIViewController {
     return (screenBounds.origin.y + 100)
   }
   
+  func getTopMenuCenter() -> CGFloat{
+    return (screenBounds.origin.y + 70)
+  }
+  
   func hideMenuBar(isHidden: Bool){
     self.topMenu.isHidden = isHidden
   }

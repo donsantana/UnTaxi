@@ -23,7 +23,7 @@ class HistorialController: BaseController {
     self.tableView.delegate = self
     self.socketService.delegate = self
     self.historyTopConstraint.constant = super.getTopMenuBottom()
-    self.waitingView.standardConfig()
+    self.waitingView.addStandardConfig()
     self.waitingView.isHidden = false
     self.loadHistorialSolicitudes()
     //self.titleText.font = CustomAppFont.titleFont

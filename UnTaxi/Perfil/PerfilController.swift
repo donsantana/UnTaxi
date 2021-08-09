@@ -67,7 +67,7 @@ class PerfilController: BaseController {
     self.updatePhto.setImage(updateBtnImage, for: UIControl.State())
     self.updatePhto.tintColor = .white
     
-    //UILabel.appearance().font = CustomAppFont.titleFont
+    waitingView.addStandardConfig()
     
   }
   

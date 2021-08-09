@@ -66,6 +66,7 @@ extension InicioController: MGLMapViewDelegate{
     // If there’s no reusable annotation view available, initialize a new one.
     if annotationView == nil {
       annotationView = CustomImageAnnotationView(reuseIdentifier: reuseIdentifier as! String, image: UIImage(named: annotation.subtitle!!)!)
+      annotationView?.setSelected(true, animated: true)
     }
     
     return annotationView
@@ -73,12 +74,13 @@ extension InicioController: MGLMapViewDelegate{
   
   func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
     print("ANNOTATION PING")
+    
     return annotation.responds(to: #selector(getter: MGLAnnotation.title))
   }
   
   func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
   // Instantiate and return our custom callout view.
-  return CustomCalloutView(representedObject: annotation)
+    return CustomCalloutView(representedObject: annotation)
   }
   
   func mapView(_ mapView: MGLMapView, rightCalloutAccessoryViewFor annotation: MGLAnnotation) -> UIView? {
@@ -87,15 +89,21 @@ extension InicioController: MGLMapViewDelegate{
   
   func mapView(_ mapView: MGLMapView, leftCalloutAccessoryViewFor annotation: MGLAnnotation) -> UIView? {
     print("callout \(annotation.subtitle)")
-    if (annotation.subtitle! == "origen") {
-      // Callout height is fixed; width expands to fit its content.
-      let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
-      label.textAlignment = .right
-      label.textColor = UIColor(red: 0.81, green: 0.71, blue: 0.23, alpha: 1)
-      label.text = annotation.title!
-      
-      return label
-    }
+//    if (annotation.subtitle! == "origen") {
+//      // Callout height is fixed; width expands to fit its content.
+//      let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
+//      label.textAlignment = .right
+//      label.textColor = UIColor(red: 0.81, green: 0.71, blue: 0.23, alpha: 1)
+//      label.text = annotation.title!
+//
+//      return label
+//    }
+    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
+    label.textAlignment = .right
+    label.textColor = UIColor(red: 0.81, green: 0.71, blue: 0.23, alpha: 1)
+    label.text = "annotation.title!"
+    
+    return label
     
     return nil
   }
@@ -136,7 +144,7 @@ extension InicioController: MGLMapViewDelegate{
         mapView.addAnnotation(self.destinoAnnotation)
         //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }
-      //mapView.selectAnnotation(tempAnnotation, animated: true, completionHandler: nil)
+      
     }else{
       if searchingAddress == "origen"{
         print("Init Map")

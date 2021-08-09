@@ -63,6 +63,44 @@ extension SolPendController{
   }
   
   @objc func longTap(_ sender : UILongPressGestureRecognizer){
+    //PEDIR PERMISO PARA EL MICROPHONO
+    switch AVAudioSession.sharedInstance().recordPermission {
+    case AVAudioSession.RecordPermission.granted:
+      print("Permission granted")
+      self.recordAndSendVoice(sender: sender)
+    case AVAudioSession.RecordPermission.denied:
+      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
+      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        if #available(iOS 10.0, *) {
+          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+            exit(0)
+          })
+        } else {
+          if let url = NSURL(string:UIApplication.openSettingsURLString) {
+            UIApplication.shared.openURL(url as URL)
+            exit(0)
+          }
+        }
+      }))
+      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+    
+      }))
+      self.present(locationAlert, animated: true, completion: nil)
+    case AVAudioSession.RecordPermission.undetermined:
+      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+        if granted {
+          
+        } else{
+          
+        }
+      })
+    default:
+      break
+    }
+  }
+  
+  func recordAndSendVoice(sender : UILongPressGestureRecognizer){
     if sender.state == .ended {
       if !globalVariables.SMSVoz.reproduciendo && globalVariables.grabando{
         self.SMSVozBtn.setImage(UIImage(named: "smsvoz"), for: .normal)

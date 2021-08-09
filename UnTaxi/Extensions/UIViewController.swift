@@ -34,6 +34,14 @@ internal extension UIViewController {
     return sideMenu
   }
   
+  func getTextfieldHeight(textFieldHeight: NSLayoutConstraint){
+    if UIScreen.main.bounds.height < 736{
+      textFieldHeight.constant = 40
+    }else{
+      textFieldHeight.constant = 45
+    }
+  }
+  
 //  func mostrarAdvertenciaCancelacion(){
 //    let alertaDos = UIAlertController (title: "Aviso Importante", message: "Estimado usuario, la cancelación frecuente del servicio puede ser motivo de un bloqueo temporal de la aplicación.", preferredStyle: .alert)
 //    
