@@ -13,16 +13,24 @@ extension LoginController: UITextFieldDelegate{
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    textField.textColor = UIColor.black
-    textField.text?.removeAll()
-    if textField.isEqual(clave){
-      animateViewMoving(true, moveValue: 80, view: self.view)
+    var distanceValue = 0
+    switch textField {
+    case movilClaveRecover:
+      distanceValue = 105
+    default:
+      distanceValue = 80
     }
-    else{
-      if textField.isEqual(movilClaveRecover){
-        textField.text?.removeAll()
-        animateViewMoving(true, moveValue: 105, view: self.view)
-      }
+    animateViewMoving(true, moveValue: CGFloat(distanceValue), view: self.view)
+//    textField.textColor = UIColor.black
+//    textField.text?.removeAll()
+//    if textField.isEqual(clave){
+//      animateViewMoving(true, moveValue: 80, view: self.view)
+//    }
+//    else{
+//      if textField.isEqual(movilClaveRecover){
+//        textField.text?.removeAll()
+//        animateViewMoving(true, moveValue: 105, view: self.view)
+//      }
 //      else{
 //        if textField.isEqual(confirmarClavText) || textField.isEqual(correoText) || textField.isEqual(RecomendadoText){
 //          if textField.isEqual(confirmarClavText){
@@ -38,43 +46,41 @@ extension LoginController: UITextFieldDelegate{
 //          }
 //        }
 //      }
-    }
+//    }
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
-    textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
-    if textfield.isEqual(clave){
-      animateViewMoving(false, moveValue: 80, view: self.view)
-    }else{
-//      if textfield.isEqual(confirmarClavText) || textfield.isEqual(correoText) || textfield.isEqual(RecomendadoText){
-//        if textfield.text != claveText.text && textfield.isEqual(confirmarClavText){
-//          textfield.textColor = UIColor.red
-//          textfield.text = "Las claves no coinciden"
-//          textfield.isSecureTextEntry = false
-//          RegistroBtn.isEnabled = false
-//        }
-//        else{
-//          RegistroBtn.isEnabled = true
-//        }
-//        animateViewMoving(false, moveValue: 200, view: self.view)
-//      }else{
-//        if textfield.isEqual(telefonoText) || textfield.isEqual(RecomendadoText){
-//
-//          if textfield.text?.count != 10{
-//            textfield.textColor = UIColor.red
-//            textfield.text = "Número de Teléfono Incorrecto"
-//          }
-//          animateViewMoving(false, moveValue: 70, view: self.view)
+    var distanceValue = 0
+    switch textfield {
+    case movilClaveRecover:
+      let (valid, message) = textfield.validate(.movilNomber)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.movilClaveRecover.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }else{
+        RecuperarClaveBtn.isEnabled = true
+      }
+      distanceValue = 105
+    default:
+      distanceValue = 80
+    }
+    
+    animateViewMoving(false, moveValue: CGFloat(distanceValue), view: self.view)
+    
+//    textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
+//    if textfield.isEqual(clave){
+//      animateViewMoving(false, moveValue: 80, view: self.view)
+//    }else{
+//      if textfield.isEqual(movilClaveRecover){
+//        if movilClaveRecover.text?.count != 10{
+//          textfield.text = "Número de Teléfono Incorrecto"
 //        }else{
-          if textfield.isEqual(movilClaveRecover){
-            if movilClaveRecover.text?.count != 10{
-              textfield.text = "Número de Teléfono Incorrecto"
-            }else{
-              self.RecuperarClaveBtn.isEnabled = true
-            }
-            animateViewMoving(false, moveValue: 105, view: self.view)
-          }
-        }
+//          self.RecuperarClaveBtn.isEnabled = true
+//        }
+//        animateViewMoving(false, moveValue: 105, view: self.view)
 //      }
 //    }
   }
@@ -115,20 +121,11 @@ extension LoginController: ApiServiceDelegate{
     self.startSocketConnection()
   }
   
-//  func apiRequest(_ controller: ApiService, registerUserAPI msg: String) {
-//    DispatchQueue.main.async {
-//      let alertaDos = UIAlertController (title: "Registro de usuario", message: "Registro Realizado con éxito, puede loguearse en la aplicación.", preferredStyle: .alert)
-//      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//        self.RegistroView.isHidden = true
-//      }))
-//      self.present(alertaDos, animated: true, completion: nil)
-//    }
-//  }
-  
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento se ha enviado un código a su correo electrónico y/o un Mensaje de Whatsapp.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.waitingView.isHidden = true
         self.NewPasswordView.isHidden = false
       }))
       self.present(alertaDos, animated: true, completion: nil)

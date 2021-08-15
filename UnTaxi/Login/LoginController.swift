@@ -164,20 +164,11 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   @IBAction func RecuperarClave(_ sender: AnyObject) {
     //"#Recuperarclave,numero de telefono,#"
-    if !self.movilClaveRecover.text!.isEmpty{
-      self.view.resignFirstResponder()
-      apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!])
-      globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
-      movilClaveRecover.endEditing(true)
-      movilClaveRecover.text?.removeAll()
-    }else{
-      let alertaDos = UIAlertController (title: "Recuperar clave", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.movilClaveRecover.becomeFirstResponder()
-      }))
-      
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+    waitingView.isHidden = false
+    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!])
+    globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
+    movilClaveRecover.endEditing(true)
+    movilClaveRecover.text?.removeAll()
   }
   
   @IBAction func createNewPassword(_ sender: Any) {

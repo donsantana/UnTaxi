@@ -54,7 +54,7 @@ class YapaPanel: UIViewController {
     self.activeCodigoView.addGestureRecognizer(tapGesture)
     self.sendYapaView.addGestureRecognizer(tapGesture)
     
-    self.movilNumberText.placeholder = Locale.current.regionCode != nil ? self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description,withPrefix: false) : "Número de teléfono"
+    self.movilNumberText.placeholder = Locale.current.regionCode != nil ? "0\(String(describing: self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description,withPrefix: false)))" : "Número de teléfono"
     
     self.socketService.initYapaEvents()
     

@@ -13,61 +13,66 @@ extension RegistroController: UITextFieldDelegate{
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    textField.textColor = UIColor.black
-    textField.text?.removeAll()
-    
-    if textField.isEqual(countryCodeText){
-      picker.isHidden = false
-      textField.endEditing(true)
+    var distanceValue = 0
+    switch textField {
+    case claveText:
+      distanceValue = 80
+    case confirmarClavText:
+      textField.isSecureTextEntry = true
+      distanceValue = 180
+    case correoText:
+      distanceValue = 180
+    default:
+      break
     }
     
-    if textField.isEqual(claveText){
-      animateViewMoving(true, moveValue: 80, view: self.view)
-    }else{
-      if textField.isEqual(confirmarClavText) || textField.isEqual(correoText){
-        if textField.isEqual(confirmarClavText){
-          textField.isSecureTextEntry = true
-        }
-        textField.tintColor = UIColor.black
-        animateViewMoving(true, moveValue: 200, view: self.view)
-      }else{
-        if textField.isEqual(self.telefonoText){
-          textField.textColor = UIColor.black
-          //textField.text = ""
-          animateViewMoving(true, moveValue: 70, view: self.view)
-        }
-      }
-    }
+    animateViewMoving(true, moveValue: CGFloat(distanceValue), view: self.view)
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
-    textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
-    if textfield.isEqual(claveText){
-      animateViewMoving(false, moveValue: 80, view: self.view)
-    }else{
-      if textfield.isEqual(confirmarClavText) || textfield.isEqual(correoText){
-        if textfield.text != claveText.text && textfield.isEqual(confirmarClavText){
-          textfield.textColor = UIColor.red
-          textfield.text = "Las claves no coinciden"
-          textfield.isSecureTextEntry = false
-          crearCuentaBtn.isEnabled = false
-        }else{
-          crearCuentaBtn.isEnabled = true
-        }
-        animateViewMoving(false, moveValue: 200, view: self.view)
-      }else{
-        if textfield.isEqual(telefonoText){
-          if textfield.text?.count != 10{
-            let alertaDos = UIAlertController (title: "Error", message: "Número de teléfono incorrecto", preferredStyle: .alert)
-            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-              self.telefonoText.becomeFirstResponder()
-            }))
-            self.present(alertaDos, animated: true, completion: nil)
-          }
-          animateViewMoving(false, moveValue: 70, view: self.view)
-        }
+    //textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
+    
+    var distanceValue = 0
+    switch textfield {
+    case telefonoText:
+      let (valid, message) = textfield.validate(.movilNomber)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.telefonoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
       }
+    case claveText:
+      distanceValue = 80
+    case confirmarClavText:
+      let (valid, message) = validateTextField(textField: textfield)
+      if valid{
+        crearCuentaBtn.isEnabled = true
+      }else{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.confirmarClavText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
+      distanceValue = 180
+    case correoText:
+      let (valid, message) = textfield.validate(.email)
+      print("valid \(valid)")
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.correoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
+      distanceValue = 180
+    default:
+      break
     }
+    
+    animateViewMoving(false, moveValue: CGFloat(distanceValue), view: self.view)
   }
   
   @objc func textFieldDidChange(_ textField: UITextField) {
@@ -86,16 +91,81 @@ extension RegistroController: UITextFieldDelegate{
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.endEditing(true)
-    if textField.isEqual(self.correoText){
-      self.sendNewUserData()
+    print("Return pressed")
+    switch textField {
+    case telefonoText:
+      let (valid, message) = textField.validate(.movilNomber)
+      if valid {
+        nombreApText.becomeFirstResponder()
+      }
+      
+    case nombreApText:
+      claveText.becomeFirstResponder()
+    case claveText:
+      // Validate Text Field
+      let (valid, message) = validateTextField(textField: textField)
+      if valid {
+        confirmarClavText.becomeFirstResponder()
+      }
+    case confirmarClavText:
+      let (valid, message) = validateTextField(textField: textField)
+      if valid{
+        correoText.becomeFirstResponder()
+      }
+      break
+    case correoText:
+      let (valid, message) = textField.validate(.email)
+      print("valid \(valid)")
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.correoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }else{
+        self.sendNewUserData()
+      }
+      break
+    default:
+      telefonoText.resignFirstResponder()
     }
     return true
+  }
+  
+  // MARK: - Helper Methods
+
+  fileprivate func validateTextField( textField: UITextField) -> (Bool, String?) {
+      guard let text = textField.text else {
+          return (false, nil)
+      }
+
+    switch textField {
+    case telefonoText:
+      return (textField.text?.count == 10 && textField.text!.isValidPhoneString , "Número de teléfono incorrecto. Por favor verifíquelo")
+    case confirmarClavText:
+      return (text == claveText.text, "Las claves no coinciden")
+      
+    default:
+      return (text.count > 0, "This field cannot be empty.")
+    }
+
+      return (text.count > 0, "This field cannot be empty.")
   }
 }
 
 
 extension RegistroController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, registerUserAPI msg: String) {
+    DispatchQueue.main.async {
+      let alertaDos = UIAlertController (title: "Registro de usuario", message: msg, preferredStyle: .alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.goToLoginView()
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
+  }
+  
+  func apiRequest(_ controller: ApiService, getRegisterError msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: "Registro de usuario", message: msg, preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in

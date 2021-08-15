@@ -33,7 +33,6 @@ class SideMenuController: UIViewController {
     self.MenuView1.layer.borderWidth = 0.3
     self.MenuView1.layer.masksToBounds = false
     
-    self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.NombreUsuario.textColor = CustomAppColor.textColor
     //self.NombreUsuario.font = CustomAppFont.subtitleFont
     
@@ -49,6 +48,7 @@ class SideMenuController: UIViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
+    self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.yapaText.text = "$\(globalVariables.cliente.yapa)"
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
   }

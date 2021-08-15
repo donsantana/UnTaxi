@@ -14,13 +14,13 @@ class Tarifario {
   var precioHoraFuera: Double
   var precioKmFuera: Double
   
-  init(json: [String: Any]) {
-    let tarifaPorHorarios = json["horarios"] as! [[String: Any]]
+  init(jsonData: [String: Any]) {
+    let tarifaPorHorarios = jsonData["horarios"] as! [[String: Any]]
     for horarioTarifa in tarifaPorHorarios{
-      self.tarifas.append(Tarifa(json: horarioTarifa))
+      self.tarifas.append(Tarifa(jsonData: horarioTarifa))
     }
-    self.precioHoraFuera = json["precio_hora_fuera"] as! Double
-    self.precioKmFuera = json["precio_km_fuera"] as! Double
+    self.precioHoraFuera = !(jsonData["precio_hora_fuera"] is NSNull) ? jsonData["precio_hora_fuera"] as! Double : 0.0
+    self.precioKmFuera = !(jsonData["precio_km_fuera"] is NSNull) ? jsonData["precio_km_fuera"] as! Double : 0.0
   }
   
   func valorForDistance(distance: Double)->Double{

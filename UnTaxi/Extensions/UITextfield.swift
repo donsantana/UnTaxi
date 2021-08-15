@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+enum TextFieldDataType {
+  case movilNomber, password, email
+}
+
 extension UITextField {
   func setBottomBorder(borderColor: UIColor) {
     self.layer.masksToBounds = true
@@ -56,5 +60,29 @@ extension UITextField {
     self.layer.cornerRadius = 10
     self.layer.borderWidth = 1
     self.layer.borderColor = color.cgColor
+  }
+  
+  func validate(_ type: TextFieldDataType) -> (Bool, String?) {
+      guard let text = self.text else {
+          return (false, nil)
+      }
+
+    switch type {
+    case .movilNomber:
+      return (text.count == 10 && text.isValidPhoneString, "Número de teléfono incorrecto. Por favor verifíquelo")
+    case .password:
+      return (true, "Las claves no coinciden")
+    case .email:
+      let emailPattern = #"^\S+@\S+\.\S+$"#
+      let result = text.range(
+          of: emailPattern,
+          options: .regularExpression
+      )
+      return (result != nil, "Por favor teclee un correo electrónico válido.")
+    default:
+      return (text.count > 0, "This field cannot be empty.")
+    }
+
+      return (text.count > 0, "This field cannot be empty.")
   }
 }

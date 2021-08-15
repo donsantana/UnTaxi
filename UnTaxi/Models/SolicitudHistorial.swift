@@ -46,30 +46,29 @@ class SolicitudHistorial {
   var nombreapellidosconductor = ""
   
   //Agregar datos de la solicitud
-  init(json: [String: Any]){
-    self.id =  json["idsolicitud"] as! Int
-    self.fechaHora = OurDate(stringDate: json["fechahora"] as! String)
-    self.dirOrigen = json["dirorigen"] as! String
-    self.dirDestino = (json["dirdestino"] as! String) != "" ? json["dirdestino"] as! String : "No especificado"
-    self.importe = !(json["importe"] is NSNull) ? json["importe"] as! Double : 0.0
-    self.tarjeta = json["tarjeta"] as! Bool
-    self.yapa =  json["yapa"] as! Bool
-    self.matricula = json["matricula"] as! String
-    self.pagado = json["pagado"] as! Int
-    self.idEstado = json["idestado"] as! Int
+  init(jsonData: [String: Any]){
+    self.id =  !(jsonData["idsolicitud"] is NSNull) ? jsonData["idsolicitud"] as! Int : 0
+    self.fechaHora = !(jsonData["fechahora"] is NSNull) ? OurDate(stringDate: jsonData["fechahora"] as! String) : OurDate(date: Date())
+    self.dirOrigen = !(jsonData["dirorigen"] is NSNull) ? jsonData["dirorigen"] as! String : ""
+    self.dirDestino = !(jsonData["dirdestino"] is NSNull) ? (jsonData["dirdestino"] as! String) : "No especificado"
+    self.importe = !(jsonData["importe"] is NSNull) ? jsonData["importe"] as! Double : 0.0
+    self.tarjeta = !(jsonData["tarjeta"] is NSNull) ? jsonData["tarjeta"] as! Bool : false
+    self.yapa =  !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Bool : false
+    self.matricula = !(jsonData["matricula"] is NSNull) ? jsonData["matricula"] as! String : ""
+    self.pagado = !(jsonData["pagado"] is NSNull) ? jsonData["pagado"] as! Int : 0
+    self.idEstado = !(jsonData["idestado"] is NSNull) ? jsonData["idestado"] as! Int : 0
   }
   
-  func addDetails(details: [String: Any]){
-    print(details)
-    self.calificacion = details["calificacion"] as! Double
-    self.cantidadcalificacion = details["cantidadcalificacion"] as! Int
-    self.foto = details["foto"] as! String
-    self.importeyapa = details["importeyapa"] as! Int
-    self.latdestino = details["latdestino"] as! Double
-    self.latorigen = details["latorigen"] as! Double
-    self.lngdestino = details["lngdestino"] as! Double
-    self.lngorigen = details["lngorigen"] as! Double
-    self.nombreapellidosconductor = details["nombreapellidosconductor"] as! String
+  func addDetails(jsonDetails: [String: Any]){
+    self.calificacion = !(jsonDetails["calificacion"] is NSNull) ? jsonDetails["calificacion"] as! Double : 0.0
+    self.cantidadcalificacion = !(jsonDetails["idestado"] is NSNull) ? jsonDetails["cantidadcalificacion"] as! Int : 0
+    self.foto = !(jsonDetails["foto"] is NSNull) ? jsonDetails["foto"] as! String : ""
+    self.importeyapa = !(jsonDetails["importeyapa"] is NSNull) ? jsonDetails["importeyapa"] as! Int : 0
+    self.latorigen = !(jsonDetails["latorigen"] is NSNull) ? jsonDetails["latorigen"] as! Double : 0.0
+    self.lngorigen = !(jsonDetails["lngorigen"] is NSNull) ? jsonDetails["lngorigen"] as! Double : 0.0
+    self.latdestino = !(jsonDetails["latdestino"] is NSNull) ? jsonDetails["latdestino"] as! Double : 0.0
+    self.lngdestino = !(jsonDetails["lngdestino"] is NSNull) ? jsonDetails["lngdestino"] as! Double : 0.0
+    self.nombreapellidosconductor = !(jsonDetails["nombreapellidosconductor"] is NSNull) ? jsonDetails["nombreapellidosconductor"] as! String : ""
   }
   
   func solicitudStado()->String{

@@ -42,6 +42,7 @@ class RegistroController: UIViewController {
     apiService.delegate = self
     claveText.delegate = self
     telefonoText.delegate = self
+    nombreApText.delegate = self
     correoText.delegate = self
     confirmarClavText.delegate = self
     countryCodeText.delegate = self

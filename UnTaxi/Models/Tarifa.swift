@@ -18,15 +18,15 @@ class Tarifa {
   var tresadiezkm: Double
   var tresadelantekm: Double //diez en adelante
   
-  init(json: [String: Any]){
-    self.horaInicio = json["hora_inicio"] as! Int
-    self.horaFin = json["hora_fin"] as! Int
-    self.valorMinimo = json["minima"] as! Double
-    self.tiempoEspera = json["tiempo_espera"] as! Double
-    self.valorArranque = json["arranque"] as! Double
-    self.unoatreskm = json["unoatreskm"] as! Double
-    self.tresadiezkm = json["tresadiezkm"] as! Double
-    self.tresadelantekm = json["tresadelantekm"] as! Double
+  init(jsonData: [String: Any]){
+    self.horaInicio = !(jsonData["hora_inicio"] is NSNull) ? jsonData["hora_inicio"] as! Int : 0
+    self.horaFin = !(jsonData["hora_fin"] is NSNull) ? jsonData["hora_fin"] as! Int : 0
+    self.valorMinimo = !(jsonData["minima"] is NSNull) ? jsonData["minima"] as! Double : 0.0
+    self.tiempoEspera = !(jsonData["tiempo_espera"] is NSNull) ? jsonData["tiempo_espera"] as! Double : 0.0
+    self.valorArranque = !(jsonData["arranque"] is NSNull) ? jsonData["arranque"] as! Double : 0.0
+    self.unoatreskm = !(jsonData["unoatreskm"] is NSNull) ? jsonData["unoatreskm"] as! Double : 0.0
+    self.tresadiezkm = !(jsonData["tresadiezkm"] is NSNull) ? jsonData["tresadiezkm"] as! Double : 0.0
+    self.tresadelantekm = !(jsonData["tresadelantekm"] is NSNull) ? jsonData["tresadelantekm"] as! Double : 0.0
   }
   
 }

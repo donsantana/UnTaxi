@@ -142,7 +142,7 @@ extension HistorialDetailsController: SocketServiceDelegate{
     if result["code"] as! Int == 1{
       let datos = result["datos"] as! [String: Any]
       print("Details result \(datos)")
-      self.solicitud.addDetails(details: datos)
+      self.solicitud.addDetails(jsonDetails: datos)
       if !(datos["idconductor"] is NSNull) && datos["idconductor"] != nil{
         self.idConductor = datos["idconductor"] as! Int
         self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"

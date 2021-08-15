@@ -53,7 +53,8 @@ extension OfertasController: SocketServiceDelegate{
     let arrayTaxiId = globalVariables.ofertasList.map{$0.idTaxi}
     
     if (self.solicitud.id == (result["idsolicitud"] as! Int)) && !arrayTaxiId.contains(result["idtaxi"] as! Int){
-      let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
+      let newOferta = Oferta(jsonData: result)
+//      let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
 
       globalVariables.ofertasList.append(newOferta)
       self.ofertasTableView.reloadData()
@@ -61,10 +62,12 @@ extension OfertasController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, aceptaroferta result: [String: Any]){
+    print(result)
     self.progressTimer.invalidate()
     self.ofertaAceptadaEffect.isHidden = true
     if result["code"] as! Int == 1{
       let solicitudCreada = globalVariables.solpendientes.filter({$0.id == self.ofertaSeleccionada.id}).first
+      solicitudCreada?.valorOferta = self.ofertaSeleccionada.valorOferta
       let newTaxi = Taxi(id: self.ofertaSeleccionada.idTaxi, matricula: self.ofertaSeleccionada.matricula, codigo: self.ofertaSeleccionada.codigo, marca: self.ofertaSeleccionada.marca, color: self.ofertaSeleccionada.color, lat: self.ofertaSeleccionada.location.latitude, long: self.ofertaSeleccionada.location.longitude, conductor: Conductor(idConductor: self.ofertaSeleccionada.idConductor, nombre: self.ofertaSeleccionada.nombreConductor, telefono: self.ofertaSeleccionada.movilConductor, urlFoto: self.ofertaSeleccionada.urlFoto, calificacion: self.ofertaSeleccionada.calificacion, cantidadcalificaciones: self.ofertaSeleccionada.totalCalif))
       solicitudCreada!.DatosTaxiConductor(taxi: newTaxi)
       globalVariables.ofertasList.removeAll()

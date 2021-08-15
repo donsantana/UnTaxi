@@ -46,7 +46,7 @@ extension HistorialController: SocketServiceDelegate{
     if result["code"] as! Int == 1{
       let historialJson = result["datos"] as! [[String: Any]]
       for solicitudHistory in historialJson{
-        self.historialSolicitudesList.append(SolicitudHistorial(json: solicitudHistory))
+        self.historialSolicitudesList.append(SolicitudHistorial(jsonData: solicitudHistory))
       }
       if self.historialSolicitudesList.count > 0{
         self.tableView.reloadData()

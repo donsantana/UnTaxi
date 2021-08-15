@@ -2201,7 +2201,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                                     <action selector="actualizarPhto:" destination="d0f-sE-lC7" eventType="touchUpInside" id="iKT-dg-1z0"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre y apellidos" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHX-IQ-LQl" customClass="JiroTextField" customModule="TextFieldEffects">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHX-IQ-LQl" customClass="JiroTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="20" y="226" width="354" height="45"/>
                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2221,7 +2221,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de Teléfono" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bU3-oG-O2a" customClass="JiroTextField" customModule="TextFieldEffects">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre y apellidos" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bU3-oG-O2a" customClass="JiroTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="20" y="286" width="354" height="45"/>
                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2249,7 +2249,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                                     <constraint firstAttribute="height" constant="45" id="JPE-bb-yAj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
                                                         <integer key="value" value="10"/>
@@ -2387,14 +2387,14 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         <outlet property="ActualizarBtn" destination="sFm-ZK-aI2" id="GTI-jp-ucY"/>
                         <outlet property="changePassBtn" destination="84A-te-Seh" id="0ZC-FP-ELD"/>
                         <outlet property="emailText" destination="3Gz-4M-Mvh" id="lnU-0Y-H9i"/>
-                        <outlet property="nombreApellidosText" destination="jHX-IQ-LQl" id="IKh-UQ-xCp"/>
+                        <outlet property="nombreApellidosText" destination="bU3-oG-O2a" id="7cJ-g6-uaZ"/>
                         <outlet property="perfilBackground" destination="ojg-L1-iY2" id="BU2-zA-6Pn"/>
                         <outlet property="perfilViewHeight" destination="kuN-xq-fLU" id="LY0-bu-JjR"/>
                         <outlet property="subtitleText" destination="qhZ-VZ-3xd" id="86q-gB-zXO"/>
                         <outlet property="titleText" destination="0tX-97-W9n" id="6q1-li-nUz"/>
                         <outlet property="updatePhto" destination="aw2-Nj-dJM" id="4qe-ag-DAW"/>
                         <outlet property="userPerfilPhoto" destination="Q2c-3R-i2R" id="xIa-xt-IsY"/>
-                        <outlet property="usuarioText" destination="bU3-oG-O2a" id="4qw-kb-ci2"/>
+                        <outlet property="usuarioText" destination="jHX-IQ-LQl" id="Kos-M3-evS"/>
                         <outlet property="waitingView" destination="xac-Hf-t58" id="tRE-y1-3OV"/>
                     </connections>
                 </viewController>
@@ -3898,7 +3898,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
             <size key="intrinsicContentSize" width="146" height="34"/>
         </designable>
         <designable name="bU3-oG-O2a">
-            <size key="intrinsicContentSize" width="167.5" height="34"/>
+            <size key="intrinsicContentSize" width="161.5" height="34"/>
         </designable>
         <designable name="bo8-FE-LXm">
             <size key="intrinsicContentSize" width="48.5" height="34"/>
@@ -3907,7 +3907,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
             <size key="intrinsicContentSize" width="107" height="34"/>
         </designable>
         <designable name="jHX-IQ-LQl">
-            <size key="intrinsicContentSize" width="161.5" height="34"/>
+            <size key="intrinsicContentSize" width="165" height="34"/>
         </designable>
     </designables>
     <resources>

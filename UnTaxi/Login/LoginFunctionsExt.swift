@@ -45,7 +45,7 @@ extension LoginController{
     }
     
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
-    globalVariables.tarifario = Tarifario(json:datos["tarifas"] as! [String: Any])
+    globalVariables.tarifario = Tarifario(jsonData: datos["tarifas"] as! [String: Any])
     globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
     

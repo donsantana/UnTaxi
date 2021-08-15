@@ -45,6 +45,7 @@ class PerfilController: BaseController {
     
     self.changePassBtn.addBorder(color: CustomAppColor.buttonActionColor)
     apiService.delegate = self
+    emailText.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     //UILabel.appearance().textColor = .lightGray
     
@@ -115,13 +116,11 @@ class PerfilController: BaseController {
   
   func EnviarActualizacion() {
     if self.usuarioText.text!.isEmpty && self.emailText.text!.isEmpty{
-      let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando en enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
+      let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando de enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         
       }))
-      
       self.present(alertaDos, animated: true, completion: nil)
-      
     }else{
       let params = [
         "nombreapellidos": self.nombreApellidosText.text as Any,

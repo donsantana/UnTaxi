@@ -24,6 +24,7 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]])
   func apiRequest(_ controller: ApiService, cardRemoved result: String?)
   func apiRequest(_ controller: ApiService, getLoginError msg: String)
+  func apiRequest(_ controller: ApiService, getRegisterError msg: String)
 }
 
 final class ApiService {
@@ -54,10 +55,15 @@ final class ApiService {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           self.delegate?.apiRequest(self, registerUserAPI: json["msg"] as! String)
         } catch {
-          print("error")
+          self.delegate?.apiRequest(self, registerUserAPI: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
       }else{
-        self.handlerExceptions(error: "API error")
+        do {
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          self.delegate?.apiRequest(self, getRegisterError: json["msg"] as! String)
+        } catch {
+          self.delegate?.apiRequest(self, registerUserAPI: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+        }
       }
     })
     
@@ -408,4 +414,5 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]]){}
   func apiRequest(_ controller: ApiService, cardRemoved result: String?){}
   func apiRequest(_ controller: ApiService, getLoginError msg: String){}
+  func apiRequest(_ controller: ApiService, getRegisterError msg: String){}
 }

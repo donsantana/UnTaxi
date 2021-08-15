@@ -13,15 +13,18 @@ extension PerfilController: UITextFieldDelegate{
   //CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if textField.restorationIdentifier != "NuevoTelefono" && textField.restorationIdentifier != "NuevoCorreo"{
+    if textField.isEqual(emailText){
       animateViewMoving(true, moveValue: 180, view: self.view)
       textField.textColor = UIColor.black
-      textField.text?.removeAll()
     }
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
     textfield.resignFirstResponder()
+    if textfield.isEqual(emailText){
+      animateViewMoving(false, moveValue: 180, view: self.view)
+      textfield.textColor = UIColor.black
+    }
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -66,10 +69,9 @@ extension PerfilController: ApiServiceDelegate{
     DispatchQueue.main.async {
       self.waitingView.isHidden = true
     }
-    
+    globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
     let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
       self.goToInicioView()
     }))
     

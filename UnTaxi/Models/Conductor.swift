@@ -25,6 +25,16 @@ class Conductor{
     self.cantidadcalificaciones = 0
     
   }
+  
+  init(jsonData: [String: Any]) {
+    self.idConductor = !(jsonData["idconductor"] is NSNull) ? jsonData["idconductor"] as! Int : 0
+    self.nombreApellido = !(jsonData["nombreapellidosconductor"] is NSNull) ? jsonData["nombreapellidosconductor"] as! String : ""
+    self.telefono = !(jsonData["telefonoconductor"] is NSNull) ? jsonData["telefonoconductor"] as! String : ""
+    self.urlFoto = !(jsonData["foto"] is NSNull) ? jsonData["foto"] as! String : ""
+    self.calificacion = !(jsonData["calificacion"] is NSNull) ? jsonData["calificacion"] as! Double : 0.0
+    self.cantidadcalificaciones = !(jsonData["cantidadcalificacion"] is NSNull) ? jsonData["cantidadcalificacion"] as! Int : 0
+  }
+  
   init(idConductor: Int, nombre: String, telefono: String, urlFoto: String, calificacion: Double, cantidadcalificaciones: Int){
     self.idConductor = idConductor
     self.nombreApellido = nombre
