@@ -165,14 +165,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psT-Y5-iBj">
-                                        <rect key="frame" x="0.0" y="-1" width="414" height="897"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jn4-Rz-SNt">
-                                                <rect key="frame" x="15" y="253.5" width="384" height="353"/>
+                                                <rect key="frame" x="15" y="271.5" width="384" height="353"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recuperar de clave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2i-Rl-4d6">
                                                         <rect key="frame" x="24" y="29" width="301" height="27"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -182,8 +182,7 @@
                                                             <constraint firstAttribute="width" secondItem="ZzR-LP-agW" secondAttribute="height" multiplier="153:47" id="ahu-3H-Ncy"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment>
-                                                                <string key="content">Estimado Cliente: Ingrese el número de teléfono con el cual se registró. En  unos minutos recibirá un correo con la nueva clave.</string>
+                                                            <fragment content="Estimado Cliente: Ingrese el número de teléfono con el cual se registró.">
                                                                 <attributes>
                                                                     <font key="NSFont" size="16" name="HelveticaNeue"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -274,22 +273,22 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d87-tg-3L4">
-                                                <rect key="frame" x="15" y="255" width="384" height="353"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crear nueva clave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-Vs-bMs">
-                                                        <rect key="frame" x="20" y="25" width="344" height="23"/>
+                                                        <rect key="frame" x="30" y="270.5" width="311" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="23" id="uka-6P-jVo"/>
+                                                            <constraint firstAttribute="height" constant="30" id="tiq-xZ-vfZ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Código recibido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uUO-Nv-ZZU" customClass="JiroTextField" customModule="TextFieldEffects">
-                                                        <rect key="frame" x="27" y="97" width="332" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Código recibido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uUO-Nv-ZZU" customClass="JiroTextField" customModule="TextFieldEffects">
+                                                        <rect key="frame" x="30" y="347" width="354" height="34"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                                 <real key="value" value="1"/>
@@ -303,13 +302,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teclee la nueva clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-E3-N1k" customClass="JiroTextField" customModule="TextFieldEffects">
-                                                        <rect key="frame" x="25" y="154" width="334" height="45"/>
+                                                        <rect key="frame" x="30" y="425.5" width="354" height="45"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="NMG-BN-a9r"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                                 <real key="value" value="1"/>
@@ -322,11 +321,11 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confime la clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-sD-B91" customClass="JiroTextField" customModule="TextFieldEffects">
-                                                        <rect key="frame" x="27" y="216" width="332" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confime la clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-sD-B91" customClass="JiroTextField" customModule="TextFieldEffects">
+                                                        <rect key="frame" x="30" y="493" width="354" height="34"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                                 <real key="value" value="1"/>
@@ -339,8 +338,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E93-al-Z2C">
-                                                        <rect key="frame" x="25" y="293" width="334" height="40"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E93-al-Z2C">
+                                                        <rect key="frame" x="30" y="585.5" width="354" height="40"/>
                                                         <color key="backgroundColor" red="0.98823529409999999" green="0.81568627449999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="DfX-dr-Lu1"/>
@@ -358,41 +357,53 @@
                                                             <action selector="createNewPassword:" destination="QTQ-3J-uLL" eventType="touchUpInside" id="cj2-xL-vlg"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9T-pz-Zn6">
-                                                        <rect key="frame" x="339" y="10" width="35" height="35"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9T-pz-Zn6">
+                                                        <rect key="frame" x="349" y="268" width="35" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="L7h-20-c06"/>
                                                             <constraint firstAttribute="width" constant="35" id="Lru-Ex-mip"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                                        <state key="normal" title="X">
+                                                        <state key="normal" image="close">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="closeNewPasswordView:" destination="QTQ-3J-uLL" eventType="touchUpInside" id="0lw-f4-GdX"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGe-0g-TBd">
+                                                        <rect key="frame" x="30" y="644" width="354" height="40"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <state key="normal" title="Reenviar código de verificación"/>
+                                                        <connections>
+                                                            <action selector="reenviarCodigo:" destination="QTQ-3J-uLL" eventType="touchUpInside" id="I2c-Lp-BH1"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="353" id="4OQ-rs-Sqq"/>
-                                                    <constraint firstItem="E93-al-Z2C" firstAttribute="trailing" secondItem="kDx-sD-B91" secondAttribute="trailing" id="BoZ-kC-mPl"/>
-                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="CWr-XS-oK5"/>
-                                                    <constraint firstItem="X8m-E3-N1k" firstAttribute="leading" secondItem="d87-tg-3L4" secondAttribute="leading" constant="25" id="Cre-Ih-sPL"/>
-                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="height" secondItem="X8m-E3-N1k" secondAttribute="height" id="GFK-yo-N7W"/>
-                                                    <constraint firstItem="hbo-Vs-bMs" firstAttribute="top" secondItem="d87-tg-3L4" secondAttribute="top" constant="25" id="JtL-7T-dud"/>
-                                                    <constraint firstAttribute="bottom" secondItem="E93-al-Z2C" secondAttribute="bottom" constant="20" id="Rjf-vk-G77"/>
-                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="Vk9-hk-Ow0"/>
-                                                    <constraint firstItem="X8m-E3-N1k" firstAttribute="centerY" secondItem="d87-tg-3L4" secondAttribute="centerY" id="XAA-bL-MII"/>
-                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="Y35-pq-R41"/>
-                                                    <constraint firstItem="E93-al-Z2C" firstAttribute="leading" secondItem="kDx-sD-B91" secondAttribute="leading" id="hLF-ZC-CeW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="B9T-pz-Zn6" secondAttribute="trailing" constant="10" id="hgz-2D-Hlw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="hbo-Vs-bMs" secondAttribute="trailing" constant="20" id="idU-oo-KtT"/>
-                                                    <constraint firstItem="hbo-Vs-bMs" firstAttribute="leading" secondItem="d87-tg-3L4" secondAttribute="leading" constant="20" id="lOJ-Oh-srB"/>
-                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="height" secondItem="X8m-E3-N1k" secondAttribute="height" id="mmi-EJ-oBh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" constant="25" id="qWg-HX-7nl"/>
-                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="rpj-ZH-m4V"/>
-                                                    <constraint firstItem="B9T-pz-Zn6" firstAttribute="top" secondItem="d87-tg-3L4" secondAttribute="top" constant="10" id="zIK-Wg-UNL"/>
+                                                    <constraint firstItem="E93-al-Z2C" firstAttribute="top" secondItem="kDx-sD-B91" secondAttribute="bottom" constant="40" id="0dV-H5-WJe"/>
+                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="7LX-nG-EnH"/>
+                                                    <constraint firstItem="B9T-pz-Zn6" firstAttribute="centerY" secondItem="hbo-Vs-bMs" secondAttribute="centerY" id="Ahg-5p-43h"/>
+                                                    <constraint firstItem="sGe-0g-TBd" firstAttribute="top" secondItem="E93-al-Z2C" secondAttribute="bottom" constant="18.5" id="Dd5-az-6kQ"/>
+                                                    <constraint firstItem="B9T-pz-Zn6" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="HbF-q7-oXb"/>
+                                                    <constraint firstItem="B9T-pz-Zn6" firstAttribute="leading" secondItem="hbo-Vs-bMs" secondAttribute="trailing" constant="8" symbolic="YES" id="N4Y-z2-lDV"/>
+                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="PHw-wJ-E1G"/>
+                                                    <constraint firstItem="X8m-E3-N1k" firstAttribute="centerY" secondItem="d87-tg-3L4" secondAttribute="centerY" id="PTG-AM-PZL"/>
+                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="QU2-pO-bC0"/>
+                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="height" secondItem="X8m-E3-N1k" secondAttribute="height" id="Qc2-Dp-108"/>
+                                                    <constraint firstItem="sGe-0g-TBd" firstAttribute="trailing" secondItem="E93-al-Z2C" secondAttribute="trailing" id="SgM-QG-iim"/>
+                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="top" secondItem="X8m-E3-N1k" secondAttribute="bottom" constant="30" id="V7V-sa-n1Q"/>
+                                                    <constraint firstItem="kDx-sD-B91" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="aBK-18-nkJ"/>
+                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="top" secondItem="hbo-Vs-bMs" secondAttribute="bottom" constant="50" id="b6y-ON-jYe"/>
+                                                    <constraint firstItem="sGe-0g-TBd" firstAttribute="leading" secondItem="E93-al-Z2C" secondAttribute="leading" id="dRN-Mx-rGL"/>
+                                                    <constraint firstItem="X8m-E3-N1k" firstAttribute="top" secondItem="uUO-Nv-ZZU" secondAttribute="bottom" constant="30" id="dhg-gs-DnH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" constant="30" id="h3r-ab-odh"/>
+                                                    <constraint firstItem="X8m-E3-N1k" firstAttribute="leading" secondItem="d87-tg-3L4" secondAttribute="leading" constant="30" id="idL-y0-A1p"/>
+                                                    <constraint firstItem="E93-al-Z2C" firstAttribute="trailing" secondItem="X8m-E3-N1k" secondAttribute="trailing" id="msa-a3-fS5"/>
+                                                    <constraint firstItem="hbo-Vs-bMs" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="taD-8E-cS6"/>
+                                                    <constraint firstItem="E93-al-Z2C" firstAttribute="leading" secondItem="X8m-E3-N1k" secondAttribute="leading" id="wzk-fu-DV8"/>
+                                                    <constraint firstItem="uUO-Nv-ZZU" firstAttribute="height" secondItem="X8m-E3-N1k" secondAttribute="height" id="xmV-g4-yRF"/>
+                                                    <constraint firstItem="sGe-0g-TBd" firstAttribute="height" secondItem="E93-al-Z2C" secondAttribute="height" id="xsO-ne-lWN"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -403,12 +414,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="d87-tg-3L4" secondAttribute="trailing" constant="15" id="GA8-aT-afe"/>
-                                            <constraint firstItem="Jn4-Rz-SNt" firstAttribute="leading" secondItem="psT-Y5-iBj" secondAttribute="leading" constant="15" id="Ozn-Qn-XE8"/>
-                                            <constraint firstAttribute="trailing" secondItem="Jn4-Rz-SNt" secondAttribute="trailing" constant="15" id="c6q-7d-Hjk"/>
-                                            <constraint firstItem="d87-tg-3L4" firstAttribute="leading" secondItem="psT-Y5-iBj" secondAttribute="leading" constant="15" id="eyv-I5-luh"/>
-                                            <constraint firstItem="d87-tg-3L4" firstAttribute="centerY" secondItem="psT-Y5-iBj" secondAttribute="centerY" constant="-17" id="g8q-9G-2fO"/>
-                                            <constraint firstItem="Jn4-Rz-SNt" firstAttribute="centerY" secondItem="psT-Y5-iBj" secondAttribute="centerY" constant="-18.333333333333485" id="vJn-IH-yql"/>
+                                            <constraint firstAttribute="trailing" secondItem="d87-tg-3L4" secondAttribute="trailing" id="0uK-ho-2rY"/>
+                                            <constraint firstItem="d87-tg-3L4" firstAttribute="leading" secondItem="psT-Y5-iBj" secondAttribute="leading" id="1d6-E0-1KV"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jn4-Rz-SNt" secondAttribute="trailing" constant="15" id="3aa-mL-xJ1"/>
+                                            <constraint firstAttribute="bottom" secondItem="d87-tg-3L4" secondAttribute="bottom" id="FVo-5u-jAF"/>
+                                            <constraint firstItem="Jn4-Rz-SNt" firstAttribute="centerY" secondItem="psT-Y5-iBj" secondAttribute="centerY" id="P3g-kx-rbK"/>
+                                            <constraint firstItem="d87-tg-3L4" firstAttribute="top" secondItem="psT-Y5-iBj" secondAttribute="top" id="WWx-JJ-Bze"/>
+                                            <constraint firstItem="Jn4-Rz-SNt" firstAttribute="leading" secondItem="psT-Y5-iBj" secondAttribute="leading" constant="15" id="pMS-Aj-Pr3"/>
                                         </constraints>
                                     </view>
                                     <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmX-i2-GaC">
@@ -437,15 +449,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ZXM-6u-efE" firstAttribute="leading" secondItem="gTE-vd-UOh" secondAttribute="leading" constant="27" id="1RE-K7-Cxy"/>
-                                    <constraint firstItem="psT-Y5-iBj" firstAttribute="bottom" secondItem="gTE-vd-UOh" secondAttribute="bottom" id="3ol-mV-QOY"/>
+                                    <constraint firstAttribute="bottom" secondItem="psT-Y5-iBj" secondAttribute="bottom" id="3qc-y2-xMY"/>
                                     <constraint firstItem="uJC-zN-quS" firstAttribute="trailing" secondItem="ZXM-6u-efE" secondAttribute="trailing" constant="-10" id="90X-Gp-gau"/>
-                                    <constraint firstItem="psT-Y5-iBj" firstAttribute="leading" secondItem="gTE-vd-UOh" secondAttribute="leading" id="ASc-AS-zcx"/>
+                                    <constraint firstItem="psT-Y5-iBj" firstAttribute="top" secondItem="gTE-vd-UOh" secondAttribute="top" id="Es8-qB-FwB"/>
                                     <constraint firstAttribute="trailing" secondItem="GyM-ka-3fg" secondAttribute="trailing" constant="17" id="FCV-Pz-fXr"/>
                                     <constraint firstItem="ash-6p-Drb" firstAttribute="top" secondItem="ZXM-6u-efE" secondAttribute="bottom" constant="10" id="FSc-gx-GGb"/>
                                     <constraint firstAttribute="trailing" secondItem="se4-1U-mmq" secondAttribute="trailing" id="JEv-KW-6a8"/>
                                     <constraint firstAttribute="bottom" secondItem="GyM-ka-3fg" secondAttribute="bottom" constant="40" id="Mvj-e5-Xxr"/>
                                     <constraint firstItem="ash-6p-Drb" firstAttribute="trailing" secondItem="ZXM-6u-efE" secondAttribute="centerX" id="QTE-kU-U16"/>
-                                    <constraint firstAttribute="trailing" secondItem="psT-Y5-iBj" secondAttribute="trailing" id="Vt6-Sx-eG1"/>
+                                    <constraint firstItem="psT-Y5-iBj" firstAttribute="leading" secondItem="gTE-vd-UOh" secondAttribute="leading" id="RjV-MY-4U7"/>
+                                    <constraint firstAttribute="trailing" secondItem="psT-Y5-iBj" secondAttribute="trailing" id="UYu-l6-1oK"/>
                                     <constraint firstAttribute="trailing" secondItem="ZXM-6u-efE" secondAttribute="trailing" constant="27" id="XNb-4k-IDU"/>
                                     <constraint firstAttribute="bottom" secondItem="HmX-i2-GaC" secondAttribute="bottom" id="Xdk-ep-bSC"/>
                                     <constraint firstItem="ZXM-6u-efE" firstAttribute="top" secondItem="se4-1U-mmq" secondAttribute="bottom" constant="12.5" id="YNW-hd-zRW"/>
@@ -456,7 +469,6 @@
                                     <constraint firstAttribute="trailing" secondItem="HmX-i2-GaC" secondAttribute="trailing" id="kyS-sT-enb"/>
                                     <constraint firstItem="HmX-i2-GaC" firstAttribute="top" secondItem="gTE-vd-UOh" secondAttribute="top" id="lOP-8X-gpU"/>
                                     <constraint firstItem="ZXM-6u-efE" firstAttribute="top" secondItem="gTE-vd-UOh" secondAttribute="centerY" constant="-25" id="m8d-ib-q7n"/>
-                                    <constraint firstItem="psT-Y5-iBj" firstAttribute="top" secondItem="gTE-vd-UOh" secondAttribute="top" constant="-1" id="ojH-jU-7vP"/>
                                     <constraint firstItem="uJC-zN-quS" firstAttribute="top" secondItem="ash-6p-Drb" secondAttribute="top" id="rat-df-8ic"/>
                                     <constraint firstItem="se4-1U-mmq" firstAttribute="top" secondItem="gTE-vd-UOh" secondAttribute="top" id="yg3-ob-GYd"/>
                                 </constraints>
@@ -492,14 +504,14 @@
                         <outlet property="clave" destination="J7N-rA-MSZ" id="uIM-cq-fuu"/>
                         <outlet property="claveRecoverView" destination="psT-Y5-iBj" id="0GF-jX-Iv7"/>
                         <outlet property="codigoText" destination="uUO-Nv-ZZU" id="R7k-cT-uxl"/>
-                        <outlet property="crearNewPasswordText" destination="E93-al-Z2C" id="Ngy-Xx-ifg"/>
+                        <outlet property="crearNewPasswordBtn" destination="E93-al-Z2C" id="Ngy-Xx-ifg"/>
                         <outlet property="loginBackView" destination="gTE-vd-UOh" id="xKM-cO-chb"/>
                         <outlet property="loginDatosViewHeight" destination="VZZ-xs-u7N" id="sla-C5-Yh1"/>
                         <outlet property="movilClaveRecover" destination="SPg-He-6sH" id="oYx-tR-sbH"/>
                         <outlet property="movilClaveRecoverHeight" destination="ywW-I9-N3v" id="5v1-ZE-g6V"/>
+                        <outlet property="newPassConfirmText" destination="kDx-sD-B91" id="WgH-WV-9CI"/>
                         <outlet property="newPasswordFormHeight" destination="NMG-BN-a9r" id="dmG-sc-Gdi"/>
                         <outlet property="newPasswordText" destination="X8m-E3-N1k" id="wSF-wy-S8m"/>
-                        <outlet property="passwordMatch" destination="kDx-sD-B91" id="WgH-WV-9CI"/>
                         <outlet property="recoverDataView" destination="Jn4-Rz-SNt" id="wya-fh-UF5"/>
                         <outlet property="showHideClaveBtn" destination="gd2-BD-bDO" id="stP-yz-Qlh"/>
                         <outlet property="textFieldHeight" destination="IyH-S6-A2T" id="43Q-lD-4F7"/>

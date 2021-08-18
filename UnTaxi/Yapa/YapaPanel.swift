@@ -46,6 +46,7 @@ class YapaPanel: UIViewController {
     self.montoText.addBorder(color: CustomAppColor.buttonActionColor)
     
     self.movilNumberText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    //self.montoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     
     self.sendYapaView.isHidden = (actionType == 1)
     // Do any additional setup after loading the view.
@@ -54,7 +55,7 @@ class YapaPanel: UIViewController {
     self.activeCodigoView.addGestureRecognizer(tapGesture)
     self.sendYapaView.addGestureRecognizer(tapGesture)
     
-    self.movilNumberText.placeholder = Locale.current.regionCode != nil ? "0\(String(describing: self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description,withPrefix: false)))" : "Número de teléfono"
+    self.movilNumberText.placeholder = "Escriba el número de teléfono"
     
     self.socketService.initYapaEvents()
     
@@ -64,9 +65,28 @@ class YapaPanel: UIViewController {
   }
   
   @objc func textFieldDidChange(_ textField: UITextField) {
-    if textField.text?.digitString.count == 10{
-      self.isCliente()
+    switch textField {
+    case nombreText:
+      nombreText.text?.removeAll()
+      self.sendYapaBtn.isEnabled = false
+      if textField.text?.digitString.count == 10{
+        let (valid, message) = textField.validate(.movilNumber)
+        if !valid{
+          let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+          alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+            self.movilNumberText.becomeFirstResponder()
+          }))
+          self.present(alertaDos, animated: true, completion: nil)
+        }else{
+          self.isCliente()
+        }
+      }
+    case montoText:
+      montoText.text = montoText.text?.replacingOccurrences(of: ",", with: ".").digitsAndPeriods
+    default:
+      break
     }
+    
   }
   
   
@@ -76,47 +96,14 @@ class YapaPanel: UIViewController {
   }
   
   func isCliente(){
-    print("este user: \(self.movilNumberText.text!.digitString)")
     socketService.socketEmit("buscarclientepormovil", datos: [
       "idcliente": globalVariables.cliente.id!,
-      "movil": self.movilNumberText.text!.digitString
+      "movil": self.movilNumberText.text!.replacingOccurrences(of: ",", with: ".").digitString
     ])
   }
   
   //MARK:- CONTROL DE TECLADO VIRTUAL
- 
-//  @objc func keyboardWillShow(notification: NSNotification) {
-//    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//      print("y \(activeTextField.frame.origin.y) \(keyboardSize.height)")
-//      if activeTextField.frame.origin.y > keyboardSize.height{
-//        print("TextField oculto")
-//        self.view.frame.origin.y = -keyboardSize.height
-//        self.keyboardHeight = keyboardSize.height
-//      }else{
-//        print("TextField ok")
-//      }
-////      if self.navigationController?.isNavigationBarHidden == false {
-////        print("moviendo panel")
-//////        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
-////      }else{
-////        self.view.frame.origin.y = -keyboardSize.height
-////        self.keyboardHeight = keyboardSize.height
-////      }
-//    }
-//  }
-//
-//  @objc func keyboardWillHide(notification: NSNotification) {
-//    if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-//      self.view.frame.origin.y = 0
-////      if self.navigationController?.isNavigationBarHidden == false {
-//////        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
-////      }else{
-////        self.view.frame.origin.y = 0
-////      }
-//    }
-//
-//  }
-  
+
   @objc
      dynamic func keyboardWillShow(
          _ notification: NSNotification
@@ -195,7 +182,7 @@ class YapaPanel: UIViewController {
   @IBAction func sendYapa(_ sender: Any) {
     self.view.endEditing(true)
     print("Yapa value \((self.montoText.text!.digitsAndPeriods as NSString).doubleValue)-\(globalVariables.cliente.yapa)")
-    if (self.montoText.text!.digitsAndPeriods as NSString).doubleValue <= globalVariables.cliente.yapa{
+    if (self.montoText.text!.digitsAndPeriods as NSString).doubleValue > 0.0 && (self.montoText.text!.digitsAndPeriods as NSString).doubleValue <= globalVariables.cliente.yapa{
     socketService.socketEmit("pasaryapa", datos: [
       "idclientenew": self.idReceptorYapa,
       "idclienteold": globalVariables.cliente.id!,
@@ -281,6 +268,8 @@ extension YapaPanel: UITextFieldDelegate{
     ])
     return true
   }
+  
+  
   
   func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
     let movementDuration:TimeInterval = 0.3

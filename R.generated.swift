@@ -416,7 +416,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 94 images.
+  /// This `R.image` struct is generated, and contains static references to 95 images.
   struct image {
     /// Image `CLARO`.
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
@@ -424,6 +424,8 @@ struct R: Rswift.Validatable {
     static let cnT = Rswift.ImageResource(bundle: R.hostingBundle, name: "CNT")
     /// Image `MOVISTAR`.
     static let movistaR = Rswift.ImageResource(bundle: R.hostingBundle, name: "MOVISTAR")
+    /// Image `agendaIcon`.
+    static let agendaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "agendaIcon")
     /// Image `ax`.
     static let ax = Rswift.ImageResource(bundle: R.hostingBundle, name: "ax")
     /// Image `backIcon`.
@@ -625,6 +627,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "MOVISTAR", bundle: ..., traitCollection: ...)`
     static func movistaR(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.movistaR, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "agendaIcon", bundle: ..., traitCollection: ...)`
+    static func agendaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.agendaIcon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -2022,6 +2031,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "agendaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'agendaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'calendar' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cancelar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -2040,7 +2050,6 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "panicoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'panicoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "referenciaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'referenciaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "search", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'search' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "smsvoz", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }

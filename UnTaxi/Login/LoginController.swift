@@ -58,8 +58,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   @IBOutlet weak var NewPasswordView: UIView!
   @IBOutlet weak var codigoText: UITextField!
   @IBOutlet weak var newPasswordText: UITextField!
-  @IBOutlet weak var passwordMatch: UITextField!
-  @IBOutlet weak var crearNewPasswordText: UIButton!
+  @IBOutlet weak var newPassConfirmText: UITextField!
+  @IBOutlet weak var crearNewPasswordBtn: UIButton!
   
   
   //CONSTRAINTS DEFINITION
@@ -85,6 +85,10 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.apiService.delegate = self
     self.socketService.delegate = self
     
+    codigoText.delegate = self
+    newPasswordText.delegate = self
+    newPassConfirmText.delegate = self
+    
     self.waitingView.addStandardConfig()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     
@@ -94,7 +98,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
  
     self.autenticarBtn.addShadow()
     self.RecuperarClaveBtn.addShadow()
-    self.crearNewPasswordText.addShadow()
+    self.crearNewPasswordBtn.addShadow()
     
     self.autenticarBtn.heightAnchor 
     self.loginDatosViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 30))
@@ -111,7 +115,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     
     NSLayoutConstraint(item: self.codigoText, attribute: .bottom, relatedBy: .equal, toItem: self.newPasswordText, attribute: .top, multiplier: 1, constant: -spaceBetween).isActive = true
     
-    NSLayoutConstraint(item: self.passwordMatch as Any, attribute: .top, relatedBy: .equal, toItem: self.newPasswordText, attribute: .bottom, multiplier: 1, constant: spaceBetween).isActive = true
+    NSLayoutConstraint(item: self.newPassConfirmText as Any, attribute: .top, relatedBy: .equal, toItem: self.newPasswordText, attribute: .bottom, multiplier: 1, constant: spaceBetween).isActive = true
     
     self.movilClaveRecoverHeight.constant = 40
     
@@ -164,34 +168,12 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   @IBAction func RecuperarClave(_ sender: AnyObject) {
     //"#Recuperarclave,numero de telefono,#"
-    waitingView.isHidden = false
-    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!])
-    globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
-    movilClaveRecover.endEditing(true)
-    movilClaveRecover.text?.removeAll()
+    self.sendRecoverClave()
+    //movilClaveRecover.endEditing(true)
   }
   
   @IBAction func createNewPassword(_ sender: Any) {
-    if self.newPasswordText.text!.isEmpty || self.passwordMatch.text!.isEmpty || self.codigoText.text!.isEmpty{
-      let alertaDos = UIAlertController (title: "Crear nueva clave", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-
-      }))
-      
-      self.present(alertaDos, animated: true, completion: nil)
-    }else{
-    if self.newPasswordText.text == self.passwordMatch.text{
-      self.createNewPassword(codigo: self.codigoText.text!, newPassword: self.newPasswordText.text!)
-    }else{
-      let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        //self.RegistroView.isHidden = false
-        //self.nombreApText.becomeFirstResponder()
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
-    }
-   
+    createNewPassword(codigo: codigoText.text!, newPassword: newPasswordText.text!)
   }
   
   @IBAction func closeNewPasswordView(_ sender: Any) {
@@ -222,5 +204,11 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       self.showHideClaveBtn.setImage(UIImage(named: "showClave"), for: .normal)
       self.clave.isSecureTextEntry = true
     }
+  }
+  
+  @IBAction func reenviarCodigo(_ sender: Any) {
+    waitingView.isHidden = false
+    let nombreUsuario = globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String
+    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": nombreUsuario])
   }
 }

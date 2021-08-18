@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum TextFieldDataType {
-  case movilNomber, password, email
+  case movilNumber, password, email, codigoVerificacion
 }
 
 extension UITextField {
@@ -68,8 +68,9 @@ extension UITextField {
       }
 
     switch type {
-    case .movilNomber:
-      return (text.count == 10 && text.isValidPhoneString, "Número de teléfono incorrecto. Por favor verifíquelo")
+    case .movilNumber:
+      let temp = text.filter {!$0.isWhitespace}
+      return (temp.trimmingCharacters(in: .whitespacesAndNewlines).count == 10 && temp.trimmingCharacters(in: .whitespacesAndNewlines).isNumeric, "Número de teléfono incorrecto. Por favor verifíquelo")
     case .password:
       return (true, "Las claves no coinciden")
     case .email:
@@ -79,6 +80,8 @@ extension UITextField {
           options: .regularExpression
       )
       return (result != nil, "Por favor teclee un correo electrónico válido.")
+    case .codigoVerificacion:
+      return (text.count == 6 && text.isNumeric, "Por favor teclee el código recibido para crear su nueva contraseña.")
     default:
       return (text.count > 0, "This field cannot be empty.")
     }

@@ -39,7 +39,7 @@ class EsperaChildVC: UIViewController {
     //self.newOfertaText.bigTextBlueStyle()
    
     self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.valorOferta)))"
-    self.updateOfertaView.isHidden = self.solicitud!.valorOferta == 0.0
+    self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
     
 //    let array = globalVariables.ofertasList.map{$0.id}
 //    print("ofertas \(array) \(solicitud.id)")

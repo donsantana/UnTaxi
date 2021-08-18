@@ -35,7 +35,7 @@ extension RegistroController: UITextFieldDelegate{
     var distanceValue = 0
     switch textfield {
     case telefonoText:
-      let (valid, message) = textfield.validate(.movilNomber)
+      let (valid, message) = textfield.validate(.movilNumber)
       if !valid{
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
@@ -94,11 +94,10 @@ extension RegistroController: UITextFieldDelegate{
     print("Return pressed")
     switch textField {
     case telefonoText:
-      let (valid, message) = textField.validate(.movilNomber)
+      let (valid, message) = textField.validate(.movilNumber)
       if valid {
         nombreApText.becomeFirstResponder()
       }
-      
     case nombreApText:
       claveText.becomeFirstResponder()
     case claveText:
@@ -141,7 +140,7 @@ extension RegistroController: UITextFieldDelegate{
 
     switch textField {
     case telefonoText:
-      return (textField.text?.count == 10 && textField.text!.isValidPhoneString , "Número de teléfono incorrecto. Por favor verifíquelo")
+      return (textField.text?.count == 10 && textField.text!.isNumeric, "Número de teléfono incorrecto. Por favor verifíquelo")
     case confirmarClavText:
       return (text == claveText.text, "Las claves no coinciden")
       

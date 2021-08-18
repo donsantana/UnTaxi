@@ -93,7 +93,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var addressViewTop: NSLayoutConstraint!
   
   //MAP
-  let searchEngine = SearchEngine()
+  var searchEngine = SearchEngine()
   var searchController: MapboxSearchController!
   var panelController: MapboxPanelController!
   
@@ -152,6 +152,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.apiService.delegate = self
     self.addressPicker.delegate = self
     self.destinoAddressPicker.delegate = self
+    
     self.origenAnnotation.subtitle = "origen"
     self.destinoAnnotation.subtitle = "destino"
     
@@ -166,16 +167,27 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
     //searchEngine.sea
-    self.searchController = MapboxSearchController()
+//    var southWest = mapboxgl.LngLat(-73.9876, 40.7661);
+//    var northEast = new mapboxgl.LngLat(-73.9397, 40.8002);
+//    var boundingBox = new mapboxgl.LngLatBounds(southWest, northEast);
+    let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
+    //mapView. = BoundingBox(CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630), CLLocationCoordinate2D(latitude: -4.967101, longitude: -81.121750))
     
+    self.searchController = MapboxSearchController()
+    //self.searchController.searchQueryDidChanged("La Bahia,Ecuador")
+    //self.searchEngine = SearchEngine(accessToken: <#T##String?#>, configuration: <#T##SearchEngine.Configuration#>)
+    //searchEngine.search(query: "cafe", options: requestOptions)
+    //searchController.configuration = Configura
     //searchController.searchTextFieldBeginEditing()//searchEngine.delegate = self
     
     self.panelController = MapboxPanelController(rootViewController: self.searchController)
-    func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
-    let mapboxSFOfficeCoordinate = CLLocationCoordinate2D(latitude: 37.7911551, longitude: -122.3966103)
+  
+    //let mapboxSFOfficeCoordinate = CLLocationCoordinate2D(latitude: 37.7911551, longitude: -122.3966103)
+    //func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
+
     
     searchController.delegate = self
-    
+    //searchController.searchEngine.delegate = self
    
     
     //MARK:- PANEL DEFINITION
@@ -230,6 +242,17 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   override func viewDidAppear(_ animated: Bool){
+    
+    if let tempLocation = self.coreLocationManager.location?.coordinate{
+      globalVariables.cliente.annotation.coordinate = tempLocation
+      self.origenAnnotation.coordinate = tempLocation
+      coreLocationManager.stopUpdatingLocation()
+      self.initMapView()
+    }else{
+      globalVariables.cliente.annotation.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
+      coreLocationManager.requestWhenInUseAuthorization()
+    }
+    
     self.navigationController?.setNavigationBarHidden(true, animated: false)
     self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.black)
     self.contactoCell.telefonoText.setBottomBorder(borderColor: UIColor.black)
@@ -269,6 +292,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //MARK:- BOTONES GRAFICOS ACCIONES
   
   @IBAction func RelocateBtn(_ sender: Any) {
+    self.origenAnnotation.coordinate = coreLocationManager.location!.coordinate
     self.initMapView()
   }
   

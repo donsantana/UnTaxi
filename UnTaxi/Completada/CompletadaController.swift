@@ -73,6 +73,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.importeText.text = "$\(self.importe)"
     self.efectivoText.text = "$\(self.importe - solicitud.yapaimporte)\(self.solicitud.useVoucher == "" ? "" : self.solicitud.useVoucher == "1" ? ", Voucher" : ", Efectivo")"
     self.yapaText.text = "$\(solicitud.yapaimporte), Yapa"
+    globalVariables.cliente.yapa -= solicitud.yapaimporte
     
     self.origenAddressText.text = solicitud.dirOrigen
     self.destinoAddressText.text = solicitud.dirDestino

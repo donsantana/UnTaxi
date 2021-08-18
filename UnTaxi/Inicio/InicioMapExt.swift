@@ -12,6 +12,7 @@ import Mapbox
 extension InicioController{
   func initMapView(){
     var annotationsToShow = [globalVariables.cliente.annotation!]
+    self.destinoCell.destinoText.text?.removeAll()
     if self.origenAnnotation.coordinate.latitude != 0.0{
       annotationsToShow = [self.origenAnnotation]
     }

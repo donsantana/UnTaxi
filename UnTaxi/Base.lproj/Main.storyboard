@@ -3189,7 +3189,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monto:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-OQ-tGE">
-                                        <rect key="frame" x="169.5" y="169" width="60" height="21"/>
+                                        <rect key="frame" x="149.5" y="169" width="60" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="du0-Kh-eYf"/>
                                         </constraints>
@@ -3198,7 +3198,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bo8-FE-LXm" customClass="CurrencyTextField" customModule="CurrencyTextField">
-                                        <rect key="frame" x="240.5" y="162" width="88.5" height="35"/>
+                                        <rect key="frame" x="220.5" y="162" width="108.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="jqA-YO-hEP"/>
                                         </constraints>
@@ -3211,7 +3211,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                             <constraint firstAttribute="height" constant="35" id="FC5-mW-DhD"/>
                                             <constraint firstAttribute="width" constant="35" id="c2w-eW-6Be"/>
                                         </constraints>
-                                        <state key="normal" image="search"/>
+                                        <state key="normal" image="agendaIcon"/>
                                         <connections>
                                             <action selector="searchContacts:" destination="99u-SE-V3N" eventType="touchUpInside" id="C7H-XC-nt5"/>
                                         </connections>
@@ -3311,7 +3311,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                     <constraint firstAttribute="trailing" secondItem="TX2-t3-qDp" secondAttribute="trailing" constant="10" id="SnX-HG-1sM"/>
                                     <constraint firstItem="3F9-sZ-6T1" firstAttribute="leading" secondItem="xPU-X6-umg" secondAttribute="leading" id="Suf-RD-YCi"/>
                                     <constraint firstItem="Vwx-ba-IFc" firstAttribute="top" secondItem="aSk-OQ-tGE" secondAttribute="bottom" constant="30" id="WGr-PP-MHr"/>
-                                    <constraint firstItem="aSk-OQ-tGE" firstAttribute="leading" secondItem="xPU-X6-umg" secondAttribute="centerX" constant="-20" id="coB-qe-utL"/>
+                                    <constraint firstItem="aSk-OQ-tGE" firstAttribute="leading" secondItem="xPU-X6-umg" secondAttribute="centerX" constant="-40" id="coB-qe-utL"/>
                                     <constraint firstItem="nRm-ce-JjQ" firstAttribute="leading" secondItem="xPU-X6-umg" secondAttribute="trailing" constant="10" id="cwW-QU-BP4"/>
                                     <constraint firstItem="aSk-OQ-tGE" firstAttribute="top" secondItem="3F9-sZ-6T1" secondAttribute="bottom" constant="20" id="fOT-Sk-Wx8"/>
                                     <constraint firstItem="bo8-FE-LXm" firstAttribute="trailing" secondItem="xPU-X6-umg" secondAttribute="trailing" id="gdu-vH-CQs"/>
@@ -3911,6 +3911,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         </designable>
     </designables>
     <resources>
+        <image name="agendaIcon" width="50" height="50"/>
         <image name="calendar" width="30" height="30"/>
         <image name="camera" width="30" height="30"/>
         <image name="cancelar" width="60" height="60"/>
@@ -3929,7 +3930,6 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <image name="origenIcon" width="30" height="30"/>
         <image name="panicoIcon" width="40" height="40"/>
         <image name="referenciaIcon" width="30" height="30"/>
-        <image name="search" width="30" height="30"/>
         <image name="showClave" width="40" height="40"/>
         <image name="smsvoz" width="60" height="60"/>
         <image name="stardorada" width="50" height="50"/>

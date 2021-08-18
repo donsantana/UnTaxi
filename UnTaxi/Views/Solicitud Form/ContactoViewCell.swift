@@ -26,7 +26,7 @@ class ContactoViewCell: UITableViewCell {
   }
   
   @IBAction func showContactView(_ sender: Any) {
-    self.telefonoText.placeholder = Locale.current.regionCode != nil ? self.phoneNumberKit.getFormattedExampleNumber(forCountry: Locale.current.regionCode!.description,withPrefix: false) : "Número de teléfono"
+    self.telefonoText.placeholder = "Número de teléfono"
     self.contactDataVIew.isHidden = !self.contactarSwitch.isOn
   }
   

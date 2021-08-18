@@ -170,12 +170,27 @@ extension LoginController{
     self.waitingView.isHidden = false
   }
   
+  func sendRecoverClave(){
+    waitingView.isHidden = false
+    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!])
+    globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
+  }
+  
   func createNewPassword(codigo: String, newPassword: String){
-    self.apiService.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
-      "nombreusuario": globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String,
-      "codigo": codigo,
-      "password": newPassword,
-    ])
+    if self.newPasswordText.text == self.newPassConfirmText.text{
+      waitingView.isHidden = false
+      self.apiService.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
+        "nombreusuario": globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String,
+        "codigo": codigo,
+        "password": newPassword,
+      ])
+    }else{
+      let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
   }
   
   func checkifBioAuth(){

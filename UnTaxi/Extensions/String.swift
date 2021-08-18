@@ -9,6 +9,8 @@
 import Foundation
 
 extension String{
-    var digitString: String { filter { ("0"..."9").contains($0) } }
-    var isValidPhoneString: Bool { "0"..."9" ~= self}
+  var digitString: String { filter { ("0"..."9").contains($0) } }
+  var isNumeric: Bool {
+    return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
+  }
 }

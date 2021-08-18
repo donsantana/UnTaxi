@@ -14,6 +14,7 @@ import MapboxSearchUI
 extension InicioController: SearchControllerDelegate {
   
   func categorySearchResultsReceived(results: [SearchResult]) {
+    print("Resultssss")
     let annotations = results.map { searchResult -> MGLPointAnnotation in
       let annotation = MGLPointAnnotation()
       annotation.coordinate = searchResult.coordinate
@@ -70,17 +71,24 @@ extension InicioController: SearchControllerDelegate {
 
 extension InicioController: SearchEngineDelegate {
   func resultsUpdated(searchEngine: SearchEngine) {
+    let boundingOptions = BoundingBox(CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630), CLLocationCoordinate2D(latitude: -4.967101, longitude: -81.121750))
+    let requestOptions = SearchEngine.RequestOptions(boundingBox: boundingOptions)
+    searchEngine.search(query: "\(searchEngine.query)", options: requestOptions)
+    //let result = searchEngine.items.filter({$0.distance! > 80000})
+    //self.searchController.searchQueryDidChanged("\(searchEngine.query)")
+    //let tempEng = searchEngine
+    self.searchController.resultsUpdated(searchEngine: searchEngine)
     print("Number of search results: \(searchEngine.items.count)")
-    print(searchEngine.query)
+    print("\(searchEngine.query)")
 
     /// Simulate user selection with random algorithm
-    guard let randomSuggestion: SearchSuggestion = searchEngine.items.randomElement() else {
-      print("No available suggestions to select")
-      return
-    }
+//    guard let randomSuggestion: SearchSuggestion = searchEngine.items.randomElement() else {
+//      print("No available suggestions to select")
+//      return
+//    }
 
     /// Callback to SearchEngine with choosen `SearchSuggestion`
-    searchEngine.select(suggestion: randomSuggestion)
+    //searchEngine.select(suggestion: randomSuggestion)
 
     /// We may expect `resolvedResult(result:)` to be called next
     /// or the new round of `resultsUpdated(searchEngine:)` in case if randomSuggestion represents category suggestion (like a 'bar' or 'cafe')
@@ -91,7 +99,6 @@ extension InicioController: SearchEngineDelegate {
     print("Resolved result: coordinate: \(result.coordinate), address: \(result.address?.formattedAddress(style: .medium) ?? "N/A")")
 
     print("Dumping resolved result:", dump(result))
-
   }
 
   func searchErrorHappened(searchError: SearchError) {

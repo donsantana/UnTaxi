@@ -133,10 +133,10 @@ extension InicioController{
     self.initMapView()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
-
+    
     if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
-      self.formularioDataCellList.append(self.destinoCell)
       self.destinoCell.initContent()
+      self.formularioDataCellList.append(self.destinoCell)
       if self.tabBar.selectedItem == self.ofertaItem{
         self.ofertaDataCell.initContent()
         self.formularioDataCellList.append(self.ofertaDataCell)
@@ -151,6 +151,7 @@ extension InicioController{
       self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 45).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
+          self.destinoCell.destinoText.text?.removeAll()
           self.formularioDataCellList.append(self.destinoCell)
           self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 50).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
@@ -331,33 +332,6 @@ extension InicioController{
         }))
       }
     }
-    
-//    motivoAlerta.addAction(UIAlertAction(title: "Mucho tiempo de espera", style: .default, handler: { action in
-//      self.CancelarSolicitud("Mucho tiempo de espera", solicitud: solicitud)
-//    }))
-//    motivoAlerta.addAction(UIAlertAction(title: "El taxi no se mueve", style: .default, handler: { action in
-//      self.CancelarSolicitud("El taxi no se mueve", solicitud: solicitud)
-//    }))
-//    motivoAlerta.addAction(UIAlertAction(title: "El conductor se fue a una dirección equivocada", style: .default, handler: { action in
-//      self.CancelarSolicitud("El conductor se fue a una dirección equivocada", solicitud: solicitud)
-//    }))
-//    motivoAlerta.addAction(UIAlertAction(title: "Ubicación incorrecta", style: .default, handler: { action in
-//      self.CancelarSolicitud("Ubicación incorrecta", solicitud: solicitud)
-//    }))
-//    motivoAlerta.addAction(UIAlertAction(title: "Otro", style: .default, handler: { action in
-//      let ac = UIAlertController(title: "Entre el motivo", message: nil, preferredStyle: .alert)
-//      ac.addTextField()
-//      
-//      let submitAction = UIAlertAction(title: "Enviar", style: .default) { [unowned ac] _ in
-//        if !ac.textFields![0].text!.isEmpty{
-//          self.CancelarSolicitud(ac.textFields![0].text!, solicitud: solicitud)
-//        }
-//      }
-//
-//      ac.addAction(submitAction)
-//
-//      self.present(ac, animated: true)
-//    }))
     motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { action in
     }))
     
@@ -368,21 +342,7 @@ extension InicioController{
     //#Cancelarsolicitud, id, idTaxi, motivo, "# \n"
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
-    //EnviarSocket(Datos)
     self.socketService.socketEmit("cancelarservicio", datos: datos)
-//    let vc = R.storyboard.main.inicioView()!
-//    vc.socketEmit("cancelarservicio", datos: datos)
-//    self.navigationController?.show(vc, sender: nil)
-    
-    //    let solicitudIndex = globalVariables.solpendientes.firstIndex{$0.id == idSolicitud}!
-    //    let datos = globalVariables.solpendientes[solicitudIndex].crearTramaCancelar(motivo: motivo)
-    //    globalVariables.solpendientes.remove(at: solicitudIndex)
-    //    if globalVariables.solpendientes.count == 0 {
-    //      globalVariables.solicitudesproceso = false
-    //    }
-    //    if motivo != "Conductor"{
-    //      self.socketEmit("cancelarservicio", datos: datos)
-    //    }
   }
   
   func CloseAPP(){
@@ -436,16 +396,6 @@ extension InicioController{
     locationIcono.isHidden = true
     globalVariables.solpendientes.append(nuevaSolicitud)
     socketService.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
-    //self.socketEmit("solicitarservicio", datos: nuevaSolicitud.crearTrama())
-    
-    //MensajeEspera.text = "Buscando UnTaxi..."
-    //self.AlertaEsperaView.isHidden = false
-    //self.origenCell.origenText.text?.removeAll()
-    //self.destinoCell.destinoText.text?.removeAll()
-    
-//    let vc = R.storyboard.main.esperaChildView()!
-//    vc.solicitud = nuevaSolicitud
-//    self.navigationController?.show(vc, sender: nil)
   }
   
   func crearSolicitudOferta(){
@@ -499,25 +449,6 @@ extension InicioController{
       
       self.crearTramaSolicitud(nuevaSolicitud)
       view.endEditing(true)
-//      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
-//
-//      let tipoServicio = self.tabBar.items?.firstIndex(of: self.tabBar.selectedItem!)
-//      mapView.removeAnnotations(mapView!.annotations!)
-//
-//      let nuevaSolicitud = Solicitud()
-//      nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
-//      self.contactoCell.contactoNameText.text!.isEmpty ? nil : nuevaSolicitud.DatosOtroCliente(telefono: telefonoContactar!, nombre: nombreContactar!)
-//      nuevaSolicitud.DatosSolicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio! + 1,yapa: pagoCell.pagarYapaSwitch.isOn)
-//
-//      if !self.contactoCell.telefonoText.text!.isEmpty{
-//        nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
-//        self.contactoCell.clearContacto()
-//      }
-//
-//
-//      self.crearTramaSolicitud(nuevaSolicitud)
-//      view.endEditing(true)
-      
     }else{
       let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe llegar el campo origen.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
@@ -530,29 +461,32 @@ extension InicioController{
   func showFormError(){
     
   }
+  
   @objc func enviarSolicitud(){
-    if !self.contactoCell.isValidPhone() && self.contactoCell.contactarSwitch.isOn{
-      let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe especificar un número de teléfono válido.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-
-        //self.contactoCell.telefonoText.becomeFirstResponder()
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }else{
-      if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
-        if !(self.destinoCell.destinoText.text!.isEmpty){
-          self.crearSolicitudOferta()
-        }else{
-          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
-          alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-            self.view.endEditing(true)
-            self.destinoCell.destinoText.becomeFirstResponder()
-          }))
-          self.present(alertaDos, animated: true, completion: nil)
-        }
-      }else{
-        self.crearSolicitudOferta()
+    if self.contactoCell.contactarSwitch.isOn{
+      let (valid, message) = self.contactoCell.telefonoText.validate(.movilNumber)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.contactoCell.telefonoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
       }
+    }
+    
+    if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
+      if !(self.destinoCell.destinoText.text!.isEmpty){
+        self.crearSolicitudOferta()
+      }else{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.view.endEditing(true)
+          self.destinoCell.destinoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
+    }else{
+      self.crearSolicitudOferta()
     }
   }
   
@@ -849,22 +783,5 @@ extension InicioController{
 //      }
 //    }
 //  }
-  
-//  func offSocketEventos(){
-//    globalVariables.socket.off("cargarvehiculoscercanos")
-//    globalVariables.socket.off("solicitarservicio")
-//    globalVariables.socket.off("cancelarservicio")
-//    globalVariables.socket.off("sinvehiculo")
-//    globalVariables.socket.off("solicitudaceptada")
-//    globalVariables.socket.off("serviciocancelado")
-//    globalVariables.socket.off("ofertadelconductor")
-//    globalVariables.socket.off("telefonosdelcallcenter")
-//    globalVariables.socket.off("taximetroiniciado")
-//    globalVariables.socket.off("subiroferta")
-//    globalVariables.socket.off("U")
-//    globalVariables.socket.off("voz")
-//    globalVariables.socket.off("direccionespactadas")
-//    globalVariables.socket.off("serviciocompletado")
-//  }
-//
+
 }
