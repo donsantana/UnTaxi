@@ -34,8 +34,8 @@ class CEvaluacion {
     var i = 0
     while i < 5 {
       if i < posicion{
-        self.botones[i].setImage(UIImage(named: "stardorada"), for: UIControl.State())
-        
+        self.botones[i].setImage(UIImage(named: "stardorada")?.withRenderingMode(.alwaysTemplate), for: UIControl.State())
+        self.botones[i].tintColor = CustomAppColor.starColor
       }
       else{
         self.botones[i].setImage(UIImage(named: "stargris"), for: UIControl.State())

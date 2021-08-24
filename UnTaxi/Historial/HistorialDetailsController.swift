@@ -30,6 +30,8 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   @IBOutlet weak var NombreCond: UILabel!
   @IBOutlet weak var matriculaAut: UILabel!
   
+  @IBOutlet weak var origenIcon: UIImageView!
+  @IBOutlet weak var starImag: UIImageView!
   @IBOutlet weak var fechaText: UILabel!
   @IBOutlet weak var origenText: UILabel!
   @IBOutlet weak var destinoText: UILabel!
@@ -56,10 +58,9 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
     waitingView.addStandardConfig()
-    
-    evaluarBtn.backgroundColor = CustomAppColor.buttonActionColor
-    evaluarBtn.layer.cornerRadius = 5
-    evaluarBtn.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
+    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
+    starImag.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
+    evaluarBtn.addCustomActionBtnsColors()
     self.loadHistorialSolicitudes()
   }
   

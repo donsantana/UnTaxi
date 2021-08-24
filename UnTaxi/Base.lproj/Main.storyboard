@@ -426,6 +426,8 @@
                         <outlet property="destinoAddressView" destination="RUX-43-X8l" id="TAj-1G-ATv"/>
                         <outlet property="formularioSolicitudBottomConstraint" destination="WZF-ev-VIl" id="7Ev-KP-r4J"/>
                         <outlet property="formularioSolicitudHeight" destination="oeK-Uy-gbH" id="RlV-XE-4Lq"/>
+                        <outlet property="listoAddressBtn" destination="WiD-wK-6kh" id="YyW-Bo-sTb"/>
+                        <outlet property="listoDestinoBtn" destination="829-ck-U6f" id="0wX-eB-YUl"/>
                         <outlet property="locationIcono" destination="1ja-NQ-35U" id="EEH-cb-ioC"/>
                         <outlet property="mapBottomConstraint" destination="MLb-g6-CJ3" id="lc6-Kj-jn4"/>
                         <outlet property="mapView" destination="8cr-OO-Z7s" id="zEW-Tm-cEw"/>
@@ -623,10 +625,10 @@
             </objects>
             <point key="canvasLocation" x="3451" y="-925"/>
         </scene>
-        <!--Servicio Completado-->
+        <!--Completada-->
         <scene sceneID="GvM-Fs-l7d">
             <objects>
-                <viewController storyboardIdentifier="completadaView" title="Servicio Completado" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="completadaView" title="Completada" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mkJ-2Z-gUd"/>
                         <viewControllerLayoutGuide type="bottom" id="aab-4H-Xyj"/>
@@ -1076,6 +1078,8 @@
                         <outlet property="evaluacionView" destination="yYF-4w-ww4" id="pUY-gk-YJR"/>
                         <outlet property="importeText" destination="PME-GS-Q0V" id="fRz-aQ-SQ4"/>
                         <outlet property="origenAddressText" destination="eNH-cN-vHg" id="vnz-QF-q0U"/>
+                        <outlet property="origenIcon" destination="nHZ-j4-Vja" id="u4a-Ny-86e"/>
+                        <outlet property="sendEvaluacionBtn" destination="pEG-fn-O4k" id="UAP-K5-hB4"/>
                         <outlet property="topViewConstraint" destination="qh0-GB-zIv" id="P2s-dl-OgF"/>
                         <outlet property="yapaText" destination="7OS-rV-Ftn" id="QBI-ge-ib1"/>
                     </connections>
@@ -1541,9 +1545,11 @@
                         <outlet property="llamarBtnLoadingConstraint" destination="ZL3-Yb-9vQ" id="NuS-PW-I0v"/>
                         <outlet property="mapView" destination="2T9-hH-w8n" id="x7d-VO-iL2"/>
                         <outlet property="matriculaAut" destination="mf2-lP-Cfx" id="6xL-tw-q0G"/>
+                        <outlet property="origenIcon" destination="euV-xO-YYS" id="pgG-c9-DMn"/>
                         <outlet property="radioBtnLoadingConstraint" destination="mXV-yD-d7U" id="w0n-e6-bRr"/>
                         <outlet property="reviewConductor" destination="n9y-ht-fNl" id="M3p-PE-AqF"/>
                         <outlet property="showConductorBtn" destination="nW6-Fi-8EY" id="feh-qs-aSh"/>
+                        <outlet property="starIcon" destination="fQN-5q-RIS" id="73L-IP-ORR"/>
                         <outlet property="valorOferta" destination="JJn-FK-pzM" id="Wqg-eU-TNR"/>
                         <outlet property="valorOfertaIcon" destination="rNy-J5-gb9" id="att-Tw-RcD"/>
                         <outlet property="waitingView" destination="VTb-EH-ljy" id="N7J-0w-FBn"/>
@@ -1905,7 +1911,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stardorada" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-7U-16u">
-                                        <rect key="frame" x="314" y="71" width="20" height="20"/>
+                                        <rect key="frame" x="294" y="71" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="4L3-Yx-f0e"/>
                                             <constraint firstAttribute="width" constant="20" id="U0f-C8-TUn"/>
@@ -1934,7 +1940,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="iVN-gt-4ly"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1950,7 +1956,7 @@
                                     <constraint firstItem="i5N-06-pQi" firstAttribute="leading" secondItem="tVr-e6-oVR" secondAttribute="trailing" constant="20" id="Rno-5c-qjr"/>
                                     <constraint firstItem="Lbq-mX-I9S" firstAttribute="top" secondItem="tVr-e6-oVR" secondAttribute="bottom" constant="5" id="SeX-pN-SCK"/>
                                     <constraint firstItem="tVr-e6-oVR" firstAttribute="trailing" secondItem="Lbq-mX-I9S" secondAttribute="trailing" id="WtK-1M-T81"/>
-                                    <constraint firstItem="2J4-7U-16u" firstAttribute="leading" secondItem="tVr-e6-oVR" secondAttribute="trailing" id="XLs-cW-qVs"/>
+                                    <constraint firstItem="2J4-7U-16u" firstAttribute="leading" secondItem="tVr-e6-oVR" secondAttribute="trailing" constant="-20" id="XLs-cW-qVs"/>
                                     <constraint firstItem="i5N-06-pQi" firstAttribute="centerY" secondItem="tVr-e6-oVR" secondAttribute="centerY" id="YSg-2i-n2t"/>
                                     <constraint firstItem="Arw-1P-H3e" firstAttribute="trailing" secondItem="i5N-06-pQi" secondAttribute="trailing" id="ahH-Sl-Br7"/>
                                     <constraint firstItem="tVr-e6-oVR" firstAttribute="top" secondItem="F12-I9-Akn" secondAttribute="top" constant="20" id="eFG-4z-p12"/>
@@ -2033,8 +2039,10 @@
                         <outlet property="importeText" destination="dav-Zg-Ps0" id="a3h-oC-1Rc"/>
                         <outlet property="mapView" destination="znk-G6-hsc" id="ZTo-Yr-xtr"/>
                         <outlet property="matriculaAut" destination="Lbq-mX-I9S" id="moV-dv-5r1"/>
+                        <outlet property="origenIcon" destination="09o-Tg-HU0" id="mxq-wm-d9P"/>
                         <outlet property="origenText" destination="QtG-eM-hbt" id="2wN-ZV-RLq"/>
                         <outlet property="reviewConductor" destination="Arw-1P-H3e" id="VUA-Ff-cSA"/>
+                        <outlet property="starImag" destination="2J4-7U-16u" id="qKc-jn-RcZ"/>
                         <outlet property="statusText" destination="E6H-NM-EqR" id="ig2-3M-9Mq"/>
                         <outlet property="viewTopConstraint" destination="BJV-74-8MU" id="0pB-e0-3mv"/>
                         <outlet property="waitingView" destination="5xq-P0-JGg" id="lVS-Cs-zBz"/>
@@ -2645,6 +2653,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                     <connections>
                         <outlet property="ConfirmeClaveText" destination="T27-Kh-VKC" id="rR5-gH-X7L"/>
                         <outlet property="NuevaClaveText" destination="gbw-7a-dtm" id="HUJ-op-edq"/>
+                        <outlet property="actualizarBtn" destination="IWW-CP-ocO" id="l8b-9H-Uvy"/>
                         <outlet property="claveActualText" destination="9Nb-WI-fTG" id="uJ9-Oc-WLD"/>
                         <outlet property="showHideClaveActualBtn" destination="MFr-p5-VWd" id="vcK-Mo-mVu"/>
                         <outlet property="showHideConfirmBtn" destination="pzb-Jg-SeT" id="Pel-Dx-kuz"/>
@@ -3339,6 +3348,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activarBtn" destination="2xP-EG-fwN" id="iNQ-xe-OB8"/>
                         <outlet property="activeCodigoView" destination="bEM-Ov-V9Z" id="8zw-ig-wZg"/>
                         <outlet property="codigoText" destination="REu-5q-4eR" id="Hsv-zK-JPK"/>
                         <outlet property="contactosView" destination="TX2-t3-qDp" id="CoX-1C-eqs"/>
@@ -3509,10 +3519,9 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSG-lb-9wR">
                                                 <rect key="frame" x="10" y="222.5" width="187" height="45"/>
-                                                <color key="backgroundColor" red="0.91649705169999995" green="0.19821646809999999" blue="0.13712331650000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Cancelar">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="CANCELAR">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -3615,6 +3624,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         <outlet property="CancelarSolicitudProceso" destination="QBF-eU-rLI" id="P6W-tr-6F1"/>
                         <outlet property="MensajeEspera" destination="yFK-KM-sBZ" id="jqw-wV-An8"/>
                         <outlet property="SendOferta" destination="gQV-mk-REo" id="Wyw-rd-n5t"/>
+                        <outlet property="cancelarBtn" destination="cSG-lb-9wR" id="huF-Ec-xf9"/>
                         <outlet property="down25" destination="ONl-FL-xdL" id="7sD-KB-J5y"/>
                         <outlet property="newOfertaText" destination="tpa-9d-XRl" id="87V-zK-fAG"/>
                         <outlet property="subtitleText" destination="oSf-Cz-LrV" id="nDO-Cv-83z"/>

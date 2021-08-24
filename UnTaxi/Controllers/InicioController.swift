@@ -71,10 +71,10 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
   
-  var ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOfertaSelected"))
-  var taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetroSelected"))
-  var horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHorasSelected"))
-  var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactadaSelected"))
+  var ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+  var taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+  var horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+  var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
   
   //variables de interfaz
   
@@ -117,6 +117,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   @IBOutlet weak var addressView: UIView!
   @IBOutlet weak var addressPicker: UIPickerView!
+  @IBOutlet weak var listoAddressBtn: UIButton!
+  @IBOutlet weak var listoDestinoBtn: UIButton!
   
   @IBOutlet weak var destinoAddressView: UIView!
   @IBOutlet weak var destinoAddressPicker: UIPickerView!
@@ -143,6 +145,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //mapView.automaticallyAdjustsContentInset = true
     coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
+    self.contactoCell.delegate = self
     self.contactoCell.contactoNameText.delegate = self
     self.contactoCell.telefonoText.delegate = self
     self.origenCell.origenText.delegate = self
@@ -152,6 +155,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.apiService.delegate = self
     self.addressPicker.delegate = self
     self.destinoAddressPicker.delegate = self
+    self.ofertaDataCell.valorOfertaText.delegate = self
+  
     
     self.origenAnnotation.subtitle = "origen"
     self.destinoAnnotation.subtitle = "destino"
@@ -161,7 +166,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
     self.SolicitudView.addShadow()
 
-    self.LocationBtn.addShadow()
+    self.LocationBtn.addCustomMenuBtnsColors(image: UIImage(named: "locationBtn")!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
+    listoAddressBtn.addCustomActionBtnsColors()
+    listoDestinoBtn.addCustomActionBtnsColors()
 
     self.TransparenciaView.addStandardConfig()
     

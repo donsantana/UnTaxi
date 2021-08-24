@@ -29,18 +29,18 @@ class SideMenuController: UIViewController {
     self.view.backgroundColor = .white
     
     self.MenuTable.delegate = self
-    self.MenuView1.layer.borderColor = UIColor.lightGray.cgColor
+    self.MenuView1.backgroundColor = CustomAppColor.menuBackgroundColor
+    self.MenuView1.layer.borderColor = CustomAppColor.menuTextColor.cgColor
     self.MenuView1.layer.borderWidth = 0.3
     self.MenuView1.layer.masksToBounds = false
-    
-    self.NombreUsuario.textColor = CustomAppColor.textColor
+
+    self.NombreUsuario.textColor = CustomAppColor.menuTextColor
     //self.NombreUsuario.font = CustomAppFont.subtitleFont
     
     self.menuHeaderHeightConstraint.constant = Responsive().heightFloatPercent(percent: 28)
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: CustomAppColor.buttonActionColor)
-    
-    //self.yapaText.font = CustomAppFont.bigFont
+    self.yapaText.textColor = CustomAppColor.menuTextColor
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
     //tapGesture.delegate = self

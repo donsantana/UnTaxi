@@ -30,6 +30,7 @@ class YapaPanel: UIViewController {
   @IBOutlet weak var sendYapaBtn: UIButton!
   @IBOutlet weak var contactosView: UIView!
   @IBOutlet weak var contactsTable: UITableView!
+  @IBOutlet weak var activarBtn: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,11 +40,14 @@ class YapaPanel: UIViewController {
     self.movilNumberText.delegate = self
     self.montoText.delegate = self
     self.activeCodigoView.addShadow()
+    activarBtn.addCustomActionBtnsColors()
+    sendYapaBtn.addCustomActionBtnsColors()
 //    self.titleText.font = CustomAppFont.subtitleFont
 //    self.codigoText.font = CustomAppFont.inputTextFont
     self.codigoText.addBorder(color: CustomAppColor.buttonActionColor)
     self.movilNumberText.addBorder(color: CustomAppColor.buttonActionColor)
     self.montoText.addBorder(color: CustomAppColor.buttonActionColor)
+    self.montoText.clearButtonMode = .never
     
     self.movilNumberText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     //self.montoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

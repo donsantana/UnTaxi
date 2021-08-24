@@ -34,7 +34,7 @@ extension YapaPanel: UITableViewDelegate, UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {    
-    self.movilNumberText.text = contactService.contacts[indexPath.row].telephone
+    self.movilNumberText.text = contactService.contacts[indexPath.row].telephone.replacingOccurrences(of: "+593", with: "0")
     tableView.deselectRow(at: indexPath, animated: false)
     self.contactosView.isHidden = true
     self.isCliente()

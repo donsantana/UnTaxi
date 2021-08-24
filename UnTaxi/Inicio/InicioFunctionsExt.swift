@@ -178,13 +178,9 @@ extension InicioController{
   func addEnvirSolictudBtn(){
     let enviarBtnView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.frame.width, height: 60))
     let button:UIButton = UIButton.init(frame: CGRect(x: 20, y: 10, width: self.SolicitudView.frame.width - 40, height: 50))
-    button.backgroundColor = CustomAppColor.buttonActionColor
-    button.layer.cornerRadius = 5
-    button.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
-    button.setTitle("CONFIRMAR VIAJE", for: .normal)
-    button.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+    button.setTitle("CONFIRMAR viaje", for: .normal)
     button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
-    button.addShadow()
+    button.addCustomActionBtnsColors()
     
     //enviarBtnView.addSubview(separatorView)
     enviarBtnView.addSubview(button)
@@ -417,7 +413,7 @@ extension InicioController{
       
       let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
       
-      let voucher = self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
+      let voucher = self.tabBar.selectedItem != self.pactadaItem || (self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1) ? "1" : "0"
       print("Forma de pago \(self.pagoCell.formaPagoSwitch.selectedSegmentIndex)")
       print("voucher \(voucher)")
       let detalleOferta = "No detalles"
@@ -465,28 +461,42 @@ extension InicioController{
   @objc func enviarSolicitud(){
     if self.contactoCell.contactarSwitch.isOn{
       let (valid, message) = self.contactoCell.telefonoText.validate(.movilNumber)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+      if !valid || self.contactoCell.telefonoText.text!.isEmpty{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Si solicita para otra persona debe especificar el nombre y el número teléfono.", preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.contactoCell.telefonoText.becomeFirstResponder()
+          if self.contactoCell.contactoNameText.text!.isEmpty{
+            self.contactoCell.contactoNameText.becomeFirstResponder()
+          }else{
+            self.contactoCell.telefonoText.becomeFirstResponder()
+          }
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }
-    }
-    
-    if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
-      if !(self.destinoCell.destinoText.text!.isEmpty){
-        self.crearSolicitudOferta()
       }else{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.view.endEditing(true)
-          self.destinoCell.destinoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+        self.crearSolicitudOferta()
       }
     }else{
-      self.crearSolicitudOferta()
+      if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
+        if !(self.destinoCell.destinoText.text!.isEmpty){
+          if Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! < globalVariables.tarifario.valorForDistance(distance: 0.0) && self.tabBar.selectedItem == self.ofertaItem{
+            let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))", preferredStyle: .alert)
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+              self.ofertaDataCell.initContent()
+            }))
+            self.present(alertaDos, animated: true, completion: nil)
+          }else{
+            self.crearSolicitudOferta()
+          }
+        }else{
+          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
+          alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+            self.view.endEditing(true)
+            self.destinoCell.destinoText.becomeFirstResponder()
+          }))
+          self.present(alertaDos, animated: true, completion: nil)
+        }
+      }else{
+        self.crearSolicitudOferta()
+      }
     }
   }
   

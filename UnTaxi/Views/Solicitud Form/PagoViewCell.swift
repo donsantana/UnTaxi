@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PagoCellDelegate: class {
+protocol PagoCellDelegate: AnyObject {
   func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool)
 }
 

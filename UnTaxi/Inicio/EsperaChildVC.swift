@@ -15,6 +15,7 @@ class EsperaChildVC: UIViewController {
   @IBOutlet weak var MensajeEspera: UITextView!
   @IBOutlet weak var updateOfertaView: UIView!
   @IBOutlet weak var SendOferta: UIButton!
+  @IBOutlet weak var cancelarBtn: UIButton!
   @IBOutlet weak var newOfertaText: UILabel!
   @IBOutlet weak var up25: UIButton!
   @IBOutlet weak var down25: UIButton!
@@ -30,25 +31,13 @@ class EsperaChildVC: UIViewController {
     self.socketService.initListenEventos()
     
     self.updateOfertaView.addShadow()
-    self.SendOferta.addShadow()
+    self.SendOferta.addCustomActionBtnsColors()
+    cancelarBtn.addBorder(color: .red)
     self.newOfertaText.addBorder(color: CustomAppColor.buttonActionColor)
-    //self.newOfertaText.font = CustomAppFont.bigFont
     self.MensajeEspera.centerVertically()
-    //self.titleText.titleBlueStyle()
-    //self.subtitleText.titleBlueStyle()
-    //self.newOfertaText.bigTextBlueStyle()
    
     self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.valorOferta)))"
     self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
-    
-//    let array = globalVariables.ofertasList.map{$0.id}
-//    print("ofertas \(array) \(solicitud.id)")
-//    if array.contains(solicitud.id){
-//      print("oferta encontrada")
-//      let vc = R.storyboard.main.ofertasView()
-//      vc?.solicitud = solicitud
-//      self.navigationController?.show(vc!, sender: nil)
-//    }
     
   }
 

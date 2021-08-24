@@ -47,7 +47,7 @@ class RegistroController: UIViewController {
     confirmarClavText.delegate = self
     countryCodeText.delegate = self
     
-    self.crearCuentaBtn.addShadow()
+    self.crearCuentaBtn.addCustomActionBtnsColors()
     self.waitingView.addStandardConfig()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

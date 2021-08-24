@@ -53,7 +53,7 @@ class PerfilController: BaseController {
     
     self.login = String(readString).components(separatedBy: ",")
     self.perfilViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 70))
-    
+    ActualizarBtn.addCustomActionBtnsColors()
     //self.titleText.font = CustomAppFont.titleFont
     //self.subtitleText.font = CustomAppFont.subtitleFont
     

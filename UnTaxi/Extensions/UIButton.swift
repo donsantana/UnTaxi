@@ -11,7 +11,7 @@ import UIKit
 extension UIButton{
   func addBorder(color: UIColor) {
     self.layer.borderWidth = 1
-    self.layer.cornerRadius = 5
+    self.layer.cornerRadius = 10
     self.layer.borderColor = color.cgColor
   }
   
@@ -23,4 +23,35 @@ extension UIButton{
     
     self.setAttributedTitle(attributedString, for: .normal)
   }
+  
+  func addCustomColors(titleColor: UIColor?, backgroundColor: UIColor?){
+    self.layer.cornerRadius = 10
+    self.titleLabel?.font = CustomAppFont.buttonActionFont
+    self.backgroundColor = backgroundColor != nil ? backgroundColor : CustomAppColor.buttonActionColor
+    self.setTitleColor(titleColor != nil ? titleColor : CustomAppColor.buttonsTitleColor, for: .normal)
+  }
+  
+  func addCustomImageColor(tintColor: UIColor, backgroundColor: UIColor?){
+    self.backgroundColor = backgroundColor != nil ? backgroundColor : .white
+    self.setImage(self.currentImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+    self.tintColor = tintColor
+  }
+  
+  func addCustomMenuBtnsColors(image: UIImage, tintColor: UIColor, backgroundColor: UIColor?){
+    let closeImage = image.withRenderingMode(.alwaysTemplate)
+    self.setImage(closeImage, for: UIControl.State())
+    self.layer.cornerRadius = self.frame.height/2
+    self.addCustomImageColor(tintColor: tintColor, backgroundColor: backgroundColor)
+    self.addShadow()
+  }
+  
+  func addCustomActionBtnsColors(){
+    self.backgroundColor = CustomAppColor.buttonActionColor
+    self.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
+    self.setTitle(self.titleLabel?.text?.uppercased(), for: .normal)
+    self.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+    self.addShadow()
+    self.layer.cornerRadius = 5
+  }
+  
 }

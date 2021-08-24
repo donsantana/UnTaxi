@@ -15,12 +15,13 @@ class HistoryCell: UITableViewCell {
   @IBOutlet weak var destinoText: UILabel!
   @IBOutlet weak var importeText: UILabel!
   @IBOutlet weak var statusText: UILabel!
+  @IBOutlet weak var origenIcon: UIImageView!
   
   func initContent(solicitud: SolicitudHistorial){
     
     self.dataView.addShadow()
     //UILabel.appearance().font = CustomAppFont.normalFont
-    
+    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino

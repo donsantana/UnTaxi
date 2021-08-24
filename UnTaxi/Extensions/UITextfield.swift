@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum TextFieldDataType {
-  case movilNumber, password, email, codigoVerificacion
+  case movilNumber, password, email, codigoVerificacion, otherText
 }
 
 extension UITextField {
@@ -63,29 +63,45 @@ extension UITextField {
   }
   
   func validate(_ type: TextFieldDataType) -> (Bool, String?) {
-      guard let text = self.text else {
-          return (false, nil)
-      }
-
+    guard let text = self.text else {
+      return (false, nil)
+    }
     switch type {
     case .movilNumber:
       let temp = text.filter {!$0.isWhitespace}
+      print(temp.trimmingCharacters(in: .whitespacesAndNewlines))
       return (temp.trimmingCharacters(in: .whitespacesAndNewlines).count == 10 && temp.trimmingCharacters(in: .whitespacesAndNewlines).isNumeric, "Número de teléfono incorrecto. Por favor verifíquelo")
+    case .otherText:
+      return (text.count > 0, "El campo no puede estar vacío.")
     case .password:
-      return (true, "Las claves no coinciden")
+      return (text.count > 0, "El campo no puede estar vacío.")
     case .email:
       let emailPattern = #"^\S+@\S+\.\S+$"#
       let result = text.range(
-          of: emailPattern,
-          options: .regularExpression
+        of: emailPattern,
+        options: .regularExpression
       )
       return (result != nil, "Por favor teclee un correo electrónico válido.")
     case .codigoVerificacion:
       return (text.count == 6 && text.isNumeric, "Por favor teclee el código recibido para crear su nueva contraseña.")
     default:
-      return (text.count > 0, "This field cannot be empty.")
+      return (text.count > 0, "El campo no puede estar vacío.")
     }
-
-      return (text.count > 0, "This field cannot be empty.")
+    
   }
+  
+//  func validate() {
+//      do {
+//          let email = try emailTextField.validatedText(validationType: ValidatorType.email)
+//          let username = try usernameTextField.validatedText(validationType: ValidatorType.username)
+//          let age = try self.ageTextField.validatedText(validationType: ValidatorType.age)
+//          let password = try passwordTextField.validatedText(validationType: ValidatorType.password)
+//          let projectId = try projectIdTextField.validatedText(validationType: ValidatorType.projectIdentifier)
+//          let department = try self.departmentTextField.validatedText(validationType: .requiredField(field: "Department"))
+//          let data = RegisterData(email: email, password: password, username: username, projectID: projectId, department: department, age: Int(age)!)
+//          save(data)
+//      } catch(let error) {
+//          showAlert(for: (error as! ValidationError).message)
+//      }
+//  }
 }

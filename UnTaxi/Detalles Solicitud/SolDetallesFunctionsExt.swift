@@ -108,17 +108,15 @@ extension SolPendController{
         dateFormato.dateFormat = "yyMMddhhmmss"
         self.fechahora = dateFormato.string(from: Date())
         let name = "\(self.solicitudPendiente.id)-\(self.solicitudPendiente.taxi.id)-\(fechahora).m4a"
+        
         globalVariables.SMSVoz.TerminarMensaje(name,solicitud: self.solicitudPendiente)
         self.apiService.subirAudioAPIService(solicitud: self.solicitudPendiente, name: name)
-        //globalVariables.SMSVoz.SubirAudio(self.solicitudPendiente, name: name)
-        //globalVariables.SMSVoz.uploadImageToServerFromApp(solicitud: self.solicitudPendiente, name: name)
         globalVariables.grabando = false
         globalVariables.SMSVoz.ReproducirMusica()
       }
     }else if sender.state == .began {
       if !globalVariables.SMSVoz.reproduciendo{
         self.SMSVozBtn.setImage(UIImage(named: "smsvozRec"), for: .normal)
-        globalVariables.SMSVoz.ReproducirMusica()
         globalVariables.SMSVoz.GrabarMensaje()
         globalVariables.grabando = true
       }

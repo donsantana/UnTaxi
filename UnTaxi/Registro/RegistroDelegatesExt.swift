@@ -15,12 +15,46 @@ extension RegistroController: UITextFieldDelegate{
   func textFieldDidBeginEditing(_ textField: UITextField) {
     var distanceValue = 0
     switch textField {
+    case nombreApText:
+      let (valid, message) = telefonoText.validate(.movilNumber)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.telefonoText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
     case claveText:
+      let (valid, message) = nombreApText.validate(.otherText)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.nombreApText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
       distanceValue = 80
     case confirmarClavText:
-      textField.isSecureTextEntry = true
+      let (valid, message) = claveText.validate(.password)
+      if !valid{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.claveText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
       distanceValue = 180
     case correoText:
+      let (valid, message) = confirmarClavText.validate(.password)
+      if valid && confirmarClavText.text == claveText.text{
+        crearCuentaBtn.isEnabled = true
+      }else{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.confirmarClavText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }
       distanceValue = 180
     default:
       break
@@ -36,21 +70,38 @@ extension RegistroController: UITextFieldDelegate{
     switch textfield {
     case telefonoText:
       let (valid, message) = textfield.validate(.movilNumber)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.telefonoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
+//      if !valid{
+//        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.telefonoText.becomeFirstResponder()
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
+    case nombreApText:
+      let (valid, message) = textfield.validate(.otherText)
+//      if !valid{
+//        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.nombreApText.becomeFirstResponder()
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
     case claveText:
+      let (valid, message) = textfield.validate(.password)
+//      if !valid{
+//        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.claveText.becomeFirstResponder()
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
       distanceValue = 80
     case confirmarClavText:
-      let (valid, message) = validateTextField(textField: textfield)
-      if valid{
+      let (valid, message) = textfield.validate(.password)
+      if valid && textfield.text == claveText.text{
         crearCuentaBtn.isEnabled = true
       }else{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.confirmarClavText.becomeFirstResponder()
         }))
@@ -60,7 +111,7 @@ extension RegistroController: UITextFieldDelegate{
     case correoText:
       let (valid, message) = textfield.validate(.email)
       print("valid \(valid)")
-      if !valid{
+      if !valid && !textfield.text!.isEmpty{
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.correoText.becomeFirstResponder()
@@ -91,7 +142,6 @@ extension RegistroController: UITextFieldDelegate{
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.endEditing(true)
-    print("Return pressed")
     switch textField {
     case telefonoText:
       let (valid, message) = textField.validate(.movilNumber)
@@ -99,23 +149,26 @@ extension RegistroController: UITextFieldDelegate{
         nombreApText.becomeFirstResponder()
       }
     case nombreApText:
-      claveText.becomeFirstResponder()
+      let (valid, message) = textField.validate(.otherText)
+      if valid {
+        claveText.becomeFirstResponder()
+      }
     case claveText:
       // Validate Text Field
-      let (valid, message) = validateTextField(textField: textField)
+      let (valid, message) = textField.validate(.password)
       if valid {
         confirmarClavText.becomeFirstResponder()
       }
     case confirmarClavText:
-      let (valid, message) = validateTextField(textField: textField)
-      if valid{
+      let (valid, message) = textField.validate(.password)
+      if valid && textField.text == claveText.text{
         correoText.becomeFirstResponder()
       }
       break
     case correoText:
       let (valid, message) = textField.validate(.email)
       print("valid \(valid)")
-      if !valid{
+      if !valid && !textField.text!.isEmpty{
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.correoText.becomeFirstResponder()

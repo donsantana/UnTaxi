@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,17 +36,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yD-8I-V7a">
-                            <rect key="frame" x="10" y="75" width="279" height="21"/>
+                            <rect key="frame" x="10" y="75" width="259" height="21"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIL-JR-8j7">
-                            <rect key="frame" x="309" y="75" width="65" height="21"/>
+                            <rect key="frame" x="289" y="75" width="85" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="VzM-10-3VV"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -60,7 +60,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stardorada" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-K4-tix">
-                            <rect key="frame" x="289" y="76" width="20" height="20"/>
+                            <rect key="frame" x="269" y="76" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="6oj-7H-DOZ"/>
                                 <constraint firstAttribute="width" constant="20" id="TxQ-3u-yVj"/>
@@ -91,7 +91,7 @@
                         <constraint firstItem="TSw-v4-g8Q" firstAttribute="leading" secondItem="NRe-fP-fGE" secondAttribute="leading" constant="10" id="UBb-ul-Oz6"/>
                         <constraint firstItem="aHV-pP-GKf" firstAttribute="top" secondItem="TSw-v4-g8Q" secondAttribute="bottom" constant="10" id="a5J-Th-xSA"/>
                         <constraint firstItem="S23-WE-lE5" firstAttribute="leading" secondItem="TSw-v4-g8Q" secondAttribute="trailing" constant="5" id="d1Z-Wo-oWa"/>
-                        <constraint firstItem="9yD-8I-V7a" firstAttribute="trailing" secondItem="aHV-pP-GKf" secondAttribute="trailing" constant="-20" id="dFZ-ff-6iI"/>
+                        <constraint firstItem="9yD-8I-V7a" firstAttribute="trailing" secondItem="aHV-pP-GKf" secondAttribute="trailing" constant="-40" id="dFZ-ff-6iI"/>
                         <constraint firstAttribute="trailing" secondItem="daf-OZ-oyo" secondAttribute="trailing" constant="20" id="i2r-09-l7F"/>
                         <constraint firstItem="R9a-K4-tix" firstAttribute="leading" secondItem="9yD-8I-V7a" secondAttribute="trailing" id="izf-AU-Uc7"/>
                         <constraint firstItem="9yD-8I-V7a" firstAttribute="leading" secondItem="TSw-v4-g8Q" secondAttribute="leading" id="k8w-WU-ICV"/>

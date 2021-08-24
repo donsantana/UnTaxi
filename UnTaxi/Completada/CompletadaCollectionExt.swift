@@ -36,11 +36,12 @@ extension CompletadaController: UICollectionViewDataSource, UICollectionViewDele
     if !self.comentariosSelected.contains(self.evaluacion.getComentariosOptions()[indexPath.row]){
       self.comentariosSelected.append(self.evaluacion.getComentariosOptions()[indexPath.row])
       (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.backgroundColor =  CustomAppColor.buttonActionColor
+      (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.textColor =  CustomAppColor.buttonsTitleColor
     }else{
       self.comentariosSelected.removeAll{$0 == self.evaluacion.getComentariosOptions()[indexPath.row]}
       (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.backgroundColor =  .white
+      (collectionView.cellForItem(at: indexPath) as! ComentarioCollectionCell).comentarioText.textColor = CustomAppColor.textColor
     }
-    
   }
   
 //  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

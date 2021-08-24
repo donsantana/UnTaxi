@@ -78,6 +78,8 @@
 		C64363A022EBC44E0006F235 /* OfertasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C643639F22EBC44E0006F235 /* OfertasController.swift */; };
 		C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */; };
 		C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
+		C645789226D2863D00F11C56 /* InicioValidationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789126D2863D00F11C56 /* InicioValidationExt.swift */; };
+		C645789426D4AD1100F11C56 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789326D4AD1100F11C56 /* UIImageView.swift */; };
 		C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* PagoCell.xib */; };
 		C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
 		C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
@@ -249,6 +251,8 @@
 		C643639F22EBC44E0006F235 /* OfertasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertasController.swift; sourceTree = "<group>"; };
 		C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertasControllerExt.swift; sourceTree = "<group>"; };
 		C6445813255F78160000433E /* InicioControllerTablesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerTablesExt.swift; sourceTree = "<group>"; };
+		C645789126D2863D00F11C56 /* InicioValidationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioValidationExt.swift; sourceTree = "<group>"; };
+		C645789326D4AD1100F11C56 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C65F9F2F229E384200E3E304 /* PagoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagoCell.xib; sourceTree = "<group>"; };
 		C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoViewCell.swift; sourceTree = "<group>"; };
 		C65F9F33229E3BA900E3E304 /* ContactoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoCell.xib; sourceTree = "<group>"; };
@@ -460,14 +464,14 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
+				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
 				C6C8E63026BC37330076465D /* Registro */,
 				C6C3A4ED245F32640084F409 /* Login */,
 				C63445AA2597BA9F00ABEC47 /* Address */,
 				C6A95B87257F3C510028F11A /* Panico */,
 				C6977E7625775DCE0071625E /* Yapa */,
 				C68073D7256E333D0093E4DE /* Menu */,
-				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
-				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
 				C619BE5B253FF97000611B4D /* Historial */,
 				C6A37F172557325400C79BFF /* Terminos */,
 				C6C3A4F7245F32A00084F409 /* Inicio */,
@@ -700,6 +704,7 @@
 				C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */,
 				C630E6C426715B7100700F8D /* Character.swift */,
 				C673EC432672A2CC004EFC39 /* String.swift */,
+				C645789326D4AD1100F11C56 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +787,7 @@
 				C68073B7256E21A20093E4DE /* InicioPanelExt.swift */,
 				C68074732571CDDA0093E4DE /* EsperaChildVC.swift */,
 				C665F21425D2DECB00044480 /* InicioSearchExt.swift */,
+				C645789126D2863D00F11C56 /* InicioValidationExt.swift */,
 			);
 			path = Inicio;
 			sourceTree = "<group>";
@@ -1143,6 +1149,7 @@
 				C6C3A4F5245F32640084F409 /* LoginFunctionsExt.swift in Sources */,
 				C62E593D24B80F1400FFB26B /* AppConfig.swift in Sources */,
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
+				C645789226D2863D00F11C56 /* InicioValidationExt.swift in Sources */,
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
 				C6088502265C01850038303A /* YapaPanelTableExt.swift in Sources */,
@@ -1164,6 +1171,7 @@
 				C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */,
 				C6C3A506245F335A0084F409 /* PerfilControllerExt.swift in Sources */,
 				C6A37F192557327000C79BFF /* TerminosController.swift in Sources */,
+				C645789426D4AD1100F11C56 /* UIImageView.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
 				C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */,

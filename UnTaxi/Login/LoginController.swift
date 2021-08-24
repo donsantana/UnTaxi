@@ -96,9 +96,9 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.claveRecoverView.addGestureRecognizer(tapGesture)
     self.view.addGestureRecognizer(tapGesture)
  
-    self.autenticarBtn.addShadow()
-    self.RecuperarClaveBtn.addShadow()
-    self.crearNewPasswordBtn.addShadow()
+    self.autenticarBtn.addCustomActionBtnsColors()
+    self.RecuperarClaveBtn.addCustomActionBtnsColors()
+    self.crearNewPasswordBtn.addCustomActionBtnsColors()
     
     self.autenticarBtn.heightAnchor 
     self.loginDatosViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 30))

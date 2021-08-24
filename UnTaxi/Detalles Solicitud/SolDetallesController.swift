@@ -36,6 +36,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var valorOferta: UILabel!
   @IBOutlet weak var direccionOrigen: UILabel!
   @IBOutlet weak var direccionDestino: UILabel!
+  @IBOutlet weak var origenIcon: UIImageView!
   
   @IBOutlet weak var ComentarioEvalua: UIView!
   
@@ -49,6 +50,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var showConductorBtn: UIButton!
   @IBOutlet weak var DatosConductor: UIView!
   @IBOutlet weak var reviewConductor: UILabel!
+  @IBOutlet weak var starIcon: UIImageView!
   //datos del conductor a mostrar
   @IBOutlet weak var conductorPreview: UIView!
   @IBOutlet weak var ImagenCond: UIImageView!
@@ -88,6 +90,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.socketService.initListenEventos()
     
     waitingView.addStandardConfig()
+    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     
     self.origenAnnotation.coordinate = self.solicitudPendiente.origenCoord
     self.origenAnnotation.subtitle = "origen"
@@ -96,7 +99,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       self.destinoAnnotation.coordinate = self.solicitudPendiente.destinoCoord
       self.destinoAnnotation.subtitle = "destino"
     }
-    
+    starIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     //self.detallesView.addShadow()
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()

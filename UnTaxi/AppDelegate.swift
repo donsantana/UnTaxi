@@ -50,12 +50,13 @@ import UserNotifications
     
     UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : CustomAppColor.textColor,
                                                         .font : UIFont.init(name: "Muli", size: 20.0)!]
-    
     // ToolBar
     UIToolbar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
     
     UIToolbar.appearance().tintColor = CustomAppColor.textColor
     
+    UIActivityIndicatorView.appearance().color = CustomAppColor.activityIndicatorColor
+    //UIVisualEffectView.appearance().addCustomConfig()
     //TabBar
     //UITabBar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
     //UITabBar.appearance().tintColor = CustomAppColor.textColor
@@ -72,9 +73,13 @@ import UserNotifications
     //UITextView.appearance().font = CustomAppFont.normalFont
     
     UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: CustomAppColor.buttonsTitleColor], for: .selected)
+    if #available(iOS 13.0, *) {
+      UISegmentedControl.appearance().selectedSegmentTintColor = CustomAppColor.buttonActionColor
+    } else {
+      UISegmentedControl.appearance().tintColor = CustomAppColor.buttonActionColor
+    }
     UISegmentedControl.appearance().backgroundColor = .white
-    
-    //UIButton.appearance().titleLabel?.font = CustomAppFont.buttonFont
+    UISwitch.appearance().onTintColor = CustomAppColor.buttonActionColor
     
     //GOOGLE ADS CODE
     GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -132,11 +137,11 @@ import UserNotifications
   
   func applicationWillEnterForeground(_ application: UIApplication) {
     if backgrounTaskIdentifier != UIBackgroundTaskIdentifier.invalid{
-      if globalVariables.urlConductor != ""{
-        globalVariables.SMSProceso = true
-        globalVariables.SMSVoz.ReproducirMusica()
-        globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
-      }
+//      if globalVariables.urlConductor != ""{
+//        globalVariables.SMSProceso = true
+//        globalVariables.SMSVoz.ReproducirMusica()
+//        globalVariables.SMSVoz.ReproducirVozConductor(globalVariables.urlConductor)
+//      }
       if let timer = self.myTimer{
         timer.invalidate()
         self.myTimer = nil

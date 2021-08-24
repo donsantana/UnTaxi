@@ -32,48 +32,20 @@ class BaseController: UIViewController {
       self.topMenu.tintColor = CustomAppColor.textColor//.white
       self.topMenu.addShadow()
       
-//      let baseTitle = UILabel()
-//      baseTitle.frame = CGRect(x: screenBounds.width/2 - 100, y: 20, width: 220, height: 21)
-//      baseTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
-//      baseTitle.textColor = CustomAppColor.textColor//.white
-//      baseTitle.text = self.barTitle
-//      topMenu.addSubview(baseTitle)
       if !hideCloseBtn {
         let closeBtn = UIButton(type: UIButton.ButtonType.system)
         closeBtn.frame = CGRect(x: topMenu.frame.width - 60, y: 15, width: 45, height: 45)
-        let closeImage = UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysOriginal)
-        closeBtn.setImage(closeImage, for: UIControl.State())
         closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
-        closeBtn.layer.cornerRadius = closeBtn.frame.height/2
-        //closeBtn.backgroundColor = .white
-        //closeBtn.tintColor = CustomAppColor.buttonsTitleColor
-        //closeBtn.addShadow()
+        closeBtn.addCustomMenuBtnsColors(image: (UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysTemplate))!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
+
         topMenu.addSubview(closeBtn)
       }
       
-      if hideMenuBtn{
-        let backBtn = UIButton(type: UIButton.ButtonType.system)
-        backBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
-        let backImage = UIImage(named: "backIcon")?.withRenderingMode(.alwaysTemplate)
-        backBtn.setImage(backImage, for: UIControl.State())
-        backBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
-        backBtn.tintColor = hideMenuBtn ? .black : CustomAppColor.buttonActionColor
-        backBtn.layer.cornerRadius = backBtn.frame.height/2
-        backBtn.backgroundColor = .white
-        backBtn.addShadow()
-        topMenu.addSubview(backBtn)
-        topMenu.removeShadow()
-      }else{
-        let homeBtn = UIButton(type: UIButton.ButtonType.system)
-        homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
-        let homeImage = UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate)
-        homeBtn.setImage(homeImage, for: UIControl.State())
-        homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
-        homeBtn.tintColor = hideMenuBtn ? .black : CustomAppColor.buttonActionColor
-        homeBtn.layer.cornerRadius = homeBtn.frame.height/2
-        homeBtn.backgroundColor = .white
-        topMenu.addSubview(homeBtn)
-      }
+      let homeBtn = UIButton(type: UIButton.ButtonType.system)
+      homeBtn.frame = CGRect(x: 10, y: 15, width: 45, height: 45)
+      homeBtn.addCustomMenuBtnsColors(image: (UIImage(named: hideMenuBtn ? "backIcon" : "menu")?.withRenderingMode(.alwaysTemplate))!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
+      homeBtn.addTarget(self, action: #selector(homeBtnAction), for: .touchUpInside)
+      topMenu.addSubview(homeBtn)
       
       self.view.addSubview(topMenu)
     }

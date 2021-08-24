@@ -18,6 +18,7 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   @IBOutlet weak var showHideNuevaClaveBtn: UIButton!
   @IBOutlet weak var showHideConfirmBtn: UIButton!
   @IBOutlet weak var waitingView: UIVisualEffectView!
+  @IBOutlet weak var actualizarBtn: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,6 +27,7 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
     self.NuevaClaveText.delegate = self
     self.ConfirmeClaveText.delegate = self
     
+    actualizarBtn.addCustomActionBtnsColors()
     waitingView.addStandardConfig()
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))

@@ -64,6 +64,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.98818868400000004" green="0.81572407479999998" blue="0.090277574959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="origenIcon" destination="czQ-Vt-nza" id="hTL-lw-4T6"/>
                 <outlet property="origenText" destination="16x-fO-L5X" id="Wm0-ho-jgn"/>
             </connections>
             <point key="canvasLocation" x="21.739130434782609" y="153.34821428571428"/>

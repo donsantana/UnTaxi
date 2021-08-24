@@ -26,6 +26,7 @@ class OrigenViewCell: UITableViewCell {
   @IBOutlet weak var origenText: UITextField!
 
   private var datePicker: UIDatePicker?
+  @IBOutlet weak var origenIcon: UIImageView!
   
   func initContent(){
     //self.origenText.delegate = self
@@ -38,7 +39,7 @@ class OrigenViewCell: UITableViewCell {
     datePicker?.addTarget(self, action: #selector(self.dateChange(datePicker:)), for: .valueChanged)
     
     let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.dismissPicker))
-    
+    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     self.origenText.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
   }
   

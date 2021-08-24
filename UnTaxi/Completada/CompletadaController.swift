@@ -25,9 +25,11 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   @IBOutlet weak var conductorImage: UIImageView!
   @IBOutlet weak var conductorName: UILabel!
   @IBOutlet weak var importeText: UILabel!
+  @IBOutlet weak var origenIcon: UIImageView!
   
   @IBOutlet weak var detallesView: UIView!
   @IBOutlet weak var evaluacionView: UIView!
+  @IBOutlet weak var sendEvaluacionBtn: UIButton!
   
   @IBOutlet weak var PrimeraStart: UIButton!
   @IBOutlet weak var SegundaStar: UIButton!
@@ -53,7 +55,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.navigationController?.setNavigationBarHidden(true, animated: false)
     self.comentariosCollection.delegate = self
     self.comentarioText.delegate = self
-    
+    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     self.comentarioText.setBottomBorder(borderColor: .gray)
     self.conductor = self.solicitud.taxi.conductor
     let url = URL(string:"\(GlobalConstants.urlHost)/\(self.conductor.urlFoto)")
@@ -77,8 +79,9 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     
     self.origenAddressText.text = solicitud.dirOrigen
     self.destinoAddressText.text = solicitud.dirDestino
-    print("Solicitud completada \(self.solicitud.useVoucher)")
+    print("Solicitud completada \(self.solicitud)")
     
+    sendEvaluacionBtn.addCustomActionBtnsColors()
   }
 
   func updateEvalucion(evaluation: Int){

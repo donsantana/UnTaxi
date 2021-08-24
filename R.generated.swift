@@ -416,7 +416,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 95 images.
+  /// This `R.image` struct is generated, and contains static references to 91 images.
   struct image {
     /// Image `CLARO`.
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
@@ -570,20 +570,12 @@ struct R: Rswift.Validatable {
     static let terminos = Rswift.ImageResource(bundle: R.hostingBundle, name: "terminos")
     /// Image `tiempo`.
     static let tiempo = Rswift.ImageResource(bundle: R.hostingBundle, name: "tiempo")
-    /// Image `tipoHorasSelected`.
-    static let tipoHorasSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoHorasSelected")
     /// Image `tipoHoras`.
     static let tipoHoras = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoHoras")
-    /// Image `tipoOfertaSelected`.
-    static let tipoOfertaSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoOfertaSelected")
     /// Image `tipoOferta`.
     static let tipoOferta = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoOferta")
-    /// Image `tipoPactadaSelected`.
-    static let tipoPactadaSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoPactadaSelected")
     /// Image `tipoPactada`.
     static let tipoPactada = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoPactada")
-    /// Image `tipoTaximetroSelected`.
-    static let tipoTaximetroSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetroSelected")
     /// Image `tipoTaximetro`.
     static let tipoTaximetro = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetro")
     /// Image `up`.
@@ -1149,23 +1141,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoHorasSelected", bundle: ..., traitCollection: ...)`
-    static func tipoHorasSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoHorasSelected, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "tipoOferta", bundle: ..., traitCollection: ...)`
     static func tipoOferta(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tipoOferta, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoOfertaSelected", bundle: ..., traitCollection: ...)`
-    static func tipoOfertaSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoOfertaSelected, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1177,23 +1155,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoPactadaSelected", bundle: ..., traitCollection: ...)`
-    static func tipoPactadaSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoPactadaSelected, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "tipoTaximetro", bundle: ..., traitCollection: ...)`
     static func tipoTaximetro(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tipoTaximetro, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoTaximetroSelected", bundle: ..., traitCollection: ...)`
-    static func tipoTaximetroSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoTaximetroSelected, compatibleWith: traitCollection)
     }
     #endif
 
