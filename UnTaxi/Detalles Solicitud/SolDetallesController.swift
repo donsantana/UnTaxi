@@ -109,6 +109,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.valorOferta.titleBlueStyle()
     self.LlamarCondBtn.addShadow()
     
+    print("solicitud Pendiente \(solicitudPendiente.importe)")
     let adsTapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPublicidad))
     self.adsBannerView.addGestureRecognizer(adsTapGesture)
     

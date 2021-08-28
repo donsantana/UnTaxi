@@ -193,7 +193,7 @@ extension InicioController{
     let baseTitle = UILabel.init(frame: CGRect(x: 40, y: 0, width: self.SolicitudView.bounds.width - 40, height: 21))
     baseTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
     baseTitle.textColor = CustomAppColor.customBlueColor
-    baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(globalVariables.cliente.empresa == "" ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
+    baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(self.pagoCell.formaPagoSwitch.isHidden || !(self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1) ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
     
     headerView.addSubview(baseTitle)
     self.solicitudFormTable.tableHeaderView = headerView
@@ -396,9 +396,7 @@ extension InicioController{
   
   func crearSolicitudOferta(){
     //#SO,idcliente,nombreapellidos,movil,dirorigen,referencia,dirdestino,latorigen,lngorigen,ladestino,lngdestino,distanciaorigendestino,valor oferta,voucher,detalle oferta,fecha reserva,tipo transporte,#
-    
-    if !self.origenCell.origenText.text!.isEmpty{
-      
+
       let nombreContactar = globalVariables.cliente.nombreApellidos
       
       let telefonoContactar = globalVariables.cliente.user
@@ -412,8 +410,10 @@ extension InicioController{
       let destino = self.cleanTextField(textfield: self.destinoCell.destinoText)
       
       let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
-      
-      let voucher = self.tabBar.selectedItem != self.pactadaItem || (self.tabBar.selectedItem != self.ofertaItem && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1) ? "1" : "0"
+
+    let voucher = !self.pagoCell.formaPagoSwitch.isHidden && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
+    
+      //let voucher = self.tabBar.selectedItem == self.pactadaItem || self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
       print("Forma de pago \(self.pagoCell.formaPagoSwitch.selectedSegmentIndex)")
       print("voucher \(voucher)")
       let detalleOferta = "No detalles"
@@ -421,7 +421,7 @@ extension InicioController{
       let fechaReserva = ""
       //var valorOferta = self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".")
       let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
-      
+    
       var tipoServicio = 1
       
       switch self.tabBar.selectedItem {
@@ -436,7 +436,7 @@ extension InicioController{
       }
       
       let isYapa = globalVariables.appConfig.yapa ? pagoCell.pagarYapaSwitch.isOn : false
-      let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, valorOferta: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio,yapa: isYapa)
+      let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, importe: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio,yapa: isYapa)
       nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
       
       if !self.contactoCell.telefonoText.text!.isEmpty{
@@ -445,13 +445,7 @@ extension InicioController{
       
       self.crearTramaSolicitud(nuevaSolicitud)
       view.endEditing(true)
-    }else{
-      let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe llegar el campo origen.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.origenCell.origenText.becomeFirstResponder()
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+    
   }
   
   func showFormError(){
@@ -459,43 +453,54 @@ extension InicioController{
   }
   
   @objc func enviarSolicitud(){
-    if self.contactoCell.contactarSwitch.isOn{
-      let (valid, message) = self.contactoCell.telefonoText.validate(.movilNumber)
-      if !valid || self.contactoCell.telefonoText.text!.isEmpty{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Si solicita para otra persona debe especificar el nombre y el número teléfono.", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          if self.contactoCell.contactoNameText.text!.isEmpty{
-            self.contactoCell.contactoNameText.becomeFirstResponder()
-          }else{
-            self.contactoCell.telefonoText.becomeFirstResponder()
-          }
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }else{
-        self.crearSolicitudOferta()
-      }
+    if self.origenCell.origenText.text!.isEmpty{
+      let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su Origen.", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.view.endEditing(true)
+        self.origenCell.origenText.becomeFirstResponder()
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
     }else{
-      if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
-        if !(self.destinoCell.destinoText.text!.isEmpty){
-          if Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! < globalVariables.tarifario.valorForDistance(distance: 0.0) && self.tabBar.selectedItem == self.ofertaItem{
-            let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))", preferredStyle: .alert)
-            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-              self.ofertaDataCell.initContent()
-            }))
-            self.present(alertaDos, animated: true, completion: nil)
-          }else{
-            self.crearSolicitudOferta()
-          }
-        }else{
-          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
+      if self.contactoCell.contactarSwitch.isOn{
+        let (valid, message) = self.contactoCell.telefonoText.validate(.movilNumber)
+        if !valid || self.contactoCell.telefonoText.text!.isEmpty{
+          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Si solicita para otra persona debe especificar el nombre y el número teléfono.", preferredStyle: .alert)
           alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-            self.view.endEditing(true)
-            self.destinoCell.destinoText.becomeFirstResponder()
+            if self.contactoCell.contactoNameText.text!.isEmpty{
+              self.contactoCell.contactoNameText.becomeFirstResponder()
+            }else{
+              self.contactoCell.telefonoText.becomeFirstResponder()
+            }
           }))
           self.present(alertaDos, animated: true, completion: nil)
+        }else{
+          self.crearSolicitudOferta()
         }
       }else{
-        self.crearSolicitudOferta()
+        if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
+          if !(self.destinoCell.destinoText.text!.isEmpty){
+            if Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! < globalVariables.tarifario.valorForDistance(distance: 0.0) && self.tabBar.selectedItem == self.ofertaItem{
+              let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))", preferredStyle: .alert)
+              alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                self.ofertaDataCell.initContent()
+              }))
+              self.present(alertaDos, animated: true, completion: nil)
+            }else{
+              self.crearSolicitudOferta()
+            }
+          }else{
+            
+            let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
+            alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+              self.view.endEditing(true)
+              self.destinoCell.destinoText.becomeFirstResponder()
+            }))
+            self.present(alertaDos, animated: true, completion: nil)
+            
+          }
+        }else{
+          self.crearSolicitudOferta()
+        }
       }
     }
   }
@@ -522,7 +527,7 @@ extension InicioController{
           let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
 
           print("costo \(costo)")
-          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up)))"
+          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up) > 1.5 ? costo.rounded(to: 0.05, roundingRule: .up) : 1.5))"
           self.hideSolicitudView(isHidden: false)
           //self.SolicitudView.isHidden = false
 

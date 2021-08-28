@@ -15,14 +15,14 @@ struct GlobalConstants {
   static var socketurlHost: String = "https://client-\(urlServer)" //premium.xoait.com"
   static var paymentsUrl = "https://pay-\(urlServer)"
   
-  static var apiLoginUrl:String = "\(urlHost)/auth/client-login"
-  static var passRecoverUrl:String = "\(urlHost)/recover-password"
-  static var createPassUrl:String = "\(urlHost)/verify"
-  static var passChangeUrl:String = "\(urlHost)/change-password"
-  static var updateProfileUrl:String = "\(urlHost)/profile"
-  static var registerUrl:String = "\(urlHost)/register"
+  static var apiLoginUrl: String = "\(urlHost)/auth/client-login"
+  static var passRecoverUrl: String = "\(urlHost)/recover-password"
+  static var createPassUrl: String = "\(urlHost)/verify"
+  static var passChangeUrl: String = "\(urlHost)/change-password"
+  static var updateProfileUrl: String = "\(urlHost)/profile"
+  static var registerUrl: String = "\(urlHost)/register"
   static var subiraudioUrl: String = "\(urlHost)/voz"
-  static var listCardsUrl:String = "\(paymentsUrl)/card"
+  static var listCardsUrl: String = "\(paymentsUrl)/card"
   
   
   static var apiUser: String = "oinergb@xoait.com"

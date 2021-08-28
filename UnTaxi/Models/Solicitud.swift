@@ -37,7 +37,7 @@ class Solicitud {
   var importe = 0.0
   var yapaimporte = 0.0
   
-  var valorOferta = 0.0
+  //var valorOferta = 0.0
   var detalleOferta = ""
   
   var fechaReserva = OurDate(date: Date())
@@ -52,7 +52,7 @@ class Solicitud {
   var otroNombre = ""
   var otroTelefono = ""
 //
-  init(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool) {
+  init(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, importe: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool) {
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
@@ -60,7 +60,7 @@ class Solicitud {
     self.dirDestino = !dirDestino.isEmpty ? dirDestino : "No especificado"
     self.origenCoord = CLLocationCoordinate2D(latitude: latOrigen, longitude: lngOrigen)
     self.destinoCoord = CLLocationCoordinate2D(latitude: latDestino, longitude: lngDestino)
-    self.valorOferta = valorOferta
+    self.importe = importe
     self.detalleOferta = detalleOferta
     self.useVoucher = useVoucher
     self.tipoServicio = tipoServicio
@@ -80,9 +80,9 @@ class Solicitud {
     self.dirDestino = !(jsonData["dirdestino"] is NSNull) ? jsonData["dirdestino"] as! String : ""
     self.origenCoord = CLLocationCoordinate2D(latitude: !(jsonData["latorigen"] is NSNull) ? jsonData["latorigen"] as! Double : 0.0, longitude: !(jsonData["lngorigen"] is NSNull) ? jsonData["lngorigen"] as! Double : 0.0)
     self.destinoCoord = CLLocationCoordinate2D(latitude: !(jsonData["latdestino"] is NSNull) ? jsonData["latdestino"] as! Double : 0.0, longitude: !(jsonData["lngdestino"] is NSNull) ? jsonData["lngdestino"] as! Double : 0.0)
-    self.valorOferta = !(jsonData["importe"] is NSNull) ? jsonData["importe"] as! Double : 0.0
+    self.importe = !(jsonData["importe"] is NSNull) ? jsonData["importe"] as! Double : 0.0
     self.detalleOferta = !(jsonData["detalleoferta"] is NSNull) ? jsonData["detalleoferta"] as! String : ""
-    self.useVoucher = !(jsonData["nvoucher"] is NSNull) ? "1" : "0"
+    self.useVoucher = !(jsonData["idempresa"] is NSNull) ? "1" : "0"
     self.tipoServicio = !(jsonData["tiposervicio"] is NSNull) ? jsonData["tiposervicio"] as! Int : 0
     self.yapa = !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Bool : false
     self.fechaReserva = !(jsonData["fechareserva"] is NSNull) ? OurDate(stringDate:jsonData["fechareserva"] as? String) : OurDate(date: Date())
@@ -90,7 +90,7 @@ class Solicitud {
   }
   
   //Agregar datos de la solicitud
-  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, valorOferta: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool){
+  func DatosSolicitud(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, importe: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool){
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
@@ -98,7 +98,7 @@ class Solicitud {
     self.dirDestino = !dirDestino.isEmpty ? dirDestino : "No especificado"
     self.origenCoord = CLLocationCoordinate2D(latitude: latOrigen, longitude: lngOrigen)
     self.destinoCoord = CLLocationCoordinate2D(latitude: latDestino, longitude: lngDestino)
-    self.valorOferta = valorOferta
+    self.importe = importe
     self.detalleOferta = detalleOferta
     self.useVoucher = useVoucher
     self.tipoServicio = tipoServicio
@@ -139,11 +139,11 @@ class Solicitud {
   }
   
   func updateValorOferta(newValor: String)->[String: Any]{
-    self.valorOferta = (newValor as NSString).doubleValue
+    self.importe = (newValor as NSString).doubleValue
     
     return [
       "idsolicitud": self.id,
-      "importe": self.valorOferta
+      "importe": self.importe
     ]
   }
   
@@ -188,8 +188,8 @@ class Solicitud {
       "latorigen": self.origenCoord.latitude,
       "lngorigen": self.origenCoord.longitude,
       "so": 2,
-      "idempresa": self.cliente.idEmpresa ?? 0,
-      "empresa": self.cliente.empresa ?? "",
+      "idempresa": self.useVoucher == "1" ? self.cliente.idEmpresa! : 0,
+      "empresa": self.useVoucher == "1" ? self.cliente.empresa! : "",
       "idtipovehiculo": 1,
       "tipovehiculo": "Taxi",
       "tarjeta": self.tarjeta,
@@ -197,7 +197,7 @@ class Solicitud {
       "dirdestino": self.dirDestino,
       "latdestino": self.destinoCoord.latitude,
       "lngdestino": self.destinoCoord.longitude,
-      "importe": self.valorOferta,
+      "importe": self.importe,
       "detalleoferta": self.detalleOferta
     ]
     

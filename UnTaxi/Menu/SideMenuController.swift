@@ -49,7 +49,7 @@ class SideMenuController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
-    self.yapaText.text = "$\(globalVariables.cliente.yapa)"
+    self.yapaText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
   }
   
@@ -107,5 +107,13 @@ class SideMenuController: UIViewController {
     //globalVariables.publicidadService?.stopPublicidad()
     let vc = R.storyboard.main.perfil()!
     self.navigationController!.show(vc, sender: nil)
+  }
+  
+  
+}
+
+extension SideMenuController: SocketServiceDelegate{
+  func socketResponse(_ controller: SocketService, actualizaryapa result: [String : Any]) {
+    self.yapaText.text = "$\(String(format: "%.2f", globalVariables.cliente.yapa))"
   }
 }

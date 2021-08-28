@@ -232,7 +232,7 @@ final class ApiService {
   
   func loginToAPIService(user: String, password: String){
     let params = ["user": user, "password": password, "version": "1.0.0"] as Dictionary<String, String>
-    
+    print(GlobalConstants.apiLoginUrl)
     var request = URLRequest(url: URL(string: GlobalConstants.apiLoginUrl)!)
     request.httpMethod = "POST"
     request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])

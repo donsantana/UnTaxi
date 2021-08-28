@@ -36,7 +36,7 @@ class EsperaChildVC: UIViewController {
     self.newOfertaText.addBorder(color: CustomAppColor.buttonActionColor)
     self.MensajeEspera.centerVertically()
    
-    self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.valorOferta)))"
+    self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.importe)))"
     self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
     
   }
@@ -105,7 +105,7 @@ class EsperaChildVC: UIViewController {
   
   @IBAction func downOferta(_ sender: Any) {
     self.updateOfertaValue(value: -0.25)
-    self.down25.isEnabled = Double(self.newOfertaText!.text!.dropFirst())! > solicitud!.valorOferta
+    self.down25.isEnabled = Double(self.newOfertaText!.text!.dropFirst())! > solicitud!.importe
   }
   
   @IBAction func upOferta(_ sender: Any) {
@@ -130,26 +130,14 @@ class EsperaChildVC: UIViewController {
 extension EsperaChildVC: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
     print("cancelarservicio")
-//    let viewcontrollers = self.navigationController?.viewControllers
-//
-//    viewcontrollers?.forEach({ (vc) in
-//      if  let inventoryListVC = vc as? InicioController {
-//        self.navigationController!.popToViewController(inventoryListVC, animated: true)
-//      }
-//    })
-//
     globalVariables.ofertasList.removeAll()
     let vc = R.storyboard.main.inicioView()!
     self.navigationController?.show(vc, sender: nil)
-//    let navigationController = UINavigationController(rootViewController: vc)
-//    //self.present(navigationController, animated: false, completion: nil)
-//    self.navigationController?.popToViewController(vc, animated: false)//show(vc, sender: nil)
-//    self.dismiss(animated: false, completion: nil)
   }
   
   func socketResponse(_ controller: SocketService, solicitudaceptada result: [String : Any]) {
     let newTaxi = Taxi(id: result["idtaxi"] as! Int, matricula: result["matriculataxi"] as! String, codigo: result["codigotaxi"] as! String, marca: result["marcataxi"] as! String,color: result["colortaxi"] as! String, lat: result["lattaxi"] as! Double, long: result["lngtaxi"] as! Double, conductor: Conductor(idConductor: result["idconductor"] as! Int, nombre: result["nombreapellidosconductor"] as! String, telefono:  result["telefonoconductor"] as! String, urlFoto: result["foto"] as! String, calificacion: result["calificacion"] as! Double, cantidadcalificaciones: result["cantidadcalificacion"] as! Int))
-    print(globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!)
+    print("solicitud \(globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!.useVoucher)")
     globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!.DatosTaxiConductor(taxi: newTaxi)
     
     DispatchQueue.main.async {

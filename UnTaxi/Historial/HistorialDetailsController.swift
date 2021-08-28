@@ -111,7 +111,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   @IBAction func evaluarConductor(_ sender: Any) {
-    let tempSolicitud = Solicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, valorOferta: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
+    let tempSolicitud = Solicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, importe: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
     
     let vc = R.storyboard.main.completadaView()!
     vc.solicitud = tempSolicitud

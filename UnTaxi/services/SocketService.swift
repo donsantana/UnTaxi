@@ -35,7 +35,7 @@ protocol SocketServiceDelegate: class {
   func socketResponse(_ controller: SocketService, visualizapublicidad result: [String: Any])
   func socketResponse(_ controller: SocketService, accedeapublicidad result: [String: Any])
   func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any])
-  
+  func socketResponse(_ controller: SocketService, actualizaryapa result: [String: Any])
 }
 
 
@@ -98,10 +98,15 @@ final class SocketService{
   }
   
   func initListenEventos(){
-    print("Cargando Eventos")
     self.offSocketEventos()
+    print("Cargando Eventos")
     //Evento sockect para escuchar
     //TRAMA IN: #LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi,latorig,lngorig,latdest,lngdest,telefonoconductor
+    
+    globalVariables.socket.on("disconnect"){data, ack  in
+      let result = data[0] as! [String: AnyObject]
+      print("desconectado \(result)")
+    }
     
     //Evento Posicion de taxis
     globalVariables.socket.on("cargarvehiculoscercanos"){data, ack  in
@@ -138,7 +143,7 @@ final class SocketService{
     
     globalVariables.socket.on("solicitudaceptada"){data, ack in
       let result = data[0] as! [String: Any]
-      print(result)
+      print("solicitudaceptada \(result)")
       self.delegate?.socketResponse(self, solicitudaceptada: result)
     }
     
@@ -227,6 +232,16 @@ final class SocketService{
       print("publicidad \(result)")
       self.delegate?.socketResponse(self, accedeapublicidad: result)
     }
+    
+    globalVariables.socket.on("actualizaryapa"){data, ack in
+      let result = data[0] as! [String: Any]
+      print("actualizar Yapa \(result)")
+      if globalVariables.cliente.id == result["idcliente"] as! Int{
+        globalVariables.cliente.updateYapa(monto: result["yapa"] as! Double)
+      }
+      self.delegate?.socketResponse(self, actualizaryapa: result)
+    }
+    
   }
   
   func initYapaEvents() {
@@ -305,4 +320,5 @@ extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, visualizapublicidad result: [String: Any]){}
   func socketResponse(_ controller: SocketService, accedeapublicidad result: [String: Any]){}
   func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any]){}
+  func socketResponse(_ controller: SocketService, actualizaryapa result: [String: Any]){}
 }

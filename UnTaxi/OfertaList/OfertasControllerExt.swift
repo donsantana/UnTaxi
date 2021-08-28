@@ -67,7 +67,7 @@ extension OfertasController: SocketServiceDelegate{
     self.ofertaAceptadaEffect.isHidden = true
     if result["code"] as! Int == 1{
       let solicitudCreada = globalVariables.solpendientes.filter({$0.id == self.ofertaSeleccionada.id}).first
-      solicitudCreada?.valorOferta = self.ofertaSeleccionada.valorOferta
+      solicitudCreada?.importe = self.ofertaSeleccionada.valorOferta
       let newTaxi = Taxi(id: self.ofertaSeleccionada.idTaxi, matricula: self.ofertaSeleccionada.matricula, codigo: self.ofertaSeleccionada.codigo, marca: self.ofertaSeleccionada.marca, color: self.ofertaSeleccionada.color, lat: self.ofertaSeleccionada.location.latitude, long: self.ofertaSeleccionada.location.longitude, conductor: Conductor(idConductor: self.ofertaSeleccionada.idConductor, nombre: self.ofertaSeleccionada.nombreConductor, telefono: self.ofertaSeleccionada.movilConductor, urlFoto: self.ofertaSeleccionada.urlFoto, calificacion: self.ofertaSeleccionada.calificacion, cantidadcalificaciones: self.ofertaSeleccionada.totalCalif))
       solicitudCreada!.DatosTaxiConductor(taxi: newTaxi)
       globalVariables.ofertasList.removeAll()

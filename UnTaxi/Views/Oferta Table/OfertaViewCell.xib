@@ -85,7 +85,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Y-MA-gzT">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Y-MA-gzT">
                             <rect key="frame" x="266" y="63.5" width="120" height="30"/>
                             <color key="backgroundColor" red="0.99882358309999997" green="0.79328209159999996" blue="0.28607994320000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>

@@ -45,6 +45,7 @@ class PerfilController: BaseController {
     
     self.changePassBtn.addBorder(color: CustomAppColor.buttonActionColor)
     apiService.delegate = self
+    nombreApellidosText.delegate = self
     emailText.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     //UILabel.appearance().textColor = .lightGray
@@ -77,7 +78,7 @@ class PerfilController: BaseController {
 //  }
   
   func isProfileUpdated()->Bool{
-    return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.user != self.usuarioText.text || globalVariables.cliente.email != self.emailText.text
+    return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.email != self.emailText.text
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -115,13 +116,15 @@ class PerfilController: BaseController {
   }
   
   func EnviarActualizacion() {
-    if self.usuarioText.text!.isEmpty && self.emailText.text!.isEmpty{
-      let alertaDos = UIAlertController (title: "Mensaje Error", message: "Está tratando de enviar un formulario vacío. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
+    if !isPhotoUpdated && !self.isProfileUpdated(){
+      let alertaDos = UIAlertController (title: "Mensaje Error", message: "No se han modificado los datos del perfil. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }else{
+      self.view.endEditing(true)
+      self.waitingView.isHidden = false
       let params = [
         "nombreapellidos": self.nombreApellidosText.text as Any,
         "movil": self.usuarioText.text as Any,
@@ -140,18 +143,7 @@ class PerfilController: BaseController {
   }
   
   @IBAction func ActualizarPerfil(_ sender: Any) {
-    if isPhotoUpdated || self.isProfileUpdated(){
-      self.view.endEditing(true)
-      self.waitingView.isHidden = false
-      self.EnviarActualizacion()
-    }else{
-      let alertaDos = UIAlertController (title: "Mensaje Error", message: "No se han modificado los datos del perfil. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        
-      }))
-      
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+    self.EnviarActualizacion()
   }
   
   @IBAction func changePassword(_ sender: Any) {

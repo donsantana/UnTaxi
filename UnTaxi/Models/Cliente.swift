@@ -96,6 +96,10 @@ class Cliente{
     self.fotoImage = newPhoto
   }
   
+  func updateYapa(monto: Double){
+    self.yapa = monto
+  }
+  
   func cargarPhoto(imageView: UIImageView){
     if self.foto != ""{
       let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")

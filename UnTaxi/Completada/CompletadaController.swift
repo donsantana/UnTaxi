@@ -72,14 +72,12 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     //self.comentarioText.delegate = self
     self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
     self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
-    self.importeText.text = "$\(self.importe)"
-    self.efectivoText.text = "$\(self.importe - solicitud.yapaimporte)\(self.solicitud.useVoucher == "" ? "" : self.solicitud.useVoucher == "1" ? ", Voucher" : ", Efectivo")"
-    self.yapaText.text = "$\(solicitud.yapaimporte), Yapa"
-    globalVariables.cliente.yapa -= solicitud.yapaimporte
+    self.importeText.text = "$\(String(format: "%.2f", self.importe))"
+    self.efectivoText.text = "$\(String(format: "%.2f", self.importe - solicitud.yapaimporte)),\(self.solicitud.useVoucher == "1" ? " Voucher" : " Efectivo")"
+    self.yapaText.text = "$\(String(format: "%.2f", solicitud.yapaimporte)), Yapa"
     
     self.origenAddressText.text = solicitud.dirOrigen
     self.destinoAddressText.text = solicitud.dirDestino
-    print("Solicitud completada \(self.solicitud)")
     
     sendEvaluacionBtn.addCustomActionBtnsColors()
   }

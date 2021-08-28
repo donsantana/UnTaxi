@@ -37,7 +37,7 @@ extension SolPendController: SocketServiceDelegate{
         DispatchQueue.main.async {
           let vc = R.storyboard.main.completadaView()!
           vc.solicitud = solicitudCompletada
-          vc.importe = !(result["importe"] is NSNull) ? result["importe"] as! Double : solicitudCompletada.valorOferta
+          vc.importe = !(result["importe"] is NSNull) ? result["importe"] as! Double : solicitudCompletada.importe
           
           self.navigationController?.show(vc, sender: nil)
         }

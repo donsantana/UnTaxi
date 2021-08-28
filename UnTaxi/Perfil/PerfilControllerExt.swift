@@ -13,22 +13,39 @@ extension PerfilController: UITextFieldDelegate{
   //CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if textField.isEqual(emailText){
-      animateViewMoving(true, moveValue: 180, view: self.view)
-      textField.textColor = UIColor.black
-    }
+    animateViewMoving(true, moveValue: 180, view: self.view)
+//    if textField.isEqual(emailText){
+//      animateViewMoving(true, moveValue: 180, view: self.view)
+//    }
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
-    textfield.resignFirstResponder()
-    if textfield.isEqual(emailText){
-      animateViewMoving(false, moveValue: 180, view: self.view)
-      textfield.textColor = UIColor.black
-    }
+    animateViewMoving(false, moveValue: 180, view: self.view)
+//    if textfield.isEqual(emailText){
+//      animateViewMoving(false, moveValue: 180, view: self.view)
+//    }
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.endEditing(true)
+    switch textField {
+    case nombreApellidosText:
+      emailText.becomeFirstResponder()
+    case emailText:
+      let (valid, message) = textField.validate(.email)
+      print("valid \(valid)")
+      if !valid && !textField.text!.isEmpty{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.emailText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+      }else{
+        self.EnviarActualizacion()
+      }
+     
+    default:
+      textField.endEditing(true)
+    }
     return true
   }
   

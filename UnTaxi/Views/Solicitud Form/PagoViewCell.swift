@@ -27,7 +27,7 @@ class PagoViewCell: UITableViewCell {
   func initContent(isCorporativo: Bool){
     self.formaPagoSwitch.customColor()
     self.referenciaText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
-    pagarYapaSwitch.isEnabled = globalVariables.cliente.yapa > 0
+    pagarYapaSwitch.isEnabled = globalVariables.cliente.yapa >= globalVariables.appConfig.uso_yapa
     self.pagarYapaSwitch.isOn = false
     if globalVariables.cliente.empresa != "" && isCorporativo{
       //self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: 2, animated: false)
@@ -35,10 +35,7 @@ class PagoViewCell: UITableViewCell {
       self.formaPagoImg.image = UIImage(named: "voucherIcon")
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     }
-    
-    //self.efectivoText.font = CustomAppFont.subtitleFont
-    
-    
+    self.showHidePagoYapa(isHidden: self.formaPagoSwitch.selectedSegmentIndex == 1)
   }
   
   func updateVoucherOption(useVoucher: Bool){
@@ -46,7 +43,7 @@ class PagoViewCell: UITableViewCell {
 
     self.formaPagoSwitch.isHidden = !useVoucher || globalVariables.cliente.empresa == ""
     self.formaPagoImg.image = UIImage(named: useVoucher && self.formaPagoSwitch.selectedSegmentIndex != 0 ? "voucherIcon" : "ofertaIcon")
-    self.yapaValue.text = ("Pagar con Yapa, $\(String(format: "%.2f", globalVariables.cliente.yapa))")
+    self.yapaValue.text = ("Pagar con Yapa,\r$\(String(format: "%.2f", globalVariables.cliente.yapa))")
     self.formaPagoSwitchWidth.constant = CGFloat(70 * self.formaPagoSwitch.numberOfSegments)
   }
   
@@ -54,9 +51,11 @@ class PagoViewCell: UITableViewCell {
     switch self.formaPagoSwitch.selectedSegmentIndex {
     case 0:
       formaPagoImg.image = UIImage(named: "ofertaIcon")
+      self.showHidePagoYapa(isHidden: false)
       self.delegate?.voucherSwitch(self, voucherSelected: false)
     case 1:
       self.formaPagoImg.image = UIImage(named: "voucherIcon")
+      self.showHidePagoYapa(isHidden: true)
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     case 2:
       self.formaPagoImg.image = UIImage(named: "tarjetaIcon")
@@ -65,11 +64,17 @@ class PagoViewCell: UITableViewCell {
       break
     }
   }
+  
+  func showHidePagoYapa(isHidden: Bool){
+    print("YAPA \(isHidden)")
+    self.pagarYapaSwitch.isHidden = isHidden
+    self.yapaValue.isHidden = isHidden
+  }
 }
 
 extension PagoViewCell{
   func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool){
-    
+
   }
 }
 

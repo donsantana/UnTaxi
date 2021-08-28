@@ -70,10 +70,11 @@ class YapaPanel: UIViewController {
   
   @objc func textFieldDidChange(_ textField: UITextField) {
     switch textField {
-    case nombreText:
+    case movilNumberText:
       nombreText.text?.removeAll()
       self.sendYapaBtn.isEnabled = false
       if textField.text?.digitString.count == 10{
+        print("yapa")
         let (valid, message) = textField.validate(.movilNumber)
         if !valid{
           let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
@@ -92,7 +93,6 @@ class YapaPanel: UIViewController {
     }
     
   }
-  
   
   @objc func ocultarTeclado(sender: UITapGestureRecognizer){
     //sender.cancelsTouchesInView = false
@@ -195,7 +195,7 @@ class YapaPanel: UIViewController {
     }else{
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: "Solo puede pasar una cantidad menor o igual a su YAPA acumulada.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.montoText.text = "$\(globalVariables.cliente.yapa)"
+        self.montoText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
@@ -223,23 +223,21 @@ extension YapaPanel: SocketServiceDelegate{
       let datos = result["datos"] as! [String: Any]
       self.idReceptorYapa = datos["idcliente"] as! Int
       self.nombreText.text = "Nombre: \(datos["nombreapellidos"] as! String)"
-      self.montoText.text = "$\(globalVariables.cliente.yapa)"
+      self.montoText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
       self.sendYapaBtn.isEnabled = true
     }else{
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.nombreText.text = ""
+        self.nombreText.becomeFirstResponder()
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
-    
   }
   
   func socketResponse(_ controller: SocketService, pasarYapa result: [String : Any]) {
     if (result["code"] as! Int) == 1{
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        globalVariables.cliente.yapa -= Double(self.montoText.text!.digitsAndPeriods)!
         
         (self.parent as! FloatingPanelController).removeFromParent()
         (self.parent as! FloatingPanelController).move(to: .hidden, animated: true)
@@ -255,7 +253,7 @@ extension YapaPanel: UITextFieldDelegate{
   func textFieldDidBeginEditing(_ textField: UITextField) {
     self.activeTextField = textField
     (self.parent as! FloatingPanelController).move(to: .full, animated: true)
-    textField.text?.removeAll()
+    //textField.text?.removeAll()
     //animateViewMoving(true, moveValue: 150, view: (self.view)!)
   }
   

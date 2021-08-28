@@ -10,23 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PagoViewCell" customModule="UnTaxi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-pj-7Tg">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagar con Yapa," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-S6-qqR">
-                            <rect key="frame" x="120" y="34" width="249" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="tsD-mL-UWI"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Efectivo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-NN-X6X">
-                            <rect key="frame" x="58" y="66.5" width="91" height="30"/>
+                            <rect key="frame" x="58" y="31.5" width="91" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="91" id="aHr-VO-SIS"/>
                             </constraints>
@@ -35,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-vc-6qw">
-                            <rect key="frame" x="58" y="66.5" width="140" height="31"/>
+                            <rect key="frame" x="58" y="31.5" width="140" height="31"/>
                             <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="MHH-hv-EZp"/>
@@ -77,35 +68,44 @@
                             <rect key="frame" x="20" y="1" width="30" height="30"/>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ofertaIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zof-AZ-4Ps">
-                            <rect key="frame" x="20" y="66.5" width="30" height="30"/>
+                            <rect key="frame" x="20" y="31.5" width="30" height="30"/>
                         </imageView>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-YN-JxF">
-                            <rect key="frame" x="58" y="31.5" width="49" height="25"/>
+                            <rect key="frame" x="208" y="31.5" width="42" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="47" id="opJ-ch-jlZ" userLabel="width = 40"/>
-                                <constraint firstAttribute="height" constant="25" id="ykt-cu-SJ2" userLabel="height = 20"/>
+                                <constraint firstAttribute="width" constant="40" id="7hO-L2-fbc"/>
+                                <constraint firstAttribute="height" constant="25" id="paL-xf-b01"/>
                             </constraints>
                             <color key="onTintColor" red="0.99882358309999997" green="0.79328209159999996" blue="0.28607994320000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paga con Yapa," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-S6-qqR">
+                            <rect key="frame" x="263" y="31.5" width="121" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="2L9-ft-65e"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                            <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="bottom" secondItem="5fJ-vc-6qw" secondAttribute="bottom" id="5mJ-dj-8fg"/>
                         <constraint firstItem="Ib0-oj-pax" firstAttribute="leading" secondItem="Jxd-pj-7Tg" secondAttribute="leading" constant="20" id="FOg-IP-k4J"/>
-                        <constraint firstItem="qbR-YN-JxF" firstAttribute="leading" secondItem="mZY-UW-aKJ" secondAttribute="leading" id="HVF-0N-m4R"/>
-                        <constraint firstItem="rIz-S6-qqR" firstAttribute="trailing" secondItem="mZY-UW-aKJ" secondAttribute="trailing" id="JSU-mt-2Rd"/>
-                        <constraint firstItem="5fJ-vc-6qw" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="leading" id="LcG-Ne-Aex"/>
-                        <constraint firstItem="5fJ-vc-6qw" firstAttribute="top" secondItem="qbR-YN-JxF" secondAttribute="bottom" constant="10" id="Q9M-eb-GIw"/>
+                        <constraint firstItem="5fJ-vc-6qw" firstAttribute="top" secondItem="mZY-UW-aKJ" secondAttribute="bottom" constant="5" id="Q9M-eb-GIw"/>
+                        <constraint firstItem="qbR-YN-JxF" firstAttribute="top" secondItem="zof-AZ-4Ps" secondAttribute="top" id="VR9-vz-Wve"/>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="height" secondItem="Ib0-oj-pax" secondAttribute="height" id="Wh2-WD-ofJ"/>
-                        <constraint firstItem="rIz-S6-qqR" firstAttribute="centerY" secondItem="qbR-YN-JxF" secondAttribute="centerY" id="YPI-Z7-pFi"/>
+                        <constraint firstItem="rIz-S6-qqR" firstAttribute="top" secondItem="qbR-YN-JxF" secondAttribute="top" id="XMF-m6-6tL"/>
+                        <constraint firstItem="5fJ-vc-6qw" firstAttribute="leading" secondItem="mZY-UW-aKJ" secondAttribute="leading" id="Yyp-o3-gVY"/>
                         <constraint firstItem="Ib0-oj-pax" firstAttribute="top" secondItem="Jxd-pj-7Tg" secondAttribute="top" constant="1" id="ZfI-e0-DE4"/>
-                        <constraint firstItem="qbR-YN-JxF" firstAttribute="top" secondItem="mZY-UW-aKJ" secondAttribute="bottom" constant="5" id="c7f-BX-D6i"/>
                         <constraint firstItem="yKo-NN-X6X" firstAttribute="top" secondItem="5fJ-vc-6qw" secondAttribute="top" id="dIk-fx-m2O"/>
+                        <constraint firstAttribute="trailing" secondItem="rIz-S6-qqR" secondAttribute="trailing" constant="30" id="dv6-To-pzJ"/>
                         <constraint firstItem="mZY-UW-aKJ" firstAttribute="leading" secondItem="Ib0-oj-pax" secondAttribute="trailing" constant="8" symbolic="YES" id="e0p-wG-Xeo"/>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="width" secondItem="Ib0-oj-pax" secondAttribute="width" id="eCA-rL-4Bx"/>
                         <constraint firstItem="yKo-NN-X6X" firstAttribute="bottom" secondItem="5fJ-vc-6qw" secondAttribute="bottom" id="ejM-5R-8jW"/>
+                        <constraint firstItem="rIz-S6-qqR" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="trailing" constant="15" id="hAL-Ws-thw"/>
+                        <constraint firstItem="qbR-YN-JxF" firstAttribute="leading" secondItem="5fJ-vc-6qw" secondAttribute="trailing" constant="10" id="i3W-qU-pbr"/>
                         <constraint firstItem="zof-AZ-4Ps" firstAttribute="leading" secondItem="Ib0-oj-pax" secondAttribute="leading" id="iWj-n8-3oI"/>
                         <constraint firstItem="Ib0-oj-pax" firstAttribute="centerY" secondItem="mZY-UW-aKJ" secondAttribute="centerY" id="lLH-h9-ggR"/>
-                        <constraint firstItem="rIz-S6-qqR" firstAttribute="leading" secondItem="qbR-YN-JxF" secondAttribute="trailing" constant="15" id="oD1-eV-OnD"/>
                         <constraint firstAttribute="trailing" secondItem="mZY-UW-aKJ" secondAttribute="trailing" constant="45" id="ueJ-3A-fE9"/>
                         <constraint firstItem="yKo-NN-X6X" firstAttribute="leading" secondItem="5fJ-vc-6qw" secondAttribute="leading" id="vIe-88-RZf"/>
                     </constraints>
@@ -128,7 +128,7 @@
                 <outlet property="referenciaText" destination="mZY-UW-aKJ" id="U60-Ey-H3a"/>
                 <outlet property="yapaValue" destination="rIz-S6-qqR" id="Y2z-Df-fOY"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="-119.19642857142857"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-127.56696428571428"/>
         </view>
     </objects>
     <resources>
