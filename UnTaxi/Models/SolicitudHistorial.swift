@@ -38,7 +38,7 @@ class SolicitudHistorial {
   var calificacion = 0.0
   var cantidadcalificacion = 0
   var foto = ""
-  var importeyapa = 0
+  var importeyapa = 0.0
   var latdestino = 0.0
   var latorigen = 0.0
   var lngdestino = 0.0
@@ -63,7 +63,7 @@ class SolicitudHistorial {
     self.calificacion = !(jsonDetails["calificacion"] is NSNull) ? jsonDetails["calificacion"] as! Double : 0.0
     self.cantidadcalificacion = !(jsonDetails["idestado"] is NSNull) ? jsonDetails["cantidadcalificacion"] as! Int : 0
     self.foto = !(jsonDetails["foto"] is NSNull) ? jsonDetails["foto"] as! String : ""
-    self.importeyapa = !(jsonDetails["importeyapa"] is NSNull) ? jsonDetails["importeyapa"] as! Int : 0
+    self.importeyapa = !(jsonDetails["importeyapa"] is NSNull) ? jsonDetails["importeyapa"] as! Double : 0.0
     self.latorigen = !(jsonDetails["latorigen"] is NSNull) ? jsonDetails["latorigen"] as! Double : 0.0
     self.lngorigen = !(jsonDetails["lngorigen"] is NSNull) ? jsonDetails["lngorigen"] as! Double : 0.0
     self.latdestino = !(jsonDetails["latdestino"] is NSNull) ? jsonDetails["latdestino"] as! Double : 0.0

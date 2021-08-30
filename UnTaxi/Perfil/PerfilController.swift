@@ -85,36 +85,6 @@ class PerfilController: BaseController {
     self.view.endEditing(true)
   }
   
-  //FUNCIÓN ENVIAR AL SOCKET
-  func EnviarSocket(_ datos: String){
-    if CConexionInternet.isConnectedToNetwork() == true{
-      if globalVariables.socket.status.active{
-        globalVariables.socket.emit("data",datos)
-      }
-      else{
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          exit(0)
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    }else{
-      self.ErrorConexion()
-    }
-  }
-  //FUNCIONES ESCUCHAR SOCKET
-  func ErrorConexion(){
-    //self.CargarTelefonos()
-    //AlertaSinConexion.isHidden = false
-    
-    let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      exit(0)
-    }))
-    
-    self.present(alertaDos, animated: true, completion: nil)
-  }
-  
   func EnviarActualizacion() {
     if !isPhotoUpdated && !self.isProfileUpdated(){
       let alertaDos = UIAlertController (title: "Mensaje Error", message: "No se han modificado los datos del perfil. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)

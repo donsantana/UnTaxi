@@ -16,6 +16,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   var idConductor = 0
   var evaluacion: CEvaluacion!
   var importe: Double = 0.0
+  var ptosEvaluacion = 0
   var socketService = SocketService()
   var comentariosSelected: [String] = []
   
@@ -88,6 +89,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.evaluacionTitleText.text = self.evaluacion.getTitle()
     self.evaluacionSubtitleText.text = self.evaluacion.getSubtilte()
     self.comentariosCollection.reloadData()
+    self.ptosEvaluacion = evaluation
   }
   
 //  override func goToInicioView(){
@@ -139,10 +141,14 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   
   //Enviar comentario
   @IBAction func AceptarEvalucion(_ sender: AnyObject) {
-    if !comentarioText.text!.isEmpty{
-      self.comentariosSelected.append(comentarioText.text!)
+    if self.ptosEvaluacion > 0{
+      if !comentarioText.text!.isEmpty{
+        self.comentariosSelected.append(comentarioText.text!)
+      }
+      EnviarEvaluacion(self.evaluacion.ptoEvaluacion,comentario: self.comentariosSelected.joined(separator: ","))
+    }else{
+      self.goToInicioView()
     }
-    EnviarEvaluacion(self.evaluacion.ptoEvaluacion,comentario: self.comentariosSelected.joined(separator: ","))
   }
   
   //MARK:- TEXT DELEGATE ACTION

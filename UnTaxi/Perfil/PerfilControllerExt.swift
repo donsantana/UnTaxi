@@ -96,13 +96,24 @@ extension PerfilController: ApiServiceDelegate{
   }
   
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
-    let alertaDos = UIAlertController (title: "Error de Perfil", message: "Se produjo un ERROR al actualizar su perfil. Sus datos continuan sin cambios.", preferredStyle: UIAlertController.Style.alert)
+    let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
       self.goToInicioView()
     }))
     
     self.present(alertaDos, animated: true, completion: nil)
   }
+  
+  func apiRequest(_ controller: ApiService, getAPIError msg: String) {
+    DispatchQueue.main.async {
+      let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.waitingView.isHidden = true
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
+    }
+  }
+  
 }
 
 extension PerfilController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
@@ -115,7 +126,7 @@ extension PerfilController: UINavigationControllerDelegate, UIImagePickerControl
       self.camaraController.dismiss(animated: true, completion: nil)
       let photoPreview = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
       self.userPerfilPhoto.image = photoPreview?.scalePreservingAspectRatio(targetSize: CGSize(width: 200, height: 200))
-      globalVariables.cliente.updatePhoto(newPhoto: photoPreview!)
+      globalVariables.cliente.updatePhoto(newPhoto: self.userPerfilPhoto.image!)
       self.isPhotoUpdated = true
     }else{
       self.camaraController.dismiss(animated: true, completion: nil)

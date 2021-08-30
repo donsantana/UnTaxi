@@ -35,13 +35,14 @@ class PagoViewCell: UITableViewCell {
       self.formaPagoImg.image = UIImage(named: "voucherIcon")
       self.delegate?.voucherSwitch(self, voucherSelected: true)
     }
-    self.showHidePagoYapa(isHidden: self.formaPagoSwitch.selectedSegmentIndex == 1)
+    //self.showHidePagoYapa(isHidden: self.formaPagoSwitch.selectedSegmentIndex == 1)
   }
   
   func updateVoucherOption(useVoucher: Bool){
     print("voucher \(useVoucher)")
 
     self.formaPagoSwitch.isHidden = !useVoucher || globalVariables.cliente.empresa == ""
+    self.showHidePagoYapa(isHidden: !self.formaPagoSwitch.isHidden && self.formaPagoSwitch.selectedSegmentIndex == 1)
     self.formaPagoImg.image = UIImage(named: useVoucher && self.formaPagoSwitch.selectedSegmentIndex != 0 ? "voucherIcon" : "ofertaIcon")
     self.yapaValue.text = ("Pagar con Yapa,\r$\(String(format: "%.2f", globalVariables.cliente.yapa))")
     self.formaPagoSwitchWidth.constant = CGFloat(70 * self.formaPagoSwitch.numberOfSegments)
@@ -71,10 +72,3 @@ class PagoViewCell: UITableViewCell {
     self.yapaValue.isHidden = isHidden
   }
 }
-
-extension PagoViewCell{
-  func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool){
-
-  }
-}
-

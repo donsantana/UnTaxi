@@ -66,10 +66,15 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   }
   
   @IBAction func updatePassword(_ sender: Any) {
-    if self.NuevaClaveText.text == self.ConfirmeClaveText.text{
+    if !claveActualText.text!.isEmpty && !NuevaClaveText.text!.isEmpty && self.NuevaClaveText.text == self.ConfirmeClaveText.text{
       self.sendUpdatePassword()
+    }else{
+      let alertaDos = UIAlertController (title: "Error", message: self.NuevaClaveText.text == self.ConfirmeClaveText.text ? "No se pueden enviar campos vacios" : "La confimación de la clave no coincide", preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
     }
-    self.ConfirmeClaveText.resignFirstResponder()
   }
 }
 
@@ -115,18 +120,14 @@ extension PassController: UITextFieldDelegate{
 }
 
 extension PassController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, changeClaveAPI msg: String){
+  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String) {
     DispatchQueue.main.async {
       self.waitingView.isHidden = true
+      let alertaDos = UIAlertController (title: success ? "Cambio de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
+      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        self.dismiss(animated: false, completion: nil)
+      }))
+      self.present(alertaDos, animated: true, completion: nil)
     }
-    let alertaDos = UIAlertController (title: "Cambio de clave", message: msg, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      self.dismiss(animated: false, completion: nil)
-//      let vc = R.storyboard.main.inicioView()!
-//      let navigationController = UINavigationController(rootViewController: vc)
-//      self.present(navigationController, animated: false, completion: nil)
-      //self.navigationController?.show(vc!, sender: nil)
-    }))
-    self.present(alertaDos, animated: true, completion: nil)
   }
 }

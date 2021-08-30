@@ -68,7 +68,7 @@ extension UITextField {
     }
     switch type {
     case .movilNumber:
-      let temp = text.filter {!$0.isWhitespace}
+      let temp = text.filter {!$0.isWhitespace}.digitString
       print(temp.trimmingCharacters(in: .whitespacesAndNewlines))
       return (temp.trimmingCharacters(in: .whitespacesAndNewlines).count == 10 && temp.trimmingCharacters(in: .whitespacesAndNewlines).isNumeric, "Número de teléfono incorrecto. Por favor verifíquelo")
     case .otherText:

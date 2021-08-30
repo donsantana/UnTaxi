@@ -19,6 +19,7 @@ extension RegistroController{
     let (valid, message) = correoText.validate(.email)
     if correoText.text!.isEmpty || valid{
       waitingView.isHidden = false
+      view.endEditing(true)
       apiService.registerUserAPI(url: GlobalConstants.registerUrl, params: [
                                   "password": claveText.text!,
                                   "movil": telefonoText.text!,

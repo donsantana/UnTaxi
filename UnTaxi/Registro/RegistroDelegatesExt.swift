@@ -207,25 +207,30 @@ extension RegistroController: UITextFieldDelegate{
 
 
 extension RegistroController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, registerUserAPI msg: String) {
+  func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String) {
     DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: "Registro de usuario", message: msg, preferredStyle: .alert)
+      let alertaDos = UIAlertController (title: success ? "Registro de usuario" : "Error", message: msg, preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.goToLoginView()
+        if success{
+          self.goToLoginView()
+        }else{
+          self.waitingView.isHidden = true
+        }
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
   }
   
-  func apiRequest(_ controller: ApiService, getRegisterError msg: String) {
+  func apiRequest(_ controller: ApiService, getAPIError msg: String) {
     DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: "Registro de usuario", message: msg, preferredStyle: .alert)
+      let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.goToLoginView()
+        self.waitingView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
   }
+  
 }
 
 extension RegistroController: CountryPickerDelegate{
