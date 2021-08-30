@@ -97,16 +97,16 @@ extension RegistroController: UITextFieldDelegate{
 //      }
       distanceValue = 80
     case confirmarClavText:
-      let (valid, message) = textfield.validate(.password)
-      if valid && textfield.text == claveText.text{
-        crearCuentaBtn.isEnabled = true
-      }else{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.confirmarClavText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
+//      let (valid, message) = textfield.validate(.password)
+//      if valid && textfield.text == claveText.text{
+//        crearCuentaBtn.isEnabled = true
+//      }else{
+//        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
+//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//          self.confirmarClavText.becomeFirstResponder()
+//        }))
+//        self.present(alertaDos, animated: true, completion: nil)
+//      }
       distanceValue = 180
     case correoText:
       let (valid, message) = textfield.validate(.email)
@@ -127,7 +127,9 @@ extension RegistroController: UITextFieldDelegate{
   }
   
   @objc func textFieldDidChange(_ textField: UITextField) {
-    
+    if textField.text!.count > 0{
+      crearCuentaBtn.isEnabled = true
+    }
   }
   
   func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
@@ -163,6 +165,12 @@ extension RegistroController: UITextFieldDelegate{
       let (valid, message) = textField.validate(.password)
       if valid && textField.text == claveText.text{
         correoText.becomeFirstResponder()
+      }else{
+        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
+        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          self.confirmarClavText.becomeFirstResponder()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
       }
       break
     case correoText:

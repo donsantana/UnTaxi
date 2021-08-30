@@ -50,7 +50,7 @@ class RegistroController: UIViewController {
     self.crearCuentaBtn.addCustomActionBtnsColors()
     self.waitingView.addStandardConfig()
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
-    self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    self.confirmarClavText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     
     self.RegistroView.addGestureRecognizer(tapGesture)
     
