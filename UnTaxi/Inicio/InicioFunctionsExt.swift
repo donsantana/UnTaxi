@@ -133,9 +133,10 @@ extension InicioController{
     self.initMapView()
     self.formularioDataCellList.removeAll()
     self.formularioDataCellList.append(self.origenCell)
+    self.destinoCell.initContent()
     
     if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem{
-      self.destinoCell.initContent()
+      //self.destinoCell.initContent()
       self.formularioDataCellList.append(self.destinoCell)
       if self.tabBar.selectedItem == self.ofertaItem{
         self.ofertaDataCell.initContent()
@@ -144,14 +145,14 @@ extension InicioController{
         //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }else{
         self.origenCell.origenText.text?.removeAll()
-        self.destinoCell.destinoText.text?.removeAll()
+        //self.destinoCell.destinoText.text?.removeAll()
         self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 43).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 40 : 55)
       }
     }else{
       self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 45).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
-          self.destinoCell.destinoText.text?.removeAll()
+          //self.destinoCell.destinoText.text?.removeAll()
           self.formularioDataCellList.append(self.destinoCell)
           self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 50).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
@@ -411,7 +412,7 @@ extension InicioController{
       
       let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
 
-    let voucher = !self.pagoCell.formaPagoSwitch.isHidden && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
+      let voucher = !self.pagoCell.formaPagoSwitch.isHidden && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
     
       //let voucher = self.tabBar.selectedItem == self.pactadaItem || self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
       print("Forma de pago \(self.pagoCell.formaPagoSwitch.selectedSegmentIndex)")
