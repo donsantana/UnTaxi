@@ -87,7 +87,8 @@ class YapaPanel: UIViewController {
         }
       }
     case montoText:
-      montoText.text = montoText.text?.replacingOccurrences(of: ",", with: ".").digitsAndPeriods
+      print("MONTOOOOOO \(montoText.text!)")
+      montoText.text = montoText.text!.currencyString//montoText.text?.replacingOccurrences(of: ",", with: ".").digitsAndPeriods
     default:
       break
     }
@@ -185,12 +186,11 @@ class YapaPanel: UIViewController {
   
   @IBAction func sendYapa(_ sender: Any) {
     self.view.endEditing(true)
-    print("Yapa value \((self.montoText.text!.digitsAndPeriods as NSString).doubleValue)-\(globalVariables.cliente.yapa)")
-    if (self.montoText.text!.digitsAndPeriods as NSString).doubleValue > 0.0 && (self.montoText.text!.digitsAndPeriods as NSString).doubleValue <= globalVariables.cliente.yapa{
+    if (self.montoText.text!.currencyString as NSString).doubleValue > 0.0 && (self.montoText.text!.currencyString as NSString).doubleValue <= globalVariables.cliente.yapa{
     socketService.socketEmit("pasaryapa", datos: [
       "idclientenew": self.idReceptorYapa,
       "idclienteold": globalVariables.cliente.id!,
-      "yapa": self.montoText.text!.digitsAndPeriods
+      "yapa": self.montoText.text!.currencyString
     ])
     }else{
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: "Solo puede pasar una cantidad menor o igual a su YAPA acumulada.", preferredStyle: UIAlertController.Style.alert)

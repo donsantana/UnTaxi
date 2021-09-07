@@ -89,7 +89,9 @@ extension PerfilController: ApiServiceDelegate{
     globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
     let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      self.goToInicioView()
+      DispatchQueue.main.async {
+        self.goToInicioView()
+      }
     }))
     
     self.present(alertaDos, animated: true, completion: nil)
@@ -98,7 +100,9 @@ extension PerfilController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
     let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      self.goToInicioView()
+      DispatchQueue.main.async {
+        self.goToInicioView()
+      }
     }))
     
     self.present(alertaDos, animated: true, completion: nil)

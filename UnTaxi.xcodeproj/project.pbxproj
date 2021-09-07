@@ -52,6 +52,7 @@
 		C619BE632541437200611B4D /* PerfilNombreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE622541437200611B4D /* PerfilNombreCell.swift */; };
 		C619BE6525414BC900611B4D /* PassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE6425414BC900611B4D /* PassController.swift */; };
 		C61F347A248E8F66006A07F6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
+		C622C7AA26E6DFF200A2FDF1 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622C7A926E6DFF200A2FDF1 /* Address.swift */; };
 		C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C15230B9CBE0010F6A3 /* BaseController.swift */; };
 		C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */; };
 		C62A20F225321022007BCE37 /* UISegmentedContol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A20F125321022007BCE37 /* UISegmentedContol.swift */; };
@@ -225,6 +226,7 @@
 		C619BE622541437200611B4D /* PerfilNombreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilNombreCell.swift; sourceTree = "<group>"; };
 		C619BE6425414BC900611B4D /* PassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassController.swift; sourceTree = "<group>"; };
 		C61F3479248E8F65006A07F6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C622C7A926E6DFF200A2FDF1 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C6253C15230B9CBE0010F6A3 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesSocketExt.swift; sourceTree = "<group>"; };
 		C62A20F125321022007BCE37 /* UISegmentedContol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedContol.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				C66FC9CC25852E5C0023425D /* Tarifario.swift */,
 				C68D05B925A7E52600E124AB /* CustomCalloutView.swift */,
 				C66984182679526E00C0C353 /* Weather.swift */,
+				C622C7A926E6DFF200A2FDF1 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1228,6 +1231,7 @@
 				C6CACFAD22D26A9300702430 /* Oferta.swift in Sources */,
 				C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */,
 				AFD6564F1F9D42E100C8A5BD /* Conductor.swift in Sources */,
+				C622C7AA26E6DFF200A2FDF1 /* Address.swift in Sources */,
 				C6B4C5A22589E50E0054C1A7 /* SolDetallesMapExt.swift in Sources */,
 				C619BE5D253FF9A400611B4D /* HistorialController.swift in Sources */,
 				B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */,
@@ -1396,7 +1400,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1431,7 +1435,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;

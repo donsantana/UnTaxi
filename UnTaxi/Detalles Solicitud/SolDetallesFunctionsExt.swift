@@ -249,7 +249,11 @@ extension SolPendController{
   }
   
   func openWhatsApp(number: String){
-    let phoneNumber = number.first == "0" ? number.replacingOccurrences(of: "0", with: "+593") : number // you need to change this number
+    var phoneNumber:String = number
+    if number.first == "0"{
+      phoneNumber.removeFirst()
+      phoneNumber = "+593\(phoneNumber)"
+    }
     let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
     //let appURL = URL(string: "https://api.whatsapp.com/send?phone=+593991539359")!
     if UIApplication.shared.canOpenURL(appURL) {

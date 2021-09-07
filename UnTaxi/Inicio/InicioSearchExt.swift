@@ -11,10 +11,13 @@ import Mapbox
 import MapboxSearch
 import MapboxSearchUI
 
+extension InicioController{
+  
+}
+
 extension InicioController: SearchControllerDelegate {
   
   func categorySearchResultsReceived(results: [SearchResult]) {
-    print("Resultssss")
     let annotations = results.map { searchResult -> MGLPointAnnotation in
       let annotation = MGLPointAnnotation()
       annotation.coordinate = searchResult.coordinate
@@ -71,15 +74,18 @@ extension InicioController: SearchControllerDelegate {
 
 extension InicioController: SearchEngineDelegate {
   func resultsUpdated(searchEngine: SearchEngine) {
-    let boundingOptions = BoundingBox(CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630), CLLocationCoordinate2D(latitude: -4.967101, longitude: -81.121750))
-    let requestOptions = SearchEngine.RequestOptions(boundingBox: boundingOptions)
-    searchEngine.search(query: "\(searchEngine.query)", options: requestOptions)
-    //let result = searchEngine.items.filter({$0.distance! > 80000})
-    //self.searchController.searchQueryDidChanged("\(searchEngine.query)")
-    //let tempEng = searchEngine
-    self.searchController.resultsUpdated(searchEngine: searchEngine)
-    print("Number of search results: \(searchEngine.items.count)")
-    print("\(searchEngine.query)")
+    
+    apiService.searchAddressXoaAPI(searchQuery: searchEngine.query)
+//    let boundingOptions = BoundingBox(CLLocationCoordinate2D(latitude: -1.653788, longitude: -75.177630), CLLocationCoordinate2D(latitude: -4.967101, longitude: -81.121750))
+//    let requestOptions = SearchEngine.RequestOptions(boundingBox: boundingOptions)
+//    let queryEcuador = searchEngine.query.contains(",Ecuador") ? searchEngine.query : searchEngine.query.appending(",Ecuador")
+//    //searchEngine.search(query: "\(queryEcuador)", options: nil)
+//    //let result = searchEngine.items.filter({$0.distance! > 80000})
+//    self.searchController.searchQueryDidChanged("\(queryEcuador)")
+//    //let tempEng = searchEngine
+//     
+//    print("Number of search results: \(searchEngine.items.count)")
+//    print("\(searchEngine.query)")
 
     /// Simulate user selection with random algorithm
 //    guard let randomSuggestion: SearchSuggestion = searchEngine.items.randomElement() else {

@@ -20,15 +20,16 @@ class AddressController: UIViewController {
   var keyboardHeight:CGFloat!
   let openMapBtn = UIButton(type: UIButton.ButtonType.system)
   
+  
   @IBOutlet weak var mapView: MGLMapView!
-  @IBOutlet weak var openMapView: UIView!
-  @IBOutlet weak var openMapViewBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var searchView: UIView!
+  //@IBOutlet weak var openMapViewBottomConstraint: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.setNavigationBarHidden(false, animated: false)
-    self.mapView.delegate = self
-    mapView.automaticallyAdjustsContentInset = true
+//    mapView.delegate = self
+//    mapView.automaticallyAdjustsContentInset = true
     searchController.delegate = self
 
     let panelController = MapboxPanelController(rootViewController: searchController)
@@ -41,13 +42,11 @@ class AddressController: UIViewController {
     let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
     openMapBtn.setImage(mapaImage, for: UIControl.State())
     openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
-    //openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
     openMapBtn.layer.cornerRadius = 10
-    //openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
     openMapBtn.backgroundColor = .white
     openMapBtn.tintColor = .black
     openMapBtn.addShadow()
-    self.annotationTemp.coordinate = startLocation
+    //self.annotationTemp.coordinate = startLocation
     panelController.view.addSubview(openMapBtn)
     addChild(panelController)
     self.initMapView()

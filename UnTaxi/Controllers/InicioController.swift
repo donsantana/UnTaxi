@@ -43,6 +43,11 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var isVoucherSelected = false
   var apiService = ApiService()
   var destinoPactadas:[DireccionesPactadas] = []
+  var searchAddressList:[Address] = []{
+    didSet{
+      self.addressTableView.reloadData()
+    }
+  }
   
   var origenCell = Bundle.main.loadNibNamed("OrigenCell", owner: self, options: nil)?.first as! OrigenViewCell
   var destinoCell = Bundle.main.loadNibNamed("DestinoCell", owner: self, options: nil)?.first as! DestinoCell
@@ -130,6 +135,12 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   @IBOutlet weak var mapBottomConstraint: NSLayoutConstraint!
   
+  //ADDRESS SEARCH
+  @IBOutlet weak var searchAddressView: UIView!
+  @IBOutlet weak var searchText: UITextField!
+  @IBOutlet weak var addressTableView: UITableView!
+  
+  
   override func viewDidLoad() {
     super.hideMenuBtn = false
     super.hideCloseBtn = false
@@ -142,6 +153,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.tabBar.layer.borderColor = UIColor.clear.cgColor
     self.tabBar.clipsToBounds = true
     mapView.delegate = self
+    addressTableView.delegate = self
     //mapView.automaticallyAdjustsContentInset = true
     coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
@@ -245,7 +257,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //self.loadFormularioData()
     
     //self.apiService.listCardsAPIService()
-
   }
   
   override func viewDidAppear(_ animated: Bool){

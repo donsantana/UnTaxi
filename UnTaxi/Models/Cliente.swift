@@ -97,7 +97,7 @@ class Cliente{
   }
   
   func updateYapa(monto: Double){
-    self.yapa = monto
+    self.yapa = monto.rounded(to: 0.01, roundingRule: .down)
   }
   
   func cargarPhoto(imageView: UIImageView){

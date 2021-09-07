@@ -12,6 +12,7 @@ import MapKit
 import Mapbox
 import MapboxDirections
 import MapboxGeocoder
+import FloatingPanel
 
 extension InicioController{
   //MARK:- FUNCIONES PROPIAS
@@ -204,7 +205,8 @@ extension InicioController{
     let data = [
       "idcliente": globalVariables.cliente.id!,
       "latitud": self.origenAnnotation.coordinate.latitude,
-      "longitud": self.origenAnnotation.coordinate.longitude
+      "longitud": self.origenAnnotation.coordinate.longitude,
+      "pilas": true
       ] as [String: Any]
     socketService.socketEmit("cargarvehiculoscercanos", datos: data)
   }
@@ -421,7 +423,7 @@ extension InicioController{
       
       let fechaReserva = ""
       //var valorOferta = self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".")
-      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
+      let valorOferta = self.tabBar.selectedItem == self.ofertaItem ? Double((self.ofertaDataCell.valorOfertaText.text!.currencyString))! : self.tabBar.selectedItem == self.pactadaItem ? pactadaCell.importe : 0.0
     
       var tipoServicio = 1
       
@@ -480,7 +482,7 @@ extension InicioController{
       }else{
         if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
           if !(self.destinoCell.destinoText.text!.isEmpty){
-            if Double((self.ofertaDataCell.valorOfertaText.text!.replacingOccurrences(of: ",", with: ".").digitsAndPeriods))! < globalVariables.tarifario.valorForDistance(distance: 0.0) && self.tabBar.selectedItem == self.ofertaItem{
+            if Double(self.ofertaDataCell.valorOfertaText.text!.currencyString)! < globalVariables.tarifario.valorForDistance(distance: 0.0) && self.tabBar.selectedItem == self.ofertaItem{
               let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))", preferredStyle: .alert)
               alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 self.ofertaDataCell.initContent()
@@ -528,7 +530,7 @@ extension InicioController{
           let costo = globalVariables.tarifario.valorForDistance(distance: route.distance/1000)
 
           print("costo \(costo)")
-          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up) > 1.5 ? costo.rounded(to: 0.05, roundingRule: .up) : 1.5))"
+          self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", costo.rounded(to: 0.05, roundingRule: .up) > globalVariables.tarifario.valorForDistance(distance: 0.0) ? costo.rounded(to: 0.05, roundingRule: .up) : globalVariables.tarifario.valorForDistance(distance: 0.0)))"
           self.hideSolicitudView(isHidden: false)
           //self.SolicitudView.isHidden = false
 
@@ -565,6 +567,18 @@ extension InicioController{
     }
   }
 
+  func openSearchAddress(){
+    let searchAddressPanel = FloatingPanelController()
+    //searchAddressPanel.delegate = self
+    searchAddressPanel.isRemovalInteractionEnabled = true
+    searchAddressPanel.contentMode = .fitToBounds
+    let searchController = AddressController()
+    searchAddressPanel.set(contentViewController: searchController)
+    searchAddressPanel.addPanel(toParent: self)
+    self.panelController.setState(.opened)
+    addChild(searchController)
+  }
+  
   func openSearchPanel(){
     print("open SearchPanel")
     super.hideMenuBar(isHidden: true)

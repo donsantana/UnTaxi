@@ -133,6 +133,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
 //    self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     
     //self.checkifBioAuth()
+  
   }
   
   override func viewWillAppear(_ animated: Bool) {

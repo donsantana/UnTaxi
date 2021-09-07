@@ -241,7 +241,6 @@ final class SocketService{
       }
       self.delegate?.socketResponse(self, actualizaryapa: result)
     }
-    
   }
   
   func initYapaEvents() {

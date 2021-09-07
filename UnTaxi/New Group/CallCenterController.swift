@@ -31,26 +31,49 @@ class CallCenterController: BaseController {
   }
   
   func openWhatsApp(number : String){
-    var fullMob = number
-    fullMob = fullMob.replacingOccurrences(of: " ", with: "")
-    fullMob = fullMob.replacingOccurrences(of: "+", with: "")
-    fullMob = fullMob.replacingOccurrences(of: "-", with: "")
-    let urlWhats = "whatsapp://send?phone=\(fullMob)"
-    
-    if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
-      if let whatsappURL = NSURL(string: urlString) {
-        if UIApplication.shared.canOpenURL(whatsappURL as URL) {
-          UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: { (Bool) in
-          })
-        } else {
-          let alertaCompartir = UIAlertController (title: "Whatsapp Error", message: "La aplicaión de whatsapp no está instalada en su dispositivo", preferredStyle: UIAlertController.Style.alert)
-          alertaCompartir.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: {alerAction in
-            
-          }))
-          self.present(alertaCompartir, animated: true, completion: nil)
-        }
-      }
+    print(number)
+    var phoneNumber:String = number
+    if number.first == "0"{
+      phoneNumber.removeFirst()
+      phoneNumber = "+593\(phoneNumber)"
     }
+    let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+    //let appURL = URL(string: "https://api.whatsapp.com/send?phone=+593991539359")!
+    print(phoneNumber)
+    if UIApplication.shared.canOpenURL(appURL) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+        }else {
+            UIApplication.shared.openURL(appURL)
+        }
+    } else {
+      let alertaCompartir = UIAlertController (title: "Whatsapp Error", message: "La aplicaión de whatsapp no está instalada en su dispositivo", preferredStyle: UIAlertController.Style.alert)
+      alertaCompartir.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: {alerAction in
+        
+      }))
+      self.present(alertaCompartir, animated: true, completion: nil)
+    }
+    
+//    var fullMob = number
+//    fullMob = fullMob.replacingOccurrences(of: " ", with: "")
+//    fullMob = fullMob.replacingOccurrences(of: "+", with: "")
+//    fullMob = fullMob.replacingOccurrences(of: "-", with: "")
+//    let urlWhats = "whatsapp://send?phone=\(fullMob)"
+//
+//    if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+//      if let whatsappURL = NSURL(string: urlString) {
+//        if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+//          UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: { (Bool) in
+//          })
+//        } else {
+//          let alertaCompartir = UIAlertController (title: "Whatsapp Error", message: "La aplicaión de whatsapp no está instalada en su dispositivo", preferredStyle: UIAlertController.Style.alert)
+//          alertaCompartir.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: {alerAction in
+//
+//          }))
+//          self.present(alertaCompartir, animated: true, completion: nil)
+//        }
+//      }
+//    }
   }
   
   override func didReceiveMemoryWarning() {

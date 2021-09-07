@@ -87,7 +87,7 @@ class PublicidadService {
         DispatchQueue.main.sync() {
           let backImage = UIImageView(image: UIImage(data: data))
           backImage.frame = CGRect(x: 0, y: 0, width: bannerView.bounds.width, height: bannerView.bounds.height)
-          backImage.contentMode = .scaleToFill
+          backImage.contentMode = .scaleAspectFit
           //backImage.translatesAutoresizingMaskIntoConstraints = false
           bannerView.addSubview(backImage)
           

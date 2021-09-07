@@ -31,19 +31,22 @@ class CallCenterViewCell: UITableViewCell {
   }
   
   func openWhatsApp(number : String){
-    var fullMob = number
-    fullMob = fullMob.replacingOccurrences(of: " ", with: "")
-    fullMob = fullMob.replacingOccurrences(of: "+", with: "")
-    fullMob = fullMob.replacingOccurrences(of: "-", with: "")
-    let urlWhats = "whatsapp://send?phone=\(fullMob)"
-    
-    if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
-      if let whatsappURL = NSURL(string: urlString) {
-        if UIApplication.shared.canOpenURL(whatsappURL as URL) {
-          UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: { (Bool) in
-          })
+    print(number)
+    var phoneNumber:String = number
+    if number.first == "0"{
+      phoneNumber.removeFirst()
+      phoneNumber = "+593\(phoneNumber)"
+    }
+    //let phoneNumber = number.first == "0" ? number.replacingOccurrences(of: "0", with: "+593") : number // you need to change this number
+    let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+    //let appURL = URL(string: "https://api.whatsapp.com/send?phone=+593991539359")!
+    print(phoneNumber)
+    if UIApplication.shared.canOpenURL(appURL) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+        }else {
+            UIApplication.shared.openURL(appURL)
         }
-      }
     }
   }
   

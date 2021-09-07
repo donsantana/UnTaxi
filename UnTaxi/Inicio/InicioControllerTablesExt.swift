@@ -13,12 +13,30 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return self.formularioDataCellList.count
+    switch tableView {
+    case solicitudFormTable:
+      return self.formularioDataCellList.count
+    case addressTableView:
+      return self.searchAddressList.count
+    default:
+      return 1
+    }
   }
   
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return self.formularioDataCellList[indexPath.row]
+    switch tableView {
+    case solicitudFormTable:
+      return self.formularioDataCellList[indexPath.row]
+    case addressTableView:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
+      cell?.textLabel?.text = self.searchAddressList[indexPath.row].fullAddress()
+      cell?.imageView?.image = UIImage(named: "mapLocation")
+      return self.formularioDataCellList[indexPath.row]
+    default:
+      return self.formularioDataCellList[indexPath.row]
+    }
+    
   }
 
   

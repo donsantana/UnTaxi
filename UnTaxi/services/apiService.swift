@@ -23,6 +23,7 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, getServerData serverData: String)
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool)
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]])
+  func apiRequest(_ controller: ApiService, getAddressList data: [Address])
   func apiRequest(_ controller: ApiService, cardRemoved result: String?)
   func apiRequest(_ controller: ApiService, getLoginError msg: String)
   //func apiRequest(_ controller: ApiService, getRegisterError msg: String)
@@ -454,6 +455,46 @@ final class ApiService {
     task.resume()
   }
   
+  func searchAddressXoaAPI(searchQuery: String){
+    
+    var searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
+    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n"))"
+    print("\(urlString)")
+    //let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+    var request = URLRequest(url: (URL(string: "\(urlString),Ecuador") ?? URL(string: "\(GlobalConstants.searchAddressUrl)Ecuador"))!)
+    request.httpMethod = "GET"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    //request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+      if let error = error {
+        self.handlerError(error: error.localizedDescription)
+        return
+      }
+    
+      do {
+        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+        guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+          self.delegate?.apiRequest(self, getAddressList: [])
+          return
+        }
+        var addressList: [Address] = []
+        for address in json["features"] as! [[String:AnyObject]]{
+          let newAddress = try Address(json: address)
+          if newAddress.pais == "Ecuador"{
+            addressList.append(newAddress)
+          }
+        }
+        self.delegate?.apiRequest(self, getAddressList: addressList)
+      } catch {
+        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+      }
+    })
+    
+    task.resume()
+  }
+  
 //  func getServerConnectionData(token: String){
 //    let header = ["Authorization":"Bearer \(token)"] as Dictionary<String, String>
 //    var request = URLRequest(url: URL(string: GlobalConstants.apiServerPortUrl)!)
@@ -507,6 +548,7 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getServerData serverData: String){}
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]]){}
+  func apiRequest(_ controller: ApiService, getAddressList data: [Address]){}
   func apiRequest(_ controller: ApiService, cardRemoved result: String?){}
   func apiRequest(_ controller: ApiService, getLoginError msg: String){}
   //func apiRequest(_ controller: ApiService, getRegisterError msg: String){}

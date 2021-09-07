@@ -73,10 +73,6 @@ class PerfilController: BaseController {
     
   }
   
-//  override func homeBtnAction() {
-//    self.goToInicioView()
-//  }
-  
   func isProfileUpdated()->Bool{
     return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.email != self.emailText.text
   }
