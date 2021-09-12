@@ -32,8 +32,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
   
-  var apiService = ApiService()
-  var socketService = SocketService()
+  var apiService = ApiService.shared
+  var socketService = SocketService.shared
   
   let myContext = LAContext()
   

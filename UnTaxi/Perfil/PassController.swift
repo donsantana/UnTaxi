@@ -9,7 +9,7 @@
 import UIKit
 
 class PassController: BaseController, UIGestureRecognizerDelegate {
-  var apiService = ApiService()
+  var apiService = ApiService.shared
   
   @IBOutlet weak var claveActualText: UITextField!
   @IBOutlet weak var NuevaClaveText: UITextField!

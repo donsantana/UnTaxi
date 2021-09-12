@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class OfertasController: BaseController{
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   let progress = Progress(totalUnitCount: 80)
   var progressTimer = Timer()
   var ofertaSeleccionada: Oferta!

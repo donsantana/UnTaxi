@@ -9,7 +9,7 @@
 import UIKit
 
 class EsperaChildVC: UIViewController {
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var solicitud: Solicitud!
 
   @IBOutlet weak var MensajeEspera: UITextView!

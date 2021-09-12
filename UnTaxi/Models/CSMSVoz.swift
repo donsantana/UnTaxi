@@ -24,7 +24,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   var responseData = NSMutableData()
   var data: Data!
   var reproduciendo = false
-  var apiService = ApiService()
+  var apiService = ApiService.shared
   //var AudioSetCategory: AVAudioSetCategory = AVAudioSetCategory()
   
   
@@ -144,6 +144,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         try audioSession.setActive(false)
         let filePath = NSHomeDirectory() + "/Library/Caches/Audio" + name
         let audio = try? Data(contentsOf: directoryURL()!)
+        //self.apiService.subirAudioAPIService(solicitud: solicitud, name: name)
         //self.apiService.subirAudioAPIService(audioFile: audio!, idsolicitud: solicitud.id, idtaxi: solicitud.taxi.id)
         ((try? audio?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])) as ()??)
         

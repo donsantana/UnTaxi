@@ -17,9 +17,10 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     case solicitudFormTable:
       return self.formularioDataCellList.count
     case addressTableView:
+      print("addressList \(self.searchAddressList.count)")
       return self.searchAddressList.count
     default:
-      return 1
+      return 0
     }
   }
   
@@ -30,18 +31,28 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
       return self.formularioDataCellList[indexPath.row]
     case addressTableView:
       let cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
-      cell?.textLabel?.text = self.searchAddressList[indexPath.row].fullAddress()
+      cell?.textLabel?.text = self.searchAddressList[indexPath.row].nombre
+      cell?.detailTextLabel?.text = self.searchAddressList[indexPath.row].fullAddress()
       cell?.imageView?.image = UIImage(named: "mapLocation")
-      return self.formularioDataCellList[indexPath.row]
+      return cell!
     default:
       return self.formularioDataCellList[indexPath.row]
     }
-    
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    closeSearchAddress(addressSelected: self.searchAddressList[indexPath.row])
   }
 
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return self.formularioDataCellList[indexPath.row].contentView.bounds.height
+    switch tableView {
+    case solicitudFormTable:
+      return self.formularioDataCellList[indexPath.row].contentView.bounds.height
+    default:
+      return 44
+    }
   }
   
 //  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

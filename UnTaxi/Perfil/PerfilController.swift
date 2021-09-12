@@ -18,7 +18,7 @@ class PerfilController: BaseController {
   
   var camaraController: UIImagePickerController!
   
-  var apiService = ApiService()
+  var apiService = ApiService.shared
   
   var isPhotoUpdated = false
   

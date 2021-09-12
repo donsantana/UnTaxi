@@ -90,8 +90,8 @@ class BaseController: UIViewController {
     }catch{
     }
     //let datos = "#SocketClose,\(String(describing: globalVariables.cliente.id)),# \n"
-    let vc = R.storyboard.main.inicioView()
-    vc!.socketService.socketEmit("SocketClose", datos: ["idcliente": globalVariables.cliente.id])
+    //let vc = R.storyboard.main.inicioView()
+    SocketService.shared.socketEmit("SocketClose", datos: ["idcliente": globalVariables.cliente.id])
     exit(3)
     
   }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct GlobalConstants {
-  static var enviroment: String = "prod"
+  static var enviroment: String = "dev"
   static var urlServer: String = enviroment == "dev" ? "testing-untaxi.xoaserver.com" : "untaxi.xoaserver.com"//"premium.xoait.com" //untaxi.xoaserver.com
   static var urlHost: String = "https://\(urlServer)"//premium.xoait.com" //testing-untaxi.xoaserver.com
   static var socketurlHost: String = "https://client-\(urlServer)" //premium.xoait.com"
@@ -22,7 +22,7 @@ struct GlobalConstants {
   static var updateProfileUrl: String = "\(urlHost)/profile"
   static var registerUrl: String = "\(urlHost)/register"
   static var subiraudioUrl: String = "\(urlHost)/voz"
-  static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q="
+  static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
   static var listCardsUrl: String = "\(paymentsUrl)/card"
   
   

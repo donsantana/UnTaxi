@@ -9,7 +9,7 @@
 import UIKit
 
 class CallCenterController: BaseController {
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var telefonosCallCenter = [Telefono]()
   
   @IBOutlet weak var callCenterTableView: UITableView!

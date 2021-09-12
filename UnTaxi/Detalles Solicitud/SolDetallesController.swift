@@ -16,7 +16,7 @@ import Mapbox
 import MapboxDirections
 
 class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate {
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
   var origenAnnotation = MGLPointAnnotation()
@@ -25,7 +25,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   var grabando = false
   var fechahora: String = ""
   var urlSubirVoz = globalVariables.urlSubirVoz
-  var apiService = ApiService()
+  var apiService = ApiService.shared
   var responsive = Responsive()
   var sideMenu: SideMenuNavigationController!
   

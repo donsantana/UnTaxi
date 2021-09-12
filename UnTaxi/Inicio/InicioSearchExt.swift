@@ -25,16 +25,13 @@ extension InicioController: SearchControllerDelegate {
       annotation.subtitle = searchResult.address?.formattedAddress(style: .medium)
       return annotation
     }
-
-    //showAnnotation(annotations, isPOI: false)
   }
 
   func searchResultSelected(_ searchResult: SearchResult) {
     let annotation = MGLPointAnnotation()
     annotation.coordinate = searchResult.coordinate
     annotation.title = searchResult.address?.formattedAddress(style: .medium)
-    
-    //showAnnotation([self.origenAnnotation, annotation], isPOI: searchResult.type == .POI)
+
     if searchingAddress == "origen"{
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
@@ -46,7 +43,7 @@ extension InicioController: SearchControllerDelegate {
       self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
       self.getDestinoFromSearch(annotation: annotation)
     }
-    self.hideSearchPanel()
+    //self.hideSearchPanel()
   }
 
   func userFavoriteSelected(_ userFavorite: FavoriteRecord) {
@@ -55,7 +52,6 @@ extension InicioController: SearchControllerDelegate {
     annotation.title = userFavorite.name
     annotation.subtitle = userFavorite.address?.formattedAddress(style: .medium)
 
-    //showAnnotation([self.origenAnnotation, annotation], isPOI: true)
     if searchingAddress == "origen"{
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
@@ -67,7 +63,7 @@ extension InicioController: SearchControllerDelegate {
       self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
       self.getDestinoFromSearch(annotation: annotation)
     }
-    self.hideSearchPanel()
+    //elf.hideSearchPanel()
   }
 
 }
@@ -75,7 +71,7 @@ extension InicioController: SearchControllerDelegate {
 extension InicioController: SearchEngineDelegate {
   func resultsUpdated(searchEngine: SearchEngine) {
     
-    apiService.searchAddressXoaAPI(searchQuery: searchEngine.query)
+//    apiService.searchAddressXoaAPI(searchQuery: searchEngine.query)
 //    let boundingOptions = BoundingBox(CLLocationCoordinate2D(latitude: -1.653788, longitude: -75.177630), CLLocationCoordinate2D(latitude: -4.967101, longitude: -81.121750))
 //    let requestOptions = SearchEngine.RequestOptions(boundingBox: boundingOptions)
 //    let queryEcuador = searchEngine.query.contains(",Ecuador") ? searchEngine.query : searchEngine.query.appending(",Ecuador")

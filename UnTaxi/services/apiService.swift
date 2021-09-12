@@ -33,6 +33,8 @@ protocol ApiServiceDelegate: class {
 
 final class ApiService {
   
+  static let shared = ApiService()
+    
   weak var delegate: ApiServiceDelegate?
   
   func apiPOSTRequest(url: String, params: Dictionary<String, String>) -> URLRequest{
@@ -345,11 +347,12 @@ final class ApiService {
     request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
     
     let recordedFilePath = localFilePath + fileName
+    print(recordedFilePath)
     let recordedFileURL = URL(fileURLWithPath: recordedFilePath)
     let fileData: Data? = try? Data(contentsOf: recordedFileURL)
     
     //Add File to body
-    
+    if fileData != nil{
     body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
     body.append("Content-Disposition:form-data; name=\"file\"\r\n\r\n".data(using: .utf8)!)
     body.append("hi\r\n".data(using: String.Encoding.utf8)!)
@@ -359,7 +362,9 @@ final class ApiService {
     body.append(fileData!)
     body.append("\r\n".data(using: String.Encoding.utf8)!)
     body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-
+    }else{
+      print("Errrorrrrr")
+    }
     request.httpBody = body as Data
     
     let session = URLSession.shared
@@ -455,13 +460,15 @@ final class ApiService {
     task.resume()
   }
   
-  func searchAddressXoaAPI(searchQuery: String){
-    
-    var searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
-    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n"))"
+  func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double){
+    //&lon=-79.89725013269098&lat=-2.1363502421557943
+    let searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
+    //let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador"
+    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=\(lon)&lat=\(lat)"
+//    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
     print("\(urlString)")
     //let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    var request = URLRequest(url: (URL(string: "\(urlString),Ecuador") ?? URL(string: "\(GlobalConstants.searchAddressUrl)Ecuador"))!)
+    var request = URLRequest(url: (URL(string: "\(urlString)") ?? URL(string: "\(GlobalConstants.searchAddressUrl)"))!)
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     //request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -479,13 +486,15 @@ final class ApiService {
           self.delegate?.apiRequest(self, getAddressList: [])
           return
         }
+        print(json["features"] as! [[String:AnyObject]])
         var addressList: [Address] = []
         for address in json["features"] as! [[String:AnyObject]]{
           let newAddress = try Address(json: address)
-          if newAddress.pais == "Ecuador"{
+          if newAddress.pais == "Ecuador" && newAddress.ciudad != ""{
             addressList.append(newAddress)
           }
         }
+        print(addressList)
         self.delegate?.apiRequest(self, getAddressList: addressList)
       } catch {
         self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")

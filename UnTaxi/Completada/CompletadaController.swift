@@ -17,7 +17,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   var evaluacion: CEvaluacion!
   var importe: Double = 0.0
   var ptosEvaluacion = 0
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var comentariosSelected: [String] = []
   
   @IBOutlet weak var completadaBack: UIView!

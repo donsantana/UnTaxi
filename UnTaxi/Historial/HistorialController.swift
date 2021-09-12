@@ -10,7 +10,7 @@ import UIKit
 
 class HistorialController: BaseController {
   var historialSolicitudesList: [SolicitudHistorial] = []
-  let socketService = SocketService()
+  let socketService = SocketService.shared
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var waitingView: UIVisualEffectView!

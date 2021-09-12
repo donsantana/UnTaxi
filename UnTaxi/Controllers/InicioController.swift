@@ -27,7 +27,7 @@ struct MenuData {
 }
 
 class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UIGestureRecognizerDelegate {
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var coreLocationManager : CLLocationManager!
   var origenAnnotation = MGLPointAnnotation()
   var destinoAnnotation = MGLPointAnnotation()
@@ -41,11 +41,13 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var transporteIndex: Int! = -1
   var tipoTransporte: String!
   var isVoucherSelected = false
-  var apiService = ApiService()
+  var apiService = ApiService.shared
   var destinoPactadas:[DireccionesPactadas] = []
   var searchAddressList:[Address] = []{
     didSet{
-      self.addressTableView.reloadData()
+      DispatchQueue.main.async {
+        self.addressTableView.reloadData()
+      }
     }
   }
   
@@ -139,6 +141,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var searchAddressView: UIView!
   @IBOutlet weak var searchText: UITextField!
   @IBOutlet weak var addressTableView: UITableView!
+  @IBOutlet weak var sinResultadosLabel: UILabel!
   
   
   override func viewDidLoad() {
@@ -148,7 +151,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     self.solicitudFormTable.rowHeight = UITableView.automaticDimension
     self.checkForNewVersions()
-    self.socketService.delegate = self
     self.tabBar.delegate = self
     self.tabBar.layer.borderColor = UIColor.clear.cgColor
     self.tabBar.clipsToBounds = true
@@ -168,7 +170,6 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.addressPicker.delegate = self
     self.destinoAddressPicker.delegate = self
     self.ofertaDataCell.valorOfertaText.delegate = self
-  
     
     self.origenAnnotation.subtitle = "origen"
     self.destinoAnnotation.subtitle = "destino"
@@ -205,7 +206,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //func currentLocation() -> CLLocationCoordinate2D? { mapboxSFOfficeCoordinate }
 
     
-    searchController.delegate = self
+    //searchController.delegate = self
     //searchController.searchEngine.delegate = self
    
     
@@ -219,7 +220,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.solicitudPanel.set(contentViewController: contentPanel)
     //solicitudPanel.addPanel(toParent: self)
     
-    coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+    coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
     coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -232,26 +233,27 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     tapGesture.delegate = self
     self.solicitudFormTable.addGestureRecognizer(tapGesture)
     
-    let mapTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideSearchPanel))
-    mapTapGesture.delegate = self
-    self.mapView.addGestureRecognizer(mapTapGesture)
+    //let mapTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideSearchPanel))
+    //mapTapGesture.delegate = self
+    //self.mapView.addGestureRecognizer(mapTapGesture)
     
     //INITIALIZING INTERFACES VARIABLES
     //self.pagoCell.initContent(isCorporativo: self.tabBar.selectedItem != self.ofertaItem)
-    
-    if let tempLocation = self.coreLocationManager.location?.coordinate{
-      globalVariables.cliente.annotation.coordinate = tempLocation
-      self.origenAnnotation.coordinate = tempLocation
-      coreLocationManager.stopUpdatingLocation()
-      self.initMapView()
-    }else{
-      globalVariables.cliente.annotation.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
-      coreLocationManager.requestWhenInUseAuthorization()
-    }
+//
+//    if let tempLocation = self.coreLocationManager.location?.coordinate{
+//      globalVariables.cliente.annotation.coordinate = tempLocation
+//      self.origenAnnotation.coordinate = tempLocation
+//      coreLocationManager.stopUpdatingLocation()
+//      self.initMapView()
+//    }else{
+//      globalVariables.cliente.annotation.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
+//      coreLocationManager.requestWhenInUseAuthorization()
+//    }
 
     //self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: CustomAppColor.buttonActionColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height: tabBar.frame.height), lineWidth: 2.0)
     
     globalVariables.socket.on("disconnect"){data, ack in
+      print("disconnect")
       self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)
     }
     //self.loadFormularioData()
@@ -261,6 +263,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   override func viewDidAppear(_ animated: Bool){
     
+    self.socketService.delegate = self
+    
     if let tempLocation = self.coreLocationManager.location?.coordinate{
       globalVariables.cliente.annotation.coordinate = tempLocation
       self.origenAnnotation.coordinate = tempLocation
@@ -272,17 +276,14 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     }
     
     self.navigationController?.setNavigationBarHidden(true, animated: false)
-    self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.black)
-    self.contactoCell.telefonoText.setBottomBorder(borderColor: UIColor.black)
-    //self.initMapView()
     self.socketService.initListenEventos()
     self.initTipoSolicitudBar()
     self.pagoCell.initContent(isCorporativo: self.tabBar.selectedItem != self.ofertaItem)
     
     self.origenCell.initContent()
-    self.destinoCell.initContent()
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
-    //self.checkSolPendientes()
+    
+    self.searchText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -290,9 +291,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print("UpdateLocation")
     globalVariables.cliente.annotation.coordinate = (locations.last?.coordinate)!
-    //self.origenAnnotation.coordinate = (locations.last?.coordinate)!
-    //self.initMapView()
   }
   
  override func homeBtnAction(){
@@ -313,19 +313,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.origenAnnotation.coordinate = coreLocationManager.location!.coordinate
     self.initMapView()
   }
-  
-  //SOLICITAR BUTTON
-  @IBAction func Solicitar(_ sender: AnyObject) {
-    //TRAMA OUT: #Posicion,idCliente,latorig,lngorig
-//    self.loadFormularioData()
-//    let data = [
-//      "idcliente": globalVariables.cliente.id!,
-//      "latitud": self.origenAnnotation.coordinate.latitude,
-//      "longitud": self.origenAnnotation.coordinate.longitude
-//      ] as [String: Any]
-//    socketService.socketEmit("cargarvehiculoscercanos", datos: data)
-  }
-  
+
   //Boton para Cancelar Carrera
   @IBAction func CancelarSol(_ sender: UIButton) {
     self.hideSolicitudView(isHidden: true)
@@ -365,35 +353,62 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func closeView(_ sender: Any) {
-    if self.searchingAddress == "origen" {
-      self.origenAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
-    }else{
-      self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
-    }
-    self.hideSearchPanel()
-    self.getDestinoFromSearch(annotation: self.origenAnnotation)
+    self.addressPreviewText.isHidden = true
+    closeSearchAddress(addressSelected: nil)
+//    if self.searchingAddress == "origen" {
+//      self.origenAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+//    }else{
+//      self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+//    }
+//    self.hideSearchPanel()
+//    self.getDestinoFromSearch(annotation: self.origenAnnotation)
   }
   
   @IBAction func getAddressText(_ sender: Any) {
+//    closeSearchAddress(addressSelected: nil)
     if self.searchingAddress == "destino"{
-      if !(self.panelController.state == .collapsed){
-        //self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.searchController.searchEngine.query)
-        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      if !self.searchAddressView.isHidden{
+        self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: searchText.text!)
+        destinoCell.destinoText.text = searchText.text
       }else{
-        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+        self.getAddressFromCoordinate(self.destinoAnnotation)
       }
-      self.getAddressFromCoordinate(self.destinoAnnotation)
-      print("destino \(self.destinoCell.destinoText.text)")
+      self.getDestinoFromSearch(annotation: self.destinoAnnotation)
     }else{
-      if !(self.panelController.state == .collapsed){
-        self.origenAnnotation.title = self.searchController.searchEngine.query
-        //self.origenCell.origenText.text = self.origenAnnotation.title
+      if !self.searchAddressView.isHidden{
+        self.origenAnnotation.title = searchText.text
+        origenCell.origenText.text = searchText.text
+        //self.origenAnnotation.title = self.searchController.searchEngine.query
       }else{
         self.getAddressFromCoordinate(self.origenAnnotation)
       }
-      
     }
-    self.hideSearchPanel()
+
+    super.hideMenuBar(isHidden: false)
+    self.mapBottomConstraint.constant = 0
+    searchText.endEditing(true)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    self.searchAddressView.isHidden = true
+    self.addressPreviewText.isHidden = true
+
+////    if self.searchingAddress == "destino"{
+//      if !(self.panelController.state == .collapsed){
+//        //self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.searchController.searchEngine.query)
+//        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+//      }else{
+//        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+//      }
+//      self.getAddressFromCoordinate(self.destinoAnnotation)
+//      print("destino \(self.destinoCell.destinoText.text)")
+//    }else{
+//      if !(self.panelController.state == .collapsed){
+//        self.origenAnnotation.title = self.searchController.searchEngine.query
+//        //self.origenCell.origenText.text = self.origenAnnotation.title
+//      }else{
+//        self.getAddressFromCoordinate(self.origenAnnotation)
+//      }
+//    }
+    //self.hideSearchPanel()
   } 
 }
 

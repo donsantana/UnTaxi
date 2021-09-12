@@ -108,7 +108,6 @@ extension SolPendController{
         dateFormato.dateFormat = "yyMMddhhmmss"
         self.fechahora = dateFormato.string(from: Date())
         let name = "\(self.solicitudPendiente.id)-\(self.solicitudPendiente.taxi.id)-\(fechahora).m4a"
-        
         globalVariables.SMSVoz.TerminarMensaje(name,solicitud: self.solicitudPendiente)
         self.apiService.subirAudioAPIService(solicitud: self.solicitudPendiente, name: name)
         globalVariables.grabando = false

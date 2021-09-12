@@ -56,8 +56,6 @@ class AddressController: UIViewController {
   func initMapView(){
     mapView.setCenter(self.startLocation, zoomLevel: 10, animated: false)
     mapView.styleURL = MGLStyle.lightStyleURL
-    //self.locationIcono.image = UIImage(named: self.annotationTemp.title!)
-    //self.locationIcono.isHidden = true
     self.mapView.addAnnotation(self.annotationTemp)
   }
   

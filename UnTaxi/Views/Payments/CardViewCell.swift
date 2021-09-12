@@ -9,7 +9,7 @@
 import UIKit
 
 class CardViewCell: UITableViewCell {
-  var paymentService = ApiService()
+  var paymentService = ApiService.shared
   var card: Card!
   
   @IBOutlet weak var elementsView: UIView!

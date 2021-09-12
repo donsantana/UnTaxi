@@ -13,7 +13,7 @@ import PhoneNumberKit
 class YapaPanel: UIViewController {
   let phoneNumberKit = PhoneNumberKit()
   var actionType = 1
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var contactService = ContactService()
   var keyboardHeight:CGFloat!
   var activeTextField: UITextField!

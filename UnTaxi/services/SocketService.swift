@@ -41,8 +41,12 @@ protocol SocketServiceDelegate: class {
 
 final class SocketService{
   
+  static let shared = SocketService()
+    
   weak var delegate: SocketServiceDelegate?
 
+  //private init(){}
+  
   func socketEmit(_ eventName: String, datos: [String: Any]){
     if CConexionInternet.isConnectedToNetwork() == true{
       if globalVariables.socket.status.active{
@@ -130,7 +134,7 @@ final class SocketService{
     }
     
     globalVariables.socket.on("cancelarservicio"){data, ack in
-      
+      globalVariables.urlConductor.removeAll()
       let result = data[0] as! [String: Any]
       print("cancelarservicio \(result)")
       self.delegate?.socketResponse(self, cancelarservicio: result)
@@ -148,6 +152,7 @@ final class SocketService{
     }
     
     globalVariables.socket.on("serviciocancelado"){data, ack in
+      globalVariables.urlConductor.removeAll()
       let result = data[0] as! [String: Any]
       if UIApplication.shared.applicationState == .background {
         let localNotification = UILocalNotification()
@@ -199,6 +204,7 @@ final class SocketService{
     
     globalVariables.socket.on("serviciocompletado"){data, ack in
       print("Completada")
+      globalVariables.urlConductor.removeAll()
       let result = data[0] as! [String: Any]
       self.delegate?.socketResponse(self, serviciocompletado: result)
     }

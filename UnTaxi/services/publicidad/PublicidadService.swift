@@ -39,7 +39,7 @@ class PublicidadService {
   var publicidadTimer = Timer()
   var showTime = 3
   var publicidadToShow: Publicidad
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   
   init(publicidades:[[String: Any]]) {
     for publicidad in publicidades{

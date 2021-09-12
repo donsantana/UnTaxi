@@ -143,7 +143,6 @@ extension InicioController{
         self.ofertaDataCell.initContent()
         self.formularioDataCellList.append(self.ofertaDataCell)
         self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 55).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 55 : 60)
-        //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }else{
         self.origenCell.origenText.text?.removeAll()
         //self.destinoCell.destinoText.text?.removeAll()
@@ -153,7 +152,6 @@ extension InicioController{
       self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 45).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 42 : 58)
       if globalVariables.cliente.idEmpresa != 0{
         if self.isVoucherSelected{
-          //self.destinoCell.destinoText.text?.removeAll()
           self.formularioDataCellList.append(self.destinoCell)
           self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 50).relativeToIphone8Height(shouldUseLimit: false)//globalVariables.responsive.heightFloatPercent(percent: globalVariables.isBigIphone ? 46 : 65)
         }
@@ -167,6 +165,8 @@ extension InicioController{
       self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
     }
  
+    self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.black)
+    self.contactoCell.telefonoText.setBottomBorder(borderColor: UIColor.black)
     self.contactoCell.clearContacto()
     self.formularioDataCellList.append(self.contactoCell)
     self.solicitudFormTable.reloadData()
@@ -412,7 +412,7 @@ extension InicioController{
       
       let destino = self.cleanTextField(textfield: self.destinoCell.destinoText)
       
-      let destinoCoord = self.destinoAnnotation.coordinate//self.converAddressToCoord(address: destino)
+      let destinoCoord = self.destinoAnnotation.coordinate
 
       let voucher = !self.pagoCell.formaPagoSwitch.isHidden && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
     
@@ -508,6 +508,12 @@ extension InicioController{
     }
   }
   
+  func removeDestinoFromMap(){
+    if self.mapView!.annotations != nil {
+      mapView.removeAnnotations(self.mapView.annotations!)
+    }
+  }
+  
   func getDestinoFromSearch(annotation: MGLPointAnnotation){
     let wp1 = Waypoint(coordinate: self.origenAnnotation.coordinate, name: self.origenAnnotation.title)
     let wp2 = Waypoint(coordinate: annotation.coordinate, name: annotation.title)
@@ -517,9 +523,8 @@ extension InicioController{
     options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
 
     self.destinoAnnotation = annotation
-    self.destinoCell.destinoText.text = annotation.title
-    //self.showAnnotation([self.origenAnnotation, self.destinoAnnotation], isPOI: true)
-
+    destinoCell.destinoText.text = self.destinoAnnotation.title
+    
     Directions.shared.calculate(options) { (session, result) in
       switch result {
       case let .failure(error):
@@ -557,76 +562,120 @@ extension InicioController{
             let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
 
             // Add the polyline to the map.
-            if route.distance > 500{
+            if route.distance > 300{
               self.mapView.addAnnotation(routeLine)
-              self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: true)
             }
           }
+          self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: false)
         }
       }
     }
   }
 
   func openSearchAddress(){
-    let searchAddressPanel = FloatingPanelController()
-    //searchAddressPanel.delegate = self
-    searchAddressPanel.isRemovalInteractionEnabled = true
-    searchAddressPanel.contentMode = .fitToBounds
-    let searchController = AddressController()
-    searchAddressPanel.set(contentViewController: searchController)
-    searchAddressPanel.addPanel(toParent: self)
-    self.panelController.setState(.opened)
-    addChild(searchController)
-  }
-  
-  func openSearchPanel(){
-    print("open SearchPanel")
     super.hideMenuBar(isHidden: true)
-    self.panelController.setState(.opened)
-    self.mapBottomConstraint.constant = self.formularioSolicitudHeight.constant
-    self.view.endEditing(true)
-    if searchingAddress == "destino"{
-      print(self.origenAnnotation.title)
-      self.destinoAnnotation.title = self.origenAnnotation.title
-      self.destinoAnnotation.coordinate = self.origenAnnotation.coordinate
-    }
-    //self.destinoCell.destinoText.text?.removeAll()
+    self.searchAddressView.isHidden = false
+    self.searchText.placeholder = self.searchingAddress == "origen" ? "Ingrese nuevo origen" : "Ingrese nuevo destino"
+
     self.navigationController?.setNavigationBarHidden(false, animated: true)
-    openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
+    searchAddressList.removeAll()
+    searchText.text?.removeAll()
+
     let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
     openMapBtn.setImage(mapaImage, for: UIControl.State())
     openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
     openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
     openMapBtn.layer.cornerRadius = 10
-    //openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
     openMapBtn.backgroundColor = .white
     openMapBtn.tintColor = .black
     openMapBtn.addShadow()
-    panelController.view.addSubview(openMapBtn)
     
-    addChild(panelController)
+    searchAddressView.addSubview(openMapBtn)
+
+    DispatchQueue.main.async {
+      self.searchText.becomeFirstResponder()
+    }
   }
+  
+  func closeSearchAddress(addressSelected: Address?){
+    super.hideMenuBar(isHidden: false)
+    self.mapBottomConstraint.constant = 0
+    searchText.endEditing(true)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    self.searchAddressView.isHidden = true
+    
+    if addressSelected != nil{
+      let annotation = MGLPointAnnotation()
+      annotation.coordinate = addressSelected!.getCoordinates()
+      annotation.title = addressSelected!.nombre
+      
+      if searchingAddress == "origen"{
+        annotation.subtitle = "origen"
+        self.origenAnnotation = annotation
+        self.initMapView()
+      }else{
+        annotation.subtitle = "destino"
+        self.destinoAnnotation = annotation
+        self.mapView.removeAnnotations(self.mapView.annotations!)
+        self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
+        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }
+    }else{
+      if self.searchingAddress == "origen" {
+        self.origenAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+      }else{
+        print("Close Destino \(self.origenAnnotation.title)")
+        self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+        self.mapView.removeAnnotations(self.mapView.annotations!)
+        self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
+        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+      }
+    }
+  }
+  
+//  func openSearchPanel(){
+//    super.hideMenuBar(isHidden: true)
+//    self.panelController.setState(.opened)
+//    self.mapBottomConstraint.constant = self.formularioSolicitudHeight.constant
+//    self.view.endEditing(true)
+//    if searchingAddress == "destino"{
+//      print(self.origenAnnotation.title)
+//      self.destinoAnnotation.title = self.origenAnnotation.title
+//      self.destinoAnnotation.coordinate = self.origenAnnotation.coordinate
+//    }
+//    //self.destinoCell.destinoText.text?.removeAll()
+//    self.navigationController?.setNavigationBarHidden(false, animated: true)
+//    openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
+//    let mapaImage = UIImage(named: "mapLocation")?.withRenderingMode(.alwaysOriginal)
+//    openMapBtn.setImage(mapaImage, for: UIControl.State())
+//    openMapBtn.setTitle("Fijar ubicación en el mapa", for: .normal)
+//    openMapBtn.addTarget(self, action: #selector(openMapBtnAction), for: .touchUpInside)
+//    openMapBtn.layer.cornerRadius = 10
+//    //openMapBtn.titleLabel?.font = CustomAppFont.buttonFont
+//    openMapBtn.backgroundColor = .white
+//    openMapBtn.tintColor = .black
+//    openMapBtn.addShadow()
+//    panelController.view.addSubview(openMapBtn)
+//
+//    addChild(panelController)
+//  }
   
   @objc func openMapBtnAction(){
-    print("Go to map")
     self.addressPreviewText.isHidden = false
     self.view.endEditing(true)
-    self.panelController.removeContainer()
+    self.searchAddressView.isHidden = true
+    self.mapBottomConstraint.constant = self.formularioSolicitudHeight.constant
   }
   
-  @objc func hideSearchPanel(){
-    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
-      super.hideMenuBar(isHidden: false)
-      self.navigationController?.setNavigationBarHidden(true, animated: true)
-      self.panelController.removeContainer()
-      self.mapBottomConstraint.constant = 0
-      self.addressPreviewText.isHidden = true
-    }
-    //self.destinoCell.destinoText.text = self.origenAnnotation.title
-    //    self.ofertaDataCell.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
-    //self.loadFormularioData()
-    
-  }
+//  @objc func hideSearchPanel(){
+//    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
+//      super.hideMenuBar(isHidden: false)
+//      self.navigationController?.setNavigationBarHidden(true, animated: true)
+//      self.panelController.removeContainer()
+//      self.mapBottomConstraint.constant = 0
+//      self.addressPreviewText.isHidden = true
+//    }
+//  }
   
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
@@ -634,7 +683,7 @@ extension InicioController{
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
       if self.navigationController != nil && self.navigationController?.isNavigationBarHidden == false {
-        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
+        self.openMapBtn.frame = CGRect(x: 20, y: Responsive().heightFloatPercent(percent: 84) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
       }else{
         self.view.frame.origin.y = -keyboardSize.height
         self.keyboardHeight = keyboardSize.height
@@ -645,12 +694,11 @@ extension InicioController{
   @objc func keyboardWillHide(notification: NSNotification) {
     if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
       if self.navigationController?.isNavigationBarHidden == false {
-        self.openMapBtn.frame = CGRect(x: 0, y: Responsive().heightFloatPercent(percent: 80), width: self.view.bounds.width - 40, height: 40)
+        self.openMapBtn.frame = CGRect(x: 20, y: Responsive().heightFloatPercent(percent: 84), width: self.view.bounds.width - 40, height: 40)
       }else{
         self.view.frame.origin.y = 0
       }
     }
-    
   }
   
   func textViewDidBeginEditing(_ textView: UITextView) {
@@ -741,18 +789,18 @@ extension InicioController{
     }
   }
   
-  func converAddressToCoord(address: String)->CLLocationCoordinate2D{
-    var coordinates = self.origenAnnotation.coordinate
-    let geocoder = CLGeocoder()
-    if address != ""{
-      geocoder.geocodeAddressString(address) {
-        placemarks, error in
-        let placemark = placemarks?.first
-        coordinates = (placemark?.location!.coordinate)!
-      }
-    }
-    return coordinates
-  }
+//  func converAddressToCoord(address: String)->CLLocationCoordinate2D{
+//    var coordinates = self.origenAnnotation.coordinate
+//    let geocoder = CLGeocoder()
+//    if address != ""{
+//      geocoder.geocodeAddressString(address) {
+//        placemarks, error in
+//        let placemark = placemarks?.first
+//        coordinates = (placemark?.location!.coordinate)!
+//      }
+//    }
+//    return coordinates
+//  }
   
 //  func getDetailsBeetwen(annotation1: MGLPointAnnotation, annotation2: MGLPointAnnotation){
 //    let wp1 = Waypoint(coordinate: annotation1.coordinate, name: annotation1.title)

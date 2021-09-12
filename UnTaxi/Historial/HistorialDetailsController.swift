@@ -14,7 +14,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   var solicitud: SolicitudHistorial!
   var origenSolicitud = MKPointAnnotation()
   var destinoSolicitud = MKPointAnnotation()
-  var socketService = SocketService()
+  var socketService = SocketService.shared
   var regionRadius: CLLocationDistance = 1000
   var idConductor = 0
   
