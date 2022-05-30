@@ -30,14 +30,14 @@ extension RegistroController{
                                     "email": correoText.text!,
                                     "so": "IOS",
                                     "recomendado": ""])
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.correoText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
       }
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.confirmarClavText.becomeFirstResponder()

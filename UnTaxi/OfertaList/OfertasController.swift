@@ -99,7 +99,7 @@ class OfertasController: BaseController{
           
           self.present(ac, animated: true)
         }))
-      }else{
+      } else {
         motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
           self.CancelarSolicitud(Customization.motivosCancelacion[i])
         }))

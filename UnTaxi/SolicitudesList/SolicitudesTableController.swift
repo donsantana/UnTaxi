@@ -77,7 +77,7 @@ class SolicitudesTableController: UITableViewController {
           
           self.present(ac, animated: true)
         }))
-      }else{
+      } else {
         motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
           self.CancelarSolicitud(Customization.motivosCancelacion[i], solicitud: solicitud)
         }))
@@ -164,14 +164,14 @@ class SolicitudesTableController: UITableViewController {
       let vc = R.storyboard.main.solDetalles()
       vc?.solicitudPendiente = solicitud
       self.navigationController?.show(vc!, sender: nil)
-    }else{
+    } else {
       let array = globalVariables.ofertasList.map{$0.id}
       if array.contains(solicitud.id){
         print("oferta encontrada")
         let vc = R.storyboard.main.ofertasView()
         vc?.solicitud = solicitud
         self.navigationController?.show(vc!, sender: nil)
-      }else{
+      } else {
         print("oferta encontrada")
         let vc = R.storyboard.main.esperaChildView()!
         vc.solicitud = solicitud

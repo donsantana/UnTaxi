@@ -155,7 +155,7 @@ class Solicitud {
         "latdestino": self.destinoCoord.latitude,
         "lngdestino": self.destinoCoord.longitude,
       ]
-    }else{
+    } else {
       return [:]
     }
   }

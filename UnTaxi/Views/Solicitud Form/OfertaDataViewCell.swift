@@ -11,14 +11,31 @@ import CurrencyTextField
 
 
 class OfertaDataViewCell: UITableViewCell {
-  var valueData: [Double] = []
   var valorOferta: Double = 0.0
+	private var valorInicial: Double {
+		globalVariables.tarifario.valorForDistance(distance: 0.0)
+	}
 
   @IBOutlet weak var valorOfertaText: CurrencyTextField!
 
   func initContent(){
-    self.valorOfertaText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
-    self.valorOfertaText.text = "$\(String(format: "%.2f", globalVariables.tarifario.valorForDistance(distance: 0.0)))"
+    valorOfertaText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
   }
+	
+	func resetValorOferta() {
+		valorOfertaText.text = "$\(String(format: "%.2f", 0.0))"
+	}
+	
+	func updateValorOfertaText() {
+		valorOfertaText.text = "$\(String(format: "%.2f", valorOferta >= valorInicial ? valorOferta : valorInicial))"
+	}
+	
+	func isValidOferta() -> Bool {
+		return Double(valorOfertaText.text!.currencyString)! >= valorInicial && Double(valorOfertaText.text!.currencyString)! >= valorOferta
+	}
+	
+	func getBestOferta() -> Double {
+		return valorOferta >= valorInicial ? valorOferta : valorInicial
+	}
 }
  

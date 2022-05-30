@@ -48,7 +48,7 @@ extension RegistroController: UITextFieldDelegate{
       let (valid, message) = confirmarClavText.validate(.password)
       if valid && confirmarClavText.text == claveText.text{
         crearCuentaBtn.isEnabled = true
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.confirmarClavText.becomeFirstResponder()
@@ -100,7 +100,7 @@ extension RegistroController: UITextFieldDelegate{
 //      let (valid, message) = textfield.validate(.password)
 //      if valid && textfield.text == claveText.text{
 //        crearCuentaBtn.isEnabled = true
-//      }else{
+//      } else {
 //        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
 //        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 //          self.confirmarClavText.becomeFirstResponder()
@@ -165,7 +165,7 @@ extension RegistroController: UITextFieldDelegate{
       let (valid, message) = textField.validate(.password)
       if valid && textField.text == claveText.text{
         correoText.becomeFirstResponder()
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.confirmarClavText.becomeFirstResponder()
@@ -182,7 +182,7 @@ extension RegistroController: UITextFieldDelegate{
           self.correoText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         self.sendNewUserData()
       }
       break
@@ -221,7 +221,7 @@ extension RegistroController: ApiServiceDelegate{
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         if success{
           self.goToLoginView()
-        }else{
+        } else {
           self.waitingView.isHidden = true
         }
       }))

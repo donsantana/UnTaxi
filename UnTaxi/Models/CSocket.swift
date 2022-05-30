@@ -39,7 +39,7 @@ import SocketIO
             }
             if loginData != "Vacio"{
                 self.Login(loginData: loginData)
-            }else{
+            } else {
                 self.waitingView.isHidden = true
             }
             self.socketEventos()

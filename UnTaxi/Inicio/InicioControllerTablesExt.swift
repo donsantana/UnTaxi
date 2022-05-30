@@ -17,7 +17,6 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     case solicitudFormTable:
       return self.formularioDataCellList.count
     case addressTableView:
-      print("addressList \(self.searchAddressList.count)")
       return self.searchAddressList.count
     default:
       return 0
@@ -42,7 +41,12 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
-    closeSearchAddress(addressSelected: self.searchAddressList[indexPath.row])
+		switch tableView {
+		case addressTableView:
+			closeSearchAddress(addressSelected: self.searchAddressList[indexPath.row])
+		default:
+			break
+		}
   }
 
   
@@ -56,14 +60,21 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   }
   
 //  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//      // UIView with darkGray background for section-separators as Section Footer
-//      let v = UIView(frame: CGRect(x: 0, y:0, width: tableView.frame.width, height: 1))
-//      v.backgroundColor = CustomAppColor.textFieldBackColor
-//      return v
+//		switch tableView {
+//		case addressTableView:
+//			return openMapBtn
+//		default:
+//			return nil
+//		}
 //  }
 //
 //  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //      // Section Footer height
-//      return 1.0
+//		switch tableView {
+//		case addressTableView:
+//			return 55.0
+//		default:
+//			return 0.0
+//		}
 //  }
 }

@@ -128,14 +128,14 @@ extension SolPendController{
       if globalVariables.socket.status.active{
         print(datos)
         globalVariables.socket.emit("data",datos)
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           exit(0)
         }))
         self.present(alertaDos, animated: true, completion: nil)
       }
-    }else{
+    } else {
       self.ErrorConexion()
     }
   }
@@ -177,14 +177,14 @@ extension SolPendController{
           }
         }
         task.resume()
-      }else{
+      } else {
         self.ImagenCond.image = UIImage(named: "chofer")
       }
       
       self.detallesView.isHidden = false
       self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControl.State())
       
-    }else{
+    } else {
       //self.MapaSolPen.addAnnotations(self.origenAnnotation)
     }
   
@@ -223,7 +223,7 @@ extension SolPendController{
           ac.addAction(submitAction)
           self.present(ac, animated: true)
         }))
-      }else{
+      } else {
         motivoAlerta.addAction(UIAlertAction(title: Customization.motivosCancelacion[i], style: .default, handler: { action in
           self.CancelarSolicitud(Customization.motivosCancelacion[i])
         }))

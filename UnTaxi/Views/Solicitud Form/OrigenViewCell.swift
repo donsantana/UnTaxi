@@ -57,11 +57,11 @@ class OrigenViewCell: UITableViewCell {
 //      GMSPlacesClient.shared().autocompleteQuery(textField.text!, bounds: nil, filter: filter, callback: {(result, error) in
 //        if error == nil && result != nil{
 //          self.arrayAddress = result!
-//        }else{
+//        } else {
 //          print("here \(error.debugDescription)")
 //        }
 //      })
-//    }else{
+//    } else {
 //      self.arrayAddress = [GMSAutocompletePrediction]()
 //    }
 //    self.origenAddressView.isHidden = self.arrayAddress.count == 0 || !textField.isEqual(self.origenText)
@@ -91,7 +91,7 @@ class OrigenViewCell: UITableViewCell {
 //    if tableView.isEqual(self.origenAddressTable){
 //      self.origenText.text = self.arrayAddress[indexPath.row].attributedFullText.string
 //      self.origenAddressView.isHidden = true
-//    }else{
+//    } else {
 //      self.destinoText.text = self.arrayAddress[indexPath.row].attributedFullText.string
 //      self.destinoAddressView.isHidden = true
 //    }

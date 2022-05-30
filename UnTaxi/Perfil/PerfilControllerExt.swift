@@ -39,7 +39,7 @@ extension PerfilController: UITextFieldDelegate{
           self.emailText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         self.EnviarActualizacion()
       }
      
@@ -82,21 +82,20 @@ extension PerfilController: UITextFieldDelegate{
 }
 
 extension PerfilController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]) {
-    DispatchQueue.main.async {
-      self.waitingView.isHidden = true
-    }
-    globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
-    let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-      DispatchQueue.main.async {
-        self.goToInicioView()
-      }
-    }))
-    
-    self.present(alertaDos, animated: true, completion: nil)
-  }
-  
+	func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]) {
+		DispatchQueue.main.async {
+			self.waitingView.isHidden = true
+			globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
+			let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
+			alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+				self.goToInicioView()
+			}))
+			
+			self.present(alertaDos, animated: true, completion: nil)
+		}
+	}
+	
+	
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
     let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
@@ -132,7 +131,7 @@ extension PerfilController: UINavigationControllerDelegate, UIImagePickerControl
       self.userPerfilPhoto.image = photoPreview?.scalePreservingAspectRatio(targetSize: CGSize(width: 200, height: 200))
       globalVariables.cliente.updatePhoto(newPhoto: self.userPerfilPhoto.image!)
       self.isPhotoUpdated = true
-    }else{
+    } else {
       self.camaraController.dismiss(animated: true, completion: nil)
       let EditPhoto = UIAlertController (title: NSLocalizedString("Error",comment:"Cambiar la foto de perfil"), message: NSLocalizedString("The profile only accepts selfies photo.", comment:""), preferredStyle: UIAlertController.Style.alert)
       

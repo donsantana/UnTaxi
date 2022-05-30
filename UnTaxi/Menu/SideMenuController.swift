@@ -66,14 +66,14 @@ class SideMenuController: UIViewController {
         globalVariables.socket.emit("data",datos)
         print(datos)
         //self.EnviarTimer(estado: 1, datos: datos)
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           exit(0)
         }))
         self.present(alertaDos, animated: true, completion: nil)
       }
-    }else{
+    } else {
       ErrorConexion()
     }
   }
@@ -94,7 +94,7 @@ class SideMenuController: UIViewController {
     let AudioPath = NSHomeDirectory() + "/Library/Caches/Audio"
     do {
       try fileAudio.removeItem(atPath: AudioPath)
-    }catch{
+    } catch {
       
     }
     print("closing app")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Conductor{
+class Conductor {
   var idConductor: Int
   var nombreApellido: String
   var telefono: String
@@ -16,7 +16,7 @@ class Conductor{
   var calificacion: Double
   var cantidadcalificaciones: Int
   
-  init(){
+  init() {
     self.idConductor = 0
     self.nombreApellido = ""
     self.telefono = ""
@@ -35,16 +35,15 @@ class Conductor{
     self.cantidadcalificaciones = !(jsonData["cantidadcalificacion"] is NSNull) ? jsonData["cantidadcalificacion"] as! Int : 0
   }
   
-  init(idConductor: Int, nombre: String, telefono: String, urlFoto: String, calificacion: Double, cantidadcalificaciones: Int){
+  init(idConductor: Int, nombre: String, telefono: String, urlFoto: String, calificacion: Double, cantidadcalificaciones: Int) {
     self.idConductor = idConductor
     self.nombreApellido = nombre
     self.telefono = telefono
     self.calificacion = calificacion
     self.cantidadcalificaciones = cantidadcalificaciones
-    if urlFoto != "null"{
+    if urlFoto != "null" {
       self.urlFoto = urlFoto
-    }
-    else{
+    } else {
       self.urlFoto = "chofer"}
   }
   

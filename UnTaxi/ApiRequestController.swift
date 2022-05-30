@@ -36,7 +36,7 @@ final class ApiRequestController {
                 } catch {
                     print("error")
                 }
-            }else{
+            } else {
                 //print("error \(error)")
             }
         })
@@ -62,7 +62,7 @@ final class ApiRequestController {
 //                } catch {
 //                    print("error URL")
 //                }
-//            }else{
+//            } else {
 //                //print("error \(error)")
 //            }
 //        })

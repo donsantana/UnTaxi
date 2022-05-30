@@ -33,15 +33,14 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     
     let myFilePathString = Bundle.main.path(forResource: "beep", ofType: "wav")
     
-    if let myFilePathString = myFilePathString
-    {
+    if let myFilePathString = myFilePathString {
       let myFilePathURL = URL(fileURLWithPath: myFilePathString)
       
       do{
         try myMusica = AVAudioPlayer(contentsOf: myFilePathURL)
         myMusica.prepareToPlay()
         myMusica.volume = 1
-      }catch{
+      } catch {
         print("error")
       }
     }
@@ -113,7 +112,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   }
   
   //para reproducir audio de internet
-  func PlayForInternet(_ url: String){
+  func PlayForInternet(_ url: String) {
     let url = url
     let playerItem = AVPlayerItem(url: URL(string: url)!)
     myPlayer = AVPlayer(playerItem:playerItem)
@@ -121,11 +120,11 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     myPlayer.play()
   }
   
-  func GrabarMensaje(){
-    if !self.reproduciendo{
+  func GrabarMensaje() {
+    if !self.reproduciendo {
       self.inicializarGrabacion()
       self.ReproducirMusica()
-      if !audioRecorder.isRecording{
+      if !audioRecorder.isRecording {
         let audioSession = AVAudioSession.sharedInstance()
         do {
           try audioSession.setActive(true)
@@ -137,7 +136,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   }
   
   func TerminarMensaje(_ name: String, solicitud: Solicitud){
-    if !self.reproduciendo{
+    if !self.reproduciendo {
       audioRecorder.stop()
       let audioSession = AVAudioSession.sharedInstance()
       do {
@@ -154,7 +153,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   }
   
   func ReproducirMensaje(){
-    if (!audioRecorder.isRecording){
+    if (!audioRecorder.isRecording) {
       do {
         try myAudioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
         
@@ -163,7 +162,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         myAudioPlayer.play()
       } catch {
       }
-    }else{
+    } else {
       
     }
   }
@@ -254,7 +253,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
 //        // print("statusCode should be 200, but is \(httpStatus.statusCode)")
 //        print("response = \(String(describing: response))")
 //      }
-//      //                }else{
+//      //                } else {
 //      //                    do {
 //      //                        self.responseDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
 //      //                        // self.Responsedata = data as NSData
@@ -347,7 +346,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     let filePath = NSHomeDirectory() + "/Library/Caches/Audio" + name
     do {
       try fileManager.removeItem(atPath: filePath)
-    }catch{
+    } catch {
       
     }
   }

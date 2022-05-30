@@ -19,17 +19,18 @@ class PactadaCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.idaVueltaSwitch.customColor()
+		self.precioText.text = "$\(String(format: "%.0f", 0.0))"
   }
   
-  func initContent(solicitudPactada: DireccionesPactadas){
+  func initContent(solicitudPactada: DireccionesPactadas) {
     self.solicitudPactada = solicitudPactada
-    self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida :   self.solicitudPactada.importeidaregreso
+    self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida : self.solicitudPactada.importeidaregreso
     
     self.precioText.text = "$\(String(format: "%.0f", self.importe))"
   }
   
   @IBAction func onValueChanged(_ sender: Any) {
-    self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida :   self.solicitudPactada.importeidaregreso
+    self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida : self.solicitudPactada.importeidaregreso
     
     self.precioText.text = "$\(String(format: "%.0f", self.importe))"
   }

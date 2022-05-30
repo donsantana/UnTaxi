@@ -49,7 +49,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
           (vc as! SolicitudesTableController).solicitudesMostrar = globalVariables.solpendientes
           //self.present(vc, animated: false, completion: nil)
           self.navigationController?.show(vc!, sender: nil)
-        }else{
+        } else {
           let alertaDos = UIAlertController (title: "Solicitudes en proceso", message: "Usted no tiene viajes en proceso.", preferredStyle: UIAlertController.Style.alert)
           alertaDos.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: {alerAction in
     
@@ -87,7 +87,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         //                let filePath = NSHomeDirectory() + "/Library/Caches/log.txt"
         //                do {
         //                    try fileManager.removeItem(atPath: filePath)
-        //                }catch{
+        //                } catch {
         //
         //                }
         //globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
@@ -100,26 +100,11 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   
   //FUNCIONES Y EVENTOS PARA ELIMIMAR CELLS, SE NECESITA AGREGAR UITABLEVIEWDATASOURCE
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//    if tableView.isEqual(self.TablaDirecciones){
-//      return true
-//    }else{
       return false
-//    }
   }
   
   func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
     return "Eliminar"
-  }
-  
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//    if editingStyle == UITableViewCell.EditingStyle.delete {
-//      self.EliminarFavorita(posFavorita: indexPath.row)
-//      tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-//      if self.DireccionesArray.count == 0{
-//        self.TablaDirecciones.isHidden = true
-//      }
-//      tableView.reloadData()
-//    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

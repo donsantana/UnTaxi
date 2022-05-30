@@ -32,7 +32,7 @@ extension YapaController: UITableViewDelegate, UITableViewDataSource{
         yapaPanel.set(contentViewController: contentPanel)
         yapaPanel.addPanel(toParent: self)
         tableView.deselectRow(at: indexPath, animated: false)
-      }else{
+      } else {
         let alertaDos = UIAlertController (title: "Yapa Error", message: "Solo puede utilizar su YAPA cuando acumule un valor igual o superior a $0.5", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           
@@ -41,7 +41,7 @@ extension YapaController: UITableViewDelegate, UITableViewDataSource{
       }
 //      yapaPanel.set(contentViewController: contentPanel)
 //      yapaPanel.addPanel(toParent: self)
-    }else{
+    } else {
       contentPanel?.actionType = 1
       yapaPanel.set(contentViewController: contentPanel)
       yapaPanel.addPanel(toParent: self)

@@ -83,7 +83,7 @@ final class ApiService {
 //        } catch {
 //          self.delegate?.apiRequest(self, registerUserAPI: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
 //        }
-//      }else{
+//      } else {
 //        do {
 //          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
 //          self.delegate?.apiRequest(self, getRegisterError: json["msg"] as! String)
@@ -154,7 +154,7 @@ final class ApiService {
 //        } catch {
 //          print("error")
 //        }
-//      }else{
+//      } else {
 //        self.handlerError(error: "API error")
 //      }
 //    })
@@ -200,7 +200,7 @@ final class ApiService {
 //          self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
 //          print("error")
 //        }
-//      }else{
+//      } else {
 //        self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
 //      }
     })
@@ -275,16 +275,16 @@ final class ApiService {
 //          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
 //          print("photo \(json)")
 //          self.delegate?.apiRequest(self, updatedProfileAPI: json)
-//        }catch{
+//        } catch {
 //          self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
 //        }
 //        print("file uploaded")
-//      }else{
+//      } else {
 //        do{
 //        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
 //        print("photo \(json)")
 //        self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
-//        }catch{
+//        } catch {
 //          self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
 //        }
 //        print("error uploading file")
@@ -315,7 +315,7 @@ final class ApiService {
         } catch {
           self.delegate?.apiRequest(self, getLoginError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
-      }else{
+      } else {
         do {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
           self.delegate?.apiRequest(self, getLoginError: json["msg"] as! String)
@@ -362,7 +362,7 @@ final class ApiService {
     body.append(fileData!)
     body.append("\r\n".data(using: String.Encoding.utf8)!)
     body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-    }else{
+    } else {
       print("Errrorrrrr")
     }
     request.httpBody = body as Data
@@ -376,23 +376,23 @@ final class ApiService {
             let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
             print("photo \(json)")
             self.delegate?.apiRequest(self, updatedProfileAPI: json)
-          }catch{
+          } catch {
             self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
           }
-        }else{
+        } else {
           self.delegate?.apiRequest(self, fileUploaded: statusCode == 200)
         }
         print("file uploaded")
-      }else{
+      } else {
         if mimetype == "image/jpeg" {
           do{
             let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
             print("photo \(json)")
             self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
-          }catch{
+          } catch {
             self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
           }
-        }else{
+        } else {
           self.delegate?.apiRequest(self, fileUploaded: false)
         }
         print("error uploading file")
@@ -430,7 +430,7 @@ final class ApiService {
         } catch {
           print("error")
         }
-      }else{
+      } else {
         //print("error \(error)")
       }
     })
@@ -452,7 +452,7 @@ final class ApiService {
         print("heree \(error) \(response.statusCode)")
         if error == nil && response.statusCode == 200{
           self.delegate?.apiRequest(self, cardRemoved: cardToken)
-        }else{
+        } else {
           self.delegate?.apiRequest(self, cardRemoved: nil)
         }
     })
@@ -522,7 +522,7 @@ final class ApiService {
 //        } catch {
 //          print("error URL")
 //        }
-//      }else{
+//      } else {
 //        //print("error \(error)")
 //      }
 //    })

@@ -129,10 +129,10 @@ extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
       }))
       
       self.present(callCenterAlert, animated: true, completion: nil)
-    }else{
+    } else {
       if let url = URL(string: "tel://\(telefonosCallCenter[indexPath.row].numero)") {
         UIApplication.shared.open(url)
-      }else{
+      } else {
         let callCenterAlert = UIAlertController(title: "Error", message: "No se pudo realizar la llamada", preferredStyle: .alert)
         callCenterAlert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
           

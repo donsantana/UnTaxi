@@ -20,7 +20,7 @@ class CEvaluacion {
                                     ["Amabilidad","Ubicación","Vehículo","Conducción","Recogida"],
                                     ["Comodidad","Buena conversación","Buena música","Ruta rápida","Llegó rápido"]]
   
-  init(botones: [UIButton]){
+  init(botones: [UIButton]) {
     self.botones = botones
     self.ptoEvaluacion = 1
     var i = 0
@@ -30,10 +30,10 @@ class CEvaluacion {
     }
     
   }
-  func EvaluarCarrera(_ posicion: Int){
+  func EvaluarCarrera(_ posicion: Int) {
     var i = 0
     while i < 5 {
-      if i < posicion{
+      if i < posicion {
         self.botones[i].setImage(UIImage(named: "stardorada")?.withRenderingMode(.alwaysTemplate), for: UIControl.State())
         self.botones[i].tintColor = CustomAppColor.starColor
       }
@@ -49,11 +49,11 @@ class CEvaluacion {
     return title[ptoEvaluacion - 1]
   }
   
-  func getSubtilte() -> String{
+  func getSubtilte() -> String {
     return subtitle[ptoEvaluacion - 1]
   }
   
-  func getComentariosOptions()->[String]{
+  func getComentariosOptions()->[String] {
     return comentariosOptions[ptoEvaluacion - 1]
   }
   

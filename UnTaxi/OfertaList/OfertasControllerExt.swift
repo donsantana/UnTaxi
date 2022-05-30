@@ -76,7 +76,7 @@ extension OfertasController: SocketServiceDelegate{
         vc.solicitudPendiente = solicitudCreada
         self.navigationController?.show(vc, sender: nil)
       }
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Estado de Oferta", message: (result["msg"] as! String), preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.goToInicioView()

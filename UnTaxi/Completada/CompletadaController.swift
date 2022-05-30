@@ -146,7 +146,7 @@ class CompletadaController: BaseController, UITextFieldDelegate {
         self.comentariosSelected.append(comentarioText.text!)
       }
       EnviarEvaluacion(self.evaluacion.ptoEvaluacion,comentario: self.comentariosSelected.joined(separator: ","))
-    }else{
+    } else {
       self.goToInicioView()
     }
   }

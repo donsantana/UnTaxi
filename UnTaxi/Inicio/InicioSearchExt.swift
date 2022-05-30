@@ -11,10 +11,6 @@ import Mapbox
 import MapboxSearch
 import MapboxSearchUI
 
-extension InicioController{
-  
-}
-
 extension InicioController: SearchControllerDelegate {
   
   func categorySearchResultsReceived(results: [SearchResult]) {
@@ -36,14 +32,13 @@ extension InicioController: SearchControllerDelegate {
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
       self.initMapView()
-    }else{
+    } else {
       annotation.subtitle = "destino"
       self.destinoAnnotation = annotation
       self.mapView.removeAnnotations(self.mapView.annotations!)
       self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
       self.getDestinoFromSearch(annotation: annotation)
     }
-    //self.hideSearchPanel()
   }
 
   func userFavoriteSelected(_ userFavorite: FavoriteRecord) {
@@ -56,7 +51,7 @@ extension InicioController: SearchControllerDelegate {
       annotation.subtitle = "origen"
       self.origenAnnotation = annotation
       self.initMapView()
-    }else{
+    } else {
       annotation.subtitle = "destino"
       self.destinoAnnotation = annotation
       self.mapView.removeAnnotations(self.mapView.annotations!)

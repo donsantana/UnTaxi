@@ -71,7 +71,7 @@ struct AppConfig {
       tiemposolicitud = !(config["tiemposolicitud"] == nil) ? config["tiemposolicitud"] as! Int : 90
       yapa = !(config["yapa"] is NSNull) ? (config["yapa"] as! Bool) : false
       uso_yapa = !(config["uso_yapa"] is NSNull) ? (config["uso_yapa"] as! Double) : 0.0
-    }else{
+    } else {
       oferta = ((config["oferta"] as! NSString) == "true")
       taximetro = ((config["taximetro"] as! NSString) == "true")
       horas = ((config["horas"] as! NSString) == "true")

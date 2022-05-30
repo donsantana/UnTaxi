@@ -124,10 +124,10 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       if globalVariables.userDefaults.value(forKey: "accessToken") != nil{
         //self.socketService.initLoginEventos()
         self.startSocketConnection()
-      }else{
+      } else {
         self.waitingView.isHidden = true
       }
-    }else{
+    } else {
       //ErrorConexion()
     }
 //    self.telefonoText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -152,7 +152,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       self.Login(user: self.usuario.text!, password: self.clave.text!)
       self.usuario.text?.removeAll()
       self.clave.text?.removeAll()
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Formulario incompleto", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.movilClaveRecover.becomeFirstResponder()
@@ -201,7 +201,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     if self.clave.isSecureTextEntry{
       self.showHideClaveBtn.setImage(UIImage(named: "hideClave"), for: .normal)
       self.clave.isSecureTextEntry = false
-    }else{
+    } else {
       self.showHideClaveBtn.setImage(UIImage(named: "showClave"), for: .normal)
       self.clave.isSecureTextEntry = true
     }

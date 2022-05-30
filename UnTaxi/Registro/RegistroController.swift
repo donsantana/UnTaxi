@@ -93,7 +93,7 @@ class RegistroController: UIViewController {
     if self.claveText.isSecureTextEntry{
       self.showHideClaveBtn.setImage(UIImage(named: "hideClave"), for: .normal)
       self.claveText.isSecureTextEntry = false
-    }else{
+    } else {
       self.showHideClaveBtn.setImage(UIImage(named: "showClave"), for: .normal)
       self.claveText.isSecureTextEntry = true
     }
@@ -103,7 +103,7 @@ class RegistroController: UIViewController {
     if self.confirmarClavText.isSecureTextEntry{
       self.showHideConfirmClaveBtn.setImage(UIImage(named: "hideClave"), for: .normal)
       self.confirmarClavText.isSecureTextEntry = false
-    }else{
+    } else {
       self.showHideConfirmClaveBtn.setImage(UIImage(named: "showClave"), for: .normal)
       self.confirmarClavText.isSecureTextEntry = true
     }

@@ -46,10 +46,10 @@ class OfertaViewCell: UITableViewCell {
     
     if distance < 1 {
       self.distanciaTiempoText.backgroundColor = .systemGreen
-    }else{
+    } else {
       if distance > 1 && distance < 2{
         self.distanciaTiempoText.backgroundColor = .systemOrange
-      }else{
+      } else {
         self.distanciaTiempoText.backgroundColor = .systemRed
       }
     }

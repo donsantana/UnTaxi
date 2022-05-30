@@ -13,8 +13,8 @@ extension InicioController{
   func validateDestino(){
     if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
       if !(self.destinoCell.destinoText.text!.isEmpty){
-        //self.crearSolicitudOferta()
-      }else{
+        //self.crearSolicitud()
+      } else {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           self.view.endEditing(true)

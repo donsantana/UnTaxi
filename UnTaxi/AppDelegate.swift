@@ -100,7 +100,7 @@ import UserNotifications
     let backgroundTimeRemaining = UIApplication.shared.backgroundTimeRemaining
     if backgroundTimeRemaining == .greatestFiniteMagnitude{
       print("Background Time Remaining = Undetermined")
-    }else{
+    } else {
       BackgroundSeconds += 1
       print("Background Time Remaining = " + "\(BackgroundSeconds) Secunds")
       
@@ -119,7 +119,7 @@ import UserNotifications
       [weak self] in
       if (self?.BackgroundSeconds)! <= 1800 {
         self?.TimerMethod(sender: (self?.myTimer!)!)
-      }else{
+      } else {
         globalVariables.socket.emit("data", "#SocketClose,\(globalVariables.cliente.id),# \n")
       }
     })

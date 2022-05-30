@@ -82,7 +82,7 @@ class YapaPanel: UIViewController {
             self.movilNumberText.becomeFirstResponder()
           }))
           self.present(alertaDos, animated: true, completion: nil)
-        }else{
+        } else {
           self.isCliente()
         }
       }
@@ -192,7 +192,7 @@ class YapaPanel: UIViewController {
       "idclienteold": globalVariables.cliente.id!,
       "yapa": self.montoText.text!.currencyString
     ])
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: "Solo puede pasar una cantidad menor o igual a su YAPA acumulada.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.montoText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
@@ -225,7 +225,7 @@ extension YapaPanel: SocketServiceDelegate{
       self.nombreText.text = "Nombre: \(datos["nombreapellidos"] as! String)"
       self.montoText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
       self.sendYapaBtn.isEnabled = true
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         self.nombreText.becomeFirstResponder()

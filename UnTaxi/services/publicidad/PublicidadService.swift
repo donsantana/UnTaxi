@@ -70,7 +70,7 @@ class PublicidadService {
         i = i == publicidadesArray.count - 1 ? 0 : i + 1
         publicidadToShow = self.publicidadesArray[i]
         self.updateBannerViem(bannerView: bannerView)
-      }else{
+      } else {
         countSeg += 1
       }
     }
@@ -95,7 +95,7 @@ class PublicidadService {
         }
       }
       task.resume()
-//    }else{
+//    } else {
 //      let backImage = UIImageView(image: UIImage(named: "publicidadBanner"))
 //      backImage.frame = CGRect(x: 0, y: 0, width: bannerView.bounds.width, height: bannerView.bounds.height)
 //      backImage.contentMode = .scaleToFill

@@ -32,10 +32,10 @@ class Tarifario {
       if (Int(tarifatemporal.horaInicio) <= Int(horaActual)!) && (Int(horaActual)! <= Int(tarifatemporal.horaFin)){
         if distance - 10 > 0{
           costo = Double((distance - 10) * tarifatemporal.tresadelantekm) + (7 * tarifatemporal.tresadiezkm) + (3 * tarifatemporal.unoatreskm)
-        }else{
+        } else {
           if distance - 3 > 0{
             costo = Double((distance - 3) * tarifatemporal.tresadiezkm) + (3 * tarifatemporal.unoatreskm)
-          }else{
+          } else {
             costo = tarifatemporal.valorMinimo
           }
         }

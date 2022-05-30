@@ -54,14 +54,14 @@ final class SocketService{
         globalVariables.socket.emitWithAck(eventName, datos).timingOut(after: 3) {respond in
           if respond[0] as! String == "OK"{
             print(respond)
-          }else{
+          } else {
             print("error en socket")
           }
         }
-      }else{
+      } else {
         self.delegate?.socketResponse(self, conectionError: "")
       }
-    }else{
+    } else {
       self.delegate?.socketResponse(self, conectionError: "")
     }
   }

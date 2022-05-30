@@ -73,7 +73,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     anotationView = MKAnnotationView(annotation: self.origenSolicitud, reuseIdentifier: "annotationView")
     if annotation.title! == "origen"{
       anotationView?.image = UIImage(named: "origen")
-    }else{
+    } else {
       anotationView?.image = UIImage(named: "destino")
     }
     return anotationView
@@ -91,7 +91,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   func updateMap(){
     if self.solicitud.lngdestino != 0.0{
       self.mapView.showAnnotations([self.origenSolicitud,self.destinoSolicitud], animated: true)
-    }else{
+    } else {
       self.mapView.showAnnotations([self.origenSolicitud], animated: true)
     }
   }
@@ -159,7 +159,7 @@ extension HistorialDetailsController: SocketServiceDelegate{
             }
           }
           task.resume()
-        }else{
+        } else {
           self.ImagenCond.image = UIImage(named: "chofer")
         }
         

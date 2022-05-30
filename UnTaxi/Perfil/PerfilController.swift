@@ -44,9 +44,6 @@ class PerfilController: BaseController {
     super.viewDidLoad()
     
     self.changePassBtn.addBorder(color: CustomAppColor.buttonActionColor)
-    apiService.delegate = self
-    nombreApellidosText.delegate = self
-    emailText.delegate = self
     self.navigationController?.navigationBar.tintColor = UIColor.black
     //UILabel.appearance().textColor = .lightGray
     
@@ -72,6 +69,12 @@ class PerfilController: BaseController {
     waitingView.addStandardConfig()
     
   }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		apiService.delegate = self
+		nombreApellidosText.delegate = self
+		emailText.delegate = self
+	}
   
   func isProfileUpdated()->Bool{
     return globalVariables.cliente.nombreApellidos != self.nombreApellidosText.text || globalVariables.cliente.email != self.emailText.text
@@ -88,7 +91,7 @@ class PerfilController: BaseController {
         
       }))
       self.present(alertaDos, animated: true, completion: nil)
-    }else{
+    } else {
       self.view.endEditing(true)
       self.waitingView.isHidden = false
       let params = [

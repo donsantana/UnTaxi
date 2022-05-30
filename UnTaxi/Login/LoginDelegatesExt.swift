@@ -39,7 +39,7 @@ extension LoginController: UITextFieldDelegate{
 //          }
 //          textField.tintColor = UIColor.black
 //          animateViewMoving(true, moveValue: 200, view: self.view)
-//        }else{
+//        } else {
 //          if textField.isEqual(self.telefonoText){
 //            textField.textColor = UIColor.black
 //            //textField.text = ""
@@ -61,7 +61,7 @@ extension LoginController: UITextFieldDelegate{
           //self.movilClaveRecover.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         RecuperarClaveBtn.isEnabled = true
       }
       distanceValue = 105
@@ -93,7 +93,7 @@ extension LoginController: UITextFieldDelegate{
           self.newPasswordText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         self.crearNewPasswordBtn.isEnabled = true
       }
       distanceValue = 80
@@ -106,11 +106,11 @@ extension LoginController: UITextFieldDelegate{
 //    textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
 //    if textfield.isEqual(clave){
 //      animateViewMoving(false, moveValue: 80, view: self.view)
-//    }else{
+//    } else {
 //      if textfield.isEqual(movilClaveRecover){
 //        if movilClaveRecover.text?.count != 10{
 //          textfield.text = "Número de Teléfono Incorrecto"
-//        }else{
+//        } else {
 //          self.RecuperarClaveBtn.isEnabled = true
 //        }
 //        animateViewMoving(false, moveValue: 105, view: self.view)
@@ -145,7 +145,7 @@ extension LoginController: UITextFieldDelegate{
           self.movilClaveRecover.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         sendRecoverClave()
       }
     case codigoText:
@@ -156,7 +156,7 @@ extension LoginController: UITextFieldDelegate{
           self.codigoText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         createNewPassword(codigo: codigoText.text!, newPassword: newPasswordText.text!)
       }
     case newPasswordText:
@@ -167,7 +167,7 @@ extension LoginController: UITextFieldDelegate{
           self.newPasswordText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         newPassConfirmText.becomeFirstResponder()
       }
     case newPassConfirmText:
@@ -178,7 +178,7 @@ extension LoginController: UITextFieldDelegate{
           self.newPassConfirmText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
-      }else{
+      } else {
         createNewPassword(codigo: codigoText.text!, newPassword: newPasswordText.text!)
       }
     default:

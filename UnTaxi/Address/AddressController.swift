@@ -49,7 +49,7 @@ class AddressController: UIViewController {
     //self.annotationTemp.coordinate = startLocation
     panelController.view.addSubview(openMapBtn)
     addChild(panelController)
-    self.initMapView()
+    initMapView()
     
   }
   
@@ -64,7 +64,7 @@ class AddressController: UIViewController {
       let vc = R.storyboard.main.inicioView()!
       if self.annotationTemp.subtitle == "origen"{
         vc.origenAnnotation = self.annotationTemp
-      }else{
+      } else {
         vc.destinoAnnotation = self.annotationTemp
       }
       self.dismiss(animated: false, completion: nil)

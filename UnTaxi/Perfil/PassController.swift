@@ -22,10 +22,10 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.apiService.delegate = self
-    self.claveActualText.delegate = self
-    self.NuevaClaveText.delegate = self
-    self.ConfirmeClaveText.delegate = self
+    
+		claveActualText.clearButtonMode = .never
+		NuevaClaveText.clearButtonMode = .never
+		ConfirmeClaveText.clearButtonMode = .never
     
     actualizarBtn.addCustomActionBtnsColors()
     waitingView.addStandardConfig()
@@ -34,6 +34,13 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
     tapGesture.delegate = self
     self.view.addGestureRecognizer(tapGesture)
   }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.apiService.delegate = self
+		claveActualText.delegate = self
+		NuevaClaveText.delegate = self
+		ConfirmeClaveText.delegate = self
+	}
   
   override func homeBtnAction() {
     self.dismiss(animated: false, completion: nil)
@@ -68,7 +75,7 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   @IBAction func updatePassword(_ sender: Any) {
     if !claveActualText.text!.isEmpty && !NuevaClaveText.text!.isEmpty && self.NuevaClaveText.text == self.ConfirmeClaveText.text{
       self.sendUpdatePassword()
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Error", message: self.NuevaClaveText.text == self.ConfirmeClaveText.text ? "No se pueden enviar campos vacios" : "La confimación de la clave no coincide", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 

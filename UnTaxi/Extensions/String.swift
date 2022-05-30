@@ -9,13 +9,18 @@
 import Foundation
 
 extension String{
-  var digitString: String { filter { ("0"..."9").contains($0) } }
-  var isNumeric: Bool {
-    return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
-  }
-  
-  var currencyString: String {
-    let result = self.contains(".") ? self.digitsAndPeriods : self.replacingOccurrences(of: ",", with: ".").digitsAndPeriods
-    return result
-  }
+	var digitString: String { filter { ("0"..."9").contains($0) } }
+	var isNumeric: Bool {
+		return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
+	}
+	
+	var currencyString: String {
+		let result = self.contains(".") ? self.digitsAndPeriods : self.replacingOccurrences(of: ",", with: ".").digitsAndPeriods
+		return result
+	}
+	
+	var doubleValue: Double {
+		return (self as NSString).doubleValue
+	}
+	
 }

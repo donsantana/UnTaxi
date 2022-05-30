@@ -11,9 +11,10 @@ import Mapbox
 //Mapbox
 extension InicioController{
   func initMapView(){
+		print("Init Map")
     var annotationsToShow = [globalVariables.cliente.annotation!]
     self.destinoCell.destinoText.text?.removeAll()
-    if self.origenAnnotation.coordinate.latitude != 0.0{
+    if self.origenAnnotation.coordinate.latitude != 0.0 {
       annotationsToShow = [self.origenAnnotation]
     }
     mapView.setCenter(annotationsToShow.first!.coordinate, zoomLevel: 15, animated: false)
@@ -55,7 +56,7 @@ extension InicioController: MGLMapViewDelegate{
       return nil
     }
 
-    if annotation.isEqual(self.origenAnnotation){
+    if annotation.isEqual(self.origenAnnotation) {
       print("origen Annotation \(self.origenAnnotation.subtitle)")
     }
     // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
@@ -105,8 +106,6 @@ extension InicioController: MGLMapViewDelegate{
     label.text = "annotation.title!"
     
     return label
-    
-    return nil
   }
   
   //ONLY WHEN YOU ADD MGLANNOTATION NOT MGLANNOTATIONVIEW
@@ -115,7 +114,7 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, regionWillChangeAnimated animated: Bool) {
-    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
+    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
       print("moving map")
       if self.mapView.annotations != nil{
         self.mapView.removeAnnotations(self.mapView!.annotations!)
@@ -129,34 +128,33 @@ extension InicioController: MGLMapViewDelegate{
   }
   
   func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
-    if self.navigationController != nil && !self.navigationController!.isNavigationBarHidden{
+		if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
       locationIcono.isHidden = true
       let tempAnnotation = MGLPointAnnotation()
       tempAnnotation.coordinate = (self.mapView.centerCoordinate)
       tempAnnotation.subtitle = self.searchingAddress
       self.getAddressFromCoordinate(tempAnnotation)
       
-      if searchingAddress == "origen"{
+      if searchingAddress == "origen" {
         mapView.removeAnnotation(self.origenAnnotation)
         self.origenAnnotation = tempAnnotation
         mapView.addAnnotation(self.origenAnnotation)
-      }else{
+      } else {
         self.destinoAnnotation = tempAnnotation
         mapView.addAnnotation(self.destinoAnnotation)
-        //self.getDestinoFromSearch(annotation: self.destinoAnnotation)
       }
       
-    }else{
+    } else {
       if searchingAddress == "origen"{
-        print("Init Map")
+        print("Getting taxis")
         self.getTaxisCercanos()
       }
-     
     }
   }
   
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
     //self.loadGeoJson()
+		print("Finished Loading")
   }
   
   func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {

@@ -9,7 +9,7 @@
 import UIKit
 import Mapbox
 
-class Cliente{
+class Cliente {
   var idUsuario: Int!
   var id: Int!
   var user : String!
@@ -23,7 +23,7 @@ class Cliente{
   var annotation: MGLPointAnnotation!
   
   //Constructor
-  init(){
+  init() {
     self.id = 0
     self.user = ""
     self.nombreApellidos = ""
@@ -31,7 +31,7 @@ class Cliente{
     self.yapa = 0.0
   }
   
-  init(idUsuario: Int, id: Int, user: String, nombre: String, email:String, idEmpresa: Int, empresa: String, foto: String, yapa: Double){
+  init(idUsuario: Int, id: Int, user: String, nombre: String, email:String, idEmpresa: Int, empresa: String, foto: String, yapa: Double) {
     
     self.idUsuario = idUsuario
     self.id = id
@@ -45,7 +45,7 @@ class Cliente{
     self.fotoImage = UIImage(named: "chofer")
   }
   
-  init(jsonData: [String: Any]){
+  init(jsonData: [String: Any]) {
     self.idUsuario = jsonData["idusuario"] as? Int
     self.id = jsonData["idcliente"] as? Int
     self.user = !(jsonData["movil"] is NSNull) ? jsonData["movil"] as! String : ""
@@ -70,7 +70,7 @@ class Cliente{
     task.resume()
   }
   
-  func updateProfile(jsonData: [String: Any]){
+  func updateProfile(jsonData: [String: Any]) {
     self.idUsuario = !(jsonData["idusuario"] is NSNull) ? jsonData["idusuario"] as! Int : 0
     self.id = !(jsonData["idcliente"] is NSNull) ? jsonData["idcliente"] as! Int : 0
     self.nombreApellidos = !(jsonData["nombreapellidos"] is NSNull) ? jsonData["nombreapellidos"] as! String : ""
@@ -88,20 +88,20 @@ class Cliente{
     task.resume()
   }
   
-  func getName()->String{
+  func getName()->String {
     return self.nombreApellidos.components(separatedBy: " ").first!
   }
   
-  func updatePhoto(newPhoto: UIImage){
+  func updatePhoto(newPhoto: UIImage) {
     self.fotoImage = newPhoto
   }
   
-  func updateYapa(monto: Double){
+  func updateYapa(monto: Double) {
     self.yapa = monto.rounded(to: 0.01, roundingRule: .down)
   }
   
-  func cargarPhoto(imageView: UIImageView){
-    if self.foto != ""{
+  func cargarPhoto(imageView: UIImageView) {
+    if self.foto != "" {
       let url = URL(string:"\(GlobalConstants.urlHost)/\(self.foto)")
       
       let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -112,7 +112,7 @@ class Cliente{
         }
       }
       task.resume()
-    }else{
+    } else {
       imageView.image = UIImage(named: "chofer")
     }
   }

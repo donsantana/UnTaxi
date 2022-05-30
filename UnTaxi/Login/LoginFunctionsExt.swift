@@ -97,7 +97,7 @@ extension LoginController{
       default:
         break
       }
-    }else{
+    } else {
       let locationAlert = UIAlertController (title: "Error de Localización", message: "La aplicación solo utiliza su localización para buscar los taxis cercanos. Por favor autorice el acceso de la aplición al servicio de localización.", preferredStyle: .alert)
       locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         if #available(iOS 10.0, *) {
@@ -130,7 +130,7 @@ extension LoginController{
       if globalVariables.solpendientes.first!.isAceptada(){
         vc = R.storyboard.main.solDetalles()!
         (vc as! SolPendController).solicitudPendiente = globalVariables.solpendientes.first!
-      }else{
+      } else {
         vc = R.storyboard.main.esperaChildView()!
         (vc as! EsperaChildVC).solicitud = globalVariables.solpendientes.first!
       }
@@ -184,7 +184,7 @@ extension LoginController{
         "codigo": codigo,
         "password": newPassword,
       ])
-    }else{
+    } else {
       let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
