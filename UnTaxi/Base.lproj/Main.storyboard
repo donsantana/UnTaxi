@@ -355,7 +355,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bP3-BU-P3B">
-                                <rect key="frame" x="354" y="326" width="50" height="50"/>
+                                <rect key="frame" x="339" y="326" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bP3-BU-P3B" secondAttribute="height" multiplier="1:1" id="0PC-eb-BPI"/>
                                     <constraint firstAttribute="height" constant="50" id="emg-bB-TTq"/>
@@ -481,7 +481,7 @@
                             <constraint firstAttribute="trailing" secondItem="grp-Sm-y7e" secondAttribute="trailing" id="dZv-LQ-peZ"/>
                             <constraint firstItem="bIJ-ps-xAH" firstAttribute="top" secondItem="Xqf-YT-ZvE" secondAttribute="top" id="gvA-em-1YV"/>
                             <constraint firstAttribute="trailing" secondItem="8cr-OO-Z7s" secondAttribute="trailing" id="k5v-b2-K3D"/>
-                            <constraint firstAttribute="trailing" secondItem="bP3-BU-P3B" secondAttribute="trailing" constant="10" id="kpS-Ij-yAj"/>
+                            <constraint firstAttribute="trailing" secondItem="bP3-BU-P3B" secondAttribute="trailing" constant="25" id="kpS-Ij-yAj"/>
                             <constraint firstItem="1ja-NQ-35U" firstAttribute="centerX" secondItem="8cr-OO-Z7s" secondAttribute="centerX" id="pEZ-g7-6x8"/>
                         </constraints>
                     </view>

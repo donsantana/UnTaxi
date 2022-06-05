@@ -284,8 +284,20 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //MARK:- BOTONES GRAFICOS ACCIONES
   
   @IBAction func RelocateBtn(_ sender: Any) {
-    self.origenAnnotation.coordinate = coreLocationManager.location!.coordinate
-    initMapView()
+		if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
+			if searchingAddress == "origen" {
+				mapView.removeAnnotation(self.origenAnnotation)
+				self.origenAnnotation.coordinate = coreLocationManager.location!.coordinate
+				mapView.addAnnotation(self.origenAnnotation)
+			} else {
+				mapView.removeAnnotation(self.destinoAnnotation)
+				self.destinoAnnotation.coordinate = coreLocationManager.location!.coordinate
+				mapView.addAnnotation(self.destinoAnnotation)
+			}
+			mapView.setCenter(origenAnnotation.coordinate, zoomLevel: 15, animated: false)
+		} else {
+			updateMapFocus()
+		}
   }
 
   //Boton para Cancelar Carrera
@@ -341,21 +353,22 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func getAddressText(_ sender: Any) {
-    if self.searchingAddress == "destino"{
+    if self.searchingAddress == "destino" {
       if !self.searchAddressView.isHidden{
         self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: searchText.text!)
         destinoCell.destinoText.text = searchText.text
       } else {
-        self.getAddressFromCoordinate(self.destinoAnnotation)
+        //self.getAddressFromCoordinate(self.destinoAnnotation)
+				self.getReverseAddressXoaAPI(self.destinoAnnotation)
       }
       self.getDestinoFromSearch(annotation: self.destinoAnnotation)
     } else {
-      if !self.searchAddressView.isHidden{
+      if !self.searchAddressView.isHidden {
         self.origenAnnotation.title = searchText.text
         origenCell.origenText.text = searchText.text
-        //self.origenAnnotation.title = self.searchController.searchEngine.query
       } else {
-        self.getAddressFromCoordinate(self.origenAnnotation)
+        //self.getAddressFromCoordinate(self.origenAnnotation)
+				self.getReverseAddressXoaAPI(self.origenAnnotation)
       }
     }
 

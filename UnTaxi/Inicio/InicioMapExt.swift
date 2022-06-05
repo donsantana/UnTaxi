@@ -13,7 +13,7 @@ extension InicioController{
   func initMapView(){
 		print("Init Map")
     var annotationsToShow = [globalVariables.cliente.annotation!]
-    self.destinoCell.destinoText.text?.removeAll()
+    removeDestinoFromMap()
     if self.origenAnnotation.coordinate.latitude != 0.0 {
       annotationsToShow = [self.origenAnnotation]
     }
@@ -23,10 +23,18 @@ extension InicioController{
     self.locationIcono.isHidden = true
     self.showAnnotation(annotationsToShow)
     
-    if self.tabBar.selectedItem != self.pactadaItem{
-      self.getAddressFromCoordinate(annotationsToShow.first!)
+		if self.tabBar.selectedItem != self.pactadaItem {
+      self.getReverseAddressXoaAPI(annotationsToShow.first!)
     }
   }
+	
+	func updateMapFocus(){
+		if destinoAnnotation.coordinate.latitude != 0.0 {
+			self.mapView.showAnnotations([origenAnnotation,destinoAnnotation], animated: true)
+		} else {
+			self.mapView.showAnnotations([origenAnnotation], animated: true)
+		}
+	}
   
   func showAnnotation(_ annotations: [MGLPointAnnotation]) {
     print("showing annotations")
@@ -133,8 +141,9 @@ extension InicioController: MGLMapViewDelegate{
       let tempAnnotation = MGLPointAnnotation()
       tempAnnotation.coordinate = (self.mapView.centerCoordinate)
       tempAnnotation.subtitle = self.searchingAddress
-      self.getAddressFromCoordinate(tempAnnotation)
-      
+			
+			getReverseAddressXoaAPI(tempAnnotation)
+			
       if searchingAddress == "origen" {
         mapView.removeAnnotation(self.origenAnnotation)
         self.origenAnnotation = tempAnnotation
@@ -145,13 +154,19 @@ extension InicioController: MGLMapViewDelegate{
       }
       
     } else {
-      if searchingAddress == "origen"{
-        print("Getting taxis")
-        self.getTaxisCercanos()
-      }
+			if mapView.zoomLevel == 15 {
+				if searchingAddress == "origen"{
+					print("Getting taxis")
+					self.getTaxisCercanos()
+				}
+			}
     }
   }
   
+	func mapViewRegionIsChanging(_ mapView: MGLMapView) {
+		print("Changing")
+	}
+	
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
     //self.loadGeoJson()
 		print("Finished Loading")

@@ -24,6 +24,7 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool)
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]])
   func apiRequest(_ controller: ApiService, getAddressList data: [Address])
+	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address])
   func apiRequest(_ controller: ApiService, cardRemoved result: String?)
   func apiRequest(_ controller: ApiService, getLoginError msg: String)
   //func apiRequest(_ controller: ApiService, getRegisterError msg: String)
@@ -460,13 +461,12 @@ final class ApiService {
     task.resume()
   }
   
-  func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double){
+  func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double) {
     //&lon=-79.89725013269098&lat=-2.1363502421557943
     let searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
-    //let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador"
     let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=\(lon)&lat=\(lat)"
 //    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
-    print("\(urlString)")
+    print("urlString: \(urlString)")
     //let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
     var request = URLRequest(url: (URL(string: "\(urlString)") ?? URL(string: "\(GlobalConstants.searchAddressUrl)"))!)
     request.httpMethod = "GET"
@@ -494,7 +494,7 @@ final class ApiService {
             addressList.append(newAddress)
           }
         }
-        print(addressList)
+        print("addressList \(addressList)")
         self.delegate?.apiRequest(self, getAddressList: addressList)
       } catch {
         self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
@@ -503,6 +503,21 @@ final class ApiService {
     
     task.resume()
   }
+	
+	func searchReverseAddressXoaAPI(lat: Double, lon: Double, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+		let urlString = "\(GlobalConstants.searchReverseAddressUrl)lon=\(lon)&lat=\(lat)"
+		print("urlString: \(urlString)")
+		var request = URLRequest(url: (URL(string: "\(urlString)") ?? URL(string: "\(GlobalConstants.searchAddressUrl)"))!)
+		request.httpMethod = "GET"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		let session = URLSession.shared
+		let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+			completionHandler(data, response, error)
+		})
+		
+		task.resume()
+	}
   
 //  func getServerConnectionData(token: String){
 //    let header = ["Authorization":"Bearer \(token)"] as Dictionary<String, String>
@@ -558,6 +573,7 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}
   func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]]){}
   func apiRequest(_ controller: ApiService, getAddressList data: [Address]){}
+	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address]){}
   func apiRequest(_ controller: ApiService, cardRemoved result: String?){}
   func apiRequest(_ controller: ApiService, getLoginError msg: String){}
   //func apiRequest(_ controller: ApiService, getRegisterError msg: String){}
