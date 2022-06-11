@@ -1495,6 +1495,8 @@ struct R: Rswift.Validatable {
     static let comentarioCell: Rswift.ReuseIdentifier<ComentarioCollectionCell> = Rswift.ReuseIdentifier(identifier: "ComentarioCell")
     /// Reuse identifier `MENUCELL`.
     static let menucelL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MENUCELL")
+    /// Reuse identifier `OfertaCell`.
+    static let ofertaCell: Rswift.ReuseIdentifier<OfertaViewCell> = Rswift.ReuseIdentifier(identifier: "OfertaCell")
     /// Reuse identifier `PerfilNombreCell`.
     static let perfilNombreCell: Rswift.ReuseIdentifier<PerfilNombreCell> = Rswift.ReuseIdentifier(identifier: "PerfilNombreCell")
     /// Reuse identifier `PerfilViewCell`.

@@ -120,14 +120,12 @@ class SolicitudesTableController: UITableViewController {
   
   @objc func backBtnAction(){
     let viewcontrollers = self.navigationController?.viewControllers
-    viewcontrollers?.forEach({ (vc) in
-      if  let inventoryListVC = vc as? InicioController {
-        self.navigationController!.popToViewController(inventoryListVC, animated: true)
-      }
-    })
-    //self.dismiss(animated: false, completion: nil)
-//    let vc = R.storyboard.main.inicioView()
-//    self.navigationController?.pushViewController(vc!, animated: true)
+		if let inventoryListVC = viewcontrollers?.first(where: {$0.restorationIdentifier == "InicioView"}) {
+			self.navigationController!.popToViewController(inventoryListVC, animated: true)
+		} else {
+			let vc = R.storyboard.main.inicioView()
+			self.navigationController?.pushViewController(vc!, animated: true)
+		}
   }
   
   // MARK: - Table view data source

@@ -134,7 +134,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   //MENU BUTTONS
   @IBOutlet weak var TransparenciaView: UIVisualEffectView!
-  
+	@IBOutlet weak var waitingView: UIVisualEffectView!
+	
   @IBOutlet weak var solicitudFormTable: UITableView!
   
   @IBOutlet weak var addressView: UIView!
@@ -200,6 +201,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     listoDestinoBtn.addCustomActionBtnsColors()
 
     self.TransparenciaView.addStandardConfig()
+		waitingView.addStandardConfig()
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
     let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
@@ -222,7 +224,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     
-    addressViewTop.constant = super.getTopMenuCenter()
+    addressViewTop.constant = super.getTopMenuCenter() + 20
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
@@ -258,7 +260,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
     
     self.searchText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-		
+		waitingView.isHidden = true
   }
   
   override func viewDidDisappear(_ animated: Bool) {

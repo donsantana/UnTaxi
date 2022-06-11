@@ -73,7 +73,7 @@ extension LoginController{
     if CLLocationManager.locationServicesEnabled(){
       switch(CLLocationManager.authorizationStatus()) {
       case .notDetermined, .restricted, .denied:
-        let locationAlert = UIAlertController (title: "Error de Localización", message: "La aplicación solo utiliza su localización para buscar los taxis cercanos. Por favor autorice el acceso de la aplición al servicio de localización.", preferredStyle: .alert)
+				let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
         locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
           if #available(iOS 10.0, *) {
             let settingsURL = URL(string: UIApplication.openSettingsURLString)!
@@ -98,7 +98,7 @@ extension LoginController{
         break
       }
     } else {
-      let locationAlert = UIAlertController (title: "Error de Localización", message: "La aplicación solo utiliza su localización para buscar los taxis cercanos. Por favor autorice el acceso de la aplición al servicio de localización.", preferredStyle: .alert)
+      let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
       locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
         if #available(iOS 10.0, *) {
           let settingsURL = URL(string: UIApplication.openSettingsURLString)!
@@ -120,7 +120,6 @@ extension LoginController{
   }
   
   func checkSolPendientes(){
-    print("checkSolPendientes")
     var vc = UIViewController()
     switch globalVariables.solpendientes.count {
     case 0:
@@ -134,11 +133,9 @@ extension LoginController{
         vc = R.storyboard.main.esperaChildView()!
         (vc as! EsperaChildVC).solicitud = globalVariables.solpendientes.first!
       }
-      //self.navigationController?.show(vc, sender: self)
       break
-    default:
-      let vc = R.storyboard.main.listaSolPdtes()!
-                                   
+		default:
+			vc = R.storyboard.main.listaSolPdtes()!
     }
     
     self.navigationController?.show(vc, sender: self)

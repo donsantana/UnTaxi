@@ -205,7 +205,7 @@ extension InicioController{
 	func addEnvirSolictudBtn() {
 		let enviarBtnView = UIView(frame: CGRect(x: 0, y: 0, width: self.SolicitudView.frame.width, height: 60))
 		let button:UIButton = UIButton.init(frame: CGRect(x: 20, y: 10, width: self.SolicitudView.frame.width - 40, height: 50))
-		button.setTitle("CONFIRMAR viaje", for: .normal)
+		button.setTitle("CONFIRMAR VIAJE", for: .normal)
 		button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
 		button.addCustomActionBtnsColors()
 		
@@ -305,6 +305,7 @@ extension InicioController{
 	//Respuesta de solicitud
 	func ConfirmaSolicitud(_ newSolicitud : [String:Any]) {
 		//Trama IN: #Solicitud, ok, idsolicitud, fechahora
+		waitingView.isHidden = true
 		globalVariables.solpendientes.last!.RegistrarFechaHora(Id: newSolicitud["idsolicitud"] as! Int, FechaHora: newSolicitud["fechahora"]  as! String)
 		let vc = R.storyboard.main.esperaChildView()!
 		vc.solicitud = globalVariables.solpendientes.last!
@@ -422,6 +423,8 @@ extension InicioController{
 	
 	func crearSolicitud() {
 		//#SO,idcliente,nombreapellidos,movil,dirorigen,referencia,dirdestino,latorigen,lngorigen,ladestino,lngdestino,distanciaorigendestino,valor oferta,voucher,detalle oferta,fecha reserva,tipo transporte,#
+		
+		waitingView.isHidden = false
 		
 		let origen = self.cleanTextField(textfield: self.origenCell.origenText)
 		

@@ -81,6 +81,8 @@
 		C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
 		C645789226D2863D00F11C56 /* InicioValidationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789126D2863D00F11C56 /* InicioValidationExt.swift */; };
 		C645789426D4AD1100F11C56 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789326D4AD1100F11C56 /* UIImageView.swift */; };
+		C64DA712285174AA00A7C566 /* OfertaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C64DA711285174AA00A7C566 /* OfertaCell.xib */; };
+		C64DA71428518EDE00A7C566 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DA71328518EDE00A7C566 /* StringConstants.swift */; };
 		C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* PagoCell.xib */; };
 		C65F9F32229E39CE00E3E304 /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
 		C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
@@ -143,7 +145,6 @@
 		C6C8E63426BC439C0076465D /* RegistroFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63326BC439C0076465D /* RegistroFunctionsExt.swift */; };
 		C6C8E63626BC4AA10076465D /* RegistroDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63526BC4AA10076465D /* RegistroDelegatesExt.swift */; };
 		C6CACFAD22D26A9300702430 /* Oferta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFAC22D26A9300702430 /* Oferta.swift */; };
-		C6CACFB022D2BD5000702430 /* OfertaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6CACFAF22D2BD5000702430 /* OfertaViewCell.xib */; };
 		C6CACFB222D2BE4900702430 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB122D2BE4900702430 /* UIView.swift */; };
 		C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */; };
 		C6D04CFF2398CD1900ACD70C /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
@@ -255,6 +256,8 @@
 		C6445813255F78160000433E /* InicioControllerTablesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerTablesExt.swift; sourceTree = "<group>"; };
 		C645789126D2863D00F11C56 /* InicioValidationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioValidationExt.swift; sourceTree = "<group>"; };
 		C645789326D4AD1100F11C56 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		C64DA711285174AA00A7C566 /* OfertaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfertaCell.xib; sourceTree = "<group>"; };
+		C64DA71328518EDE00A7C566 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		C65F9F2F229E384200E3E304 /* PagoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagoCell.xib; sourceTree = "<group>"; };
 		C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoViewCell.swift; sourceTree = "<group>"; };
 		C65F9F33229E3BA900E3E304 /* ContactoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoCell.xib; sourceTree = "<group>"; };
@@ -318,7 +321,6 @@
 		C6C8E63326BC439C0076465D /* RegistroFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroFunctionsExt.swift; sourceTree = "<group>"; };
 		C6C8E63526BC4AA10076465D /* RegistroDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroDelegatesExt.swift; sourceTree = "<group>"; };
 		C6CACFAC22D26A9300702430 /* Oferta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oferta.swift; sourceTree = "<group>"; };
-		C6CACFAF22D2BD5000702430 /* OfertaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfertaViewCell.xib; sourceTree = "<group>"; };
 		C6CACFB122D2BE4900702430 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfertaViewCell.swift; sourceTree = "<group>"; };
 		C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfertaDataCell.xib; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 				C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */,
 				C68DA29D227E39F20029CD0B /* Customization.swift */,
 				C68DA29F227E3A240029CD0B /* GlobalConstants.swift */,
+				C64DA71328518EDE00A7C566 /* StringConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -818,8 +821,8 @@
 		C6CACFAE22D2BD2F00702430 /* Oferta Table */ = {
 			isa = PBXGroup;
 			children = (
-				C6CACFAF22D2BD5000702430 /* OfertaViewCell.xib */,
 				C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */,
+				C64DA711285174AA00A7C566 /* OfertaCell.xib */,
 			);
 			path = "Oferta Table";
 			sourceTree = "<group>";
@@ -973,13 +976,13 @@
 				C619BE612541433700611B4D /* PerfilNombreCell.xib in Resources */,
 				C6D3198D25916F8500A4BF1C /* Muli-ExtraLight.ttf in Resources */,
 				AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */,
-				C6CACFB022D2BD5000702430 /* OfertaViewCell.xib in Resources */,
 				C6D3198B25916F8500A4BF1C /* Muli-ExtraLightItalic.ttf in Resources */,
 				C6A37F00255211CC00C79BFF /* HistoryViewCell.xib in Resources */,
 				C6A37F0F2554CB7200C79BFF /* DetallesViewCell.xib in Resources */,
 				AFD656471F9D42E100C8A5BD /* beep.wav in Resources */,
 				B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */,
 				AF3D9E1D1FA51D910019432B /* Perfil2ViewCell.xib in Resources */,
+				C64DA712285174AA00A7C566 /* OfertaCell.xib in Resources */,
 				C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */,
 				C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */,
 				C66F2513265AA070004716AF /* YapaViewCell.xib in Resources */,
@@ -1202,6 +1205,7 @@
 				C6807397256E18250093E4DE /* UIViewController.swift in Sources */,
 				AFD6566E1FA1777500C8A5BD /* SolViewCell.swift in Sources */,
 				C6122894247034A70041BB2D /* DestinoCell.swift in Sources */,
+				C64DA71428518EDE00A7C566 /* StringConstants.swift in Sources */,
 				C6C8E63426BC439C0076465D /* RegistroFunctionsExt.swift in Sources */,
 				C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */,
 				C63A6B2A245F7AB0007B0EE5 /* InicioController.swift in Sources */,
@@ -1400,7 +1404,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1435,7 +1439,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;

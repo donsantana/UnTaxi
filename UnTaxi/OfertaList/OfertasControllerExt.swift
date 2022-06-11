@@ -21,8 +21,7 @@ extension OfertasController: UITableViewDelegate, UITableViewDataSource{
   
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   
-    let cell = Bundle.main.loadNibNamed("OfertaViewCell", owner: self, options: nil)?.first as! OfertaViewCell
+    let cell = Bundle.main.loadNibNamed("OfertaCell", owner: self, options: nil)?.first as! OfertaViewCell
     
     cell.initContent(oferta: globalVariables.ofertasList[indexPath.row])
     cell.layer.backgroundColor = UIColor.clear.cgColor

@@ -27,7 +27,6 @@ class OfertasController: BaseController{
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //self.navigationController?.navigationBar.tintColor = UIColor.black
     self.mapView.centerCoordinate = solicitud.origenCoord
     self.mapView.showsUserLocation = true
     self.socketService.delegate = self
@@ -46,7 +45,7 @@ class OfertasController: BaseController{
     self.progressTimeBar.progress = 0.0
     progress.completedUnitCount = 0
     self.ofertaBottomConstraint.constant = Responsive().heightFloatPercent(percent: 20)
-    self.ofertaTableTopConstraint.constant = super.getTopMenuBottom()
+    self.ofertaTableTopConstraint.constant = super.getTopMenuBottom() + 40
     // 2
     self.progressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
       guard self.progress.isFinished == false else {
