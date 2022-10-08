@@ -12,32 +12,45 @@ import CoreLocation
 
 class BaseController: UIViewController {
   var toolBar: UIToolbar = UIToolbar()
-  var topMenu = UIView()
+
   var barTitle = Customization.nameShowed
   var hideTopMenu = false
   var hideMenuBtn = true
   var hideCloseBtn = true
+	var hideSOSBtn = true
   let screenBounds = UIScreen.main.bounds
+	
+	lazy var topMenu: UIView = {
+		let topMenu = UIView()
+		topMenu.removeFromSuperview()
+		topMenu.layer.cornerRadius = 10
+		topMenu.frame = CGRect(x: 15, y: screenBounds.origin.y + 30, width: screenBounds.width - 30, height: 60)
+		topMenu.tintColor = CustomAppColor.textColor//.white
+		topMenu.addShadow()
+		return topMenu
+	}()
+	
+	lazy var closeBtn: UIButton = {
+		let closeBtn = UIButton(type: UIButton.ButtonType.system)
+		closeBtn.frame = CGRect(x: topMenu.frame.width - 60, y: 15, width: 45, height: 45)
+		closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
+		closeBtn.addCustomMenuBtnsColors(image: (UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysTemplate))!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
+		return closeBtn
+	}()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     //TOP MENU
-    if !self.hideTopMenu{
-      self.topMenu.removeFromSuperview()
-      self.topMenu = UIView()
-      self.topMenu.layer.cornerRadius = 10
-      self.topMenu.frame = CGRect(x: 15, y: screenBounds.origin.y + 30, width: screenBounds.width - 30, height: 60)
-      //self.topMenu.backgroundColor = CustomAppColor.primaryColor//UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
-      self.topMenu.tintColor = CustomAppColor.textColor//.white
-      self.topMenu.addShadow()
+    if !self.hideTopMenu {
+			self.topMenu.isHidden = false
       
       if !hideCloseBtn {
-        let closeBtn = UIButton(type: UIButton.ButtonType.system)
-        closeBtn.frame = CGRect(x: topMenu.frame.width - 60, y: 15, width: 45, height: 45)
-        closeBtn.addTarget(self, action: #selector(closeBtnAction), for: .touchUpInside)
-        closeBtn.addCustomMenuBtnsColors(image: (UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysTemplate))!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
-
+				if hideSOSBtn {
+					closeBtn.addCustomMenuBtnsColors(image: (UIImage(named: "panicoBtn")?.withRenderingMode(.alwaysTemplate))!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
+				} else {
+					closeBtn.addCustomMenuBtnsColors(image: (UIImage(named: "sosBtn")?.withRenderingMode(.alwaysTemplate))!, tintColor: .white, backgroundColor: .red)
+				}
         topMenu.addSubview(closeBtn)
       }
       

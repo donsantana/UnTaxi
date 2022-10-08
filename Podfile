@@ -23,6 +23,7 @@ target "UnTaxi" do
     pod 'FloatingPanel'
     pod 'SideMenu'
     pod 'CountryPickerSwift'
+		pod 'ToastViewSwift'
 end
 
 post_install do |installer|

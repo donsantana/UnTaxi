@@ -15,8 +15,15 @@ import SideMenu
 import Mapbox
 import MapboxDirections
 
-class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate {
+struct sosBtnData {
+	let image:UIImage
+	let title:String
+	let type:Int
+}
+
+class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
   var socketService = SocketService.shared
+	var coreLocationManager : CLLocationManager!
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
   var origenAnnotation = MGLPointAnnotation()
@@ -28,6 +35,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   var apiService = ApiService.shared
   var responsive = Responsive()
   var sideMenu: SideMenuNavigationController!
+	
+	var sosBtnArray = [sosBtnData(image: UIImage(named: "sosPolicia")!, title: "POLICÍA",type: 0),sosBtnData(image: UIImage(named: "sosAmbulancia")!, title: "AMBULANCIA",type: 2),sosBtnData(image: UIImage(named: "sosBombero")!, title: "BOMBEROS",type: 1),sosBtnData(image: UIImage(named: "sosTransito")!, title: "TRÁNSITO", type: 3)]
   
   //MASK:- VARIABLES INTERFAZ
   @IBOutlet weak var mapView: MGLMapView!
@@ -73,16 +82,26 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var whatsappLeadingConstraint: NSLayoutConstraint!
   @IBOutlet weak var radioBtnLoadingConstraint: NSLayoutConstraint!
   
-  override func viewDidLoad() {
+	@IBOutlet weak var sosView: UIView!
+	@IBOutlet weak var sosBtnsCollectionView: UICollectionView!
+	@IBOutlet weak var malUsoBtn: UIButton!
+	
+	override func viewDidLoad() {
     super.hideMenuBtn = true
-    super.hideCloseBtn = true
+		super.hideCloseBtn = false
+    super.hideSOSBtn = false
+
     super.barTitle = ""
     //super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
-    
     self.sideMenu = self.addSideMenu()
     self.sideMenu.delegate = self
-
+		
+		coreLocationManager = CLLocationManager()
+		coreLocationManager.delegate = self
+		coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
+		coreLocationManager.startUpdatingLocation()
+		
     self.mapView.delegate = self
     self.mapView.automaticallyAdjustsContentInset = true
     
@@ -100,7 +119,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
       self.destinoAnnotation.subtitle = "destino"
     }
     starIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
-    //self.detallesView.addShadow()
+    sosView.addShadow()
+		sosView.layer.cornerRadius = 25
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()
     self.matriculaAut.titleBlueStyle()
@@ -145,6 +165,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     compartirDetallesBtn.layer.cornerRadius = compartirDetallesBtn.frame.height/2
     compartirDetallesBtn.backgroundColor = .white
     compartirDetallesBtn.addShadow()
+		
+		malUsoBtn.addUnderline()
     
 //    //PEDIR PERMISO PARA EL MICROPHONO
 //    switch AVAudioSession.sharedInstance().recordPermission {
@@ -192,11 +214,17 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     print("parar la publicidad")
     globalVariables.publicidadService?.stopPublicidad()
   }
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		print("UpdateLocation")
+		globalVariables.cliente.annotation.coordinate = (locations.last?.coordinate)!
+	}
   
   override func closeBtnAction() {
-    let panicoViewController = storyboard?.instantiateViewController(withIdentifier: "panicoChildVC") as! PanicoController
-    self.addChild(panicoViewController)
-    self.view.addSubview(panicoViewController.view)
+		sosView.isHidden = false
+//    let panicoViewController = storyboard?.instantiateViewController(withIdentifier: "panicoChildVC") as! PanicoController
+//    self.addChild(panicoViewController)
+//    self.view.addSubview(panicoViewController.view)
   }
   
   //MASK:- ACCIONES DE BOTONES
@@ -254,6 +282,17 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.showConductorBtn.isHidden = false
     self.DatosConductor.isHidden = true
   }
+	
+	@IBAction func closeSOSView(_ sender: Any) {
+		sosView.isHidden = true
+	}
+	
+	@IBAction func showMalUso(_ sender: Any) {
+		if let url = URL(string: "https://www.ecu911.gob.ec/preguntas-frecuentes/") {
+				UIApplication.shared.open(url)
+		}
+	}
+	
 }
 
 extension SolPendController: GADBannerViewDelegate{

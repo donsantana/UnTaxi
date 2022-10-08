@@ -12,6 +12,10 @@ import MapboxSearch
 import MapboxSearchUI
 
 extension InicioController: SearchControllerDelegate {
+	func categorySearchResultsReceived(category: MapboxSearchUI.SearchCategory, results: [MapboxSearch.SearchResult]) {
+		//
+	}
+	
   
   func categorySearchResultsReceived(results: [SearchResult]) {
     let annotations = results.map { searchResult -> MGLPointAnnotation in
@@ -64,6 +68,18 @@ extension InicioController: SearchControllerDelegate {
 }
 
 extension InicioController: SearchEngineDelegate {
+	func suggestionsUpdated(suggestions: [MapboxSearch.SearchSuggestion], searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
+	func resultResolved(result: MapboxSearch.SearchResult, searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
+	func searchErrorHappened(searchError: MapboxSearch.SearchError, searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
   func resultsUpdated(searchEngine: SearchEngine) {
     
 //    apiService.searchAddressXoaAPI(searchQuery: searchEngine.query)

@@ -91,8 +91,20 @@ class AddressController: UIViewController {
 }
 
 extension AddressController: SearchEngineDelegate {
+	func suggestionsUpdated(suggestions: [MapboxSearch.SearchSuggestion], searchEngine: MapboxSearch.SearchEngine) {
+		//<#code#>
+	}
+	
+	func resultResolved(result: MapboxSearch.SearchResult, searchEngine: MapboxSearch.SearchEngine) {
+		//<#code#>
+	}
+	
+	func searchErrorHappened(searchError: MapboxSearch.SearchError, searchEngine: MapboxSearch.SearchEngine) {
+		//<#code#>
+	}
+	
   func resultsUpdated(searchEngine: SearchEngine) {
-    print("Number of search results: \(searchEngine.items.count) for query: \(searchEngine.query)")
+    //print("Number of search results: \(searchEngine.items.count) for query: \(searchEngine.query)")
     //self.searchResultItems = searchEngine.items
     //responseLabel.text = "q: \(searchEngine.query), count: \(searchEngine.items.count)"
   }
@@ -116,6 +128,10 @@ extension AddressController: SearchEngineDelegate {
 }
 
 extension AddressController: SearchControllerDelegate {
+	func categorySearchResultsReceived(category: MapboxSearchUI.SearchCategory, results: [MapboxSearch.SearchResult]) {
+		//<#code#>
+	}
+	
   func searchResultSelected(_ searchResult: SearchResult) {
     //var annotationView = MGLPointAnnotation()
     self.annotationTemp.coordinate = searchResult.coordinate

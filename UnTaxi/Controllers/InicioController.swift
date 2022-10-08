@@ -204,7 +204,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 		waitingView.addStandardConfig()
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
-    let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
+    //let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
     
     self.searchController = MapboxSearchController()
     self.panelController = MapboxPanelController(rootViewController: self.searchController)
@@ -305,12 +305,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //Boton para Cancelar Carrera
   @IBAction func CancelarSol(_ sender: UIButton) {
     self.hideSolicitudView(isHidden: true)
-    //self.SolicitudView.isHidden = true
     self.pagoCell.referenciaText.endEditing(true)
     self.Inicio()
     self.origenCell.origenText.text?.removeAll()
-    //    self.RecordarView.isHidden = true
-    //    self.RecordarSwitch.isOn = false
     self.pagoCell.referenciaText.text?.removeAll()
   }
   

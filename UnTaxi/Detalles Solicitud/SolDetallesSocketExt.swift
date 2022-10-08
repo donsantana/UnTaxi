@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import SocketIO
 import AVFoundation
+import ToastViewSwift
 
 extension SolPendController: SocketServiceDelegate{
   //GEOPOSICION DE TAXIS
@@ -154,4 +155,14 @@ extension SolPendController: SocketServiceDelegate{
       break
     }
   }
+	
+	func socketResponse(_ controller: SocketService, sosAlert result: [String : Any]) {
+		let message = result["msg"] ?? ""
+		
+		let alertaDos = UIAlertController (title: "Alerta SOS", message: "\(message)", preferredStyle: UIAlertController.Style.alert)
+		alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+			self.sosView.isHidden = true
+		}))
+		self.present(alertaDos, animated: true, completion: nil)
+	}
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AAC7CF41AA1C54A3043B2B2 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
@@ -134,6 +135,9 @@
 		C6A37F192557327000C79BFF /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
 		C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
 		C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
+		C6AEE28B28E8626300AB79A2 /* SolDetallesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */; };
+		C6AEE28E28E86C8300AB79A2 /* SOSCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */; };
+		C6AEE29028E86E7A00AB79A2 /* SOSCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28F28E86E7A00AB79A2 /* SOSCollectionCell.swift */; };
 		C6B4C5A22589E50E0054C1A7 /* SolDetallesMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */; };
 		C6C3A4F2245F32640084F409 /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
 		C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */; };
@@ -167,12 +171,11 @@
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
-		DA09D77D39E3FD1965CA003A /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF32C027ED080570C6651ED /* Pods_UnTaxi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E2A705AAB21B4A52B9F3FA0 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		7AF32C027ED080570C6651ED /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +313,9 @@
 		C6A95B89257F3CF30028F11A /* PanicoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicoController.swift; sourceTree = "<group>"; };
 		C6AA476925916E0300870BF9 /* UnTaxi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnTaxi.entitlements; sourceTree = "<group>"; };
 		C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesExt.swift; sourceTree = "<group>"; };
+		C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SOSCollectionViewCell.xib; sourceTree = "<group>"; };
+		C6AEE28F28E86E7A00AB79A2 /* SOSCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSCollectionCell.swift; sourceTree = "<group>"; };
 		C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesMapExt.swift; sourceTree = "<group>"; };
 		C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDelegatesExt.swift; sourceTree = "<group>"; };
 		C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketExt.swift; sourceTree = "<group>"; };
@@ -342,7 +348,7 @@
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		F62CB2084C4241BBDD52949D /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,7 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA09D77D39E3FD1965CA003A /* Pods_UnTaxi.framework in Frameworks */,
+				3AAC7CF41AA1C54A3043B2B2 /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +369,7 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				7AF32C027ED080570C6651ED /* Pods_UnTaxi.framework */,
+				19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 		AFD656631FA1734300C8A5BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6AEE28C28E86C3C00AB79A2 /* SOS */,
 				C66F2511265A9EDB004716AF /* Yapa */,
 				C68D05B425A666DA00E124AB /* Completada */,
 				C6A37EFE255210F600C79BFF /* History */,
@@ -769,6 +776,15 @@
 			path = Panico;
 			sourceTree = "<group>";
 		};
+		C6AEE28C28E86C3C00AB79A2 /* SOS */ = {
+			isa = PBXGroup;
+			children = (
+				C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */,
+				C6AEE28F28E86E7A00AB79A2 /* SOSCollectionCell.swift */,
+			);
+			path = SOS;
+			sourceTree = "<group>";
+		};
 		C6C3A4ED245F32640084F409 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +850,7 @@
 				C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */,
 				C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */,
 				C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */,
+				C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */,
 			);
 			path = "Detalles Solicitud";
 			sourceTree = "<group>";
@@ -866,8 +883,8 @@
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3E2A705AAB21B4A52B9F3FA0 /* Pods-UnTaxi.debug.xcconfig */,
-				F62CB2084C4241BBDD52949D /* Pods-UnTaxi.release.xcconfig */,
+				F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */,
+				468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -879,13 +896,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				178498728476C709E8E4B27E /* [CP] Check Pods Manifest.lock */,
+				C60AA80E4686FD123A10BB24 /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				F24523EDC8DCD35ED24161A9 /* [CP] Embed Pods Frameworks */,
-				D69470383458187599351C1E /* [CP] Copy Pods Resources */,
+				95858079715F6123A87B3EDC /* [CP] Embed Pods Frameworks */,
+				FA2286B8157206768C83533D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -972,6 +989,7 @@
 				C6D3198725916F8500A4BF1C /* Muli-Italic.ttf in Resources */,
 				C63A6B1C245F5E18007B0EE5 /* Login.storyboard in Resources */,
 				C6A37EE3254A1F4100C79BFF /* userPhoto.png in Resources */,
+				C6AEE28E28E86C8300AB79A2 /* SOSCollectionViewCell.xib in Resources */,
 				C602558624AAEA1300C91725 /* CardRow.xib in Resources */,
 				C619BE612541433700611B4D /* PerfilNombreCell.xib in Resources */,
 				C6D3198D25916F8500A4BF1C /* Muli-ExtraLight.ttf in Resources */,
@@ -1000,7 +1018,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		178498728476C709E8E4B27E /* [CP] Check Pods Manifest.lock */ = {
+		95858079715F6123A87B3EDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C60AA80E4686FD123A10BB24 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1042,7 +1132,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		D69470383458187599351C1E /* [CP] Copy Pods Resources */ = {
+		FA2286B8157206768C83533D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1060,74 +1150,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F24523EDC8DCD35ED24161A9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1180,6 +1202,7 @@
 				C645789426D4AD1100F11C56 /* UIImageView.swift in Sources */,
 				AFD6564C1F9D42E100C8A5BD /* Solicitud.swift in Sources */,
 				C68DA29E227E39F20029CD0B /* Customization.swift in Sources */,
+				C6AEE29028E86E7A00AB79A2 /* SOSCollectionCell.swift in Sources */,
 				C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
 				C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */,
@@ -1253,6 +1276,7 @@
 				C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */,
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				C6C8E63626BC4AA10076465D /* RegistroDelegatesExt.swift in Sources */,
+				C6AEE28B28E8626300AB79A2 /* SolDetallesExt.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
 				C619BE6525414BC900611B4D /* PassController.swift in Sources */,
 				C66984172679515900C0C353 /* WeatherService.swift in Sources */,
@@ -1395,7 +1419,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E2A705AAB21B4A52B9F3FA0 /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1404,7 +1428,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1413,11 +1437,13 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -1431,7 +1457,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F62CB2084C4241BBDD52949D /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = 468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1439,7 +1465,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1448,11 +1474,13 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
