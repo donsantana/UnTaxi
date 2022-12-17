@@ -416,7 +416,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 91 images.
+  /// This `R.image` struct is generated, and contains static references to 97 images.
   struct image {
     /// Image `CLARO`.
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
@@ -500,8 +500,6 @@ struct R: Rswift.Validatable {
     static let llamar = Rswift.ImageResource(bundle: R.hostingBundle, name: "llamar")
     /// Image `loadingGif`.
     static let loadingGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "loadingGif")
-    /// Image `loading`.
-    static let loading = Rswift.ImageResource(bundle: R.hostingBundle, name: "loading")
     /// Image `locationBtn`.
     static let locationBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "locationBtn")
     /// Image `login`.
@@ -554,6 +552,18 @@ struct R: Rswift.Validatable {
     static let smsvoz = Rswift.ImageResource(bundle: R.hostingBundle, name: "smsvoz")
     /// Image `so`.
     static let so = Rswift.ImageResource(bundle: R.hostingBundle, name: "so")
+    /// Image `sosAmbulancia`.
+    static let sosAmbulancia = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosAmbulancia")
+    /// Image `sosBombero`.
+    static let sosBombero = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosBombero")
+    /// Image `sosBtn`.
+    static let sosBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosBtn")
+    /// Image `sosLogo`.
+    static let sosLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosLogo")
+    /// Image `sosPolicia`.
+    static let sosPolicia = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosPolicia")
+    /// Image `sosTransito`.
+    static let sosTransito = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosTransito")
     /// Image `stardorada`.
     static let stardorada = Rswift.ImageResource(bundle: R.hostingBundle, name: "stardorada")
     /// Image `stargris`.
@@ -562,6 +572,8 @@ struct R: Rswift.Validatable {
     static let tabBottom = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBottom")
     /// Image `tarjetaIcon`.
     static let tarjetaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "tarjetaIcon")
+    /// Image `tarjetaMenu`.
+    static let tarjetaMenu = Rswift.ImageResource(bundle: R.hostingBundle, name: "tarjetaMenu")
     /// Image `taxiIcon`.
     static let taxiIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "taxiIcon")
     /// Image `taxi_libre`.
@@ -882,13 +894,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "loading", bundle: ..., traitCollection: ...)`
-    static func loading(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.loading, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "loadingGif", bundle: ..., traitCollection: ...)`
     static func loadingGif(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.loadingGif, compatibleWith: traitCollection)
@@ -1078,6 +1083,48 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosAmbulancia", bundle: ..., traitCollection: ...)`
+    static func sosAmbulancia(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosAmbulancia, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosBombero", bundle: ..., traitCollection: ...)`
+    static func sosBombero(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosBombero, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosBtn", bundle: ..., traitCollection: ...)`
+    static func sosBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosBtn, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosLogo", bundle: ..., traitCollection: ...)`
+    static func sosLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosLogo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosPolicia", bundle: ..., traitCollection: ...)`
+    static func sosPolicia(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosPolicia, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sosTransito", bundle: ..., traitCollection: ...)`
+    static func sosTransito(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sosTransito, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "stardorada", bundle: ..., traitCollection: ...)`
     static func stardorada(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.stardorada, compatibleWith: traitCollection)
@@ -1102,6 +1149,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "tarjetaIcon", bundle: ..., traitCollection: ...)`
     static func tarjetaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tarjetaIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tarjetaMenu", bundle: ..., traitCollection: ...)`
+    static func tarjetaMenu(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tarjetaMenu, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1241,7 +1295,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 17 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
   struct nib {
     /// Nib `CallCenterViewCell`.
     static let callCenterViewCell = _R.nib._CallCenterViewCell()
@@ -1255,16 +1309,18 @@ struct R: Rswift.Validatable {
     static let detallesViewCell = _R.nib._DetallesViewCell()
     /// Nib `HistoryViewCell`.
     static let historyViewCell = _R.nib._HistoryViewCell()
+    /// Nib `OfertaCell`.
+    static let ofertaCell = _R.nib._OfertaCell()
     /// Nib `OfertaDataCell`.
     static let ofertaDataCell = _R.nib._OfertaDataCell()
-    /// Nib `OfertaViewCell`.
-    static let ofertaViewCell = _R.nib._OfertaViewCell()
     /// Nib `OrigenCell`.
     static let origenCell = _R.nib._OrigenCell()
     /// Nib `PactadaCell`.
     static let pactadaCell = _R.nib._PactadaCell()
     /// Nib `PagoCell`.
     static let pagoCell = _R.nib._PagoCell()
+    /// Nib `PagoYapaViewCell`.
+    static let pagoYapaViewCell = _R.nib._PagoYapaViewCell()
     /// Nib `Perfil2ViewCell`.
     static let perfil2ViewCell = _R.nib._Perfil2ViewCell()
     /// Nib `Perfil3ViewCell`.
@@ -1273,6 +1329,8 @@ struct R: Rswift.Validatable {
     static let perfilNombreCell = _R.nib._PerfilNombreCell()
     /// Nib `PerfilViewCell`.
     static let perfilViewCell = _R.nib._PerfilViewCell()
+    /// Nib `SOSCollectionViewCell`.
+    static let sosCollectionViewCell = _R.nib._SOSCollectionViewCell()
     /// Nib `SolPendientesCell`.
     static let solPendientesCell = _R.nib._SolPendientesCell()
     /// Nib `YapaViewCell`.
@@ -1327,18 +1385,18 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "OfertaDataCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaDataCell) instead")
-    static func ofertaDataCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.ofertaDataCell)
+    /// `UINib(name: "OfertaCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaCell) instead")
+    static func ofertaCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.ofertaCell)
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "OfertaViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaViewCell) instead")
-    static func ofertaViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.ofertaViewCell)
+    /// `UINib(name: "OfertaDataCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaDataCell) instead")
+    static func ofertaDataCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.ofertaDataCell)
     }
     #endif
 
@@ -1363,6 +1421,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.pagoCell) instead")
     static func pagoCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.pagoCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "PagoYapaViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.pagoYapaViewCell) instead")
+    static func pagoYapaViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.pagoYapaViewCell)
     }
     #endif
 
@@ -1395,6 +1461,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.perfilViewCell) instead")
     static func perfilViewCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.perfilViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SOSCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.sosCollectionViewCell) instead")
+    static func sosCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.sosCollectionViewCell)
     }
     #endif
 
@@ -1438,12 +1512,12 @@ struct R: Rswift.Validatable {
       return R.nib.historyViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HistoryCell
     }
 
-    static func ofertaDataCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaDataViewCell? {
-      return R.nib.ofertaDataCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaDataViewCell
+    static func ofertaCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
+      return R.nib.ofertaCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
     }
 
-    static func ofertaViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
-      return R.nib.ofertaViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
+    static func ofertaDataCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaDataViewCell? {
+      return R.nib.ofertaDataCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaDataViewCell
     }
 
     static func origenCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OrigenViewCell? {
@@ -1456,6 +1530,10 @@ struct R: Rswift.Validatable {
 
     static func pagoCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoViewCell? {
       return R.nib.pagoCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoViewCell
+    }
+
+    static func pagoYapaViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoYapaCell? {
+      return R.nib.pagoYapaViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoYapaCell
     }
 
     static func perfil2ViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Perfil2ViewCell? {
@@ -1485,7 +1563,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 9 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CELL`.
     static let celL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "CELL")
@@ -1495,12 +1573,16 @@ struct R: Rswift.Validatable {
     static let comentarioCell: Rswift.ReuseIdentifier<ComentarioCollectionCell> = Rswift.ReuseIdentifier(identifier: "ComentarioCell")
     /// Reuse identifier `MENUCELL`.
     static let menucelL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MENUCELL")
+    /// Reuse identifier `OfertaCell`.
+    static let ofertaCell: Rswift.ReuseIdentifier<OfertaViewCell> = Rswift.ReuseIdentifier(identifier: "OfertaCell")
     /// Reuse identifier `PerfilNombreCell`.
     static let perfilNombreCell: Rswift.ReuseIdentifier<PerfilNombreCell> = Rswift.ReuseIdentifier(identifier: "PerfilNombreCell")
     /// Reuse identifier `PerfilViewCell`.
     static let perfilViewCell: Rswift.ReuseIdentifier<PerfilViewCell> = Rswift.ReuseIdentifier(identifier: "PerfilViewCell")
     /// Reuse identifier `Solicitudes`.
     static let solicitudes: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "Solicitudes")
+    /// Reuse identifier `sosBtn`.
+    static let sosBtn: Rswift.ReuseIdentifier<SOSCollectionCell> = Rswift.ReuseIdentifier(identifier: "sosBtn")
 
     fileprivate init() {}
   }
@@ -1537,11 +1619,12 @@ struct _R: Rswift.Validatable {
       try _DestinoCell.validate()
       try _DetallesViewCell.validate()
       try _HistoryViewCell.validate()
+      try _OfertaCell.validate()
       try _OfertaDataCell.validate()
-      try _OfertaViewCell.validate()
       try _OrigenCell.validate()
       try _PactadaCell.validate()
       try _PagoCell.validate()
+      try _PagoYapaViewCell.validate()
       try _Perfil3ViewCell.validate()
       try _YapaViewCell.validate()
     }
@@ -1657,6 +1740,26 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _OfertaCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = OfertaViewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "OfertaCell"
+      let name = "OfertaCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in nib 'OfertaCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _OfertaDataCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "OfertaDataCell"
@@ -1667,23 +1770,6 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'OfertaDataCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _OfertaViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "OfertaViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in nib 'OfertaViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -1743,6 +1829,23 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _PagoYapaViewCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "PagoYapaViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoYapaCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoYapaCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in nib 'PagoYapaViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _Perfil2ViewCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "Perfil2ViewCell"
@@ -1795,6 +1898,13 @@ struct _R: Rswift.Validatable {
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PerfilViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PerfilViewCell
       }
+
+      fileprivate init() {}
+    }
+
+    struct _SOSCollectionViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "SOSCollectionViewCell"
 
       fileprivate init() {}
     }
@@ -1909,6 +2019,7 @@ struct _R: Rswift.Validatable {
       let menuView = StoryboardViewControllerResource<SideMenuController>(identifier: "MenuView")
       let name = "Main"
       let ofertasView = StoryboardViewControllerResource<OfertasController>(identifier: "ofertasView")
+      let pagoViewVC = StoryboardViewControllerResource<PagoController>(identifier: "PagoViewVC")
       let panicoChildVC = StoryboardViewControllerResource<PanicoController>(identifier: "panicoChildVC")
       let password = StoryboardViewControllerResource<PassController>(identifier: "Password")
       let perfil = StoryboardViewControllerResource<PerfilController>(identifier: "Perfil")
@@ -1960,6 +2071,10 @@ struct _R: Rswift.Validatable {
 
       func ofertasView(_: Void = ()) -> OfertasController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: ofertasView)
+      }
+
+      func pagoViewVC(_: Void = ()) -> PagoController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: pagoViewVC)
       }
 
       func panicoChildVC(_: Void = ()) -> PanicoController? {
@@ -2016,8 +2131,10 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "referenciaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'referenciaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "smsvoz", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "sosLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sosLogo' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "stargris", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stargris' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "tarjetaMenu", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tarjetaMenu' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "up", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'whatsapp' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -2029,6 +2146,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().inicioView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'inicioView' could not be loaded from storyboard 'Main' as 'InicioController'.") }
         if _R.storyboard.main().listaSolPdtes() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'listaSolPdtes' could not be loaded from storyboard 'Main' as 'SolicitudesTableController'.") }
         if _R.storyboard.main().menuView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'menuView' could not be loaded from storyboard 'Main' as 'SideMenuController'.") }
+        if _R.storyboard.main().pagoViewVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pagoViewVC' could not be loaded from storyboard 'Main' as 'PagoController'.") }
         if _R.storyboard.main().password() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'password' could not be loaded from storyboard 'Main' as 'PassController'.") }
         if _R.storyboard.main().perfil() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'perfil' could not be loaded from storyboard 'Main' as 'PerfilController'.") }
         if _R.storyboard.main().solDetalles() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'solDetalles' could not be loaded from storyboard 'Main' as 'SolPendController'.") }

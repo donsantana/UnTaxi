@@ -43,6 +43,7 @@ class EsperaChildVC: UIViewController {
 
   func updateOfertaValue(value: Double){
     self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
+		print(self.newOfertaText.text)
   }
   
   //CANCELAR SOLICITUDES
@@ -53,7 +54,7 @@ class EsperaChildVC: UIViewController {
     let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
     alertaDos.setValue(titleString, forKey: "attributedTitle")
     
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { [self]alerAction in
       MostrarMotivoCancelacion()
     }))
     
@@ -152,7 +153,8 @@ extension EsperaChildVC: SocketServiceDelegate{
     print("oferta \(result)")
     let array = globalVariables.ofertasList.map{$0.id}
     if !array.contains(result["idsolicitud"] as! Int){
-      let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
+			let newOferta = Oferta(jsonData: result)
+//      let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
 
       globalVariables.ofertasList.append(newOferta)
 
@@ -168,7 +170,7 @@ extension EsperaChildVC: SocketServiceDelegate{
     let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
     if (solicitud != nil) {
       let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.CancelarSolicitud("")
 //        let vc = R.storyboard.main.inicioView()!
 //        self.navigationController?.show(vc, sender: nil)

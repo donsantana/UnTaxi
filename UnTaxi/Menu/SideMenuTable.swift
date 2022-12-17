@@ -44,7 +44,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         self.navigationController?.show(vc, sender: self)
         
       case "Viajes en proceso":
-        if globalVariables.solpendientes.count > 0{
+        if globalVariables.solpendientes.count > 0 {
           vc = R.storyboard.main.listaSolPdtes()
           (vc as! SolicitudesTableController).solicitudesMostrar = globalVariables.solpendientes
           //self.present(vc, animated: false, completion: nil)
@@ -57,7 +57,24 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
           
           self.present(alertaDos, animated: true, completion: nil)
         }
-        
+				
+			case "Pago con Tarjeta":
+//				let viewcontrollers = self.navigationController?.viewControllers
+//				viewcontrollers?.forEach({ (vc1) in
+//					if  let inventoryListVC = vc1 as? InicioController {
+//						vc = inventoryListVC
+//						return
+//					}
+//				})
+				vc = R.storyboard.main.inicioView()!
+				//self.navigationController?.show(vc, sender: self)
+				
+				let pagoViewController = storyboard?.instantiateViewController(withIdentifier: "PagoViewVC") as! PagoController
+//				vc.addChild(pagoViewController)
+//				vc.view.addSubview(pagoViewController.view)
+				//self.present(pagoViewController, animated: true)
+				self.navigationController?.show(pagoViewController, sender: nil)
+				
       case "Historial de Viajes":
         vc = R.storyboard.main.historyView()!
         //self.present(vc, animated: false, completion: nil)

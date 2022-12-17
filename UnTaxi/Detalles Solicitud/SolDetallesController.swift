@@ -12,25 +12,36 @@ import SocketIO
 import AVFoundation
 import GoogleMobileAds
 import SideMenu
-import Mapbox
+import MapboxMaps
 import MapboxDirections
 
-class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate {
+struct sosBtnData {
+	let image:UIImage
+	let title:String
+	let type:Int
+}
+
+class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+	internal var mapView: MapView!
   var socketService = SocketService.shared
+	var coreLocationManager : CLLocationManager!
+	var pointAnnotationManager: PointAnnotationManager!
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
-  var origenAnnotation = MGLPointAnnotation()
-  var destinoAnnotation = MGLPointAnnotation()
-  var taxiAnnotation = MGLPointAnnotation()
+  var origenAnnotation = MyMapAnnotation()
+  var destinoAnnotation = MyMapAnnotation()
+  var taxiAnnotation = MyMapAnnotation()
   var grabando = false
   var fechahora: String = ""
   var urlSubirVoz = globalVariables.urlSubirVoz
   var apiService = ApiService.shared
   var responsive = Responsive()
   var sideMenu: SideMenuNavigationController!
+	
+	var sosBtnArray = [sosBtnData(image: UIImage(named: "sosPolicia")!, title: "POLICÍA",type: 0),sosBtnData(image: UIImage(named: "sosAmbulancia")!, title: "AMBULANCIA",type: 2),sosBtnData(image: UIImage(named: "sosBombero")!, title: "BOMBEROS",type: 1),sosBtnData(image: UIImage(named: "sosTransito")!, title: "TRÁNSITO", type: 3)]
   
   //MASK:- VARIABLES INTERFAZ
-  @IBOutlet weak var mapView: MGLMapView!
+  @IBOutlet weak var mapViewParent: UIView!
   @IBOutlet weak var detallesView: UIView!
   @IBOutlet weak var distanciaText: UILabel!
   @IBOutlet weak var valorOferta: UILabel!
@@ -73,18 +84,25 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var whatsappLeadingConstraint: NSLayoutConstraint!
   @IBOutlet weak var radioBtnLoadingConstraint: NSLayoutConstraint!
   
-  override func viewDidLoad() {
+	@IBOutlet weak var sosView: UIView!
+	@IBOutlet weak var sosBtnsCollectionView: UICollectionView!
+	@IBOutlet weak var malUsoBtn: UIButton!
+	
+	override func viewDidLoad() {
     super.hideMenuBtn = true
-    super.hideCloseBtn = true
+		super.hideCloseBtn = false
+    super.hideSOSBtn = false
+
     super.barTitle = ""
     //super.topMenu.bringSubviewToFront(self.formularioSolicitud)
     super.viewDidLoad()
-    
     self.sideMenu = self.addSideMenu()
     self.sideMenu.delegate = self
-
-    self.mapView.delegate = self
-    self.mapView.automaticallyAdjustsContentInset = true
+		
+		coreLocationManager = CLLocationManager()
+		coreLocationManager.delegate = self
+		coreLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+		coreLocationManager.startUpdatingLocation()
     
     self.socketService.delegate = self
     self.socketService.initListenEventos()
@@ -92,15 +110,17 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     waitingView.addStandardConfig()
     origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     
-    self.origenAnnotation.coordinate = self.solicitudPendiente.origenCoord
-    self.origenAnnotation.subtitle = "origen"
-    self.initMapView()
+    self.origenAnnotation.coordinates = self.solicitudPendiente.origenCoord
+    self.origenAnnotation.type = "origen"
+		
     if self.solicitudPendiente.destinoCoord.latitude != 0.0{
-      self.destinoAnnotation.coordinate = self.solicitudPendiente.destinoCoord
-      self.destinoAnnotation.subtitle = "destino"
+      self.destinoAnnotation.coordinates = self.solicitudPendiente.destinoCoord
+      self.destinoAnnotation.type = "destino"
     }
+		
     starIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
-    //self.detallesView.addShadow()
+    sosView.addShadow()
+		sosView.layer.cornerRadius = 25
     self.conductorPreview.addShadow()
     self.MostrarDetalleSolicitud()
     self.matriculaAut.titleBlueStyle()
@@ -118,10 +138,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.SMSVozBtn.addGestureRecognizer(longGesture)
     
     //ADS BANNER VIEW
-//    self.adsBannerView.adUnitID = "ca-app-pub-1778988557303127/7963427999"
-//    self.adsBannerView.rootViewController = self
-//    self.adsBannerView.load(GADRequest())
-//    self.adsBannerView.delegate = self
     let distanceBtwBtns = responsive.distanceBtwElement(elementWidth: 60, elementCount: 4)
     self.cancelarBtnLeadingConstraint.constant = distanceBtwBtns
     self.llamarBtnLoadingConstraint.constant = distanceBtwBtns
@@ -145,41 +161,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     compartirDetallesBtn.layer.cornerRadius = compartirDetallesBtn.frame.height/2
     compartirDetallesBtn.backgroundColor = .white
     compartirDetallesBtn.addShadow()
-    
-//    //PEDIR PERMISO PARA EL MICROPHONO
-//    switch AVAudioSession.sharedInstance().recordPermission {
-//    case AVAudioSession.RecordPermission.granted:
-//      print("Permission granted")
-//    case AVAudioSession.RecordPermission.denied:
-//      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
-//      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//        if #available(iOS 10.0, *) {
-//          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-//          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-//            exit(0)
-//          })
-//        } else {
-//          if let url = NSURL(string:UIApplication.openSettingsURLString) {
-//            UIApplication.shared.openURL(url as URL)
-//            exit(0)
-//          }
-//        }
-//      }))
-//      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-//        exit(0)
-//      }))
-//      self.present(locationAlert, animated: true, completion: nil)
-//    case AVAudioSession.RecordPermission.undetermined:
-//      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-//        if granted {
-//
-//        } else{
-//
-//        }
-//      })
-//    default:
-//      break
-//    }
+
+		malUsoBtn.addUnderline()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -192,11 +175,50 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     print("parar la publicidad")
     globalVariables.publicidadService?.stopPublicidad()
   }
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		if (locations.first?.distance(from: CLLocation(latitude: globalVariables.cliente.annotation.coordinates.latitude, longitude: globalVariables.cliente.annotation.coordinates.longitude)))! > 1000 {
+			globalVariables.cliente.annotation.coordinates = locations.last!.coordinate
+			print("UpdateLocation")
+		}
+		
+	}
+	
+	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+		let authorizationStatus: CLAuthorizationStatus
+		
+		if #available(iOS 14.0, *) {
+			authorizationStatus = manager.authorizationStatus
+		} else {
+			authorizationStatus = CLLocationManager.authorizationStatus()
+		}
+		
+		switch authorizationStatus {
+		case .notDetermined, .restricted, .denied:
+			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+						exit(0)
+					})
+			}))
+			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+				exit(0)
+			}))
+			self.present(locationAlert, animated: true, completion: nil)
+		case .authorizedAlways, .authorizedWhenInUse:
+			manager.startUpdatingLocation()
+			break
+		default:
+			break
+		}
+	}
   
   override func closeBtnAction() {
-    let panicoViewController = storyboard?.instantiateViewController(withIdentifier: "panicoChildVC") as! PanicoController
-    self.addChild(panicoViewController)
-    self.view.addSubview(panicoViewController.view)
+		sosView.isHidden = false
+//    let panicoViewController = storyboard?.instantiateViewController(withIdentifier: "panicoChildVC") as! PanicoController
+//    self.addChild(panicoViewController)
+//    self.view.addSubview(panicoViewController.view)
   }
   
   //MASK:- ACCIONES DE BOTONES
@@ -254,6 +276,17 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.showConductorBtn.isHidden = false
     self.DatosConductor.isHidden = true
   }
+	
+	@IBAction func closeSOSView(_ sender: Any) {
+		sosView.isHidden = true
+	}
+	
+	@IBAction func showMalUso(_ sender: Any) {
+		if let url = URL(string: "https://www.ecu911.gob.ec/preguntas-frecuentes/") {
+				UIApplication.shared.open(url)
+		}
+	}
+	
 }
 
 extension SolPendController: GADBannerViewDelegate{

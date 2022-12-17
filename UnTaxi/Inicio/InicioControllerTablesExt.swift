@@ -61,10 +61,10 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
   
 //  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //		switch tableView {
-//		case addressTableView:
-//			return openMapBtn
+//		case tarjetasTableView:
+//
 //		default:
-//			return nil
+//			return UIView()
 //		}
 //  }
 //

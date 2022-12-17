@@ -27,7 +27,6 @@ class OfertasController: BaseController{
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //self.navigationController?.navigationBar.tintColor = UIColor.black
     self.mapView.centerCoordinate = solicitud.origenCoord
     self.mapView.showsUserLocation = true
     self.socketService.delegate = self
@@ -36,7 +35,7 @@ class OfertasController: BaseController{
     let coordinateRegion = MKCoordinateRegion(center: solicitud.origenCoord,
                                               latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
     self.mapView.setRegion(coordinateRegion, animated: true)
-    
+		ofertaBottomConstraint.constant = Responsive().heightFloatPercent(percent: 20)
     self.ofertaFooterView.addShadow()
     //self.titleText.titleBlueStyle()
     self.ofertasTableView.delegate = self
@@ -45,15 +44,16 @@ class OfertasController: BaseController{
     // 1
     self.progressTimeBar.progress = 0.0
     progress.completedUnitCount = 0
-    self.ofertaBottomConstraint.constant = Responsive().heightFloatPercent(percent: 20)
-    self.ofertaTableTopConstraint.constant = super.getTopMenuBottom()
+
+		print("height \(Responsive().heightFloatPercent(percent: 20))")
+    self.ofertaTableTopConstraint.constant = super.getTopMenuBottom() + 50
     // 2
     self.progressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
       guard self.progress.isFinished == false else {
         //TODO:- ELIMINAR LA SOLICITUD
         
         let alertaDos = UIAlertController (title: "Ofertas no Aceptadas", message: "El tiempo para aceptar alguna oferta ha concluido. Por favor vuelva a enviar su solicitud.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           //self.CancelarSolicitud("")
           globalVariables.solpendientes.removeAll(where: {$0.id == self.solicitud.id})
           globalVariables.ofertasList.removeAll()
@@ -125,7 +125,7 @@ class OfertasController: BaseController{
     let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
     alertaDos.setValue(titleString, forKey: "attributedTitle")
     
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { [self]alerAction in
       self.MostrarMotivoCancelacion()
     }))
     

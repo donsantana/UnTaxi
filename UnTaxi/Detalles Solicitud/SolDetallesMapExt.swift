@@ -6,71 +6,26 @@
 //  Copyright © 2020 Done Santana. All rights reserved.
 //
 
-import Mapbox
+import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 
 //Mapbox
 extension SolPendController{
-  func showAnnotation(_ annotations: [MGLAnnotation]) {
+  func showAnnotations(_ annotations: [MyMapAnnotation]) {
     guard !annotations.isEmpty else { return }
+		
+		if annotations.count == 1, let annotation = annotations.first {
+			mapView.setCenter(annotation.coordinates, zoomLevel: 15, animated: true)
+		} else {
+			let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
+																		northeast: annotations.last!.coordinates)
+			// Center the camera on the bounds
+			let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 60, left: 40, bottom: 40, right: 40), bearing: 10, pitch: 0)
+			mapView.mapboxMap.setCamera(to: camera)
+		}
 
-    if let existingAnnotations = mapView.annotations {
-      mapView.removeAnnotations(existingAnnotations)
-    }
-    mapView.addAnnotations(annotations)
-
-    if annotations.count == 1, let annotation = annotations.first {
-      mapView.setCenter(annotation.coordinate, zoomLevel: 15, animated: true)
-    } else {
-      mapView.showAnnotations(annotations, animated: true)
-    }
-  }
-}
-
-extension SolPendController: MGLMapViewDelegate{
-  
-  //  // MARK: - MGLMapViewDelegate methods
-  //
-  //  // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
-  @nonobjc func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-    // This example is only concerned with point annotations.
-    guard annotation is MGLPointAnnotation else {
-      return nil
-    }
-    
-    // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
-    let reuseIdentifier = annotation.subtitle
-    
-    // For better performance, always try to reuse existing annotations.
-    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier!!)
-    
-    // If there’s no reusable annotation view available, initialize a new one.
-    if annotationView == nil {
-      annotationView = CustomImageAnnotationView(reuseIdentifier: reuseIdentifier as! String, image: UIImage(named: annotation.subtitle!!)!)
-    }
-    return annotationView
-  }
-  
-  func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-    return true
-  }
-  
-  //ONLY WHEN YOU ADD MGLANNOTATION NOT MGLANNOTATIONVIEW
-  func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-    return MGLAnnotationImage(image: UIImage(named: annotation.subtitle!!)!, reuseIdentifier: annotation.subtitle!!)
-  }
-  
-  func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
-    return CustomAppColor.buttonActionColor
-  }
-  
-  func mapView(_ mapView: MGLMapView, lineWidthForPolylineAnnotation annotation: MGLPolyline) -> CGFloat {
-    return 5.0
-  }
-
-  func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-    //self.loadGeoJson()
+		pointAnnotationManager.annotations = annotations.map({$0.annotation})
   }
 }
 

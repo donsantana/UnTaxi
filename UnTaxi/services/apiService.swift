@@ -22,12 +22,9 @@ protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any])
   func apiRequest(_ controller: ApiService, getServerData serverData: String)
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool)
-  func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]])
   func apiRequest(_ controller: ApiService, getAddressList data: [Address])
 	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address])
-  func apiRequest(_ controller: ApiService, cardRemoved result: String?)
   func apiRequest(_ controller: ApiService, getLoginError msg: String)
-  //func apiRequest(_ controller: ApiService, getRegisterError msg: String)
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String)
 }
@@ -412,55 +409,6 @@ final class ApiService {
     self.uploadFile(serverUrl: GlobalConstants.subiraudioUrl, parameters: parameters, localFilePath: recordedFilePath, fileName: name, mimetype: mimetype)
   }
   
-  func listCardsAPIService(){
-    let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    var request = URLRequest(url: URL(string: GlobalConstants.listCardsUrl)!)
-    request.httpMethod = "GET"
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-    
-    let session = URLSession.shared
-    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      if error == nil{
-        print(response!)
-        
-        do {
-          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-          print(json)
-          self.delegate?.apiRequest(self, getCardsList: json["cards"] as! [[String:Any]])
-        } catch {
-          print("error")
-        }
-      } else {
-        //print("error \(error)")
-      }
-    })
-    
-    task.resume()
-  }
-  
-  func removeCardsAPIService(cardToken: String){
-    let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    var request = URLRequest(url: URL(string: "\(GlobalConstants.listCardsUrl)/\(cardToken)")!)
-    request.httpMethod = "DELETE"
-    //request.httpBody = try? JSONSerialization.data(withJSONObject: ["token": cardToken], options: [])
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-    
-    let session = URLSession.shared
-    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      let response = response as! HTTPURLResponse
-        print("heree \(error) \(response.statusCode)")
-        if error == nil && response.statusCode == 200{
-          self.delegate?.apiRequest(self, cardRemoved: cardToken)
-        } else {
-          self.delegate?.apiRequest(self, cardRemoved: nil)
-        }
-    })
-    
-    task.resume()
-  }
-  
   func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double) {
     //&lon=-79.89725013269098&lat=-2.1363502421557943
     let searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
@@ -553,13 +501,13 @@ final class ApiService {
 //    }
 //  }
   
-  func handlerError(error: String){
+  func handlerError(error: String) {
     self.delegate?.apiRequest(self, getAPIError: error)
   }
   
 }
 
-extension ApiServiceDelegate{
+extension ApiServiceDelegate {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>){}
   func apiRequest(_ controller: ApiService, getLoginToken token: String){}
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any]){}
@@ -571,11 +519,8 @@ extension ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String){}
   func apiRequest(_ controller: ApiService, getServerData serverData: String){}
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}
-  func apiRequest(_ controller: ApiService, getCardsList data: [[String: Any]]){}
   func apiRequest(_ controller: ApiService, getAddressList data: [Address]){}
 	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address]){}
-  func apiRequest(_ controller: ApiService, cardRemoved result: String?){}
   func apiRequest(_ controller: ApiService, getLoginError msg: String){}
-  //func apiRequest(_ controller: ApiService, getRegisterError msg: String){}
   func apiRequest(_ controller: ApiService, getAPIError msg: String){}
 }

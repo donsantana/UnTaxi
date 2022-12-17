@@ -10,35 +10,38 @@ import UIKit
 import MapKit
 import SocketIO
 import AVFoundation
+import ToastViewSwift
 
 extension SolPendController: SocketServiceDelegate{
   //GEOPOSICION DE TAXIS
   func socketResponse(_ controller: SocketService, geocliente result: [String: Any]){
     print("Taxi Geo")
-    if globalVariables.solpendientes.count != 0 {
-      if (result["idtaxi"] as! Int) == self.solicitudPendiente.taxi.id{
-        self.mapView.removeAnnotation(self.taxiAnnotation)
-        self.solicitudPendiente.taxi.updateLocation(newLocation: CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double))
-        self.taxiAnnotation.coordinate = CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double)
-        self.mapView.addAnnotation(self.taxiAnnotation)
-        self.mapView.showAnnotations(self.mapView.annotations!, animated: true)
-        self.MostrarDetalleSolicitud()
-      }
-    }
+//    if globalVariables.solpendientes.count != 0 {
+//
+//    }
+		if (result["idtaxi"] as! Int) == self.solicitudPendiente.taxi.id{
+			self.mapView.removeAnnotations(self.taxiAnnotation,pointAnnotationManager: pointAnnotationManager)
+			self.solicitudPendiente.taxi.updateLocation(newLocation: CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double))
+			self.taxiAnnotation.coordinates = CLLocationCoordinate2DMake(result["lat"] as! Double, result["lng"] as! Double)
+			
+			//self.mapView.addAnnotation(self.taxiAnnotation, pointAnnotationManager: pointAnnotationManager)
+			//self.mapView.showAnnotations(pointAnnotationManager.annotations, animated: true)
+			self.MostrarDetalleSolicitud()
+		}
   }
   
   func socketResponse(_ controller: SocketService, serviciocompletado result: [String: Any]){
     print("completada \(result)")
     if globalVariables.solpendientes.count > 0 {
       let solicitudCompletadaIndex = globalVariables.solpendientes.firstIndex{$0.id == result["idsolicitud"] as! Int}!
-      if solicitudCompletadaIndex >= 0{
+      if solicitudCompletadaIndex >= 0 {
         let solicitudCompletada = globalVariables.solpendientes.remove(at: solicitudCompletadaIndex)
+				solicitudCompletada.importe = !(result["importe"] is NSNull) ? result["importe"] as! Double : solicitudCompletada.importe
         solicitudCompletada.yapaimporte = result["yapa"] as! Double
+				solicitudCompletada.idestado = 7
         DispatchQueue.main.async {
           let vc = R.storyboard.main.completadaView()!
           vc.solicitud = solicitudCompletada
-          vc.importe = !(result["importe"] is NSNull) ? result["importe"] as! Double : solicitudCompletada.importe
-          
           self.navigationController?.show(vc, sender: nil)
         }
       }
@@ -46,26 +49,19 @@ extension SolPendController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, taxiLLego result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}!
-    if solicitud != nil{
-      let alertaDos = UIAlertController (title: "Su Taxi ha llegado", message: "Su taxi \(solicitud.taxi.marca), color \(solicitud.taxi.color), matrícula \(solicitud.taxi.matricula) ha llegado al punto de recogida. Tiene un período de gracia de 5 min.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+		guard let _ = globalVariables.solpendientes.first(where: {$0.id == result["idsolicitud"] as! Int}) else {
+			return
+		}
+		let toast = Toast.text(GlobalStrings.taxiLlegoTitle,subtitle: GlobalStrings.taxiLlegoMessage )
+					toast.show()
   }
   
   func socketResponse(_ controller: SocketService, taximetroiniciado result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
-    if solicitud != nil {
-      let title = solicitud!.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
-      let mensaje = solicitud!.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
-      let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: result["fechacambioestado"] as! String).timeToShow()).", preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
+		if let solicitud = globalVariables.solpendientes.first(where: {$0.id == result["idsolicitud"] as! Int}) {
+			
+			let mensaje = solicitud.tipoServicio == 2 ? "El conductor ha iniciado el Taxímetro" : "El conductor ha iniciado la carrera"
+					let toast = Toast.text("\(mensaje)", subtitle: "\(OurDate(stringDate: result["fechacambioestado"] as! String).timeToShow())")
+					toast.show()
     }
   }
   
@@ -74,7 +70,7 @@ extension SolPendController: SocketServiceDelegate{
     let message = (result["code"] as! Int) == 1 ? "Su solicitud fue cancelada con éxito." : result["msg"] as! String
 
     let alertaDos = UIAlertController (title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       if (result["code"] as! Int) == 1{
         //self.CancelarSolicitud("Conductor")
         globalVariables.solpendientes.removeAll{$0.id == self.solicitudPendiente.id}
@@ -93,7 +89,7 @@ extension SolPendController: SocketServiceDelegate{
     let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
     if solicitud != nil{
       let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         
         self.CancelarSolicitud("Conductor")
         
@@ -125,7 +121,7 @@ extension SolPendController: SocketServiceDelegate{
       
     case AVAudioSession.RecordPermission.denied:
       let locationAlert = UIAlertController (title: "Mensaje del Conductor", message: "Ha recibido un mensaje de audio del conductor, para reproducirlo es necesario activar el micrófono de su dispositivo.", preferredStyle: .alert)
-      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         if #available(iOS 10.0, *) {
           let settingsURL = URL(string: UIApplication.openSettingsURLString)!
           UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
@@ -154,4 +150,14 @@ extension SolPendController: SocketServiceDelegate{
       break
     }
   }
+	
+	func socketResponse(_ controller: SocketService, sosAlert result: [String : Any]) {
+		let message = result["msg"] ?? ""
+		
+		let alertaDos = UIAlertController (title: "Alerta SOS", message: "\(message)", preferredStyle: UIAlertController.Style.alert)
+		alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+			self.sosView.isHidden = true
+		}))
+		self.present(alertaDos, animated: true, completion: nil)
+	}
 }

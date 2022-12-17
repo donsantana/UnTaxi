@@ -7,63 +7,79 @@
 //
 
 import Foundation
-import Mapbox
+import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 
-extension InicioController: SearchControllerDelegate {
-  
-  func categorySearchResultsReceived(results: [SearchResult]) {
-    let annotations = results.map { searchResult -> MGLPointAnnotation in
-      let annotation = MGLPointAnnotation()
-      annotation.coordinate = searchResult.coordinate
-      annotation.title = searchResult.name
-      annotation.subtitle = searchResult.address?.formattedAddress(style: .medium)
-      return annotation
-    }
-  }
+//extension InicioController: SearchControllerDelegate {
+//	func categorySearchResultsReceived(category: MapboxSearchUI.SearchCategory, results: [MapboxSearch.SearchResult]) {
+//		//
+//	}
+//	
+//  
+//  func categorySearchResultsReceived(results: [SearchResult]) {
+//    let annotations = results.map { searchResult -> MGLPointAnnotation in
+//      let annotation = MGLPointAnnotation()
+//      annotation.coordinate = searchResult.coordinate
+//      annotation.address = searchResult.name
+//      annotation.type = searchResult.address?.formattedAddress(style: .medium)
+//      return annotation
+//    }
+//  }
+//
+//  func searchResultSelected(_ searchResult: SearchResult) {
+//    let annotation = MGLPointAnnotation()
+//    annotation.coordinate = searchResult.coordinate
+//    annotation.address = searchResult.address?.formattedAddress(style: .medium)
+//
+//    if searchingAddress == "origen"{
+//      annotation.type = "origen"
+//      self.origenAnnotation = annotation
+//      self.initMapView()
+//    } else {
+//      annotation.type = "destino"
+//      self.destinoAnnotation = annotation
+//      self.mapView.removeAnnotations(self.mapView.annotations!)
+//      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
+//      self.getDestinoFromSearch(annotation: annotation)
+//    }
+//  }
+//
+//  func userFavoriteSelected(_ userFavorite: FavoriteRecord) {
+//    let annotation = MGLPointAnnotation()
+//    annotation.coordinate = userFavorite.coordinate
+//    annotation.address = userFavorite.name
+//    annotation.type = userFavorite.address?.formattedAddress(style: .medium)
+//
+//    if searchingAddress == "origen"{
+//      annotation.type = "origen"
+//      self.origenAnnotation = annotation
+//      self.initMapView()
+//    } else {
+//      annotation.type = "destino"
+//      self.destinoAnnotation = annotation
+//      self.mapView.removeAnnotations(self.mapView.annotations!)
+//      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
+//      self.getDestinoFromSearch(annotation: annotation)
+//    }
+//    //elf.hideSearchPanel()
+//  }
 
-  func searchResultSelected(_ searchResult: SearchResult) {
-    let annotation = MGLPointAnnotation()
-    annotation.coordinate = searchResult.coordinate
-    annotation.title = searchResult.address?.formattedAddress(style: .medium)
-
-    if searchingAddress == "origen"{
-      annotation.subtitle = "origen"
-      self.origenAnnotation = annotation
-      self.initMapView()
-    } else {
-      annotation.subtitle = "destino"
-      self.destinoAnnotation = annotation
-      self.mapView.removeAnnotations(self.mapView.annotations!)
-      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
-      self.getDestinoFromSearch(annotation: annotation)
-    }
-  }
-
-  func userFavoriteSelected(_ userFavorite: FavoriteRecord) {
-    let annotation = MGLPointAnnotation()
-    annotation.coordinate = userFavorite.coordinate
-    annotation.title = userFavorite.name
-    annotation.subtitle = userFavorite.address?.formattedAddress(style: .medium)
-
-    if searchingAddress == "origen"{
-      annotation.subtitle = "origen"
-      self.origenAnnotation = annotation
-      self.initMapView()
-    } else {
-      annotation.subtitle = "destino"
-      self.destinoAnnotation = annotation
-      self.mapView.removeAnnotations(self.mapView.annotations!)
-      self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
-      self.getDestinoFromSearch(annotation: annotation)
-    }
-    //elf.hideSearchPanel()
-  }
-
-}
+//}
 
 extension InicioController: SearchEngineDelegate {
+	func suggestionsUpdated(suggestions: [MapboxSearch.SearchSuggestion], searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
+	func resultResolved(result: MapboxSearch.SearchResult, searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
+	func searchErrorHappened(searchError: MapboxSearch.SearchError, searchEngine: MapboxSearch.SearchEngine) {
+		//
+	}
+	
   func resultsUpdated(searchEngine: SearchEngine) {
     
 //    apiService.searchAddressXoaAPI(searchQuery: searchEngine.query)

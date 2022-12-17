@@ -15,7 +15,7 @@ extension UIButton{
     self.layer.borderColor = color.cgColor
   }
   
-  func addUnderline(){
+  func addUnderline() {
     guard let text = self.titleLabel?.text else { return }
     
     let attributedString = NSMutableAttributedString(string: text)
@@ -24,7 +24,7 @@ extension UIButton{
     self.setAttributedTitle(attributedString, for: .normal)
   }
   
-  func addCustomColors(titleColor: UIColor?, backgroundColor: UIColor?){
+  func addCustomColors(titleColor: UIColor?, backgroundColor: UIColor?) {
     self.layer.cornerRadius = 10
     self.titleLabel?.font = CustomAppFont.buttonActionFont
     self.backgroundColor = backgroundColor != nil ? backgroundColor : CustomAppColor.buttonActionColor
@@ -37,7 +37,7 @@ extension UIButton{
     self.tintColor = tintColor
   }
   
-  func addCustomMenuBtnsColors(image: UIImage, tintColor: UIColor, backgroundColor: UIColor?){
+  func addCustomMenuBtnsColors(image: UIImage, tintColor: UIColor, backgroundColor: UIColor?) {
     let closeImage = image.withRenderingMode(.alwaysTemplate)
     self.setImage(closeImage, for: UIControl.State())
     self.layer.cornerRadius = self.frame.height/2
@@ -45,7 +45,7 @@ extension UIButton{
     self.addShadow()
   }
   
-  func addCustomActionBtnsColors(){
+  func addCustomActionBtnsColors() {
     self.backgroundColor = CustomAppColor.buttonActionColor
     self.setTitleColor(CustomAppColor.buttonsTitleColor, for: .normal)
     self.setTitle(self.titleLabel?.text?.uppercased(), for: .normal)
@@ -53,5 +53,13 @@ extension UIButton{
     self.addShadow()
     self.layer.cornerRadius = 5
   }
+	
+	func moveImageLeftTextCenter(imagePadding: CGFloat = 30.0) {
+			guard let imageViewWidth = self.imageView?.frame.width else{return}
+			guard let titleLabelWidth = self.titleLabel?.intrinsicContentSize.width else{return}
+			self.contentHorizontalAlignment = .left
+			imageEdgeInsets = UIEdgeInsets(top: 0.0, left: imagePadding - imageViewWidth / 2, bottom: 0.0, right: 0.0)
+			titleEdgeInsets = UIEdgeInsets(top: 0.0, left: imageViewWidth + 5, bottom: 0.0, right: 0.0)
+	}
   
 }

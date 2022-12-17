@@ -76,9 +76,9 @@ class YapaPanel: UIViewController {
       if textField.text?.digitString.count == 10{
         print("yapa")
         let (valid, message) = textField.validate(.movilNumber)
-        if !valid{
+        if !valid {
           let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-          alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
             self.movilNumberText.becomeFirstResponder()
           }))
           self.present(alertaDos, animated: true, completion: nil)
@@ -194,7 +194,7 @@ class YapaPanel: UIViewController {
     ])
     } else {
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: "Solo puede pasar una cantidad menor o igual a su YAPA acumulada.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.montoText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
       }))
       self.present(alertaDos, animated: true, completion: nil)
@@ -211,7 +211,7 @@ class YapaPanel: UIViewController {
 extension YapaPanel: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, recargaryapa result: [String : Any]) {
     let alertaDos = UIAlertController (title: "Recarga de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       
     }))
     self.present(alertaDos, animated: true, completion: nil)
@@ -227,7 +227,7 @@ extension YapaPanel: SocketServiceDelegate{
       self.sendYapaBtn.isEnabled = true
     } else {
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.nombreText.becomeFirstResponder()
       }))
       self.present(alertaDos, animated: true, completion: nil)
@@ -237,7 +237,7 @@ extension YapaPanel: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, pasarYapa result: [String : Any]) {
     if (result["code"] as! Int) == 1{
       let alertaDos = UIAlertController (title: "Pasar de Yapa", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         
         (self.parent as! FloatingPanelController).removeFromParent()
         (self.parent as! FloatingPanelController).move(to: .hidden, animated: true)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1kc-k3-1NC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1kc-k3-1NC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -536,10 +536,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQO-tu-Xm6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yg7-5F-AY3">
-                                        <rect key="frame" x="30" y="206.5" width="45" height="45"/>
+                                        <rect key="frame" x="30" y="204.5" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="3pK-19-arz"/>
                                             <constraint firstAttribute="width" constant="45" id="ULc-pf-OOv"/>
@@ -551,7 +551,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prefijo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pP-tk-bBX" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="78" y="206.5" width="60" height="45"/>
+                                        <rect key="frame" x="78" y="204.5" width="60" height="45"/>
                                         <color key="backgroundColor" red="0.92148476840000004" green="0.93338632580000003" blue="0.96066969629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="Pa9-Cs-uKt"/>
@@ -568,7 +568,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de Teléfono Móvil" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JfZ-Jk-QLH" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="30" y="206.5" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="204.5" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="yes" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -585,7 +585,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre y Apellidos" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-av-uZZ" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="30" y="271.5" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="269.5" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -602,7 +602,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teclee la Clave" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Tf-aU-KgJ" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="30" y="374.5" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="372.5" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -619,7 +619,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirme su Clave" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7qT-QG-nSo" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="30" y="434.5" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="432.5" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="WXB-bk-Jtm"/>
@@ -639,7 +639,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo Electrónico si posee" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-H9-0b9" customClass="JiroTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="30" y="507" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="505" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="yes" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -661,7 +661,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt6-tT-0hR">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt6-tT-0hR">
                                         <rect key="frame" x="30" y="612" width="354" height="45"/>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.81568627449999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
@@ -699,13 +699,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="El conductor confirmará que ha recogido a la persona adecuada por su nombre." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAf-YO-9uw">
-                                        <rect key="frame" x="40" y="321.5" width="344" height="28"/>
+                                        <rect key="frame" x="40" y="319.5" width="344" height="28"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqr-VB-gYD">
-                                        <rect key="frame" x="353.5" y="389.5" width="25.5" height="25"/>
+                                        <rect key="frame" x="353.5" y="387.5" width="25.5" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mqr-VB-gYD" secondAttribute="height" multiplier="46:45" id="PTR-Na-DFX"/>
                                         </constraints>
@@ -716,7 +716,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-6t-dt2">
-                                        <rect key="frame" x="353.5" y="449.5" width="25.5" height="25"/>
+                                        <rect key="frame" x="353.5" y="447.5" width="25.5" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e4e-6t-dt2" secondAttribute="height" multiplier="46:45" id="m1Q-fI-KIs"/>
                                         </constraints>
@@ -727,7 +727,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sus datos personales estarán protegido.  Somos expertos en seguridad informática." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFM-vT-4ty">
-                                        <rect key="frame" x="40" y="153.5" width="344" height="33"/>
+                                        <rect key="frame" x="40" y="151.5" width="344" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="guh-eZ-43Q"/>
                                         </constraints>
@@ -736,7 +736,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese sus datos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tk-F6-E1r">
-                                        <rect key="frame" x="30" y="120.5" width="354" height="33"/>
+                                        <rect key="frame" x="30" y="118.5" width="354" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="20L-Ja-Icy"/>
                                         </constraints>
@@ -745,7 +745,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mre-97-T1b" customClass="CountryPicker" customModule="CountryPicker">
-                                        <rect key="frame" x="0.0" y="656" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="652" width="414" height="162"/>
                                         <color key="backgroundColor" red="0.92148476840000004" green="0.93338632580000003" blue="0.96066969629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="162" id="6Nt-Iu-ozr"/>

@@ -36,6 +36,8 @@ class Solicitud {
   var distancia = 0.0
   var importe = 0.0
   var yapaimporte = 0.0
+	var pagado = 0
+	var idestado = 0
   
   //var valorOferta = 0.0
   var detalleOferta = ""
@@ -52,7 +54,7 @@ class Solicitud {
   var otroNombre = ""
   var otroTelefono = ""
 //
-  init(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, importe: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool) {
+	init(id: Int, fechaHora: String, dirOrigen: String, referenciaOrigen: String, dirDestino: String, latOrigen: Double, lngOrigen: Double, latDestino: Double, lngDestino: Double, importe: Double, detalleOferta: String, fechaReserva: String, useVoucher: String,tipoServicio: Int, yapa: Bool, tarjeta: Bool) {
     self.id = id
     self.fechaHora = fechaHora != "" ? OurDate(stringDate: fechaHora) : OurDate(date: Date())
     self.dirOrigen = dirOrigen
@@ -65,6 +67,7 @@ class Solicitud {
     self.useVoucher = useVoucher
     self.tipoServicio = tipoServicio
     self.yapa = yapa
+		self.tarjeta = tarjeta
     print("creating")
     if fechaReserva != ""{
       let fechaFormatted = fechaReserva.replacingOccurrences(of: "/", with: "-")
@@ -87,6 +90,9 @@ class Solicitud {
     self.yapa = !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Bool : false
     self.fechaReserva = !(jsonData["fechareserva"] is NSNull) ? OurDate(stringDate:jsonData["fechareserva"] as? String) : OurDate(date: Date())
     self.taxi = !(jsonData["taxi"] is NSNull) ? Taxi(jsonData: jsonData["taxi"] as! [String: Any]) : Taxi()
+		self.idestado = !(jsonData["idestado"] is NSNull) ? jsonData["idestado"] as! Int : 0
+		self.pagado = !(jsonData["pagado"] is NSNull) ? jsonData["pagado"] as! Int : 0
+		self.tarjeta = !(jsonData["tarjeta"] is NSNull) ? jsonData["tarjeta"] as! Bool : false
   }
   
   //Agregar datos de la solicitud
@@ -139,7 +145,7 @@ class Solicitud {
   }
   
   func updateValorOferta(newValor: String)->[String: Any]{
-    self.importe = (newValor as NSString).doubleValue
+		self.importe = (newValor.dropFirst() as NSString).doubleValue
     
     return [
       "idsolicitud": self.id,
@@ -222,8 +228,12 @@ class Solicitud {
     ]
   }
   
-  func isAceptada()->Bool{
+  func isAceptada()->Bool {
     return self.taxi.location.latitude != 0.0
   }
+	
+	func isPendientePago()->Bool {
+		return idestado == 7 && pagado == 0 && tarjeta
+	}
   
 }

@@ -14,6 +14,7 @@ struct GlobalConstants {
   static var urlHost: String = "https://\(urlServer)"//premium.xoait.com" //testing-untaxi.xoaserver.com
   static var socketurlHost: String = "https://client-\(urlServer)" //premium.xoait.com"
   static var paymentsUrl = "https://pay-\(urlServer)"
+	static var paymentsUrlTesting = "https://pay-testing-untaxi.xoaserver.com"
   
   static var apiLoginUrl: String = "\(urlHost)/auth/client-login"
   static var passRecoverUrl: String = "\(urlHost)/recover-password"
@@ -25,6 +26,8 @@ struct GlobalConstants {
   static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
 	static var searchReverseAddressUrl: String = "https://geosecure.xoaserver.com/reverse?"
   static var listCardsUrl: String = "\(paymentsUrl)/card"
+	static var addCardsUrl: String = "\(paymentsUrl)/card-add?token="
+	static var removeCardsUrl: String = "\(paymentsUrl)/card"
   
   
   static var apiUser: String = "oinergb@xoait.com"

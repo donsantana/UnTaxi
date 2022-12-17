@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import Mapbox
+import MapboxMaps
 import MapboxGeocoder
 import CoreLocation
 
 
 class mapService{
-  var mapView: MGLMapView!
+  var mapView: MapView!
   
-  init(mapView: MGLMapView){
+  init(mapView: MapView){
     self.mapView = mapView
   }
   

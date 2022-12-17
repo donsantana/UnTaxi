@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import MapKit
 import CoreLocation
 import SocketIO
 import Canvas
 import AddressBook
 import AVFoundation
 import CoreData
-import Mapbox
+import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 import MapboxGeocoder
 import FloatingPanel
 import SideMenu
+import WebKit
 //import PaymentezSDK
 
 struct MenuData {
@@ -27,11 +29,15 @@ struct MenuData {
 }
 
 class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UIApplicationDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
+	internal var mapView: MapView!
+	
   var socketService = SocketService.shared
-  var coreLocationManager : CLLocationManager!
-  var origenAnnotation = MGLPointAnnotation()
-  var destinoAnnotation = MGLPointAnnotation()
-  var taxiLocation = MGLPointAnnotation()
+	var pagoApiService = PagoApiService.shared
+  var coreLocationManager = CLLocationManager()
+	var origenAnnotation = MyMapAnnotation()
+	var destinoAnnotation = MyMapAnnotation()
+	var taxiLocation = MyMapAnnotation()
+	var pointAnnotationManager: PointAnnotationManager!
   var taxi : Taxi!
   var login = [String]()
   var idusuario : String = ""
@@ -43,6 +49,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   var isVoucherSelected = false
   var apiService = ApiService.shared
   var destinoPactadas:[DireccionesPactadas] = []
+	var tipoServicio: Int!
   var searchAddressList:[Address] = []{
     didSet{
       DispatchQueue.main.async {
@@ -50,6 +57,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       }
     }
   }
+	var cardList:[Card] = []
   
 	var origenCell = Bundle.main.loadNibNamed("OrigenCell", owner: InicioController.self, options: nil)?.first as! OrigenViewCell
 	var destinoCell = Bundle.main.loadNibNamed("DestinoCell", owner: InicioController.self, options: nil)?.first as! DestinoCell
@@ -57,6 +65,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 	var pagoCell = Bundle.main.loadNibNamed("PagoCell", owner: InicioController.self, options: nil)?.first as! PagoViewCell
 	var contactoCell = Bundle.main.loadNibNamed("ContactoCell", owner: InicioController.self, options: nil)?.first as! ContactoViewCell
 	var pactadaCell = Bundle.main.loadNibNamed("PactadaCell", owner: InicioController.self, options: nil)?.first as! PactadaCell
+	var pagoYapaCell = Bundle.main.loadNibNamed("PagoYapaViewCell", owner: InicioController.self, options: nil)?.first as! PagoYapaCell
   
   var formularioDataCellList: [UITableViewCell] = []
   //var SMSVoz = CSMSVoz()
@@ -89,9 +98,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   let geocoder = Geocoder.shared
   
- 
-  
   var searchingAddress = "origen"
+	
+	var isPagoHidden = true
 
   //CONSTRAINTS
   var btnViewTop: NSLayoutConstraint!
@@ -122,7 +131,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 		return openMapBtn
 	}()
   
-  @IBOutlet weak var mapView: MGLMapView!
+  @IBOutlet weak var mapViewParent: MKMapView!
   
   @IBOutlet weak var locationIcono: UIImageView!
 
@@ -134,7 +143,8 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   
   //MENU BUTTONS
   @IBOutlet weak var TransparenciaView: UIVisualEffectView!
-  
+	@IBOutlet weak var waitingView: UIVisualEffectView!
+	
   @IBOutlet weak var solicitudFormTable: UITableView!
   
   @IBOutlet weak var addressView: UIView!
@@ -157,8 +167,10 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBOutlet weak var searchText: UITextField!
   @IBOutlet weak var addressTableView: UITableView!
   @IBOutlet weak var sinResultadosLabel: UILabel!
-  
-  
+	
+	@IBOutlet weak var tarjetasView: UIView!
+	@IBOutlet weak var tarjetaWebView: WKWebView!
+	
   override func viewDidLoad() {
     super.hideMenuBtn = false
     super.hideCloseBtn = false
@@ -169,11 +181,10 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.tabBar.delegate = self
     self.tabBar.layer.borderColor = UIColor.clear.cgColor
     self.tabBar.clipsToBounds = true
-    mapView.delegate = self
     addressTableView.delegate = self
-    //mapView.automaticallyAdjustsContentInset = true
-    coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
+		tarjetaWebView.navigationDelegate = self
+		
     self.contactoCell.delegate = self
     self.contactoCell.contactoNameText.delegate = self
     self.contactoCell.telefonoText.delegate = self
@@ -181,28 +192,29 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.destinoCell.destinoText.delegate = self
     self.pagoCell.delegate = self
     self.pagoCell.referenciaText.delegate = self
-    self.apiService.delegate = self
     self.addressPicker.delegate = self
     self.destinoAddressPicker.delegate = self
     self.ofertaDataCell.valorOfertaText.delegate = self
     
-    self.origenAnnotation.subtitle = "origen"
-    self.destinoAnnotation.subtitle = "destino"
+    self.origenAnnotation.type = "origen"
+    self.destinoAnnotation.type = "destino"
     
     //MARK:- MENU INITIALIZATION
     self.sideMenu = self.addSideMenu()
 		self.sideMenu!.delegate = self
   
     self.SolicitudView.addShadow()
+		tarjetasView.addShadow()
 
     self.LocationBtn.addCustomMenuBtnsColors(image: UIImage(named: "locationBtn")!, tintColor: CustomAppColor.buttonActionColor, backgroundColor: nil)
     listoAddressBtn.addCustomActionBtnsColors()
     listoDestinoBtn.addCustomActionBtnsColors()
 
     self.TransparenciaView.addStandardConfig()
+		waitingView.addStandardConfig()
     
     //MARK:- MAPBOX SEARCH ADDRESS BAR
-    let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
+    //let requestOptions = SearchEngine.RequestOptions(proximity: CLLocationCoordinate2D(latitude: 1.653788, longitude: -75.177630))
     
     self.searchController = MapboxSearchController()
     self.panelController = MapboxPanelController(rootViewController: self.searchController)
@@ -216,13 +228,13 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.solicitudPanel.set(contentViewController: contentPanel)
     
     coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
-    coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
+    //coreLocationManager.startUpdatingLocation()  //Iniciar servicios de actualiación de localización del usuario
     
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     
-    addressViewTop.constant = super.getTopMenuCenter()
+    addressViewTop.constant = super.getTopMenuCenter() + 20
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
     tapGesture.delegate = self
@@ -233,42 +245,81 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
       print("disconnect")
       self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)
     }
+		
   }
   
   override func viewDidAppear(_ animated: Bool){
-    
+		self.apiService.delegate = self
+		self.pagoApiService.delegate = self
     self.socketService.delegate = self
-    
-    if let tempLocation = self.coreLocationManager.location?.coordinate{
-      globalVariables.cliente.annotation.coordinate = tempLocation
-      self.origenAnnotation.coordinate = tempLocation
+		tipoServicio = 2
+    if let tempLocation = self.coreLocationManager.location?.coordinate {
+      globalVariables.cliente.annotation.coordinates = tempLocation
+			self.origenAnnotation.coordinates = tempLocation
       coreLocationManager.stopUpdatingLocation()
       initMapView()
     } else {
-      globalVariables.cliente.annotation.coordinate = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
+      globalVariables.cliente.annotation.coordinates = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
       coreLocationManager.requestWhenInUseAuthorization()
     }
     
     self.navigationController?.setNavigationBarHidden(true, animated: false)
     self.socketService.initListenEventos()
+		self.socketService.initPagoEvents()
     self.initTipoSolicitudBar()
-    self.pagoCell.initContent(isCorporativo: self.tabBar.selectedItem != self.ofertaItem)
+
+		pagoYapaCell.initContent()
     
     self.origenCell.initContent()
     self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
     
     self.searchText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-		
+		waitingView.isHidden = true
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(true, animated: false)
   }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		self.pagoCell.referenciaText.resignFirstResponder()
+	}
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("UpdateLocation")
-    globalVariables.cliente.annotation.coordinate = (locations.last?.coordinate)!
+		guard let coordinates = locations.last?.coordinate else {return}
+    globalVariables.cliente.annotation.coordinates = coordinates
   }
+	
+	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+		let authorizationStatus: CLAuthorizationStatus
+		
+		if #available(iOS 14.0, *) {
+			authorizationStatus = manager.authorizationStatus
+		} else {
+			authorizationStatus = CLLocationManager.authorizationStatus()
+		}
+		
+		switch authorizationStatus {
+		case .notDetermined, .restricted, .denied:
+			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+						exit(0)
+					})
+			}))
+			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+				exit(0)
+			}))
+			self.present(locationAlert, animated: true, completion: nil)
+		case .authorizedAlways, .authorizedWhenInUse:
+			manager.startUpdatingLocation()
+			break
+		default:
+			break
+		}
+	}
   
  override func homeBtnAction(){
   present(sideMenu!, animated: true)
@@ -286,15 +337,15 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   @IBAction func RelocateBtn(_ sender: Any) {
 		if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
 			if searchingAddress == "origen" {
-				mapView.removeAnnotation(self.origenAnnotation)
-				self.origenAnnotation.coordinate = coreLocationManager.location!.coordinate
-				mapView.addAnnotation(self.origenAnnotation)
+				pointAnnotationManager.annotations.removeAll(where: {$0.id == origenAnnotation.annotation.id})
+				origenAnnotation.coordinates = coreLocationManager.location!.coordinate
+				pointAnnotationManager.annotations.append(self.origenAnnotation.annotation)
 			} else {
-				mapView.removeAnnotation(self.destinoAnnotation)
-				self.destinoAnnotation.coordinate = coreLocationManager.location!.coordinate
-				mapView.addAnnotation(self.destinoAnnotation)
+				pointAnnotationManager.annotations.removeAll(where: {$0.id == destinoAnnotation.annotation.id})
+				destinoAnnotation.coordinates = coreLocationManager.location!.coordinate
+				pointAnnotationManager.annotations.append(self.destinoAnnotation.annotation)
 			}
-			mapView.setCenter(origenAnnotation.coordinate, zoomLevel: 15, animated: false)
+			mapView.setCenter(origenAnnotation.coordinates, zoomLevel: 15, animated: false)
 		} else {
 			updateMapFocus()
 		}
@@ -303,12 +354,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   //Boton para Cancelar Carrera
   @IBAction func CancelarSol(_ sender: UIButton) {
     self.hideSolicitudView(isHidden: true)
-    //self.SolicitudView.isHidden = true
     self.pagoCell.referenciaText.endEditing(true)
     self.Inicio()
     self.origenCell.origenText.text?.removeAll()
-    //    self.RecordarView.isHidden = true
-    //    self.RecordarSwitch.isOn = false
     self.pagoCell.referenciaText.text?.removeAll()
   }
   
@@ -353,24 +401,27 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
   }
   
   @IBAction func getAddressText(_ sender: Any) {
-    if self.searchingAddress == "destino" {
-      if !self.searchAddressView.isHidden{
-        self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: searchText.text!)
-        destinoCell.destinoText.text = searchText.text
-      } else {
-        //self.getAddressFromCoordinate(self.destinoAnnotation)
-				self.getReverseAddressXoaAPI(self.destinoAnnotation)
-      }
-      self.getDestinoFromSearch(annotation: self.destinoAnnotation)
-    } else {
-      if !self.searchAddressView.isHidden {
-        self.origenAnnotation.title = searchText.text
-        origenCell.origenText.text = searchText.text
-      } else {
-        //self.getAddressFromCoordinate(self.origenAnnotation)
-				self.getReverseAddressXoaAPI(self.origenAnnotation)
-      }
-    }
+		if searchText.text!.isEmpty && !self.searchAddressView.isHidden {
+			closeSearchAddress(addressSelected: nil)
+		} else {
+			if self.searchingAddress == "destino" {
+				if !self.searchAddressView.isHidden {
+					destinoAnnotation.coordinates = self.origenAnnotation.coordinates
+					destinoAnnotation.address = searchText.text!
+					destinoCell.destinoText.text = searchText.text
+				} else {
+					self.getReverseAddressXoaAPI(self.destinoAnnotation)
+				}
+				self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+			} else {
+				if !self.searchAddressView.isHidden {
+					self.origenAnnotation.address = searchText.text ?? ""
+					origenCell.origenText.text = searchText.text
+				} else {
+					self.getReverseAddressXoaAPI(self.origenAnnotation)
+				}
+			}
+		}
 
     super.hideMenuBar(isHidden: false)
     self.mapBottomConstraint.constant = 0
@@ -378,26 +429,15 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     self.navigationController?.setNavigationBarHidden(true, animated: true)
     self.searchAddressView.isHidden = true
     self.addressPreviewText.isHidden = true
-
-////    if self.searchingAddress == "destino"{
-//      if !(self.panelController.state == .collapsed){
-//        //self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.searchController.searchEngine.query)
-//        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
-//      } else {
-//        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
-//      }
-//      self.getAddressFromCoordinate(self.destinoAnnotation)
-//      print("destino \(self.destinoCell.destinoText.text)")
-//    } else {
-//      if !(self.panelController.state == .collapsed){
-//        self.origenAnnotation.title = self.searchController.searchEngine.query
-//        //self.origenCell.origenText.text = self.origenAnnotation.title
-//      } else {
-//        self.getAddressFromCoordinate(self.origenAnnotation)
-//      }
-//    }
-    //self.hideSearchPanel()
-  } 
+  }
+	
+	@IBAction func closeCardsView(_ sender: Any) {
+		tarjetasView.isHidden = true
+		super.hideMenuBar(isHidden: false)
+		pagoCell.resetToEfectivo()
+	}
+	
+	
 }
 
 
