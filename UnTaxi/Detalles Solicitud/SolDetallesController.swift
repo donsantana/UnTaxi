@@ -12,7 +12,7 @@ import SocketIO
 import AVFoundation
 import GoogleMobileAds
 import SideMenu
-import Mapbox
+import MapboxMaps
 import MapboxDirections
 
 struct sosBtnData {
@@ -22,13 +22,15 @@ struct sosBtnData {
 }
 
 class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,URLSessionDelegate, URLSessionTaskDelegate, URLSessionDataDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+	internal var mapView: MapView!
   var socketService = SocketService.shared
 	var coreLocationManager : CLLocationManager!
+	var pointAnnotationManager: PointAnnotationManager!
   var solicitudPendiente: Solicitud!
   var solicitudIndex: Int!
-  var origenAnnotation = MGLPointAnnotation()
-  var destinoAnnotation = MGLPointAnnotation()
-  var taxiAnnotation = MGLPointAnnotation()
+  var origenAnnotation = MyMapAnnotation()
+  var destinoAnnotation = MyMapAnnotation()
+  var taxiAnnotation = MyMapAnnotation()
   var grabando = false
   var fechahora: String = ""
   var urlSubirVoz = globalVariables.urlSubirVoz
@@ -39,7 +41,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 	var sosBtnArray = [sosBtnData(image: UIImage(named: "sosPolicia")!, title: "POLICÍA",type: 0),sosBtnData(image: UIImage(named: "sosAmbulancia")!, title: "AMBULANCIA",type: 2),sosBtnData(image: UIImage(named: "sosBombero")!, title: "BOMBEROS",type: 1),sosBtnData(image: UIImage(named: "sosTransito")!, title: "TRÁNSITO", type: 3)]
   
   //MASK:- VARIABLES INTERFAZ
-  @IBOutlet weak var mapView: MGLMapView!
+  @IBOutlet weak var mapViewParent: UIView!
   @IBOutlet weak var detallesView: UIView!
   @IBOutlet weak var distanciaText: UILabel!
   @IBOutlet weak var valorOferta: UILabel!
@@ -99,11 +101,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 		
 		coreLocationManager = CLLocationManager()
 		coreLocationManager.delegate = self
-		coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
+		coreLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
 		coreLocationManager.startUpdatingLocation()
-		
-    self.mapView.delegate = self
-    self.mapView.automaticallyAdjustsContentInset = true
     
     self.socketService.delegate = self
     self.socketService.initListenEventos()
@@ -111,13 +110,14 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     waitingView.addStandardConfig()
     origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     
-    self.origenAnnotation.coordinate = self.solicitudPendiente.origenCoord
-    self.origenAnnotation.subtitle = "origen"
-    self.initMapView()
+    self.origenAnnotation.coordinates = self.solicitudPendiente.origenCoord
+    self.origenAnnotation.type = "origen"
+		
     if self.solicitudPendiente.destinoCoord.latitude != 0.0{
-      self.destinoAnnotation.coordinate = self.solicitudPendiente.destinoCoord
-      self.destinoAnnotation.subtitle = "destino"
+      self.destinoAnnotation.coordinates = self.solicitudPendiente.destinoCoord
+      self.destinoAnnotation.type = "destino"
     }
+		
     starIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     sosView.addShadow()
 		sosView.layer.cornerRadius = 25
@@ -138,10 +138,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     self.SMSVozBtn.addGestureRecognizer(longGesture)
     
     //ADS BANNER VIEW
-//    self.adsBannerView.adUnitID = "ca-app-pub-1778988557303127/7963427999"
-//    self.adsBannerView.rootViewController = self
-//    self.adsBannerView.load(GADRequest())
-//    self.adsBannerView.delegate = self
     let distanceBtwBtns = responsive.distanceBtwElement(elementWidth: 60, elementCount: 4)
     self.cancelarBtnLeadingConstraint.constant = distanceBtwBtns
     self.llamarBtnLoadingConstraint.constant = distanceBtwBtns
@@ -165,43 +161,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     compartirDetallesBtn.layer.cornerRadius = compartirDetallesBtn.frame.height/2
     compartirDetallesBtn.backgroundColor = .white
     compartirDetallesBtn.addShadow()
-		
+
 		malUsoBtn.addUnderline()
-    
-//    //PEDIR PERMISO PARA EL MICROPHONO
-//    switch AVAudioSession.sharedInstance().recordPermission {
-//    case AVAudioSession.RecordPermission.granted:
-//      print("Permission granted")
-//    case AVAudioSession.RecordPermission.denied:
-//      let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
-//      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-//        if #available(iOS 10.0, *) {
-//          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-//          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-//            exit(0)
-//          })
-//        } else {
-//          if let url = NSURL(string:UIApplication.openSettingsURLString) {
-//            UIApplication.shared.openURL(url as URL)
-//            exit(0)
-//          }
-//        }
-//      }))
-//      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-//        exit(0)
-//      }))
-//      self.present(locationAlert, animated: true, completion: nil)
-//    case AVAudioSession.RecordPermission.undetermined:
-//      AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-//        if granted {
-//
-//        } else{
-//
-//        }
-//      })
-//    default:
-//      break
-//    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -216,8 +177,41 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   }
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		print("UpdateLocation")
-		globalVariables.cliente.annotation.coordinate = (locations.last?.coordinate)!
+		if (locations.first?.distance(from: CLLocation(latitude: globalVariables.cliente.annotation.coordinates.latitude, longitude: globalVariables.cliente.annotation.coordinates.longitude)))! > 1000 {
+			globalVariables.cliente.annotation.coordinates = locations.last!.coordinate
+			print("UpdateLocation")
+		}
+		
+	}
+	
+	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+		let authorizationStatus: CLAuthorizationStatus
+		
+		if #available(iOS 14.0, *) {
+			authorizationStatus = manager.authorizationStatus
+		} else {
+			authorizationStatus = CLLocationManager.authorizationStatus()
+		}
+		
+		switch authorizationStatus {
+		case .notDetermined, .restricted, .denied:
+			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+						exit(0)
+					})
+			}))
+			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+				exit(0)
+			}))
+			self.present(locationAlert, animated: true, completion: nil)
+		case .authorizedAlways, .authorizedWhenInUse:
+			manager.startUpdatingLocation()
+			break
+		default:
+			break
+		}
 	}
   
   override func closeBtnAction() {

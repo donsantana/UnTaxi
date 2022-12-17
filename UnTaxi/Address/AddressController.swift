@@ -7,21 +7,21 @@
 //
 
 import UIKit
-import Mapbox
+import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 import MapboxDirections
 
 class AddressController: UIViewController {
   
-  var annotationTemp: MGLPointAnnotation!
+  var annotationTemp = MyMapAnnotation()
   var startLocation: CLLocationCoordinate2D!
   let searchController = MapboxSearchController()
   var keyboardHeight:CGFloat!
   let openMapBtn = UIButton(type: UIButton.ButtonType.system)
   
   
-  @IBOutlet weak var mapView: MGLMapView!
+  @IBOutlet weak var mapView: MapView!
   @IBOutlet weak var searchView: UIView!
   //@IBOutlet weak var openMapViewBottomConstraint: NSLayoutConstraint!
   
@@ -34,7 +34,7 @@ class AddressController: UIViewController {
 
     let panelController = MapboxPanelController(rootViewController: searchController)
     panelController.setState(.opened)
-    self.startLocation = globalVariables.cliente.annotation.coordinate
+    self.startLocation = globalVariables.cliente.annotation.coordinates
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     
@@ -53,16 +53,19 @@ class AddressController: UIViewController {
     
   }
   
-  func initMapView(){
-    mapView.setCenter(self.startLocation, zoomLevel: 10, animated: false)
-    mapView.styleURL = MGLStyle.lightStyleURL
-    self.mapView.addAnnotation(self.annotationTemp)
+  func initMapView() {
+		let centerCoordinate = CLLocationCoordinate2D(latitude: self.startLocation.latitude, longitude: self.startLocation.longitude)
+		let options = MapInitOptions(cameraOptions: CameraOptions(center: centerCoordinate, zoom: 8.0))
+		mapView = MapView(frame: view.bounds,mapInitOptions: options)//(self.startLocation, zoomLevel: 10, animated: false)
+		let pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
+		pointAnnotationManager.annotations = [annotationTemp.annotation]
+    //self.mapView.addAnnotation(self.annotationTemp)
   }
   
   func goToInicioView(){
     DispatchQueue.main.async {
       let vc = R.storyboard.main.inicioView()!
-      if self.annotationTemp.subtitle == "origen"{
+      if self.annotationTemp.type == "origen" {
         vc.origenAnnotation = self.annotationTemp
       } else {
         vc.destinoAnnotation = self.annotationTemp
@@ -111,10 +114,7 @@ extension AddressController: SearchEngineDelegate {
 
   func resolvedResult(result: SearchResult) {
     print("Dumping resolved result:", dump(result))
-    var annotationView = MGLPointAnnotation()
-    annotationView.coordinate = result.coordinate
-    annotationView.subtitle = result.address?.formattedAddress(style: .medium)
-    annotationView.title = self.annotationTemp.title
+		var annotationView = MyMapAnnotation(type: self.annotationTemp.type, address: (result.address?.formattedAddress(style: .medium))!, location: result.coordinate, imageName: nil)
     DispatchQueue.main.async {
       let vc = R.storyboard.main.inicioView()!
       vc.destinoAnnotation = annotationView
@@ -134,8 +134,8 @@ extension AddressController: SearchControllerDelegate {
 	
   func searchResultSelected(_ searchResult: SearchResult) {
     //var annotationView = MGLPointAnnotation()
-    self.annotationTemp.coordinate = searchResult.coordinate
-    self.annotationTemp.title = searchResult.address?.formattedAddress(style: .medium)
+    self.annotationTemp.coordinates = searchResult.coordinate
+		self.annotationTemp.address = (searchResult.address?.formattedAddress(style: .medium))!
     self.goToInicioView()
   }
 

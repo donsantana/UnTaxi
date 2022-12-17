@@ -17,43 +17,39 @@ extension RegistroController: UITextFieldDelegate{
     switch textField {
     case nombreApText:
       let (valid, message) = telefonoText.validate(.movilNumber)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.telefonoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.telefonoText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
       }
     case claveText:
       let (valid, message) = nombreApText.validate(.otherText)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.nombreApText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.nombreApText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 80
     case confirmarClavText:
       let (valid, message) = claveText.validate(.password)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.claveText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.claveText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 180
     case correoText:
-      let (valid, message) = confirmarClavText.validate(.password)
+      let (valid, _) = confirmarClavText.validate(.password)
       if valid && confirmarClavText.text == claveText.text{
         crearCuentaBtn.isEnabled = true
       } else {
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.confirmarClavText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.confirmarClavText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: GlobalStrings.passNotMatchMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 180
     default:
@@ -69,28 +65,28 @@ extension RegistroController: UITextFieldDelegate{
     var distanceValue = 0
     switch textfield {
     case telefonoText:
-      let (valid, message) = textfield.validate(.movilNumber)
-//      if !valid{
+      let (valid, _) = textfield.validate(.movilNumber)
+//      if !valid {
 //        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 //          self.telefonoText.becomeFirstResponder()
 //        }))
 //        self.present(alertaDos, animated: true, completion: nil)
 //      }
     case nombreApText:
-      let (valid, message) = textfield.validate(.otherText)
-//      if !valid{
+      let (valid, _) = textfield.validate(.otherText)
+//      if !valid {
 //        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 //          self.nombreApText.becomeFirstResponder()
 //        }))
 //        self.present(alertaDos, animated: true, completion: nil)
 //      }
     case claveText:
-      let (valid, message) = textfield.validate(.password)
-//      if !valid{
+      let (valid, _) = textfield.validate(.password)
+//      if !valid {
 //        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 //          self.claveText.becomeFirstResponder()
 //        }))
 //        self.present(alertaDos, animated: true, completion: nil)
@@ -102,7 +98,7 @@ extension RegistroController: UITextFieldDelegate{
 //        crearCuentaBtn.isEnabled = true
 //      } else {
 //        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
-//        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+//        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 //          self.confirmarClavText.becomeFirstResponder()
 //        }))
 //        self.present(alertaDos, animated: true, completion: nil)
@@ -111,12 +107,11 @@ extension RegistroController: UITextFieldDelegate{
     case correoText:
       let (valid, message) = textfield.validate(.email)
       print("valid \(valid)")
-      if !valid && !textfield.text!.isEmpty{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.correoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid && !textfield.text!.isEmpty {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.correoText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 180
     default:
@@ -146,42 +141,40 @@ extension RegistroController: UITextFieldDelegate{
     textField.endEditing(true)
     switch textField {
     case telefonoText:
-      let (valid, message) = textField.validate(.movilNumber)
+      let (valid, _) = textField.validate(.movilNumber)
       if valid {
         nombreApText.becomeFirstResponder()
       }
     case nombreApText:
-      let (valid, message) = textField.validate(.otherText)
+      let (valid, _) = textField.validate(.otherText)
       if valid {
         claveText.becomeFirstResponder()
       }
     case claveText:
       // Validate Text Field
-      let (valid, message) = textField.validate(.password)
+      let (valid, _) = textField.validate(.password)
       if valid {
         confirmarClavText.becomeFirstResponder()
       }
     case confirmarClavText:
-      let (valid, message) = textField.validate(.password)
+      let (valid, _) = textField.validate(.password)
       if valid && textField.text == claveText.text{
         correoText.becomeFirstResponder()
       } else {
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "Las contraseñas no coinciden.", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.confirmarClavText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.confirmarClavText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: GlobalStrings.passNotMatchMessage, vc: self, withActions: [okAction])
       }
       break
     case correoText:
       let (valid, message) = textField.validate(.email)
       print("valid \(valid)")
-      if !valid && !textField.text!.isEmpty{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.correoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid && !textField.text!.isEmpty {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+					self.correoText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
       } else {
         self.sendNewUserData()
       }
@@ -201,42 +194,34 @@ extension RegistroController: UITextFieldDelegate{
 
     switch textField {
     case telefonoText:
-      return (textField.text?.count == 10 && textField.text!.isNumeric, "Número de teléfono incorrecto. Por favor verifíquelo")
+			return (textField.text?.count == 10 && textField.text!.isNumeric, GlobalStrings.telefonoNotValidMessage)
     case confirmarClavText:
-      return (text == claveText.text, "Las claves no coinciden")
+			return (text == claveText.text, GlobalStrings.passNotMatchMessage)
       
     default:
-      return (text.count > 0, "This field cannot be empty.")
+			return (text.count > 0, GlobalStrings.emptyFieldMessage)
     }
-
-      return (text.count > 0, "This field cannot be empty.")
   }
 }
 
 
 extension RegistroController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String) {
-    DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: success ? "Registro de usuario" : "Error", message: msg, preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        if success{
-          self.goToLoginView()
-        } else {
-          self.waitingView.isHidden = true
-        }
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+			if success{
+				self.goToLoginView()
+			} else {
+				self.waitingView.isHidden = true
+			}
+		})
+		Alert.showBasic(title: success ? GlobalStrings.registroUsuarioTitle : GlobalStrings.formErrorTitle, message: msg, vc: self, withActions: [okAction])
   }
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
-    DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.waitingView.isHidden = true
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
+		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+			self.waitingView.isHidden = true
+		})
+		Alert.showBasic(title: GlobalStrings.formErrorTitle, message: msg, vc: self, withActions: [okAction])
   }
   
 }

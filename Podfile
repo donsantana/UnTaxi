@@ -12,11 +12,11 @@ target "UnTaxi" do
     pod 'Google-Mobile-Ads-SDK'
     pod 'GooglePlaces'
     pod 'R.swift'
-    pod 'Mapbox-iOS-SDK'
-    pod 'MapboxSearch', ">= 1.0.0-beta"
-    pod 'MapboxSearchUI', ">= 1.0.0-beta"
+		pod 'MapboxMaps', '10.9.0'
+		pod 'MapboxSearch', ">= 1.0.0-beta.38", "< 2.0"
+		pod 'MapboxSearchUI', ">= 1.0.0-beta.38", "< 2.0"
     pod 'MapboxGeocoder.swift'
-    pod 'MapboxDirections', '~> 0.33'
+    pod 'MapboxDirections'
     pod 'CurrencyTextField'
     pod 'PhoneNumberKit', '~> 3.3'
     pod 'GoogleMaps', '4.0.0'

@@ -27,14 +27,14 @@ extension YapaController: UITableViewDelegate, UITableViewDataSource{
     tableView.deselectRow(at: indexPath, animated: false)
     contentPanel = storyboard?.instantiateViewController(withIdentifier: "YapaPanel") as? YapaPanel
     if indexPath.row == 0 {
-      if globalVariables.cliente.yapa >= globalVariables.appConfig.uso_yapa{
+      if globalVariables.cliente.yapa >= globalVariables.appConfig.uso_yapa {
       contentPanel?.actionType = 2
         yapaPanel.set(contentViewController: contentPanel)
         yapaPanel.addPanel(toParent: self)
         tableView.deselectRow(at: indexPath, animated: false)
       } else {
         let alertaDos = UIAlertController (title: "Yapa Error", message: "Solo puede utilizar su YAPA cuando acumule un valor igual o superior a $0.5", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           
         }))
         self.present(alertaDos, animated: true, completion: nil)

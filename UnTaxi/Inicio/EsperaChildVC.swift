@@ -43,6 +43,7 @@ class EsperaChildVC: UIViewController {
 
   func updateOfertaValue(value: Double){
     self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
+		print(self.newOfertaText.text)
   }
   
   //CANCELAR SOLICITUDES
@@ -53,7 +54,7 @@ class EsperaChildVC: UIViewController {
     let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
     alertaDos.setValue(titleString, forKey: "attributedTitle")
     
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { [self]alerAction in
       MostrarMotivoCancelacion()
     }))
     
@@ -169,7 +170,7 @@ extension EsperaChildVC: SocketServiceDelegate{
     let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
     if (solicitud != nil) {
       let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.CancelarSolicitud("")
 //        let vc = R.storyboard.main.inicioView()!
 //        self.navigationController?.show(vc, sender: nil)

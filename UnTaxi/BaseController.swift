@@ -71,7 +71,6 @@ class BaseController: UIViewController {
     let viewcontrollers = self.navigationController?.viewControllers
     viewcontrollers?.forEach({ (vc) in
       if  let inventoryListVC = vc as? InicioController {
-        //self.navigationController!.popToViewController(inventoryListVC, animated: true)
         inicioVC.append(inventoryListVC)
       }
     })

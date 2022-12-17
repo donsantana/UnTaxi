@@ -31,7 +31,7 @@ class OfertaDataViewCell: UITableViewCell {
 	}
 	
 	func isValidOferta() -> Bool {
-		return Double(valorOfertaText.text!.currencyString)! >= valorInicial && Double(valorOfertaText.text!.currencyString)! >= valorOferta
+		return Double(valorOfertaText.text!.currencyString)! >= valorInicial && Double(valorOfertaText.text!.currencyString)! >= valorOferta.round(to: 2)
 	}
 	
 	func getBestOferta() -> Double {

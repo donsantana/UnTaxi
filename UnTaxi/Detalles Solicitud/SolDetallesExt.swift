@@ -41,8 +41,8 @@ extension SolPendController: UICollectionViewDataSource, UICollectionViewDelegat
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let trama:[String: Any] = [
 			"idcliente": globalVariables.cliente.id!,
-			"lat": globalVariables.cliente.annotation.coordinate.latitude,
-			"lng": globalVariables.cliente.annotation.coordinate.longitude,
+			"lat": globalVariables.cliente.annotation.coordinates.latitude,
+			"lng": globalVariables.cliente.annotation.coordinates.longitude,
 			"idsolicitud": solicitudPendiente.id,
 			"tipoalerta": sosBtnArray[indexPath.row].type
 		]

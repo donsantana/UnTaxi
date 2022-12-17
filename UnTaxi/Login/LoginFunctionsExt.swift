@@ -54,13 +54,16 @@ extension LoginController{
     if solicitudesEnProceso.count > 0{
       self.ListSolicitudPendiente(solicitudesEnProceso)
     }
-    
-    self.checkLocationStatus()
+		
+		AppStoreService.shared.checkNewVersionAvailable()
+		self.checkSolPendientes()
+		//self.checkLocationStatus()
+
   }
   
   func initConnectionError(message: String){
     let alertaDos = UIAlertController (title: "Autenticación", message: message, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       self.waitingView.isHidden = true
       self.usuario.text?.removeAll()
       self.usuario.text?.removeAll()
@@ -68,78 +71,65 @@ extension LoginController{
     self.present(alertaDos, animated: true, completion: nil)
   }
   
-  func checkLocationStatus(){
-    
-    if CLLocationManager.locationServicesEnabled(){
-      switch(CLLocationManager.authorizationStatus()) {
-      case .notDetermined, .restricted, .denied:
-				let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
-        locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          if #available(iOS 10.0, *) {
-            let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-            UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-              exit(0)
-            })
-          } else {
-            if let url = NSURL(string:UIApplication.openSettingsURLString) {
-              UIApplication.shared.openURL(url as URL)
-              exit(0)
-            }
-          }
-        }))
-        locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
-          exit(0)
-        }))
-        self.present(locationAlert, animated: true, completion: nil)
-      case .authorizedAlways, .authorizedWhenInUse:
-        self.checkSolPendientes()
-        break
-      default:
-        break
-      }
-    } else {
-      let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
-      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        if #available(iOS 10.0, *) {
-          let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-          UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-            exit(0)
-          })
-        } else {
-          if let url = NSURL(string:UIApplication.openSettingsURLString) {
-            UIApplication.shared.openURL(url as URL)
-            exit(0)
-          }
-        }
-      }))
-      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-        exit(0)
-      }))
-      self.present(locationAlert, animated: true, completion: nil)
-    }
-  }
+//  func checkLocationStatus() {
+//		let authorizationStatus: CLAuthorizationStatus
+//    
+//		if #available(iOS 14.0, *) {
+//			authorizationStatus = coreLocationManager.authorizationStatus
+//		} else {
+//			authorizationStatus = CLLocationManager.authorizationStatus()
+//		}
+//		switch authorizationStatus {
+//		case .notDetermined, .restricted, .denied:
+//			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
+//			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+//					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+//						exit(0)
+//					})
+//			}))
+//			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+//				exit(0)
+//			}))
+//			self.present(locationAlert, animated: true, completion: nil)
+//		case .authorizedAlways, .authorizedWhenInUse:
+//			self.checkSolPendientes()
+//			break
+//		default:
+//			break
+//		}
+//  }
   
-  func checkSolPendientes(){
+  func checkSolPendientes() {
     var vc = UIViewController()
     switch globalVariables.solpendientes.count {
     case 0:
       vc = R.storyboard.main.inicioView()!
       break
     case 1:
-      if globalVariables.solpendientes.first!.isAceptada(){
-        vc = R.storyboard.main.solDetalles()!
-        (vc as! SolPendController).solicitudPendiente = globalVariables.solpendientes.first!
-      } else {
+			let solPendiente = globalVariables.solpendientes.first!
+			if solPendiente.isPendientePago() {
+				vc = R.storyboard.main.completadaView()!
+				(vc as! CompletadaController).solicitud = solPendiente
+			} else if solPendiente.isAceptada(){
+				vc = R.storyboard.main.solDetalles()!
+				(vc as! SolPendController).solicitudPendiente = solPendiente
+			} else {
         vc = R.storyboard.main.esperaChildView()!
-        (vc as! EsperaChildVC).solicitud = globalVariables.solpendientes.first!
+        (vc as! EsperaChildVC).solicitud = solPendiente
       }
       break
 		default:
-			vc = R.storyboard.main.listaSolPdtes()!
+			let pendientePagoIndex = globalVariables.solpendientes.firstIndex(where: {$0.isPendientePago()})
+			if pendientePagoIndex != nil {
+				vc = R.storyboard.main.completadaView()!
+				(vc as! CompletadaController).solicitud = globalVariables.solpendientes[pendientePagoIndex!]
+			} else {
+				vc = R.storyboard.main.listaSolPdtes()!
+			}
     }
     
     self.navigationController?.show(vc, sender: self)
-    
   }
   
   //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
@@ -158,6 +148,16 @@ extension LoginController{
       i += 1
     }
   }
+	
+	func checkSolPendientePago() {
+		for solicitud in globalVariables.solpendientes {
+			if solicitud.isPendientePago() {
+				let vc = R.storyboard.main.completadaView()
+				vc?.solicitud = solicitud
+				self.navigationController?.show(vc!, sender: self)
+			}
+		}
+	}
   
   
   //MARK:- FUNCIONES PROPIAS
@@ -183,7 +183,7 @@ extension LoginController{
       ])
     } else {
       let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 
       }))
       self.present(alertaDos, animated: true, completion: nil)

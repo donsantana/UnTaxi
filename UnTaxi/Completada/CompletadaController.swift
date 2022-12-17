@@ -32,7 +32,8 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   @IBOutlet weak var evaluacionView: UIView!
   @IBOutlet weak var sendEvaluacionBtn: UIButton!
   
-  @IBOutlet weak var PrimeraStart: UIButton!
+	@IBOutlet weak var startsViews: UIView!
+	@IBOutlet weak var PrimeraStart: UIButton!
   @IBOutlet weak var SegundaStar: UIButton!
   @IBOutlet weak var TerceraStar: UIButton!
   @IBOutlet weak var CuartaStar: UIButton!
@@ -46,14 +47,18 @@ class CompletadaController: BaseController, UITextFieldDelegate {
   @IBOutlet weak var destinoAddressText: UILabel!
   @IBOutlet weak var efectivoText: UILabel!
   @IBOutlet weak var yapaText: UILabel!
-  
+	@IBOutlet weak var pagoView: UIView!
+	@IBOutlet weak var efectivoYapaView: UIView!
+	
   @IBOutlet weak var comentariosCollection: UICollectionView!
   
   @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
-  
+	@IBOutlet weak var costoViajeLabelTop: NSLayoutConstraint!
+	
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.setNavigationBarHidden(true, animated: false)
+
     self.comentariosCollection.delegate = self
     self.comentarioText.delegate = self
     origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
@@ -68,20 +73,28 @@ class CompletadaController: BaseController, UITextFieldDelegate {
       }
     }
     task.resume()
+		
     self.topViewConstraint.constant = super.getTopMenuBottom()
     self.conductorName.text = conductor.nombreApellido
     //self.comentarioText.delegate = self
     self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
     self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
-    self.importeText.text = "$\(String(format: "%.2f", self.importe))"
-    self.efectivoText.text = "$\(String(format: "%.2f", self.importe - solicitud.yapaimporte)),\(self.solicitud.useVoucher == "1" ? " Voucher" : " Efectivo")"
-    self.yapaText.text = "$\(String(format: "%.2f", solicitud.yapaimporte)), Yapa"
-    
+		self.importeText.text = "$\(String(format: "%.2f", solicitud.importe))"
+		self.efectivoText.text = "$\(String(format: "%.2f", solicitud.importe - solicitud.yapaimporte)),\(self.solicitud.useVoucher == "1" ? " Voucher" : " Efectivo")"
+		self.yapaText.text = "$\(String(format: "%.2f", solicitud.yapaimporte)), Yapa"
+		efectivoYapaView.isHidden = !solicitud.isPendientePago()
+		showPagoConTarjetaView(isHidden: !solicitud.isPendientePago())
     self.origenAddressText.text = solicitud.dirOrigen
     self.destinoAddressText.text = solicitud.dirDestino
+		costoViajeLabelTop.constant = solicitud.isPendientePago() ? -30 : 0
     
     sendEvaluacionBtn.addCustomActionBtnsColors()
   }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		socketService.delegate = self
+		socketService.initPagoEvents()
+	}
 
   func updateEvalucion(evaluation: Int){
     self.evaluacionView.isHidden = false
@@ -91,15 +104,12 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     self.comentariosCollection.reloadData()
     self.ptosEvaluacion = evaluation
   }
-  
-//  override func goToInicioView(){
-//    let viewcontrollers = self.navigationController?.viewControllers
-//    viewcontrollers?.forEach({ (vc) in
-//      if  let inventoryListVC = vc as? InicioController {
-//        self.navigationController!.popToViewController(inventoryListVC, animated: true)
-//      }
-//    })
-//  }
+	
+	func showPagoConTarjetaView(isHidden: Bool) {
+		hideMenuBar(isHidden: !isHidden)
+		pagoView.isHidden = isHidden
+		startsViews.isHidden = !pagoView.isHidden
+	}
   
   //ENVIAR EVALUACIÓN
   func EnviarEvaluacion(_ evaluacion: Int, comentario: String){
@@ -116,8 +126,11 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     DispatchQueue.main.async {
       self.goToInicioView()
     }
-    
   }
+	
+	func pagoConTarjeta() {
+		PagoApiService.shared.listCardsAPIService()
+	}
   
   @IBAction func Star1(_ sender: AnyObject) {
     self.updateEvalucion(evaluation: 1)
@@ -151,7 +164,26 @@ class CompletadaController: BaseController, UITextFieldDelegate {
     }
   }
   
-  //MARK:- TEXT DELEGATE ACTION
+	@IBAction func pagarConTarjeta(_ sender: Any) {
+		let pagoViewController = storyboard?.instantiateViewController(withIdentifier: "PagoViewVC") as! PagoController
+		pagoViewController.solicitudPendiente = solicitud
+		pagoViewController.delegate = self
+		self.addChild(pagoViewController)
+		self.view.addSubview(pagoViewController.view)
+	}
+	
+	@IBAction func pagarConEfectivo(_ sender: Any) {
+		let datos:[String: Any] = [
+			"idtaxi": solicitud.taxi.id,
+			"nombreapellidoscliente": solicitud.cliente.nombreApellidos,
+			"idsolicitud": solicitud.id
+		]
+		socketService.socketEmit("pagadaenefectivocliente", datos: datos)
+		socketService.delegate = self
+		socketService.initPagoEvents()
+	}
+	
+	//MARK:- TEXT DELEGATE ACTION
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
     animateViewMoving(true, moveValue: 210,view: self.view)

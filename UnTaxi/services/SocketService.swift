@@ -38,6 +38,11 @@ protocol SocketServiceDelegate: class {
   func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any])
   func socketResponse(_ controller: SocketService, actualizaryapa result: [String: Any])
 	func socketResponse(_ controller: SocketService, sosAlert result: [String: Any])
+	
+	func socketResponse(_ controller: SocketService, cardAddedSucceed result: Bool)
+	func socketResponse(_ controller: SocketService, cardExist result: Bool)
+	func socketResponse(_ controller: SocketService, pagoConTarjeta result: [String: Any])
+	func socketResponse(_ controller: SocketService, pagadaenefectivocliente result: [String: Any])
 }
 
 
@@ -257,55 +262,93 @@ final class SocketService {
 			self.delegate?.socketResponse(self, sosAlert: result)
 		}
 	}
-		func initYapaEvents() {
-			globalVariables.socket.on("recargaryapa"){data, ack in
-				print("Yapa recargada")
-				let result = data[0] as! [String: Any]
-				self.delegate?.socketResponse(self, recargaryapa: result)
-			}
-			
-			globalVariables.socket.on("buscarclientepormovil"){data, ack in
-				let result = data[0] as! [String: Any]
-				print("cliente \(result)")
-				self.delegate?.socketResponse(self, buscarCliente: result)
-			}
-			
-			globalVariables.socket.on("pasaryapa"){data, ack in
-				let result = data[0] as! [String: Any]
-				print("cliente \(result)")
-				self.delegate?.socketResponse(self, pasarYapa: result)
-			}
+	func initYapaEvents() {
+		globalVariables.socket.on("recargaryapa"){data, ack in
+			print("Yapa recargada")
+			let result = data[0] as! [String: Any]
+			self.delegate?.socketResponse(self, recargaryapa: result)
 		}
 		
-		func initCallcenterEvents(){
-			globalVariables.socket.off("telefonosdelcallcenter")
-			globalVariables.socket.on("telefonosdelcallcenter"){data, ack in
-				let response = data[0] as! [String: Any]
-				if response["code"] as! Int == 1{
-					let result = response["datos"] as! [[String: Any]]
-					self.delegate?.socketResponse(self, telefonosdelcallcenter: result)
-				}
-			}
+		globalVariables.socket.on("buscarclientepormovil"){data, ack in
+			let result = data[0] as! [String: Any]
+			print("cliente \(result)")
+			self.delegate?.socketResponse(self, buscarCliente: result)
 		}
 		
-		func initHistorialEvents(){
-			globalVariables.socket.off("historialdesolicitudes")
-			globalVariables.socket.on("historialdesolicitudes"){data, ack in
-				let result = data[0] as! [String: Any]
-				print("historialdesolicitudes \(result)")
-				self.delegate?.socketResponse(self, historialdesolicitudes: result)
-			}
+		globalVariables.socket.on("pasaryapa"){data, ack in
+			let result = data[0] as! [String: Any]
+			print("cliente \(result)")
+			self.delegate?.socketResponse(self, pasarYapa: result)
 		}
-		
-		func initHistorialDetallesEvents(){
-			globalVariables.socket.off("detallehistorialdesolicitud")
-			globalVariables.socket.on("detallehistorialdesolicitud"){data, ack in
-				let result = data[0] as! [String: Any]
-				print("detallesHistorial \(result)")
-				self.delegate?.socketResponse(self, detallehistorialdesolicitud: result)
+	}
+	
+	func initCallcenterEvents(){
+		globalVariables.socket.off("telefonosdelcallcenter")
+		globalVariables.socket.on("telefonosdelcallcenter"){data, ack in
+			let response = data[0] as! [String: Any]
+			if response["code"] as! Int == 1{
+				let result = response["datos"] as! [[String: Any]]
+				self.delegate?.socketResponse(self, telefonosdelcallcenter: result)
 			}
 		}
 	}
+	
+	func initHistorialEvents(){
+		globalVariables.socket.off("historialdesolicitudes")
+		globalVariables.socket.on("historialdesolicitudes"){data, ack in
+			let result = data[0] as! [String: Any]
+			print("historialdesolicitudes \(result)")
+			self.delegate?.socketResponse(self, historialdesolicitudes: result)
+		}
+	}
+	
+	func initHistorialDetallesEvents(){
+		globalVariables.socket.off("detallehistorialdesolicitud")
+		globalVariables.socket.on("detallehistorialdesolicitud"){data, ack in
+			let result = data[0] as! [String: Any]
+			print("detallesHistorial \(result)")
+			self.delegate?.socketResponse(self, detallehistorialdesolicitud: result)
+		}
+	}
+	
+	func initPagoEvents() {
+		globalVariables.socket.on("payphoneaddcard"){data, ack in
+			//La tarjeta se agregó exitosamente, puede listar las tarjetas.
+			let result = data[0] as! [String: Any]
+			print("payphoneaddcard \(result)")
+			self.delegate?.socketResponse(self, cardAddedSucceed: true)
+		}
+		
+		globalVariables.socket.on("payphonecardexist"){data, ack in
+			//La tarjeta agregada, ya había sido añadida con anterioridad.
+			let result = data[0] as! [String: Any]
+			print("payphonecardexist \(result)")
+			self.delegate?.socketResponse(self, cardExist: true)
+		}
+		
+		globalVariables.socket.on("payphonefailedpayment"){data, ack in
+			//No se pudo procesar el pago de la tarjeta.
+			let result = data[0] as! [String: Any]
+			print("payphonefailedpayment \(result)")
+			self.delegate?.socketResponse(self, cardAddedSucceed: false)
+		}
+		
+		globalVariables.socket.on("pagarcontarjeta"){data, ack in
+			//code: 1 / 2
+			let result = data[0] as! [String: Any]
+			print("pagarcontarjeta \(result)")
+			self.delegate?.socketResponse(self, pagoConTarjeta: result)
+		}
+		
+		//pagadaenefectivocliente
+		globalVariables.socket.on("pagadaenefectivocliente"){data, ack in
+			//code: 1 / 2
+			let result = data[0] as! [String: Any]
+			print("pagadaenefectivocliente \(result)")
+			self.delegate?.socketResponse(self, pagadaenefectivocliente: result)
+		}
+	}
+}
 
 extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, startEvent result: [String: Any]){}
@@ -335,4 +378,9 @@ extension SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String: Any]){}
   func socketResponse(_ controller: SocketService, actualizaryapa result: [String: Any]){}
 	func socketResponse(_ controller: SocketService, sosAlert result: [String: Any]){}
+	
+	func socketResponse(_ controller: SocketService, cardAddedSucceed result: Bool){}
+	func socketResponse(_ controller: SocketService, cardExist result: Bool){}
+	func socketResponse(_ controller: SocketService, pagoConTarjeta result: [String: Any]){}
+	func socketResponse(_ controller: SocketService, pagadaenefectivocliente result: [String: Any]){}
 }

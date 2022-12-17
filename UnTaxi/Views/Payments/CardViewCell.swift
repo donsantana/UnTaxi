@@ -8,25 +8,30 @@
 
 import UIKit
 
+protocol CarViewCellDelegate: AnyObject {
+	func cardViewCell(_ controller: CardViewCell, eliminarCard cardId: Int)
+}
+
 class CardViewCell: UITableViewCell {
-  var paymentService = ApiService.shared
+  var pagoService = PagoApiService.shared
+	weak var delegate: CarViewCellDelegate?
   var card: Card!
   
   @IBOutlet weak var elementsView: UIView!
-  @IBOutlet weak var carImage: UIImageView!
   @IBOutlet weak var cardNumberText: UILabel!
   @IBOutlet weak var cardHolderText: UILabel!
-  
+	@IBOutlet weak var brandName: UILabel!
+	
   func initContent(card: Card){
+		self.elementsView.addShadow()
     self.card = card
-    self.carImage.image = UIImage(named: card.type) ?? UIImage(named: "card")
-    self.cardNumberText.text = "XXXX XXXX XXXX \(card.cardNumber)"
-    self.cardHolderText.text = card.carHolder
+		self.brandName.text = card.brand
+    self.cardNumberText.text = "XXXX XXXX XXXX \(card.number)"
+    self.cardHolderText.text = card.holder_name
   }
   
   @IBAction func removeCard(_ sender: Any) {
-    print("here removing card")
-    self.paymentService.removeCardsAPIService(cardToken: self.card.token)
+		self.delegate?.cardViewCell(self, eliminarCard: card.idtarjeta)
   }
   
 }

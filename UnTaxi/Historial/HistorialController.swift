@@ -52,7 +52,7 @@ extension HistorialController: SocketServiceDelegate{
         self.tableView.reloadData()
       } else {
         let alertaDos = UIAlertController (title: "Historial de solicitudes", message: "No se encontraron solicitudes en su historial.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.goToInicioView()
         }))
         self.present(alertaDos, animated: true, completion: nil)

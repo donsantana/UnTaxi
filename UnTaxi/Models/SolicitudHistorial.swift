@@ -29,6 +29,8 @@ class SolicitudHistorial {
   var tarjeta = false
   
   var yapa = false
+	
+	var tipoVoucher = ""
   
   var matricula = ""
   var pagado = 0
@@ -44,6 +46,7 @@ class SolicitudHistorial {
   var lngdestino = 0.0
   var lngorigen = 0.0
   var nombreapellidosconductor = ""
+
   
   //Agregar datos de la solicitud
   init(jsonData: [String: Any]){
@@ -52,7 +55,8 @@ class SolicitudHistorial {
     self.dirOrigen = !(jsonData["dirorigen"] is NSNull) ? jsonData["dirorigen"] as! String : ""
     self.dirDestino = !(jsonData["dirdestino"] is NSNull) ? (jsonData["dirdestino"] as! String) : "No especificado"
     self.importe = !(jsonData["importe"] is NSNull) ? jsonData["importe"] as! Double : 0.0
-    self.tarjeta = !(jsonData["tarjeta"] is NSNull) ? jsonData["tarjeta"] as! Bool : false
+    self.tarjeta = jsonData["tarjeta"] as? Bool ?? false
+    self.tipoVoucher = jsonData["tipovoucher"] as? String ?? ""
     self.yapa =  !(jsonData["yapa"] is NSNull) ? jsonData["yapa"] as! Bool : false
     self.matricula = !(jsonData["matricula"] is NSNull) ? jsonData["matricula"] as! String : ""
     self.pagado = !(jsonData["pagado"] is NSNull) ? jsonData["pagado"] as! Int : 0

@@ -16,7 +16,7 @@ extension InicioController{
         //self.crearSolicitud()
       } else {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.view.endEditing(true)
           self.destinoCell.destinoText.becomeFirstResponder()
         }))

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3AAC7CF41AA1C54A3043B2B2 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
@@ -37,10 +36,18 @@
 		B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
 		B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
 		B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
+		C6002C4D28FCA49C004C55EE /* PagoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4C28FCA49C004C55EE /* PagoController.swift */; };
+		C6002C4F28FCA7FA004C55EE /* PagoDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */; };
+		C6002C5128FCA94A004C55EE /* PagoFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */; };
+		C6002C5328FCA9E0004C55EE /* PagoSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5228FCA9E0004C55EE /* PagoSocketExt.swift */; };
 		C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6024F9524A79CA100C91725 /* CallCenterUI.swift */; };
 		C602558324A7F60A00C91725 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
 		C602558624AAEA1300C91725 /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
 		C602558824AAEA4700C91725 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
+		C603C79428F221BE00F4A761 /* pagoApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79328F221BE00F4A761 /* pagoApiService.swift */; };
+		C603C79628F316A600F4A761 /* PagoYapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C603C79528F316A600F4A761 /* PagoYapaViewCell.xib */; };
+		C603C79828F316B700F4A761 /* PagoYapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79728F316B700F4A761 /* PagoYapaCell.swift */; };
+		C603C79A28F3783A00F4A761 /* InicioApiDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */; };
 		C6088500265BFDF90038303A /* contactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60884FF265BFDF90038303A /* contactService.swift */; };
 		C6088502265C01850038303A /* YapaPanelTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088501265C01850038303A /* YapaPanelTableExt.swift */; };
 		C60C16562302736B0090F4E0 /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
@@ -102,6 +109,7 @@
 		C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
 		C670045924674BAA00FF97AB /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
 		C673EC442672A2CC004EFC39 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673EC432672A2CC004EFC39 /* String.swift */; };
+		C67F1FE7290D742E0011FCAB /* AppStoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */; };
 		C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
 		C6807397256E18250093E4DE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
 		C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
@@ -109,7 +117,9 @@
 		C6807454256F73EF0093E4DE /* SideMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807453256F73EE0093E4DE /* SideMenuTable.swift */; };
 		C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074732571CDDA0093E4DE /* EsperaChildVC.swift */; };
 		C68074772571E9410093E4DE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074762571E9410093E4DE /* SocketService.swift */; };
-		C68D05A4259CA2BF00E124AB /* MGLPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */; };
+		C6814A60290DE712009039CB /* MyMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A5F290DE712009039CB /* MyMapAnnotation.swift */; };
+		C6814A62290EAA21009039CB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A61290EAA21009039CB /* MapView.swift */; };
+		C68C2BB6290D5EC800DB59C5 /* appStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C2BB5290D5EC700DB59C5 /* appStoreService.swift */; };
 		C68D05A725A663DB00E124AB /* CompletadaCollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05A625A663DB00E124AB /* CompletadaCollectionExt.swift */; };
 		C68D05B725A66A4300E124AB /* ComentarioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B625A66A4300E124AB /* ComentarioCollectionCell.swift */; };
 		C68D05BA25A7E52600E124AB /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B925A7E52600E124AB /* CustomCalloutView.swift */; };
@@ -134,6 +144,7 @@
 		C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */; };
 		C6A37F192557327000C79BFF /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
 		C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
+		C6AAC68228FE3EB10084FBDF /* CompletadaDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAC68128FE3EB10084FBDF /* CompletadaDelegatesExt.swift */; };
 		C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
 		C6AEE28B28E8626300AB79A2 /* SolDetallesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */; };
 		C6AEE28E28E86C8300AB79A2 /* SOSCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */; };
@@ -165,17 +176,19 @@
 		C6D3198F25916F8500A4BF1C /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
 		C6D3199025916F8500A4BF1C /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */; };
 		C6D67957228BAFFC00C74B6E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */; };
+		C6DEC882292D008400E37F4F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC881292D008400E37F4F /* Alert.swift */; };
 		C6F0BB1923B7049E00266396 /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
 		C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
 		C6F27B08238F2C5400679E07 /* SolicitudHistorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */; };
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
+		FC6EFC4BD2B994F7A01509BD /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5FB63F3DEEFFC4692A111 /* Pods_UnTaxi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		3DE5FB63F3DEEFFC4692A111 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B259306A73E983C653EC975 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,10 +227,18 @@
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C6002C4C28FCA49C004C55EE /* PagoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoController.swift; sourceTree = "<group>"; };
+		C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoDelegatesExt.swift; sourceTree = "<group>"; };
+		C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoFunctionsExt.swift; sourceTree = "<group>"; };
+		C6002C5228FCA9E0004C55EE /* PagoSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoSocketExt.swift; sourceTree = "<group>"; };
 		C6024F9524A79CA100C91725 /* CallCenterUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCenterUI.swift; sourceTree = "<group>"; };
 		C602558224A7F60A00C91725 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C602558524AAEA1300C91725 /* CardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardRow.xib; sourceTree = "<group>"; };
 		C602558724AAEA4700C91725 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		C603C79328F221BE00F4A761 /* pagoApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pagoApiService.swift; sourceTree = "<group>"; };
+		C603C79528F316A600F4A761 /* PagoYapaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagoYapaViewCell.xib; sourceTree = "<group>"; };
+		C603C79728F316B700F4A761 /* PagoYapaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoYapaCell.swift; sourceTree = "<group>"; };
+		C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioApiDelegatesExt.swift; sourceTree = "<group>"; };
 		C60884FF265BFDF90038303A /* contactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactService.swift; sourceTree = "<group>"; };
 		C6088501265C01850038303A /* YapaPanelTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapaPanelTableExt.swift; sourceTree = "<group>"; };
 		C60C16552302736B0090F4E0 /* OurDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurDate.swift; sourceTree = "<group>"; };
@@ -279,6 +300,7 @@
 		C6700456246612FE00FF97AB /* InicioMapExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioMapExt.swift; sourceTree = "<group>"; };
 		C670045824674BAA00FF97AB /* mapSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSevice.swift; sourceTree = "<group>"; };
 		C673EC432672A2CC004EFC39 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreVersion.swift; sourceTree = "<group>"; };
 		C680738C256DEAE50093E4DE /* SolicitudPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudPanel.swift; sourceTree = "<group>"; };
 		C6807396256E18250093E4DE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C68073B7256E21A20093E4DE /* InicioPanelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioPanelExt.swift; sourceTree = "<group>"; };
@@ -286,7 +308,9 @@
 		C6807453256F73EE0093E4DE /* SideMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTable.swift; sourceTree = "<group>"; };
 		C68074732571CDDA0093E4DE /* EsperaChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperaChildVC.swift; sourceTree = "<group>"; };
 		C68074762571E9410093E4DE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
-		C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGLPointAnnotation.swift; sourceTree = "<group>"; };
+		C6814A5F290DE712009039CB /* MyMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapAnnotation.swift; sourceTree = "<group>"; };
+		C6814A61290EAA21009039CB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		C68C2BB5290D5EC700DB59C5 /* appStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appStoreService.swift; sourceTree = "<group>"; };
 		C68D05A625A663DB00E124AB /* CompletadaCollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletadaCollectionExt.swift; sourceTree = "<group>"; };
 		C68D05B625A66A4300E124AB /* ComentarioCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentarioCollectionCell.swift; sourceTree = "<group>"; };
 		C68D05B925A7E52600E124AB /* CustomCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
@@ -312,6 +336,7 @@
 		C6A37F182557326F00C79BFF /* TerminosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminosController.swift; sourceTree = "<group>"; };
 		C6A95B89257F3CF30028F11A /* PanicoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicoController.swift; sourceTree = "<group>"; };
 		C6AA476925916E0300870BF9 /* UnTaxi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnTaxi.entitlements; sourceTree = "<group>"; };
+		C6AAC68128FE3EB10084FBDF /* CompletadaDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletadaDelegatesExt.swift; sourceTree = "<group>"; };
 		C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolDetallesExt.swift; sourceTree = "<group>"; };
 		C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SOSCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -343,12 +368,13 @@
 		C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
 		C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
 		C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C6DEC881292D008400E37F4F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SolPendientesCell.xib; sourceTree = "<group>"; };
 		C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolPendientesViewCell.swift; sourceTree = "<group>"; };
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		CDAC149F8ACDBEE1470078AC /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,7 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AAC7CF41AA1C54A3043B2B2 /* Pods_UnTaxi.framework in Frameworks */,
+				FC6EFC4BD2B994F7A01509BD /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +395,7 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				19BD9517EAA92D1A75835C4D /* Pods_UnTaxi.framework */,
+				3DE5FB63F3DEEFFC4692A111 /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -475,6 +501,7 @@
 		B58F1E5C1E635C5F008F07AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6002C4B28FCA488004C55EE /* Pago */,
 				C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */,
 				C6253C15230B9CBE0010F6A3 /* BaseController.swift */,
 				C6C8E63026BC37330076465D /* Registro */,
@@ -496,6 +523,17 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		C6002C4B28FCA488004C55EE /* Pago */ = {
+			isa = PBXGroup;
+			children = (
+				C6002C4C28FCA49C004C55EE /* PagoController.swift */,
+				C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */,
+				C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */,
+				C6002C5228FCA9E0004C55EE /* PagoSocketExt.swift */,
+			);
+			path = Pago;
+			sourceTree = "<group>";
+		};
 		C602558424AAE9F300C91725 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +541,14 @@
 				C602558724AAEA4700C91725 /* CardViewCell.swift */,
 			);
 			path = Payments;
+			sourceTree = "<group>";
+		};
+		C603C79228F2219D00F4A761 /* Pago */ = {
+			isa = PBXGroup;
+			children = (
+				C603C79328F221BE00F4A761 /* pagoApiService.swift */,
+			);
+			path = Pago;
 			sourceTree = "<group>";
 		};
 		C60884FE265BFDA00038303A /* contacts */ = {
@@ -537,6 +583,7 @@
 			children = (
 				AFD655D51F9D391000C8A5BD /* CompletadaController.swift */,
 				C68D05A625A663DB00E124AB /* CompletadaCollectionExt.swift */,
+				C6AAC68128FE3EB10084FBDF /* CompletadaDelegatesExt.swift */,
 			);
 			path = Completada;
 			sourceTree = "<group>";
@@ -577,12 +624,14 @@
 		C63A6B1D245F63BC007B0EE5 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C603C79228F2219D00F4A761 /* Pago */,
 				C66984152679513B00C0C353 /* weather */,
 				C66984122677EF6E00C0C353 /* publicidad */,
 				C60884FE265BFDA00038303A /* contacts */,
 				C63A6B1E245F63BC007B0EE5 /* apiService.swift */,
 				C670045824674BAA00FF97AB /* mapSevice.swift */,
 				C68074762571E9410093E4DE /* SocketService.swift */,
+				C68C2BB5290D5EC700DB59C5 /* appStoreService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -593,6 +642,7 @@
 				C6977E70257753AC0071625E /* Design */,
 				C6A37F092554AB2100C79BFF /* Enums */,
 				C63A6B21245F68C9007B0EE5 /* Responsive.swift */,
+				C6DEC881292D008400E37F4F /* Alert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -612,6 +662,8 @@
 				C62E594024BB669F00FFB26B /* PactadaCell.swift */,
 				C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */,
 				C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */,
+				C603C79528F316A600F4A761 /* PagoYapaViewCell.xib */,
+				C603C79728F316B700F4A761 /* PagoYapaCell.swift */,
 			);
 			path = "Solicitud Form";
 			sourceTree = "<group>";
@@ -641,6 +693,8 @@
 				C68D05B925A7E52600E124AB /* CustomCalloutView.swift */,
 				C66984182679526E00C0C353 /* Weather.swift */,
 				C622C7A926E6DFF200A2FDF1 /* Address.swift */,
+				C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */,
+				C6814A5F290DE712009039CB /* MyMapAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -714,10 +768,10 @@
 				C6807396256E18250093E4DE /* UIViewController.swift */,
 				C63272872588714C000A3931 /* Double.swift */,
 				C63445A425979EE900ABEC47 /* CGFloat.swift */,
-				C68D05A3259CA2BE00E124AB /* MGLPointAnnotation.swift */,
 				C630E6C426715B7100700F8D /* Character.swift */,
 				C673EC432672A2CC004EFC39 /* String.swift */,
 				C645789326D4AD1100F11C56 /* UIImageView.swift */,
+				C6814A61290EAA21009039CB /* MapView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -810,6 +864,7 @@
 				C68074732571CDDA0093E4DE /* EsperaChildVC.swift */,
 				C665F21425D2DECB00044480 /* InicioSearchExt.swift */,
 				C645789126D2863D00F11C56 /* InicioValidationExt.swift */,
+				C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */,
 			);
 			path = Inicio;
 			sourceTree = "<group>";
@@ -883,8 +938,8 @@
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */,
-				468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */,
+				CDAC149F8ACDBEE1470078AC /* Pods-UnTaxi.debug.xcconfig */,
+				7B259306A73E983C653EC975 /* Pods-UnTaxi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -896,13 +951,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				C60AA80E4686FD123A10BB24 /* [CP] Check Pods Manifest.lock */,
+				4621864F4F322E55142ED340 /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				95858079715F6123A87B3EDC /* [CP] Embed Pods Frameworks */,
-				FA2286B8157206768C83533D /* [CP] Copy Pods Resources */,
+				E738519208775A71CDC8E713 /* [CP] Embed Pods Frameworks */,
+				8602901FD0B22379F7ECD4A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -982,6 +1037,7 @@
 				C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
+				C603C79628F316A600F4A761 /* PagoYapaViewCell.xib in Resources */,
 				C6D3198825916F8500A4BF1C /* Muli-Semi-BoldItalic.ttf in Resources */,
 				C65F9F34229E3BA900E3E304 /* ContactoCell.xib in Resources */,
 				C6D3198A25916F8500A4BF1C /* Muli-SemiBold.ttf in Resources */,
@@ -1018,79 +1074,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		95858079715F6123A87B3EDC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C60AA80E4686FD123A10BB24 /* [CP] Check Pods Manifest.lock */ = {
+		4621864F4F322E55142ED340 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1110,6 +1094,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8602901FD0B22379F7ECD4A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
@@ -1132,24 +1136,78 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		FA2286B8157206768C83533D /* [CP] Copy Pods Resources */ = {
+		E738519208775A71CDC8E713 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1165,6 +1223,7 @@
 				AFD656461F9D42E100C8A5BD /* AppDelegate.swift in Sources */,
 				C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */,
 				C66FC9CD25852E5C0023425D /* Tarifario.swift in Sources */,
+				C68C2BB6290D5EC800DB59C5 /* appStoreService.swift in Sources */,
 				C62A20F225321022007BCE37 /* UISegmentedContol.swift in Sources */,
 				C65F9F36229E3C4F00E3E304 /* ContactoViewCell.swift in Sources */,
 				C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */,
@@ -1179,6 +1238,7 @@
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
 				C645789226D2863D00F11C56 /* InicioValidationExt.swift in Sources */,
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
+				C6AAC68228FE3EB10084FBDF /* CompletadaDelegatesExt.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
 				C6088502265C01850038303A /* YapaPanelTableExt.swift in Sources */,
 				C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */,
@@ -1193,8 +1253,8 @@
 				C630E6C526715B7100700F8D /* Character.swift in Sources */,
 				C6977E7925775E040071625E /* YapaController.swift in Sources */,
 				C6C3A507245F335A0084F409 /* PerfilController.swift in Sources */,
-				C68D05A4259CA2BF00E124AB /* MGLPointAnnotation.swift in Sources */,
 				C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */,
+				C603C79828F316B700F4A761 /* PagoYapaCell.swift in Sources */,
 				C63A6B32245F7AF1007B0EE5 /* InicioSocketExt.swift in Sources */,
 				C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */,
 				C6C3A506245F335A0084F409 /* PerfilControllerExt.swift in Sources */,
@@ -1206,6 +1266,7 @@
 				C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
 				C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */,
+				C6002C4D28FCA49C004C55EE /* PagoController.swift in Sources */,
 				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
 				C68D05A725A663DB00E124AB /* CompletadaCollectionExt.swift in Sources */,
 				AFD655D71F9D391000C8A5BD /* SolicitudesTableController.swift in Sources */,
@@ -1223,6 +1284,7 @@
 				C6C8E63226BC37580076465D /* RegistroController.swift in Sources */,
 				AFD656481F9D42E100C8A5BD /* Taxi.swift in Sources */,
 				C68DA2A0227E3A240029CD0B /* GlobalConstants.swift in Sources */,
+				C603C79428F221BE00F4A761 /* pagoApiService.swift in Sources */,
 				AFD656431F9D42E100C8A5BD /* Cliente.swift in Sources */,
 				C63A6B3624610386007B0EE5 /* InicioFunctionsExt.swift in Sources */,
 				C6807397256E18250093E4DE /* UIViewController.swift in Sources */,
@@ -1230,6 +1292,7 @@
 				C6122894247034A70041BB2D /* DestinoCell.swift in Sources */,
 				C64DA71428518EDE00A7C566 /* StringConstants.swift in Sources */,
 				C6C8E63426BC439C0076465D /* RegistroFunctionsExt.swift in Sources */,
+				C6002C4F28FCA7FA004C55EE /* PagoDelegatesExt.swift in Sources */,
 				C6CACFB422D2BE7300702430 /* OfertaViewCell.swift in Sources */,
 				C63A6B2A245F7AB0007B0EE5 /* InicioController.swift in Sources */,
 				C6024F9624A79CA100C91725 /* CallCenterUI.swift in Sources */,
@@ -1237,13 +1300,16 @@
 				C6AD7B6B23A53B9F009A48E1 /* UITextView.swift in Sources */,
 				C69FB5602579F8CE00B311C4 /* OrigenViewCell.swift in Sources */,
 				C602558324A7F60A00C91725 /* Card.swift in Sources */,
+				C67F1FE7290D742E0011FCAB /* AppStoreVersion.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
 				C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */,
 				C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */,
+				C603C79A28F3783A00F4A761 /* InicioApiDelegatesExt.swift in Sources */,
 				C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */,
 				C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */,
 				C60C16562302736B0090F4E0 /* OurDate.swift in Sources */,
 				C68074772571E9410093E4DE /* SocketService.swift in Sources */,
+				C6002C5328FCA9E0004C55EE /* PagoSocketExt.swift in Sources */,
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
 				C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
@@ -1252,6 +1318,7 @@
 				C665F21525D2DECB00044480 /* InicioSearchExt.swift in Sources */,
 				C6A37F0B2554AB4C00C79BFF /* SolicitudStatus.swift in Sources */,
 				C63445A525979EE900ABEC47 /* CGFloat.swift in Sources */,
+				C6002C5128FCA94A004C55EE /* PagoFunctionsExt.swift in Sources */,
 				C6A37F15255504D600C79BFF /* HistorialDetailsController.swift in Sources */,
 				AFD655DA1F9D391000C8A5BD /* CompletadaController.swift in Sources */,
 				C66F2517265AACC3004716AF /* YapaTableExt.swift in Sources */,
@@ -1262,6 +1329,7 @@
 				C6B4C5A22589E50E0054C1A7 /* SolDetallesMapExt.swift in Sources */,
 				C619BE5D253FF9A400611B4D /* HistorialController.swift in Sources */,
 				B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */,
+				C6DEC882292D008400E37F4F /* Alert.swift in Sources */,
 				C66FC9CA2585242D0023425D /* Tarifa.swift in Sources */,
 				C6700457246612FE00FF97AB /* InicioMapExt.swift in Sources */,
 				AFD655D61F9D391000C8A5BD /* CallCenterController.swift in Sources */,
@@ -1276,8 +1344,10 @@
 				C6253C18230E35940010F6A3 /* SolDetallesSocketExt.swift in Sources */,
 				C68DA298227E12D40029CD0B /* MKMapView.swift in Sources */,
 				C6C8E63626BC4AA10076465D /* RegistroDelegatesExt.swift in Sources */,
+				C6814A62290EAA21009039CB /* MapView.swift in Sources */,
 				C6AEE28B28E8626300AB79A2 /* SolDetallesExt.swift in Sources */,
 				AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */,
+				C6814A60290DE712009039CB /* MyMapAnnotation.swift in Sources */,
 				C619BE6525414BC900611B4D /* PassController.swift in Sources */,
 				C66984172679515900C0C353 /* WeatherService.swift in Sources */,
 				C6A95B8A257F3CF30028F11A /* PanicoController.swift in Sources */,
@@ -1419,7 +1489,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F78426829458B1FAE3FC239B /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = CDAC149F8ACDBEE1470078AC /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1428,7 +1498,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1439,11 +1509,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.2.0;
+				MARKETING_VERSION = 3.3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -1457,7 +1527,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 468606ADB26AB52BCDC8905A /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = 7B259306A73E983C653EC975 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1465,7 +1535,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -1476,11 +1546,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.2.0;
+				MARKETING_VERSION = 3.3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;

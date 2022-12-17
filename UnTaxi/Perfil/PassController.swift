@@ -77,7 +77,7 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
       self.sendUpdatePassword()
     } else {
       let alertaDos = UIAlertController (title: "Error", message: self.NuevaClaveText.text == self.ConfirmeClaveText.text ? "No se pueden enviar campos vacios" : "La confimación de la clave no coincide", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 
       }))
       self.present(alertaDos, animated: true, completion: nil)
@@ -131,7 +131,7 @@ extension PassController: ApiServiceDelegate{
     DispatchQueue.main.async {
       self.waitingView.isHidden = true
       let alertaDos = UIAlertController (title: success ? "Cambio de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.dismiss(animated: false, completion: nil)
       }))
       self.present(alertaDos, animated: true, completion: nil)

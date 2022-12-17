@@ -77,7 +77,7 @@ extension OfertasController: SocketServiceDelegate{
       }
     } else {
       let alertaDos = UIAlertController (title: "Estado de Oferta", message: (result["msg"] as! String), preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.goToInicioView()
       }))
       self.present(alertaDos, animated: true, completion: nil)
@@ -90,7 +90,7 @@ extension OfertasController: SocketServiceDelegate{
     let message = (result["code"] as! Int) == 1 ? "Su solicitud fue cancelada con éxito." : result["msg"] as! String
 
     let alertaDos = UIAlertController (title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       if (result["code"] as! Int) == 1{
         print("Cancelada")
         globalVariables.ofertasList.removeAll()

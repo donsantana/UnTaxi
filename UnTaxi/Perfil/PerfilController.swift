@@ -87,7 +87,7 @@ class PerfilController: BaseController {
   func EnviarActualizacion() {
     if !isPhotoUpdated && !self.isProfileUpdated(){
       let alertaDos = UIAlertController (title: "Mensaje Error", message: "No se han modificado los datos del perfil. Por favor introduzca los valores que desea actualizar.", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         
       }))
       self.present(alertaDos, animated: true, completion: nil)

@@ -11,56 +11,60 @@ import SocketIO
 import AVFoundation
 import GoogleMobileAds
 import SideMenu
-import Mapbox
-import MapboxDirections
+import MapboxMaps
+//import MapboxDirections
 
 extension SolPendController{
   //MASK:- FUNCIONES PROPIAS
   
   func initMapView(){
-    mapView.setCenter(self.origenAnnotation.coordinate, zoomLevel: 15, animated: false)
-    mapView.styleURL = MGLStyle.lightStyleURL
+		let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
+		let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
+		mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
+		mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		mapViewParent.addSubview(mapView)
+		pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
   }
   
-  func drawRoute(from: MGLPointAnnotation, to: MGLPointAnnotation){
-    let wp1 = Waypoint(coordinate: from.coordinate, name: from.title)
-    let wp2 = Waypoint(coordinate: to.coordinate, name: to.title)
-    let options = RouteOptions(waypoints: [wp1, wp2])
-    options.includesSteps = true
-    options.routeShapeResolution = .full
-    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
-    
-    Directions.shared.calculate(options) { (session, result) in
-      switch result {
-      case let .failure(error):
-        print("Error calculating directions: \(error)")
-      case let .success(response):
-        if let route = response.routes?.first, let leg = route.legs.first {
-
-          let travelTimeFormatter = DateComponentsFormatter()
-          travelTimeFormatter.unitsStyle = .short
-          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
-          self.distanciaText.text = "SU TAXI ESTÁ A: \(formattedTravelTime ?? "")"
-          
-//          for step in leg.steps {
-//            let direction = step.maneuverDirection?.rawValue ?? "none"
-//            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
+//  func drawRoute(from: MGLPointAnnotation, to: MGLPointAnnotation){
+//    let wp1 = Waypoint(coordinate: from.coordinate, name: from.title)
+//    let wp2 = Waypoint(coordinate: to.coordinate, name: to.title)
+//    let options = RouteOptions(waypoints: [wp1, wp2])
+//    options.includesSteps = true
+//    options.routeShapeResolution = .full
+//    options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
+//
+//    Directions.shared.calculate(options) { (session, result) in
+//      switch result {
+//      case let .failure(error):
+//        print("Error calculating directions: \(error)")
+//      case let .success(response):
+//        if let route = response.routes?.first, let leg = route.legs.first {
+//
+//          let travelTimeFormatter = DateComponentsFormatter()
+//          travelTimeFormatter.unitsStyle = .short
+//          let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
+//          self.distanciaText.text = "SU TAXI ESTÁ A: \(formattedTravelTime ?? "")"
+//
+////          for step in leg.steps {
+////            let direction = step.maneuverDirection?.rawValue ?? "none"
+////            print("\(step.instructions) [\(step.maneuverType) \(direction)]")
+////          }
+//
+//          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
+//            // Convert the route’s coordinates into a polyline.
+//            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+//
+//            // Add the polyline to the map.
+//            print("route \(route.distance)")
+//            if route.distance > 500{
+//              self.mapView.addAnnotation(routeLine)
+//            }
 //          }
-          
-          if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
-            // Convert the route’s coordinates into a polyline.
-            let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
-
-            // Add the polyline to the map.
-            print("route \(route.distance)")
-            if route.distance > 500{
-              self.mapView.addAnnotation(routeLine)
-            }
-          }
-        }
-      }
-    }
-  }
+//        }
+//      }
+//    }
+//  }
   
   @objc func longTap(_ sender : UILongPressGestureRecognizer){
     //PEDIR PERMISO PARA EL MICROPHONO
@@ -70,7 +74,7 @@ extension SolPendController{
       self.recordAndSendVoice(sender: sender)
     case AVAudioSession.RecordPermission.denied:
       let locationAlert = UIAlertController (title: "Error de Micrófono", message: "Estimado cliente es necesario que active el micrófono de su dispositivo.", preferredStyle: .alert)
-      locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         if #available(iOS 10.0, *) {
           let settingsURL = URL(string: UIApplication.openSettingsURLString)!
           UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
@@ -130,7 +134,7 @@ extension SolPendController{
         globalVariables.socket.emit("data",datos)
       } else {
         let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           exit(0)
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -142,20 +146,20 @@ extension SolPendController{
   
   func ErrorConexion(){
     let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       exit(0)
     }))
     
     self.present(alertaDos, animated: true, completion: nil)
   }
   
-  func MostrarDetalleSolicitud(){
+  func MostrarDetalleSolicitud() {
+		initMapView()
     var annotationsToShow = [self.origenAnnotation]
-    if self.solicitudPendiente.taxi.id != 0{
-      self.taxiAnnotation.coordinate = self.solicitudPendiente.taxi.location
-      self.taxiAnnotation.subtitle = "taxi_libre"
+    if self.solicitudPendiente.taxi.id != 0 {
+      self.taxiAnnotation.coordinates = self.solicitudPendiente.taxi.location
+      self.taxiAnnotation.type = "taxi_libre"
       annotationsToShow.append(taxiAnnotation)
-      //self.MapaSolPen.addAnnotations([self.origenAnnotation, self.taxiAnnotation])
       
       let temporal = self.solicitudPendiente.DistanciaTaxi()
       self.direccionOrigen.text = solicitudPendiente.dirOrigen
@@ -183,17 +187,14 @@ extension SolPendController{
       
       self.detallesView.isHidden = false
       self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControl.State())
-      
-    } else {
-      //self.MapaSolPen.addAnnotations(self.origenAnnotation)
     }
   
-    if self.destinoAnnotation.coordinate.latitude != 0.0{
+    if self.destinoAnnotation.coordinates.latitude != 0.0{
       annotationsToShow.append(self.destinoAnnotation)
     }
-    
-    self.showAnnotation(annotationsToShow)
-    self.drawRoute(from: self.origenAnnotation, to: self.taxiAnnotation)
+
+    self.showAnnotations(annotationsToShow)
+    //self.drawRoute(from: self.origenAnnotation, to: self.taxiAnnotation)
     self.waitingView.isHidden = true
     //self.mapView.addAnnotations(annotationsToShow)
     //self.MapaSolPen.fitAll(in: annotationsToShow, andShow: true)
@@ -300,7 +301,7 @@ extension SolPendController{
     let titleString = NSAttributedString(string: "Aviso Importante", attributes: titleAttributes)
     alertaDos.setValue(titleString, forKey: "attributedTitle")
     
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { [self]alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { [self]alerAction in
       self.MostrarMotivoCancelacion()
     }))
     

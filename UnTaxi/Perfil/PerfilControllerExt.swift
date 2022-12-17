@@ -35,7 +35,7 @@ extension PerfilController: UITextFieldDelegate{
       print("valid \(valid)")
       if !valid && !textField.text!.isEmpty{
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.emailText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -87,7 +87,7 @@ extension PerfilController: ApiServiceDelegate{
 			self.waitingView.isHidden = true
 			globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
 			let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-			alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+			alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 				self.goToInicioView()
 			}))
 			
@@ -98,7 +98,7 @@ extension PerfilController: ApiServiceDelegate{
 	
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
     let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       DispatchQueue.main.async {
         self.goToInicioView()
       }
@@ -110,7 +110,7 @@ extension PerfilController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.waitingView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)

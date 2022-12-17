@@ -22,32 +22,6 @@ extension LoginController: UITextFieldDelegate{
       distanceValue = 80
     }
     animateViewMoving(true, moveValue: CGFloat(distanceValue), view: self.view)
-//    textField.textColor = UIColor.black
-//    textField.text?.removeAll()
-//    if textField.isEqual(clave){
-//      animateViewMoving(true, moveValue: 80, view: self.view)
-//    }
-//    else{
-//      if textField.isEqual(movilClaveRecover){
-//        textField.text?.removeAll()
-//        animateViewMoving(true, moveValue: 105, view: self.view)
-//      }
-//      else{
-//        if textField.isEqual(confirmarClavText) || textField.isEqual(correoText) || textField.isEqual(RecomendadoText){
-//          if textField.isEqual(confirmarClavText){
-//            textField.isSecureTextEntry = true
-//          }
-//          textField.tintColor = UIColor.black
-//          animateViewMoving(true, moveValue: 200, view: self.view)
-//        } else {
-//          if textField.isEqual(self.telefonoText){
-//            textField.textColor = UIColor.black
-//            //textField.text = ""
-//            animateViewMoving(true, moveValue: 70, view: self.view)
-//          }
-//        }
-//      }
-//    }
   }
   
   func textFieldDidEndEditing(_ textfield: UITextField) {
@@ -55,44 +29,40 @@ extension LoginController: UITextFieldDelegate{
     switch textfield {
     case movilClaveRecover:
       let (valid, message) = textfield.validate(.movilNumber)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          //self.movilClaveRecover.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
       } else {
         RecuperarClaveBtn.isEnabled = true
       }
       distanceValue = 105
     case codigoText:
       let (valid, message) = textfield.validate(.codigoVerificacion)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.codigoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					self.codigoText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 80
     case newPasswordText:
       let (valid, message) = textfield.validate(.password)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.newPasswordText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					self.newPasswordText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
       }
       distanceValue = 80
     case newPassConfirmText:
       let (valid, message) = textfield.validate(.password)
-      if !valid{
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-          self.newPasswordText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
+      if !valid {
+				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+					self.newPasswordText.becomeFirstResponder()
+				})
+				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
       } else {
         self.crearNewPasswordBtn.isEnabled = true
       }
@@ -102,20 +72,6 @@ extension LoginController: UITextFieldDelegate{
     }
     
     animateViewMoving(false, moveValue: CGFloat(distanceValue), view: self.view)
-    
-//    textfield.text = textfield.text!.replacingOccurrences(of: ",", with: ".")
-//    if textfield.isEqual(clave){
-//      animateViewMoving(false, moveValue: 80, view: self.view)
-//    } else {
-//      if textfield.isEqual(movilClaveRecover){
-//        if movilClaveRecover.text?.count != 10{
-//          textfield.text = "Número de Teléfono Incorrecto"
-//        } else {
-//          self.RecuperarClaveBtn.isEnabled = true
-//        }
-//        animateViewMoving(false, moveValue: 105, view: self.view)
-//      }
-//    }
   }
   
   @objc func textFieldDidChange(_ textField: UITextField) {
@@ -139,9 +95,9 @@ extension LoginController: UITextFieldDelegate{
       self.Login(user: self.usuario.text!, password: self.clave.text!)
     case movilClaveRecover:
       let (valid, message) = textField.validate(.movilNumber)
-      if !valid{
+      if !valid {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.movilClaveRecover.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -150,9 +106,9 @@ extension LoginController: UITextFieldDelegate{
       }
     case codigoText:
       let (valid, message) = textField.validate(.codigoVerificacion)
-      if !valid{
+      if !valid {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.codigoText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -161,9 +117,9 @@ extension LoginController: UITextFieldDelegate{
       }
     case newPasswordText:
       let (valid, message) = textField.validate(.password)
-      if !valid{
+      if !valid {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.newPasswordText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -172,9 +128,9 @@ extension LoginController: UITextFieldDelegate{
       }
     case newPassConfirmText:
       let (valid, message) = textField.validate(.password)
-      if !valid{
+      if !valid {
         let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           self.newPassConfirmText.becomeFirstResponder()
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -204,7 +160,7 @@ extension LoginController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: success ? "Recuperación de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.waitingView.isHidden = true
         if success{
           self.NewPasswordView.isHidden = false
@@ -218,7 +174,7 @@ extension LoginController: ApiServiceDelegate{
     DispatchQueue.main.async {
       self.waitingView.isHidden = true
       let alertaDos = UIAlertController (title: success ? "Nueva clave creada" : "Error", message: msg, preferredStyle: .alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         if success{
           self.codigoText.text?.removeAll()
           self.newPasswordText.text?.removeAll()
@@ -235,7 +191,7 @@ extension LoginController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getLoginError msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: "Error de Autenticación", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.waitingView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)
@@ -245,7 +201,7 @@ extension LoginController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
     DispatchQueue.main.async {
       let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.waitingView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)

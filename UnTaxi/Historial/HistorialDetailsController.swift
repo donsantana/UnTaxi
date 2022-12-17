@@ -17,6 +17,25 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   var socketService = SocketService.shared
   var regionRadius: CLLocationDistance = 1000
   var idConductor = 0
+	var tipoPagoImageName: String {
+		if solicitud.tarjeta {
+			return "tarjetaIcon"
+		} else if solicitud.tipoVoucher != "" {
+			return "voucherIcon"
+		} else {
+			return "ofertaIcon"
+		}
+	}
+	
+	var tipoPagoName: String {
+		if solicitud.tarjeta {
+			return "Tarjeta"
+		} else if solicitud.tipoVoucher != "" {
+			return "Voucher"
+		} else {
+			return "Efectivo"
+		}
+	}
   
   let inicioVC = InicioController()
 
@@ -38,7 +57,8 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   @IBOutlet weak var importeText: UILabel!
   @IBOutlet weak var statusText: UILabel!
   @IBOutlet weak var evaluarBtn: UIButton!
-  
+	@IBOutlet weak var tipoPagoImg: UIImageView!
+	
   override func viewDidLoad() {
     super.viewDidLoad()
     self.viewTopConstraint.constant = super.getTopMenuBottom()
@@ -54,14 +74,16 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     self.fechaText.text = solicitud.fechaHora.dateTimeToShow()
     self.origenText.text = solicitud.dirOrigen
     self.destinoText.text = solicitud.dirDestino
-    self.importeText.text = "$\(solicitud.importe)"
+    self.importeText.text = "$\(solicitud.importe), \(tipoPagoName)"
     self.statusText.text = solicitud.solicitudStado().uppercased()
     self.matriculaAut.text = solicitud.matricula
     waitingView.addStandardConfig()
     origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     starImag.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
     evaluarBtn.addCustomActionBtnsColors()
-    self.loadHistorialSolicitudes()
+		
+		tipoPagoImg.image = UIImage(named: tipoPagoImageName)
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -71,7 +93,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     var anotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView")
     anotationView = MKAnnotationView(annotation: self.origenSolicitud, reuseIdentifier: "annotationView")
-    if annotation.title! == "origen"{
+    if annotation.subtitle! == "origen"{
       anotationView?.image = UIImage(named: "origen")
     } else {
       anotationView?.image = UIImage(named: "destino")
@@ -87,6 +109,15 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
     
     return renderer
   }
+	
+//	func setUpTipoPagoImag() {
+//		switch solicitud. {
+//		case <#pattern#>:
+//			<#code#>
+//		default:
+//			<#code#>
+//		}
+//	}
   
   func updateMap(){
     if self.solicitud.lngdestino != 0.0{
@@ -111,7 +142,7 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
   }
   
   @IBAction func evaluarConductor(_ sender: Any) {
-    let tempSolicitud = Solicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, importe: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa)
+		let tempSolicitud = Solicitud(id: self.solicitud.id, fechaHora: "", dirOrigen: self.solicitud.dirOrigen, referenciaOrigen: "", dirDestino: self.solicitud.dirDestino, latOrigen: self.solicitud.latorigen, lngOrigen: self.solicitud.lngorigen, latDestino: self.solicitud.latdestino, lngDestino: self.solicitud.lngdestino, importe: self.solicitud.importe, detalleOferta: "", fechaReserva: "", useVoucher: "", tipoServicio: 0, yapa: self.solicitud.yapa, tarjeta: solicitud.tarjeta)
     
     let vc = R.storyboard.main.completadaView()!
     vc.solicitud = tempSolicitud
@@ -148,8 +179,8 @@ extension HistorialDetailsController: SocketServiceDelegate{
         self.idConductor = datos["idconductor"] as! Int
         self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
         evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
-        
-        if datos["foto"] as! String != ""{
+				let fotoURL = !(datos["foto"] is NSNull) ? datos["foto"] as! String : ""
+        if fotoURL != "" {
           let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
           
           let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -163,7 +194,7 @@ extension HistorialDetailsController: SocketServiceDelegate{
           self.ImagenCond.image = UIImage(named: "chofer")
         }
         
-        self.NombreCond.text = datos["nombreapellidosconductor"] as? String
+				self.NombreCond.text = solicitud.nombreapellidosconductor//datos["nombreapellidosconductor"] as? String
       }
       self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
       self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)

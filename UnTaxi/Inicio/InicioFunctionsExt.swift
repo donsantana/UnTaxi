@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-import Mapbox
+import MapboxMaps
 import MapboxDirections
 import MapboxGeocoder
 import FloatingPanel
@@ -17,55 +17,21 @@ import FloatingPanel
 extension InicioController{
 	//MARK:- FUNCIONES PROPIAS
 	
-	func checkForNewVersions(){
-		if self.appUpdateAvailable(){
-			
-			let alertaVersion = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. ¿Desea hacerlo en este momento?", preferredStyle: .alert)
-			alertaVersion.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
+	func checkForNewVersions() {
+		DispatchQueue.main.async {
+			if globalVariables.newVersionAvailable {
 				
-				UIApplication.shared.open(URL(string: GlobalConstants.itunesURL)!)
-			}))
-			alertaVersion.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
-				exit(0)
-			}))
-			self.present(alertaVersion, animated: true, completion: nil)
-		}
-	}
-	
-	func appUpdateAvailable() -> Bool
-	{
-	let storeInfoURL: String = GlobalConstants.storeInfoURL
-	var upgradeAvailable = false
-	
-	// Get the main bundle of the app so that we can determine the app's version number
-	let bundle = Bundle.main
-	if let infoDictionary = bundle.infoDictionary {
-		// The URL for this app on the iTunes store uses the Apple ID for the  This never changes, so it is a constant
-		let urlOnAppStore = URL(string: storeInfoURL)
-		if let dataInJSON = try? Data(contentsOf: urlOnAppStore!) {
-			// Try to deserialize the JSON that we got
-			if let lookupResults = try? JSONSerialization.jsonObject(with: dataInJSON, options: JSONSerialization.ReadingOptions()) as! Dictionary<String, Any>{
-				// Determine how many results we got. There should be exactly one, but will be zero if the URL was wrong
-				if let resultCount = lookupResults["resultCount"] as? Int {
-					if resultCount == 1 {
-						// Get the version number of the version in the App Store
-						//self.selectedRoute = (dictionary["routes"] as! Array<Dictionary<String, AnyObject>>)[0]
-						if let appStoreVersion = (lookupResults["results"]as! Array<Dictionary<String, AnyObject>>)[0]["version"] as? String {
-							// Get the version number of the current version
-							if let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String {
-								// Check if they are the same. If not, an upgrade is available.
-								if appStoreVersion > currentVersion {
-									upgradeAvailable = true
-								}
-							}
-						}
-					}
-				}
+				let alertaVersion = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. ¿Desea hacerlo en este momento?", preferredStyle: .alert)
+				alertaVersion.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
+					
+					UIApplication.shared.open(URL(string: GlobalConstants.itunesURL)!)
+				}))
+				alertaVersion.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+					exit(0)
+				}))
+				self.present(alertaVersion, animated: true, completion: nil)
 			}
 		}
-	}
-	///Volumes/Datos/Ecuador/Desarrollo/UnTaxi/UnTaxi/LocationManager.swift:635:31: Ambiguous use of 'indexOfObject'
-	return upgradeAvailable
 	}
 	
 	//  func coordinatesToAddress(annotation: MGLPointAnnotation){
@@ -78,7 +44,7 @@ extension InicioController{
 	//            return
 	//        }
 	//      print("mapbox \(placemark.name)")
-	//      annotation.title = placemark.name
+	//      annotation.address = placemark.name
 	//      self.mapView.selectAnnotation(annotation, animated: true, completionHandler: nil)
 	////        print(placemark.imageName ?? "")
 	////            // telephone
@@ -121,65 +87,43 @@ extension InicioController{
 			contador += 1
 		}
 		else{
-			let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-			alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+			let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 				exit(0)
-			}))
-			self.present(alertaDos, animated: true, completion: nil)
+			})
+			Alert.showBasic(title: GlobalStrings.sinConexionTitle, message: GlobalStrings.sinConexionMessage, vc: self, withActions: [okAction])
 		}
 	}
 	
 	func loadFormularioData(){
-		
-		//initMapView()
+
 		formularioDataCellList.removeAll()
-		origenCell.origenText.text = origenAnnotation.title
+		origenCell.origenText.text = origenAnnotation.address
 		formularioDataCellList.append(self.origenCell)
-		
+		pagoCell.initContent(tipoServicio: tipoServicio)
+
 		destinoCell.initContent(destinoAnnotation: destinoAnnotation)
-		//removeDestinoFromMap()
-		
-		//		self.formularioDataCellList.append(self.destinoCell)
-		//		self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)
-		//
-		//		switch self.tabBar.selectedItem {
-		//		case ofertaItem:
-		//			self.ofertaDataCell.initContent()
-		//			self.formularioDataCellList.append(self.ofertaDataCell)
-		//			self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 53).relativeToIphone8Height(shouldUseLimit: false)
-		//		case pactadaItem:
-		//			self.origenCell.origenText.text?.removeAll()
-		//			self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 45).relativeToIphone8Height(shouldUseLimit: false)
-		//		default:
-		//			break
-		//		}
-		if globalVariables.cliente.idEmpresa != 0 {
-			if self.isVoucherSelected{
-				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)
-			}
-		}
-		
+		removeDestinoFromMap()
+	
 		if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem {
 			self.formularioDataCellList.append(self.destinoCell)
 			if self.tabBar.selectedItem == self.ofertaItem {
 				ofertaDataCell.initContent()
 				self.formularioDataCellList.append(self.ofertaDataCell)
-				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 52).relativeToIphone8Height(shouldUseLimit: false)
+				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 57).relativeToIphone8Height(shouldUseLimit: false)
 			} else {
 				pactadaCell.precioText.text = "$\(String(format: "%.0f", 0.0))"
 				origenCell.origenText.text?.removeAll()
-				destinoAnnotation.title = ""
+				destinoAnnotation.address = ""
 				destinoCell.destinoText.text?.removeAll()
 				ofertaDataCell.resetValorOferta()
-				removeDestinoFromMap()
-				formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 43).relativeToIphone8Height(shouldUseLimit: false)
+				formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 48).relativeToIphone8Height(shouldUseLimit: false)
 			}
 		} else {
-			self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 42).relativeToIphone8Height(shouldUseLimit: false)
+			self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)
 			if globalVariables.cliente.idEmpresa != 0 {
 				if self.isVoucherSelected {
 					self.formularioDataCellList.append(self.destinoCell)
-					self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 48).relativeToIphone8Height(shouldUseLimit: false)
+					self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 53).relativeToIphone8Height(shouldUseLimit: false)
 				}
 			}
 		}
@@ -187,8 +131,13 @@ extension InicioController{
 		if self.tabBar.selectedItem == self.pactadaItem {
 			self.formularioDataCellList.append(self.pactadaCell)
 		} else {
-			self.formularioDataCellList.append(self.pagoCell)
 			self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
+			self.formularioDataCellList.append(self.pagoCell)
+			if pagoCell.formaPagoSelected == "Efectivo" {
+				formularioDataCellList.append(pagoYapaCell)
+			} else {
+				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 43).relativeToIphone8Height(shouldUseLimit: false)
+			}
 		}
 		
 		self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.black)
@@ -220,7 +169,7 @@ extension InicioController{
 		let baseTitle = UILabel.init(frame: CGRect(x: 40, y: 0, width: self.SolicitudView.bounds.width - 40, height: 21))
 		baseTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
 		baseTitle.textColor = CustomAppColor.customBlueColor
-		baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(self.pagoCell.formaPagoSwitch.isHidden || !(self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1) ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
+		baseTitle.text = "Hola, \(globalVariables.cliente.getName())  \(self.pagoCell.formaPagoSwitch.isHidden || pagoCell.formaPagoSwitch.titleForSegment(at: pagoCell.formaPagoSwitch.selectedSegmentIndex) != "Voucher" ? "" : "Empresa: \(globalVariables.cliente.empresa ?? "")")"
 		
 		headerView.addSubview(baseTitle)
 		self.solicitudFormTable.tableHeaderView = headerView
@@ -229,8 +178,8 @@ extension InicioController{
 	func getTaxisCercanos() {
 		let data = [
 			"idcliente": globalVariables.cliente.id!,
-			"latitud": self.origenAnnotation.coordinate.latitude,
-			"longitud": self.origenAnnotation.coordinate.longitude,
+			"latitud": self.origenAnnotation.coordinates.latitude,
+			"longitud": self.origenAnnotation.coordinates.longitude,
 			"pilas": true
 		] as [String: Any]
 		socketService.socketEmit("cargarvehiculoscercanos", datos: data)
@@ -248,7 +197,7 @@ extension InicioController{
 				}
 			} else {
 				let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-				alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+				alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 					exit(0)
 				}))
 				self.present(alertaDos, animated: true, completion: nil)
@@ -261,7 +210,7 @@ extension InicioController{
 	//FUNCIONES ESCUCHAR SOCKET
 	func ErrorConexion() {
 		let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
-		alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+		alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 			exit(0)
 		}))
 		self.present(alertaDos, animated: true, completion: nil)
@@ -272,7 +221,7 @@ extension InicioController{
 		self.view.endEditing(true)
 		
 		if self.mapView!.annotations != nil {
-			mapView.removeAnnotations(self.mapView!.annotations!)
+			pointAnnotationManager.annotations = []
 		}
 		
 		//self.SolicitudView.isHidden = true
@@ -316,11 +265,9 @@ extension InicioController{
 	func MostrarTaxi(_ temporal : [String]) {
 		//TRAMA IN: #Posicion,idtaxi,lattaxi,lngtaxi
 		var i = 2
-		var taxiscercanos = [MGLAnnotation]()
+		var taxiscercanos = [MyMapAnnotation]()
 		while i  <= temporal.count - 6{
-			let taxiTemp = MGLPointAnnotation()
-			taxiTemp.coordinate = CLLocationCoordinate2DMake(Double(temporal[i + 2])!, Double(temporal[i + 3])!)
-			taxiTemp.title = temporal[i]
+			let taxiTemp = MyMapAnnotation(type: "taxi", address: temporal[i], location: CLLocationCoordinate2DMake(Double(temporal[i + 2])!, Double(temporal[i + 3])!), imageName: "taxi_libre")
 			taxiscercanos.append(taxiTemp)
 			i += 6
 		}
@@ -385,13 +332,13 @@ extension InicioController{
 	
 	//FUNCION PARA DIBUJAR LAS ANOTACIONES
 	
-	func DibujarIconos(_ anotaciones: [MGLAnnotation]){
-		if anotaciones.count == 1{
-			self.mapView.addAnnotations([self.origenAnnotation,anotaciones[0]])
-			//self.mapView.fitAll(in: self.mapView.annotations, andShow: true)
+	func DibujarIconos(_ anotaciones: [MyMapAnnotation]){
+		if anotaciones.count == 1 {
+			pointAnnotationManager.annotations = [self.origenAnnotation.annotation,anotaciones[0].annotation]
 		} else {
-			self.mapView.addAnnotations(anotaciones)
-			//self.mapView.fitAll(in: anotaciones, andShow: true)
+			for annotation in anotaciones {
+				pointAnnotationManager.annotations.append(annotation.annotation)
+			}
 		}
 	}
 	
@@ -428,17 +375,16 @@ extension InicioController{
 		
 		let origen = self.cleanTextField(textfield: self.origenCell.origenText)
 		
-		let origenCoord = self.origenAnnotation.coordinate
+		let origenCoord = self.origenAnnotation.coordinates
 		
 		let referencia = !self.pagoCell.referenciaText.text!.isEmpty ? self.cleanTextField(textfield: self.pagoCell.referenciaText) : "No referencia"
 		
 		let destino = self.cleanTextField(textfield: self.destinoCell.destinoText)
 		
-		let destinoCoord = self.destinoAnnotation.coordinate
+		let destinoCoord = self.destinoAnnotation.coordinates
 		
 		let voucher = !self.pagoCell.formaPagoSwitch.isHidden && self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
-		
-		//let voucher = self.tabBar.selectedItem == self.pactadaItem || self.pagoCell.formaPagoSwitch.selectedSegmentIndex == 1 ? "1" : "0"
+
 		print("Forma de pago \(self.pagoCell.formaPagoSwitch.selectedSegmentIndex)")
 		print("voucher \(voucher)")
 		let detalleOferta = "No detalles"
@@ -460,8 +406,10 @@ extension InicioController{
 			tipoServicio = 1
 		}
 		
-		let isYapa = globalVariables.appConfig.yapa ? pagoCell.pagarYapaSwitch.isOn : false
-		let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, importe: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher,tipoServicio: tipoServicio,yapa: isYapa)
+		let pagoConTarjeta = pagoCell.formaPagoSwitch.titleForSegment(at: pagoCell.formaPagoSwitch.selectedSegmentIndex) == "Tarjeta"
+		
+		let isYapa = globalVariables.appConfig.yapa ? pagoYapaCell.pagarYapaSwitch.isOn : false
+		let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, importe: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher, tipoServicio: tipoServicio,yapa: isYapa,tarjeta: pagoConTarjeta)
 		nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
 		
 		if !self.contactoCell.telefonoText.text!.isEmpty{
@@ -479,17 +427,17 @@ extension InicioController{
 	@objc func enviarSolicitud() {
 		if self.origenCell.origenText.text!.isEmpty {
 			let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su Origen.", preferredStyle: UIAlertController.Style.alert)
-			alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+			alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 				self.view.endEditing(true)
 				self.origenCell.origenText.becomeFirstResponder()
 			}))
 			self.present(alertaDos, animated: true, completion: nil)
 		} else {
 			if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
-				if !(self.destinoCell.destinoText.text!.isEmpty){
+				if !(self.destinoCell.destinoText.text!.isEmpty) {
 					if !self.ofertaDataCell.isValidOferta() && self.tabBar.selectedItem == self.ofertaItem {
 						let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", ofertaDataCell.getBestOferta()))", preferredStyle: .alert)
-						alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+						alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 							self.ofertaDataCell.updateValorOfertaText()
 						}))
 						self.present(alertaDos, animated: true, completion: nil)
@@ -498,7 +446,7 @@ extension InicioController{
 					}
 				} else {
 					let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
-					alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+					alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 						self.view.endEditing(true)
 						self.destinoCell.destinoText.becomeFirstResponder()
 					}))
@@ -513,7 +461,7 @@ extension InicioController{
 				let (valid,_) = self.contactoCell.telefonoText.validate(.movilNumber)
 				if !valid || self.contactoCell.telefonoText.text!.isEmpty{
 					let alertaDos = UIAlertController (title: "Error en el formulario", message: "Si solicita para otra persona debe especificar el nombre y el número teléfono.", preferredStyle: .alert)
-					alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+					alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
 						if self.contactoCell.contactoNameText.text!.isEmpty{
 							self.contactoCell.contactoNameText.becomeFirstResponder()
 						} else {
@@ -525,31 +473,27 @@ extension InicioController{
 					self.crearSolicitud()
 				}
 			}
-			
 		}
 	}
 	
-	func removeDestinoFromMap(){
-		if self.mapView!.annotations != nil {
-			destinoCell.destinoText.text?.removeAll()
-			ofertaDataCell.resetValorOferta()
-			destinoAnnotation.title = ""
-			mapView.removeAnnotations(self.mapView.annotations!)
-			mapView.addAnnotation(origenAnnotation)
-			mapView.setCenter(origenAnnotation.coordinate, zoomLevel: 15, animated: false)
-		}
+	func removeDestinoFromMap() {
+		destinoCell.destinoText.text?.removeAll()
+		ofertaDataCell.resetValorOferta()
+		destinoAnnotation.address = ""
+		pointAnnotationManager.annotations.removeAll(where: {$0.id == destinoAnnotation.annotation.id})
+		destinoAnnotation = MyMapAnnotation()
 	}
 	
-	func getDestinoFromSearch(annotation: MGLPointAnnotation){
-		let wp1 = Waypoint(coordinate: self.origenAnnotation.coordinate, name: self.origenAnnotation.title)
-		let wp2 = Waypoint(coordinate: annotation.coordinate, name: annotation.title)
+	func getDestinoFromSearch(annotation: MyMapAnnotation){
+		let wp1 = Waypoint(coordinate: self.origenAnnotation.coordinates, name: self.origenAnnotation.address)
+		let wp2 = Waypoint(coordinate: annotation.coordinates, name: annotation.address)
 		let options = RouteOptions(waypoints: [wp1, wp2])
 		options.includesSteps = true
 		options.routeShapeResolution = .full
 		options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
 		
 		self.destinoAnnotation = annotation
-		destinoCell.destinoText.text = self.destinoAnnotation.title
+		destinoCell.destinoText.text = self.destinoAnnotation.address
 		
 		Directions.shared.calculate(options) { (session, result) in
 			switch result {
@@ -585,14 +529,23 @@ extension InicioController{
 					
 					if var routeCoordinates = route.shape?.coordinates, routeCoordinates.count > 0 {
 						// Convert the route’s coordinates into a polyline.
-						let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
+						//TODO: Add route Line
+						//let routeLine = MGLPolyline(coordinates: &routeCoordinates, count: UInt(routeCoordinates.count))
 						
 						// Add the polyline to the map.
-						if route.distance > 300{
-							self.mapView.addAnnotation(routeLine)
+						if route.distance > 300 {
+							var lineAnnotation = PolylineAnnotation(lineCoordinates: [self.origenAnnotation.coordinates, self.destinoAnnotation.coordinates])
+							lineAnnotation.lineColor = StyleColor(.gray)
+
+							// Create the `PolylineAnnotationManager` which will be responsible for handling this annotation
+							let lineAnnnotationManager = self.mapView.annotations.makePolylineAnnotationManager()
+
+							// Add the annotation to the manager.
+							//lineAnnnotationManager.annotations = [lineAnnotation]
+							//self.mapView.addPolyline(origin: self.origenAnnotation, destiny: self.destinoAnnotation)
 						}
 					}
-					self.mapView.showAnnotations([self.origenAnnotation, self.destinoAnnotation], animated: false)
+					self.showAnnotations([self.origenAnnotation, self.destinoAnnotation])
 				}
 			}
 		}
@@ -624,31 +577,29 @@ extension InicioController{
 		self.searchAddressView.isHidden = true
 		
 		if addressSelected != nil {
-			print("Address selected \(addressSelected)")
-			let annotation = MGLPointAnnotation()
-			annotation.coordinate = addressSelected!.getCoordinates()
-			annotation.title = "\(addressSelected!.nombre), \(addressSelected!.distrito)"
+			let annotation = MyMapAnnotation()
+			annotation.coordinates = addressSelected!.getCoordinates()
+			annotation.address = "\(addressSelected!.nombre), \(addressSelected!.distrito)"
 			
 			if searchingAddress == "origen" {
-				annotation.subtitle = "origen"
-				self.origenAnnotation = annotation
-				origenCell.origenText.text = annotation.title
+				annotation.type = "origen"
+				origenAnnotation = annotation
+				origenCell.origenText.text = annotation.address
 				initMapView()
 			} else {
-				annotation.subtitle = "destino"
-				self.destinoAnnotation = annotation
-				self.mapView.removeAnnotations(self.mapView.annotations!)
-				self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
-				self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+				annotation.type = "destino"
+				destinoAnnotation = annotation
+				pointAnnotationManager.annotations.removeAll()
+				pointAnnotationManager.annotations = [self.origenAnnotation.annotation,self.destinoAnnotation.annotation]
+				self.getDestinoFromSearch(annotation: destinoAnnotation)
 			}
 		} else {
 			if self.searchingAddress == "origen" {
-				self.origenAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: self.origenAnnotation.title!)
+				origenAnnotation.coordinates = self.origenAnnotation.coordinates
+				origenAnnotation.address = self.origenAnnotation.address
 			} else {
-				self.destinoAnnotation.updateAnnotation(newCoordinate: self.origenAnnotation.coordinate, newTitle: "")
-				//        self.mapView.removeAnnotations(self.mapView.annotations!)
-				//        self.mapView.addAnnotations([self.origenAnnotation,self.destinoAnnotation])
-				//        self.getDestinoFromSearch(annotation: self.destinoAnnotation)
+				destinoAnnotation.coordinates = self.origenAnnotation.coordinates
+				destinoAnnotation.address = ""
 				removeDestinoFromMap()
 			}
 		}
@@ -666,7 +617,7 @@ extension InicioController{
 	
 	@objc internal func keyboardWillShow(notification: NSNotification) -> Void {
 		if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-			if self.navigationController != nil && self.navigationController?.isNavigationBarHidden == false {
+			if self.navigationController != nil && self.navigationController?.isNavigationBarHidden == false || !tarjetasView.isHidden {
 				print("Keyboard height \(keyboardSize.height)")
 				//				let bottomOfOpenMapBtn = openMapBtn.convert(openMapBtn.bounds, to: self.view).maxY;
 				//				self.openMapBtn.frame = CGRect(x: 20, y: Responsive().heightFloatPercent(percent: 84) - keyboardSize.height, width: self.view.bounds.width - 40, height: 40)
@@ -704,11 +655,7 @@ extension InicioController{
 	@objc func textViewDidChange(_ textView: UITextView) {
 		
 	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		self.pagoCell.referenciaText.resignFirstResponder()
-	}
-	
+
 	@objc func ocultarTeclado(sender: UITapGestureRecognizer){
 		print("ocultar teclado")
 		//sender.cancelsTouchesInView = false
@@ -738,13 +685,13 @@ extension InicioController{
 	}
 	
 	//MARK:- FUNCION DETERMINAR DIRECCIÓN A PARTIR DE COORDENADAS
-	func getAddressFromCoordinate(_ annotation: MGLPointAnnotation){
-		if annotation.coordinate.latitude != 0.0 {
-			print("google \(annotation.coordinate)")
+	func getAddressFromCoordinate(_ annotation: MyMapAnnotation){
+		if annotation.coordinates.latitude != 0.0 {
+			print("google \(annotation.coordinates)")
 			let geocoder = CLGeocoder()
 			var address = ""
 			
-			let temporaLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+			let temporaLocation = CLLocation(latitude: annotation.coordinates.latitude, longitude: annotation.coordinates.longitude)
 			geocoder.reverseGeocodeLocation(temporaLocation, completionHandler: { [self](placemarks, error) -> Void in
 				if error != nil {
 					print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
@@ -755,7 +702,7 @@ extension InicioController{
 					let placemark = (placemarks?.first)! as CLPlacemark
 					
 					if let name = placemark.addressDictionary?["Name"] as? String {
-						print("google \(name) \(annotation.subtitle)")
+						print("google \(name) \(annotation.type)")
 						address += name
 					}
 					
@@ -770,20 +717,20 @@ extension InicioController{
 					//          if let country = placemark.country{
 					//            address += " \(country)"
 					//          }
-					annotation.title = address
-					annotation.subtitle == "origen" ? (self.origenCell.origenText.text = address) : (self.destinoCell.destinoText.text = address)
+					annotation.address = address
+					annotation.type == "origen" ? (self.origenCell.origenText.text = address) : (self.destinoCell.destinoText.text = address)
 					self.addressPreviewText.text = address
 					print("direccion \(self.destinoCell.destinoText.text)")
 				}else {
-					annotation.title = "No disponible"
+					annotation.address = "No disponible"
 				}
 			})
 		}
 	}
 	
-	func getReverseAddressXoaAPI(_ annotation: MGLPointAnnotation) {
-		apiService.searchReverseAddressXoaAPI(lat: annotation.coordinate.latitude, lon: annotation.coordinate.longitude, completionHandler: { data, response, error in
-			annotation.title = "Sin resultado"
+	func getReverseAddressXoaAPI(_ annotation: MyMapAnnotation) {
+		apiService.searchReverseAddressXoaAPI(lat: annotation.coordinates.latitude, lon: annotation.coordinates.longitude, completionHandler: { data, response, error in
+			annotation.address = "Sin resultado"
 			var addressString = ""
 			
 			if let _ = error {
@@ -813,8 +760,8 @@ extension InicioController{
 				}
 				
 				DispatchQueue.main.async {
-					annotation.title = addressString
-					annotation.subtitle == "origen" ? (self.origenCell.origenText.text = addressString) : (self.destinoCell.destinoText.text = addressString)
+					annotation.address = addressString
+					annotation.type == "origen" ? (self.origenCell.origenText.text = addressString) : (self.destinoCell.destinoText.text = addressString)
 					self.addressPreviewText.text = addressString
 				}
 				
@@ -822,10 +769,28 @@ extension InicioController{
 				return
 			}
 			
-			
-			
 		})
 	}
 	
+	@objc func openRegisterCardView() {
+		super.hideMenuBar(isHidden: true)
+		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		print("AddURL \(GlobalConstants.addCardsUrl)\(accessToken)")
+		let url = URL(string: "\(GlobalConstants.addCardsUrl)\(accessToken)")
+		let requestObj = URLRequest(url: url! as URL)
+		tarjetaWebView.load(requestObj)
+		tarjetasView.isHidden = false
+		waitingView.isHidden = false
+	}
+	
+	func enviarPagoConTajeta(idSolicitud: String, tokenCard: String) {
+		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let datos:[String: Any] = [
+			"toke": tokenCard,
+			"idsolicitud": idSolicitud,
+			"idcliente": globalVariables.cliente.id
+		]
+		socketService.socketEmit("pagarcontarjeta", datos: datos)
+	}
 	
 }

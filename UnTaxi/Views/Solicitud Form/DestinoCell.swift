@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import Mapbox
+import MapboxMaps
 
 class DestinoCell: UITableViewCell {
   @IBOutlet weak var destinoText: UITextField!
 
-	func initContent(destinoAnnotation: MGLPointAnnotation) {
-		if destinoAnnotation.title != "" {
-			self.destinoText.text = destinoAnnotation.title
+	func initContent(destinoAnnotation: MyMapAnnotation) {
+		if destinoAnnotation.annotation.image?.name != "" {
+			self.destinoText.text = destinoAnnotation.address
 		} else {
 			self.destinoText.text?.removeAll()
 		}

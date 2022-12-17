@@ -41,6 +41,10 @@ class SideMenuController: UIViewController {
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: CustomAppColor.buttonActionColor)
     self.yapaText.textColor = CustomAppColor.menuTextColor
+		
+		if globalVariables.appConfig.cardpay {
+			menuArray[0].append(MenuData(imagen: "tarjetaMenu", title: "Pago con Tarjeta"))
+		}
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
     //tapGesture.delegate = self
@@ -68,7 +72,7 @@ class SideMenuController: UIViewController {
         //self.EnviarTimer(estado: 1, datos: datos)
       } else {
         let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
-        alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
           exit(0)
         }))
         self.present(alertaDos, animated: true, completion: nil)
@@ -83,7 +87,7 @@ class SideMenuController: UIViewController {
     //AlertaSinConexion.isHidden = false
     
     let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       exit(0)
     }))
     self.present(alertaDos, animated: true, completion: nil)
@@ -102,6 +106,27 @@ class SideMenuController: UIViewController {
     EnviarSocket(datos)
     exit(3)
   }
+	
+//	func goToInicioView(){
+//		var inicioVC: [UIViewController] = []
+//
+//		let viewcontrollers = self.navigationController?.viewControllers
+//		viewcontrollers?.forEach({ (vc) in
+//			if  let inventoryListVC = vc as? InicioController {
+//				//self.navigationController!.popToViewController(inventoryListVC, animated: true)
+//				inicioVC.append(inventoryListVC)
+//			}
+//		})
+//		
+//		if inicioVC.count != 0{
+//			print("Hay inicio")
+//			self.navigationController!.popToViewController(inicioVC.first!, animated: true)
+//		} else {
+//			print("No hay inicio")
+//			let vc = R.storyboard.main.inicioView()!
+//			self.navigationController?.show(vc, sender: self)
+//		}
+//	}
   
   @IBAction func showProfile(_ sender: Any) {
     //globalVariables.publicidadService?.stopPublicidad()

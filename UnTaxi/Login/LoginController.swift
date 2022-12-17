@@ -153,12 +153,10 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
       self.usuario.text?.removeAll()
       self.clave.text?.removeAll()
     } else {
-      let alertaDos = UIAlertController (title: "Formulario incompleto", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-        self.movilClaveRecover.becomeFirstResponder()
-      }))
-      
-      self.present(alertaDos, animated: true, completion: nil)
+			let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+				self.movilClaveRecover.becomeFirstResponder()
+			})
+			Alert.showBasic(title: GlobalStrings.formIncompleteTitle, message: GlobalStrings.formIncompleteMessage, vc: self, withActions: [okAction])
     }
   }
   

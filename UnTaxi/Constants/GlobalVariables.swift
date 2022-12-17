@@ -8,6 +8,7 @@
 
 import UIKit
 import SocketIO
+import CoreLocation
 
 struct globalVariables {
   static var socket: SocketIOClient!
@@ -31,5 +32,6 @@ struct globalVariables {
   static var direccionesPactadas: [DireccionesPactadas] = []
   static var isBigIphone = UIScreen.main.bounds.height >= 750
   static var publicidadService: PublicidadService?
-
+	static var authorizationStatus: CLAuthorizationStatus = .notDetermined
+	static var newVersionAvailable: Bool = false
 }
