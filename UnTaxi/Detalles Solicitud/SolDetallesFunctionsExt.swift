@@ -9,7 +9,6 @@
 import Foundation
 import SocketIO
 import AVFoundation
-import GoogleMobileAds
 import SideMenu
 import MapboxMaps
 //import MapboxDirections

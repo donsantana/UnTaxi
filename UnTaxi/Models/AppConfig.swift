@@ -60,7 +60,7 @@ struct AppConfig {
 		oferta = !(config["oferta"] is NSNull) ? (config["oferta"] is NSString) ? ((config["oferta"] as! NSString) == "true") : (config["oferta"] as! Bool) : false
 		taximetro = !(config["taximetro"] is NSNull) ? (config["taximetro"] is NSString) ? ((config["taximetro"] as! NSString) == "true") : (config["taximetro"] as! Bool) : false
 		horas = !(config["horas"] is NSNull) ? (config["horas"] is NSString) ? ((config["horas"] as! NSString) == "true") : (config["horas"] as! Bool) : false
-		cardpay = true//!(config["cardpay"] is NSNull) ? (config["cardpay"] is NSString) ? ((config["cardpay"] as? NSString) == "true") : (config["cardpay"] as! Bool) : false
+		cardpay = !(config["cardpay"] is NSNull) ? (config["cardpay"] is NSString) ? ((config["cardpay"] as? NSString) == "true") : (config["cardpay"] as! Bool) : false
 		advertising = !(config["advertising"] is NSNull) ? (config["advertising"] is NSString) ? ((config["advertising"] as! NSString) == "true") : (config["advertising"] as! Bool) : false
 		pactadas = !(config["pactadas"] is NSNull) ? (config["pactadas"] is NSString) ? ((config["pactadas"] as! NSString) == "true") : (config["pactadas"] as! Bool) : false
 		recargas = !(config["recargas"] is NSNull) ? (config["recargas"] is NSString) ? ((config["recargas"] as! NSString) == "true") : (config["recargas"] as! Bool) : false

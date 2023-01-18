@@ -18,53 +18,7 @@ PODS:
   - CountryPickerSwift (1.8.2)
   - CurrencyTextField (2.3)
   - FloatingPanel (2.5.5)
-  - Google-Mobile-Ads-SDK (9.12.0):
-    - GoogleAppMeasurement (< 11.0, >= 7.0)
-    - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleAppMeasurement (10.1.0):
-    - GoogleAppMeasurement/AdIdSupport (= 10.1.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
-    - GoogleUtilities/MethodSwizzler (~> 7.8)
-    - GoogleUtilities/Network (~> 7.8)
-    - "GoogleUtilities/NSData+zlib (~> 7.8)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (10.1.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.1.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
-    - GoogleUtilities/MethodSwizzler (~> 7.8)
-    - GoogleUtilities/Network (~> 7.8)
-    - "GoogleUtilities/NSData+zlib (~> 7.8)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleAppMeasurement/WithoutAdIdSupport (10.1.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
-    - GoogleUtilities/MethodSwizzler (~> 7.8)
-    - GoogleUtilities/Network (~> 7.8)
-    - "GoogleUtilities/NSData+zlib (~> 7.8)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleMaps (4.0.0):
-    - GoogleMaps/Maps (= 4.0.0)
-  - GoogleMaps/Base (4.0.0)
-  - GoogleMaps/Maps (4.0.0):
-    - GoogleMaps/Base
   - GooglePlaces (6.2.1)
-  - GoogleUserMessagingPlatform (2.0.1)
-  - GoogleUtilities/AppDelegateSwizzler (7.8.0):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.8.0):
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.8.0):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.8.0):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.8.0):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.8.0)"
-  - GoogleUtilities/Reachability (7.8.0):
-    - GoogleUtilities/Logger
   - MapboxCommon (23.1.0)
   - MapboxCoreMaps (10.9.0):
     - MapboxCommon (~> 23.1)
@@ -141,11 +95,6 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
-  - nanopb (2.30909.0):
-    - nanopb/decode (= 2.30909.0)
-    - nanopb/encode (= 2.30909.0)
-  - nanopb/decode (2.30909.0)
-  - nanopb/encode (2.30909.0)
   - PhoneNumberKit (3.3.4):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.4)
     - PhoneNumberKit/UIKit (= 3.3.4)
@@ -153,7 +102,6 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.4):
     - PhoneNumberKit/PhoneNumberKitCore
   - Polyline (5.1.0)
-  - PromisesObjC (2.1.1)
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -172,8 +120,6 @@ DEPENDENCIES:
   - CountryPickerSwift
   - CurrencyTextField
   - FloatingPanel
-  - Google-Mobile-Ads-SDK
-  - GoogleMaps (= 4.0.0)
   - GooglePlaces
   - MapboxDirections
   - MapboxGeocoder.swift
@@ -196,12 +142,7 @@ SPEC REPOS:
     - CountryPickerSwift
     - CurrencyTextField
     - FloatingPanel
-    - Google-Mobile-Ads-SDK
-    - GoogleAppMeasurement
-    - GoogleMaps
     - GooglePlaces
-    - GoogleUserMessagingPlatform
-    - GoogleUtilities
     - MapboxCommon
     - MapboxCoreMaps
     - MapboxDirections
@@ -213,10 +154,8 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
-    - nanopb
     - PhoneNumberKit
     - Polyline
-    - PromisesObjC
     - R.swift
     - R.swift.Library
     - SideMenu
@@ -233,12 +172,7 @@ SPEC CHECKSUMS:
   CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
   CurrencyTextField: 75d8ee80cf245925684b34c9a49ba886f258e2dc
   FloatingPanel: a27e7827e0f710fa6236fe2596dd1b5484cb4fc1
-  Google-Mobile-Ads-SDK: b4e9efb765ef1693ae9dd94c527b6c1d91ee5052
-  GoogleAppMeasurement: e490e248af3da95afe8fa8e7baac232dc8d020b7
-  GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
   GooglePlaces: 94974aa119573d5acc2a35a699948dac838abd73
-  GoogleUserMessagingPlatform: 5f8b30daf181805317b6b985bb51c1ff3beca054
-  GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
   MapboxCommon: bfffb68226f650df065cf24e307576267ebc75e8
   MapboxCoreMaps: 34ae725a08a720e1e0cd4530c37ec78e0682abf9
   MapboxDirections: 04405deb646d6549c6a891447d990c28a7dd910b
@@ -250,10 +184,8 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
   Polyline: 2a1f29f87f8d9b7de868940f4f76deb8c678a5b1
-  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
@@ -264,6 +196,6 @@ SPEC CHECKSUMS:
   ToastViewSwift: dda3c48db1712296ce5deb1deb2a1cac02eb07ed
   Turf: 8adf034c2963a0e587b979c51b5c12c396e29c44
 
-PODFILE CHECKSUM: 034246654cb0c0ec0d81e964772e6f8bc916765b
+PODFILE CHECKSUM: ac88837000c21e86e22f3b73138d1ca1d4885856
 
 COCOAPODS: 1.11.2

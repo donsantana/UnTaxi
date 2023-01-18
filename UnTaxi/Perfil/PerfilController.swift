@@ -103,6 +103,12 @@ class PerfilController: BaseController {
       apiService.updateProfileAPI(parameters: params as [String: AnyObject])
     }
   }
+	
+	func closeSession() {
+		globalVariables.userDefaults.set(nil, forKey: "accessToken")
+		let vc = R.storyboard.main.inicioView()!
+		vc.CloseAPP()
+	}
 
   @IBAction func actualizarPhto(_ sender: Any) {
     self.camaraController.sourceType = .camera
@@ -122,9 +128,17 @@ class PerfilController: BaseController {
   }
   
   @IBAction func cerrarSesion(_ sender: Any) {
-    globalVariables.userDefaults.set(nil, forKey: "accessToken")
-    let vc = R.storyboard.main.inicioView()!
-    vc.CloseAPP()   
+		closeSession()
   }
+	
+	@IBAction func removeClient(_ sender: Any) {
+		let okAction = UIAlertAction(title: GlobalStrings.eliminarButtonTitle, style: .destructive, handler: {_ in
+			self.apiService.removeClientAPI()
+		})
+		let cancelAction = UIAlertAction(title: GlobalStrings.noButtonTitle, style: .default, handler: {_ in
+			
+		})
+		Alert.showBasic(title: GlobalStrings.removeClientTitle, message: GlobalStrings.removeClientMessage, vc: self, withActions: [okAction, cancelAction])
+	}
   
 }

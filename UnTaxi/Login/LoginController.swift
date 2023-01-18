@@ -9,7 +9,6 @@
 import UIKit
 import SocketIO
 import CoreLocation
-import GoogleMobileAds
 import LocalAuthentication
 
 class LoginController: UIViewController, CLLocationManagerDelegate{
@@ -32,7 +31,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   var socketIOManager: SocketManager! //SocketManager(socketURL: URL(string: "http://www.xoait.com:5803")!, config: [.log(true), .forcePolling(true)])
   
-  var apiService = ApiService.shared
+  var apiService = ApiService()
   var socketService = SocketService.shared
   
   let myContext = LAContext()
@@ -141,9 +140,6 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   }
   
   
-  
-  
- 
   //MARK:- ACCIONES DE LOS BOTONES
   //LOGIN Y REGISTRO DE CLIENTE
   @IBAction func Autenticar(_ sender: AnyObject) {

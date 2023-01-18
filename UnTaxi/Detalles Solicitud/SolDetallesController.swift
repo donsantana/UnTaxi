@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import SocketIO
 import AVFoundation
-import GoogleMobileAds
 import SideMenu
 import MapboxMaps
 import MapboxDirections
@@ -196,13 +195,13 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 		switch authorizationStatus {
 		case .notDetermined, .restricted, .denied:
 			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
-			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.settingsBtnTitle, style: .default, handler: {alerAction in
 					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
 					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
 						exit(0)
 					})
 			}))
-			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.closeAppButtonTitle, style: .default, handler: {alerAction in
 				exit(0)
 			}))
 			self.present(locationAlert, animated: true, completion: nil)
@@ -289,30 +288,30 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 	
 }
 
-extension SolPendController: GADBannerViewDelegate{
-  
-  func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-    print("get the ads")
-  }
-}
-
-extension SolPendController: SideMenuNavigationControllerDelegate {
-  
-  //    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
-  //        print("SideMenu Appearing! (animated: \(animated))")
-  //    }
-  
-  func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
-    //globalVariables.publicidadService?.stopPublicidad()k
-    print("SideMenu Appeared! (animated: \(animated))")
-  }
-  
-  //    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
-  //        print("SideMenu Disappearing! (animated: \(animated))")
-  //    }
-  
-  func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
-    //globalVariables.publicidadService?.showPublicidad(bannerView: self.adsBannerView)
-    print("SideMenu Disappeared! (animated: \(self.isBeingDismissed))")
-  }
-}
+//extension SolPendController: GADBannerViewDelegate{
+//  
+//  func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+//    print("get the ads")
+//  }
+//}
+//
+//extension SolPendController: SideMenuNavigationControllerDelegate {
+//  
+//  //    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+//  //        print("SideMenu Appearing! (animated: \(animated))")
+//  //    }
+//  
+//  func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+//    //globalVariables.publicidadService?.stopPublicidad()k
+//    print("SideMenu Appeared! (animated: \(animated))")
+//  }
+//  
+//  //    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+//  //        print("SideMenu Disappearing! (animated: \(animated))")
+//  //    }
+//  
+//  func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+//    //globalVariables.publicidadService?.showPublicidad(bannerView: self.adsBannerView)
+//    print("SideMenu Disappeared! (animated: \(self.isBeingDismissed))")
+//  }
+//}

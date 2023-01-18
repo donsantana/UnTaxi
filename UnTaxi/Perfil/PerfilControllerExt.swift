@@ -109,13 +109,22 @@ extension PerfilController: ApiServiceDelegate{
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
     DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
+			let alertaDos = UIAlertController (title: GlobalStrings.errorTitle, message: msg, preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         self.waitingView.isHidden = true
       }))
       self.present(alertaDos, animated: true, completion: nil)
     }
   }
+	
+	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String) {
+		let okAction = UIAlertAction(title: GlobalStrings.okButtonTitle, style: .default, handler: {_ in
+			if success {
+				self.closeSession()
+			}
+		})
+		Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
+	}
   
 }
 

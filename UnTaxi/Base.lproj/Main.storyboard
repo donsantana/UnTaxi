@@ -68,7 +68,7 @@
                                 </view>
                                 <blurEffect style="systemThinMaterialLight"/>
                             </visualEffectView>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-SN-INM" customClass="CSAnimationView">
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-SN-INM">
                                 <rect key="frame" x="0.0" y="396" width="414" height="500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsp-F2-ZhZ">
@@ -615,7 +615,7 @@
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krr-eZ-Idf" userLabel="Menu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwa-pA-cy1" customClass="CSAnimationView">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwa-pA-cy1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOMBRE DE USUARIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-MH-cYh">
@@ -812,7 +812,7 @@
                                                 <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-AN-a46" customClass="CSAnimationView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-AN-a46">
                                                 <rect key="frame" x="25" y="138" width="324" height="55"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s50-vr-kLu">
@@ -1407,7 +1407,7 @@
                                     <constraint firstAttribute="height" constant="75" id="5Up-Go-h9H"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-hY-3BY" customClass="CSAnimationView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-hY-3BY">
                                 <rect key="frame" x="0.0" y="581" width="414" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-zz-NUO">
@@ -2498,6 +2498,23 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrD-7j-UnX">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="707"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5J-hI-U7b">
+                                                <rect key="frame" x="214" y="154" width="160" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="5Lc-Y8-J7f"/>
+                                                    <constraint firstAttribute="height" constant="31" id="ZyE-d0-4k9"/>
+                                                    <constraint firstAttribute="width" constant="160" id="cAy-On-Hg9"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="kRm-vM-xTx"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Eliminar la cuenta">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
+                                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="removeClient:" destination="d0f-sE-lC7" eventType="touchUpInside" id="ULh-tM-sdI"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mis Datos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tX-97-W9n">
                                                 <rect key="frame" x="20" y="10" width="354" height="25"/>
                                                 <constraints>
@@ -2627,6 +2644,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         <constraints>
                                             <constraint firstItem="jHX-IQ-LQl" firstAttribute="leading" secondItem="bU3-oG-O2a" secondAttribute="leading" id="1DG-5A-wTc"/>
                                             <constraint firstItem="qhZ-VZ-3xd" firstAttribute="top" secondItem="0tX-97-W9n" secondAttribute="bottom" constant="5" id="4pN-ID-7xJ"/>
+                                            <constraint firstItem="Z5J-hI-U7b" firstAttribute="bottom" secondItem="Q2c-3R-i2R" secondAttribute="bottom" id="6JA-o5-SfX"/>
                                             <constraint firstItem="bU3-oG-O2a" firstAttribute="top" secondItem="jHX-IQ-LQl" secondAttribute="bottom" constant="15" id="7cJ-ga-wDD"/>
                                             <constraint firstItem="qhZ-VZ-3xd" firstAttribute="trailing" secondItem="0tX-97-W9n" secondAttribute="trailing" id="80F-R4-eBt"/>
                                             <constraint firstItem="3Gz-4M-Mvh" firstAttribute="top" secondItem="bU3-oG-O2a" secondAttribute="bottom" constant="15" id="9eM-8p-mOk"/>
@@ -2647,6 +2665,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                             <constraint firstItem="jHX-IQ-LQl" firstAttribute="trailing" secondItem="bU3-oG-O2a" secondAttribute="trailing" id="wFG-2D-caW"/>
                                             <constraint firstItem="bU3-oG-O2a" firstAttribute="leading" secondItem="FrD-7j-UnX" secondAttribute="leading" constant="20" id="x9R-6h-P7Z"/>
                                             <constraint firstItem="0tX-97-W9n" firstAttribute="top" secondItem="FrD-7j-UnX" secondAttribute="top" constant="10" id="xuH-QC-zg2"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z5J-hI-U7b" secondAttribute="trailing" constant="20" id="z5F-2o-tTw"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -3036,7 +3055,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                     <userLayoutGuide location="200" affinity="minX"/>
                                 </userGuides>
                                 <subviews>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="D9X-gy-0N4" customClass="CSAnimationView">
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="D9X-gy-0N4">
                                         <rect key="frame" x="0.0" y="396" width="414" height="500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6Q-Ix-mR0">
