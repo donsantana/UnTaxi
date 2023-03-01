@@ -77,6 +77,7 @@ extension InicioController{
 			}
 		}
 		self.tabBar.selectedItem = self.tabBar.items![1] as UITabBarItem
+		pagoCell.initContent(tipoServicio: tipoServicio)
 		loadFormularioData()
 	}
 	
@@ -99,7 +100,6 @@ extension InicioController{
 		formularioDataCellList.removeAll()
 		origenCell.origenText.text = origenAnnotation.address
 		formularioDataCellList.append(self.origenCell)
-		pagoCell.initContent(tipoServicio: tipoServicio)
 
 		destinoCell.initContent(destinoAnnotation: destinoAnnotation)
 		removeDestinoFromMap()
