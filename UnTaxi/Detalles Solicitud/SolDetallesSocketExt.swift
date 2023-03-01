@@ -134,7 +134,7 @@ extension SolPendController: SocketServiceDelegate{
           }
         }
       }))
-      locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.cancelarButtonTitle, style: .default, handler: {alerAction in
     
       }))
       self.present(locationAlert, animated: true, completion: nil)

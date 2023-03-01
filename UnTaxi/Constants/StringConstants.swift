@@ -79,6 +79,7 @@ struct GlobalStrings {
 	static let cancelarButtonTitle: String = NSLocalizedString("Cancelar",comment:"")
 	static let autorizarButtonTitle: String = NSLocalizedString("Autorizar",comment:"")
 	static let closeAppButtonTitle: String = NSLocalizedString("Cerrar aplicación",comment:"")
+	static let settingsBtnTitle: String = NSLocalizedString("Configuración",comment:"")
 	
 	//Placeholders
 	static let enterOrigen: String = NSLocalizedString("Ingrese nuevo origen",comment:"")

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,10 +32,11 @@
                                     <constraint firstAttribute="width" constant="160" id="fJJ-1L-X1C"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="x6F-hP-1o8">
-                                <rect key="frame" x="180" y="554" width="54" height="68.5"/>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="x6F-hP-1o8">
+                                <rect key="frame" x="182" y="554" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="x6F-hP-1o8" secondAttribute="height" multiplier="11:14" id="VRk-71-okZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="NYB-lK-Miy"/>
+                                    <constraint firstAttribute="height" constant="50" id="vh8-xZ-EwK"/>
                                 </constraints>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
@@ -47,9 +48,8 @@
                             <constraint firstItem="25B-5P-HOG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HHN-JM-HWy"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstAttribute="trailing" secondItem="x6F-hP-1o8" secondAttribute="trailing" constant="180" id="cZz-O9-G49"/>
-                            <constraint firstItem="x6F-hP-1o8" firstAttribute="top" secondItem="25B-5P-HOG" secondAttribute="bottom" constant="26" id="i0R-nz-r6G"/>
-                            <constraint firstItem="x6F-hP-1o8" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="180" id="koZ-h5-SXQ"/>
+                            <constraint firstItem="x6F-hP-1o8" firstAttribute="centerX" secondItem="25B-5P-HOG" secondAttribute="centerX" id="gWP-9n-dCZ"/>
+                            <constraint firstItem="x6F-hP-1o8" firstAttribute="top" secondItem="25B-5P-HOG" secondAttribute="bottom" constant="26" id="jwv-6K-ohv"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>

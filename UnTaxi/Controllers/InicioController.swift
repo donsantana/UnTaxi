@@ -303,13 +303,13 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 		switch authorizationStatus {
 		case .notDetermined, .restricted, .denied:
 			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
-			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.settingsBtnTitle, style: .default, handler: {alerAction in
 					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
 					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
 						exit(0)
 					})
 			}))
-			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.closeAppButtonTitle, style: .default, handler: {alerAction in
 				exit(0)
 			}))
 			self.present(locationAlert, animated: true, completion: nil)

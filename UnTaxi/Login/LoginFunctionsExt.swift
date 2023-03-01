@@ -26,13 +26,12 @@ extension LoginController{
 //    )
     
     globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
-    //self.waitSocketConnection()
     self.socketService.initLoginEventos()
     globalVariables.socket.connect()
 
   }
   
-  func initClientData(datos: [String: Any]){
+  func initClientData(datos: [String: Any]) {
     
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
@@ -56,9 +55,8 @@ extension LoginController{
     }
 		
 		AppStoreService.shared.checkNewVersionAvailable()
-		self.checkSolPendientes()
-		//self.checkLocationStatus()
-
+		//self.checkSolPendientes()
+		self.checkLocationStatus()
   }
   
   func initConnectionError(message: String){
@@ -71,34 +69,34 @@ extension LoginController{
     self.present(alertaDos, animated: true, completion: nil)
   }
   
-//  func checkLocationStatus() {
-//		let authorizationStatus: CLAuthorizationStatus
-//    
-//		if #available(iOS 14.0, *) {
-//			authorizationStatus = coreLocationManager.authorizationStatus
-//		} else {
-//			authorizationStatus = CLLocationManager.authorizationStatus()
-//		}
-//		switch authorizationStatus {
-//		case .notDetermined, .restricted, .denied:
-//			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
-//			locationAlert.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-//					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-//					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
-//						exit(0)
-//					})
-//			}))
-//			locationAlert.addAction(UIAlertAction(title: "Cerrar Aplicación", style: .default, handler: {alerAction in
-//				exit(0)
-//			}))
-//			self.present(locationAlert, animated: true, completion: nil)
-//		case .authorizedAlways, .authorizedWhenInUse:
-//			self.checkSolPendientes()
-//			break
-//		default:
-//			break
-//		}
-//  }
+  func checkLocationStatus() {
+		let authorizationStatus: CLAuthorizationStatus
+    
+		if #available(iOS 14.0, *) {
+			authorizationStatus = coreLocationManager.authorizationStatus
+		} else {
+			authorizationStatus = CLLocationManager.authorizationStatus()
+		}
+		switch authorizationStatus {
+		case .notDetermined, .restricted, .denied:
+			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.settingsBtnTitle, style: .default, handler: {alerAction in
+					let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+					UIApplication.shared.open(settingsURL, options: [:], completionHandler: { success in
+						exit(0)
+					})
+			}))
+			locationAlert.addAction(UIAlertAction(title: GlobalStrings.closeAppButtonTitle, style: .default, handler: {alerAction in
+				exit(0)
+			}))
+			self.present(locationAlert, animated: true, completion: nil)
+		case .authorizedAlways, .authorizedWhenInUse:
+			self.checkSolPendientes()
+			break
+		default:
+			break
+		}
+  }
   
   func checkSolPendientes() {
     var vc = UIViewController()

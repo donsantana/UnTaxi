@@ -11,10 +11,7 @@ import UIKit
 import CoreLocation
 import SocketIO
 import AVFoundation
-import GoogleMobileAds
-//import GooglePlaces
 import UserNotifications
-//import PaymentezSDK
 
 @UIApplicationMain
  class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -82,7 +79,7 @@ import UserNotifications
     UISwitch.appearance().onTintColor = CustomAppColor.buttonActionColor
     
     //GOOGLE ADS CODE
-    GADMobileAds.sharedInstance().start(completionHandler: nil)
+//    GADMobileAds.sharedInstance().start(completionHandler: nil)
     // Set the Google Place API's autocomplete UI control
     //GMSPlacesClient.provideAPIKey("AIzaSyDOVTQUV2OeugiuBd3pAVGJbTx2aZ445Ws")
     

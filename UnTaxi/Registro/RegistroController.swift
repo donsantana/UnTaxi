@@ -10,7 +10,7 @@ import UIKit
 import CountryPicker
 
 class RegistroController: UIViewController {
-  var apiService = ApiService.shared
+  var apiService = ApiService()
   
   @IBOutlet weak var RegistroView: UIView!
   @IBOutlet weak var nombreApText: UITextField!

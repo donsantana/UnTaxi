@@ -13,6 +13,7 @@ import UIKit
 protocol ApiServiceDelegate: class {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>)
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String)
+	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String)
@@ -92,6 +93,39 @@ final class ApiService {
     })
     task.resume()
   }
+	
+	func removeClientAPI() {
+		let params: Dictionary<String, String> = ["movil": globalVariables.cliente.user]
+		var request = URLRequest(url: URL(string: GlobalConstants.removeClient)!)
+		request.httpMethod = "POST"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+		request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+		
+		let session = URLSession.shared
+		let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+			let response = response as! HTTPURLResponse
+
+			if let error = error {
+				self.handlerError(error: error.localizedDescription)
+				return
+			}
+		
+			do {
+				let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+				
+				guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+					self.delegate?.apiRequest(self, removeClientAPI: false, msg: json["msg"] as? String ?? "El usuario no pudo ser eliminado. Por favor intente otra vez.")
+					return
+				}
+				self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? "Usuario eliminado con éxito.")
+			} catch {
+				self.handlerError(error: GlobalStrings.errorGenericoMessage)
+			}
+		})
+		
+		task.resume()
+	}
   
   func recoverUserClaveAPI(url: String, params: Dictionary<String, String>){
     let request = self.apiPOSTRequest(url: url, params: params)
@@ -512,6 +546,7 @@ extension ApiServiceDelegate {
   func apiRequest(_ controller: ApiService, getLoginToken token: String){}
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any]){}
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String){}
+	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String){}
