@@ -10,7 +10,7 @@ import Foundation
 import SocketIO
 import UIKit
 
-protocol SocketServiceDelegate: class {
+protocol SocketServiceDelegate: AnyObject {
   func socketResponse(_ controller: SocketService, startEvent result: [String: Any])
   func socketResponse(_ controller: SocketService, cargarvehiculoscercanos result: [String: Any])
   func socketResponse(_ controller: SocketService, solicitarservicio result: [String: Any])

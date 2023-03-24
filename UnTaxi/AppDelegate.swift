@@ -12,6 +12,7 @@ import CoreLocation
 import SocketIO
 import AVFoundation
 import UserNotifications
+import GoogleMobileAds
 
 @UIApplicationMain
  class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

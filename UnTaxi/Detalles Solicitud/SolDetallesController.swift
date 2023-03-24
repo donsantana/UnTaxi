@@ -13,6 +13,7 @@ import AVFoundation
 import SideMenu
 import MapboxMaps
 import MapboxDirections
+import GoogleMobileAds
 
 struct sosBtnData {
 	let image:UIImage
@@ -36,6 +37,16 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   var apiService = ApiService.shared
   var responsive = Responsive()
   var sideMenu: SideMenuNavigationController!
+
+	lazy var bannerView: GADBannerView = {
+		let bannerView = GADBannerView()
+		bannerView.adUnitID = GlobalConstants.googleAdsID
+		
+		bannerView.rootViewController = self
+		bannerView.delegate = self
+			
+		return bannerView
+	}()
 	
 	var sosBtnArray = [sosBtnData(image: UIImage(named: "sosPolicia")!, title: "POLICÍA",type: 0),sosBtnData(image: UIImage(named: "sosAmbulancia")!, title: "AMBULANCIA",type: 2),sosBtnData(image: UIImage(named: "sosBombero")!, title: "BOMBEROS",type: 1),sosBtnData(image: UIImage(named: "sosTransito")!, title: "TRÁNSITO", type: 3)]
   
@@ -71,7 +82,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
   @IBOutlet weak var valorOfertaIcon: UIImageView!
   @IBOutlet weak var destinoIcon: UIImageView!
   
-  @IBOutlet weak var adsBannerView: UIView!
+	@IBOutlet weak var adsBannerView: UIView!
   
   @IBOutlet weak var bannerBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var datosCondHeightConstraint: NSLayoutConstraint!
@@ -130,7 +141,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     
     print("solicitud Pendiente \(solicitudPendiente.importe)")
     let adsTapGesture = UITapGestureRecognizer(target: self, action: #selector(goToPublicidad))
-    self.adsBannerView.addGestureRecognizer(adsTapGesture)
+    //self.adsBannerView.addGestureRecognizer(adsTapGesture)
     
     let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
     longGesture.minimumPressDuration = 0.2
@@ -162,12 +173,25 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
     compartirDetallesBtn.addShadow()
 
 		malUsoBtn.addUnderline()
+
+		initGoogleAds()
   }
-  
+	
+	private func initGoogleAds() {
+		let adSize = GADAdSizeFromCGSize(CGSize(width: adsBannerView.layer.bounds.width, height: adsBannerView.layer.bounds.height))
+		bannerView.adSize = adSize
+
+		self.loadGoogleAds()
+	}
+	
+	func loadGoogleAds() {
+		bannerView.load(GADRequest())
+	}
+	
   override func viewDidAppear(_ animated: Bool) {
     print("iniciar la publicidad")
     self.navigationController?.setNavigationBarHidden(true, animated: false)
-    globalVariables.publicidadService?.showPublicidad(bannerView: self.adsBannerView)
+    //globalVariables.publicidadService?.showPublicidad(bannerView: self.adsBannerView)
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -288,13 +312,6 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 	
 }
 
-//extension SolPendController: GADBannerViewDelegate{
-//  
-//  func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-//    print("get the ads")
-//  }
-//}
-//
 //extension SolPendController: SideMenuNavigationControllerDelegate {
 //  
 //  //    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {

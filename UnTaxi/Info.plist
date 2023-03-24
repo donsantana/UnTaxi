@@ -29,7 +29,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1778988557303127~4303400493</string>
+	<string>ca-app-pub-1778988557303127~7105663047</string>
 	<key>LSApplicationCategoryType</key>
 	<string> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
  &lt;dict&gt;
