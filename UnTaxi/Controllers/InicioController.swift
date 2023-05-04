@@ -21,7 +21,6 @@ import MapboxGeocoder
 import FloatingPanel
 import SideMenu
 import WebKit
-//import PaymentezSDK
 
 struct MenuData {
   var imagen: String

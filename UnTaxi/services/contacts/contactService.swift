@@ -49,7 +49,7 @@ class ContactService {
                   // 3.
                
                   try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                    if contact.givenName != ""{
+                    if contact.givenName != "" {
                       self.contacts.append(FetchedContact(firstName: contact.givenName, lastName: contact.familyName, telephone: contact.phoneNumbers.first?.value.stringValue ?? ""))
                     }
                   })

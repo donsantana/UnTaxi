@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PagoApiServiceDelegate: class {
+protocol PagoApiServiceDelegate: AnyObject {
 	func apiRequest(_ controller: PagoApiService, getCardsList data: [Card])
 	func apiRequest(_ controller: PagoApiService, cardRemoved result: Int?)
 	func apiRequest(_ controller: PagoApiService, getAPIError msg: String)

@@ -26,6 +26,7 @@ struct GlobalConstants {
   static var subiraudioUrl: String = "\(urlHost)/voz"
   static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
 	static var searchReverseAddressUrl: String = "https://geosecure.xoaserver.com/reverse?"
+	
   static var listCardsUrl: String = "\(paymentsUrl)/card"
 	static var addCardsUrl: String = "\(paymentsUrl)/card-add?token="
 	static var removeCardsUrl: String = "\(paymentsUrl)/card"

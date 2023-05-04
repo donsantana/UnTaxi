@@ -4395,25 +4395,25 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
     </scenes>
     <designables>
         <designable name="3Gz-4M-Mvh">
-            <size key="intrinsicContentSize" width="169" height="34"/>
+            <size key="intrinsicContentSize" width="155" height="34"/>
         </designable>
         <designable name="9Nb-WI-fTG">
-            <size key="intrinsicContentSize" width="122" height="34"/>
+            <size key="intrinsicContentSize" width="108" height="34"/>
         </designable>
         <designable name="T27-Kh-VKC">
-            <size key="intrinsicContentSize" width="160" height="34"/>
+            <size key="intrinsicContentSize" width="146" height="34"/>
         </designable>
         <designable name="bU3-oG-O2a">
-            <size key="intrinsicContentSize" width="175.5" height="34"/>
+            <size key="intrinsicContentSize" width="161.5" height="34"/>
         </designable>
         <designable name="bo8-FE-LXm">
             <size key="intrinsicContentSize" width="48.5" height="34"/>
         </designable>
         <designable name="gbw-7a-dtm">
-            <size key="intrinsicContentSize" width="121" height="34"/>
+            <size key="intrinsicContentSize" width="107" height="34"/>
         </designable>
         <designable name="jHX-IQ-LQl">
-            <size key="intrinsicContentSize" width="179" height="34"/>
+            <size key="intrinsicContentSize" width="165" height="34"/>
         </designable>
     </designables>
     <resources>
