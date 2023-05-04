@@ -31,7 +31,7 @@ struct GlobalStrings {
 	static let noCardsTiTle: String = NSLocalizedString("No tiene Tarjetas Registradas",comment:"")
 	static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
 	
-	//Formulatios
+	//Formularios
 	static let formErrorTitle: String = NSLocalizedString("Error en el formulario",comment:"")
 	static let formErrorMessage: String = NSLocalizedString("Por favor revizar todos los campos del formulario",comment:"")
 	static let formIncompleteTitle: String = NSLocalizedString("Formulario incompleto",comment:"")

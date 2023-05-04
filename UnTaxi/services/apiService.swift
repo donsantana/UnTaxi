@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 
-protocol ApiServiceDelegate: class {
+protocol ApiServiceDelegate: AnyObject {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>)
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String)
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String)

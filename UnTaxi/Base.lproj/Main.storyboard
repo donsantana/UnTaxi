@@ -1384,7 +1384,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWN-9L-IWf">
-                                <rect key="frame" x="324" y="381" width="50" height="50"/>
+                                <rect key="frame" x="324" y="386" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Gpm-P4-iOc"/>
                                     <constraint firstAttribute="height" constant="50" id="TOs-RV-hcn"/>
@@ -1395,16 +1395,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHS-rf-znm">
-                                <rect key="frame" x="23" y="381" width="50" height="50"/>
+                                <rect key="frame" x="25" y="386" width="50" height="50"/>
                                 <state key="normal" image="compartir"/>
                                 <connections>
                                     <action selector="compartirDetalles:" destination="1BQ-9B-H05" eventType="touchUpInside" id="n1T-ym-lpS"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCv-a2-JFK">
-                                <rect key="frame" x="3" y="441" width="408" height="75"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCv-a2-JFK">
+                                <rect key="frame" x="5" y="446" width="404" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="5Up-Go-h9H"/>
+                                    <constraint firstAttribute="height" constant="70" id="5Up-Go-h9H"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-hY-3BY">
@@ -1710,7 +1710,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9H5-OK-M2C">
-                                <rect key="frame" x="0.0" y="381" width="414" height="515"/>
+                                <rect key="frame" x="0.0" y="386" width="414" height="510"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-oE-zIB">
                                         <rect key="frame" x="369" y="10" width="35" height="35"/>
@@ -1762,7 +1762,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-Zn-n5M">
-                                        <rect key="frame" x="20" y="270" width="374" height="225"/>
+                                        <rect key="frame" x="20" y="270" width="374" height="220"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tys-3U-Ia1">
                                             <size key="itemSize" width="128" height="128"/>
@@ -1832,8 +1832,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1Vg-hY-3BY" firstAttribute="leading" secondItem="ZXY-vy-45L" secondAttribute="leading" id="1pW-Ze-D86"/>
-                            <constraint firstItem="uCv-a2-JFK" firstAttribute="leading" secondItem="zCc-zz-NUO" secondAttribute="leading" constant="3" id="2el-ba-Xba"/>
-                            <constraint firstItem="uCv-a2-JFK" firstAttribute="trailing" secondItem="zCc-zz-NUO" secondAttribute="trailing" constant="-3" id="3Mp-VT-M2p"/>
+                            <constraint firstItem="uCv-a2-JFK" firstAttribute="leading" secondItem="1Vg-hY-3BY" secondAttribute="leading" constant="5" id="2el-ba-Xba"/>
+                            <constraint firstItem="uCv-a2-JFK" firstAttribute="trailing" secondItem="1Vg-hY-3BY" secondAttribute="trailing" constant="-5" id="3Mp-VT-M2p"/>
                             <constraint firstItem="abh-oA-1dD" firstAttribute="trailing" secondItem="ZXY-vy-45L" secondAttribute="trailing" id="4gg-Bg-m1Y"/>
                             <constraint firstAttribute="trailing" secondItem="9H5-OK-M2C" secondAttribute="trailing" id="CSm-Hq-29S"/>
                             <constraint firstItem="VHS-rf-znm" firstAttribute="height" secondItem="eWN-9L-IWf" secondAttribute="height" id="DQz-3O-VVn"/>
@@ -1876,7 +1876,7 @@
                         <outlet property="SMSVozBtn" destination="K6y-Yi-P6r" id="k4w-46-p7f"/>
                         <outlet property="SegundaStar" destination="UM2-xx-fjw" id="zs8-pr-Uhm"/>
                         <outlet property="TerceraStar" destination="1lE-X6-JNb" id="FUv-HD-fTN"/>
-                        <outlet property="adsBannerView" destination="uCv-a2-JFK" id="ABh-Ow-CZf"/>
+                        <outlet property="adsBannerView" destination="uCv-a2-JFK" id="pcu-0H-DVd"/>
                         <outlet property="bannerBottomConstraint" destination="Rig-Sy-bdf" id="nFP-co-duc"/>
                         <outlet property="cancelarBtn" destination="ySu-K5-gsL" id="0kP-CX-ylZ"/>
                         <outlet property="cancelarBtnLeadingConstraint" destination="MaT-DM-8Zn" id="nwe-gP-xW8"/>

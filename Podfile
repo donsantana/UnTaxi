@@ -22,6 +22,7 @@ target "UnTaxi" do
     pod 'SideMenu'
     pod 'CountryPickerSwift'
 		pod 'ToastViewSwift'
+		pod 'Google-Mobile-Ads-SDK'
 end
 
 post_install do |installer|

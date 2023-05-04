@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 extension SolPendController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	//COLLECTION VIEW FUNCTION
@@ -47,6 +48,33 @@ extension SolPendController: UICollectionViewDataSource, UICollectionViewDelegat
 			"tipoalerta": sosBtnArray[indexPath.row].type
 		]
 		SocketService.shared.socketEmit("alerta", datos: trama)
+	}
+}
+
+extension SolPendController: GADBannerViewDelegate {
+	func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+		print("bannerViewDidReceiveAd")
+		self.adsBannerView.addSubview(bannerView)
+	}
+
+	func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+		print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+	}
+
+	func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+		print("bannerViewDidRecordImpression")
+	}
+
+	func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+		print("bannerViewWillPresentScreen")
+	}
+
+	func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+		print("bannerViewWillDIsmissScreen")
+	}
+
+	func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+		print("bannerViewDidDismissScreen")
 	}
 }
 
