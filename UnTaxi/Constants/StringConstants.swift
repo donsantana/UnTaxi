@@ -64,7 +64,9 @@ struct GlobalStrings {
 	static let removeClientTitle: String = NSLocalizedString("Eliminar Usuario",comment:"")
 	static let removeClientMessage: String = NSLocalizedString("¿Estás seguro que desea eliminar su cuenta?",comment:"")
 	static let profileUpdatedTitle: String = NSLocalizedString("Perfil Actualizado",comment:"")
-	static let errorTitle: String = NSLocalizedString("Error de Perfil",comment:"")
+    static let errorTitle: String = NSLocalizedString("Error de Perfil",comment:"")
+    static let usuarioEliminadoExito: String = NSLocalizedString("Usuario eliminado con éxito.",comment:"")
+	static let usuarioEliminadoError: String = NSLocalizedString("El usuario no pudo ser eliminado. Por favor intente otra vez.",comment:"")
 
 	static let wronCameraMessage = NSLocalizedString("El perfil solo acepta una foto frontal.", comment:"")
 	

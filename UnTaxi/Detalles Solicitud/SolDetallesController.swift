@@ -40,7 +40,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 
 	lazy var bannerView: GADBannerView = {
 		let bannerView = GADBannerView()
-		bannerView.adUnitID = GlobalConstants.googleAdsID
+        bannerView.adUnitID = GoogleAdsConstant.appBannerID
 		
 		bannerView.rootViewController = self
 		bannerView.delegate = self

@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '12.0'
+platform :ios, '12.4'
 use_frameworks!
 
 target "UnTaxi" do
@@ -9,7 +9,6 @@ target "UnTaxi" do
     pod 'SwiftyJSON'
     pod 'MaterialComponents/TextFields'
     pod 'TextFieldEffects'
-    pod 'GooglePlaces'
     pod 'R.swift'
 		pod 'MapboxMaps', '10.9.0'
 		pod 'MapboxSearch', ">= 1.0.0-beta.38", "< 2.0"
@@ -23,12 +22,14 @@ target "UnTaxi" do
     pod 'CountryPickerSwift'
 		pod 'ToastViewSwift'
 		pod 'Google-Mobile-Ads-SDK'
+    
+    target 'VipCar'
 end
 
 post_install do |installer|
  installer.pods_project.targets.each do |target|
   target.build_configurations.each do |config|
-   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
   end
  end
 end

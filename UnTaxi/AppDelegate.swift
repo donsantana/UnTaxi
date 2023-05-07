@@ -45,9 +45,7 @@ import GoogleMobileAds
     
     // To change colour of tappable items.
    // UINavigationBar.appearance().tintColor = CustomAppColor.textColor
-    
-    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : CustomAppColor.textColor,
-                                                        .font : UIFont.init(name: "Muli", size: 20.0)!]
+
     // ToolBar
     UIToolbar.appearance().barTintColor = .init(CustomAppColor.primaryColor)
     

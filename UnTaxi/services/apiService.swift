@@ -115,10 +115,10 @@ final class ApiService {
 				let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
 				
 				guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-					self.delegate?.apiRequest(self, removeClientAPI: false, msg: json["msg"] as? String ?? "El usuario no pudo ser eliminado. Por favor intente otra vez.")
+                    self.delegate?.apiRequest(self, removeClientAPI: false, msg: json["msg"] as? String ?? GlobalStrings.usuarioEliminadoError)
 					return
 				}
-				self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? "Usuario eliminado con éxito.")
+                self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? GlobalStrings.usuarioEliminadoExito)
 			} catch {
 				self.handlerError(error: GlobalStrings.errorGenericoMessage)
 			}
