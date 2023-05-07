@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D7BFBA17845DD894FF28CCE /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB0EAA535EE83F066BB4D7C /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
@@ -80,8 +79,6 @@
 		C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B21245F68C9007B0EE5 /* Responsive.swift */; };
 		C63A6B24245F6A21007B0EE5 /* xoalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B23245F6A21007B0EE5 /* xoalogo.png */; };
 		C63A6B2A245F7AB0007B0EE5 /* InicioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B29245F7AB0007B0EE5 /* InicioController.swift */; };
-		C63A6B30245F7AF1007B0EE5 /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B2C245F7AF0007B0EE5 /* InicioControllerExt.swift */; };
-		C63A6B32245F7AF1007B0EE5 /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */; };
 		C63A6B3624610386007B0EE5 /* InicioFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */; };
 		C63A6FB1227F675A0095AF3C /* ApiRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */; };
 		C63D220821D56150007378D7 /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
@@ -185,10 +182,14 @@
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
+		DC4AA7C9B4B269F9589AD368 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */; };
+		F4E131D32A07FF0000E18299 /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */; };
+		F4E131D72A0802F100E18299 /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D62A0802F100E18299 /* InicioSocketExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10372F51D6E283A2A0682D57 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		800E12FDFDB2D23719CC9B93 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +223,6 @@
 		AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolViewCell.swift; sourceTree = "<group>"; };
 		AFD656711FA17CD000C8A5BD /* ds_digital */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ds_digital; sourceTree = "<group>"; };
 		AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo1.png; sourceTree = "<group>"; };
-		B49A68A9F3F8B95ECF1766A4 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 		B5054D761E66051500FEEDE4 /* SolDetallesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolDetallesController.swift; sourceTree = "<group>"; };
 		B5EDE1331D6517B20014130F /* CConexionInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConexionInternet.swift; sourceTree = "<group>"; };
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
@@ -271,8 +271,6 @@
 		C63A6B21245F68C9007B0EE5 /* Responsive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Responsive.swift; sourceTree = "<group>"; };
 		C63A6B23245F6A21007B0EE5 /* xoalogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xoalogo.png; sourceTree = "<group>"; };
 		C63A6B29245F7AB0007B0EE5 /* InicioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioController.swift; path = ../Controllers/InicioController.swift; sourceTree = "<group>"; };
-		C63A6B2C245F7AF0007B0EE5 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioControllerExt.swift; path = ../premiumcar/PremiumCar/Inicio/InicioControllerExt.swift; sourceTree = SOURCE_ROOT; };
-		C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioSocketExt.swift; path = ../premiumcar/PremiumCar/Inicio/InicioSocketExt.swift; sourceTree = SOURCE_ROOT; };
 		C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioFunctionsExt.swift; sourceTree = "<group>"; };
 		C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestController.swift; sourceTree = "<group>"; };
 		C63D220721D56150007378D7 /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
@@ -376,7 +374,9 @@
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		EFB0EAA535EE83F066BB4D7C /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9154F15786416B34D706828 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
+		F4E131D62A0802F100E18299 /* InicioSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSocketExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,7 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D7BFBA17845DD894FF28CCE /* Pods_UnTaxi.framework in Frameworks */,
+				DC4AA7C9B4B269F9589AD368 /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +397,7 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				EFB0EAA535EE83F066BB4D7C /* Pods_UnTaxi.framework */,
+				11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -856,10 +856,9 @@
 		C6C3A4F7245F32A00084F409 /* Inicio */ = {
 			isa = PBXGroup;
 			children = (
+				F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */,
 				C63A6B29245F7AB0007B0EE5 /* InicioController.swift */,
-				C63A6B2C245F7AF0007B0EE5 /* InicioControllerExt.swift */,
 				C6445813255F78160000433E /* InicioControllerTablesExt.swift */,
-				C63A6B2E245F7AF1007B0EE5 /* InicioSocketExt.swift */,
 				C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */,
 				C6700456246612FE00FF97AB /* InicioMapExt.swift */,
 				C680738C256DEAE50093E4DE /* SolicitudPanel.swift */,
@@ -868,6 +867,7 @@
 				C665F21425D2DECB00044480 /* InicioSearchExt.swift */,
 				C645789126D2863D00F11C56 /* InicioValidationExt.swift */,
 				C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */,
+				F4E131D62A0802F100E18299 /* InicioSocketExt.swift */,
 			);
 			path = Inicio;
 			sourceTree = "<group>";
@@ -957,8 +957,8 @@
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B49A68A9F3F8B95ECF1766A4 /* Pods-UnTaxi.debug.xcconfig */,
-				10372F51D6E283A2A0682D57 /* Pods-UnTaxi.release.xcconfig */,
+				D9154F15786416B34D706828 /* Pods-UnTaxi.debug.xcconfig */,
+				800E12FDFDB2D23719CC9B93 /* Pods-UnTaxi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -970,13 +970,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				1AADFA8A4FD9663D8E7E8380 /* [CP] Check Pods Manifest.lock */,
+				AF354A80B3960410B8796E5B /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				7B51EDF46C22BFA35806E534 /* [CP] Embed Pods Frameworks */,
-				ACE83B1CE306D668479AFB96 /* [CP] Copy Pods Resources */,
+				E0EF21A87E822D9C274191F8 /* [CP] Embed Pods Frameworks */,
+				7D63202069692F17B0738AF7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1093,7 +1093,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AADFA8A4FD9663D8E7E8380 /* [CP] Check Pods Manifest.lock */ = {
+		7D63202069692F17B0738AF7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF354A80B3960410B8796E5B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1115,7 +1133,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B51EDF46C22BFA35806E534 /* [CP] Embed Pods Frameworks */ = {
+		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		E0EF21A87E822D9C274191F8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1189,44 +1227,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ACE83B1CE306D668479AFB96 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1246,6 +1246,7 @@
 				C63A6B22245F68C9007B0EE5 /* Responsive.swift in Sources */,
 				C68073B8256E21A20093E4DE /* InicioPanelExt.swift in Sources */,
 				C66984142677EF9700C0C353 /* PublicidadService.swift in Sources */,
+				F4E131D32A07FF0000E18299 /* InicioControllerExt.swift in Sources */,
 				C60C16582302760B0090F4E0 /* UIButton.swift in Sources */,
 				C6F0BB1B23B7053800266396 /* SolPendientesViewCell.swift in Sources */,
 				AFD6563F1F9D42E100C8A5BD /* CRuta.swift in Sources */,
@@ -1273,7 +1274,6 @@
 				C6C3A507245F335A0084F409 /* PerfilController.swift in Sources */,
 				C64363A222EBC4A50006F235 /* OfertasControllerExt.swift in Sources */,
 				C603C79828F316B700F4A761 /* PagoYapaCell.swift in Sources */,
-				C63A6B32245F7AF1007B0EE5 /* InicioSocketExt.swift in Sources */,
 				C68ED7C12298B94400E2F8AC /* R.generated.swift in Sources */,
 				C6C3A506245F335A0084F409 /* PerfilControllerExt.swift in Sources */,
 				C6A37F192557327000C79BFF /* TerminosController.swift in Sources */,
@@ -1327,6 +1327,7 @@
 				C6C3A4F4245F32640084F409 /* LoginController.swift in Sources */,
 				C60C16562302736B0090F4E0 /* OurDate.swift in Sources */,
 				C68074772571E9410093E4DE /* SocketService.swift in Sources */,
+				F4E131D72A0802F100E18299 /* InicioSocketExt.swift in Sources */,
 				C6002C5328FCA9E0004C55EE /* PagoSocketExt.swift in Sources */,
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
 				C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */,
@@ -1354,7 +1355,6 @@
 				C63272882588714C000A3931 /* Double.swift in Sources */,
 				C619BE5F253FFA7400611B4D /* HistorialTableExt.swift in Sources */,
 				C6384BEA22A43A46000EB156 /* UIToolbar.swift in Sources */,
-				C63A6B30245F7AF1007B0EE5 /* InicioControllerExt.swift in Sources */,
 				C6915F21228500420048C00C /* SMSVoz.swift in Sources */,
 				C6A37F03255211DA00C79BFF /* HistoryCell.swift in Sources */,
 				C66984192679526E00C0C353 /* Weather.swift in Sources */,
@@ -1507,7 +1507,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B49A68A9F3F8B95ECF1766A4 /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = D9154F15786416B34D706828 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1545,7 +1545,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10372F51D6E283A2A0682D57 /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = 800E12FDFDB2D23719CC9B93 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;

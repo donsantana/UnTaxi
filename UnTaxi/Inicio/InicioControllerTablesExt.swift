@@ -10,7 +10,7 @@ import UIKit
 
 extension InicioController: UITableViewDelegate, UITableViewDataSource{
   //TABLA FUNCTIONS
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     switch tableView {
@@ -22,8 +22,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
       return 0
     }
   }
-  
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch tableView {
     case solicitudFormTable:
@@ -38,7 +37,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
       return self.formularioDataCellList[indexPath.row]
     }
   }
-  
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
 		switch tableView {
@@ -49,7 +48,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
 		}
   }
 
-  
+
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch tableView {
     case solicitudFormTable:
@@ -58,23 +57,23 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
       return 44
     }
   }
-  
-//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//		switch tableView {
-//		case tarjetasTableView:
-//
-//		default:
-//			return UIView()
-//		}
-//  }
-//
-//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//      // Section Footer height
-//		switch tableView {
-//		case addressTableView:
-//			return 55.0
-//		default:
-//			return 0.0
-//		}
-//  }
+
+////  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+////		switch tableView {
+////		case tarjetasTableView:
+////
+////		default:
+////			return UIView()
+////		}
+////  }
+////
+////  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+////      // Section Footer height
+////		switch tableView {
+////		case addressTableView:
+////			return 55.0
+////		default:
+////			return 0.0
+////		}
+////  }
 }
