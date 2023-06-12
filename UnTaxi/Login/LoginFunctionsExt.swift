@@ -21,6 +21,7 @@ extension LoginController{
     self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])]) //Customization.serverData
     
     print("token para socket \(accessToken)")
+    print("Socket URL: \(GlobalConstants.socketurlHost)")
 //    self.socketIOManager.config = SocketIOClientConfiguration(
 //      arrayLiteral: .compress, .connectParams(["Authorization": "Bearer token", "token": accessToken])
 //    )
@@ -55,7 +56,6 @@ extension LoginController{
     }
 		
 		AppStoreService.shared.checkNewVersionAvailable()
-		//self.checkSolPendientes()
 		self.checkLocationStatus()
   }
   

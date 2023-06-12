@@ -19,7 +19,7 @@ extension InicioController{
 	
 	func checkForNewVersions() {
 		DispatchQueue.main.async {
-			if globalVariables.newVersionAvailable {
+            if AppStoreService.shared.newVersionAvailable {
 				
 				let alertaVersion = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. ¿Desea hacerlo en este momento?", preferredStyle: .alert)
 				alertaVersion.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
@@ -103,42 +103,50 @@ extension InicioController{
 
 		destinoCell.initContent(destinoAnnotation: destinoAnnotation)
 		removeDestinoFromMap()
-	
+        self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 37).relativeToIphone8Height(shouldUseLimit: false)
 		if self.tabBar.selectedItem == self.ofertaItem || self.tabBar.selectedItem == self.pactadaItem {
-			self.formularioDataCellList.append(self.destinoCell)
+			formularioDataCellList.append(self.destinoCell)
+            self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 40
 			if self.tabBar.selectedItem == self.ofertaItem {
 				ofertaDataCell.initContent()
 				self.formularioDataCellList.append(self.ofertaDataCell)
-				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 57).relativeToIphone8Height(shouldUseLimit: false)
+				self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35//globalVariables.responsive.heightFloatPercent(percent: 58).relativeToIphone8Height(shouldUseLimit: false)
 			} else {
+                self.formularioDataCellList.append(self.pactadaCell)
 				pactadaCell.precioText.text = "$\(String(format: "%.0f", 0.0))"
 				origenCell.origenText.text?.removeAll()
 				destinoAnnotation.address = ""
 				destinoCell.destinoText.text?.removeAll()
 				ofertaDataCell.resetValorOferta()
-				formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 48).relativeToIphone8Height(shouldUseLimit: false)
+				formularioSolicitudHeight.constant = formularioSolicitudHeight.constant + 45//globalVariables.responsive.heightFloatPercent(percent: 49).relativeToIphone8Height(shouldUseLimit: false)
 			}
 		} else {
-			self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 47).relativeToIphone8Height(shouldUseLimit: false)
 			if globalVariables.cliente.idEmpresa != 0 {
 				if self.isVoucherSelected {
 					self.formularioDataCellList.append(self.destinoCell)
-					self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 53).relativeToIphone8Height(shouldUseLimit: false)
+                    formularioSolicitudHeight.constant = formularioSolicitudHeight.constant + 40
 				}
 			}
 		}
 		
-		if self.tabBar.selectedItem == self.pactadaItem {
-			self.formularioDataCellList.append(self.pactadaCell)
+		if self.tabBar.selectedItem != self.pactadaItem {
+            self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
+            self.formularioDataCellList.append(self.pagoCell)
+            self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35
 		} else {
-			self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
-			self.formularioDataCellList.append(self.pagoCell)
-			if pagoCell.formaPagoSelected == "Efectivo" {
-				formularioDataCellList.append(pagoYapaCell)
-			} else {
-				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 43).relativeToIphone8Height(shouldUseLimit: false)
-			}
+//			self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
+//			self.formularioDataCellList.append(self.pagoCell)
+//            self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35
+//			if pagoCell.formaPagoSelected == "Efectivo" {
+//				formularioDataCellList.append(pagoYapaCell)
+//			} else {
+//				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 44).relativeToIphone8Height(shouldUseLimit: false)
+//			}
 		}
+        if pagoCell.formaPagoSelected == "Efectivo" {
+            formularioDataCellList.append(pagoYapaCell)
+            self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35
+        }
 		
 		self.contactoCell.contactoNameText.setBottomBorder(borderColor: UIColor.black)
 		self.contactoCell.telefonoText.setBottomBorder(borderColor: UIColor.black)
