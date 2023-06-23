@@ -22,22 +22,23 @@ struct AppConfig {
   var tiemposolicitud: Int
   var yapa: Bool
   var uso_yapa: Double
-  
-  init() {
-    oferta = false
-    taximetro = false
-    horas = false
-    cardpay = false
-    advertising = false
-    pactadas = false
-    recargas = false
-    reserva = false
-    sms = false
-    tiemposolicitud = 90
-    yapa = false
-    uso_yapa = 0.0
-  }
-  
+  var alertauso: Bool = false
+    
+    init() {
+        oferta = false
+        taximetro = false
+        horas = false
+        cardpay = false
+        advertising = false
+        pactadas = false
+        recargas = false
+        reserva = false
+        sms = false
+        tiemposolicitud = 90
+        yapa = false
+        uso_yapa = 0.0
+    }
+    
   //Produccion
   init(config: [String: Any]) {
 		oferta = !(config["oferta"] is NSNull) ? (config["oferta"] is NSString) ? ((config["oferta"] as! NSString) == "true") : (config["oferta"] as! Bool) : false

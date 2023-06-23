@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C991083674075DF8A435096 /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383B48CF69F43C12141AFE41 /* Pods_UnTaxi_LlamadaFacil.framework */; };
 		381E880CEDC3C740D2898610 /* Pods_UnTaxi_VipCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75454AB974EFB97232DFB093 /* Pods_UnTaxi_VipCar.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
@@ -183,10 +184,192 @@
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
-		DC4AA7C9B4B269F9589AD368 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */; };
-		EAF512BD0D9C87264AF64782 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */; };
+		DC4AA7C9B4B269F9589AD368 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		EAF512BD0D9C87264AF64782 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F452DE4C2A084D8C005BCF55 /* VipCar Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */; };
 		F452DE4D2A084D8C005BCF55 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F452DE4A2A084D8C005BCF55 /* Asset.xcassets */; };
+		F45E0E932A37DE03004A4FEF /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
+		F45E0E942A37DE03004A4FEF /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
+		F45E0E952A37DE03004A4FEF /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
+		F45E0E962A37DE03004A4FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */; };
+		F45E0E972A37DE03004A4FEF /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
+		F45E0E982A37DE03004A4FEF /* Tarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9CC25852E5C0023425D /* Tarifario.swift */; };
+		F45E0E992A37DE03004A4FEF /* appStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C2BB5290D5EC700DB59C5 /* appStoreService.swift */; };
+		F45E0E9A2A37DE03004A4FEF /* UISegmentedContol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A20F125321022007BCE37 /* UISegmentedContol.swift */; };
+		F45E0E9B2A37DE03004A4FEF /* ContactoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */; };
+		F45E0E9C2A37DE03004A4FEF /* Responsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B21245F68C9007B0EE5 /* Responsive.swift */; };
+		F45E0E9D2A37DE03004A4FEF /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
+		F45E0E9E2A37DE03004A4FEF /* PublicidadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984132677EF9700C0C353 /* PublicidadService.swift */; };
+		F45E0E9F2A37DE03004A4FEF /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */; };
+		F45E0EA02A37DE03004A4FEF /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
+		F45E0EA12A37DE03004A4FEF /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
+		F45E0EA22A37DE03004A4FEF /* CRuta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656221F9D42DC00C8A5BD /* CRuta.swift */; };
+		F45E0EA32A37DE03004A4FEF /* PerfilNombreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE622541437200611B4D /* PerfilNombreCell.swift */; };
+		F45E0EA42A37DE03004A4FEF /* LoginFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4F1245F32640084F409 /* LoginFunctionsExt.swift */; };
+		F45E0EA52A37DE03004A4FEF /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E593C24B80F1400FFB26B /* AppConfig.swift */; };
+		F45E0EA62A37DE03004A4FEF /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C15230B9CBE0010F6A3 /* BaseController.swift */; };
+		F45E0EA72A37DE03004A4FEF /* InicioValidationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789126D2863D00F11C56 /* InicioValidationExt.swift */; };
+		F45E0EA82A37DE03004A4FEF /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D0597E24997BC10020CFE6 /* UILabel.swift */; };
+		F45E0EA92A37DE03004A4FEF /* CompletadaDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAC68128FE3EB10084FBDF /* CompletadaDelegatesExt.swift */; };
+		F45E0EAA2A37DE03004A4FEF /* apiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B1E245F63BC007B0EE5 /* apiService.swift */; };
+		F45E0EAB2A37DE03004A4FEF /* YapaPanelTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088501265C01850038303A /* YapaPanelTableExt.swift */; };
+		F45E0EAC2A37DE03004A4FEF /* ApiRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */; };
+		F45E0EAD2A37DE03004A4FEF /* YapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2514265AA09D004716AF /* YapaCell.swift */; };
+		F45E0EAE2A37DE03004A4FEF /* YapaPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7B2577700D0071625E /* YapaPanel.swift */; };
+		F45E0EAF2A37DE03004A4FEF /* SolDetallesFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */; };
+		F45E0EB02A37DE03004A4FEF /* CSMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */; };
+		F45E0EB12A37DE03004A4FEF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673EC432672A2CC004EFC39 /* String.swift */; };
+		F45E0EB22A37DE03004A4FEF /* UIVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F0625546B2300C79BFF /* UIVisualEffectView.swift */; };
+		F45E0EB32A37DE03004A4FEF /* SideMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807453256F73EE0093E4DE /* SideMenuTable.swift */; };
+		F45E0EB42A37DE03004A4FEF /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
+		F45E0EB52A37DE03004A4FEF /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630E6C426715B7100700F8D /* Character.swift */; };
+		F45E0EB62A37DE03004A4FEF /* GoogleAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC3E9729C6190000FF35E8 /* GoogleAdsService.swift */; };
+		F45E0EB72A37DE03004A4FEF /* YapaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7825775E040071625E /* YapaController.swift */; };
+		F45E0EB82A37DE03004A4FEF /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A505245F335A0084F409 /* PerfilController.swift */; };
+		F45E0EB92A37DE03004A4FEF /* OfertasControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */; };
+		F45E0EBA2A37DE03004A4FEF /* PagoYapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79728F316B700F4A761 /* PagoYapaCell.swift */; };
+		F45E0EBB2A37DE03004A4FEF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68ED7C02298B94400E2F8AC /* R.generated.swift */; };
+		F45E0EBC2A37DE03004A4FEF /* PerfilControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A504245F335A0084F409 /* PerfilControllerExt.swift */; };
+		F45E0EBD2A37DE03004A4FEF /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
+		F45E0EBE2A37DE03004A4FEF /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789326D4AD1100F11C56 /* UIImageView.swift */; };
+		F45E0EBF2A37DE03004A4FEF /* Solicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* Solicitud.swift */; };
+		F45E0EC02A37DE03004A4FEF /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29D227E39F20029CD0B /* Customization.swift */; };
+		F45E0EC12A37DE03004A4FEF /* SOSCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28F28E86E7A00AB79A2 /* SOSCollectionCell.swift */; };
+		F45E0EC22A37DE03004A4FEF /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445B02597BB1E00ABEC47 /* AddressController.swift */; };
+		F45E0EC32A37DE03004A4FEF /* OfertaDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */; };
+		F45E0EC42A37DE03004A4FEF /* EsperaChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074732571CDDA0093E4DE /* EsperaChildVC.swift */; };
+		F45E0EC52A37DE03004A4FEF /* PagoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4C28FCA49C004C55EE /* PagoController.swift */; };
+		F45E0EC62A37DE03004A4FEF /* PactadaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E594024BB669F00FFB26B /* PactadaCell.swift */; };
+		F45E0EC72A37DE03004A4FEF /* CompletadaCollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05A625A663DB00E124AB /* CompletadaCollectionExt.swift */; };
+		F45E0EC82A37DE03004A4FEF /* SolicitudesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */; };
+		F45E0EC92A37DE03004A4FEF /* Telefono.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656271F9D42DD00C8A5BD /* Telefono.swift */; };
+		F45E0ECA2A37DE03004A4FEF /* Perfil2ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */; };
+		F45E0ECB2A37DE03004A4FEF /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
+		F45E0ECC2A37DE03004A4FEF /* SolicitudHistorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */; };
+		F45E0ECD2A37DE03004A4FEF /* contactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60884FF265BFDF90038303A /* contactService.swift */; };
+		F45E0ECE2A37DE03004A4FEF /* AddressMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E84F7259A0C630048FB0C /* AddressMapExt.swift */; };
+		F45E0ECF2A37DE03004A4FEF /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
+		F45E0ED02A37DE03004A4FEF /* Perfil3ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */; };
+		F45E0ED12A37DE03004A4FEF /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B925A7E52600E124AB /* CustomCalloutView.swift */; };
+		F45E0ED22A37DE03004A4FEF /* DetallesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F112554CB8500C79BFF /* DetallesCell.swift */; };
+		F45E0ED32A37DE03004A4FEF /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */; };
+		F45E0ED42A37DE03004A4FEF /* RegistroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63126BC37580076465D /* RegistroController.swift */; };
+		F45E0ED52A37DE03004A4FEF /* Taxi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562B1F9D42DE00C8A5BD /* Taxi.swift */; };
+		F45E0ED62A37DE03004A4FEF /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29F227E3A240029CD0B /* GlobalConstants.swift */; };
+		F45E0ED72A37DE03004A4FEF /* pagoApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79328F221BE00F4A761 /* pagoApiService.swift */; };
+		F45E0ED82A37DE03004A4FEF /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656261F9D42DD00C8A5BD /* Cliente.swift */; };
+		F45E0ED92A37DE03004A4FEF /* InicioFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */; };
+		F45E0EDA2A37DE03004A4FEF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
+		F45E0EDB2A37DE03004A4FEF /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
+		F45E0EDC2A37DE03004A4FEF /* DestinoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6122893247034A70041BB2D /* DestinoCell.swift */; };
+		F45E0EDD2A37DE03004A4FEF /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DA71328518EDE00A7C566 /* StringConstants.swift */; };
+		F45E0EDE2A37DE03004A4FEF /* RegistroFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63326BC439C0076465D /* RegistroFunctionsExt.swift */; };
+		F45E0EDF2A37DE03004A4FEF /* PagoDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */; };
+		F45E0EE02A37DE03004A4FEF /* OfertaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */; };
+		F45E0EE12A37DE03004A4FEF /* InicioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B29245F7AB0007B0EE5 /* InicioController.swift */; };
+		F45E0EE22A37DE03004A4FEF /* CallCenterUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6024F9524A79CA100C91725 /* CallCenterUI.swift */; };
+		F45E0EE32A37DE03004A4FEF /* OfertasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C643639F22EBC44E0006F235 /* OfertasController.swift */; };
+		F45E0EE42A37DE03004A4FEF /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
+		F45E0EE52A37DE03004A4FEF /* OrigenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */; };
+		F45E0EE62A37DE03004A4FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
+		F45E0EE72A37DE03004A4FEF /* AppStoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */; };
+		F45E0EE82A37DE03004A4FEF /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
+		F45E0EE92A37DE03004A4FEF /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
+		F45E0EEA2A37DE03004A4FEF /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
+		F45E0EEB2A37DE03004A4FEF /* InicioApiDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */; };
+		F45E0EEC2A37DE03004A4FEF /* LoginSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */; };
+		F45E0EED2A37DE03004A4FEF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4F0245F32640084F409 /* LoginController.swift */; };
+		F45E0EEE2A37DE03004A4FEF /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
+		F45E0EEF2A37DE03004A4FEF /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074762571E9410093E4DE /* SocketService.swift */; };
+		F45E0EF02A37DE03004A4FEF /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D62A0802F100E18299 /* InicioSocketExt.swift */; };
+		F45E0EF12A37DE03004A4FEF /* PagoSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5228FCA9E0004C55EE /* PagoSocketExt.swift */; };
+		F45E0EF22A37DE03004A4FEF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB122D2BE4900702430 /* UIView.swift */; };
+		F45E0EF32A37DE03004A4FEF /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
+		F45E0EF42A37DE03004A4FEF /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
+		F45E0EF52A37DE03004A4FEF /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
+		F45E0EF62A37DE03004A4FEF /* ComentarioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B625A66A4300E124AB /* ComentarioCollectionCell.swift */; };
+		F45E0EF72A37DE03004A4FEF /* InicioSearchExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665F21425D2DECB00044480 /* InicioSearchExt.swift */; };
+		F45E0EF82A37DE03004A4FEF /* SolicitudStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F0A2554AB4C00C79BFF /* SolicitudStatus.swift */; };
+		F45E0EF92A37DE03004A4FEF /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A425979EE900ABEC47 /* CGFloat.swift */; };
+		F45E0EFA2A37DE03004A4FEF /* PagoFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */; };
+		F45E0EFB2A37DE03004A4FEF /* HistorialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */; };
+		F45E0EFC2A37DE03004A4FEF /* CompletadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D51F9D391000C8A5BD /* CompletadaController.swift */; };
+		F45E0EFD2A37DE03004A4FEF /* YapaTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2516265AACC3004716AF /* YapaTableExt.swift */; };
+		F45E0EFE2A37DE03004A4FEF /* Oferta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFAC22D26A9300702430 /* Oferta.swift */; };
+		F45E0EFF2A37DE03004A4FEF /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
+		F45E0F002A37DE03004A4FEF /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* Conductor.swift */; };
+		F45E0F012A37DE03004A4FEF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622C7A926E6DFF200A2FDF1 /* Address.swift */; };
+		F45E0F022A37DE03004A4FEF /* SolDetallesMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */; };
+		F45E0F032A37DE03004A4FEF /* HistorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE5C253FF9A400611B4D /* HistorialController.swift */; };
+		F45E0F042A37DE03004A4FEF /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
+		F45E0F052A37DE03004A4FEF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC881292D008400E37F4F /* Alert.swift */; };
+		F45E0F062A37DE03004A4FEF /* Tarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9C92585242D0023425D /* Tarifa.swift */; };
+		F45E0F072A37DE03004A4FEF /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
+		F45E0F082A37DE03004A4FEF /* CallCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */; };
+		F45E0F092A37DE03004A4FEF /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63272872588714C000A3931 /* Double.swift */; };
+		F45E0F0A2A37DE03004A4FEF /* HistorialTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE5E253FFA7400611B4D /* HistorialTableExt.swift */; };
+		F45E0F0B2A37DE03004A4FEF /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384BE922A43A46000EB156 /* UIToolbar.swift */; };
+		F45E0F0C2A37DE03004A4FEF /* SMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6915F20228500420048C00C /* SMSVoz.swift */; };
+		F45E0F0D2A37DE03004A4FEF /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F02255211DA00C79BFF /* HistoryCell.swift */; };
+		F45E0F0E2A37DE03004A4FEF /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984182679526E00C0C353 /* Weather.swift */; };
+		F45E0F0F2A37DE03004A4FEF /* Evaluacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656211F9D42DC00C8A5BD /* Evaluacion.swift */; };
+		F45E0F102A37DE03004A4FEF /* SolDetallesSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */; };
+		F45E0F112A37DE03004A4FEF /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
+		F45E0F122A37DE03004A4FEF /* RegistroDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63526BC4AA10076465D /* RegistroDelegatesExt.swift */; };
+		F45E0F132A37DE03004A4FEF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A61290EAA21009039CB /* MapView.swift */; };
+		F45E0F142A37DE03004A4FEF /* SolDetallesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */; };
+		F45E0F152A37DE03004A4FEF /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
+		F45E0F162A37DE03004A4FEF /* MyMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A5F290DE712009039CB /* MyMapAnnotation.swift */; };
+		F45E0F172A37DE03004A4FEF /* PassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE6425414BC900611B4D /* PassController.swift */; };
+		F45E0F182A37DE03004A4FEF /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984162679515900C0C353 /* WeatherService.swift */; };
+		F45E0F192A37DE03004A4FEF /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
+		F45E0F1E2A37DE03004A4FEF /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
+		F45E0F1F2A37DE03004A4FEF /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
+		F45E0F202A37DE03004A4FEF /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
+		F45E0F212A37DE03004A4FEF /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
+		F45E0F222A37DE03004A4FEF /* ds_digital in Resources */ = {isa = PBXBuildFile; fileRef = AFD656711FA17CD000C8A5BD /* ds_digital */; };
+		F45E0F232A37DE03004A4FEF /* PerfilViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E171FA51A190019432B /* PerfilViewCell.xib */; };
+		F45E0F242A37DE03004A4FEF /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */; };
+		F45E0F252A37DE03004A4FEF /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
+		F45E0F262A37DE03004A4FEF /* PagoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* PagoCell.xib */; };
+		F45E0F272A37DE03004A4FEF /* xoalogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */; };
+		F45E0F282A37DE03004A4FEF /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
+		F45E0F292A37DE03004A4FEF /* PagoYapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C603C79528F316A600F4A761 /* PagoYapaViewCell.xib */; };
+		F45E0F2A2A37DE03004A4FEF /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197E25916F8400A4BF1C /* Muli-Semi-BoldItalic.ttf */; };
+		F45E0F2B2A37DE03004A4FEF /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
+		F45E0F2C2A37DE03004A4FEF /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198025916F8400A4BF1C /* Muli-SemiBold.ttf */; };
+		F45E0F2D2A37DE03004A4FEF /* OrigenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */; };
+		F45E0F2E2A37DE03004A4FEF /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197D25916F8300A4BF1C /* Muli-Italic.ttf */; };
+		F45E0F2F2A37DE03004A4FEF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B1B245F5E18007B0EE5 /* Login.storyboard */; };
+		F45E0F302A37DE03004A4FEF /* userPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EE2254A1F4100C79BFF /* userPhoto.png */; };
+		F45E0F312A37DE03004A4FEF /* SOSCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */; };
+		F45E0F322A37DE03004A4FEF /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
+		F45E0F332A37DE03004A4FEF /* PerfilNombreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C619BE602541433700611B4D /* PerfilNombreCell.xib */; };
+		F45E0F342A37DE03004A4FEF /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198325916F8400A4BF1C /* Muli-ExtraLight.ttf */; };
+		F45E0F352A37DE03004A4FEF /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
+		F45E0F362A37DE03004A4FEF /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198125916F8400A4BF1C /* Muli-ExtraLightItalic.ttf */; };
+		F45E0F372A37DE03004A4FEF /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EFF255211CC00C79BFF /* HistoryViewCell.xib */; };
+		F45E0F382A37DE03004A4FEF /* DetallesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37F0E2554CB7200C79BFF /* DetallesViewCell.xib */; };
+		F45E0F392A37DE03004A4FEF /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562A1F9D42DE00C8A5BD /* beep.wav */; };
+		F45E0F3A2A37DE03004A4FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
+		F45E0F3B2A37DE03004A4FEF /* Perfil2ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */; };
+		F45E0F3C2A37DE03004A4FEF /* OfertaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C64DA711285174AA00A7C566 /* OfertaCell.xib */; };
+		F45E0F3D2A37DE03004A4FEF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */; };
+		F45E0F3E2A37DE03004A4FEF /* xoalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B23245F6A21007B0EE5 /* xoalogo.png */; };
+		F45E0F3F2A37DE03004A4FEF /* YapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C66F2512265AA070004716AF /* YapaViewCell.xib */; };
+		F45E0F402A37DE03004A4FEF /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198225916F8400A4BF1C /* Muli-BoldItalic.ttf */; };
+		F45E0F412A37DE03004A4FEF /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198425916F8500A4BF1C /* Muli-Light.ttf */; };
+		F45E0F422A37DE03004A4FEF /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */; };
+		F45E0F432A37DE03004A4FEF /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
+		F45E0F442A37DE03004A4FEF /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197F25916F8400A4BF1C /* Muli.ttf */; };
+		F45E0F452A37DE03004A4FEF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
+		F45E0F462A37DE03004A4FEF /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
+		F45E0F472A37DE03004A4FEF /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
+		F45E0F5E2A37DF78004A4FEF /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45E0F5A2A37DF78004A4FEF /* Asset.xcassets */; };
+		F45E0F632A37FF39004A4FEF /* Llamada Facil Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45E0F622A37FF39004A4FEF /* Llamada Facil Launch Screen.storyboard */; };
+		F49BF4392A44F67A00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
+		F49BF43A2A44F67D00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
+		F49BF43B2A44F67E00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
 		F4E131D32A07FF0000E18299 /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */; };
 		F4E131D72A0802F100E18299 /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D62A0802F100E18299 /* InicioSocketExt.swift */; };
 		F4E131DF2A08121A00E18299 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
@@ -355,10 +538,11 @@
 
 /* Begin PBXFileReference section */
 		066C0F5553CAA967C1D3C4B0 /* Pods-UnTaxi-VipCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.debug.xcconfig"; sourceTree = "<group>"; };
-		11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D19DC0182583448176AA50 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		383B48CF69F43C12141AFE41 /* Pods_UnTaxi_LlamadaFacil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_LlamadaFacil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD81CB7BD9301402805C250 /* Pods-UnTaxi-VipCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.release.xcconfig"; sourceTree = "<group>"; };
 		4732A09F2AD97CFFEA92EF62 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		6B3A412CE2A3B4C9FCBFD4A7 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.release.xcconfig"; sourceTree = "<group>"; };
 		75454AB974EFB97232DFB093 /* Pods_UnTaxi_VipCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_VipCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -544,9 +728,16 @@
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
+		ECB456477DB2E32E6329C054 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; sourceTree = "<group>"; };
 		F452DE482A084D8C005BCF55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "VipCar Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F452DE4A2A084D8C005BCF55 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
+		F45E0F4C2A37DE03004A4FEF /* LlamadaFacil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LlamadaFacil.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F45E0F4D2A37DE03004A4FEF /* UnTaxi copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UnTaxi copy-Info.plist"; path = "/Users/done/Documents/Repos/UnTaxi/UnTaxi copy-Info.plist"; sourceTree = "<absolute>"; };
+		F45E0F592A37DF78004A4FEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F45E0F5A2A37DF78004A4FEF /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
+		F45E0F622A37FF39004A4FEF /* Llamada Facil Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Llamada Facil Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F49BF4382A44F67A00C22269 /* ConfigMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigMessage.swift; sourceTree = "<group>"; };
 		F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
 		F4E131D62A0802F100E18299 /* InicioSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSocketExt.swift; sourceTree = "<group>"; };
 		F4E132992A08121A00E18299 /* VipCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -558,8 +749,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC4AA7C9B4B269F9589AD368 /* Pods_UnTaxi.framework in Frameworks */,
-				EAF512BD0D9C87264AF64782 /* Pods_UnTaxi.framework in Frameworks */,
+				DC4AA7C9B4B269F9589AD368 /* (null) in Frameworks */,
+				EAF512BD0D9C87264AF64782 /* (null) in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45E0F1A2A37DE03004A4FEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C991083674075DF8A435096 /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,8 +781,8 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				11BAF7126947282FEC4F52D8 /* Pods_UnTaxi.framework */,
 				75454AB974EFB97232DFB093 /* Pods_UnTaxi_VipCar.framework */,
+				383B48CF69F43C12141AFE41 /* Pods_UnTaxi_LlamadaFacil.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,6 +814,7 @@
 				84F571441BCE958200FC18D5 /* Products */,
 				806E675426FD1B3FEF7755DC /* Frameworks */,
 				DA53F09E53843FFE9BFE048B /* Pods */,
+				F45E0F4D2A37DE03004A4FEF /* UnTaxi copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -623,6 +823,7 @@
 			children = (
 				84F571431BCE958200FC18D5 /* UnTaxi.app */,
 				F4E132992A08121A00E18299 /* VipCar.app */,
+				F45E0F4C2A37DE03004A4FEF /* LlamadaFacil.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -886,6 +1087,7 @@
 				C622C7A926E6DFF200A2FDF1 /* Address.swift */,
 				C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */,
 				C6814A5F290DE712009039CB /* MyMapAnnotation.swift */,
+				F49BF4382A44F67A00C22269 /* ConfigMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1149,6 +1351,8 @@
 				4732A09F2AD97CFFEA92EF62 /* Pods-UnTaxi.release.xcconfig */,
 				066C0F5553CAA967C1D3C4B0 /* Pods-UnTaxi-VipCar.debug.xcconfig */,
 				3BD81CB7BD9301402805C250 /* Pods-UnTaxi-VipCar.release.xcconfig */,
+				ECB456477DB2E32E6329C054 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */,
+				6B3A412CE2A3B4C9FCBFD4A7 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1163,9 +1367,20 @@
 			path = VipCar;
 			sourceTree = "<group>";
 		};
+		F45E0F582A37DF47004A4FEF /* LlamadaFacil */ = {
+			isa = PBXGroup;
+			children = (
+				F45E0F5A2A37DF78004A4FEF /* Asset.xcassets */,
+				F45E0F592A37DF78004A4FEF /* Info.plist */,
+				F45E0F622A37FF39004A4FEF /* Llamada Facil Launch Screen.storyboard */,
+			);
+			path = LlamadaFacil;
+			sourceTree = "<group>";
+		};
 		F4E131D82A08100200E18299 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				F45E0F582A37DF47004A4FEF /* LlamadaFacil */,
 				F452DE3E2A084CDB005BCF55 /* VipCar */,
 			);
 			path = Apps;
@@ -1192,6 +1407,26 @@
 			name = UnTaxi;
 			productName = Xtaxi;
 			productReference = 84F571431BCE958200FC18D5 /* UnTaxi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F45E0E8F2A37DE03004A4FEF /* LlamadaFacil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45E0F492A37DE03004A4FEF /* Build configuration list for PBXNativeTarget "LlamadaFacil" */;
+			buildPhases = (
+				F45E0E902A37DE03004A4FEF /* [CP] Check Pods Manifest.lock */,
+				F45E0E912A37DE03004A4FEF /* Run Script */,
+				F45E0E922A37DE03004A4FEF /* Sources */,
+				F45E0F1A2A37DE03004A4FEF /* Frameworks */,
+				F45E0F1D2A37DE03004A4FEF /* Resources */,
+				F45E0F482A37DE03004A4FEF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LlamadaFacil;
+			productName = Xtaxi;
+			productReference = F45E0F4C2A37DE03004A4FEF /* LlamadaFacil.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F4E131DB2A08121A00E18299 /* VipCar */ = {
@@ -1243,6 +1478,9 @@
 							};
 						};
 					};
+					F45E0E8F2A37DE03004A4FEF = {
+						DevelopmentTeam = 2VMNV5JH5M;
+					};
 					F4E131DB2A08121A00E18299 = {
 						DevelopmentTeam = 48G34LX7UB;
 					};
@@ -1267,6 +1505,7 @@
 			targets = (
 				84F571421BCE958200FC18D5 /* UnTaxi */,
 				F4E131DB2A08121A00E18299 /* VipCar */,
+				F45E0E8F2A37DE03004A4FEF /* LlamadaFacil */,
 			);
 		};
 /* End PBXProject section */
@@ -1318,6 +1557,57 @@
 				C61F347A248E8F66006A07F6 /* .gitignore in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
 				C6D3198F25916F8500A4BF1C /* Muli-LightItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F45E0F1D2A37DE03004A4FEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45E0F1E2A37DE03004A4FEF /* OfertaDataCell.xib in Resources */,
+				F45E0F1F2A37DE03004A4FEF /* SolPendientesCell.xib in Resources */,
+				F45E0F202A37DE03004A4FEF /* DestinoCell.xib in Resources */,
+				F45E0F212A37DE03004A4FEF /* claxon.mp3 in Resources */,
+				F45E0F222A37DE03004A4FEF /* ds_digital in Resources */,
+				F45E0F232A37DE03004A4FEF /* PerfilViewCell.xib in Resources */,
+				F45E0F242A37DE03004A4FEF /* Muli-Bold.ttf in Resources */,
+				F45E0F252A37DE03004A4FEF /* DS-DIGII.TTF in Resources */,
+				F45E0F262A37DE03004A4FEF /* PagoCell.xib in Resources */,
+				F45E0F272A37DE03004A4FEF /* xoalogo1.png in Resources */,
+				F45E0F282A37DE03004A4FEF /* Entitlements.plist in Resources */,
+				F45E0F292A37DE03004A4FEF /* PagoYapaViewCell.xib in Resources */,
+				F45E0F2A2A37DE03004A4FEF /* Muli-Semi-BoldItalic.ttf in Resources */,
+				F45E0F2B2A37DE03004A4FEF /* ContactoCell.xib in Resources */,
+				F45E0F2C2A37DE03004A4FEF /* Muli-SemiBold.ttf in Resources */,
+				F45E0F2D2A37DE03004A4FEF /* OrigenCell.xib in Resources */,
+				F45E0F2E2A37DE03004A4FEF /* Muli-Italic.ttf in Resources */,
+				F45E0F2F2A37DE03004A4FEF /* Login.storyboard in Resources */,
+				F45E0F302A37DE03004A4FEF /* userPhoto.png in Resources */,
+				F45E0F312A37DE03004A4FEF /* SOSCollectionViewCell.xib in Resources */,
+				F45E0F322A37DE03004A4FEF /* CardRow.xib in Resources */,
+				F45E0F332A37DE03004A4FEF /* PerfilNombreCell.xib in Resources */,
+				F45E0F342A37DE03004A4FEF /* Muli-ExtraLight.ttf in Resources */,
+				F45E0F352A37DE03004A4FEF /* CallCenterViewCell.xib in Resources */,
+				F45E0F362A37DE03004A4FEF /* Muli-ExtraLightItalic.ttf in Resources */,
+				F45E0F372A37DE03004A4FEF /* HistoryViewCell.xib in Resources */,
+				F45E0F382A37DE03004A4FEF /* DetallesViewCell.xib in Resources */,
+				F45E0F392A37DE03004A4FEF /* beep.wav in Resources */,
+				F45E0F3A2A37DE03004A4FEF /* Main.storyboard in Resources */,
+				F45E0F3B2A37DE03004A4FEF /* Perfil2ViewCell.xib in Resources */,
+				F45E0F3C2A37DE03004A4FEF /* OfertaCell.xib in Resources */,
+				F45E0F3D2A37DE03004A4FEF /* Launch Screen.storyboard in Resources */,
+				F45E0F3E2A37DE03004A4FEF /* xoalogo.png in Resources */,
+				F45E0F5E2A37DF78004A4FEF /* Asset.xcassets in Resources */,
+				F45E0F3F2A37DE03004A4FEF /* YapaViewCell.xib in Resources */,
+				F45E0F632A37FF39004A4FEF /* Llamada Facil Launch Screen.storyboard in Resources */,
+				F45E0F402A37DE03004A4FEF /* Muli-BoldItalic.ttf in Resources */,
+				F45E0F412A37DE03004A4FEF /* Muli-Light.ttf in Resources */,
+				F45E0F422A37DE03004A4FEF /* Perfil3ViewCell.xib in Resources */,
+				F45E0F432A37DE03004A4FEF /* PactadaCell.xib in Resources */,
+				F45E0F442A37DE03004A4FEF /* Muli.ttf in Resources */,
+				F45E0F452A37DE03004A4FEF /* .gitignore in Resources */,
+				F45E0F462A37DE03004A4FEF /* Images-5.xcassets in Resources */,
+				F45E0F472A37DE03004A4FEF /* Muli-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1571,6 +1861,122 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F45E0E902A37DE03004A4FEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-LlamadaFacil-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F45E0E912A37DE03004A4FEF /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		F45E0F482A37DE03004A4FEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F4E131DD2A08121A00E18299 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1619,6 +2025,7 @@
 				C62E593D24B80F1400FFB26B /* AppConfig.swift in Sources */,
 				C6253C16230B9CBE0010F6A3 /* BaseController.swift in Sources */,
 				C645789226D2863D00F11C56 /* InicioValidationExt.swift in Sources */,
+				F49BF4392A44F67A00C22269 /* ConfigMessage.swift in Sources */,
 				C6D0597F24997BC10020CFE6 /* UILabel.swift in Sources */,
 				C6AAC68228FE3EB10084FBDF /* CompletadaDelegatesExt.swift in Sources */,
 				C63A6B1F245F63BC007B0EE5 /* apiService.swift in Sources */,
@@ -1736,6 +2143,149 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F45E0E922A37DE03004A4FEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45E0E932A37DE03004A4FEF /* SideMenuController.swift in Sources */,
+				F45E0E942A37DE03004A4FEF /* AdaptiveLayoutConstraint.swift in Sources */,
+				F45E0E952A37DE03004A4FEF /* LoginDelegatesExt.swift in Sources */,
+				F45E0E962A37DE03004A4FEF /* AppDelegate.swift in Sources */,
+				F45E0E972A37DE03004A4FEF /* UIImage.swift in Sources */,
+				F45E0E982A37DE03004A4FEF /* Tarifario.swift in Sources */,
+				F45E0E992A37DE03004A4FEF /* appStoreService.swift in Sources */,
+				F45E0E9A2A37DE03004A4FEF /* UISegmentedContol.swift in Sources */,
+				F45E0E9B2A37DE03004A4FEF /* ContactoViewCell.swift in Sources */,
+				F45E0E9C2A37DE03004A4FEF /* Responsive.swift in Sources */,
+				F45E0E9D2A37DE03004A4FEF /* InicioPanelExt.swift in Sources */,
+				F45E0E9E2A37DE03004A4FEF /* PublicidadService.swift in Sources */,
+				F45E0E9F2A37DE03004A4FEF /* InicioControllerExt.swift in Sources */,
+				F45E0EA02A37DE03004A4FEF /* UIButton.swift in Sources */,
+				F45E0EA12A37DE03004A4FEF /* SolPendientesViewCell.swift in Sources */,
+				F45E0EA22A37DE03004A4FEF /* CRuta.swift in Sources */,
+				F45E0EA32A37DE03004A4FEF /* PerfilNombreCell.swift in Sources */,
+				F45E0EA42A37DE03004A4FEF /* LoginFunctionsExt.swift in Sources */,
+				F45E0EA52A37DE03004A4FEF /* AppConfig.swift in Sources */,
+				F45E0EA62A37DE03004A4FEF /* BaseController.swift in Sources */,
+				F45E0EA72A37DE03004A4FEF /* InicioValidationExt.swift in Sources */,
+				F49BF43B2A44F67E00C22269 /* ConfigMessage.swift in Sources */,
+				F45E0EA82A37DE03004A4FEF /* UILabel.swift in Sources */,
+				F45E0EA92A37DE03004A4FEF /* CompletadaDelegatesExt.swift in Sources */,
+				F45E0EAA2A37DE03004A4FEF /* apiService.swift in Sources */,
+				F45E0EAB2A37DE03004A4FEF /* YapaPanelTableExt.swift in Sources */,
+				F45E0EAC2A37DE03004A4FEF /* ApiRequestController.swift in Sources */,
+				F45E0EAD2A37DE03004A4FEF /* YapaCell.swift in Sources */,
+				F45E0EAE2A37DE03004A4FEF /* YapaPanel.swift in Sources */,
+				F45E0EAF2A37DE03004A4FEF /* SolDetallesFunctionsExt.swift in Sources */,
+				F45E0EB02A37DE03004A4FEF /* CSMSVoz.swift in Sources */,
+				F45E0EB12A37DE03004A4FEF /* String.swift in Sources */,
+				F45E0EB22A37DE03004A4FEF /* UIVisualEffectView.swift in Sources */,
+				F45E0EB32A37DE03004A4FEF /* SideMenuTable.swift in Sources */,
+				F45E0EB42A37DE03004A4FEF /* UITextfield.swift in Sources */,
+				F45E0EB52A37DE03004A4FEF /* Character.swift in Sources */,
+				F45E0EB62A37DE03004A4FEF /* GoogleAdsService.swift in Sources */,
+				F45E0EB72A37DE03004A4FEF /* YapaController.swift in Sources */,
+				F45E0EB82A37DE03004A4FEF /* PerfilController.swift in Sources */,
+				F45E0EB92A37DE03004A4FEF /* OfertasControllerExt.swift in Sources */,
+				F45E0EBA2A37DE03004A4FEF /* PagoYapaCell.swift in Sources */,
+				F45E0EBB2A37DE03004A4FEF /* R.generated.swift in Sources */,
+				F45E0EBC2A37DE03004A4FEF /* PerfilControllerExt.swift in Sources */,
+				F45E0EBD2A37DE03004A4FEF /* TerminosController.swift in Sources */,
+				F45E0EBE2A37DE03004A4FEF /* UIImageView.swift in Sources */,
+				F45E0EBF2A37DE03004A4FEF /* Solicitud.swift in Sources */,
+				F45E0EC02A37DE03004A4FEF /* Customization.swift in Sources */,
+				F45E0EC12A37DE03004A4FEF /* SOSCollectionCell.swift in Sources */,
+				F45E0EC22A37DE03004A4FEF /* AddressController.swift in Sources */,
+				F45E0EC32A37DE03004A4FEF /* OfertaDataViewCell.swift in Sources */,
+				F45E0EC42A37DE03004A4FEF /* EsperaChildVC.swift in Sources */,
+				F45E0EC52A37DE03004A4FEF /* PagoController.swift in Sources */,
+				F45E0EC62A37DE03004A4FEF /* PactadaCell.swift in Sources */,
+				F45E0EC72A37DE03004A4FEF /* CompletadaCollectionExt.swift in Sources */,
+				F45E0EC82A37DE03004A4FEF /* SolicitudesTableController.swift in Sources */,
+				F45E0EC92A37DE03004A4FEF /* Telefono.swift in Sources */,
+				F45E0ECA2A37DE03004A4FEF /* Perfil2ViewCell.swift in Sources */,
+				F45E0ECB2A37DE03004A4FEF /* SolDetallesController.swift in Sources */,
+				F45E0ECC2A37DE03004A4FEF /* SolicitudHistorial.swift in Sources */,
+				F45E0ECD2A37DE03004A4FEF /* contactService.swift in Sources */,
+				F45E0ECE2A37DE03004A4FEF /* AddressMapExt.swift in Sources */,
+				F45E0ECF2A37DE03004A4FEF /* CardViewCell.swift in Sources */,
+				F45E0ED02A37DE03004A4FEF /* Perfil3ViewCell.swift in Sources */,
+				F45E0ED12A37DE03004A4FEF /* CustomCalloutView.swift in Sources */,
+				F45E0ED22A37DE03004A4FEF /* DetallesCell.swift in Sources */,
+				F45E0ED32A37DE03004A4FEF /* GlobalVariables.swift in Sources */,
+				F45E0ED42A37DE03004A4FEF /* RegistroController.swift in Sources */,
+				F45E0ED52A37DE03004A4FEF /* Taxi.swift in Sources */,
+				F45E0ED62A37DE03004A4FEF /* GlobalConstants.swift in Sources */,
+				F45E0ED72A37DE03004A4FEF /* pagoApiService.swift in Sources */,
+				F45E0ED82A37DE03004A4FEF /* Cliente.swift in Sources */,
+				F45E0ED92A37DE03004A4FEF /* InicioFunctionsExt.swift in Sources */,
+				F45E0EDA2A37DE03004A4FEF /* UIViewController.swift in Sources */,
+				F45E0EDB2A37DE03004A4FEF /* SolViewCell.swift in Sources */,
+				F45E0EDC2A37DE03004A4FEF /* DestinoCell.swift in Sources */,
+				F45E0EDD2A37DE03004A4FEF /* StringConstants.swift in Sources */,
+				F45E0EDE2A37DE03004A4FEF /* RegistroFunctionsExt.swift in Sources */,
+				F45E0EDF2A37DE03004A4FEF /* PagoDelegatesExt.swift in Sources */,
+				F45E0EE02A37DE03004A4FEF /* OfertaViewCell.swift in Sources */,
+				F45E0EE12A37DE03004A4FEF /* InicioController.swift in Sources */,
+				F45E0EE22A37DE03004A4FEF /* CallCenterUI.swift in Sources */,
+				F45E0EE32A37DE03004A4FEF /* OfertasController.swift in Sources */,
+				F45E0EE42A37DE03004A4FEF /* UITextView.swift in Sources */,
+				F45E0EE52A37DE03004A4FEF /* OrigenViewCell.swift in Sources */,
+				F45E0EE62A37DE03004A4FEF /* Card.swift in Sources */,
+				F45E0EE72A37DE03004A4FEF /* AppStoreVersion.swift in Sources */,
+				F45E0EE82A37DE03004A4FEF /* CSocket.swift in Sources */,
+				F45E0EE92A37DE03004A4FEF /* DireccionPactada.swift in Sources */,
+				F45E0EEA2A37DE03004A4FEF /* InicioControllerTablesExt.swift in Sources */,
+				F45E0EEB2A37DE03004A4FEF /* InicioApiDelegatesExt.swift in Sources */,
+				F45E0EEC2A37DE03004A4FEF /* LoginSocketExt.swift in Sources */,
+				F45E0EED2A37DE03004A4FEF /* LoginController.swift in Sources */,
+				F45E0EEE2A37DE03004A4FEF /* OurDate.swift in Sources */,
+				F45E0EEF2A37DE03004A4FEF /* SocketService.swift in Sources */,
+				F45E0EF02A37DE03004A4FEF /* InicioSocketExt.swift in Sources */,
+				F45E0EF12A37DE03004A4FEF /* PagoSocketExt.swift in Sources */,
+				F45E0EF22A37DE03004A4FEF /* UIView.swift in Sources */,
+				F45E0EF32A37DE03004A4FEF /* SolicitudPanel.swift in Sources */,
+				F45E0EF42A37DE03004A4FEF /* CallCenterViewCell.swift in Sources */,
+				F45E0EF52A37DE03004A4FEF /* mapSevice.swift in Sources */,
+				F45E0EF62A37DE03004A4FEF /* ComentarioCollectionCell.swift in Sources */,
+				F45E0EF72A37DE03004A4FEF /* InicioSearchExt.swift in Sources */,
+				F45E0EF82A37DE03004A4FEF /* SolicitudStatus.swift in Sources */,
+				F45E0EF92A37DE03004A4FEF /* CGFloat.swift in Sources */,
+				F45E0EFA2A37DE03004A4FEF /* PagoFunctionsExt.swift in Sources */,
+				F45E0EFB2A37DE03004A4FEF /* HistorialDetailsController.swift in Sources */,
+				F45E0EFC2A37DE03004A4FEF /* CompletadaController.swift in Sources */,
+				F45E0EFD2A37DE03004A4FEF /* YapaTableExt.swift in Sources */,
+				F45E0EFE2A37DE03004A4FEF /* Oferta.swift in Sources */,
+				F45E0EFF2A37DE03004A4FEF /* PagoViewCell.swift in Sources */,
+				F45E0F002A37DE03004A4FEF /* Conductor.swift in Sources */,
+				F45E0F012A37DE03004A4FEF /* Address.swift in Sources */,
+				F45E0F022A37DE03004A4FEF /* SolDetallesMapExt.swift in Sources */,
+				F45E0F032A37DE03004A4FEF /* HistorialController.swift in Sources */,
+				F45E0F042A37DE03004A4FEF /* CConexionInternet.swift in Sources */,
+				F45E0F052A37DE03004A4FEF /* Alert.swift in Sources */,
+				F45E0F062A37DE03004A4FEF /* Tarifa.swift in Sources */,
+				F45E0F072A37DE03004A4FEF /* InicioMapExt.swift in Sources */,
+				F45E0F082A37DE03004A4FEF /* CallCenterController.swift in Sources */,
+				F45E0F092A37DE03004A4FEF /* Double.swift in Sources */,
+				F45E0F0A2A37DE03004A4FEF /* HistorialTableExt.swift in Sources */,
+				F45E0F0B2A37DE03004A4FEF /* UIToolbar.swift in Sources */,
+				F45E0F0C2A37DE03004A4FEF /* SMSVoz.swift in Sources */,
+				F45E0F0D2A37DE03004A4FEF /* HistoryCell.swift in Sources */,
+				F45E0F0E2A37DE03004A4FEF /* Weather.swift in Sources */,
+				F45E0F0F2A37DE03004A4FEF /* Evaluacion.swift in Sources */,
+				F45E0F102A37DE03004A4FEF /* SolDetallesSocketExt.swift in Sources */,
+				F45E0F112A37DE03004A4FEF /* MKMapView.swift in Sources */,
+				F45E0F122A37DE03004A4FEF /* RegistroDelegatesExt.swift in Sources */,
+				F45E0F132A37DE03004A4FEF /* MapView.swift in Sources */,
+				F45E0F142A37DE03004A4FEF /* SolDetallesExt.swift in Sources */,
+				F45E0F152A37DE03004A4FEF /* PerfilViewCell.swift in Sources */,
+				F45E0F162A37DE03004A4FEF /* MyMapAnnotation.swift in Sources */,
+				F45E0F172A37DE03004A4FEF /* PassController.swift in Sources */,
+				F45E0F182A37DE03004A4FEF /* WeatherService.swift in Sources */,
+				F45E0F192A37DE03004A4FEF /* PanicoController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4E131DE2A08121A00E18299 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1761,6 +2311,7 @@
 				F4E131F12A08121A00E18299 /* AppConfig.swift in Sources */,
 				F4E131F22A08121A00E18299 /* BaseController.swift in Sources */,
 				F4E131F32A08121A00E18299 /* InicioValidationExt.swift in Sources */,
+				F49BF43A2A44F67D00C22269 /* ConfigMessage.swift in Sources */,
 				F4E131F42A08121A00E18299 /* UILabel.swift in Sources */,
 				F4E131F52A08121A00E18299 /* CompletadaDelegatesExt.swift in Sources */,
 				F4E131F62A08121A00E18299 /* apiService.swift in Sources */,
@@ -2085,6 +2636,80 @@
 			};
 			name = Release;
 		};
+		F45E0F4A2A37DE03004A4FEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECB456477DB2E32E6329C054 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/LlamadaFacil/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Llamada Facil";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.2.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = www.xoait.llamadafacil;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F45E0F4B2A37DE03004A4FEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B3A412CE2A3B4C9FCBFD4A7 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/LlamadaFacil/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Llamada Facil";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.2.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = www.xoait.llamadafacil;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		F4E132972A08121A00E18299 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 066C0F5553CAA967C1D3C4B0 /* Pods-UnTaxi-VipCar.debug.xcconfig */;
@@ -2096,7 +2721,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 48G34LX7UB;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -2133,7 +2758,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 48G34LX7UB;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -2176,6 +2801,15 @@
 			buildConfigurations = (
 				84F5716C1BCE958200FC18D5 /* Debug */,
 				84F5716D1BCE958200FC18D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F45E0F492A37DE03004A4FEF /* Build configuration list for PBXNativeTarget "LlamadaFacil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F45E0F4A2A37DE03004A4FEF /* Debug */,
+				F45E0F4B2A37DE03004A4FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -18,24 +18,23 @@ extension LoginController{
   func startSocketConnection(){
     //print(Customization.serverData!)
     let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])]) //Customization.serverData
+    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])])
     
     print("token para socket \(accessToken)")
     print("Socket URL: \(GlobalConstants.socketurlHost)")
-//    self.socketIOManager.config = SocketIOClientConfiguration(
-//      arrayLiteral: .compress, .connectParams(["Authorization": "Bearer token", "token": accessToken])
-//    )
     
     globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
     self.socketService.initLoginEventos()
     globalVariables.socket.connect()
-
   }
   
   func initClientData(datos: [String: Any]) {
     
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
+      if let alertauso = datos["alertauso"], (alertauso as! String) == "true" {
+          globalVariables.llamadaFacilAlert = ConfigMessage(key: "alertauso", value: ((datos["mensaje"] as? NSString) ?? "") as String)
+      }
     print("appConfig \(appConfig)")
     
     if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil{

@@ -85,6 +85,7 @@ struct R: Rswift.Validatable {
   }
 
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
 
@@ -93,17 +94,24 @@ struct R: Rswift.Validatable {
   struct storyboard {
     /// Storyboard `Launch Screen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `Llamada Facil Launch Screen`.
+    static let llamadaFacilLaunchScreen = _R.storyboard.llamadaFacilLaunchScreen()
     /// Storyboard `Login`.
     static let login = _R.storyboard.login()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
-    /// Storyboard `VipCar Launch Screen`.
-    static let vipCarLaunchScreen = _R.storyboard.vipCarLaunchScreen()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "Launch Screen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Llamada Facil Launch Screen", bundle: ...)`
+    static func llamadaFacilLaunchScreen(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.llamadaFacilLaunchScreen)
     }
     #endif
 
@@ -118,13 +126,6 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Main", bundle: ...)`
     static func main(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "VipCar Launch Screen", bundle: ...)`
-    static func vipCarLaunchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.vipCarLaunchScreen)
     }
     #endif
 
@@ -157,18 +158,56 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 19 files.
   struct file {
     /// Resource file `.gitignore`.
     static let gitignore = Rswift.FileResource(bundle: R.hostingBundle, name: ".gitignore", pathExtension: "")
+    /// Resource file `DS-DIGII.TTF`.
+    static let dsdigiittF = Rswift.FileResource(bundle: R.hostingBundle, name: "DS-DIGII", pathExtension: "TTF")
     /// Resource file `Entitlements.plist`.
     static let entitlementsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Entitlements", pathExtension: "plist")
+    /// Resource file `Muli-Bold.ttf`.
+    static let muliBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Bold", pathExtension: "ttf")
+    /// Resource file `Muli-BoldItalic.ttf`.
+    static let muliBoldItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-BoldItalic", pathExtension: "ttf")
+    /// Resource file `Muli-ExtraLight.ttf`.
+    static let muliExtraLightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-ExtraLight", pathExtension: "ttf")
+    /// Resource file `Muli-ExtraLightItalic.ttf`.
+    static let muliExtraLightItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-ExtraLightItalic", pathExtension: "ttf")
+    /// Resource file `Muli-Italic.ttf`.
+    static let muliItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Italic", pathExtension: "ttf")
+    /// Resource file `Muli-Light.ttf`.
+    static let muliLightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Light", pathExtension: "ttf")
+    /// Resource file `Muli-LightItalic.ttf`.
+    static let muliLightItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-LightItalic", pathExtension: "ttf")
+    /// Resource file `Muli-Semi-BoldItalic.ttf`.
+    static let muliSemiBoldItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Semi-BoldItalic", pathExtension: "ttf")
+    /// Resource file `Muli-SemiBold.ttf`.
+    static let muliSemiBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-SemiBold", pathExtension: "ttf")
+    /// Resource file `Muli.ttf`.
+    static let muliTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli", pathExtension: "ttf")
     /// Resource file `beep.wav`.
     static let beepWav = Rswift.FileResource(bundle: R.hostingBundle, name: "beep", pathExtension: "wav")
+    /// Resource file `claxon.mp3`.
+    static let claxonMp3 = Rswift.FileResource(bundle: R.hostingBundle, name: "claxon", pathExtension: "mp3")
+    /// Resource file `ds_digital`.
+    static let ds_digital = Rswift.FileResource(bundle: R.hostingBundle, name: "ds_digital", pathExtension: "")
+    /// Resource file `userPhoto.png`.
+    static let userPhotoPng = Rswift.FileResource(bundle: R.hostingBundle, name: "userPhoto", pathExtension: "png")
+    /// Resource file `xoalogo.png`.
+    static let xoalogoPng = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo", pathExtension: "png")
+    /// Resource file `xoalogo1.png`.
+    static let xoalogo1Png = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo1", pathExtension: "png")
 
     /// `bundle.url(forResource: ".gitignore", withExtension: "")`
     static func gitignore(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.gitignore
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "DS-DIGII", withExtension: "TTF")`
+    static func dsdigiittF(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.dsdigiittF
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -178,10 +217,197 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "Muli", withExtension: "ttf")`
+    static func muliTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-Bold", withExtension: "ttf")`
+    static func muliBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-BoldItalic", withExtension: "ttf")`
+    static func muliBoldItalicTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliBoldItalicTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-ExtraLight", withExtension: "ttf")`
+    static func muliExtraLightTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliExtraLightTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-ExtraLightItalic", withExtension: "ttf")`
+    static func muliExtraLightItalicTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliExtraLightItalicTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-Italic", withExtension: "ttf")`
+    static func muliItalicTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliItalicTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-Light", withExtension: "ttf")`
+    static func muliLightTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliLightTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-LightItalic", withExtension: "ttf")`
+    static func muliLightItalicTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliLightItalicTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-Semi-BoldItalic", withExtension: "ttf")`
+    static func muliSemiBoldItalicTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliSemiBoldItalicTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Muli-SemiBold", withExtension: "ttf")`
+    static func muliSemiBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.muliSemiBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "beep", withExtension: "wav")`
     static func beepWav(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.beepWav
       return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "claxon", withExtension: "mp3")`
+    static func claxonMp3(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.claxonMp3
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "ds_digital", withExtension: "")`
+    static func ds_digital(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.ds_digital
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "userPhoto", withExtension: "png")`
+    static func userPhotoPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.userPhotoPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "xoalogo", withExtension: "png")`
+    static func xoalogoPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.xoalogoPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "xoalogo1", withExtension: "png")`
+    static func xoalogo1Png(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.xoalogo1Png
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.font` struct is generated, and contains static references to 11 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `DS-Digital-Italic`.
+    static let dsDigitalItalic = Rswift.FontResource(fontName: "DS-Digital-Italic")
+    /// Font `Muli-BoldItalic`.
+    static let muliBoldItalic = Rswift.FontResource(fontName: "Muli-BoldItalic")
+    /// Font `Muli-Bold`.
+    static let muliBold = Rswift.FontResource(fontName: "Muli-Bold")
+    /// Font `Muli-ExtraLightItalic`.
+    static let muliExtraLightItalic = Rswift.FontResource(fontName: "Muli-ExtraLightItalic")
+    /// Font `Muli-ExtraLight`.
+    static let muliExtraLight = Rswift.FontResource(fontName: "Muli-ExtraLight")
+    /// Font `Muli-Italic`.
+    static let muliItalic = Rswift.FontResource(fontName: "Muli-Italic")
+    /// Font `Muli-LightItalic`.
+    static let muliLightItalic = Rswift.FontResource(fontName: "Muli-LightItalic")
+    /// Font `Muli-Light`.
+    static let muliLight = Rswift.FontResource(fontName: "Muli-Light")
+    /// Font `Muli-Semi-BoldItalic`.
+    static let muliSemiBoldItalic = Rswift.FontResource(fontName: "Muli-Semi-BoldItalic")
+    /// Font `Muli-SemiBold`.
+    static let muliSemiBold = Rswift.FontResource(fontName: "Muli-SemiBold")
+    /// Font `Muli`.
+    static let muli = Rswift.FontResource(fontName: "Muli")
+
+    /// `UIFont(name: "DS-Digital-Italic", size: ...)`
+    static func dsDigitalItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: dsDigitalItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli", size: ...)`
+    static func muli(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muli, size: size)
+    }
+
+    /// `UIFont(name: "Muli-Bold", size: ...)`
+    static func muliBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliBold, size: size)
+    }
+
+    /// `UIFont(name: "Muli-BoldItalic", size: ...)`
+    static func muliBoldItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliBoldItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli-ExtraLight", size: ...)`
+    static func muliExtraLight(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliExtraLight, size: size)
+    }
+
+    /// `UIFont(name: "Muli-ExtraLightItalic", size: ...)`
+    static func muliExtraLightItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliExtraLightItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli-Italic", size: ...)`
+    static func muliItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli-Light", size: ...)`
+    static func muliLight(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliLight, size: size)
+    }
+
+    /// `UIFont(name: "Muli-LightItalic", size: ...)`
+    static func muliLightItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliLightItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli-Semi-BoldItalic", size: ...)`
+    static func muliSemiBoldItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliSemiBoldItalic, size: size)
+    }
+
+    /// `UIFont(name: "Muli-SemiBold", size: ...)`
+    static func muliSemiBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: muliSemiBold, size: size)
+    }
+
+    static func validate() throws {
+      if R.font.dsDigitalItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'DS-Digital-Italic' could not be loaded, is 'DS-DIGII.TTF' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muli(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli' could not be loaded, is 'Muli.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Bold' could not be loaded, is 'Muli-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliBoldItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-BoldItalic' could not be loaded, is 'Muli-BoldItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliExtraLight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-ExtraLight' could not be loaded, is 'Muli-ExtraLight.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliExtraLightItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-ExtraLightItalic' could not be loaded, is 'Muli-ExtraLightItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Italic' could not be loaded, is 'Muli-Italic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliLight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Light' could not be loaded, is 'Muli-Light.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliLightItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-LightItalic' could not be loaded, is 'Muli-LightItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliSemiBoldItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Semi-BoldItalic' could not be loaded, is 'Muli-Semi-BoldItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.muliSemiBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-SemiBold' could not be loaded, is 'Muli-SemiBold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
     }
 
     fileprivate init() {}
@@ -193,8 +419,6 @@ struct R: Rswift.Validatable {
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
     /// Image `CNT`.
     static let cnT = Rswift.ImageResource(bundle: R.hostingBundle, name: "CNT")
-    /// Image `LaunchImg`.
-    static let launchImg = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImg")
     /// Image `MOVISTAR`.
     static let movistaR = Rswift.ImageResource(bundle: R.hostingBundle, name: "MOVISTAR")
     /// Image `agendaIcon`.
@@ -265,16 +489,12 @@ struct R: Rswift.Validatable {
     static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "home")
     /// Image `jc`.
     static let jc = Rswift.ImageResource(bundle: R.hostingBundle, name: "jc")
-    /// Image `launch`.
-    static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "launch")
     /// Image `llamar`.
     static let llamar = Rswift.ImageResource(bundle: R.hostingBundle, name: "llamar")
     /// Image `loadingGif`.
     static let loadingGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "loadingGif")
     /// Image `locationBtn`.
     static let locationBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "locationBtn")
-    /// Image `login-1`.
-    static let login1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "login-1")
     /// Image `mapIcon`.
     static let mapIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "mapIcon")
     /// Image `mapLocation`.
@@ -357,6 +577,8 @@ struct R: Rswift.Validatable {
     static let tipoTaximetro = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetro")
     /// Image `up`.
     static let up = Rswift.ImageResource(bundle: R.hostingBundle, name: "up")
+    /// Image `userPhoto`.
+    static let userPhoto = Rswift.ImageResource(bundle: R.hostingBundle, name: "userPhoto")
     /// Image `vi`.
     static let vi = Rswift.ImageResource(bundle: R.hostingBundle, name: "vi")
     /// Image `voucherIcon`.
@@ -365,6 +587,10 @@ struct R: Rswift.Validatable {
     static let whatsappBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "whatsappBtn")
     /// Image `whatsapp`.
     static let whatsapp = Rswift.ImageResource(bundle: R.hostingBundle, name: "whatsapp")
+    /// Image `xoalogo1`.
+    static let xoalogo1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "xoalogo1")
+    /// Image `xoalogo`.
+    static let xoalogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "xoalogo")
     /// Image `yapaCodeIcon`.
     static let yapaCodeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "yapaCodeIcon")
     /// Image `yapaIcon`.
@@ -381,13 +607,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "CNT", bundle: ..., traitCollection: ...)`
     static func cnT(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.cnT, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "LaunchImg", bundle: ..., traitCollection: ...)`
-    static func launchImg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.launchImg, compatibleWith: traitCollection)
     }
     #endif
 
@@ -637,13 +856,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "launch", bundle: ..., traitCollection: ...)`
-    static func launch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.launch, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "llamar", bundle: ..., traitCollection: ...)`
     static func llamar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.llamar, compatibleWith: traitCollection)
@@ -661,13 +873,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "locationBtn", bundle: ..., traitCollection: ...)`
     static func locationBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.locationBtn, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "login-1", bundle: ..., traitCollection: ...)`
-    static func login1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.login1, compatibleWith: traitCollection)
     }
     #endif
 
@@ -959,6 +1164,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "userPhoto", bundle: ..., traitCollection: ...)`
+    static func userPhoto(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.userPhoto, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "vi", bundle: ..., traitCollection: ...)`
     static func vi(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.vi, compatibleWith: traitCollection)
@@ -983,6 +1195,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "whatsappBtn", bundle: ..., traitCollection: ...)`
     static func whatsappBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.whatsappBtn, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "xoalogo", bundle: ..., traitCollection: ...)`
+    static func xoalogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.xoalogo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "xoalogo1", bundle: ..., traitCollection: ...)`
+    static func xoalogo1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.xoalogo1, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1656,13 +1882,13 @@ struct _R: Rswift.Validatable {
       try launchScreen.validate()
       #endif
       #if os(iOS) || os(tvOS)
+      try llamadaFacilLaunchScreen.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try login.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try main.validate()
-      #endif
-      #if os(iOS) || os(tvOS)
-      try vipCarLaunchScreen.validate()
       #endif
     }
 
@@ -1675,6 +1901,23 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "launch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launch' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct llamadaFacilLaunchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UIViewController
+
+      let bundle = R.hostingBundle
+      let name = "Llamada Facil Launch Screen"
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "launch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launch' is used in storyboard 'Llamada Facil Launch Screen', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -1872,23 +2115,6 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().ofertasView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'ofertasView' could not be loaded from storyboard 'Main' as 'OfertasController'.") }
         if _R.storyboard.main().panicoChildVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'panicoChildVC' could not be loaded from storyboard 'Main' as 'PanicoController'.") }
         if _R.storyboard.main().terminosView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'terminosView' could not be loaded from storyboard 'Main' as 'TerminosController'.") }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    struct vipCarLaunchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UIViewController
-
-      let bundle = R.hostingBundle
-      let name = "VipCar Launch Screen"
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "LaunchImg", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LaunchImg' is used in storyboard 'VipCar Launch Screen', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
       }
 
       fileprivate init() {}

@@ -34,31 +34,6 @@ extension InicioController{
 		}
 	}
 	
-	//  func coordinatesToAddress(annotation: MGLPointAnnotation){
-	//    print("mapbox \(annotation.coordinate)")
-	//    let options = ReverseGeocodeOptions(coordinate: annotation.coordinate)
-	//    // Or perhaps: ReverseGeocodeOptions(location: locationManager.location)
-	//
-	//    let task = self.geocoder.geocode(options) { (placemarks, attribution, error) in
-	//        guard let placemark = placemarks?.first else {
-	//            return
-	//        }
-	//      print("mapbox \(placemark.name)")
-	//      annotation.address = placemark.name
-	//      self.mapView.selectAnnotation(annotation, animated: true, completionHandler: nil)
-	////        print(placemark.imageName ?? "")
-	////            // telephone
-	////        print(placemark.genres?.joined(separator: ", ") ?? "")
-	////            // computer, electronic
-	////        print(placemark.administrativeRegion?.name ?? "")
-	////            // New York
-	////        print(placemark.administrativeRegion?.code ?? "")
-	////            // US-NY
-	////        print(placemark.place?.wikidataItemIdentifier ?? "")
-	////            // Q60
-	//    }
-	//  }
-	
 	func initTipoSolicitudBar(){
 		if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
 			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem, self.pactadaItem],animated: true)
@@ -69,13 +44,12 @@ extension InicioController{
 			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
 		}
 		
-		for item in self.tabBar.items!{
-			if let image = item.image
-			{
-			item.image = image.withRenderingMode( .alwaysOriginal)
-			item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
-			}
-		}
+        for item in self.tabBar.items!{
+            if let image = item.image {
+                item.image = image.withRenderingMode( .alwaysOriginal)
+                item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
+            }
+        }
 		self.tabBar.selectedItem = self.tabBar.items![1] as UITabBarItem
 		pagoCell.initContent(tipoServicio: tipoServicio)
 		loadFormularioData()
@@ -166,7 +140,6 @@ extension InicioController{
 		button.addTarget(self, action: #selector(self.enviarSolicitud), for: .touchUpInside)
 		button.addCustomActionBtnsColors()
 		
-		//enviarBtnView.addSubview(separatorView)
 		enviarBtnView.addSubview(button)
 		self.solicitudFormTable.backgroundColor = .none
 		self.solicitudFormTable.tableFooterView = enviarBtnView
@@ -232,7 +205,6 @@ extension InicioController{
 			pointAnnotationManager.annotations = []
 		}
 		
-		//self.SolicitudView.isHidden = true
 		self.hideSolicitudView(isHidden: true)
 		self.tabBar.selectedItem = self.ofertaItem
 		super.topMenu.isHidden = false
@@ -450,7 +422,12 @@ extension InicioController{
 						}))
 						self.present(alertaDos, animated: true, completion: nil)
 					} else {
-						self.crearSolicitud()
+                        if self.isVoucherSelected && globalVariables.llamadaFacilAlert != nil {
+                            showAlertaUsoCorporativo()
+                        } else {
+                            crearSolicitud()
+                        }
+					
 					}
 				} else {
 					let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
@@ -483,6 +460,20 @@ extension InicioController{
 			}
 		}
 	}
+    
+    func showAlertaUsoCorporativo() {
+        let alertaDos = UIAlertController (title: GlobalStrings.avisoImportanteTitle, message: globalVariables.llamadaFacilAlert?.value, preferredStyle: .actionSheet)
+        let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Medium", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.red]
+        let titleString = NSAttributedString(string: GlobalStrings.avisoImportanteTitle, attributes: titleAttributes)
+        alertaDos.setValue(titleString, forKey: "attributedTitle")
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+            self.crearSolicitud()
+        }))
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.cancelarButtonTitle, style: .cancel, handler: {alerAction in
+            
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+    }
 	
 	func removeDestinoFromMap() {
 		destinoCell.destinoText.text?.removeAll()

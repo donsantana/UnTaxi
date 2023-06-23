@@ -24,6 +24,7 @@ target "UnTaxi" do
 		pod 'Google-Mobile-Ads-SDK'
     
     target 'VipCar'
+    target 'LlamadaFacil'
 end
 
 post_install do |installer|

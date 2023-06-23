@@ -27,7 +27,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1778988557303127~4303400493</string>
+	<string>ca-app-pub-1778988557303127~6725973453</string>
 	<key>LSApplicationCategoryType</key>
 	<string> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
  &lt;dict&gt;
@@ -53,6 +53,8 @@
 	<string>La app necesita acceder a la camara para tomar la foto de su perfil</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>La app permite utilizar Face ID para autenticarse.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>La app necesita acceder a tus contactos para que puedas pasarle YAPA.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La app necesita acceder a tu localización para buscar los taxis más cercanos. Además se envia al conductor para que sepa el punto exacto de recogida.</string>
 	<key>NSMicrophoneUsageDescription</key>

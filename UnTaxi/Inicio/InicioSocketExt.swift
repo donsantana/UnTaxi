@@ -123,11 +123,14 @@ extension InicioController: SocketServiceDelegate{
 
       globalVariables.ofertasList.append(newOferta)
 
-      DispatchQueue.main.async {
-        let vc = R.storyboard.main.ofertasView()!
-        vc.solicitud = globalVariables.solpendientes.first{$0.id == newOferta.id}!
-        self.navigationController?.show(vc, sender: nil)
-      }
+        if let solpendiente = globalVariables.solpendientes.first(where: {$0.id == newOferta.id}) {
+            DispatchQueue.main.async {
+              let vc = R.storyboard.main.ofertasView()!
+              vc.solicitud = solpendiente
+              self.navigationController?.show(vc, sender: nil)
+            }
+        }
+      
     }
   }
   

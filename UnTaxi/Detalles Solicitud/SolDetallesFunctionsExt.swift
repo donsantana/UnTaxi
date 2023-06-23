@@ -164,7 +164,7 @@ extension SolPendController{
       self.direccionOrigen.text = solicitudPendiente.dirOrigen
       self.direccionDestino.text = solicitudPendiente.dirDestino
       self.distanciaText.text = "SU TAXI ESTÁ A \(temporal) KM"
-      self.valorOferta.text = !(solicitudPendiente.importe == 0.0) ? "$\(String(format: "%.2f",solicitudPendiente.importe)), \(solicitudPendiente.useVoucher == "1" ? " Voucher" : " Efectivo")" : "Importe \(self.solicitudPendiente.tipoServicio == 2 ? "del Taxímetro" : "por Horas")" 
+        self.valorOferta.text = !(solicitudPendiente.importe == 0.0) ? "$\(String(format: "%.2f",solicitudPendiente.importe)), \(solicitudPendiente.tarjeta ? "Tarjeta" : solicitudPendiente.useVoucher == "1" ? " Voucher" : " Efectivo")" : "Importe \(self.solicitudPendiente.tipoServicio == 2 ? "del Taxímetro" : "por Horas")" 
       
       self.reviewConductor.text = "\(solicitudPendiente.taxi.conductor.calificacion) (\(solicitudPendiente.taxi.conductor.cantidadcalificaciones))"
       self.NombreCond.text! = "\(solicitudPendiente.taxi.conductor.nombreApellido)"

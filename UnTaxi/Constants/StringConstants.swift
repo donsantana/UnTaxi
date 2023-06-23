@@ -29,7 +29,9 @@ struct GlobalStrings {
 	static let tarjetaEliminadaTitle: String = NSLocalizedString("Tarjeta Eliminada",comment:"")
 	static let tarjetaEliminadaSucess: String = NSLocalizedString("La tarjeta se eliminó correctamente",comment:"")
 	static let noCardsTiTle: String = NSLocalizedString("No tiene Tarjetas Registradas",comment:"")
-	static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
+    static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
+    static let avisoImportanteTitle: String = NSLocalizedString("Aviso Importante",comment:"")
+	//static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
 	
 	//Formularios
 	static let formErrorTitle: String = NSLocalizedString("Error en el formulario",comment:"")

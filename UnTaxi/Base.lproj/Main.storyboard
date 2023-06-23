@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--Call Center-->
         <scene sceneID="1Mg-7S-fyN">
             <objects>
-                <viewController storyboardIdentifier="callCenter" title="Call Center" modalPresentationStyle="fullScreen" id="84K-jP-cec" customClass="CallCenterController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="callCenter" title="Call Center" modalPresentationStyle="fullScreen" id="84K-jP-cec" customClass="CallCenterController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HLz-PF-rf0"/>
                         <viewControllerLayoutGuide type="bottom" id="nvh-uE-JTR"/>
@@ -51,7 +51,7 @@
         <!--UnTaxi-->
         <scene sceneID="eK2-LQ-1YZ">
             <objects>
-                <viewController storyboardIdentifier="InicioView" title="UnTaxi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InicioView" title="UnTaxi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xio-Bf-vlx"/>
                         <viewControllerLayoutGuide type="bottom" id="i7Z-Gw-hgU"/>
@@ -603,7 +603,7 @@
         <!--Side Menu Controller-->
         <scene sceneID="rZj-oT-F3D">
             <objects>
-                <viewController storyboardIdentifier="MenuView" id="oNS-8E-orQ" customClass="SideMenuController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuView" id="oNS-8E-orQ" customClass="SideMenuController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yI7-Tg-T2U"/>
                         <viewControllerLayoutGuide type="bottom" id="6tX-FD-b2V"/>
@@ -788,7 +788,7 @@
         <!--Completada-->
         <scene sceneID="GvM-Fs-l7d">
             <objects>
-                <viewController storyboardIdentifier="completadaView" title="Completada" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="completadaView" title="Completada" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mkJ-2Z-gUd"/>
                         <viewControllerLayoutGuide type="bottom" id="aab-4H-Xyj"/>
@@ -1171,7 +1171,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComentarioCell" id="TLm-WQ-htI" customClass="ComentarioCollectionCell" customModule="UnTaxi" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComentarioCell" id="TLm-WQ-htI" customClass="ComentarioCollectionCell" customModule="LlamadaFacil" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="443-DK-IfO">
@@ -1340,7 +1340,7 @@
         <!--Solicitudes-->
         <scene sceneID="vqW-lI-YGK">
             <objects>
-                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="jR4-hK-gSX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1370,7 +1370,7 @@
         <!--Detalles-->
         <scene sceneID="vzc-Mc-GKZ">
             <objects>
-                <viewController storyboardIdentifier="SolDetalles" title="Detalles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SolDetalles" title="Detalles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rtu-Vq-wBb"/>
                         <viewControllerLayoutGuide type="bottom" id="7mI-ae-D9U"/>
@@ -1771,7 +1771,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sosBtn" id="h16-Wq-DhF" customClass="SOSCollectionCell" customModule="UnTaxi" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sosBtn" id="h16-Wq-DhF" customClass="SOSCollectionCell" customModule="LlamadaFacil" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tZa-lP-vBI">
@@ -1915,7 +1915,7 @@
         <!--Ofertas-->
         <scene sceneID="b4G-EY-rYK">
             <objects>
-                <viewController storyboardIdentifier="ofertasView" title="Ofertas" id="0qK-Oa-JO0" customClass="OfertasController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ofertasView" title="Ofertas" id="0qK-Oa-JO0" customClass="OfertasController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zrk-7x-x5G"/>
                         <viewControllerLayoutGuide type="bottom" id="hYC-eA-gxN"/>
@@ -2042,7 +2042,7 @@
         <!--Mis Viajes-->
         <scene sceneID="eNe-fX-M4D">
             <objects>
-                <viewController storyboardIdentifier="historyView" title="Mis Viajes" id="Mpf-vo-CXZ" customClass="HistorialController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyView" title="Mis Viajes" id="Mpf-vo-CXZ" customClass="HistorialController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i2p-rl-sn1"/>
                         <viewControllerLayoutGuide type="bottom" id="hwx-uy-Icg"/>
@@ -2131,7 +2131,7 @@
         <!--Mis viajes Detalles-->
         <scene sceneID="68p-Q8-4cY">
             <objects>
-                <viewController storyboardIdentifier="historyDetailView" title="Mis viajes Detalles" id="fJ6-Ol-S8a" customClass="HistorialDetailsController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyDetailView" title="Mis viajes Detalles" id="fJ6-Ol-S8a" customClass="HistorialDetailsController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aFD-Qs-Nxu"/>
                         <viewControllerLayoutGuide type="bottom" id="xA7-Wl-K55"/>
@@ -2327,7 +2327,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Status">
                                         <attributes>
-                                            <font key="NSFont" size="19" name="Muli"/>
+                                            <font key="NSFont" metaFont="system" size="19"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -2407,7 +2407,7 @@
         <!--Terminos Controller-->
         <scene sceneID="3En-p4-j1s">
             <objects>
-                <viewController storyboardIdentifier="terminosView" modalPresentationStyle="fullScreen" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="terminosView" modalPresentationStyle="fullScreen" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PnT-1D-0YJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEh-Pj-KXD"/>
@@ -2483,7 +2483,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Editar Perfil-->
         <scene sceneID="PrY-4k-9Ed">
             <objects>
-                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vW0-S4-VAm"/>
                         <viewControllerLayoutGuide type="bottom" id="oyM-Ta-wA2"/>
@@ -2808,7 +2808,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Change Password-->
         <scene sceneID="Vtx-r8-1Nj">
             <objects>
-                <viewController storyboardIdentifier="Password" title="Change Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Password" title="Change Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aXD-Us-GmI"/>
                         <viewControllerLayoutGuide type="bottom" id="wHw-4h-8wR"/>
@@ -3039,7 +3039,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--SolicitudPanel-->
         <scene sceneID="OGR-ck-Z1O">
             <objects>
-                <viewController storyboardIdentifier="SolicitudPanel" title="SolicitudPanel" id="K5K-P8-rMH" customClass="SolicitudPanel" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SolicitudPanel" title="SolicitudPanel" id="K5K-P8-rMH" customClass="SolicitudPanel" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Zo-Ia-3de"/>
                         <viewControllerLayoutGuide type="bottom" id="wDk-DS-eAv"/>
@@ -3332,7 +3332,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Side Menu Navigation Controller-->
         <scene sceneID="zkP-Ud-Fl4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fQs-BN-veV" customClass="SideMenuNavigationController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fQs-BN-veV" customClass="SideMenuNavigationController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9aa-i0-COU">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3349,7 +3349,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Yapa-->
         <scene sceneID="Z79-D4-FSq">
             <objects>
-                <viewController storyboardIdentifier="YapaView" title="Yapa" id="oRF-q5-nBb" customClass="YapaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YapaView" title="Yapa" id="oRF-q5-nBb" customClass="YapaController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rmh-8c-04e"/>
                         <viewControllerLayoutGuide type="bottom" id="kNv-7F-BbW"/>
@@ -3471,7 +3471,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--YapaPanel-->
         <scene sceneID="SIh-Zc-X5r">
             <objects>
-                <viewController storyboardIdentifier="YapaPanel" title="YapaPanel" id="99u-SE-V3N" customClass="YapaPanel" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YapaPanel" title="YapaPanel" id="99u-SE-V3N" customClass="YapaPanel" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="49i-6E-PVJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Bxh-AG-zK8"/>
@@ -3739,7 +3739,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Espera ChildVC-->
         <scene sceneID="o0B-S1-gsB">
             <objects>
-                <viewController storyboardIdentifier="esperaChildView" id="zKc-K7-fj2" customClass="EsperaChildVC" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="esperaChildView" id="zKc-K7-fj2" customClass="EsperaChildVC" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IWI-RD-5KR"/>
                         <viewControllerLayoutGuide type="bottom" id="B6e-vU-w83"/>
@@ -3768,7 +3768,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         </constraints>
                                         <color key="color" systemColor="systemYellowColor"/>
                                     </activityIndicatorView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Buscando... UnTaxi cerca de ti" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yFK-KM-sBZ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Buscando... Un Vehiculo cerca de ti" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yFK-KM-sBZ">
                                         <rect key="frame" x="15" y="317.5" width="384" height="261"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="yFK-KM-sBZ" secondAttribute="height" multiplier="305:207" id="YI7-Hr-afM"/>
@@ -3875,8 +3875,8 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnTaxi siempre cerca de ti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSf-Cz-LrV">
-                                                <rect key="frame" x="25" y="61" width="364" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSf-Cz-LrV">
+                                                <rect key="frame" x="25" y="61" width="364" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4011,7 +4011,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Address View-->
         <scene sceneID="ASq-3N-3Wq">
             <objects>
-                <viewController storyboardIdentifier="AddressView" title="Address View" id="RKJ-h5-YT9" customClass="AddressController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddressView" title="Address View" id="RKJ-h5-YT9" customClass="AddressController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e4D-Xx-d9U"/>
                         <viewControllerLayoutGuide type="bottom" id="Lg7-nW-5uw"/>
@@ -4057,7 +4057,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Panico View-->
         <scene sceneID="zCQ-6l-ZK3">
             <objects>
-                <viewController storyboardIdentifier="panicoChildVC" title="Panico View" id="zGc-dp-1gi" customClass="PanicoController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="panicoChildVC" title="Panico View" id="zGc-dp-1gi" customClass="PanicoController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Do9-nS-O0G"/>
                         <viewControllerLayoutGuide type="bottom" id="fig-eA-9zg"/>
@@ -4271,7 +4271,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Pago Controller-->
         <scene sceneID="ZB1-Bm-b2c">
             <objects>
-                <viewController storyboardIdentifier="PagoViewVC" id="j3l-kE-gap" customClass="PagoController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PagoViewVC" id="j3l-kE-gap" customClass="PagoController" customModule="LlamadaFacil" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LOC-pl-tsR"/>
                         <viewControllerLayoutGuide type="bottom" id="I0h-8A-fCa"/>
@@ -4445,7 +4445,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <image name="up" width="40" height="40"/>
         <image name="whatsapp" width="60" height="60"/>
         <image name="yapaIcon" width="40" height="40"/>
-        <image name="yapaImg" width="200.5" height="200"/>
+        <image name="yapaImg" width="521.5" height="453.5"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

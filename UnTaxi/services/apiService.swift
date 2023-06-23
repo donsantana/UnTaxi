@@ -264,7 +264,7 @@ final class ApiService {
     }
     
     var fileData: Data = UIImage(named: "chofer")!.jpegData(compressionQuality: 1.0)!
-    if globalVariables.cliente.fotoImage != nil{
+    if globalVariables.cliente.fotoImage != nil {
       fileData = globalVariables.cliente.fotoImage.jpegData(compressionQuality: 1.0)!
     }
     

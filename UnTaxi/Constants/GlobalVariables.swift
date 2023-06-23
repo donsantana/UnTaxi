@@ -33,4 +33,5 @@ struct globalVariables {
     static var isBigIphone = UIScreen.main.bounds.height >= 750
     static var publicidadService: PublicidadService?
     static var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    static var llamadaFacilAlert: ConfigMessage?
 }
