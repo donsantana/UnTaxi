@@ -83,7 +83,7 @@ import GoogleMobileAds
     //GMSPlacesClient.provideAPIKey("AIzaSyDOVTQUV2OeugiuBd3pAVGJbTx2aZ445Ws")
     
     //PaymentezSDKClient.setEnvironment("MERCURIO-EC-CLIENT", secretKey: "8uGTqVeiRBW8oMfAVwHyN51aEsNyM5", testMode: false)
-    
+    AppOpenAdManager.shared.loadAd()
     return true
   }
   
@@ -149,9 +149,18 @@ import GoogleMobileAds
     
   }
   
-  func applicationDidBecomeActive(_ application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  }
+     func applicationDidBecomeActive(_ application: UIApplication) {
+         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//         let rootViewController = application.windows.first(
+//            where: { $0.isKeyWindow })?.rootViewController
+//         if let rootViewController = rootViewController {
+//             // Do not show app open ad if the current view controller is SplashViewController.
+//             if rootViewController is SplashViewController {
+//                 return
+//             }
+//             AppOpenAdManager.shared.showAdIfAvailable(viewController: rootViewController)
+//         }
+     }
   
   func applicationWillTerminate(_ application: UIApplication) {
     

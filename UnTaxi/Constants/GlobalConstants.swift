@@ -41,6 +41,8 @@ struct GlobalConstants {
             return "9deabril"
         case "com.xoait.taxisgap":
             return "gap"
+        case "com.donelkys.RuedaCar":
+            return "ruedacar"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -99,6 +101,8 @@ struct GlobalConstants {
             return "1634957284"
         case "com.xoait.taxisgap":
             return "1642066736"
+        case "com.donelkys.RuedaCar":
+            return "1454338686"
         default:
             return "1149206387"
         }
@@ -140,6 +144,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2w1bng0cmgxMGFsNDNlbWt6MzVxY20xeiJ9.PbQ67C9hsd6KkCSIkokLMw"
         case "com.xoait.taxisgap":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2w3YzBkMmVhMHAzODN3cnZ5b29saDVqYyJ9.W2m5W323X_v6Ys7jDL_oUQ"
+        case "com.donelkys.RuedaCar":
+            return "sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttbWo4MG94MGh2NTJ3bjNmOWZ0M3VuMSJ9.2V8KcgIcOqEkMXAZ9eOnkA"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -165,13 +171,13 @@ struct GoogleAdsConstant {
         case "com.donelkys.VipCar":
             return "ca-app-pub-1778988557303127/5412891786"
         case "com.donelkys.AndyTaxi":
-            return ""
+            return "ca-app-pub-1778988557303127/9751076636"
         case "com.xoait.Jipicar":
             return ""
         case "com.xoait.Jipitaxi":
             return ""
         case "com.xoait.OrientExpress":
-            return ""
+            return "ca-app-pub-1778988557303127/3696623966"
         case "com.donelkys.Conaitor":
             return "ca-app-pub-1778988557303127/5963556124"
         case "www.xoait.llamadafacil":
@@ -181,6 +187,44 @@ struct GoogleAdsConstant {
         case "com.xoait.9deabril":
             return "ca-app-pub-1778988557303127/2833607311"
         case "com.xoait.taxisgap":
+            return ""
+        case "com.donelkys.RuedaCar":
+            return "ca-app-pub-1778988557303127/6607865054"
+        default:
+            return ""
+        }
+    }
+    
+    static var appLaunchBannerID: String {
+        //let bundleId: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
+        switch bundleId {
+        case "com.xoait.UnTaxi":
+            return "ca-app-pub-1778988557303127/4672710000"
+        case "com.xoait.condorcar":
+            return ""
+        case "com.xoait.logisticfastcar":
+            return ""
+        case "com.donelkys.VipCar":
+            return ""
+        case "com.donelkys.AndyTaxi":
+            return ""
+        case "com.xoait.Jipicar":
+            return ""
+        case "com.xoait.Jipitaxi":
+            return ""
+        case "com.xoait.OrientExpress":
+            return "ca-app-pub-1778988557303127/1739973643"
+        case "com.donelkys.Conaitor":
+            return ""
+        case "www.xoait.llamadafacil":
+            return ""
+        case "com.xoait.ellasdrive":
+            return ""
+        case "com.xoait.9deabril":
+            return ""
+        case "com.xoait.taxisgap":
+            return ""
+        case "com.donelkys.RuedaCar":
             return ""
         default:
             return ""

@@ -48,7 +48,7 @@ class PagoViewCell: UITableViewCell {
 		self.formaPagoSwitch.isHidden = formaPagoSwitch.numberOfSegments == 1
   }
   
-  func updateVoucherOption(useVoucher: Bool){
+  func updateVoucherOption() {
 		switch formaPagoSelected {
 		case "Efectivo":
 			formaPagoImg.image = UIImage(named: "ofertaIcon")

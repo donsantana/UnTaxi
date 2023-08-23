@@ -336,9 +336,17 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      let response = response as! HTTPURLResponse
+        
+        if let error = error {
+            self.delegate?.apiRequest(self, getLoginError: error.localizedDescription)
+            return
+        }
+        guard let response = response as? HTTPURLResponse else {
+            self.delegate?.apiRequest(self, getLoginError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+            return
+        }
       print("login error \(response.statusCode)")
-      if error == nil && response.statusCode == 200{
+      if error == nil && response.statusCode == 200 {
         print(response)
         do {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>

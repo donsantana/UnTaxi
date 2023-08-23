@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "PANTALLAS ORIENT EXPRESS-2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "PANTALLAS ORIENT EXPRESS-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "PANTALLAS ORIENT EXPRESS-01 (1).png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

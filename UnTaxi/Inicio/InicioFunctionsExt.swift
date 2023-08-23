@@ -34,25 +34,57 @@ extension InicioController{
 		}
 	}
 	
-	func initTipoSolicitudBar(){
-		if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0{
-			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem, self.pactadaItem],animated: true)
-			socketService.socketEmit("direccionespactadas", datos: [
-				"idempresa": globalVariables.cliente.idEmpresa!
-			] as [String: Any])
-		} else {
-			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
-		}
-		
-        for item in self.tabBar.items!{
-            if let image = item.image {
-                item.image = image.withRenderingMode( .alwaysOriginal)
-                item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
-            }
+	func initTipoSolicitudBar() {
+        
+        self.tabBar.items?.removeAll()
+        if globalVariables.appConfig.oferta == true{
+          self.tabBar.items?.append(self.ofertaItem)
         }
-		self.tabBar.selectedItem = self.tabBar.items![1] as UITabBarItem
-		pagoCell.initContent(tipoServicio: tipoServicio)
-		loadFormularioData()
+        
+        if globalVariables.appConfig.taximetro == true{
+          self.tabBar.items?.append(self.taximetroItem)
+        }
+        
+        if globalVariables.appConfig.horas == true{
+          self.tabBar.items?.append(self.horasItem)
+        }
+        
+        if globalVariables.appConfig.pactadas == true && globalVariables.cliente.idEmpresa != 0 {
+          self.tabBar.items?.append(self.pactadaItem)
+          socketService.socketEmit("direccionespactadas", datos: [
+            "idempresa": globalVariables.cliente.idEmpresa!
+          ] as [String: Any])
+        }
+        
+        for item in self.tabBar.items!{
+          if let image = item.image
+          {
+            item.image = image.withRenderingMode( .alwaysOriginal)
+            item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
+          }
+        }
+        self.tabBar.selectedItem = globalVariables.appConfig.taximetro == true ? self.taximetroItem : self.tabBar.items![0] as UITabBarItem
+        pagoCell.initContent(tipoServicio: tipoServicio)
+        self.loadFormularioData()
+        
+//		if globalVariables.appConfig.pactadas && globalVariables.cliente.idEmpresa != 0 {
+//			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem, self.pactadaItem],animated: true)
+//			socketService.socketEmit("direccionespactadas", datos: [
+//				"idempresa": globalVariables.cliente.idEmpresa!
+//			] as [String: Any])
+//		} else {
+//			self.tabBar.setItems([self.ofertaItem, self.taximetroItem, self.horasItem],animated: true)
+//		}
+//
+//        for item in self.tabBar.items!{
+//            if let image = item.image {
+//                item.image = image.withRenderingMode( .alwaysOriginal)
+//                item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysOriginal)
+//            }
+//        }
+//		self.tabBar.selectedItem = self.tabBar.items![1] as UITabBarItem
+//		pagoCell.initContent(tipoServicio: tipoServicio)
+//		loadFormularioData()
 	}
 	
 	//RECONECT SOCKET
@@ -104,7 +136,7 @@ extension InicioController{
 		}
 		
 		if self.tabBar.selectedItem != self.pactadaItem {
-            self.pagoCell.updateVoucherOption(useVoucher: self.tabBar.selectedItem != self.ofertaItem)
+            self.pagoCell.updateVoucherOption()
             self.formularioDataCellList.append(self.pagoCell)
             self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35
 		} else {
@@ -117,7 +149,7 @@ extension InicioController{
 //				self.formularioSolicitudHeight.constant = globalVariables.responsive.heightFloatPercent(percent: 44).relativeToIphone8Height(shouldUseLimit: false)
 //			}
 		}
-        if pagoCell.formaPagoSelected == "Efectivo" {
+        if pagoCell.formaPagoSelected == "Efectivo" && globalVariables.appConfig.yapa {
             formularioDataCellList.append(pagoYapaCell)
             self.formularioSolicitudHeight.constant = self.formularioSolicitudHeight.constant + 35
         }

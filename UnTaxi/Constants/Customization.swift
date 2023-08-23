@@ -59,6 +59,40 @@ struct CustomAppColor {
           return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
         }
     }//= UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1)
+    
+    static var launchViewColor: UIColor {
+        switch bundleId {
+        case "com.xoait.UnTaxi":
+            return .black
+        case "com.xoait.condorcar":
+          return UIColor(red: 26/255, green: 155/255, blue: 162/255, alpha: 1)
+        case "com.xoait.logisticfastcar":
+          return UIColor(red: 0/255, green: 0/255, blue: 2/255, alpha: 1)
+        case "com.donelkys.VipCar":
+          return UIColor(red: 60/255, green: 97/255, blue: 167/255, alpha: 1)
+        case "com.donelkys.AndyTaxi":
+          return UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)
+        case "com.xoait.Jipicar":
+          return UIColor(red: 8/255, green: 138/255, blue: 48/255, alpha: 1)
+        case "com.xoait.Jipitaxi":
+          return UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)
+        case "com.xoait.OrientExpress":
+            return .white
+        case "com.donelkys.Conaitor":
+          return UIColor(red: 255/255, green: 175/255, blue: 0/255, alpha: 1)
+        case "com.xoait.llamadafacil":
+          return UIColor(red: 94/255, green: 168/255, blue: 11/255, alpha: 1)
+            case "com.xoait.ellasdrive":
+                return UIColor(red: 97/255, green: 36/255, blue: 139/255, alpha: 1)
+            case "com.xoait.9deabril":
+                return UIColor(red: 247/255, green: 221/255, blue: 14/255, alpha: 1)
+            case "com.xoait.taxisgap":
+                return UIColor(red: 239/255, green: 191/255, blue: 45/255, alpha: 1)
+        default:
+          return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
+        }
+    }
+    
     static var viewBackgroundColor: UIColor = UIColor(red: 7/255, green: 9/255, blue: 24/255, alpha: 1)
     static var lightTextColor: UIColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
     static var textColor: UIColor = .black

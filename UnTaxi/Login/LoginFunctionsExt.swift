@@ -24,6 +24,17 @@ extension LoginController{
     print("Socket URL: \(GlobalConstants.socketurlHost)")
     
     globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
+      
+      globalVariables.socket.on(clientEvent: .connect) {data, ack in
+          print("Connected")
+      }
+      
+      globalVariables.socket.on(clientEvent: .error) {data, ack in
+          if let error = data.first as? SocketIOStatus {
+              print("Socket error: \(error)")
+          }
+      }
+      
     self.socketService.initLoginEventos()
     globalVariables.socket.connect()
   }
@@ -37,7 +48,7 @@ extension LoginController{
       }
     print("appConfig \(appConfig)")
     
-    if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil{
+    if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil {
       let publicidad = !(appConfig["publicidad"] is NSNull) ? appConfig["publicidad"] as! [String: Any] : nil
       print("publicidades \(publicidad!["images"] as! [[String: Any]])")
       globalVariables.publicidadService = PublicidadService(publicidades: publicidad!["images"] as! [[String: Any]])
@@ -50,12 +61,12 @@ extension LoginController{
     
     print("appConfig \(globalVariables.appConfig)")
     
-    if solicitudesEnProceso.count > 0{
-      self.ListSolicitudPendiente(solicitudesEnProceso)
-    }
-		
-		AppStoreService.shared.checkNewVersionAvailable()
-		self.checkLocationStatus()
+      if solicitudesEnProceso.count > 0 {
+          self.ListSolicitudPendiente(solicitudesEnProceso)
+      }
+      
+      AppStoreService.shared.checkNewVersionAvailable()
+      self.checkLocationStatus()
   }
   
   func initConnectionError(message: String){
@@ -77,7 +88,9 @@ extension LoginController{
 			authorizationStatus = CLLocationManager.authorizationStatus()
 		}
 		switch authorizationStatus {
-		case .notDetermined, .restricted, .denied:
+        case .notDetermined:
+            coreLocationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
 			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
 			locationAlert.addAction(UIAlertAction(title: GlobalStrings.settingsBtnTitle, style: .default, handler: {alerAction in
 					let settingsURL = URL(string: UIApplication.openSettingsURLString)!

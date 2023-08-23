@@ -175,6 +175,8 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
 		malUsoBtn.addUnderline()
 
 		initGoogleAds()
+        
+        SMSVozBtn.isHidden = GlobalConstants.bundleId == "com.donelkys.RuedaCar"
   }
 	
 	private func initGoogleAds() {

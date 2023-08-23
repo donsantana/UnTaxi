@@ -167,39 +167,41 @@ class HistorialDetailsController: BaseController, MKMapViewDelegate {
 }
 
 extension HistorialDetailsController: SocketServiceDelegate{
-  
-  func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String : Any]) {
-
-    self.waitingView.isHidden = true
-    if result["code"] as! Int == 1{
-      let datos = result["datos"] as! [String: Any]
-      print("Details result \(datos)")
-      self.solicitud.addDetails(jsonDetails: datos)
-      if !(datos["idconductor"] is NSNull) && datos["idconductor"] != nil{
-        self.idConductor = datos["idconductor"] as! Int
-        self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
-        evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
-				let fotoURL = !(datos["foto"] is NSNull) ? datos["foto"] as! String : ""
-        if fotoURL != "" {
-          let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
-          
-          let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.sync() {
-              self.ImagenCond.image = UIImage(data: data)
-            }
-          }
-          task.resume()
-        } else {
-          self.ImagenCond.image = UIImage(named: "chofer")
-        }
+    
+    func socketResponse(_ controller: SocketService, detallehistorialdesolicitud result: [String : Any]) {
         
-				self.NombreCond.text = solicitud.nombreapellidosconductor//datos["nombreapellidosconductor"] as? String
-      }
-      self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
-      self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
-      
-      self.updateMap()
+        self.waitingView.isHidden = true
+        if result["code"] as! Int == 1{
+            let datos = result["datos"] as! [String: Any]
+            print("Details result \(datos)")
+            self.solicitud.addDetails(jsonDetails: datos)
+            if !(datos["idconductor"] is NSNull) && datos["idconductor"] != nil {
+                self.idConductor = datos["idconductor"] as! Int
+            }
+            
+            self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
+            evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
+            let fotoURL = !(datos["foto"] is NSNull) ? datos["foto"] as! String : ""
+            if fotoURL != "" {
+                let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
+                
+                let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                    guard let data = data, error == nil else { return }
+                    DispatchQueue.main.sync() {
+                        self.ImagenCond.image = UIImage(data: data)
+                    }
+                }
+                task.resume()
+            } else {
+                self.ImagenCond.image = UIImage(named: "chofer")
+            }
+            
+            self.NombreCond.text = solicitud.nombreapellidosconductor//datos["nombreapellidosconductor"] as? String
+            
+            self.origenSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latorigen, longitude: self.solicitud.lngorigen)
+            self.destinoSolicitud.coordinate = CLLocationCoordinate2D(latitude: self.solicitud.latdestino, longitude: self.solicitud.lngdestino)
+            
+            self.updateMap()
+        }
     }
-  }
 }
