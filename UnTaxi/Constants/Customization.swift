@@ -55,6 +55,8 @@ struct CustomAppColor {
                 return UIColor(red: 247/255, green: 221/255, blue: 14/255, alpha: 1)
             case "com.xoait.taxisgap":
                 return UIColor(red: 239/255, green: 191/255, blue: 45/255, alpha: 1)
+        case "com.xoait.AutoAmigo":
+            return UIColor(red: 219/255, green: 0/255, blue: 0/255, alpha: 1)
         default:
           return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
         }
@@ -89,7 +91,7 @@ struct CustomAppColor {
             case "com.xoait.taxisgap":
                 return UIColor(red: 239/255, green: 191/255, blue: 45/255, alpha: 1)
         default:
-          return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
+            return .white
         }
     }
     

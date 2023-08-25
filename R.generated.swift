@@ -90,7 +90,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
   struct storyboard {
     /// Storyboard `Launch Screen`.
     static let launchScreen = _R.storyboard.launchScreen()
@@ -98,8 +98,6 @@ struct R: Rswift.Validatable {
     static let login = _R.storyboard.login()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
-    /// Storyboard `OrientLaunch`.
-    static let orientLaunch = _R.storyboard.orientLaunch()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "Launch Screen", bundle: ...)`
@@ -119,13 +117,6 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Main", bundle: ...)`
     static func main(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "OrientLaunch", bundle: ...)`
-    static func orientLaunch(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.orientLaunch)
     }
     #endif
 
@@ -413,7 +404,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 93 images.
+  /// This `R.image` struct is generated, and contains static references to 91 images.
   struct image {
     /// Image `CLARO`.
     static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
@@ -517,8 +508,6 @@ struct R: Rswift.Validatable {
     static let ofertaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ofertaIcon")
     /// Image `origenIcon`.
     static let origenIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "origenIcon")
-    /// Image `origen`.
-    static let origen = Rswift.ImageResource(bundle: R.hostingBundle, name: "origen")
     /// Image `panicoBtn`.
     static let panicoBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "panicoBtn")
     /// Image `panicoIcon`.
@@ -567,8 +556,6 @@ struct R: Rswift.Validatable {
     static let tarjetaMenu = Rswift.ImageResource(bundle: R.hostingBundle, name: "tarjetaMenu")
     /// Image `taxiIcon`.
     static let taxiIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "taxiIcon")
-    /// Image `taxi_libre`.
-    static let taxi_libre = Rswift.ImageResource(bundle: R.hostingBundle, name: "taxi_libre")
     /// Image `terminos`.
     static let terminos = Rswift.ImageResource(bundle: R.hostingBundle, name: "terminos")
     /// Image `tiempo`.
@@ -953,13 +940,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "origen", bundle: ..., traitCollection: ...)`
-    static func origen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.origen, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "origenIcon", bundle: ..., traitCollection: ...)`
     static func origenIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.origenIcon, compatibleWith: traitCollection)
@@ -1131,13 +1111,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "taxiIcon", bundle: ..., traitCollection: ...)`
     static func taxiIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.taxiIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "taxi_libre", bundle: ..., traitCollection: ...)`
-    static func taxi_libre(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.taxi_libre, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1914,9 +1887,6 @@ struct _R: Rswift.Validatable {
       #if os(iOS) || os(tvOS)
       try main.validate()
       #endif
-      #if os(iOS) || os(tvOS)
-      try orientLaunch.validate()
-      #endif
     }
 
     #if os(iOS) || os(tvOS)
@@ -2126,23 +2096,6 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().ofertasView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'ofertasView' could not be loaded from storyboard 'Main' as 'OfertasController'.") }
         if _R.storyboard.main().panicoChildVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'panicoChildVC' could not be loaded from storyboard 'Main' as 'PanicoController'.") }
         if _R.storyboard.main().terminosView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'terminosView' could not be loaded from storyboard 'Main' as 'TerminosController'.") }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    struct orientLaunch: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UIViewController
-
-      let bundle = R.hostingBundle
-      let name = "OrientLaunch"
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "launch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launch' is used in storyboard 'OrientLaunch', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
       }
 
       fileprivate init() {}

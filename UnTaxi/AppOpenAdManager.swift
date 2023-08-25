@@ -60,7 +60,7 @@ class AppOpenAdManager: NSObject {
         isLoadingAd = true
         print("Start loading app open ad.")
         GADAppOpenAd.load(
-            withAdUnitID: GoogleAdsConstant.appLaunchBannerID,//"ca-app-pub-3940256099942544/5662855259",//GoogleAdsConstant.appLaunchBannerID,//
+            withAdUnitID: GoogleAdsConstant.appLaunchBannerID,//"ca-app-pub-3940256099942544/5662855259",//GoogleAdsConstant.appLaunchBannerID,
             request: GADRequest(),
             orientation: UIInterfaceOrientation.portrait
         ) { ad, error in

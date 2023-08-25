@@ -953,40 +953,40 @@
     </scenes>
     <designables>
         <designable name="0Tf-aU-KgJ">
-            <size key="intrinsicContentSize" width="128" height="34"/>
+            <size key="intrinsicContentSize" width="114" height="34"/>
         </designable>
         <designable name="2pP-tk-bBX">
-            <size key="intrinsicContentSize" width="70.5" height="34"/>
+            <size key="intrinsicContentSize" width="56.5" height="34"/>
         </designable>
         <designable name="7qT-QG-nSo">
-            <size key="intrinsicContentSize" width="151.5" height="34"/>
+            <size key="intrinsicContentSize" width="137.5" height="34"/>
         </designable>
         <designable name="J7N-rA-MSZ">
-            <size key="intrinsicContentSize" width="66" height="34"/>
+            <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
         <designable name="JfZ-Jk-QLH">
-            <size key="intrinsicContentSize" width="203.5" height="34"/>
+            <size key="intrinsicContentSize" width="189.5" height="34"/>
         </designable>
         <designable name="SPg-He-6sH">
-            <size key="intrinsicContentSize" width="161" height="34"/>
+            <size key="intrinsicContentSize" width="147" height="34"/>
         </designable>
         <designable name="X8m-E3-N1k">
-            <size key="intrinsicContentSize" width="189" height="34"/>
+            <size key="intrinsicContentSize" width="175" height="34"/>
         </designable>
         <designable name="jTy-H9-0b9">
             <size key="intrinsicContentSize" width="186" height="19"/>
         </designable>
         <designable name="kDx-sD-B91">
-            <size key="intrinsicContentSize" width="154" height="34"/>
+            <size key="intrinsicContentSize" width="140" height="34"/>
         </designable>
         <designable name="qQP-xb-v5Y">
-            <size key="intrinsicContentSize" width="163.5" height="34"/>
-        </designable>
-        <designable name="uUO-Nv-ZZU">
             <size key="intrinsicContentSize" width="149.5" height="34"/>
         </designable>
+        <designable name="uUO-Nv-ZZU">
+            <size key="intrinsicContentSize" width="135.5" height="34"/>
+        </designable>
         <designable name="w1S-av-uZZ">
-            <size key="intrinsicContentSize" width="159.5" height="34"/>
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
         </designable>
     </designables>
     <resources>

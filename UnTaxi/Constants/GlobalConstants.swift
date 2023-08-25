@@ -43,6 +43,8 @@ struct GlobalConstants {
             return "gap"
         case "com.donelkys.RuedaCar":
             return "ruedacar"
+        case "com.xoait.AutoAmigo":
+            return "autoamigo"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -103,6 +105,8 @@ struct GlobalConstants {
             return "1642066736"
         case "com.donelkys.RuedaCar":
             return "1454338686"
+        case "com.xoait.AutoAmigo":
+            return "1563504584"
         default:
             return "1149206387"
         }
@@ -146,6 +150,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2w3YzBkMmVhMHAzODN3cnZ5b29saDVqYyJ9.W2m5W323X_v6Ys7jDL_oUQ"
         case "com.donelkys.RuedaCar":
             return "sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttbWo4MG94MGh2NTJ3bjNmOWZ0M3VuMSJ9.2V8KcgIcOqEkMXAZ9eOnkA"
+        case "com.xoait.AutoAmigo":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tubHRhMmwxMGtscjJ2bnloMm9wOWFydyJ9.TZjHwLdkwB4-qRN555PFkg"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -190,6 +196,8 @@ struct GoogleAdsConstant {
             return ""
         case "com.donelkys.RuedaCar":
             return "ca-app-pub-1778988557303127/6607865054"
+        case "com.xoait.AutoAmigo":
+            return "ca-app-pub-1778988557303127/2626310486"
         default:
             return ""
         }
@@ -226,6 +234,8 @@ struct GoogleAdsConstant {
             return ""
         case "com.donelkys.RuedaCar":
             return ""
+        case "com.xoait.AutoAmigo":
+            return "ca-app-pub-1778988557303127/8987429343"
         default:
             return ""
         }

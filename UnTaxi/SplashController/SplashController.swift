@@ -23,6 +23,7 @@ class SplashViewController: UIViewController, AppOpenAdManagerDelegate {
         AppOpenAdManager.shared.appOpenAdManagerDelegate = self
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
+        copyrightLabel.isHidden = GlobalConstants.bundleId != "com.xoait.UnTaxi"
         copyrightLabel.text = "Copyright © \(currentYear). All rights reserved."
         copyrightLabel.textColor = CustomAppColor.launchViewColor
         activityIndicator.color = CustomAppColor.launchViewColor
