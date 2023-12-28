@@ -9,7 +9,7 @@
 import Foundation
 import SocketIO
 import CoreLocation
-import Rswift
+import RswiftResources
 import LocalAuthentication
 
 

@@ -10,9 +10,9 @@ target "UnTaxi" do
     pod 'MaterialComponents/TextFields'
     pod 'TextFieldEffects'
     pod 'R.swift'
-		pod 'MapboxMaps', '10.9.0'
-		pod 'MapboxSearch', ">= 1.0.0-beta.38", "< 2.0"
-		pod 'MapboxSearchUI', ">= 1.0.0-beta.38", "< 2.0"
+    pod 'MapboxMaps'  
+    pod 'MapboxSearch', ">= 1.0.0-rc.8", "< 2.0"
+    pod 'MapboxSearchUI', ">= 1.0.0-rc.8", "< 2.0"
     pod 'MapboxGeocoder.swift'
     pod 'MapboxDirections'
     pod 'CurrencyTextField'

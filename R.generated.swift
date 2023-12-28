@@ -4,2107 +4,739 @@
 //
 
 import Foundation
-import Rswift
+import RswiftResources
 import UIKit
 
-/// This `R` struct is generated and contains references to static resources.
-struct R: Rswift.Validatable {
-  fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap { Locale(identifier: $0) } ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(for: R.Class.self)
+private class BundleFinder {}
+let R = _R(bundle: Bundle(for: BundleFinder.self))
 
-  /// Find first language and bundle for which the table exists
-  fileprivate static func localeBundle(tableName: String, preferredLanguages: [String]) -> (Foundation.Locale, Foundation.Bundle)? {
-    // Filter preferredLanguages to localizations, use first locale
-    var languages = preferredLanguages
-      .map { Locale(identifier: $0) }
-      .prefix(1)
-      .flatMap { locale -> [String] in
-        if hostingBundle.localizations.contains(locale.identifier) {
-          if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
-            return [locale.identifier, language]
-          } else {
-            return [locale.identifier]
-          }
-        } else if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
-          return [language]
-        } else {
-          return []
-        }
-      }
+struct _R {
+  let bundle: Foundation.Bundle
 
-    // If there's no languages, use development language as backstop
-    if languages.isEmpty {
-      if let developmentLocalization = hostingBundle.developmentLocalization {
-        languages = [developmentLocalization]
-      }
-    } else {
-      // Insert Base as second item (between locale identifier and languageCode)
-      languages.insert("Base", at: 1)
+  let entitlements = entitlements()
+  let reuseIdentifier = reuseIdentifier()
 
-      // Add development language as backstop
-      if let developmentLocalization = hostingBundle.developmentLocalization {
-        languages.append(developmentLocalization)
-      }
-    }
+  var color: color { .init(bundle: bundle) }
+  var image: image { .init(bundle: bundle) }
+  var font: font { .init(bundle: bundle) }
+  var file: file { .init(bundle: bundle) }
+  var nib: nib { .init(bundle: bundle) }
+  var storyboard: storyboard { .init(bundle: bundle) }
 
-    // Find first language for which table exists
-    // Note: key might not exist in chosen language (in that case, key will be shown)
-    for language in languages {
-      if let lproj = hostingBundle.url(forResource: language, withExtension: "lproj"),
-         let lbundle = Bundle(url: lproj)
-      {
-        let strings = lbundle.url(forResource: tableName, withExtension: "strings")
-        let stringsdict = lbundle.url(forResource: tableName, withExtension: "stringsdict")
-
-        if strings != nil || stringsdict != nil {
-          return (Locale(identifier: language), lbundle)
-        }
-      }
-    }
-
-    // If table is available in main bundle, don't look for localized resources
-    let strings = hostingBundle.url(forResource: tableName, withExtension: "strings", subdirectory: nil, localization: nil)
-    let stringsdict = hostingBundle.url(forResource: tableName, withExtension: "stringsdict", subdirectory: nil, localization: nil)
-
-    if strings != nil || stringsdict != nil {
-      return (applicationLocale, hostingBundle)
-    }
-
-    // If table is not found for requested languages, key will be shown
-    return nil
+  func color(bundle: Foundation.Bundle) -> color {
+    .init(bundle: bundle)
+  }
+  func image(bundle: Foundation.Bundle) -> image {
+    .init(bundle: bundle)
+  }
+  func font(bundle: Foundation.Bundle) -> font {
+    .init(bundle: bundle)
+  }
+  func file(bundle: Foundation.Bundle) -> file {
+    .init(bundle: bundle)
+  }
+  func nib(bundle: Foundation.Bundle) -> nib {
+    .init(bundle: bundle)
+  }
+  func storyboard(bundle: Foundation.Bundle) -> storyboard {
+    .init(bundle: bundle)
+  }
+  func validate() throws {
+    try self.font.validate()
+    try self.nib.validate()
+    try self.storyboard.validate()
   }
 
-  /// Load string from Info.plist file
-  fileprivate static func infoPlistString(path: [String], key: String) -> String? {
-    var dict = hostingBundle.infoDictionary
-    for step in path {
-      guard let obj = dict?[step] as? [String: Any] else { return nil }
-      dict = obj
-    }
-    return dict?[key] as? String
+  struct project {
+    let developmentRegion = "en"
   }
 
-  static func validate() throws {
-    try font.validate()
-    try intern.validate()
-  }
-
-  #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
-  struct storyboard {
-    /// Storyboard `Launch Screen`.
-    static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Login`.
-    static let login = _R.storyboard.login()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "Launch Screen", bundle: ...)`
-    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "Login", bundle: ...)`
-    static func login(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.login)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-  #endif
-
-  /// This `R.color` struct is generated, and contains static references to 1 colors.
+  /// This `_R.color` struct is generated, and contains static references to 1 colors.
   struct color {
+    let bundle: Foundation.Bundle
+
     /// Color `viewColor`.
-    static let viewColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "viewColor")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "viewColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func viewColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.viewColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(watchOS)
-    /// `UIColor(named: "viewColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func viewColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.viewColor.name)
-    }
-    #endif
-
-    fileprivate init() {}
+    var viewColor: RswiftResources.ColorResource { .init(name: "viewColor", path: [], bundle: bundle) }
   }
 
-  /// This `R.file` struct is generated, and contains static references to 19 files.
-  struct file {
-    /// Resource file `.gitignore`.
-    static let gitignore = Rswift.FileResource(bundle: R.hostingBundle, name: ".gitignore", pathExtension: "")
-    /// Resource file `DS-DIGII.TTF`.
-    static let dsdigiittF = Rswift.FileResource(bundle: R.hostingBundle, name: "DS-DIGII", pathExtension: "TTF")
-    /// Resource file `Entitlements.plist`.
-    static let entitlementsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Entitlements", pathExtension: "plist")
-    /// Resource file `Muli-Bold.ttf`.
-    static let muliBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Bold", pathExtension: "ttf")
-    /// Resource file `Muli-BoldItalic.ttf`.
-    static let muliBoldItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-BoldItalic", pathExtension: "ttf")
-    /// Resource file `Muli-ExtraLight.ttf`.
-    static let muliExtraLightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-ExtraLight", pathExtension: "ttf")
-    /// Resource file `Muli-ExtraLightItalic.ttf`.
-    static let muliExtraLightItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-ExtraLightItalic", pathExtension: "ttf")
-    /// Resource file `Muli-Italic.ttf`.
-    static let muliItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Italic", pathExtension: "ttf")
-    /// Resource file `Muli-Light.ttf`.
-    static let muliLightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Light", pathExtension: "ttf")
-    /// Resource file `Muli-LightItalic.ttf`.
-    static let muliLightItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-LightItalic", pathExtension: "ttf")
-    /// Resource file `Muli-Semi-BoldItalic.ttf`.
-    static let muliSemiBoldItalicTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-Semi-BoldItalic", pathExtension: "ttf")
-    /// Resource file `Muli-SemiBold.ttf`.
-    static let muliSemiBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli-SemiBold", pathExtension: "ttf")
-    /// Resource file `Muli.ttf`.
-    static let muliTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Muli", pathExtension: "ttf")
-    /// Resource file `beep.wav`.
-    static let beepWav = Rswift.FileResource(bundle: R.hostingBundle, name: "beep", pathExtension: "wav")
-    /// Resource file `claxon.mp3`.
-    static let claxonMp3 = Rswift.FileResource(bundle: R.hostingBundle, name: "claxon", pathExtension: "mp3")
-    /// Resource file `ds_digital`.
-    static let ds_digital = Rswift.FileResource(bundle: R.hostingBundle, name: "ds_digital", pathExtension: "")
-    /// Resource file `userPhoto.png`.
-    static let userPhotoPng = Rswift.FileResource(bundle: R.hostingBundle, name: "userPhoto", pathExtension: "png")
-    /// Resource file `xoalogo.png`.
-    static let xoalogoPng = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo", pathExtension: "png")
-    /// Resource file `xoalogo1.png`.
-    static let xoalogo1Png = Rswift.FileResource(bundle: R.hostingBundle, name: "xoalogo1", pathExtension: "png")
-
-    /// `bundle.url(forResource: ".gitignore", withExtension: "")`
-    static func gitignore(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.gitignore
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "DS-DIGII", withExtension: "TTF")`
-    static func dsdigiittF(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.dsdigiittF
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Entitlements", withExtension: "plist")`
-    static func entitlementsPlist(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.entitlementsPlist
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli", withExtension: "ttf")`
-    static func muliTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-Bold", withExtension: "ttf")`
-    static func muliBoldTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliBoldTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-BoldItalic", withExtension: "ttf")`
-    static func muliBoldItalicTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliBoldItalicTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-ExtraLight", withExtension: "ttf")`
-    static func muliExtraLightTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliExtraLightTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-ExtraLightItalic", withExtension: "ttf")`
-    static func muliExtraLightItalicTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliExtraLightItalicTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-Italic", withExtension: "ttf")`
-    static func muliItalicTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliItalicTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-Light", withExtension: "ttf")`
-    static func muliLightTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliLightTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-LightItalic", withExtension: "ttf")`
-    static func muliLightItalicTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliLightItalicTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-Semi-BoldItalic", withExtension: "ttf")`
-    static func muliSemiBoldItalicTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliSemiBoldItalicTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "Muli-SemiBold", withExtension: "ttf")`
-    static func muliSemiBoldTtf(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.muliSemiBoldTtf
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "beep", withExtension: "wav")`
-    static func beepWav(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.beepWav
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "claxon", withExtension: "mp3")`
-    static func claxonMp3(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.claxonMp3
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "ds_digital", withExtension: "")`
-    static func ds_digital(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.ds_digital
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "userPhoto", withExtension: "png")`
-    static func userPhotoPng(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.userPhotoPng
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "xoalogo", withExtension: "png")`
-    static func xoalogoPng(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.xoalogoPng
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "xoalogo1", withExtension: "png")`
-    static func xoalogo1Png(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.xoalogo1Png
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    fileprivate init() {}
-  }
-
-  /// This `R.font` struct is generated, and contains static references to 11 fonts.
-  struct font: Rswift.Validatable {
-    /// Font `DS-Digital-Italic`.
-    static let dsDigitalItalic = Rswift.FontResource(fontName: "DS-Digital-Italic")
-    /// Font `Muli-BoldItalic`.
-    static let muliBoldItalic = Rswift.FontResource(fontName: "Muli-BoldItalic")
-    /// Font `Muli-Bold`.
-    static let muliBold = Rswift.FontResource(fontName: "Muli-Bold")
-    /// Font `Muli-ExtraLightItalic`.
-    static let muliExtraLightItalic = Rswift.FontResource(fontName: "Muli-ExtraLightItalic")
-    /// Font `Muli-ExtraLight`.
-    static let muliExtraLight = Rswift.FontResource(fontName: "Muli-ExtraLight")
-    /// Font `Muli-Italic`.
-    static let muliItalic = Rswift.FontResource(fontName: "Muli-Italic")
-    /// Font `Muli-LightItalic`.
-    static let muliLightItalic = Rswift.FontResource(fontName: "Muli-LightItalic")
-    /// Font `Muli-Light`.
-    static let muliLight = Rswift.FontResource(fontName: "Muli-Light")
-    /// Font `Muli-Semi-BoldItalic`.
-    static let muliSemiBoldItalic = Rswift.FontResource(fontName: "Muli-Semi-BoldItalic")
-    /// Font `Muli-SemiBold`.
-    static let muliSemiBold = Rswift.FontResource(fontName: "Muli-SemiBold")
-    /// Font `Muli`.
-    static let muli = Rswift.FontResource(fontName: "Muli")
-
-    /// `UIFont(name: "DS-Digital-Italic", size: ...)`
-    static func dsDigitalItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: dsDigitalItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli", size: ...)`
-    static func muli(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muli, size: size)
-    }
-
-    /// `UIFont(name: "Muli-Bold", size: ...)`
-    static func muliBold(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliBold, size: size)
-    }
-
-    /// `UIFont(name: "Muli-BoldItalic", size: ...)`
-    static func muliBoldItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliBoldItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli-ExtraLight", size: ...)`
-    static func muliExtraLight(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliExtraLight, size: size)
-    }
-
-    /// `UIFont(name: "Muli-ExtraLightItalic", size: ...)`
-    static func muliExtraLightItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliExtraLightItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli-Italic", size: ...)`
-    static func muliItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli-Light", size: ...)`
-    static func muliLight(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliLight, size: size)
-    }
-
-    /// `UIFont(name: "Muli-LightItalic", size: ...)`
-    static func muliLightItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliLightItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli-Semi-BoldItalic", size: ...)`
-    static func muliSemiBoldItalic(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliSemiBoldItalic, size: size)
-    }
-
-    /// `UIFont(name: "Muli-SemiBold", size: ...)`
-    static func muliSemiBold(size: CGFloat) -> UIKit.UIFont? {
-      return UIKit.UIFont(resource: muliSemiBold, size: size)
-    }
-
-    static func validate() throws {
-      if R.font.dsDigitalItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'DS-Digital-Italic' could not be loaded, is 'DS-DIGII.TTF' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muli(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli' could not be loaded, is 'Muli.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Bold' could not be loaded, is 'Muli-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliBoldItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-BoldItalic' could not be loaded, is 'Muli-BoldItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliExtraLight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-ExtraLight' could not be loaded, is 'Muli-ExtraLight.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliExtraLightItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-ExtraLightItalic' could not be loaded, is 'Muli-ExtraLightItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Italic' could not be loaded, is 'Muli-Italic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliLight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Light' could not be loaded, is 'Muli-Light.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliLightItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-LightItalic' could not be loaded, is 'Muli-LightItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliSemiBoldItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-Semi-BoldItalic' could not be loaded, is 'Muli-Semi-BoldItalic.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-      if R.font.muliSemiBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Muli-SemiBold' could not be loaded, is 'Muli-SemiBold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
-    }
-
-    fileprivate init() {}
-  }
-
-  /// This `R.image` struct is generated, and contains static references to 91 images.
+  /// This `_R.image` struct is generated, and contains static references to 97 images.
   struct image {
+    let bundle: Foundation.Bundle
+
     /// Image `CLARO`.
-    static let clarO = Rswift.ImageResource(bundle: R.hostingBundle, name: "CLARO")
+    var clarO: RswiftResources.ImageResource { .init(name: "CLARO", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `CNT`.
-    static let cnT = Rswift.ImageResource(bundle: R.hostingBundle, name: "CNT")
+    var cnT: RswiftResources.ImageResource { .init(name: "CNT", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `MOVISTAR`.
-    static let movistaR = Rswift.ImageResource(bundle: R.hostingBundle, name: "MOVISTAR")
+    var movistaR: RswiftResources.ImageResource { .init(name: "MOVISTAR", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `agendaIcon`.
-    static let agendaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "agendaIcon")
+    var agendaIcon: RswiftResources.ImageResource { .init(name: "agendaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ax`.
-    static let ax = Rswift.ImageResource(bundle: R.hostingBundle, name: "ax")
+    var ax: RswiftResources.ImageResource { .init(name: "ax", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `backIcon`.
-    static let backIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "backIcon")
+    var backIcon: RswiftResources.ImageResource { .init(name: "backIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `bill`.
-    static let bill = Rswift.ImageResource(bundle: R.hostingBundle, name: "bill")
+    var bill: RswiftResources.ImageResource { .init(name: "bill", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `calendar`.
-    static let calendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendar")
+    var calendar: RswiftResources.ImageResource { .init(name: "calendar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `callCenter`.
-    static let callCenter = Rswift.ImageResource(bundle: R.hostingBundle, name: "callCenter")
+    var callCenter: RswiftResources.ImageResource { .init(name: "callCenter", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `camera`.
-    static let camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "camera")
+    var camera: RswiftResources.ImageResource { .init(name: "camera", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `camion_icon`.
-    static let camion_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "camion_icon")
+    var camion_icon: RswiftResources.ImageResource { .init(name: "camion_icon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `camioneta_icon`.
-    static let camioneta_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "camioneta_icon")
+    var camioneta_icon: RswiftResources.ImageResource { .init(name: "camioneta_icon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `cancelar`.
-    static let cancelar = Rswift.ImageResource(bundle: R.hostingBundle, name: "cancelar")
+    var cancelar: RswiftResources.ImageResource { .init(name: "cancelar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `chofer`.
-    static let chofer = Rswift.ImageResource(bundle: R.hostingBundle, name: "chofer")
+    var chofer: RswiftResources.ImageResource { .init(name: "chofer", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `clave`.
-    static let clave = Rswift.ImageResource(bundle: R.hostingBundle, name: "clave")
+    var clave: RswiftResources.ImageResource { .init(name: "clave", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `close`.
-    static let close = Rswift.ImageResource(bundle: R.hostingBundle, name: "close")
+    var close: RswiftResources.ImageResource { .init(name: "close", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `compartir`.
-    static let compartir = Rswift.ImageResource(bundle: R.hostingBundle, name: "compartir")
+    var compartir: RswiftResources.ImageResource { .init(name: "compartir", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `contactname`.
-    static let contactname = Rswift.ImageResource(bundle: R.hostingBundle, name: "contactname")
+    var contactname: RswiftResources.ImageResource { .init(name: "contactname", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `contactoIcon`.
-    static let contactoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "contactoIcon")
+    var contactoIcon: RswiftResources.ImageResource { .init(name: "contactoIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `contactphone`.
-    static let contactphone = Rswift.ImageResource(bundle: R.hostingBundle, name: "contactphone")
+    var contactphone: RswiftResources.ImageResource { .init(name: "contactphone", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `costo`.
-    static let costo = Rswift.ImageResource(bundle: R.hostingBundle, name: "costo")
+    var costo: RswiftResources.ImageResource { .init(name: "costo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `dc`.
-    static let dc = Rswift.ImageResource(bundle: R.hostingBundle, name: "dc")
-    /// Image `destinoIcon`.
-    static let destinoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "destinoIcon")
+    var dc: RswiftResources.ImageResource { .init(name: "dc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `destino`.
-    static let destino = Rswift.ImageResource(bundle: R.hostingBundle, name: "destino")
+    var destino: RswiftResources.ImageResource { .init(name: "destino", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `destinoIcon`.
+    var destinoIcon: RswiftResources.ImageResource { .init(name: "destinoIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `detalleIcon`.
-    static let detalleIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "detalleIcon")
+    var detalleIcon: RswiftResources.ImageResource { .init(name: "detalleIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `detalles`.
-    static let detalles = Rswift.ImageResource(bundle: R.hostingBundle, name: "detalles")
+    var detalles: RswiftResources.ImageResource { .init(name: "detalles", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `di`.
-    static let di = Rswift.ImageResource(bundle: R.hostingBundle, name: "di")
+    var di: RswiftResources.ImageResource { .init(name: "di", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `distancia`.
-    static let distancia = Rswift.ImageResource(bundle: R.hostingBundle, name: "distancia")
+    var distancia: RswiftResources.ImageResource { .init(name: "distancia", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `down`.
-    static let down = Rswift.ImageResource(bundle: R.hostingBundle, name: "down")
+    var down: RswiftResources.ImageResource { .init(name: "down", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `driverIcon`.
-    static let driverIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "driverIcon")
+    var driverIcon: RswiftResources.ImageResource { .init(name: "driverIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `el`.
-    static let el = Rswift.ImageResource(bundle: R.hostingBundle, name: "el")
+    var el: RswiftResources.ImageResource { .init(name: "el", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `enProceso`.
-    static let enProceso = Rswift.ImageResource(bundle: R.hostingBundle, name: "enProceso")
+    var enProceso: RswiftResources.ImageResource { .init(name: "enProceso", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `evaluar`.
-    static let evaluar = Rswift.ImageResource(bundle: R.hostingBundle, name: "evaluar")
+    var evaluar: RswiftResources.ImageResource { .init(name: "evaluar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `header`.
-    static let header = Rswift.ImageResource(bundle: R.hostingBundle, name: "header")
+    var header: RswiftResources.ImageResource { .init(name: "header", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `hideClave`.
-    static let hideClave = Rswift.ImageResource(bundle: R.hostingBundle, name: "hideClave")
+    var hideClave: RswiftResources.ImageResource { .init(name: "hideClave", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `historial`.
-    static let historial = Rswift.ImageResource(bundle: R.hostingBundle, name: "historial")
+    var historial: RswiftResources.ImageResource { .init(name: "historial", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `home`.
-    static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "home")
+    var home: RswiftResources.ImageResource { .init(name: "home", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `jc`.
-    static let jc = Rswift.ImageResource(bundle: R.hostingBundle, name: "jc")
+    var jc: RswiftResources.ImageResource { .init(name: "jc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `launch`.
+    var launch: RswiftResources.ImageResource { .init(name: "launch", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `llamar`.
-    static let llamar = Rswift.ImageResource(bundle: R.hostingBundle, name: "llamar")
+    var llamar: RswiftResources.ImageResource { .init(name: "llamar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `loadingGif`.
-    static let loadingGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "loadingGif")
+    var loadingGif: RswiftResources.ImageResource { .init(name: "loadingGif", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `locationBtn`.
-    static let locationBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "locationBtn")
+    var locationBtn: RswiftResources.ImageResource { .init(name: "locationBtn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `login`.
+    var login: RswiftResources.ImageResource { .init(name: "login", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `logo`.
+    var logo: RswiftResources.ImageResource { .init(name: "logo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `mapIcon`.
-    static let mapIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "mapIcon")
+    var mapIcon: RswiftResources.ImageResource { .init(name: "mapIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `mapLocation`.
-    static let mapLocation = Rswift.ImageResource(bundle: R.hostingBundle, name: "mapLocation")
+    var mapLocation: RswiftResources.ImageResource { .init(name: "mapLocation", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `mc`.
-    static let mc = Rswift.ImageResource(bundle: R.hostingBundle, name: "mc")
+    var mc: RswiftResources.ImageResource { .init(name: "mc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `mensajes`.
-    static let mensajes = Rswift.ImageResource(bundle: R.hostingBundle, name: "mensajes")
+    var mensajes: RswiftResources.ImageResource { .init(name: "mensajes", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `mensajesnew`.
-    static let mensajesnew = Rswift.ImageResource(bundle: R.hostingBundle, name: "mensajesnew")
+    var mensajesnew: RswiftResources.ImageResource { .init(name: "mensajesnew", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `menu`.
-    static let menu = Rswift.ImageResource(bundle: R.hostingBundle, name: "menu")
+    var menu: RswiftResources.ImageResource { .init(name: "menu", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `next`.
-    static let next = Rswift.ImageResource(bundle: R.hostingBundle, name: "next")
+    var next: RswiftResources.ImageResource { .init(name: "next", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `nuevaSolicitud`.
-    static let nuevaSolicitud = Rswift.ImageResource(bundle: R.hostingBundle, name: "nuevaSolicitud")
+    var nuevaSolicitud: RswiftResources.ImageResource { .init(name: "nuevaSolicitud", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ofertaIcon`.
-    static let ofertaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ofertaIcon")
+    var ofertaIcon: RswiftResources.ImageResource { .init(name: "ofertaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `origen`.
+    var origen: RswiftResources.ImageResource { .init(name: "origen", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `origenIcon`.
-    static let origenIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "origenIcon")
+    var origenIcon: RswiftResources.ImageResource { .init(name: "origenIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `panicoBtn`.
-    static let panicoBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "panicoBtn")
+    var panicoBtn: RswiftResources.ImageResource { .init(name: "panicoBtn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `panicoIcon`.
-    static let panicoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "panicoIcon")
+    var panicoIcon: RswiftResources.ImageResource { .init(name: "panicoIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `publicidadBanner`.
-    static let publicidadBanner = Rswift.ImageResource(bundle: R.hostingBundle, name: "publicidadBanner")
+    var publicidadBanner: RswiftResources.ImageResource { .init(name: "publicidadBanner", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `referenciaIcon`.
-    static let referenciaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "referenciaIcon")
+    var referenciaIcon: RswiftResources.ImageResource { .init(name: "referenciaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `remove`.
-    static let remove = Rswift.ImageResource(bundle: R.hostingBundle, name: "remove")
+    var remove: RswiftResources.ImageResource { .init(name: "remove", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `salir2`.
-    static let salir2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "salir2")
+    var salir2: RswiftResources.ImageResource { .init(name: "salir2", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `search`.
-    static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
+    var search: RswiftResources.ImageResource { .init(name: "search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sesion`.
-    static let sesion = Rswift.ImageResource(bundle: R.hostingBundle, name: "sesion")
+    var sesion: RswiftResources.ImageResource { .init(name: "sesion", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `showClave`.
-    static let showClave = Rswift.ImageResource(bundle: R.hostingBundle, name: "showClave")
-    /// Image `smsvozRec`.
-    static let smsvozRec = Rswift.ImageResource(bundle: R.hostingBundle, name: "smsvozRec")
+    var showClave: RswiftResources.ImageResource { .init(name: "showClave", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `smsvoz`.
-    static let smsvoz = Rswift.ImageResource(bundle: R.hostingBundle, name: "smsvoz")
+    var smsvoz: RswiftResources.ImageResource { .init(name: "smsvoz", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `smsvozRec`.
+    var smsvozRec: RswiftResources.ImageResource { .init(name: "smsvozRec", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `so`.
-    static let so = Rswift.ImageResource(bundle: R.hostingBundle, name: "so")
+    var so: RswiftResources.ImageResource { .init(name: "so", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosAmbulancia`.
-    static let sosAmbulancia = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosAmbulancia")
+    var sosAmbulancia: RswiftResources.ImageResource { .init(name: "sosAmbulancia", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosBombero`.
-    static let sosBombero = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosBombero")
+    var sosBombero: RswiftResources.ImageResource { .init(name: "sosBombero", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosBtn`.
-    static let sosBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosBtn")
+    var sosBtn: RswiftResources.ImageResource { .init(name: "sosBtn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosLogo`.
-    static let sosLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosLogo")
+    var sosLogo: RswiftResources.ImageResource { .init(name: "sosLogo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosPolicia`.
-    static let sosPolicia = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosPolicia")
+    var sosPolicia: RswiftResources.ImageResource { .init(name: "sosPolicia", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `sosTransito`.
-    static let sosTransito = Rswift.ImageResource(bundle: R.hostingBundle, name: "sosTransito")
+    var sosTransito: RswiftResources.ImageResource { .init(name: "sosTransito", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `stardorada`.
-    static let stardorada = Rswift.ImageResource(bundle: R.hostingBundle, name: "stardorada")
+    var stardorada: RswiftResources.ImageResource { .init(name: "stardorada", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `stargris`.
-    static let stargris = Rswift.ImageResource(bundle: R.hostingBundle, name: "stargris")
+    var stargris: RswiftResources.ImageResource { .init(name: "stargris", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tabBottom`.
-    static let tabBottom = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBottom")
+    var tabBottom: RswiftResources.ImageResource { .init(name: "tabBottom", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tarjetaIcon`.
-    static let tarjetaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "tarjetaIcon")
+    var tarjetaIcon: RswiftResources.ImageResource { .init(name: "tarjetaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tarjetaMenu`.
-    static let tarjetaMenu = Rswift.ImageResource(bundle: R.hostingBundle, name: "tarjetaMenu")
+    var tarjetaMenu: RswiftResources.ImageResource { .init(name: "tarjetaMenu", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `taxiIcon`.
-    static let taxiIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "taxiIcon")
+    var taxiIcon: RswiftResources.ImageResource { .init(name: "taxiIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `taxi_libre`.
+    var taxi_libre: RswiftResources.ImageResource { .init(name: "taxi_libre", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `terminos`.
-    static let terminos = Rswift.ImageResource(bundle: R.hostingBundle, name: "terminos")
+    var terminos: RswiftResources.ImageResource { .init(name: "terminos", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tiempo`.
-    static let tiempo = Rswift.ImageResource(bundle: R.hostingBundle, name: "tiempo")
+    var tiempo: RswiftResources.ImageResource { .init(name: "tiempo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tipoHoras`.
-    static let tipoHoras = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoHoras")
+    var tipoHoras: RswiftResources.ImageResource { .init(name: "tipoHoras", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tipoOferta`.
-    static let tipoOferta = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoOferta")
+    var tipoOferta: RswiftResources.ImageResource { .init(name: "tipoOferta", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tipoPactada`.
-    static let tipoPactada = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoPactada")
+    var tipoPactada: RswiftResources.ImageResource { .init(name: "tipoPactada", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `tipoTaximetro`.
-    static let tipoTaximetro = Rswift.ImageResource(bundle: R.hostingBundle, name: "tipoTaximetro")
+    var tipoTaximetro: RswiftResources.ImageResource { .init(name: "tipoTaximetro", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `up`.
-    static let up = Rswift.ImageResource(bundle: R.hostingBundle, name: "up")
+    var up: RswiftResources.ImageResource { .init(name: "up", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `userPhoto`.
-    static let userPhoto = Rswift.ImageResource(bundle: R.hostingBundle, name: "userPhoto")
+    var userPhoto: RswiftResources.ImageResource { .init(name: "userPhoto", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
     /// Image `vi`.
-    static let vi = Rswift.ImageResource(bundle: R.hostingBundle, name: "vi")
+    var vi: RswiftResources.ImageResource { .init(name: "vi", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `voucherIcon`.
-    static let voucherIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "voucherIcon")
-    /// Image `whatsappBtn`.
-    static let whatsappBtn = Rswift.ImageResource(bundle: R.hostingBundle, name: "whatsappBtn")
+    var voucherIcon: RswiftResources.ImageResource { .init(name: "voucherIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `whatsapp`.
-    static let whatsapp = Rswift.ImageResource(bundle: R.hostingBundle, name: "whatsapp")
-    /// Image `xoalogo1`.
-    static let xoalogo1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "xoalogo1")
+    var whatsapp: RswiftResources.ImageResource { .init(name: "whatsapp", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `whatsappBtn`.
+    var whatsappBtn: RswiftResources.ImageResource { .init(name: "whatsappBtn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `xoalogo`.
-    static let xoalogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "xoalogo")
+    var xoalogo: RswiftResources.ImageResource { .init(name: "xoalogo", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
+    /// Image `xoalogo1`.
+    var xoalogo1: RswiftResources.ImageResource { .init(name: "xoalogo1", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
     /// Image `yapaCodeIcon`.
-    static let yapaCodeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "yapaCodeIcon")
+    var yapaCodeIcon: RswiftResources.ImageResource { .init(name: "yapaCodeIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `yapaIcon`.
-    static let yapaIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "yapaIcon")
+    var yapaIcon: RswiftResources.ImageResource { .init(name: "yapaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "CLARO", bundle: ..., traitCollection: ...)`
-    static func clarO(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.clarO, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "CNT", bundle: ..., traitCollection: ...)`
-    static func cnT(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.cnT, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "MOVISTAR", bundle: ..., traitCollection: ...)`
-    static func movistaR(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.movistaR, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "agendaIcon", bundle: ..., traitCollection: ...)`
-    static func agendaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.agendaIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ax", bundle: ..., traitCollection: ...)`
-    static func ax(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ax, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "backIcon", bundle: ..., traitCollection: ...)`
-    static func backIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.backIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "bill", bundle: ..., traitCollection: ...)`
-    static func bill(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.bill, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "calendar", bundle: ..., traitCollection: ...)`
-    static func calendar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.calendar, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "callCenter", bundle: ..., traitCollection: ...)`
-    static func callCenter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.callCenter, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "camera", bundle: ..., traitCollection: ...)`
-    static func camera(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.camera, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "camion_icon", bundle: ..., traitCollection: ...)`
-    static func camion_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.camion_icon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "camioneta_icon", bundle: ..., traitCollection: ...)`
-    static func camioneta_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.camioneta_icon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "cancelar", bundle: ..., traitCollection: ...)`
-    static func cancelar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.cancelar, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "chofer", bundle: ..., traitCollection: ...)`
-    static func chofer(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.chofer, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "clave", bundle: ..., traitCollection: ...)`
-    static func clave(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.clave, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "close", bundle: ..., traitCollection: ...)`
-    static func close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.close, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "compartir", bundle: ..., traitCollection: ...)`
-    static func compartir(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.compartir, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "contactname", bundle: ..., traitCollection: ...)`
-    static func contactname(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.contactname, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "contactoIcon", bundle: ..., traitCollection: ...)`
-    static func contactoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.contactoIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "contactphone", bundle: ..., traitCollection: ...)`
-    static func contactphone(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.contactphone, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "costo", bundle: ..., traitCollection: ...)`
-    static func costo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.costo, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "dc", bundle: ..., traitCollection: ...)`
-    static func dc(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.dc, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "destino", bundle: ..., traitCollection: ...)`
-    static func destino(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.destino, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "destinoIcon", bundle: ..., traitCollection: ...)`
-    static func destinoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.destinoIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "detalleIcon", bundle: ..., traitCollection: ...)`
-    static func detalleIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.detalleIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "detalles", bundle: ..., traitCollection: ...)`
-    static func detalles(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.detalles, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "di", bundle: ..., traitCollection: ...)`
-    static func di(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.di, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "distancia", bundle: ..., traitCollection: ...)`
-    static func distancia(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.distancia, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "down", bundle: ..., traitCollection: ...)`
-    static func down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.down, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "driverIcon", bundle: ..., traitCollection: ...)`
-    static func driverIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.driverIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "el", bundle: ..., traitCollection: ...)`
-    static func el(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.el, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "enProceso", bundle: ..., traitCollection: ...)`
-    static func enProceso(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.enProceso, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "evaluar", bundle: ..., traitCollection: ...)`
-    static func evaluar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.evaluar, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "header", bundle: ..., traitCollection: ...)`
-    static func header(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.header, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "hideClave", bundle: ..., traitCollection: ...)`
-    static func hideClave(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.hideClave, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "historial", bundle: ..., traitCollection: ...)`
-    static func historial(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.historial, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "home", bundle: ..., traitCollection: ...)`
-    static func home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.home, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "jc", bundle: ..., traitCollection: ...)`
-    static func jc(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.jc, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "llamar", bundle: ..., traitCollection: ...)`
-    static func llamar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.llamar, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "loadingGif", bundle: ..., traitCollection: ...)`
-    static func loadingGif(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.loadingGif, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "locationBtn", bundle: ..., traitCollection: ...)`
-    static func locationBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.locationBtn, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "mapIcon", bundle: ..., traitCollection: ...)`
-    static func mapIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mapIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "mapLocation", bundle: ..., traitCollection: ...)`
-    static func mapLocation(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mapLocation, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "mc", bundle: ..., traitCollection: ...)`
-    static func mc(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mc, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "mensajes", bundle: ..., traitCollection: ...)`
-    static func mensajes(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mensajes, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "mensajesnew", bundle: ..., traitCollection: ...)`
-    static func mensajesnew(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mensajesnew, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "menu", bundle: ..., traitCollection: ...)`
-    static func menu(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.menu, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "next", bundle: ..., traitCollection: ...)`
-    static func next(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.next, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "nuevaSolicitud", bundle: ..., traitCollection: ...)`
-    static func nuevaSolicitud(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.nuevaSolicitud, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ofertaIcon", bundle: ..., traitCollection: ...)`
-    static func ofertaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ofertaIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "origenIcon", bundle: ..., traitCollection: ...)`
-    static func origenIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.origenIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "panicoBtn", bundle: ..., traitCollection: ...)`
-    static func panicoBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.panicoBtn, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "panicoIcon", bundle: ..., traitCollection: ...)`
-    static func panicoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.panicoIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "publicidadBanner", bundle: ..., traitCollection: ...)`
-    static func publicidadBanner(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.publicidadBanner, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "referenciaIcon", bundle: ..., traitCollection: ...)`
-    static func referenciaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.referenciaIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "remove", bundle: ..., traitCollection: ...)`
-    static func remove(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.remove, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "salir2", bundle: ..., traitCollection: ...)`
-    static func salir2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.salir2, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "search", bundle: ..., traitCollection: ...)`
-    static func search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.search, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sesion", bundle: ..., traitCollection: ...)`
-    static func sesion(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sesion, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "showClave", bundle: ..., traitCollection: ...)`
-    static func showClave(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.showClave, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "smsvoz", bundle: ..., traitCollection: ...)`
-    static func smsvoz(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.smsvoz, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "smsvozRec", bundle: ..., traitCollection: ...)`
-    static func smsvozRec(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.smsvozRec, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "so", bundle: ..., traitCollection: ...)`
-    static func so(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.so, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosAmbulancia", bundle: ..., traitCollection: ...)`
-    static func sosAmbulancia(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosAmbulancia, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosBombero", bundle: ..., traitCollection: ...)`
-    static func sosBombero(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosBombero, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosBtn", bundle: ..., traitCollection: ...)`
-    static func sosBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosBtn, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosLogo", bundle: ..., traitCollection: ...)`
-    static func sosLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosLogo, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosPolicia", bundle: ..., traitCollection: ...)`
-    static func sosPolicia(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosPolicia, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "sosTransito", bundle: ..., traitCollection: ...)`
-    static func sosTransito(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.sosTransito, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "stardorada", bundle: ..., traitCollection: ...)`
-    static func stardorada(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.stardorada, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "stargris", bundle: ..., traitCollection: ...)`
-    static func stargris(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.stargris, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tabBottom", bundle: ..., traitCollection: ...)`
-    static func tabBottom(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tabBottom, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tarjetaIcon", bundle: ..., traitCollection: ...)`
-    static func tarjetaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tarjetaIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tarjetaMenu", bundle: ..., traitCollection: ...)`
-    static func tarjetaMenu(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tarjetaMenu, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "taxiIcon", bundle: ..., traitCollection: ...)`
-    static func taxiIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.taxiIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "terminos", bundle: ..., traitCollection: ...)`
-    static func terminos(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.terminos, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tiempo", bundle: ..., traitCollection: ...)`
-    static func tiempo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tiempo, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoHoras", bundle: ..., traitCollection: ...)`
-    static func tipoHoras(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoHoras, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoOferta", bundle: ..., traitCollection: ...)`
-    static func tipoOferta(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoOferta, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoPactada", bundle: ..., traitCollection: ...)`
-    static func tipoPactada(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoPactada, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "tipoTaximetro", bundle: ..., traitCollection: ...)`
-    static func tipoTaximetro(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.tipoTaximetro, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "up", bundle: ..., traitCollection: ...)`
-    static func up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.up, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "userPhoto", bundle: ..., traitCollection: ...)`
-    static func userPhoto(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.userPhoto, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vi", bundle: ..., traitCollection: ...)`
-    static func vi(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vi, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "voucherIcon", bundle: ..., traitCollection: ...)`
-    static func voucherIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.voucherIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "whatsapp", bundle: ..., traitCollection: ...)`
-    static func whatsapp(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.whatsapp, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "whatsappBtn", bundle: ..., traitCollection: ...)`
-    static func whatsappBtn(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.whatsappBtn, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xoalogo", bundle: ..., traitCollection: ...)`
-    static func xoalogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xoalogo, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xoalogo1", bundle: ..., traitCollection: ...)`
-    static func xoalogo1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xoalogo1, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "yapaCodeIcon", bundle: ..., traitCollection: ...)`
-    static func yapaCodeIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.yapaCodeIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "yapaIcon", bundle: ..., traitCollection: ...)`
-    static func yapaIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.yapaIcon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    fileprivate init() {}
+    /// Image `yapaImg`.
+    var yapaImg: RswiftResources.ImageResource { .init(name: "yapaImg", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
+  /// This `_R.entitlements` struct is generated, and contains static references to 1 properties.
+  struct entitlements {
+    let comAppleDeveloperUserFonts = comAppleDeveloperUserFonts()
+    struct comAppleDeveloperUserFonts {
+    }
+  }
+
+  /// This `_R.font` struct is generated, and contains static references to 10 fonts.
+  struct font: Sequence {
+    let bundle: Foundation.Bundle
+
+    /// Font `Muli`.
+    var muli: RswiftResources.FontResource { .init(name: "Muli", bundle: bundle, filename: "Muli.ttf") }
+
+    /// Font `Muli-Bold`.
+    var muliBold: RswiftResources.FontResource { .init(name: "Muli-Bold", bundle: bundle, filename: "Muli-Bold.ttf") }
+
+    /// Font `Muli-BoldItalic`.
+    var muliBoldItalic: RswiftResources.FontResource { .init(name: "Muli-BoldItalic", bundle: bundle, filename: "Muli-BoldItalic.ttf") }
+
+    /// Font `Muli-ExtraLight`.
+    var muliExtraLight: RswiftResources.FontResource { .init(name: "Muli-ExtraLight", bundle: bundle, filename: "Muli-ExtraLight.ttf") }
+
+    /// Font `Muli-ExtraLightItalic`.
+    var muliExtraLightItalic: RswiftResources.FontResource { .init(name: "Muli-ExtraLightItalic", bundle: bundle, filename: "Muli-ExtraLightItalic.ttf") }
+
+    /// Font `Muli-Italic`.
+    var muliItalic: RswiftResources.FontResource { .init(name: "Muli-Italic", bundle: bundle, filename: "Muli-Italic.ttf") }
+
+    /// Font `Muli-Light`.
+    var muliLight: RswiftResources.FontResource { .init(name: "Muli-Light", bundle: bundle, filename: "Muli-Light.ttf") }
+
+    /// Font `Muli-LightItalic`.
+    var muliLightItalic: RswiftResources.FontResource { .init(name: "Muli-LightItalic", bundle: bundle, filename: "Muli-LightItalic.ttf") }
+
+    /// Font `Muli-Semi-BoldItalic`.
+    var muliSemiBoldItalic: RswiftResources.FontResource { .init(name: "Muli-Semi-BoldItalic", bundle: bundle, filename: "Muli-Semi-BoldItalic.ttf") }
+
+    /// Font `Muli-SemiBold`.
+    var muliSemiBold: RswiftResources.FontResource { .init(name: "Muli-SemiBold", bundle: bundle, filename: "Muli-SemiBold.ttf") }
+
+    func makeIterator() -> IndexingIterator<[RswiftResources.FontResource]> {
+      [muli, muliBold, muliBoldItalic, muliExtraLight, muliExtraLightItalic, muliItalic, muliLight, muliLightItalic, muliSemiBoldItalic, muliSemiBold].makeIterator()
+    }
+    func validate() throws {
+      for font in self {
+        if !font.canBeLoaded() { throw RswiftResources.ValidationError("[R.swift] Font '\(font.name)' could not be loaded, is '\(font.filename)' added to the UIAppFonts array in this targets Info.plist?") }
+      }
+    }
+  }
+
+  /// This `_R.file` struct is generated, and contains static references to 19 resource files.
+  struct file {
+    let bundle: Foundation.Bundle
+
+    /// Resource file `.gitignore`.
+    var gitignore: RswiftResources.FileResource { .init(name: ".gitignore", pathExtension: "", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `DS-DIGII.TTF`.
+    var dsdigiittF: RswiftResources.FileResource { .init(name: "DS-DIGII", pathExtension: "TTF", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Entitlements.plist`.
+    var entitlementsPlist: RswiftResources.FileResource { .init(name: "Entitlements", pathExtension: "plist", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-Bold.ttf`.
+    var muliBoldTtf: RswiftResources.FileResource { .init(name: "Muli-Bold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-BoldItalic.ttf`.
+    var muliBoldItalicTtf: RswiftResources.FileResource { .init(name: "Muli-BoldItalic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-ExtraLight.ttf`.
+    var muliExtraLightTtf: RswiftResources.FileResource { .init(name: "Muli-ExtraLight", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-ExtraLightItalic.ttf`.
+    var muliExtraLightItalicTtf: RswiftResources.FileResource { .init(name: "Muli-ExtraLightItalic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-Italic.ttf`.
+    var muliItalicTtf: RswiftResources.FileResource { .init(name: "Muli-Italic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-Light.ttf`.
+    var muliLightTtf: RswiftResources.FileResource { .init(name: "Muli-Light", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-LightItalic.ttf`.
+    var muliLightItalicTtf: RswiftResources.FileResource { .init(name: "Muli-LightItalic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-Semi-BoldItalic.ttf`.
+    var muliSemiBoldItalicTtf: RswiftResources.FileResource { .init(name: "Muli-Semi-BoldItalic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli-SemiBold.ttf`.
+    var muliSemiBoldTtf: RswiftResources.FileResource { .init(name: "Muli-SemiBold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `Muli.ttf`.
+    var muliTtf: RswiftResources.FileResource { .init(name: "Muli", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `beep.wav`.
+    var beepWav: RswiftResources.FileResource { .init(name: "beep", pathExtension: "wav", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `claxon.mp3`.
+    var claxonMp3: RswiftResources.FileResource { .init(name: "claxon", pathExtension: "mp3", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `ds_digital`.
+    var ds_digital: RswiftResources.FileResource { .init(name: "ds_digital", pathExtension: "", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `userPhoto.png`.
+    var userPhotoPng: RswiftResources.FileResource { .init(name: "userPhoto", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `xoalogo.png`.
+    var xoalogoPng: RswiftResources.FileResource { .init(name: "xoalogo", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `xoalogo1.png`.
+    var xoalogo1Png: RswiftResources.FileResource { .init(name: "xoalogo1", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
+  }
+
+  /// This `_R.nib` struct is generated, and contains static references to 19 nibs.
   struct nib {
+    let bundle: Foundation.Bundle
+
     /// Nib `CallCenterViewCell`.
-    static let callCenterViewCell = _R.nib._CallCenterViewCell()
+    var callCenterViewCell: RswiftResources.NibReferenceReuseIdentifier<CallCenterViewCell, CallCenterViewCell> { .init(name: "CallCenterViewCell", bundle: bundle, identifier: "CallCenterViewCell") }
+
     /// Nib `CardRow`.
-    static let cardRow = _R.nib._CardRow()
+    var cardRow: RswiftResources.NibReference<CardViewCell> { .init(name: "CardRow", bundle: bundle) }
+
     /// Nib `ContactoCell`.
-    static let contactoCell = _R.nib._ContactoCell()
+    var contactoCell: RswiftResources.NibReference<ContactoViewCell> { .init(name: "ContactoCell", bundle: bundle) }
+
     /// Nib `DestinoCell`.
-    static let destinoCell = _R.nib._DestinoCell()
+    var destinoCell: RswiftResources.NibReference<DestinoCell> { .init(name: "DestinoCell", bundle: bundle) }
+
     /// Nib `DetallesViewCell`.
-    static let detallesViewCell = _R.nib._DetallesViewCell()
+    var detallesViewCell: RswiftResources.NibReference<UIKit.UIView> { .init(name: "DetallesViewCell", bundle: bundle) }
+
     /// Nib `HistoryViewCell`.
-    static let historyViewCell = _R.nib._HistoryViewCell()
+    var historyViewCell: RswiftResources.NibReference<HistoryCell> { .init(name: "HistoryViewCell", bundle: bundle) }
+
     /// Nib `OfertaCell`.
-    static let ofertaCell = _R.nib._OfertaCell()
+    var ofertaCell: RswiftResources.NibReferenceReuseIdentifier<OfertaViewCell, OfertaViewCell> { .init(name: "OfertaCell", bundle: bundle, identifier: "OfertaCell") }
+
     /// Nib `OfertaDataCell`.
-    static let ofertaDataCell = _R.nib._OfertaDataCell()
+    var ofertaDataCell: RswiftResources.NibReference<OfertaDataViewCell> { .init(name: "OfertaDataCell", bundle: bundle) }
+
     /// Nib `OrigenCell`.
-    static let origenCell = _R.nib._OrigenCell()
+    var origenCell: RswiftResources.NibReference<OrigenViewCell> { .init(name: "OrigenCell", bundle: bundle) }
+
     /// Nib `PactadaCell`.
-    static let pactadaCell = _R.nib._PactadaCell()
+    var pactadaCell: RswiftResources.NibReference<PactadaCell> { .init(name: "PactadaCell", bundle: bundle) }
+
     /// Nib `PagoCell`.
-    static let pagoCell = _R.nib._PagoCell()
+    var pagoCell: RswiftResources.NibReference<PagoViewCell> { .init(name: "PagoCell", bundle: bundle) }
+
     /// Nib `PagoYapaViewCell`.
-    static let pagoYapaViewCell = _R.nib._PagoYapaViewCell()
+    var pagoYapaViewCell: RswiftResources.NibReference<PagoYapaCell> { .init(name: "PagoYapaViewCell", bundle: bundle) }
+
     /// Nib `Perfil2ViewCell`.
-    static let perfil2ViewCell = _R.nib._Perfil2ViewCell()
+    var perfil2ViewCell: RswiftResources.NibReference<Perfil2ViewCell> { .init(name: "Perfil2ViewCell", bundle: bundle) }
+
     /// Nib `Perfil3ViewCell`.
-    static let perfil3ViewCell = _R.nib._Perfil3ViewCell()
+    var perfil3ViewCell: RswiftResources.NibReference<Perfil3ViewCell> { .init(name: "Perfil3ViewCell", bundle: bundle) }
+
     /// Nib `PerfilNombreCell`.
-    static let perfilNombreCell = _R.nib._PerfilNombreCell()
+    var perfilNombreCell: RswiftResources.NibReferenceReuseIdentifier<PerfilNombreCell, PerfilNombreCell> { .init(name: "PerfilNombreCell", bundle: bundle, identifier: "PerfilNombreCell") }
+
     /// Nib `PerfilViewCell`.
-    static let perfilViewCell = _R.nib._PerfilViewCell()
-    /// Nib `SOSCollectionViewCell`.
-    static let sosCollectionViewCell = _R.nib._SOSCollectionViewCell()
+    var perfilViewCell: RswiftResources.NibReferenceReuseIdentifier<PerfilViewCell, PerfilViewCell> { .init(name: "PerfilViewCell", bundle: bundle, identifier: "PerfilViewCell") }
+
     /// Nib `SolPendientesCell`.
-    static let solPendientesCell = _R.nib._SolPendientesCell()
+    var solPendientesCell: RswiftResources.NibReference<SolPendientesViewCell> { .init(name: "SolPendientesCell", bundle: bundle) }
+
+    /// Nib `SOSCollectionViewCell`.
+    var sosCollectionViewCell: RswiftResources.NibReference<UIKit.UIView> { .init(name: "SOSCollectionViewCell", bundle: bundle) }
+
     /// Nib `YapaViewCell`.
-    static let yapaViewCell = _R.nib._YapaViewCell()
+    var yapaViewCell: RswiftResources.NibReference<YapaCell> { .init(name: "YapaViewCell", bundle: bundle) }
 
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "CallCenterViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.callCenterViewCell) instead")
-    static func callCenterViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.callCenterViewCell)
+    func validate() throws {
+      if UIKit.UIImage(named: "whatsappBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'whatsappBtn' is used in nib 'CallCenterViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "remove", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'remove' is used in nib 'CardRow', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "contactname", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'contactname' is used in nib 'ContactoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "contactoIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'contactoIcon' is used in nib 'ContactoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "contactphone", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'contactphone' is used in nib 'ContactoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "destinoIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'destinoIcon' is used in nib 'DestinoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "chofer", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'chofer' is used in nib 'DetallesViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "stardorada", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'stardorada' is used in nib 'DetallesViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "calendar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'calendar' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "destinoIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'destinoIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "ofertaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ofertaIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "origenIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'origenIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "stardorada", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'stardorada' is used in nib 'OfertaCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "ofertaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ofertaIcon' is used in nib 'OfertaDataCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "origenIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'origenIcon' is used in nib 'OrigenCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "voucherIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'voucherIcon' is used in nib 'PactadaCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "ofertaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ofertaIcon' is used in nib 'PagoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "referenciaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'referenciaIcon' is used in nib 'PagoCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "yapaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'yapaIcon' is used in nib 'PagoYapaViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "showClave", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'showClave' is used in nib 'Perfil3ViewCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "next", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'next' is used in nib 'YapaViewCell', but couldn't be loaded.") }
     }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "CardRow", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.cardRow) instead")
-    static func cardRow(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.cardRow)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "ContactoCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.contactoCell) instead")
-    static func contactoCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.contactoCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "DestinoCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.destinoCell) instead")
-    static func destinoCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.destinoCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "DetallesViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.detallesViewCell) instead")
-    static func detallesViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.detallesViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "HistoryViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.historyViewCell) instead")
-    static func historyViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.historyViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "OfertaCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaCell) instead")
-    static func ofertaCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.ofertaCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "OfertaDataCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.ofertaDataCell) instead")
-    static func ofertaDataCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.ofertaDataCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "OrigenCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.origenCell) instead")
-    static func origenCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.origenCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PactadaCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.pactadaCell) instead")
-    static func pactadaCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.pactadaCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PagoCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.pagoCell) instead")
-    static func pagoCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.pagoCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PagoYapaViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.pagoYapaViewCell) instead")
-    static func pagoYapaViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.pagoYapaViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "Perfil2ViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.perfil2ViewCell) instead")
-    static func perfil2ViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.perfil2ViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "Perfil3ViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.perfil3ViewCell) instead")
-    static func perfil3ViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.perfil3ViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PerfilNombreCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.perfilNombreCell) instead")
-    static func perfilNombreCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.perfilNombreCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PerfilViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.perfilViewCell) instead")
-    static func perfilViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.perfilViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "SOSCollectionViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.sosCollectionViewCell) instead")
-    static func sosCollectionViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.sosCollectionViewCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "SolPendientesCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.solPendientesCell) instead")
-    static func solPendientesCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.solPendientesCell)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "YapaViewCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.yapaViewCell) instead")
-    static func yapaViewCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.yapaViewCell)
-    }
-    #endif
-
-    static func callCenterViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CallCenterViewCell? {
-      return R.nib.callCenterViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CallCenterViewCell
-    }
-
-    static func cardRow(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CardViewCell? {
-      return R.nib.cardRow.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CardViewCell
-    }
-
-    static func contactoCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ContactoViewCell? {
-      return R.nib.contactoCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ContactoViewCell
-    }
-
-    static func destinoCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DestinoCell? {
-      return R.nib.destinoCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DestinoCell
-    }
-
-    static func detallesViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.detallesViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-    }
-
-    static func historyViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HistoryCell? {
-      return R.nib.historyViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HistoryCell
-    }
-
-    static func ofertaCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
-      return R.nib.ofertaCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
-    }
-
-    static func ofertaDataCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaDataViewCell? {
-      return R.nib.ofertaDataCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaDataViewCell
-    }
-
-    static func origenCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OrigenViewCell? {
-      return R.nib.origenCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OrigenViewCell
-    }
-
-    static func pactadaCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PactadaCell? {
-      return R.nib.pactadaCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PactadaCell
-    }
-
-    static func pagoCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoViewCell? {
-      return R.nib.pagoCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoViewCell
-    }
-
-    static func pagoYapaViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoYapaCell? {
-      return R.nib.pagoYapaViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoYapaCell
-    }
-
-    static func perfil2ViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Perfil2ViewCell? {
-      return R.nib.perfil2ViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? Perfil2ViewCell
-    }
-
-    static func perfil3ViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Perfil3ViewCell? {
-      return R.nib.perfil3ViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? Perfil3ViewCell
-    }
-
-    static func perfilNombreCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PerfilNombreCell? {
-      return R.nib.perfilNombreCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PerfilNombreCell
-    }
-
-    static func perfilViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PerfilViewCell? {
-      return R.nib.perfilViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PerfilViewCell
-    }
-
-    static func solPendientesCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SolPendientesViewCell? {
-      return R.nib.solPendientesCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SolPendientesViewCell
-    }
-
-    static func yapaViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> YapaCell? {
-      return R.nib.yapaViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? YapaCell
-    }
-
-    fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 9 reuse identifiers.
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 9 reuse identifiers.
   struct reuseIdentifier {
-    /// Reuse identifier `CELL`.
-    static let celL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "CELL")
+
     /// Reuse identifier `CallCenterViewCell`.
-    static let callCenterViewCell: Rswift.ReuseIdentifier<CallCenterViewCell> = Rswift.ReuseIdentifier(identifier: "CallCenterViewCell")
+    let callCenterViewCell: RswiftResources.ReuseIdentifier<CallCenterViewCell> = .init(identifier: "CallCenterViewCell")
+
+    /// Reuse identifier `CELL`.
+    let celL: RswiftResources.ReuseIdentifier<UIKit.UITableViewCell> = .init(identifier: "CELL")
+
     /// Reuse identifier `ComentarioCell`.
-    static let comentarioCell: Rswift.ReuseIdentifier<ComentarioCollectionCell> = Rswift.ReuseIdentifier(identifier: "ComentarioCell")
+    let comentarioCell: RswiftResources.ReuseIdentifier<ComentarioCollectionCell> = .init(identifier: "ComentarioCell")
+
     /// Reuse identifier `MENUCELL`.
-    static let menucelL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "MENUCELL")
+    let menucelL: RswiftResources.ReuseIdentifier<UIKit.UITableViewCell> = .init(identifier: "MENUCELL")
+
     /// Reuse identifier `OfertaCell`.
-    static let ofertaCell: Rswift.ReuseIdentifier<OfertaViewCell> = Rswift.ReuseIdentifier(identifier: "OfertaCell")
+    let ofertaCell: RswiftResources.ReuseIdentifier<OfertaViewCell> = .init(identifier: "OfertaCell")
+
     /// Reuse identifier `PerfilNombreCell`.
-    static let perfilNombreCell: Rswift.ReuseIdentifier<PerfilNombreCell> = Rswift.ReuseIdentifier(identifier: "PerfilNombreCell")
+    let perfilNombreCell: RswiftResources.ReuseIdentifier<PerfilNombreCell> = .init(identifier: "PerfilNombreCell")
+
     /// Reuse identifier `PerfilViewCell`.
-    static let perfilViewCell: Rswift.ReuseIdentifier<PerfilViewCell> = Rswift.ReuseIdentifier(identifier: "PerfilViewCell")
+    let perfilViewCell: RswiftResources.ReuseIdentifier<PerfilViewCell> = .init(identifier: "PerfilViewCell")
+
     /// Reuse identifier `Solicitudes`.
-    static let solicitudes: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "Solicitudes")
+    let solicitudes: RswiftResources.ReuseIdentifier<UIKit.UITableViewCell> = .init(identifier: "Solicitudes")
+
     /// Reuse identifier `sosBtn`.
-    static let sosBtn: Rswift.ReuseIdentifier<SOSCollectionCell> = Rswift.ReuseIdentifier(identifier: "sosBtn")
-
-    fileprivate init() {}
+    let sosBtn: RswiftResources.ReuseIdentifier<SOSCollectionCell> = .init(identifier: "sosBtn")
   }
 
-  fileprivate struct intern: Rswift.Validatable {
-    fileprivate static func validate() throws {
-      try _R.validate()
+  /// This `_R.storyboard` struct is generated, and contains static references to 4 storyboards.
+  struct storyboard {
+    let bundle: Foundation.Bundle
+    var andyLaunchScreen: andyLaunchScreen { .init(bundle: bundle) }
+    var launchScreen: launchScreen { .init(bundle: bundle) }
+    var login: login { .init(bundle: bundle) }
+    var main: main { .init(bundle: bundle) }
+
+    func andyLaunchScreen(bundle: Foundation.Bundle) -> andyLaunchScreen {
+      .init(bundle: bundle)
+    }
+    func launchScreen(bundle: Foundation.Bundle) -> launchScreen {
+      .init(bundle: bundle)
+    }
+    func login(bundle: Foundation.Bundle) -> login {
+      .init(bundle: bundle)
+    }
+    func main(bundle: Foundation.Bundle) -> main {
+      .init(bundle: bundle)
+    }
+    func validate() throws {
+      try self.andyLaunchScreen.validate()
+      try self.launchScreen.validate()
+      try self.login.validate()
+      try self.main.validate()
     }
 
-    fileprivate init() {}
-  }
 
-  fileprivate class Class {}
-
-  fileprivate init() {}
-}
-
-struct _R: Rswift.Validatable {
-  static func validate() throws {
-    #if os(iOS) || os(tvOS)
-    try nib.validate()
-    #endif
-    #if os(iOS) || os(tvOS)
-    try storyboard.validate()
-    #endif
-  }
-
-  #if os(iOS) || os(tvOS)
-  struct nib: Rswift.Validatable {
-    static func validate() throws {
-      try _CallCenterViewCell.validate()
-      try _CardRow.validate()
-      try _ContactoCell.validate()
-      try _DestinoCell.validate()
-      try _DetallesViewCell.validate()
-      try _HistoryViewCell.validate()
-      try _OfertaCell.validate()
-      try _OfertaDataCell.validate()
-      try _OrigenCell.validate()
-      try _PactadaCell.validate()
-      try _PagoCell.validate()
-      try _PagoYapaViewCell.validate()
-      try _Perfil3ViewCell.validate()
-      try _YapaViewCell.validate()
-    }
-
-    struct _CallCenterViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
-      typealias ReusableType = CallCenterViewCell
-
-      let bundle = R.hostingBundle
-      let identifier = "CallCenterViewCell"
-      let name = "CallCenterViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CallCenterViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CallCenterViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "whatsappBtn", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'whatsappBtn' is used in nib 'CallCenterViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _CardRow: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "CardRow"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CardViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CardViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "remove", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'remove' is used in nib 'CardRow', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _ContactoCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "ContactoCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ContactoViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ContactoViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "contactname", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contactname' is used in nib 'ContactoCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "contactoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contactoIcon' is used in nib 'ContactoCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "contactphone", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'contactphone' is used in nib 'ContactoCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _DestinoCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "DestinoCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DestinoCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DestinoCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in nib 'DestinoCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _DetallesViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "DetallesViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "chofer", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chofer' is used in nib 'DetallesViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in nib 'DetallesViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _HistoryViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "HistoryViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HistoryCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HistoryCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'calendar' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in nib 'HistoryViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _OfertaCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
-      typealias ReusableType = OfertaViewCell
-
-      let bundle = R.hostingBundle
-      let identifier = "OfertaCell"
-      let name = "OfertaCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in nib 'OfertaCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _OfertaDataCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "OfertaDataCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OfertaDataViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OfertaDataViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'OfertaDataCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _OrigenCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "OrigenCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OrigenViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OrigenViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in nib 'OrigenCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PactadaCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "PactadaCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PactadaCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PactadaCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "voucherIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voucherIcon' is used in nib 'PactadaCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PagoCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "PagoCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in nib 'PagoCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "referenciaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'referenciaIcon' is used in nib 'PagoCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PagoYapaViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "PagoYapaViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PagoYapaCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PagoYapaCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in nib 'PagoYapaViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _Perfil2ViewCell: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "Perfil2ViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Perfil2ViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? Perfil2ViewCell
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _Perfil3ViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "Perfil3ViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> Perfil3ViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? Perfil3ViewCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in nib 'Perfil3ViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PerfilNombreCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
-      typealias ReusableType = PerfilNombreCell
-
-      let bundle = R.hostingBundle
-      let identifier = "PerfilNombreCell"
-      let name = "PerfilNombreCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PerfilNombreCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PerfilNombreCell
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PerfilViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
-      typealias ReusableType = PerfilViewCell
-
-      let bundle = R.hostingBundle
-      let identifier = "PerfilViewCell"
-      let name = "PerfilViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PerfilViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PerfilViewCell
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _SOSCollectionViewCell: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "SOSCollectionViewCell"
-
-      fileprivate init() {}
-    }
-
-    struct _SolPendientesCell: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "SolPendientesCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SolPendientesViewCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SolPendientesViewCell
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _YapaViewCell: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "YapaViewCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> YapaCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? YapaCell
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "next", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'next' is used in nib 'YapaViewCell', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    fileprivate init() {}
-  }
-  #endif
-
-  #if os(iOS) || os(tvOS)
-  struct storyboard: Rswift.Validatable {
-    static func validate() throws {
-      #if os(iOS) || os(tvOS)
-      try launchScreen.validate()
-      #endif
-      #if os(iOS) || os(tvOS)
-      try login.validate()
-      #endif
-      #if os(iOS) || os(tvOS)
-      try main.validate()
-      #endif
-    }
-
-    #if os(iOS) || os(tvOS)
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+    /// Storyboard `Andy Launch Screen`.
+    struct andyLaunchScreen: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
       typealias InitialController = UIKit.UIViewController
 
-      let bundle = R.hostingBundle
-      let name = "Launch Screen"
+      let bundle: Foundation.Bundle
 
-      static func validate() throws {
-        if UIKit.UIImage(named: "launch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launch' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
+      let name = "Andy Launch Screen"
+      func validate() throws {
+        if UIKit.UIImage(named: "LaunchImg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'LaunchImg' is used in storyboard 'Andy Launch Screen', but couldn't be loaded.") }
       }
-
-      fileprivate init() {}
     }
-    #endif
 
-    #if os(iOS) || os(tvOS)
-    struct login: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+    /// Storyboard `Launch Screen`.
+    struct launchScreen: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
+      typealias InitialController = UIKit.UIViewController
+
+      let bundle: Foundation.Bundle
+
+      let name = "Launch Screen"
+      func validate() throws {
+        if UIKit.UIImage(named: "launch", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'launch' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+      }
+    }
+
+    /// Storyboard `Login`.
+    struct login: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
       typealias InitialController = UIKit.UINavigationController
 
-      let bundle = R.hostingBundle
-      let loginView = StoryboardViewControllerResource<LoginController>(identifier: "LoginView")
+      let bundle: Foundation.Bundle
+
       let name = "Login"
-      let registroView = StoryboardViewControllerResource<RegistroController>(identifier: "registroView")
 
-      func loginView(_: Void = ()) -> LoginController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginView)
+      var loginView: RswiftResources.StoryboardViewControllerIdentifier<LoginController> { .init(identifier: "LoginView", storyboard: name, bundle: bundle) }
+      var registroView: RswiftResources.StoryboardViewControllerIdentifier<RegistroController> { .init(identifier: "registroView", storyboard: name, bundle: bundle) }
+
+      func validate() throws {
+        if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "launch", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'launch' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "login", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'login' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "showClave", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'showClave' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "xoalogo.png", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'xoalogo.png' is used in storyboard 'Login', but couldn't be loaded.") }
+        if loginView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'loginView' could not be loaded from storyboard 'Login' as 'LoginController'.") }
+        if registroView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'registroView' could not be loaded from storyboard 'Login' as 'RegistroController'.") }
       }
-
-      func registroView(_: Void = ()) -> RegistroController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: registroView)
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "launch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launch' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "login", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "xoalogo.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'xoalogo.png' is used in storyboard 'Login', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-        if _R.storyboard.login().loginView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginView' could not be loaded from storyboard 'Login' as 'LoginController'.") }
-        if _R.storyboard.login().registroView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'registroView' could not be loaded from storyboard 'Login' as 'RegistroController'.") }
-      }
-
-      fileprivate init() {}
     }
-    #endif
 
-    #if os(iOS) || os(tvOS)
-    struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
-      let addressView = StoryboardViewControllerResource<AddressController>(identifier: "AddressView")
-      let bundle = R.hostingBundle
-      let callCenter = StoryboardViewControllerResource<CallCenterController>(identifier: "callCenter")
-      let completadaView = StoryboardViewControllerResource<CompletadaController>(identifier: "completadaView")
-      let esperaChildView = StoryboardViewControllerResource<EsperaChildVC>(identifier: "esperaChildView")
-      let historyDetailView = StoryboardViewControllerResource<HistorialDetailsController>(identifier: "historyDetailView")
-      let historyView = StoryboardViewControllerResource<HistorialController>(identifier: "historyView")
-      let inicioNavController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "InicioNavController")
-      let inicioView = StoryboardViewControllerResource<InicioController>(identifier: "InicioView")
-      let listaSolPdtes = StoryboardViewControllerResource<SolicitudesTableController>(identifier: "ListaSolPdtes")
-      let menuView = StoryboardViewControllerResource<SideMenuController>(identifier: "MenuView")
+    /// Storyboard `Main`.
+    struct main: RswiftResources.StoryboardReference {
+      let bundle: Foundation.Bundle
+
       let name = "Main"
-      let ofertasView = StoryboardViewControllerResource<OfertasController>(identifier: "ofertasView")
-      let pagoViewVC = StoryboardViewControllerResource<PagoController>(identifier: "PagoViewVC")
-      let panicoChildVC = StoryboardViewControllerResource<PanicoController>(identifier: "panicoChildVC")
-      let password = StoryboardViewControllerResource<PassController>(identifier: "Password")
-      let perfil = StoryboardViewControllerResource<PerfilController>(identifier: "Perfil")
-      let solDetalles = StoryboardViewControllerResource<SolPendController>(identifier: "SolDetalles")
-      let solicitudPanel = StoryboardViewControllerResource<SolicitudPanel>(identifier: "SolicitudPanel")
-      let terminosView = StoryboardViewControllerResource<TerminosController>(identifier: "terminosView")
-      let yapaPanel = StoryboardViewControllerResource<YapaPanel>(identifier: "YapaPanel")
-      let yapaView = StoryboardViewControllerResource<YapaController>(identifier: "YapaView")
 
-      func addressView(_: Void = ()) -> AddressController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: addressView)
+      var addressView: RswiftResources.StoryboardViewControllerIdentifier<AddressController> { .init(identifier: "AddressView", storyboard: name, bundle: bundle) }
+      var callCenter: RswiftResources.StoryboardViewControllerIdentifier<CallCenterController> { .init(identifier: "callCenter", storyboard: name, bundle: bundle) }
+      var completadaView: RswiftResources.StoryboardViewControllerIdentifier<CompletadaController> { .init(identifier: "completadaView", storyboard: name, bundle: bundle) }
+      var esperaChildView: RswiftResources.StoryboardViewControllerIdentifier<EsperaChildVC> { .init(identifier: "esperaChildView", storyboard: name, bundle: bundle) }
+      var historyDetailView: RswiftResources.StoryboardViewControllerIdentifier<HistorialDetailsController> { .init(identifier: "historyDetailView", storyboard: name, bundle: bundle) }
+      var historyView: RswiftResources.StoryboardViewControllerIdentifier<HistorialController> { .init(identifier: "historyView", storyboard: name, bundle: bundle) }
+      var inicioNavController: RswiftResources.StoryboardViewControllerIdentifier<UIKit.UINavigationController> { .init(identifier: "InicioNavController", storyboard: name, bundle: bundle) }
+      var inicioView: RswiftResources.StoryboardViewControllerIdentifier<InicioController> { .init(identifier: "InicioView", storyboard: name, bundle: bundle) }
+      var listaSolPdtes: RswiftResources.StoryboardViewControllerIdentifier<SolicitudesTableController> { .init(identifier: "ListaSolPdtes", storyboard: name, bundle: bundle) }
+      var menuView: RswiftResources.StoryboardViewControllerIdentifier<SideMenuController> { .init(identifier: "MenuView", storyboard: name, bundle: bundle) }
+      var ofertasView: RswiftResources.StoryboardViewControllerIdentifier<OfertasController> { .init(identifier: "ofertasView", storyboard: name, bundle: bundle) }
+      var pagoViewVC: RswiftResources.StoryboardViewControllerIdentifier<PagoController> { .init(identifier: "PagoViewVC", storyboard: name, bundle: bundle) }
+      var panicoChildVC: RswiftResources.StoryboardViewControllerIdentifier<PanicoController> { .init(identifier: "panicoChildVC", storyboard: name, bundle: bundle) }
+      var password: RswiftResources.StoryboardViewControllerIdentifier<PassController> { .init(identifier: "Password", storyboard: name, bundle: bundle) }
+      var perfil: RswiftResources.StoryboardViewControllerIdentifier<PerfilController> { .init(identifier: "Perfil", storyboard: name, bundle: bundle) }
+      var solDetalles: RswiftResources.StoryboardViewControllerIdentifier<SolPendController> { .init(identifier: "SolDetalles", storyboard: name, bundle: bundle) }
+      var solicitudPanel: RswiftResources.StoryboardViewControllerIdentifier<SolicitudPanel> { .init(identifier: "SolicitudPanel", storyboard: name, bundle: bundle) }
+      var terminosView: RswiftResources.StoryboardViewControllerIdentifier<TerminosController> { .init(identifier: "terminosView", storyboard: name, bundle: bundle) }
+      var yapaPanel: RswiftResources.StoryboardViewControllerIdentifier<YapaPanel> { .init(identifier: "YapaPanel", storyboard: name, bundle: bundle) }
+      var yapaView: RswiftResources.StoryboardViewControllerIdentifier<YapaController> { .init(identifier: "YapaView", storyboard: name, bundle: bundle) }
+
+      func validate() throws {
+        if UIKit.UIImage(named: "agendaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'agendaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "calendar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'calendar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "camera", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "cancelar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "chofer", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'chofer' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "compartir", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'compartir' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "destinoIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'destinoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "distancia", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'distancia' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "down", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'down' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "llamar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'llamar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "locationBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'locationBtn' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "logo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'logo' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "mensajes", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'mensajes' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ofertaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ofertaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "origen", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'origen' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "origenIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'origenIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "panicoIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'panicoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "referenciaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'referenciaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "showClave", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "smsvoz", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "sosLogo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'sosLogo' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "stardorada", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "stargris", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'stargris' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "tarjetaMenu", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'tarjetaMenu' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "up", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'up' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "whatsapp", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'whatsapp' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "yapaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'yapaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "yapaImg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'yapaImg' is used in storyboard 'Main', but couldn't be loaded.") }
+        if addressView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'addressView' could not be loaded from storyboard 'Main' as 'AddressController'.") }
+        if inicioNavController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'inicioNavController' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
+        if inicioView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'inicioView' could not be loaded from storyboard 'Main' as 'InicioController'.") }
+        if listaSolPdtes() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'listaSolPdtes' could not be loaded from storyboard 'Main' as 'SolicitudesTableController'.") }
+        if menuView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'menuView' could not be loaded from storyboard 'Main' as 'SideMenuController'.") }
+        if pagoViewVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'pagoViewVC' could not be loaded from storyboard 'Main' as 'PagoController'.") }
+        if password() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'password' could not be loaded from storyboard 'Main' as 'PassController'.") }
+        if perfil() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'perfil' could not be loaded from storyboard 'Main' as 'PerfilController'.") }
+        if solDetalles() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'solDetalles' could not be loaded from storyboard 'Main' as 'SolPendController'.") }
+        if solicitudPanel() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'solicitudPanel' could not be loaded from storyboard 'Main' as 'SolicitudPanel'.") }
+        if yapaPanel() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'yapaPanel' could not be loaded from storyboard 'Main' as 'YapaPanel'.") }
+        if yapaView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'yapaView' could not be loaded from storyboard 'Main' as 'YapaController'.") }
+        if callCenter() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'callCenter' could not be loaded from storyboard 'Main' as 'CallCenterController'.") }
+        if completadaView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'completadaView' could not be loaded from storyboard 'Main' as 'CompletadaController'.") }
+        if esperaChildView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'esperaChildView' could not be loaded from storyboard 'Main' as 'EsperaChildVC'.") }
+        if historyDetailView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'historyDetailView' could not be loaded from storyboard 'Main' as 'HistorialDetailsController'.") }
+        if historyView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'historyView' could not be loaded from storyboard 'Main' as 'HistorialController'.") }
+        if ofertasView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'ofertasView' could not be loaded from storyboard 'Main' as 'OfertasController'.") }
+        if panicoChildVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'panicoChildVC' could not be loaded from storyboard 'Main' as 'PanicoController'.") }
+        if terminosView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'terminosView' could not be loaded from storyboard 'Main' as 'TerminosController'.") }
       }
-
-      func callCenter(_: Void = ()) -> CallCenterController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: callCenter)
-      }
-
-      func completadaView(_: Void = ()) -> CompletadaController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: completadaView)
-      }
-
-      func esperaChildView(_: Void = ()) -> EsperaChildVC? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: esperaChildView)
-      }
-
-      func historyDetailView(_: Void = ()) -> HistorialDetailsController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: historyDetailView)
-      }
-
-      func historyView(_: Void = ()) -> HistorialController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: historyView)
-      }
-
-      func inicioNavController(_: Void = ()) -> UIKit.UINavigationController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: inicioNavController)
-      }
-
-      func inicioView(_: Void = ()) -> InicioController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: inicioView)
-      }
-
-      func listaSolPdtes(_: Void = ()) -> SolicitudesTableController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: listaSolPdtes)
-      }
-
-      func menuView(_: Void = ()) -> SideMenuController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: menuView)
-      }
-
-      func ofertasView(_: Void = ()) -> OfertasController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: ofertasView)
-      }
-
-      func pagoViewVC(_: Void = ()) -> PagoController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: pagoViewVC)
-      }
-
-      func panicoChildVC(_: Void = ()) -> PanicoController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: panicoChildVC)
-      }
-
-      func password(_: Void = ()) -> PassController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: password)
-      }
-
-      func perfil(_: Void = ()) -> PerfilController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: perfil)
-      }
-
-      func solDetalles(_: Void = ()) -> SolPendController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: solDetalles)
-      }
-
-      func solicitudPanel(_: Void = ()) -> SolicitudPanel? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: solicitudPanel)
-      }
-
-      func terminosView(_: Void = ()) -> TerminosController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: terminosView)
-      }
-
-      func yapaPanel(_: Void = ()) -> YapaPanel? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: yapaPanel)
-      }
-
-      func yapaView(_: Void = ()) -> YapaController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: yapaView)
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "agendaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'agendaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "calendar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'calendar' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "cancelar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "chofer", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'chofer' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "close", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "compartir", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'compartir' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "destinoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'destinoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "distancia", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'distancia' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "down", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'down' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "llamar", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'llamar' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "locationBtn", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'locationBtn' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "logo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "mensajes", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'mensajes' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ofertaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ofertaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "origen", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origen' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "origenIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'origenIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "panicoIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'panicoIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "referenciaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'referenciaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "showClave", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'showClave' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "smsvoz", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'smsvoz' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "sosLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sosLogo' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "stardorada", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stardorada' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "stargris", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'stargris' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "tarjetaMenu", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tarjetaMenu' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "up", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'up' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "whatsapp", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'whatsapp' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "yapaIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "yapaImg", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'yapaImg' is used in storyboard 'Main', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-        if _R.storyboard.main().addressView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'addressView' could not be loaded from storyboard 'Main' as 'AddressController'.") }
-        if _R.storyboard.main().inicioNavController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'inicioNavController' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
-        if _R.storyboard.main().inicioView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'inicioView' could not be loaded from storyboard 'Main' as 'InicioController'.") }
-        if _R.storyboard.main().listaSolPdtes() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'listaSolPdtes' could not be loaded from storyboard 'Main' as 'SolicitudesTableController'.") }
-        if _R.storyboard.main().menuView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'menuView' could not be loaded from storyboard 'Main' as 'SideMenuController'.") }
-        if _R.storyboard.main().pagoViewVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pagoViewVC' could not be loaded from storyboard 'Main' as 'PagoController'.") }
-        if _R.storyboard.main().password() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'password' could not be loaded from storyboard 'Main' as 'PassController'.") }
-        if _R.storyboard.main().perfil() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'perfil' could not be loaded from storyboard 'Main' as 'PerfilController'.") }
-        if _R.storyboard.main().solDetalles() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'solDetalles' could not be loaded from storyboard 'Main' as 'SolPendController'.") }
-        if _R.storyboard.main().solicitudPanel() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'solicitudPanel' could not be loaded from storyboard 'Main' as 'SolicitudPanel'.") }
-        if _R.storyboard.main().yapaPanel() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'yapaPanel' could not be loaded from storyboard 'Main' as 'YapaPanel'.") }
-        if _R.storyboard.main().yapaView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'yapaView' could not be loaded from storyboard 'Main' as 'YapaController'.") }
-        if _R.storyboard.main().callCenter() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'callCenter' could not be loaded from storyboard 'Main' as 'CallCenterController'.") }
-        if _R.storyboard.main().completadaView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'completadaView' could not be loaded from storyboard 'Main' as 'CompletadaController'.") }
-        if _R.storyboard.main().esperaChildView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'esperaChildView' could not be loaded from storyboard 'Main' as 'EsperaChildVC'.") }
-        if _R.storyboard.main().historyDetailView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'historyDetailView' could not be loaded from storyboard 'Main' as 'HistorialDetailsController'.") }
-        if _R.storyboard.main().historyView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'historyView' could not be loaded from storyboard 'Main' as 'HistorialController'.") }
-        if _R.storyboard.main().ofertasView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'ofertasView' could not be loaded from storyboard 'Main' as 'OfertasController'.") }
-        if _R.storyboard.main().panicoChildVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'panicoChildVC' could not be loaded from storyboard 'Main' as 'PanicoController'.") }
-        if _R.storyboard.main().terminosView() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'terminosView' could not be loaded from storyboard 'Main' as 'TerminosController'.") }
-      }
-
-      fileprivate init() {}
     }
-    #endif
-
-    fileprivate init() {}
   }
-  #endif
-
-  fileprivate init() {}
 }
