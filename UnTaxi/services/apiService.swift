@@ -112,13 +112,14 @@ final class ApiService {
 			}
 		
 			do {
-				let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-				
 				guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-					self.delegate?.apiRequest(self, removeClientAPI: false, msg: json["msg"] as? String ?? "El usuario no pudo ser eliminado. Por favor intente otra vez.")
+                    self.delegate?.apiRequest(self, removeClientAPI: false, msg: GlobalStrings.usuarioEliminadoError)
 					return
 				}
-				self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? "Usuario eliminado con éxito.")
+                
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                
+                self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? GlobalStrings.usuarioEliminadoExito)
 			} catch {
 				self.handlerError(error: GlobalStrings.errorGenericoMessage)
 			}
@@ -263,7 +264,7 @@ final class ApiService {
     }
     
     var fileData: Data = UIImage(named: "chofer")!.jpegData(compressionQuality: 1.0)!
-    if globalVariables.cliente.fotoImage != nil{
+    if globalVariables.cliente.fotoImage != nil {
       fileData = globalVariables.cliente.fotoImage.jpegData(compressionQuality: 1.0)!
     }
     
@@ -335,9 +336,17 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      let response = response as! HTTPURLResponse
+        
+        if let error = error {
+            self.delegate?.apiRequest(self, getLoginError: error.localizedDescription)
+            return
+        }
+        guard let response = response as? HTTPURLResponse else {
+            self.delegate?.apiRequest(self, getLoginError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+            return
+        }
       print("login error \(response.statusCode)")
-      if error == nil && response.statusCode == 200{
+      if error == nil && response.statusCode == 200 {
         print(response)
         do {
           let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>

@@ -38,7 +38,7 @@ extension PagoController: SocketServiceDelegate {
 		let message = result["msg"] as? String
 		
 		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alerAction in
-			self.delegate?.pagoConTarjeta(self, pagoSuccess: code == 1)
+			self.delegate?.pagoConTarjeta(self, pagoSuccess: code == 1 || code == 3)
 			self.removeContainer()
 		})
 		Alert.showBasic(title: code == 1 ? "" : GlobalStrings.errorGenericoTitle, message: message ?? GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])

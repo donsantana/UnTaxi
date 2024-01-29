@@ -9,7 +9,7 @@
 import Foundation
 import SocketIO
 import CoreLocation
-import Rswift
+import RswiftResources
 import LocalAuthentication
 
 
@@ -18,26 +18,37 @@ extension LoginController{
   func startSocketConnection(){
     //print(Customization.serverData!)
     let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
-    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])]) //Customization.serverData
+    self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])])
     
     print("token para socket \(accessToken)")
-//    self.socketIOManager.config = SocketIOClientConfiguration(
-//      arrayLiteral: .compress, .connectParams(["Authorization": "Bearer token", "token": accessToken])
-//    )
+    print("Socket URL: \(GlobalConstants.socketurlHost)")
     
     globalVariables.socket = self.socketIOManager.socket(forNamespace: "/")
+      
+      globalVariables.socket.on(clientEvent: .connect) {data, ack in
+          print("Connected")
+      }
+      
+      globalVariables.socket.on(clientEvent: .error) {data, ack in
+          if let error = data.first as? SocketIOStatus {
+              print("Socket error: \(error)")
+          }
+      }
+      
     self.socketService.initLoginEventos()
     globalVariables.socket.connect()
-
   }
   
   func initClientData(datos: [String: Any]) {
     
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
+      if let alertauso = datos["alertauso"], (alertauso as! String) == "true" {
+          globalVariables.llamadaFacilAlert = ConfigMessage(key: "alertauso", value: ((datos["mensaje"] as? NSString) ?? "") as String)
+      }
     print("appConfig \(appConfig)")
     
-    if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil{
+    if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil {
       let publicidad = !(appConfig["publicidad"] is NSNull) ? appConfig["publicidad"] as! [String: Any] : nil
       print("publicidades \(publicidad!["images"] as! [[String: Any]])")
       globalVariables.publicidadService = PublicidadService(publicidades: publicidad!["images"] as! [[String: Any]])
@@ -50,13 +61,12 @@ extension LoginController{
     
     print("appConfig \(globalVariables.appConfig)")
     
-    if solicitudesEnProceso.count > 0{
-      self.ListSolicitudPendiente(solicitudesEnProceso)
-    }
-		
-		AppStoreService.shared.checkNewVersionAvailable()
-		//self.checkSolPendientes()
-		self.checkLocationStatus()
+      if solicitudesEnProceso.count > 0 {
+          self.ListSolicitudPendiente(solicitudesEnProceso)
+      }
+      
+      AppStoreService.shared.checkNewVersionAvailable()
+      self.checkLocationStatus()
   }
   
   func initConnectionError(message: String){
@@ -78,7 +88,9 @@ extension LoginController{
 			authorizationStatus = CLLocationManager.authorizationStatus()
 		}
 		switch authorizationStatus {
-		case .notDetermined, .restricted, .denied:
+        case .notDetermined:
+            coreLocationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
 			let locationAlert = UIAlertController (title: GlobalStrings.locationErrorTitle, message: GlobalStrings.locationErrorMessage, preferredStyle: .alert)
 			locationAlert.addAction(UIAlertAction(title: GlobalStrings.settingsBtnTitle, style: .default, handler: {alerAction in
 					let settingsURL = URL(string: UIApplication.openSettingsURLString)!

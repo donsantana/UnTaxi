@@ -247,35 +247,35 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
 		
   }
   
-  override func viewDidAppear(_ animated: Bool){
-		self.apiService.delegate = self
-		self.pagoApiService.delegate = self
-    self.socketService.delegate = self
-		tipoServicio = 2
-    if let tempLocation = self.coreLocationManager.location?.coordinate {
-      globalVariables.cliente.annotation.coordinates = tempLocation
-			self.origenAnnotation.coordinates = tempLocation
-      coreLocationManager.stopUpdatingLocation()
-      initMapView()
-    } else {
-      globalVariables.cliente.annotation.coordinates = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
-      coreLocationManager.requestWhenInUseAuthorization()
+    override func viewDidAppear(_ animated: Bool){
+        self.apiService.delegate = self
+        self.pagoApiService.delegate = self
+        self.socketService.delegate = self
+        tipoServicio = 2
+        if let tempLocation = self.coreLocationManager.location?.coordinate {
+            globalVariables.cliente.annotation.coordinates = tempLocation
+            self.origenAnnotation.coordinates = tempLocation
+            coreLocationManager.stopUpdatingLocation()
+            initMapView()
+        } else {
+            globalVariables.cliente.annotation.coordinates = (CLLocationCoordinate2D(latitude: -2.173714, longitude: -79.921601))
+            coreLocationManager.requestWhenInUseAuthorization()
+        }
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.socketService.initListenEventos()
+        self.socketService.initPagoEvents()
+        self.initTipoSolicitudBar()
+        
+        pagoYapaCell.initContent()
+        
+        self.origenCell.initContent()
+        self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
+        
+        self.searchText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        waitingView.isHidden = true
     }
     
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
-    self.socketService.initListenEventos()
-		self.socketService.initPagoEvents()
-    self.initTipoSolicitudBar()
-
-		pagoYapaCell.initContent()
-    
-    self.origenCell.initContent()
-    self.origenCell.origenText.addTarget(self, action: #selector(textViewDidChange(_:)), for: .editingChanged)
-    
-    self.searchText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-		waitingView.isHidden = true
-  }
-  
   override func viewDidDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(true, animated: false)
   }

@@ -139,14 +139,33 @@ extension InicioController: UITextFieldDelegate{
 }
 
 extension InicioController: PagoCellDelegate {
-  func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool) {
-    self.isVoucherSelected = isSelected
+    
+    func formaPagoSwitched(_ controller: PagoViewCell, pagoSelected selected: String) {
+//        if selected == "Voucher" && globalVariables.llamadaFacilAlert != nil {
+//            let alertaDos = UIAlertController (title: "Aviso Importante", message: globalVariables.llamadaFacilAlert?.value, preferredStyle: UIAlertController.Style.actionSheet)
+//            alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//
+//            }))
+//            alertaDos.addAction(UIAlertAction(title: GlobalStrings.cancelarButtonTitle, style: .cancel, handler: {alerAction in
+//
+//            }))
+//            self.present(alertaDos, animated: true, completion: nil)
+//        }
+//        self.isVoucherSelected = selected == "Voucher"
+//        if selected == "Tarjeta" {
+//            pagoApiService.listCardsAPIService()
+//            self.isVoucherSelected = false
+//        }
+//        loadFormularioData()
+    }
+    func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool) {
+        self.isVoucherSelected = isSelected
         if pagoCell.formaPagoSelected == "Tarjeta" {
             pagoApiService.listCardsAPIService()
             self.isVoucherSelected = false
         }
-    loadFormularioData()
-  }
+        loadFormularioData()
+    }
 }
 
 extension InicioController: ContactoCellDelegate {

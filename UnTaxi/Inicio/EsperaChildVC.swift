@@ -137,7 +137,7 @@ extension EsperaChildVC: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, solicitudaceptada result: [String : Any]) {
-    let newTaxi = Taxi(id: result["idtaxi"] as! Int, matricula: result["matriculataxi"] as! String, codigo: result["codigotaxi"] as! String, marca: result["marcataxi"] as! String,color: result["colortaxi"] as! String, lat: result["lattaxi"] as! Double, long: result["lngtaxi"] as! Double, conductor: Conductor(idConductor: result["idconductor"] as! Int, nombre: result["nombreapellidosconductor"] as! String, telefono:  result["telefonoconductor"] as! String, urlFoto: result["foto"] as! String, calificacion: result["calificacion"] as! Double, cantidadcalificaciones: result["cantidadcalificacion"] as! Int))
+    let newTaxi = Taxi(id: result["idtaxi"] as! Int, matricula: result["matriculataxi"] as! String, codigo: result["codigotaxi"] as! String, marca: result["marcataxi"] as! String,color: result["colortaxi"] as! String, lat: result["lattaxi"] as! Double, long: result["lngtaxi"] as! Double, conductor: Conductor(idConductor: result["idconductor"] as! Int, nombre: result["nombreapellidosconductor"] as! String, telefono:  result["telefonoconductor"] as! String, urlFoto: result["foto"] as? String ?? "", calificacion: result["calificacion"] as! Double, cantidadcalificaciones: result["cantidadcalificacion"] as! Int))
     print("solicitud \(globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!.useVoucher)")
     globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!.DatosTaxiConductor(taxi: newTaxi)
     

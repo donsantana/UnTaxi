@@ -7,8 +7,6 @@
 //
 
 import MapboxMaps
-import MapboxSearch
-import MapboxSearchUI
 
 //Mapbox
 extension SolPendController{

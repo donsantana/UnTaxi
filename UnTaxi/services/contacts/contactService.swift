@@ -30,7 +30,7 @@ class ContactService {
   var contacts: [FetchedContact] = []
   
   init() {
-    self.fetchContacts()
+    //self.fetchContacts()
   }
   
   private func fetchContacts() {

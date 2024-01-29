@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--Call Center-->
         <scene sceneID="1Mg-7S-fyN">
             <objects>
-                <viewController storyboardIdentifier="callCenter" title="Call Center" modalPresentationStyle="fullScreen" id="84K-jP-cec" customClass="CallCenterController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="callCenter" title="Call Center" modalPresentationStyle="fullScreen" id="84K-jP-cec" customClass="CallCenterController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HLz-PF-rf0"/>
                         <viewControllerLayoutGuide type="bottom" id="nvh-uE-JTR"/>
@@ -51,7 +51,7 @@
         <!--UnTaxi-->
         <scene sceneID="eK2-LQ-1YZ">
             <objects>
-                <viewController storyboardIdentifier="InicioView" title="UnTaxi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InicioView" title="UnTaxi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xio-Bf-vlx"/>
                         <viewControllerLayoutGuide type="bottom" id="i7Z-Gw-hgU"/>
@@ -603,7 +603,7 @@
         <!--Side Menu Controller-->
         <scene sceneID="rZj-oT-F3D">
             <objects>
-                <viewController storyboardIdentifier="MenuView" id="oNS-8E-orQ" customClass="SideMenuController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuView" id="oNS-8E-orQ" customClass="SideMenuController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yI7-Tg-T2U"/>
                         <viewControllerLayoutGuide type="bottom" id="6tX-FD-b2V"/>
@@ -619,13 +619,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOMBRE DE USUARIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-MH-cYh">
-                                                <rect key="frame" x="90" y="50.5" width="324" height="19.5"/>
+                                                <rect key="frame" x="90" y="48.5" width="324" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.17874377969999999" blue="0.50948923830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="5qT-PF-PDT">
-                                                <rect key="frame" x="20" y="40" width="60" height="60"/>
+                                                <rect key="frame" x="20" y="38" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="0Nl-we-Nsb"/>
                                                     <constraint firstAttribute="width" constant="60" id="ZXc-Cb-pU7"/>
@@ -637,7 +637,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-tr-eEd">
-                                                <rect key="frame" x="90" y="71" width="162" height="31"/>
+                                                <rect key="frame" x="90" y="69" width="162" height="31"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Ver perfil">
                                                     <color key="titleColor" systemColor="systemBlueColor"/>
@@ -667,7 +667,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvC-eh-juT">
-                                                <rect key="frame" x="0.0" y="104.5" width="414" height="1"/>
+                                                <rect key="frame" x="0.0" y="99.5" width="414" height="1"/>
                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="6sn-sG-lxD"/>
@@ -692,7 +692,7 @@
                                             <constraint firstItem="USQ-tr-eEd" firstAttribute="trailing" secondItem="4OJ-MH-cYh" secondAttribute="centerX" id="Yuz-64-TSn"/>
                                             <constraint firstItem="5qT-PF-PDT" firstAttribute="leading" secondItem="qwa-pA-cy1" secondAttribute="leading" constant="20" id="bVO-vZ-Gu7"/>
                                             <constraint firstItem="QP6-xJ-3c5" firstAttribute="top" secondItem="jAr-MZ-VAg" secondAttribute="bottom" constant="10" id="cWK-kw-FQZ"/>
-                                            <constraint firstItem="SvC-eh-juT" firstAttribute="centerY" secondItem="qwa-pA-cy1" secondAttribute="centerY" constant="5" id="ffj-KM-9Bo"/>
+                                            <constraint firstItem="SvC-eh-juT" firstAttribute="centerY" secondItem="qwa-pA-cy1" secondAttribute="centerY" id="ffj-KM-9Bo"/>
                                             <constraint firstItem="USQ-tr-eEd" firstAttribute="leading" secondItem="4OJ-MH-cYh" secondAttribute="leading" id="jrm-Ma-rpg"/>
                                             <constraint firstAttribute="height" constant="200" id="lX2-h1-RwP"/>
                                             <constraint firstItem="GhR-dO-9B4" firstAttribute="leading" secondItem="5qT-PF-PDT" secondAttribute="leading" id="mo2-7G-JWV"/>
@@ -700,7 +700,7 @@
                                             <constraint firstAttribute="trailing" secondItem="SvC-eh-juT" secondAttribute="trailing" id="spr-w9-ox7"/>
                                             <constraint firstItem="4OJ-MH-cYh" firstAttribute="leading" secondItem="5qT-PF-PDT" secondAttribute="trailing" constant="10" id="u1r-Aw-eaG"/>
                                             <constraint firstItem="4OJ-MH-cYh" firstAttribute="bottom" secondItem="5qT-PF-PDT" secondAttribute="centerY" id="v9Q-O9-EpZ"/>
-                                            <constraint firstItem="5qT-PF-PDT" firstAttribute="bottom" secondItem="qwa-pA-cy1" secondAttribute="centerY" id="vUg-Ap-Hnv"/>
+                                            <constraint firstItem="5qT-PF-PDT" firstAttribute="bottom" secondItem="qwa-pA-cy1" secondAttribute="centerY" constant="-2" id="vUg-Ap-Hnv"/>
                                             <constraint firstAttribute="trailing" secondItem="4OJ-MH-cYh" secondAttribute="trailing" id="zTB-fw-Ihz"/>
                                         </constraints>
                                     </view>
@@ -712,7 +712,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eiP-4w-XI9">
-                                        <rect key="frame" x="0.0" y="197.5" width="414" height="656.5"/>
+                                        <rect key="frame" x="0.0" y="199" width="414" height="655"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MENUCELL" id="vEb-6f-qtB">
@@ -744,7 +744,7 @@
                                     <constraint firstItem="8Bu-t9-Yi0" firstAttribute="top" secondItem="eiP-4w-XI9" secondAttribute="bottom" constant="2" id="APN-5x-yjS"/>
                                     <constraint firstItem="3ew-ZA-I9T" firstAttribute="top" secondItem="qwa-pA-cy1" secondAttribute="bottom" constant="-3.6666666666666572" id="Cfl-bh-ffT"/>
                                     <constraint firstAttribute="trailing" secondItem="8Bu-t9-Yi0" secondAttribute="trailing" id="MIV-cm-HSB"/>
-                                    <constraint firstItem="eiP-4w-XI9" firstAttribute="top" secondItem="3ew-ZA-I9T" secondAttribute="bottom" constant="-2.8421709430404007e-14" id="QfZ-to-KS2"/>
+                                    <constraint firstItem="eiP-4w-XI9" firstAttribute="top" secondItem="qwa-pA-cy1" secondAttribute="bottom" constant="-1" id="QfZ-to-KS2"/>
                                     <constraint firstItem="qwa-pA-cy1" firstAttribute="leading" secondItem="krr-eZ-Idf" secondAttribute="leading" id="Z1l-fU-fdL"/>
                                     <constraint firstItem="3ew-ZA-I9T" firstAttribute="leading" secondItem="krr-eZ-Idf" secondAttribute="leading" id="ce6-nc-KTM"/>
                                     <constraint firstItem="eiP-4w-XI9" firstAttribute="bottom" secondItem="krr-eZ-Idf" secondAttribute="bottomMargin" id="dHp-6B-1uh"/>
@@ -776,7 +776,10 @@
                         <outlet property="MenuView1" destination="krr-eZ-Idf" id="xGp-tG-qF8"/>
                         <outlet property="NombreUsuario" destination="4OJ-MH-cYh" id="Yab-Ps-tOI"/>
                         <outlet property="menuHeaderHeightConstraint" destination="lX2-h1-RwP" id="8pI-Z6-zGf"/>
+                        <outlet property="separatorView" destination="SvC-eh-juT" id="vnb-mR-y0g"/>
+                        <outlet property="userDataView" destination="qwa-pA-cy1" id="eVc-Sr-7SU"/>
                         <outlet property="userProfilePhoto" destination="5qT-PF-PDT" id="p7g-J4-yDb"/>
+                        <outlet property="yapaIcon" destination="GhR-dO-9B4" id="5rM-b0-noC"/>
                         <outlet property="yapaText" destination="QP6-xJ-3c5" id="05u-nc-iGS"/>
                         <outlet property="yapaTextHeightConstraint" destination="jNu-sh-7su" id="iRt-iY-itr"/>
                     </connections>
@@ -788,7 +791,7 @@
         <!--Completada-->
         <scene sceneID="GvM-Fs-l7d">
             <objects>
-                <viewController storyboardIdentifier="completadaView" title="Completada" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="completadaView" title="Completada" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cTP-Qi-FaG" customClass="CompletadaController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mkJ-2Z-gUd"/>
                         <viewControllerLayoutGuide type="bottom" id="aab-4H-Xyj"/>
@@ -1171,7 +1174,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComentarioCell" id="TLm-WQ-htI" customClass="ComentarioCollectionCell" customModule="UnTaxi" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComentarioCell" id="TLm-WQ-htI" customClass="ComentarioCollectionCell" customModule="AndyTaxi" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="443-DK-IfO">
@@ -1340,7 +1343,7 @@
         <!--Solicitudes-->
         <scene sceneID="vqW-lI-YGK">
             <objects>
-                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="jR4-hK-gSX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1370,7 +1373,7 @@
         <!--Detalles-->
         <scene sceneID="vzc-Mc-GKZ">
             <objects>
-                <viewController storyboardIdentifier="SolDetalles" title="Detalles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SolDetalles" title="Detalles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rtu-Vq-wBb"/>
                         <viewControllerLayoutGuide type="bottom" id="7mI-ae-D9U"/>
@@ -1771,7 +1774,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sosBtn" id="h16-Wq-DhF" customClass="SOSCollectionCell" customModule="UnTaxi" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sosBtn" id="h16-Wq-DhF" customClass="SOSCollectionCell" customModule="AndyTaxi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tZa-lP-vBI">
@@ -1915,7 +1918,7 @@
         <!--Ofertas-->
         <scene sceneID="b4G-EY-rYK">
             <objects>
-                <viewController storyboardIdentifier="ofertasView" title="Ofertas" id="0qK-Oa-JO0" customClass="OfertasController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ofertasView" title="Ofertas" id="0qK-Oa-JO0" customClass="OfertasController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zrk-7x-x5G"/>
                         <viewControllerLayoutGuide type="bottom" id="hYC-eA-gxN"/>
@@ -2042,7 +2045,7 @@
         <!--Mis Viajes-->
         <scene sceneID="eNe-fX-M4D">
             <objects>
-                <viewController storyboardIdentifier="historyView" title="Mis Viajes" id="Mpf-vo-CXZ" customClass="HistorialController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyView" title="Mis Viajes" id="Mpf-vo-CXZ" customClass="HistorialController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i2p-rl-sn1"/>
                         <viewControllerLayoutGuide type="bottom" id="hwx-uy-Icg"/>
@@ -2131,7 +2134,7 @@
         <!--Mis viajes Detalles-->
         <scene sceneID="68p-Q8-4cY">
             <objects>
-                <viewController storyboardIdentifier="historyDetailView" title="Mis viajes Detalles" id="fJ6-Ol-S8a" customClass="HistorialDetailsController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyDetailView" title="Mis viajes Detalles" id="fJ6-Ol-S8a" customClass="HistorialDetailsController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aFD-Qs-Nxu"/>
                         <viewControllerLayoutGuide type="bottom" id="xA7-Wl-K55"/>
@@ -2327,7 +2330,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Status">
                                         <attributes>
-                                            <font key="NSFont" size="19" name="Muli"/>
+                                            <font key="NSFont" metaFont="system" size="19"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -2407,7 +2410,7 @@
         <!--Terminos Controller-->
         <scene sceneID="3En-p4-j1s">
             <objects>
-                <viewController storyboardIdentifier="terminosView" modalPresentationStyle="fullScreen" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="terminosView" modalPresentationStyle="fullScreen" id="8Aa-rQ-g5a" customClass="TerminosController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PnT-1D-0YJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEh-Pj-KXD"/>
@@ -2483,7 +2486,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Editar Perfil-->
         <scene sceneID="PrY-4k-9Ed">
             <objects>
-                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vW0-S4-VAm"/>
                         <viewControllerLayoutGuide type="bottom" id="oyM-Ta-wA2"/>
@@ -2808,7 +2811,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Change Password-->
         <scene sceneID="Vtx-r8-1Nj">
             <objects>
-                <viewController storyboardIdentifier="Password" title="Change Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Password" title="Change Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bOF-Hu-GE2" customClass="PassController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aXD-Us-GmI"/>
                         <viewControllerLayoutGuide type="bottom" id="wHw-4h-8wR"/>
@@ -3039,7 +3042,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--SolicitudPanel-->
         <scene sceneID="OGR-ck-Z1O">
             <objects>
-                <viewController storyboardIdentifier="SolicitudPanel" title="SolicitudPanel" id="K5K-P8-rMH" customClass="SolicitudPanel" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SolicitudPanel" title="SolicitudPanel" id="K5K-P8-rMH" customClass="SolicitudPanel" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Zo-Ia-3de"/>
                         <viewControllerLayoutGuide type="bottom" id="wDk-DS-eAv"/>
@@ -3332,7 +3335,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Side Menu Navigation Controller-->
         <scene sceneID="zkP-Ud-Fl4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fQs-BN-veV" customClass="SideMenuNavigationController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fQs-BN-veV" customClass="SideMenuNavigationController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9aa-i0-COU">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3349,7 +3352,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Yapa-->
         <scene sceneID="Z79-D4-FSq">
             <objects>
-                <viewController storyboardIdentifier="YapaView" title="Yapa" id="oRF-q5-nBb" customClass="YapaController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YapaView" title="Yapa" id="oRF-q5-nBb" customClass="YapaController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rmh-8c-04e"/>
                         <viewControllerLayoutGuide type="bottom" id="kNv-7F-BbW"/>
@@ -3471,7 +3474,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--YapaPanel-->
         <scene sceneID="SIh-Zc-X5r">
             <objects>
-                <viewController storyboardIdentifier="YapaPanel" title="YapaPanel" id="99u-SE-V3N" customClass="YapaPanel" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YapaPanel" title="YapaPanel" id="99u-SE-V3N" customClass="YapaPanel" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="49i-6E-PVJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Bxh-AG-zK8"/>
@@ -3739,7 +3742,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Espera ChildVC-->
         <scene sceneID="o0B-S1-gsB">
             <objects>
-                <viewController storyboardIdentifier="esperaChildView" id="zKc-K7-fj2" customClass="EsperaChildVC" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="esperaChildView" id="zKc-K7-fj2" customClass="EsperaChildVC" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IWI-RD-5KR"/>
                         <viewControllerLayoutGuide type="bottom" id="B6e-vU-w83"/>
@@ -3768,7 +3771,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         </constraints>
                                         <color key="color" systemColor="systemYellowColor"/>
                                     </activityIndicatorView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Buscando... UnTaxi cerca de ti" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yFK-KM-sBZ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Buscando... Un Vehiculo cerca de ti" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yFK-KM-sBZ">
                                         <rect key="frame" x="15" y="317.5" width="384" height="261"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="yFK-KM-sBZ" secondAttribute="height" multiplier="305:207" id="YI7-Hr-afM"/>
@@ -3875,8 +3878,8 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnTaxi siempre cerca de ti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSf-Cz-LrV">
-                                                <rect key="frame" x="25" y="61" width="364" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSf-Cz-LrV">
+                                                <rect key="frame" x="25" y="61" width="364" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.18042099480000001" blue="0.50973761080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4011,7 +4014,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Address View-->
         <scene sceneID="ASq-3N-3Wq">
             <objects>
-                <viewController storyboardIdentifier="AddressView" title="Address View" id="RKJ-h5-YT9" customClass="AddressController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddressView" title="Address View" id="RKJ-h5-YT9" customClass="AddressController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e4D-Xx-d9U"/>
                         <viewControllerLayoutGuide type="bottom" id="Lg7-nW-5uw"/>
@@ -4057,7 +4060,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Panico View-->
         <scene sceneID="zCQ-6l-ZK3">
             <objects>
-                <viewController storyboardIdentifier="panicoChildVC" title="Panico View" id="zGc-dp-1gi" customClass="PanicoController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="panicoChildVC" title="Panico View" id="zGc-dp-1gi" customClass="PanicoController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Do9-nS-O0G"/>
                         <viewControllerLayoutGuide type="bottom" id="fig-eA-9zg"/>
@@ -4271,7 +4274,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <!--Pago Controller-->
         <scene sceneID="ZB1-Bm-b2c">
             <objects>
-                <viewController storyboardIdentifier="PagoViewVC" id="j3l-kE-gap" customClass="PagoController" customModule="UnTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PagoViewVC" id="j3l-kE-gap" customClass="PagoController" customModule="AndyTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LOC-pl-tsR"/>
                         <viewControllerLayoutGuide type="bottom" id="I0h-8A-fCa"/>
@@ -4395,25 +4398,25 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
     </scenes>
     <designables>
         <designable name="3Gz-4M-Mvh">
-            <size key="intrinsicContentSize" width="155" height="34"/>
+            <size key="intrinsicContentSize" width="169" height="34"/>
         </designable>
         <designable name="9Nb-WI-fTG">
-            <size key="intrinsicContentSize" width="108" height="34"/>
+            <size key="intrinsicContentSize" width="122" height="34"/>
         </designable>
         <designable name="T27-Kh-VKC">
-            <size key="intrinsicContentSize" width="146" height="34"/>
+            <size key="intrinsicContentSize" width="160" height="34"/>
         </designable>
         <designable name="bU3-oG-O2a">
-            <size key="intrinsicContentSize" width="161.5" height="34"/>
+            <size key="intrinsicContentSize" width="175.5" height="34"/>
         </designable>
         <designable name="bo8-FE-LXm">
             <size key="intrinsicContentSize" width="48.5" height="34"/>
         </designable>
         <designable name="gbw-7a-dtm">
-            <size key="intrinsicContentSize" width="107" height="34"/>
+            <size key="intrinsicContentSize" width="121" height="34"/>
         </designable>
         <designable name="jHX-IQ-LQl">
-            <size key="intrinsicContentSize" width="165" height="34"/>
+            <size key="intrinsicContentSize" width="179" height="34"/>
         </designable>
     </designables>
     <resources>
@@ -4429,7 +4432,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <image name="down" width="40" height="40"/>
         <image name="llamar" width="60" height="60"/>
         <image name="locationBtn" width="50" height="50"/>
-        <image name="logo" width="160" height="160"/>
+        <image name="logo" width="40" height="40"/>
         <image name="mensajes" width="50" height="50"/>
         <image name="ofertaIcon" width="30" height="30"/>
         <image name="origen" width="50" height="50"/>
@@ -4445,9 +4448,9 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
         <image name="up" width="40" height="40"/>
         <image name="whatsapp" width="60" height="60"/>
         <image name="yapaIcon" width="40" height="40"/>
-        <image name="yapaImg" width="200.5" height="200"/>
+        <image name="yapaImg" width="200" height="174"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

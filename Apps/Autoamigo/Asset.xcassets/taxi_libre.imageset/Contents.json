@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "ICONOS APP AUTO AMIGO-5.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ICONOS APP AUTO AMIGO-4.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ICONOS APP AUTO AMIGO-04 (1)-1.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -15,7 +15,10 @@ class SideMenuController: UIViewController {
   
   
   @IBOutlet weak var MenuView1: UIView!
-  @IBOutlet weak var MenuTable: UITableView!
+    @IBOutlet weak var userDataView: UIView!
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var yapaIcon: UIImageView!
+    @IBOutlet weak var MenuTable: UITableView!
   @IBOutlet weak var NombreUsuario: UILabel!
   @IBOutlet weak var yapaText: UILabel!
   @IBOutlet weak var userProfilePhoto: UIImageView!
@@ -41,11 +44,17 @@ class SideMenuController: UIViewController {
     self.yapaTextHeightConstraint.constant = Responsive().heightFloatPercent(percent: 6)
     self.yapaText.addBorder(color: CustomAppColor.buttonActionColor)
     self.yapaText.textColor = CustomAppColor.menuTextColor
-		
-		if globalVariables.appConfig.cardpay {
-			menuArray[0].append(MenuData(imagen: "tarjetaMenu", title: "Pago con Tarjeta"))
-		}
-    
+      self.yapaIcon.addCustomTintColor(customColor: CustomAppColor.iconColor)
+      self.MenuTable.backgroundColor = CustomAppColor.primaryColor
+      
+      if !globalVariables.appConfig.yapa {
+          NSLayoutConstraint(item: self.userDataView, attribute: .centerY, relatedBy: .equal, toItem: self.MenuTable, attribute: .top, multiplier: 1, constant: 2).isActive = true
+      }
+      
+      if globalVariables.appConfig.cardpay {
+          menuArray[0].append(MenuData(imagen: "tarjetaMenu", title: "Pago con Tarjeta"))
+      }
+      
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showYapaView))
     //tapGesture.delegate = self
     self.yapaText.addGestureRecognizer(tapGesture)

@@ -75,7 +75,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     
     globalVariables.userDefaults = UserDefaults.standard
     
-    self.coreLocationManager = CLLocationManager()
+    coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
     coreLocationManager.requestWhenInUseAuthorization()
 
@@ -118,9 +118,9 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     
     self.movilClaveRecoverHeight.constant = 40
     
-    if CConexionInternet.isConnectedToNetwork() == true{
+    if CConexionInternet.isConnectedToNetwork() == true {
       print("login \(globalVariables.userDefaults.value(forKey: "accessToken"))")
-      if globalVariables.userDefaults.value(forKey: "accessToken") != nil{
+      if globalVariables.userDefaults.value(forKey: "accessToken") != nil {
         //self.socketService.initLoginEventos()
         self.startSocketConnection()
       } else {
@@ -136,7 +136,9 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    
+      if GlobalConstants.bundleId == "com.donelkys.RuedaCar" {
+          
+      }
   }
   
   

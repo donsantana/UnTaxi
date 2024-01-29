@@ -10,7 +10,7 @@ import UIKit
 
 struct Alert {
 	
-	 static internal func show(title: String, message: String, vc: UIViewController, withActions actions: [UIAlertAction]?) {
+	 static func show(title: String, message: String, vc: UIViewController, withActions actions: [UIAlertAction]?) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		if let actions = actions {
 			for action in actions {

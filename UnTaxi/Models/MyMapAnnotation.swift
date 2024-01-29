@@ -9,7 +9,7 @@
 import UIKit
 import MapboxMaps
 
-class MyMapAnnotation{
+class MyMapAnnotation {
 	var type: String {
 		didSet {
 			var imageName: String!
