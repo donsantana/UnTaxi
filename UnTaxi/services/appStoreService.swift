@@ -27,9 +27,7 @@ class AppStoreService {
 			
 			let appInfo = ItunesAppInfo(data: data)
 			let appStoreVersion = appInfo?.results?.first?.version ?? "0.0"
-            if let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
-                self.newVersionAvailable = appStoreVersion > currentVersion
-            }
+            self.newVersionAvailable = appStoreVersion > GlobalConstants.appVersion
 			
 			print(String(data: data, encoding: .utf8)!)
 		})

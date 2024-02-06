@@ -13,6 +13,8 @@ import UIKit
 protocol ApiServiceDelegate: AnyObject {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>)
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String)
+    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String)
+    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, statusCode: Int, msg: String)
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String)
@@ -73,26 +75,67 @@ final class ApiService {
       } catch {
         self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
       }
-
-//      if error == nil && response.statusCode == 201{
-//        print(response)
-//        do {
-//          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-//          self.delegate?.apiRequest(self, registerUserAPI: json["msg"] as! String)
-//        } catch {
-//          self.delegate?.apiRequest(self, registerUserAPI: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
-//        }
-//      } else {
-//        do {
-//          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-//          self.delegate?.apiRequest(self, getRegisterError: json["msg"] as! String)
-//        } catch {
-//          self.delegate?.apiRequest(self, registerUserAPI: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
-//        }
-//      }
     })
     task.resume()
   }
+    
+    func newRegisterUserAPI(url: String, params: Dictionary<String, String>){
+      let request = self.apiPOSTRequest(url: url, params: params)
+      let session = URLSession.shared
+      let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+        let response = response as! HTTPURLResponse
+        
+        if let error = error {
+          self.handlerError(error: error.localizedDescription)
+          return
+        }
+      
+        do {
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          
+          print("json \(json["msg"] as! String)")
+          
+          guard let response = response as? HTTPURLResponse, (201...409).contains(response.statusCode) else {
+              self.delegate?.apiRequest(self, newRegisterUserAPI: false, statusCode: response.statusCode, msg: json["msg"] as! String)
+            return
+          }
+          
+            self.delegate?.apiRequest(self, newRegisterUserAPI: true, statusCode: response.statusCode, msg: json["msg"] as! String)
+        } catch {
+          self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+        }
+      })
+      task.resume()
+    }
+    
+    func validateRegisterCode(url: String, params: Dictionary<String, String>){
+      let request = self.apiPOSTRequest(url: url, params: params)
+      let session = URLSession.shared
+      let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+        let response = response as! HTTPURLResponse
+        
+        if let error = error {
+          self.handlerError(error: error.localizedDescription)
+          return
+        }
+      
+        do {
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          
+          print("json \(json["msg"] as! String)")
+          
+          guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+              self.delegate?.apiRequest(self, validateRegisterCodeAPI: false, statusCode: response.statusCode, msg: json["msg"] as! String)
+            return
+          }
+          
+            self.delegate?.apiRequest(self, validateRegisterCodeAPI: true, statusCode: response.statusCode, msg: json["msg"] as! String)
+        } catch {
+          self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+        }
+      })
+      task.resume()
+    }
 	
 	func removeClientAPI() {
 		let params: Dictionary<String, String> = ["movil": globalVariables.cliente.user]
@@ -555,6 +598,8 @@ extension ApiServiceDelegate {
   func apiRequest(_ controller: ApiService, getLoginToken token: String){}
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any]){}
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String){}
+    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String){}
+    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, statusCode: Int, msg: String){}
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String){}

@@ -11,7 +11,7 @@
 		2CCBBC7F6435EA31EAF4522D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D63381188CC7A3B5C8F8E63 /* Pods_UnTaxi_AndyTaxi.framework */; };
 		3347290BBB5D4CF434CAF25D /* Pods_UnTaxi_RuedaCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42DA87C5B2D5A31CF1B8A14 /* Pods_UnTaxi_RuedaCar.framework */; };
 		4111D1E11D360D8300F2DF90 /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7372EF9FC5C3FD51884A67AD /* Pods_UnTaxi_LlamadaFacil.framework */; };
-		50EC68222FB79B77BC88EF19 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		50EC68222FB79B77BC88EF19 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
@@ -189,7 +189,7 @@
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
 		D07902562EDCA5E8E4B96B20 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB42DE6DDE75E5907650C66 /* Pods_UnTaxi.framework */; };
-		E43024C43969E2805C32FA15 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		E43024C43969E2805C32FA15 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F404BB882A7BFE0000D1671E /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
 		F404BB892A7BFE0000D1671E /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
 		F404BB8A2A7BFE0000D1671E /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
@@ -505,8 +505,8 @@
 		F41602ED2A6D96E8006A3FC1 /* PassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE6425414BC900611B4D /* PassController.swift */; };
 		F41602EE2A6D96E8006A3FC1 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984162679515900C0C353 /* WeatherService.swift */; };
 		F41602EF2A6D96E8006A3FC1 /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
-		F41602F12A6D96E8006A3FC1 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		F41602F22A6D96E8006A3FC1 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		F41602F12A6D96E8006A3FC1 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		F41602F22A6D96E8006A3FC1 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F41602F42A6D96E8006A3FC1 /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
 		F41602F52A6D96E8006A3FC1 /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
 		F41602F62A6D96E8006A3FC1 /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
@@ -933,9 +933,7 @@
 		F47017C42A95782A009A5FED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017C02A95782A009A5FED /* Date.swift */; };
 		F47017C52A95782A009A5FED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017C02A95782A009A5FED /* Date.swift */; };
 		F47017C62A95782A009A5FED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017C02A95782A009A5FED /* Date.swift */; };
-		F47017CA2A96A702009A5FED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47017C82A96A702009A5FED /* Info.plist */; };
 		F47017CB2A96A702009A5FED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47017C82A96A702009A5FED /* Info.plist */; };
-		F47017CC2A96A702009A5FED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47017C82A96A702009A5FED /* Info.plist */; };
 		F47017CD2A96A702009A5FED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47017C82A96A702009A5FED /* Info.plist */; };
 		F47017CE2A96A702009A5FED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47017C82A96A702009A5FED /* Info.plist */; };
 		F47017E12A96A758009A5FED /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
@@ -1285,7 +1283,13 @@
 		F4E1328E2A08121A00E18299 /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */; };
 		F4E1328F2A08121A00E18299 /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
 		F4E132912A08121A00E18299 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
-		F4E132922A08121A00E18299 /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
+		F4E746112B3E153A0059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746122B55DBBF0059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746132B55DC410059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746142B55DC410059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746152B55DC420059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746162B55DC420059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E746172B55DC430059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1521,6 +1525,7 @@
 		F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InicioControllerExt.swift; sourceTree = "<group>"; };
 		F4E131D62A0802F100E18299 /* InicioSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSocketExt.swift; sourceTree = "<group>"; };
 		F4E132992A08121A00E18299 /* VipCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E746102B3E153A0059A08C /* VerificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1544,9 +1549,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F41602F12A6D96E8006A3FC1 /* BuildFile in Frameworks */,
-				F41602F22A6D96E8006A3FC1 /* BuildFile in Frameworks */,
-				50EC68222FB79B77BC88EF19 /* BuildFile in Frameworks */,
+				F41602F12A6D96E8006A3FC1 /* (null) in Frameworks */,
+				F41602F22A6D96E8006A3FC1 /* (null) in Frameworks */,
+				50EC68222FB79B77BC88EF19 /* (null) in Frameworks */,
 				BCA2D2847693BB62B5B452EE /* Pods_UnTaxi_OrientExpress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1555,7 +1560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E43024C43969E2805C32FA15 /* BuildFile in Frameworks */,
+				E43024C43969E2805C32FA15 /* (null) in Frameworks */,
 				2CCBBC7F6435EA31EAF4522D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2099,6 +2104,7 @@
 				C6C8E63126BC37580076465D /* RegistroController.swift */,
 				C6C8E63326BC439C0076465D /* RegistroFunctionsExt.swift */,
 				C6C8E63526BC4AA10076465D /* RegistroDelegatesExt.swift */,
+				F4E746102B3E153A0059A08C /* VerificationController.swift */,
 			);
 			path = Registro;
 			sourceTree = "<group>";
@@ -2417,7 +2423,6 @@
 				TargetAttributes = {
 					84F571421BCE958200FC18D5 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 2VMNV5JH5M;
 						LastSwiftMigration = 1230;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2628,7 +2633,6 @@
 				F41603182A6D96E8006A3FC1 /* YapaViewCell.xib in Resources */,
 				F41603192A6D96E8006A3FC1 /* Muli-BoldItalic.ttf in Resources */,
 				F416031A2A6D96E8006A3FC1 /* Muli-Light.ttf in Resources */,
-				F47017CC2A96A702009A5FED /* Info.plist in Resources */,
 				F416031B2A6D96E8006A3FC1 /* Perfil3ViewCell.xib in Resources */,
 				F416031C2A6D96E8006A3FC1 /* PactadaCell.xib in Resources */,
 				F416031D2A6D96E8006A3FC1 /* Muli.ttf in Resources */,
@@ -2813,7 +2817,6 @@
 				F4E1327F2A08121A00E18299 /* PerfilNombreCell.xib in Resources */,
 				F4E132812A08121A00E18299 /* CallCenterViewCell.xib in Resources */,
 				F4E132832A08121A00E18299 /* HistoryViewCell.xib in Resources */,
-				F47017CA2A96A702009A5FED /* Info.plist in Resources */,
 				F4E132842A08121A00E18299 /* DetallesViewCell.xib in Resources */,
 				F4E132852A08121A00E18299 /* beep.wav in Resources */,
 				F4E132862A08121A00E18299 /* Main.storyboard in Resources */,
@@ -2824,7 +2827,6 @@
 				F4E1328E2A08121A00E18299 /* Perfil3ViewCell.xib in Resources */,
 				F4E1328F2A08121A00E18299 /* PactadaCell.xib in Resources */,
 				F4E132912A08121A00E18299 /* .gitignore in Resources */,
-				F4E132922A08121A00E18299 /* Images-5.xcassets in Resources */,
 				F452DE4D2A084D8C005BCF55 /* Asset.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3261,7 +3263,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3421,7 +3423,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3441,7 +3443,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3461,7 +3463,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3481,7 +3483,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3501,7 +3503,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3521,7 +3523,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3658,6 +3660,7 @@
 				C6CACFB222D2BE4900702430 /* UIView.swift in Sources */,
 				C680738D256DEAE50093E4DE /* SolicitudPanel.swift in Sources */,
 				AFD6566F1FA1777500C8A5BD /* CallCenterViewCell.swift in Sources */,
+				F4E746112B3E153A0059A08C /* VerificationController.swift in Sources */,
 				C670045924674BAA00FF97AB /* mapSevice.swift in Sources */,
 				C68D05B725A66A4300E124AB /* ComentarioCollectionCell.swift in Sources */,
 				C665F21525D2DECB00044480 /* InicioSearchExt.swift in Sources */,
@@ -3804,6 +3807,7 @@
 				F404BBE82A7BFE0000D1671E /* UIView.swift in Sources */,
 				F404BBE92A7BFE0000D1671E /* SolicitudPanel.swift in Sources */,
 				F404BBEA2A7BFE0000D1671E /* CallCenterViewCell.swift in Sources */,
+				F4E746162B55DC420059A08C /* VerificationController.swift in Sources */,
 				F404BBEB2A7BFE0000D1671E /* mapSevice.swift in Sources */,
 				F404BBEC2A7BFE0000D1671E /* ComentarioCollectionCell.swift in Sources */,
 				F404BBED2A7BFE0000D1671E /* InicioSearchExt.swift in Sources */,
@@ -3950,6 +3954,7 @@
 				F41602C82A6D96E8006A3FC1 /* UIView.swift in Sources */,
 				F41602C92A6D96E8006A3FC1 /* SolicitudPanel.swift in Sources */,
 				F41602CA2A6D96E8006A3FC1 /* CallCenterViewCell.swift in Sources */,
+				F4E746142B55DC410059A08C /* VerificationController.swift in Sources */,
 				F41602CB2A6D96E8006A3FC1 /* mapSevice.swift in Sources */,
 				F41602CC2A6D96E8006A3FC1 /* ComentarioCollectionCell.swift in Sources */,
 				F41602CD2A6D96E8006A3FC1 /* InicioSearchExt.swift in Sources */,
@@ -4096,6 +4101,7 @@
 				F416038C2A785746006A3FC1 /* UIView.swift in Sources */,
 				F416038D2A785746006A3FC1 /* SolicitudPanel.swift in Sources */,
 				F416038E2A785746006A3FC1 /* CallCenterViewCell.swift in Sources */,
+				F4E746152B55DC420059A08C /* VerificationController.swift in Sources */,
 				F416038F2A785746006A3FC1 /* mapSevice.swift in Sources */,
 				F41603902A785746006A3FC1 /* ComentarioCollectionCell.swift in Sources */,
 				F41603912A785746006A3FC1 /* InicioSearchExt.swift in Sources */,
@@ -4242,6 +4248,7 @@
 				F45E0EF22A37DE03004A4FEF /* UIView.swift in Sources */,
 				F45E0EF32A37DE03004A4FEF /* SolicitudPanel.swift in Sources */,
 				F45E0EF42A37DE03004A4FEF /* CallCenterViewCell.swift in Sources */,
+				F4E746132B55DC410059A08C /* VerificationController.swift in Sources */,
 				F45E0EF52A37DE03004A4FEF /* mapSevice.swift in Sources */,
 				F45E0EF62A37DE03004A4FEF /* ComentarioCollectionCell.swift in Sources */,
 				F45E0EF72A37DE03004A4FEF /* InicioSearchExt.swift in Sources */,
@@ -4388,6 +4395,7 @@
 				F47018442A96A758009A5FED /* UIView.swift in Sources */,
 				F47018452A96A758009A5FED /* SolicitudPanel.swift in Sources */,
 				F47018462A96A758009A5FED /* CallCenterViewCell.swift in Sources */,
+				F4E746172B55DC430059A08C /* VerificationController.swift in Sources */,
 				F47018472A96A758009A5FED /* mapSevice.swift in Sources */,
 				F47018482A96A758009A5FED /* ComentarioCollectionCell.swift in Sources */,
 				F47018492A96A758009A5FED /* InicioSearchExt.swift in Sources */,
@@ -4534,6 +4542,7 @@
 				F4E1323E2A08121A00E18299 /* UIView.swift in Sources */,
 				F4E1323F2A08121A00E18299 /* SolicitudPanel.swift in Sources */,
 				F4E132402A08121A00E18299 /* CallCenterViewCell.swift in Sources */,
+				F4E746122B55DBBF0059A08C /* VerificationController.swift in Sources */,
 				F4E132412A08121A00E18299 /* mapSevice.swift in Sources */,
 				F4E132422A08121A00E18299 /* ComentarioCollectionCell.swift in Sources */,
 				F4E132432A08121A00E18299 /* InicioSearchExt.swift in Sources */,
@@ -4719,7 +4728,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -4737,7 +4746,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.4.0;
+				MARKETING_VERSION = 3.5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -4759,7 +4768,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -4777,7 +4786,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.4.0;
+				MARKETING_VERSION = 3.5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;

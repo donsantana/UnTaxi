@@ -70,7 +70,11 @@ struct GlobalStrings {
     static let usuarioEliminadoExito: String = NSLocalizedString("Usuario eliminado con éxito.",comment:"")
 	static let usuarioEliminadoError: String = NSLocalizedString("El usuario no pudo ser eliminado. Por favor intente otra vez.",comment:"")
 
-	static let wronCameraMessage = NSLocalizedString("El perfil solo acepta una foto frontal.", comment:"")
+    static let wronCameraMessage = NSLocalizedString("El perfil solo acepta una foto frontal.", comment:"")
+    static let codeValidationTitle = NSLocalizedString("Verificación de Usuario", comment:"")
+    static let codeValidationMessage = NSLocalizedString("Se le ha enviado un mensaje de Whatsapp con el código de verificación. Por favor cópielo y péguelo aquí.", comment:"")
+    static let codeValidationPlaceholder = NSLocalizedString("Código de verificación", comment:"")
+	static let maxIntentMessage = NSLocalizedString("Ha consumido los 3 intentos permitidos. Por favor, vuelva a realizar el proceso de registro.", comment:"")
 	
 	//Forms
 	
@@ -83,7 +87,8 @@ struct GlobalStrings {
 	static let cancelarButtonTitle: String = NSLocalizedString("Cancelar",comment:"")
 	static let autorizarButtonTitle: String = NSLocalizedString("Autorizar",comment:"")
 	static let closeAppButtonTitle: String = NSLocalizedString("Cerrar aplicación",comment:"")
-	static let settingsBtnTitle: String = NSLocalizedString("Configuración",comment:"")
+    static let settingsBtnTitle: String = NSLocalizedString("Configuración",comment:"")
+	static let verficarBtnTitle: String = NSLocalizedString("Verificar",comment:"")
 	
 	//Placeholders
 	static let enterOrigen: String = NSLocalizedString("Ingrese nuevo origen",comment:"")

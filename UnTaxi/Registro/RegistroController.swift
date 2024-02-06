@@ -76,6 +76,7 @@ class RegistroController: UIViewController {
   }
   
   @IBAction func EnviarRegistro(_ sender: AnyObject) {
+//      showCodeVerificationView()
     self.sendNewUserData()
   }
   
