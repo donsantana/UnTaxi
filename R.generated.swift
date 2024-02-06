@@ -647,6 +647,7 @@ struct _R {
 
       var loginView: RswiftResources.StoryboardViewControllerIdentifier<LoginController> { .init(identifier: "LoginView", storyboard: name, bundle: bundle) }
       var registroView: RswiftResources.StoryboardViewControllerIdentifier<RegistroController> { .init(identifier: "registroView", storyboard: name, bundle: bundle) }
+      var verificationView: RswiftResources.StoryboardViewControllerIdentifier<RegisterValidationController> { .init(identifier: "verificationView", storyboard: name, bundle: bundle) }
 
       func validate() throws {
         if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in storyboard 'Login', but couldn't be loaded.") }
@@ -656,6 +657,7 @@ struct _R {
         if UIKit.UIImage(named: "xoalogo.png", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'xoalogo.png' is used in storyboard 'Login', but couldn't be loaded.") }
         if loginView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'loginView' could not be loaded from storyboard 'Login' as 'LoginController'.") }
         if registroView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'registroView' could not be loaded from storyboard 'Login' as 'RegistroController'.") }
+        if verificationView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'verificationView' could not be loaded from storyboard 'Login' as 'RegisterValidationController'.") }
       }
     }
 

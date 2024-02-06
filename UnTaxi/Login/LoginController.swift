@@ -187,9 +187,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.usuario.resignFirstResponder()
     self.clave.resignFirstResponder()
     let vc = R.storyboard.login.registroView()!
-    self.navigationController?.show(vc, sender: self)
-    //RegistroView.isHidden = false
-    //self.telefonoText.becomeFirstResponder()
+    self.navigationController?.pushViewController(vc, animated: false)
     
   }
 

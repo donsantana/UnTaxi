@@ -216,6 +216,44 @@ extension RegistroController: ApiServiceDelegate{
 		})
 		Alert.showBasic(title: success ? GlobalStrings.registroUsuarioTitle : GlobalStrings.formErrorTitle, message: msg, vc: self, withActions: [okAction])
   }
+    
+    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String) {
+        switch statusCode {
+        case 201:
+            //registration success
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                self.goToLoginView()
+            })
+            Alert.showBasic(title: "Éxito", message: msg, vc: self, withActions: [okAction])
+        case 404:
+            //Codigo de activacion invalido o caducado
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                self.showCodeVerificationView()
+            })
+            Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
+        case 400:
+            //Codigo generenado, revise Whatsapp
+            showCodeVerificationView()
+        case 409:
+            //Usuarion Existente
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                self.goToLoginView()
+            })
+            Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
+        case 410:
+            //Usuarion Existente
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                self.waitingView.isHidden = true
+            })
+            Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
+        default:
+            //General Error
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                self.waitingView.isHidden = true
+            })
+            Alert.showBasic(title: "", message: GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
+        }
+    }
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
 		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in

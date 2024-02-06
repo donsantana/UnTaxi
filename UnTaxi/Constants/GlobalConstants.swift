@@ -10,6 +10,7 @@ import Foundation
 
 struct GlobalConstants {
     static var bundleId = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
+    static var appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "0.0"
     static var enviroment: String = "prod"
     static var serverDomain = bundleId == "com.xoait.UnTaxi" ? "xoaserver" : "xoait"
     static var urlServer: String = enviroment == "dev" ? "testing-untaxi.xoaserver.com" : "\(serverName).\(serverDomain).com"
@@ -60,6 +61,7 @@ struct GlobalConstants {
     static var passChangeUrl: String = "\(urlHost)/change-password"
     static var updateProfileUrl: String = "\(urlHost)/profile"
     static var registerUrl: String = "\(urlHost)/register"
+    static var newRegisterUrl: String = "\(urlHost)/register-test"
     static var removeClient: String = "\(urlHost)/removeclient"
     static var subiraudioUrl: String = "\(urlHost)/voz"
     static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
@@ -157,6 +159,14 @@ struct GlobalConstants {
         }
     }
     
+    static var registerValidationIsAnable: Bool {
+        switch bundleId {
+        case "com.xoait.UnTaxi":
+            return true
+        default:
+            return false
+        }
+    }
     //    static var googleAdsID = "ca-app-pub-1778988557303127/2416922071"
     
 }
