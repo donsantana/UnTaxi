@@ -59,7 +59,7 @@ struct _R {
     var viewColor: RswiftResources.ColorResource { .init(name: "viewColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 97 images.
+  /// This `_R.image` struct is generated, and contains static references to 98 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -83,6 +83,9 @@ struct _R {
 
     /// Image `bill`.
     var bill: RswiftResources.ImageResource { .init(name: "bill", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `briceBanner_es`.
+    var briceBanner_es: RswiftResources.ImageResource { .init(name: "briceBanner_es", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `calendar`.
     var calendar: RswiftResources.ImageResource { .init(name: "calendar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -690,6 +693,7 @@ struct _R {
 
       func validate() throws {
         if UIKit.UIImage(named: "agendaIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'agendaIcon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "briceBanner_es", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'briceBanner_es' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "calendar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'calendar' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "camera", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'camera' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cancelar", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cancelar' is used in storyboard 'Main', but couldn't be loaded.") }

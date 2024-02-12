@@ -307,7 +307,7 @@ extension SolPendController{
     self.present(alertaDos, animated: true, completion: nil)
   }
   
-  @objc func goToPublicidad(){
-    globalVariables.publicidadService?.goToPublicidad()
-  }
+    @objc func goToPublicidad(){
+        UIApplication.shared.open(URL(string: CustomAdsConstants.itunesBriceURL)!)
+    }
 }

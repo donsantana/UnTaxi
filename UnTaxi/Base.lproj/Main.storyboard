@@ -1406,8 +1406,22 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCv-a2-JFK">
                                 <rect key="frame" x="5" y="446" width="404" height="70"/>
+                                <subviews>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briceBanner_es" translatesAutoresizingMaskIntoConstraints="NO" id="AUu-sZ-MmF">
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="70"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="AUu-sZ-MmF" firstAttribute="top" secondItem="uCv-a2-JFK" secondAttribute="top" id="2Yq-bi-SLn"/>
                                     <constraint firstAttribute="height" constant="70" id="5Up-Go-h9H"/>
+                                    <constraint firstAttribute="bottom" secondItem="AUu-sZ-MmF" secondAttribute="bottom" id="85E-Az-kbb"/>
+                                    <constraint firstAttribute="trailing" secondItem="AUu-sZ-MmF" secondAttribute="trailing" id="JgU-hl-9sF"/>
+                                    <constraint firstItem="AUu-sZ-MmF" firstAttribute="leading" secondItem="uCv-a2-JFK" secondAttribute="leading" id="wYE-S0-3YC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-hY-3BY">
@@ -1885,6 +1899,7 @@
                         <outlet property="cancelarBtnLeadingConstraint" destination="MaT-DM-8Zn" id="nwe-gP-xW8"/>
                         <outlet property="compartirDetallesBtn" destination="VHS-rf-znm" id="MlQ-xj-OMY"/>
                         <outlet property="conductorPreview" destination="zCc-zz-NUO" id="K5J-dG-sPh"/>
+                        <outlet property="customAdImageView" destination="AUu-sZ-MmF" id="e9f-Z1-bS3"/>
                         <outlet property="datosCondHeightConstraint" destination="t4t-aB-1Mm" id="fc9-Re-Y4A"/>
                         <outlet property="destinoIcon" destination="Jui-Xc-uux" id="Qbb-BH-IiY"/>
                         <outlet property="detallesBottomConstraint" destination="leE-uj-gCg" id="ckd-Tq-h5Y"/>
@@ -4398,29 +4413,30 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
     </scenes>
     <designables>
         <designable name="3Gz-4M-Mvh">
-            <size key="intrinsicContentSize" width="155" height="34"/>
+            <size key="intrinsicContentSize" width="169" height="34"/>
         </designable>
         <designable name="9Nb-WI-fTG">
-            <size key="intrinsicContentSize" width="108" height="34"/>
+            <size key="intrinsicContentSize" width="122" height="34"/>
         </designable>
         <designable name="T27-Kh-VKC">
-            <size key="intrinsicContentSize" width="146" height="34"/>
+            <size key="intrinsicContentSize" width="160" height="34"/>
         </designable>
         <designable name="bU3-oG-O2a">
-            <size key="intrinsicContentSize" width="161.5" height="34"/>
+            <size key="intrinsicContentSize" width="175.5" height="34"/>
         </designable>
         <designable name="bo8-FE-LXm">
             <size key="intrinsicContentSize" width="48.5" height="34"/>
         </designable>
         <designable name="gbw-7a-dtm">
-            <size key="intrinsicContentSize" width="107" height="34"/>
+            <size key="intrinsicContentSize" width="121" height="34"/>
         </designable>
         <designable name="jHX-IQ-LQl">
-            <size key="intrinsicContentSize" width="165" height="34"/>
+            <size key="intrinsicContentSize" width="179" height="34"/>
         </designable>
     </designables>
     <resources>
         <image name="agendaIcon" width="50" height="50"/>
+        <image name="briceBanner_es" width="2400" height="420"/>
         <image name="calendar" width="30" height="30"/>
         <image name="camera" width="30" height="30"/>
         <image name="cancelar" width="60" height="60"/>
@@ -4453,28 +4469,28 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

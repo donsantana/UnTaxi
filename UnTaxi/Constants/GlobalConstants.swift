@@ -171,6 +171,10 @@ struct GlobalConstants {
     
 }
 
+struct CustomAdsConstants {
+    static var itunesBriceURL = "itms://itunes.apple.com/us/app/apple-store/id1290022053?mt=8"
+}
+
 struct GoogleAdsConstant {
     
     static let bundleId: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
