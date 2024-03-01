@@ -69,7 +69,7 @@ class RegisterValidationController: UIViewController {
         if let codeText = codeText.text {
             registrationParams.updateValue(codeText, forKey: "codigo")
         }
-        apiService.newRegisterUserAPI(url: GlobalConstants.newRegisterUrl, params: registrationParams)
+        apiService.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: registrationParams)
     }
     
     func goBackToLogin() {

@@ -16,6 +16,8 @@ extension LoginController: UITextFieldDelegate{
     RecuperarClaveBtn.isEnabled = false
     var distanceValue = 0
     switch textField {
+    case codigoText:
+      distanceValue = 80
     case movilClaveRecover:
       distanceValue = 105
     default:
@@ -38,35 +40,35 @@ extension LoginController: UITextFieldDelegate{
         RecuperarClaveBtn.isEnabled = true
       }
       distanceValue = 105
-    case codigoText:
-      let (valid, message) = textfield.validate(.codigoVerificacion)
-      if !valid {
-				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-					self.codigoText.becomeFirstResponder()
-				})
-				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
-      }
-      distanceValue = 80
-    case newPasswordText:
-      let (valid, message) = textfield.validate(.password)
-      if !valid {
-				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-					self.newPasswordText.becomeFirstResponder()
-				})
-				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
-      }
-      distanceValue = 80
-    case newPassConfirmText:
-      let (valid, message) = textfield.validate(.password)
-      if !valid {
-				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-					self.newPasswordText.becomeFirstResponder()
-				})
-				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
-      } else {
-        self.crearNewPasswordBtn.isEnabled = true
-      }
-      distanceValue = 80
+//    case codigoText:
+//      let (valid, message) = textfield.validate(.codigoVerificacion)
+//      if !valid {
+//				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//					self.codigoText.becomeFirstResponder()
+//				})
+//				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+//      }
+//      distanceValue = 80
+//    case newPasswordText:
+//      let (valid, message) = textfield.validate(.password)
+//      if !valid {
+//				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//					self.newPasswordText.becomeFirstResponder()
+//				})
+//				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+//      }
+//      distanceValue = 80
+//    case newPassConfirmText:
+//      let (valid, message) = textfield.validate(.password)
+//      if !valid {
+//				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//					self.newPasswordText.becomeFirstResponder()
+//				})
+//				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+//      } else {
+//        self.crearNewPasswordBtn.isEnabled = true
+//      }
+//      distanceValue = 80
     default:
       distanceValue = 80
     }
@@ -180,6 +182,7 @@ extension LoginController: ApiServiceDelegate{
           self.newPasswordText.text?.removeAll()
           self.newPassConfirmText.text?.removeAll()
           self.waitingView.isHidden = true
+          self.NewPasswordView.isHidden = true
           self.claveRecoverView.isHidden = true
           globalVariables.userDefaults.setValue(nil, forKey:"nombreUsuario")
         }

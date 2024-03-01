@@ -170,7 +170,18 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   }
   
   @IBAction func createNewPassword(_ sender: Any) {
-    createNewPassword(codigo: codigoText.text!, newPassword: newPasswordText.text!)
+      let (validCodigo, codigoMessage) = codigoText.validate(.codigoVerificacion)
+      let (validPassword, passMessage) = newPasswordText.validate(.password)
+      
+      if validCodigo && validPassword && newPasswordText.text == newPassConfirmText.text {
+          createNewPassword(codigo: codigoText.text!, newPassword: newPasswordText.text!)
+      } else {
+          let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+              
+          })
+          Alert.showBasic(title: GlobalStrings.formErrorTitle, message: newPasswordText.text != newPassConfirmText.text ? GlobalStrings.passNotMatchMessage : GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+      }
+    
   }
   
   @IBAction func closeNewPasswordView(_ sender: Any) {
