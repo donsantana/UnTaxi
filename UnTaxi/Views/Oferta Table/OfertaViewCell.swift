@@ -17,9 +17,11 @@ class OfertaViewCell: UITableViewCell {
 	@IBOutlet weak var valorText: UILabel!
 	@IBOutlet weak var calificacionText: UILabel!
 	@IBOutlet weak var marcaModelo: UILabel!
-	
-	func initContent(oferta: Oferta){
+    @IBOutlet weak var aceptarBtn: UIButton!
+    
+	func initContent(oferta: Oferta) {
 		self.ofertaView!.addShadow()
+        aceptarBtn.addCustomActionBtnsColors()
 		let origenCoord = globalVariables.solpendientes.first{$0.id == oferta.id}?.origenCoord
 		let origenLocation = CLLocation(latitude: Double(origenCoord!.latitude), longitude: Double(origenCoord!.longitude))
 		let distance = origenLocation.distance(from: CLLocation(latitude: oferta.location.latitude, longitude: oferta.location.longitude))/1000

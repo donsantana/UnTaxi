@@ -90,7 +90,7 @@ class CallCenterController: BaseController {
 extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
   // MARK: - Table view data source
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+      return telefonosCallCenter.filter{$0.seccion == "PUBLICIDAD"}.count > 0 ? 2 : 1
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

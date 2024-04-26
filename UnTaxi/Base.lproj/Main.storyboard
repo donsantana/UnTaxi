@@ -4205,6 +4205,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                     </view>
                     <connections>
                         <outlet property="contentView" destination="u92-1z-WbS" id="nUV-8N-H1r"/>
+                        <outlet property="llamarBtn" destination="vJm-2P-l78" id="ixe-pU-ML0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="re2-ZO-zXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

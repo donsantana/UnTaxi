@@ -13,8 +13,8 @@ import UIKit
 protocol ApiServiceDelegate: AnyObject {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>)
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String)
-    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String)
-    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, statusCode: Int, msg: String)
+    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, msg: String)
+    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, msg: String)
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String)
@@ -50,12 +50,12 @@ final class ApiService {
     return request
   }
   
-  func registerUserAPI(url: String, params: Dictionary<String, String>){
+  func registerUserAPI(url: String, params: Dictionary<String, String>) {
+      print("register URL: \(url)")
     let request = self.apiPOSTRequest(url: url, params: params)
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      let response = response as! HTTPURLResponse
-      
+
       if let error = error {
         self.handlerError(error: error.localizedDescription)
         return
@@ -83,8 +83,6 @@ final class ApiService {
       let request = self.apiPOSTRequest(url: url, params: params)
       let session = URLSession.shared
       let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-        let response = response as! HTTPURLResponse
-        
         if let error = error {
           self.handlerError(error: error.localizedDescription)
           return
@@ -96,11 +94,11 @@ final class ApiService {
           print("json \(json["msg"] as! String)")
           
           guard let response = response as? HTTPURLResponse, (201...409).contains(response.statusCode) else {
-              self.delegate?.apiRequest(self, newRegisterUserAPI: false, statusCode: response.statusCode, msg: json["msg"] as! String)
+              self.delegate?.apiRequest(self, newRegisterUserAPI: false, msg: json["msg"] as! String)
             return
           }
           
-            self.delegate?.apiRequest(self, newRegisterUserAPI: true, statusCode: response.statusCode, msg: json["msg"] as! String)
+            self.delegate?.apiRequest(self, newRegisterUserAPI: true, msg: json["msg"] as! String)
         } catch {
           self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
@@ -112,8 +110,6 @@ final class ApiService {
       let request = self.apiPOSTRequest(url: url, params: params)
       let session = URLSession.shared
       let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-        let response = response as! HTTPURLResponse
-        
         if let error = error {
           self.handlerError(error: error.localizedDescription)
           return
@@ -125,11 +121,11 @@ final class ApiService {
           print("json \(json["msg"] as! String)")
           
           guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-              self.delegate?.apiRequest(self, validateRegisterCodeAPI: false, statusCode: response.statusCode, msg: json["msg"] as! String)
+              self.delegate?.apiRequest(self, validateRegisterCodeAPI: false, msg: json["msg"] as! String)
             return
           }
           
-            self.delegate?.apiRequest(self, validateRegisterCodeAPI: true, statusCode: response.statusCode, msg: json["msg"] as! String)
+            self.delegate?.apiRequest(self, validateRegisterCodeAPI: true, msg: json["msg"] as! String)
         } catch {
           self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
         }
@@ -371,7 +367,7 @@ final class ApiService {
   
   func loginToAPIService(user: String, password: String){
     let params = ["user": user, "password": password, "version": "1.0.0"] as Dictionary<String, String>
-    print(GlobalConstants.apiLoginUrl)
+    print("URL: \(GlobalConstants.apiLoginUrl)")
     var request = URLRequest(url: URL(string: GlobalConstants.apiLoginUrl)!)
     request.httpMethod = "POST"
     request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -598,8 +594,8 @@ extension ApiServiceDelegate {
   func apiRequest(_ controller: ApiService, getLoginToken token: String){}
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any]){}
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String){}
-    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String){}
-    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, statusCode: Int, msg: String){}
+    func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, msg: String){}
+    func apiRequest(_ controller: ApiService, validateRegisterCodeAPI success: Bool, msg: String){}
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String){}

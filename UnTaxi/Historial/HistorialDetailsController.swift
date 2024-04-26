@@ -182,6 +182,7 @@ extension HistorialDetailsController: SocketServiceDelegate{
             self.reviewConductor.text = "\(datos["calificacion"] as! Double)(\(datos["cantidadcalificacion"] as! Int))"
             evaluarBtn.isHidden = !(datos["evaluacion"] is NSNull) || self.solicitud.idEstado != 7
             let fotoURL = !(datos["foto"] is NSNull) ? datos["foto"] as! String : ""
+            self.ImagenCond.image = UIImage(named: "chofer")
             if fotoURL != "" {
                 let url = URL(string:"\(GlobalConstants.urlHost)/\(datos["foto"] as! String)")
                 
@@ -192,8 +193,6 @@ extension HistorialDetailsController: SocketServiceDelegate{
                     }
                 }
                 task.resume()
-            } else {
-                self.ImagenCond.image = UIImage(named: "chofer")
             }
             
             self.NombreCond.text = solicitud.nombreapellidosconductor//datos["nombreapellidosconductor"] as? String

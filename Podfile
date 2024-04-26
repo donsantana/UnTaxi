@@ -28,6 +28,7 @@ target "UnTaxi" do
     target 'OrientExpress'
     target 'AndyTaxi'
     target 'RuedaCar'
+    target 'TransporVIP'
 end
 
 post_install do |installer|

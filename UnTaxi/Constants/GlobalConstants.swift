@@ -12,7 +12,7 @@ struct GlobalConstants {
     static var bundleId = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
     static var appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "0.0"
     static var enviroment: String = "prod"
-    static var serverDomain = bundleId == "com.xoait.UnTaxi" ? "xoaserver" : "xoait"
+    static var serverDomain = (bundleId == "com.xoait.UnTaxi") ? "xoaserver" : "xoait" // || bundleId == "com.xoait.TransporVIP"
     static var urlServer: String = enviroment == "dev" ? "testing-untaxi.xoaserver.com" : "\(serverName).\(serverDomain).com"
     static var serverName: String {
         switch bundleId {
@@ -46,6 +46,8 @@ struct GlobalConstants {
             return "ruedacar"
         case "com.xoait.AutoAmigo":
             return "autoamigo"
+        case "com.xoait.TransporVIP":
+            return "movilcallcenter"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -109,6 +111,8 @@ struct GlobalConstants {
             return "1454338686"
         case "com.xoait.AutoAmigo":
             return "1563504584"
+        case "com.xoait.TransporVIP":
+            return "6499275207"
         default:
             return "1149206387"
         }
@@ -154,6 +158,8 @@ struct GlobalConstants {
             return "sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttbWo4MG94MGh2NTJ3bjNmOWZ0M3VuMSJ9.2V8KcgIcOqEkMXAZ9eOnkA"
         case "com.xoait.AutoAmigo":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tubHRhMmwxMGtscjJ2bnloMm9wOWFydyJ9.TZjHwLdkwB4-qRN555PFkg"
+        case "com.xoait.TransporVIP":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -163,6 +169,8 @@ struct GlobalConstants {
         switch bundleId {
         case "com.xoait.UnTaxi":
             return true
+//        case "com.xoait.TransporVIP":
+//            return true
         default:
             return false
         }
@@ -212,6 +220,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/6607865054"
         case "com.xoait.AutoAmigo":
             return "ca-app-pub-1778988557303127/2626310486"
+        case "com.xoait.TransporVIP":
+            return "ca-app-pub-1778988557303127/2144753273"
         default:
             return ""
         }
@@ -250,6 +260,8 @@ struct GoogleAdsConstant {
             return ""
         case "com.xoait.AutoAmigo":
             return "ca-app-pub-1778988557303127/8987429343"
+        case "com.xoait.TransporVIP":
+            return "ca-app-pub-1778988557303127/2131977696"
         default:
             return ""
         }
