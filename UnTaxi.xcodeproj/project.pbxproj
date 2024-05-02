@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A9A419B79459D47121F7232 /* Pods_UnTaxi_VipCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F2CBE8BAFF5D11FDAF50E /* Pods_UnTaxi_VipCar.framework */; };
-		2CCBBC7F6435EA31EAF4522D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D63381188CC7A3B5C8F8E63 /* Pods_UnTaxi_AndyTaxi.framework */; };
-		3347290BBB5D4CF434CAF25D /* Pods_UnTaxi_RuedaCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42DA87C5B2D5A31CF1B8A14 /* Pods_UnTaxi_RuedaCar.framework */; };
-		4111D1E11D360D8300F2DF90 /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7372EF9FC5C3FD51884A67AD /* Pods_UnTaxi_LlamadaFacil.framework */; };
+		117763881D37AD378650DCA6 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA5AB930D5EBF817ACAECBF /* Pods_UnTaxi_TransporVIP.framework */; };
+		20CF639C16015135D71BFED6 /* Pods_UnTaxi_OrientExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9B1421039145BE92BCBE1F /* Pods_UnTaxi_OrientExpress.framework */; };
+		3BF0EAC5F51BCF34F66AE7AD /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD0A29C4D311D090A736280 /* Pods_UnTaxi_AndyTaxi.framework */; };
 		50EC68222FB79B77BC88EF19 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		6420787D99D2FC95DE010128 /* Pods_UnTaxi_RuedaCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B17DE382EE0054EDA330AC3 /* Pods_UnTaxi_RuedaCar.framework */; };
+		6BFA5E6F9A45C326BE517583 /* Pods_UnTaxi_VipCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAA8C575E0E33CBA1D3F6C6 /* Pods_UnTaxi_VipCar.framework */; };
+		78D14DB99AB6DAB1F91908A7 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8122E6E20414C171E42A9E38 /* Pods_UnTaxi.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
+		9E5FB4A0B9201EDFCC5BF44B /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0C732DA334FCFFEE918328 /* Pods_UnTaxi_LlamadaFacil.framework */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
 		AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E171FA51A190019432B /* PerfilViewCell.xib */; };
@@ -41,7 +44,6 @@
 		B5054D771E66051500FEEDE4 /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
 		B5EDE1341D6517B20014130F /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
 		B5F753E51D5D045500FFDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
-		BCA2D2847693BB62B5B452EE /* Pods_UnTaxi_OrientExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FA343AE51AAF819E409BC5 /* Pods_UnTaxi_OrientExpress.framework */; };
 		C6002C4D28FCA49C004C55EE /* PagoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4C28FCA49C004C55EE /* PagoController.swift */; };
 		C6002C4F28FCA7FA004C55EE /* PagoDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */; };
 		C6002C5128FCA94A004C55EE /* PagoFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */; };
@@ -188,7 +190,6 @@
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
-		D07902562EDCA5E8E4B96B20 /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB42DE6DDE75E5907650C66 /* Pods_UnTaxi.framework */; };
 		E43024C43969E2805C32FA15 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F404BB882A7BFE0000D1671E /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
 		F404BB892A7BFE0000D1671E /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
@@ -733,6 +734,192 @@
 		F41603EF2A785837006A3FC1 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41603EC2A785837006A3FC1 /* Asset.xcassets */; };
 		F41603F32A7858FF006A3FC1 /* Andy Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41603F22A7858FF006A3FC1 /* Andy Launch Screen.storyboard */; };
 		F41603F42A7858FF006A3FC1 /* Andy Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41603F22A7858FF006A3FC1 /* Andy Launch Screen.storyboard */; };
+		F43B6A3D2BD6BCB100089E9E /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
+		F43B6A3E2BD6BCB100089E9E /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
+		F43B6A3F2BD6BCB100089E9E /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
+		F43B6A402BD6BCB100089E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656291F9D42DE00C8A5BD /* AppDelegate.swift */; };
+		F43B6A412BD6BCB100089E9E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
+		F43B6A422BD6BCB100089E9E /* Tarifario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9CC25852E5C0023425D /* Tarifario.swift */; };
+		F43B6A432BD6BCB100089E9E /* appStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C2BB5290D5EC700DB59C5 /* appStoreService.swift */; };
+		F43B6A442BD6BCB100089E9E /* UISegmentedContol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62A20F125321022007BCE37 /* UISegmentedContol.swift */; };
+		F43B6A452BD6BCB100089E9E /* ContactoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F35229E3C4F00E3E304 /* ContactoViewCell.swift */; };
+		F43B6A462BD6BCB100089E9E /* Responsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B21245F68C9007B0EE5 /* Responsive.swift */; };
+		F43B6A472BD6BCB100089E9E /* InicioPanelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073B7256E21A20093E4DE /* InicioPanelExt.swift */; };
+		F43B6A482BD6BCB100089E9E /* PublicidadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984132677EF9700C0C353 /* PublicidadService.swift */; };
+		F43B6A492BD6BCB100089E9E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017C02A95782A009A5FED /* Date.swift */; };
+		F43B6A4A2BD6BCB100089E9E /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */; };
+		F43B6A4B2BD6BCB100089E9E /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16572302760B0090F4E0 /* UIButton.swift */; };
+		F43B6A4C2BD6BCB100089E9E /* SolPendientesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0BB1A23B7053800266396 /* SolPendientesViewCell.swift */; };
+		F43B6A4D2BD6BCB100089E9E /* CRuta.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656221F9D42DC00C8A5BD /* CRuta.swift */; };
+		F43B6A4E2BD6BCB100089E9E /* PerfilNombreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE622541437200611B4D /* PerfilNombreCell.swift */; };
+		F43B6A4F2BD6BCB100089E9E /* LoginFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4F1245F32640084F409 /* LoginFunctionsExt.swift */; };
+		F43B6A502BD6BCB100089E9E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E593C24B80F1400FFB26B /* AppConfig.swift */; };
+		F43B6A512BD6BCB100089E9E /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C15230B9CBE0010F6A3 /* BaseController.swift */; };
+		F43B6A522BD6BCB100089E9E /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017B82A954B9F009A5FED /* SplashController.swift */; };
+		F43B6A532BD6BCB100089E9E /* InicioValidationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789126D2863D00F11C56 /* InicioValidationExt.swift */; };
+		F43B6A542BD6BCB100089E9E /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
+		F43B6A552BD6BCB100089E9E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D0597E24997BC10020CFE6 /* UILabel.swift */; };
+		F43B6A562BD6BCB100089E9E /* CompletadaDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAC68128FE3EB10084FBDF /* CompletadaDelegatesExt.swift */; };
+		F43B6A572BD6BCB100089E9E /* apiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B1E245F63BC007B0EE5 /* apiService.swift */; };
+		F43B6A582BD6BCB100089E9E /* YapaPanelTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088501265C01850038303A /* YapaPanelTableExt.swift */; };
+		F43B6A592BD6BCB100089E9E /* ApiRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6FB0227F675A0095AF3C /* ApiRequestController.swift */; };
+		F43B6A5A2BD6BCB100089E9E /* YapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2514265AA09D004716AF /* YapaCell.swift */; };
+		F43B6A5B2BD6BCB100089E9E /* YapaPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7B2577700D0071625E /* YapaPanel.swift */; };
+		F43B6A5C2BD6BCB100089E9E /* SolDetallesFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669841A267CF15A00C0C353 /* SolDetallesFunctionsExt.swift */; };
+		F43B6A5D2BD6BCB100089E9E /* CSMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656201F9D42DC00C8A5BD /* CSMSVoz.swift */; };
+		F43B6A5E2BD6BCB100089E9E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C673EC432672A2CC004EFC39 /* String.swift */; };
+		F43B6A5F2BD6BCB100089E9E /* UIVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F0625546B2300C79BFF /* UIVisualEffectView.swift */; };
+		F43B6A602BD6BCB100089E9E /* SideMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807453256F73EE0093E4DE /* SideMenuTable.swift */; };
+		F43B6A612BD6BCB100089E9E /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA299227E13030029CD0B /* UITextfield.swift */; };
+		F43B6A622BD6BCB100089E9E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630E6C426715B7100700F8D /* Character.swift */; };
+		F43B6A632BD6BCB100089E9E /* GoogleAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC3E9729C6190000FF35E8 /* GoogleAdsService.swift */; };
+		F43B6A642BD6BCB100089E9E /* YapaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6977E7825775E040071625E /* YapaController.swift */; };
+		F43B6A652BD6BCB100089E9E /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A505245F335A0084F409 /* PerfilController.swift */; };
+		F43B6A662BD6BCB100089E9E /* OfertasControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64363A122EBC4A50006F235 /* OfertasControllerExt.swift */; };
+		F43B6A672BD6BCB100089E9E /* PagoYapaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79728F316B700F4A761 /* PagoYapaCell.swift */; };
+		F43B6A682BD6BCB100089E9E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68ED7C02298B94400E2F8AC /* R.generated.swift */; };
+		F43B6A692BD6BCB100089E9E /* PerfilControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A504245F335A0084F409 /* PerfilControllerExt.swift */; };
+		F43B6A6A2BD6BCB100089E9E /* TerminosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F182557326F00C79BFF /* TerminosController.swift */; };
+		F43B6A6B2BD6BCB100089E9E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645789326D4AD1100F11C56 /* UIImageView.swift */; };
+		F43B6A6C2BD6BCB100089E9E /* Solicitud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562F1F9D42DF00C8A5BD /* Solicitud.swift */; };
+		F43B6A6D2BD6BCB100089E9E /* Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29D227E39F20029CD0B /* Customization.swift */; };
+		F43B6A6E2BD6BCB100089E9E /* SOSCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28F28E86E7A00AB79A2 /* SOSCollectionCell.swift */; };
+		F43B6A6F2BD6BCB100089E9E /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445B02597BB1E00ABEC47 /* AddressController.swift */; };
+		F43B6A702BD6BCB100089E9E /* OfertaDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D04D002398CD2E00ACD70C /* OfertaDataViewCell.swift */; };
+		F43B6A712BD6BCB100089E9E /* EsperaChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074732571CDDA0093E4DE /* EsperaChildVC.swift */; };
+		F43B6A722BD6BCB100089E9E /* PagoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4C28FCA49C004C55EE /* PagoController.swift */; };
+		F43B6A732BD6BCB100089E9E /* PactadaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E594024BB669F00FFB26B /* PactadaCell.swift */; };
+		F43B6A742BD6BCB100089E9E /* CompletadaCollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05A625A663DB00E124AB /* CompletadaCollectionExt.swift */; };
+		F43B6A752BD6BCB100089E9E /* SolicitudesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D21F9D390F00C8A5BD /* SolicitudesTableController.swift */; };
+		F43B6A762BD6BCB100089E9E /* Telefono.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656271F9D42DD00C8A5BD /* Telefono.swift */; };
+		F43B6A772BD6BCB100089E9E /* Perfil2ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1A1FA51D910019432B /* Perfil2ViewCell.swift */; };
+		F43B6A782BD6BCB100089E9E /* SolDetallesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5054D761E66051500FEEDE4 /* SolDetallesController.swift */; };
+		F43B6A792BD6BCB100089E9E /* SolicitudHistorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */; };
+		F43B6A7A2BD6BCB100089E9E /* contactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60884FF265BFDF90038303A /* contactService.swift */; };
+		F43B6A7B2BD6BCB100089E9E /* AddressMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E84F7259A0C630048FB0C /* AddressMapExt.swift */; };
+		F43B6A7C2BD6BCB100089E9E /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558724AAEA4700C91725 /* CardViewCell.swift */; };
+		F43B6A7D2BD6BCB100089E9E /* Perfil3ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E1E1FA61F580019432B /* Perfil3ViewCell.swift */; };
+		F43B6A7E2BD6BCB100089E9E /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B925A7E52600E124AB /* CustomCalloutView.swift */; };
+		F43B6A7F2BD6BCB100089E9E /* DetallesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F112554CB8500C79BFF /* DetallesCell.swift */; };
+		F43B6A802BD6BCB100089E9E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29B227E39BE0029CD0B /* GlobalVariables.swift */; };
+		F43B6A812BD6BCB100089E9E /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47017B02A951990009A5FED /* AppOpenAdManager.swift */; };
+		F43B6A822BD6BCB100089E9E /* RegistroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63126BC37580076465D /* RegistroController.swift */; };
+		F43B6A832BD6BCB100089E9E /* Taxi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6562B1F9D42DE00C8A5BD /* Taxi.swift */; };
+		F43B6A842BD6BCB100089E9E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA29F227E3A240029CD0B /* GlobalConstants.swift */; };
+		F43B6A852BD6BCB100089E9E /* pagoApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79328F221BE00F4A761 /* pagoApiService.swift */; };
+		F43B6A862BD6BCB100089E9E /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656261F9D42DD00C8A5BD /* Cliente.swift */; };
+		F43B6A872BD6BCB100089E9E /* InicioFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B3524610386007B0EE5 /* InicioFunctionsExt.swift */; };
+		F43B6A882BD6BCB100089E9E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6807396256E18250093E4DE /* UIViewController.swift */; };
+		F43B6A892BD6BCB100089E9E /* SolViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6566B1FA1734300C8A5BD /* SolViewCell.swift */; };
+		F43B6A8A2BD6BCB100089E9E /* DestinoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6122893247034A70041BB2D /* DestinoCell.swift */; };
+		F43B6A8B2BD6BCB100089E9E /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DA71328518EDE00A7C566 /* StringConstants.swift */; };
+		F43B6A8C2BD6BCB100089E9E /* RegistroFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63326BC439C0076465D /* RegistroFunctionsExt.swift */; };
+		F43B6A8D2BD6BCB100089E9E /* PagoDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */; };
+		F43B6A8E2BD6BCB100089E9E /* OfertaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB322D2BE7300702430 /* OfertaViewCell.swift */; };
+		F43B6A8F2BD6BCB100089E9E /* InicioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A6B29245F7AB0007B0EE5 /* InicioController.swift */; };
+		F43B6A902BD6BCB100089E9E /* CallCenterUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6024F9524A79CA100C91725 /* CallCenterUI.swift */; };
+		F43B6A912BD6BCB100089E9E /* OfertasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C643639F22EBC44E0006F235 /* OfertasController.swift */; };
+		F43B6A922BD6BCB100089E9E /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD7B6A23A53B9F009A48E1 /* UITextView.swift */; };
+		F43B6A932BD6BCB100089E9E /* OrigenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FB55E2579F8CE00B311C4 /* OrigenViewCell.swift */; };
+		F43B6A942BD6BCB100089E9E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602558224A7F60A00C91725 /* Card.swift */; };
+		F43B6A952BD6BCB100089E9E /* AppStoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F1FE6290D742E0011FCAB /* AppStoreVersion.swift */; };
+		F43B6A962BD6BCB100089E9E /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D220721D56150007378D7 /* CSocket.swift */; };
+		F43B6A972BD6BCB100089E9E /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
+		F43B6A982BD6BCB100089E9E /* InicioControllerTablesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445813255F78160000433E /* InicioControllerTablesExt.swift */; };
+		F43B6A992BD6BCB100089E9E /* InicioApiDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603C79928F3783A00F4A761 /* InicioApiDelegatesExt.swift */; };
+		F43B6A9A2BD6BCB100089E9E /* LoginSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EF245F32640084F409 /* LoginSocketExt.swift */; };
+		F43B6A9B2BD6BCB100089E9E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4F0245F32640084F409 /* LoginController.swift */; };
+		F43B6A9C2BD6BCB100089E9E /* OurDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C16552302736B0090F4E0 /* OurDate.swift */; };
+		F43B6A9D2BD6BCB100089E9E /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68074762571E9410093E4DE /* SocketService.swift */; };
+		F43B6A9E2BD6BCB100089E9E /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D62A0802F100E18299 /* InicioSocketExt.swift */; };
+		F43B6A9F2BD6BCB100089E9E /* PagoSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5228FCA9E0004C55EE /* PagoSocketExt.swift */; };
+		F43B6AA02BD6BCB100089E9E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFB122D2BE4900702430 /* UIView.swift */; };
+		F43B6AA12BD6BCB100089E9E /* SolicitudPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680738C256DEAE50093E4DE /* SolicitudPanel.swift */; };
+		F43B6AA22BD6BCB100089E9E /* CallCenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656641FA1734300C8A5BD /* CallCenterViewCell.swift */; };
+		F43B6AA32BD6BCB100089E9E /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F43B6AA42BD6BCB100089E9E /* mapSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670045824674BAA00FF97AB /* mapSevice.swift */; };
+		F43B6AA52BD6BCB100089E9E /* ComentarioCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D05B625A66A4300E124AB /* ComentarioCollectionCell.swift */; };
+		F43B6AA62BD6BCB100089E9E /* InicioSearchExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665F21425D2DECB00044480 /* InicioSearchExt.swift */; };
+		F43B6AA72BD6BCB100089E9E /* SolicitudStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F0A2554AB4C00C79BFF /* SolicitudStatus.swift */; };
+		F43B6AA82BD6BCB100089E9E /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A425979EE900ABEC47 /* CGFloat.swift */; };
+		F43B6AA92BD6BCB100089E9E /* PagoFunctionsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */; };
+		F43B6AAA2BD6BCB100089E9E /* HistorialDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F14255504D600C79BFF /* HistorialDetailsController.swift */; };
+		F43B6AAB2BD6BCB100089E9E /* CompletadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D51F9D391000C8A5BD /* CompletadaController.swift */; };
+		F43B6AAC2BD6BCB100089E9E /* YapaTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F2516265AACC3004716AF /* YapaTableExt.swift */; };
+		F43B6AAD2BD6BCB100089E9E /* Oferta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CACFAC22D26A9300702430 /* Oferta.swift */; };
+		F43B6AAE2BD6BCB100089E9E /* PagoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F9F31229E39CE00E3E304 /* PagoViewCell.swift */; };
+		F43B6AAF2BD6BCB100089E9E /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656321F9D42E000C8A5BD /* Conductor.swift */; };
+		F43B6AB02BD6BCB100089E9E /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622C7A926E6DFF200A2FDF1 /* Address.swift */; };
+		F43B6AB12BD6BCB100089E9E /* SolDetallesMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4C5A12589E50E0054C1A7 /* SolDetallesMapExt.swift */; };
+		F43B6AB22BD6BCB100089E9E /* HistorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE5C253FF9A400611B4D /* HistorialController.swift */; };
+		F43B6AB32BD6BCB100089E9E /* CConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE1331D6517B20014130F /* CConexionInternet.swift */; };
+		F43B6AB42BD6BCB100089E9E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC881292D008400E37F4F /* Alert.swift */; };
+		F43B6AB52BD6BCB100089E9E /* Tarifa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC9C92585242D0023425D /* Tarifa.swift */; };
+		F43B6AB62BD6BCB100089E9E /* InicioMapExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700456246612FE00FF97AB /* InicioMapExt.swift */; };
+		F43B6AB72BD6BCB100089E9E /* CallCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD655D11F9D390F00C8A5BD /* CallCenterController.swift */; };
+		F43B6AB82BD6BCB100089E9E /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63272872588714C000A3931 /* Double.swift */; };
+		F43B6AB92BD6BCB100089E9E /* HistorialTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE5E253FFA7400611B4D /* HistorialTableExt.swift */; };
+		F43B6ABA2BD6BCB100089E9E /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6384BE922A43A46000EB156 /* UIToolbar.swift */; };
+		F43B6ABB2BD6BCB100089E9E /* SMSVoz.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6915F20228500420048C00C /* SMSVoz.swift */; };
+		F43B6ABC2BD6BCB100089E9E /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A37F02255211DA00C79BFF /* HistoryCell.swift */; };
+		F43B6ABD2BD6BCB100089E9E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984182679526E00C0C353 /* Weather.swift */; };
+		F43B6ABE2BD6BCB100089E9E /* Evaluacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD656211F9D42DC00C8A5BD /* Evaluacion.swift */; };
+		F43B6ABF2BD6BCB100089E9E /* SolDetallesSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6253C17230E35940010F6A3 /* SolDetallesSocketExt.swift */; };
+		F43B6AC02BD6BCB100089E9E /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DA297227E12D40029CD0B /* MKMapView.swift */; };
+		F43B6AC12BD6BCB100089E9E /* RegistroDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E63526BC4AA10076465D /* RegistroDelegatesExt.swift */; };
+		F43B6AC22BD6BCB100089E9E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A61290EAA21009039CB /* MapView.swift */; };
+		F43B6AC32BD6BCB100089E9E /* SolDetallesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AEE28A28E8626300AB79A2 /* SolDetallesExt.swift */; };
+		F43B6AC42BD6BCB100089E9E /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
+		F43B6AC52BD6BCB100089E9E /* MyMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6814A5F290DE712009039CB /* MyMapAnnotation.swift */; };
+		F43B6AC62BD6BCB100089E9E /* PassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C619BE6425414BC900611B4D /* PassController.swift */; };
+		F43B6AC72BD6BCB100089E9E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66984162679515900C0C353 /* WeatherService.swift */; };
+		F43B6AC82BD6BCB100089E9E /* PanicoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A95B89257F3CF30028F11A /* PanicoController.swift */; };
+		F43B6ACC2BD6BCB100089E9E /* OfertaDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6D04CFE2398CD1900ACD70C /* OfertaDataCell.xib */; };
+		F43B6ACD2BD6BCB100089E9E /* SolPendientesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6F0BB1823B7049E00266396 /* SolPendientesCell.xib */; };
+		F43B6ACE2BD6BCB100089E9E /* DestinoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6122891247034710041BB2D /* DestinoCell.xib */; };
+		F43B6ACF2BD6BCB100089E9E /* claxon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562D1F9D42DE00C8A5BD /* claxon.mp3 */; };
+		F43B6AD02BD6BCB100089E9E /* ds_digital in Resources */ = {isa = PBXBuildFile; fileRef = AFD656711FA17CD000C8A5BD /* ds_digital */; };
+		F43B6AD12BD6BCB100089E9E /* PerfilViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E171FA51A190019432B /* PerfilViewCell.xib */; };
+		F43B6AD22BD6BCB100089E9E /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198625916F8500A4BF1C /* Muli-Bold.ttf */; };
+		F43B6AD32BD6BCB100089E9E /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
+		F43B6AD42BD6BCB100089E9E /* PagoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F2F229E384200E3E304 /* PagoCell.xib */; };
+		F43B6AD52BD6BCB100089E9E /* xoalogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = AFE16C221FAEB13F00AEDC73 /* xoalogo1.png */; };
+		F43B6AD62BD6BCB100089E9E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
+		F43B6AD72BD6BCB100089E9E /* PagoYapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C603C79528F316A600F4A761 /* PagoYapaViewCell.xib */; };
+		F43B6AD82BD6BCB100089E9E /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197E25916F8400A4BF1C /* Muli-Semi-BoldItalic.ttf */; };
+		F43B6AD92BD6BCB100089E9E /* ContactoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65F9F33229E3BA900E3E304 /* ContactoCell.xib */; };
+		F43B6ADA2BD6BCB100089E9E /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198025916F8400A4BF1C /* Muli-SemiBold.ttf */; };
+		F43B6ADB2BD6BCB100089E9E /* OrigenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C69FB55F2579F8CE00B311C4 /* OrigenCell.xib */; };
+		F43B6ADC2BD6BCB100089E9E /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197D25916F8300A4BF1C /* Muli-Italic.ttf */; };
+		F43B6ADD2BD6BCB100089E9E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B1B245F5E18007B0EE5 /* Login.storyboard */; };
+		F43B6ADE2BD6BCB100089E9E /* userPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EE2254A1F4100C79BFF /* userPhoto.png */; };
+		F43B6ADF2BD6BCB100089E9E /* SOSCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6AEE28D28E86C8300AB79A2 /* SOSCollectionViewCell.xib */; };
+		F43B6AE02BD6BCB100089E9E /* CardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C602558524AAEA1300C91725 /* CardRow.xib */; };
+		F43B6AE12BD6BCB100089E9E /* PerfilNombreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C619BE602541433700611B4D /* PerfilNombreCell.xib */; };
+		F43B6AE22BD6BCB100089E9E /* Andy Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41603F22A7858FF006A3FC1 /* Andy Launch Screen.storyboard */; };
+		F43B6AE32BD6BCB100089E9E /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198325916F8400A4BF1C /* Muli-ExtraLight.ttf */; };
+		F43B6AE42BD6BCB100089E9E /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
+		F43B6AE52BD6BCB100089E9E /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198125916F8400A4BF1C /* Muli-ExtraLightItalic.ttf */; };
+		F43B6AE62BD6BCB100089E9E /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37EFF255211CC00C79BFF /* HistoryViewCell.xib */; };
+		F43B6AE72BD6BCB100089E9E /* DetallesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A37F0E2554CB7200C79BFF /* DetallesViewCell.xib */; };
+		F43B6AE82BD6BCB100089E9E /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFD6562A1F9D42DE00C8A5BD /* beep.wav */; };
+		F43B6AE92BD6BCB100089E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F753E31D5D045500FFDFD0 /* Main.storyboard */; };
+		F43B6AEA2BD6BCB100089E9E /* Perfil2ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1B1FA51D910019432B /* Perfil2ViewCell.xib */; };
+		F43B6AEB2BD6BCB100089E9E /* OfertaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C64DA711285174AA00A7C566 /* OfertaCell.xib */; };
+		F43B6AEC2BD6BCB100089E9E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D67956228BAFFC00C74B6E /* Launch Screen.storyboard */; };
+		F43B6AED2BD6BCB100089E9E /* xoalogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C63A6B23245F6A21007B0EE5 /* xoalogo.png */; };
+		F43B6AEE2BD6BCB100089E9E /* YapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C66F2512265AA070004716AF /* YapaViewCell.xib */; };
+		F43B6AEF2BD6BCB100089E9E /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198225916F8400A4BF1C /* Muli-BoldItalic.ttf */; };
+		F43B6AF02BD6BCB100089E9E /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198425916F8500A4BF1C /* Muli-Light.ttf */; };
+		F43B6AF12BD6BCB100089E9E /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */; };
+		F43B6AF22BD6BCB100089E9E /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
+		F43B6AF32BD6BCB100089E9E /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3197F25916F8400A4BF1C /* Muli.ttf */; };
+		F43B6AF42BD6BCB100089E9E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
+		F43B6AF52BD6BCB100089E9E /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
+		F43B6AF62BD6BCB100089E9E /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
+		F43B6B002BD6BE3400089E9E /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43B6AFE2BD6BE2C00089E9E /* Asset.xcassets */; };
+		F43B6B032BD6CCBF00089E9E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F571521BCE958200FC18D5 /* Info.plist */; };
+		F43B6B052BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43B6B042BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard */; };
 		F452DE4C2A084D8C005BCF55 /* VipCar Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */; };
 		F452DE4D2A084D8C005BCF55 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F452DE4A2A084D8C005BCF55 /* Asset.xcassets */; };
 		F45E0E932A37DE03004A4FEF /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
@@ -1293,17 +1480,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		186110C78980DD79614E15E4 /* Pods-UnTaxi-RuedaCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.release.xcconfig"; sourceTree = "<group>"; };
-		1AEEE49DC295892DA60AB47F /* Pods-UnTaxi-AndyTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.release.xcconfig"; sourceTree = "<group>"; };
-		1FB42DE6DDE75E5907650C66 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D2541BED58D2BA0C712E357 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.release.xcconfig"; sourceTree = "<group>"; };
-		3EC66B7AA1E608349BB29BAB /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; sourceTree = "<group>"; };
-		56FA343AE51AAF819E409BC5 /* Pods_UnTaxi_OrientExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_OrientExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ACE15F8F071DFE6C0368891 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		67DE922F92806D1A5A6B6008 /* Pods-UnTaxi-VipCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.release.xcconfig"; sourceTree = "<group>"; };
-		7372EF9FC5C3FD51884A67AD /* Pods_UnTaxi_LlamadaFacil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_LlamadaFacil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CEDBA14CD6DC93D0543127E /* Pods-UnTaxi-OrientExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.release.xcconfig"; sourceTree = "<group>"; };
-		7D63381188CC7A3B5C8F8E63 /* Pods_UnTaxi_AndyTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_AndyTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09471AE52C2273506446FF4D /* Pods-UnTaxi-OrientExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.debug.xcconfig"; sourceTree = "<group>"; };
+		1A8B4767D51181B7B5C3DD2B /* Pods-UnTaxi-OrientExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.release.xcconfig"; sourceTree = "<group>"; };
+		2846143760337FFF1AA96493 /* Pods-UnTaxi-TransporVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-TransporVIP.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP.debug.xcconfig"; sourceTree = "<group>"; };
+		2DD0A29C4D311D090A736280 /* Pods_UnTaxi_AndyTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_AndyTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B17DE382EE0054EDA330AC3 /* Pods_UnTaxi_RuedaCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_RuedaCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6988C1FA1682510BEBF97F6D /* Pods-UnTaxi-TransporVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-TransporVIP.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP.release.xcconfig"; sourceTree = "<group>"; };
+		6BB8F40E0343E2723F549A13 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		6C0C732DA334FCFFEE918328 /* Pods_UnTaxi_LlamadaFacil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_LlamadaFacil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C9B1421039145BE92BCBE1F /* Pods_UnTaxi_OrientExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_OrientExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		734524A66653089298E70C35 /* Pods-UnTaxi-AndyTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		7EF14B24174023BA26BB04FF /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; sourceTree = "<group>"; };
+		8122E6E20414C171E42A9E38 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1312,9 +1500,10 @@
 		84F5715D1BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F571661BCE958200FC18D5 /* XtaxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiUITests.swift; sourceTree = "<group>"; };
 		84F571681BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		898257AEB325A5728E38C7ED /* Pods-UnTaxi-OrientExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.debug.xcconfig"; sourceTree = "<group>"; };
-		A2324A751779FF9CCA081F67 /* Pods-UnTaxi-VipCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.debug.xcconfig"; sourceTree = "<group>"; };
-		A3E6A96B659EB424469F8B4C /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
+		8FA5AB930D5EBF817ACAECBF /* Pods_UnTaxi_TransporVIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_TransporVIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DF6A215E90BB54E720FC60 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.debug.xcconfig"; sourceTree = "<group>"; };
+		AA7F4120227CCB1E1BD6BA02 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.debug.xcconfig"; sourceTree = "<group>"; };
+		AE5059C258C735895FB60CA6 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 		AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCenterViewCell.xib; sourceTree = "<group>"; };
 		AF3D9E161FA51A190019432B /* PerfilViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewCell.swift; sourceTree = "<group>"; };
 		AF3D9E171FA51A190019432B /* PerfilViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PerfilViewCell.xib; sourceTree = "<group>"; };
@@ -1345,7 +1534,6 @@
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF6F2CBE8BAFF5D11FDAF50E /* Pods_UnTaxi_VipCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_VipCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6002C4C28FCA49C004C55EE /* PagoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoController.swift; sourceTree = "<group>"; };
 		C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoDelegatesExt.swift; sourceTree = "<group>"; };
 		C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoFunctionsExt.swift; sourceTree = "<group>"; };
@@ -1492,9 +1680,8 @@
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		D0B017057BB706751E7F833F /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		D42DA87C5B2D5A31CF1B8A14 /* Pods_UnTaxi_RuedaCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_RuedaCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1F6A001F1ACDE5E61C349F1 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.debug.xcconfig"; sourceTree = "<group>"; };
+		C9D456892B116755AA901B7C /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.release.xcconfig"; sourceTree = "<group>"; };
+		DE43EE61AE94270F7CD5F3CC /* Pods-UnTaxi-RuedaCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.release.xcconfig"; sourceTree = "<group>"; };
 		F404BC452A7BFE0000D1671E /* RuedaCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuedaCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F404BC482A7BFEEE00D1671E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F404BC492A7BFEEE00D1671E /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
@@ -1507,6 +1694,10 @@
 		F41603EC2A785837006A3FC1 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		F41603ED2A785837006A3FC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41603F22A7858FF006A3FC1 /* Andy Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Andy Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F43B6AFB2BD6BCB100089E9E /* TransporVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransporVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43B6AFC2BD6BCB200089E9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/done/Documents/Documents - Done’s Mac mini/Repos/UnTaxi/Info.plist"; sourceTree = "<absolute>"; };
+		F43B6AFE2BD6BE2C00089E9E /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
+		F43B6B042BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "TransporVIP Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F452DE482A084D8C005BCF55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "VipCar Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F452DE4A2A084D8C005BCF55 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
@@ -1526,6 +1717,9 @@
 		F4E131D62A0802F100E18299 /* InicioSocketExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioSocketExt.swift; sourceTree = "<group>"; };
 		F4E132992A08121A00E18299 /* VipCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E746102B3E153A0059A08C /* VerificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationController.swift; sourceTree = "<group>"; };
+		F7224FE6577AD5631E734AEB /* Pods-UnTaxi-VipCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.debug.xcconfig"; sourceTree = "<group>"; };
+		FAAA8C575E0E33CBA1D3F6C6 /* Pods_UnTaxi_VipCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_VipCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDDBBC0C67EEDB28143689AC /* Pods-UnTaxi-VipCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1533,7 +1727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D07902562EDCA5E8E4B96B20 /* Pods_UnTaxi.framework in Frameworks */,
+				78D14DB99AB6DAB1F91908A7 /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1541,7 +1735,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3347290BBB5D4CF434CAF25D /* Pods_UnTaxi_RuedaCar.framework in Frameworks */,
+				6420787D99D2FC95DE010128 /* Pods_UnTaxi_RuedaCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1552,7 +1746,7 @@
 				F41602F12A6D96E8006A3FC1 /* (null) in Frameworks */,
 				F41602F22A6D96E8006A3FC1 /* (null) in Frameworks */,
 				50EC68222FB79B77BC88EF19 /* (null) in Frameworks */,
-				BCA2D2847693BB62B5B452EE /* Pods_UnTaxi_OrientExpress.framework in Frameworks */,
+				20CF639C16015135D71BFED6 /* Pods_UnTaxi_OrientExpress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1561,7 +1755,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E43024C43969E2805C32FA15 /* (null) in Frameworks */,
-				2CCBBC7F6435EA31EAF4522D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */,
+				3BF0EAC5F51BCF34F66AE7AD /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F43B6AC92BD6BCB100089E9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117763881D37AD378650DCA6 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1569,7 +1771,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4111D1E11D360D8300F2DF90 /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */,
+				9E5FB4A0B9201EDFCC5BF44B /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1584,7 +1786,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A9A419B79459D47121F7232 /* Pods_UnTaxi_VipCar.framework in Frameworks */,
+				6BFA5E6F9A45C326BE517583 /* Pods_UnTaxi_VipCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1597,12 +1799,13 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				1FB42DE6DDE75E5907650C66 /* Pods_UnTaxi.framework */,
-				7D63381188CC7A3B5C8F8E63 /* Pods_UnTaxi_AndyTaxi.framework */,
-				7372EF9FC5C3FD51884A67AD /* Pods_UnTaxi_LlamadaFacil.framework */,
-				56FA343AE51AAF819E409BC5 /* Pods_UnTaxi_OrientExpress.framework */,
-				D42DA87C5B2D5A31CF1B8A14 /* Pods_UnTaxi_RuedaCar.framework */,
-				BF6F2CBE8BAFF5D11FDAF50E /* Pods_UnTaxi_VipCar.framework */,
+				8122E6E20414C171E42A9E38 /* Pods_UnTaxi.framework */,
+				2DD0A29C4D311D090A736280 /* Pods_UnTaxi_AndyTaxi.framework */,
+				6C0C732DA334FCFFEE918328 /* Pods_UnTaxi_LlamadaFacil.framework */,
+				6C9B1421039145BE92BCBE1F /* Pods_UnTaxi_OrientExpress.framework */,
+				3B17DE382EE0054EDA330AC3 /* Pods_UnTaxi_RuedaCar.framework */,
+				8FA5AB930D5EBF817ACAECBF /* Pods_UnTaxi_TransporVIP.framework */,
+				FAAA8C575E0E33CBA1D3F6C6 /* Pods_UnTaxi_VipCar.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1647,6 +1850,7 @@
 				F41603E92A785746006A3FC1 /* AndyTaxi.app */,
 				F404BC452A7BFE0000D1671E /* RuedaCar.app */,
 				F47018A32A96A758009A5FED /* Autoamigo.app */,
+				F43B6AFB2BD6BCB100089E9E /* TransporVIP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2174,18 +2378,20 @@
 		DA53F09E53843FFE9BFE048B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5ACE15F8F071DFE6C0368891 /* Pods-UnTaxi.debug.xcconfig */,
-				A3E6A96B659EB424469F8B4C /* Pods-UnTaxi.release.xcconfig */,
-				D0B017057BB706751E7F833F /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */,
-				1AEEE49DC295892DA60AB47F /* Pods-UnTaxi-AndyTaxi.release.xcconfig */,
-				3EC66B7AA1E608349BB29BAB /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */,
-				2D2541BED58D2BA0C712E357 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */,
-				898257AEB325A5728E38C7ED /* Pods-UnTaxi-OrientExpress.debug.xcconfig */,
-				7CEDBA14CD6DC93D0543127E /* Pods-UnTaxi-OrientExpress.release.xcconfig */,
-				F1F6A001F1ACDE5E61C349F1 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */,
-				186110C78980DD79614E15E4 /* Pods-UnTaxi-RuedaCar.release.xcconfig */,
-				A2324A751779FF9CCA081F67 /* Pods-UnTaxi-VipCar.debug.xcconfig */,
-				67DE922F92806D1A5A6B6008 /* Pods-UnTaxi-VipCar.release.xcconfig */,
+				AE5059C258C735895FB60CA6 /* Pods-UnTaxi.debug.xcconfig */,
+				6BB8F40E0343E2723F549A13 /* Pods-UnTaxi.release.xcconfig */,
+				96DF6A215E90BB54E720FC60 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */,
+				734524A66653089298E70C35 /* Pods-UnTaxi-AndyTaxi.release.xcconfig */,
+				7EF14B24174023BA26BB04FF /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */,
+				C9D456892B116755AA901B7C /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */,
+				09471AE52C2273506446FF4D /* Pods-UnTaxi-OrientExpress.debug.xcconfig */,
+				1A8B4767D51181B7B5C3DD2B /* Pods-UnTaxi-OrientExpress.release.xcconfig */,
+				AA7F4120227CCB1E1BD6BA02 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */,
+				DE43EE61AE94270F7CD5F3CC /* Pods-UnTaxi-RuedaCar.release.xcconfig */,
+				2846143760337FFF1AA96493 /* Pods-UnTaxi-TransporVIP.debug.xcconfig */,
+				6988C1FA1682510BEBF97F6D /* Pods-UnTaxi-TransporVIP.release.xcconfig */,
+				F7224FE6577AD5631E734AEB /* Pods-UnTaxi-VipCar.debug.xcconfig */,
+				FDDBBC0C67EEDB28143689AC /* Pods-UnTaxi-VipCar.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2218,6 +2424,16 @@
 				F41603F22A7858FF006A3FC1 /* Andy Launch Screen.storyboard */,
 			);
 			path = AndyTaxi;
+			sourceTree = "<group>";
+		};
+		F43B6AFD2BD6BD3C00089E9E /* TransporVIP */ = {
+			isa = PBXGroup;
+			children = (
+				F43B6AFE2BD6BE2C00089E9E /* Asset.xcassets */,
+				F43B6AFC2BD6BCB200089E9E /* Info.plist */,
+				F43B6B042BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard */,
+			);
+			path = TransporVIP;
 			sourceTree = "<group>";
 		};
 		F452DE3E2A084CDB005BCF55 /* VipCar */ = {
@@ -2261,6 +2477,7 @@
 		F4E131D82A08100200E18299 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				F43B6AFD2BD6BD3C00089E9E /* TransporVIP */,
 				F47017C72A96A04F009A5FED /* Autoamigo */,
 				F404BC472A7BFE2700D1671E /* RuedaCar */,
 				F41603EB2A7857E3006A3FC1 /* AndyTaxi */,
@@ -2278,12 +2495,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				D7BD8001EA78B2E4FFA71556 /* [CP] Check Pods Manifest.lock */,
+				2E257157E69BBC31B3C64D7D /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				51781EBB0367C4E1F963D78B /* [CP] Embed Pods Frameworks */,
+				9E6DBD8DB1378F5CFBE9B7D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2298,12 +2515,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F404BC422A7BFE0000D1671E /* Build configuration list for PBXNativeTarget "RuedaCar" */;
 			buildPhases = (
-				AC5A701EA59C585812EE8964 /* [CP] Check Pods Manifest.lock */,
+				5D22C0AF0673B67E12449F4D /* [CP] Check Pods Manifest.lock */,
 				F404BB862A7BFE0000D1671E /* Run Script */,
 				F404BB872A7BFE0000D1671E /* Sources */,
 				F404BC102A7BFE0000D1671E /* Frameworks */,
 				F404BC122A7BFE0000D1671E /* Resources */,
-				BD11422AF2CE6A0EAEFF4115 /* [CP] Embed Pods Frameworks */,
+				29A0FF71A670933E05844B43 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2318,12 +2535,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F41603222A6D96E8006A3FC1 /* Build configuration list for PBXNativeTarget "OrientExpress" */;
 			buildPhases = (
-				FBF2154D91C6F834DD8E4E69 /* [CP] Check Pods Manifest.lock */,
+				63C03C645F1A85D02E502D64 /* [CP] Check Pods Manifest.lock */,
 				F41602662A6D96E8006A3FC1 /* Run Script */,
 				F41602672A6D96E8006A3FC1 /* Sources */,
 				F41602F02A6D96E8006A3FC1 /* Frameworks */,
 				F41602F32A6D96E8006A3FC1 /* Resources */,
-				4ECDD76096F67C263AB7CB22 /* [CP] Embed Pods Frameworks */,
+				D2A686DDDF02EB5B0F5FB63F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2338,12 +2555,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F41603E62A785746006A3FC1 /* Build configuration list for PBXNativeTarget "AndyTaxi" */;
 			buildPhases = (
-				F39F6F214EDB79BA698B4029 /* [CP] Check Pods Manifest.lock */,
+				ED338DB2060EEF4A858B9E0D /* [CP] Check Pods Manifest.lock */,
 				F416032A2A785746006A3FC1 /* Run Script */,
 				F416032B2A785746006A3FC1 /* Sources */,
 				F41603B42A785746006A3FC1 /* Frameworks */,
 				F41603B82A785746006A3FC1 /* Resources */,
-				E880A923B5EE4BA0472703C8 /* [CP] Embed Pods Frameworks */,
+				BA6D842973D538DAC3A801CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2354,16 +2571,36 @@
 			productReference = F41603E92A785746006A3FC1 /* AndyTaxi.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F43B6A392BD6BCB100089E9E /* TransporVIP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F43B6AF82BD6BCB100089E9E /* Build configuration list for PBXNativeTarget "TransporVIP" */;
+			buildPhases = (
+				D298C0AB40A2C1A4B94AAB0F /* [CP] Check Pods Manifest.lock */,
+				F43B6A3B2BD6BCB100089E9E /* Run Script */,
+				F43B6A3C2BD6BCB100089E9E /* Sources */,
+				F43B6AC92BD6BCB100089E9E /* Frameworks */,
+				F43B6ACB2BD6BCB100089E9E /* Resources */,
+				5516B2BE1854D695B2665EA2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TransporVIP;
+			productName = Xtaxi;
+			productReference = F43B6AFB2BD6BCB100089E9E /* TransporVIP.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F45E0E8F2A37DE03004A4FEF /* LlamadaFacil */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F45E0F492A37DE03004A4FEF /* Build configuration list for PBXNativeTarget "LlamadaFacil" */;
 			buildPhases = (
-				00FDA1DCD919AB755A71F6A9 /* [CP] Check Pods Manifest.lock */,
+				370217D999755EECC8D09D5C /* [CP] Check Pods Manifest.lock */,
 				F45E0E912A37DE03004A4FEF /* Run Script */,
 				F45E0E922A37DE03004A4FEF /* Sources */,
 				F45E0F1A2A37DE03004A4FEF /* Frameworks */,
 				F45E0F1D2A37DE03004A4FEF /* Resources */,
-				9F64E0C2711024BBE6EA819E /* [CP] Embed Pods Frameworks */,
+				A426A8EA2B0065FFD72D5400 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2396,12 +2633,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E132962A08121A00E18299 /* Build configuration list for PBXNativeTarget "VipCar" */;
 			buildPhases = (
-				CC9D1870A59703C9DAEFAF2B /* [CP] Check Pods Manifest.lock */,
+				C6EE0AB8498A642FD7C2219F /* [CP] Check Pods Manifest.lock */,
 				F4E131DD2A08121A00E18299 /* Run Script */,
 				F4E131DE2A08121A00E18299 /* Sources */,
 				F4E132662A08121A00E18299 /* Frameworks */,
 				F4E132682A08121A00E18299 /* Resources */,
-				B44DB13A5916A3C65B058116 /* [CP] Embed Pods Frameworks */,
+				0D3A1FE49362229BC2D2145F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2484,6 +2721,7 @@
 				F41603282A785746006A3FC1 /* AndyTaxi */,
 				F404BB842A7BFE0000D1671E /* RuedaCar */,
 				F47017DD2A96A758009A5FED /* Autoamigo */,
+				F43B6A392BD6BCB100089E9E /* TransporVIP */,
 			);
 		};
 /* End PBXProject section */
@@ -2501,6 +2739,7 @@
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
 				C6D3199025916F8500A4BF1C /* Muli-Bold.ttf in Resources */,
 				C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */,
+				F43B6B032BD6CCBF00089E9E /* Info.plist in Resources */,
 				C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
@@ -2695,6 +2934,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F43B6ACB2BD6BCB100089E9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43B6ACC2BD6BCB100089E9E /* OfertaDataCell.xib in Resources */,
+				F43B6ACD2BD6BCB100089E9E /* SolPendientesCell.xib in Resources */,
+				F43B6ACE2BD6BCB100089E9E /* DestinoCell.xib in Resources */,
+				F43B6ACF2BD6BCB100089E9E /* claxon.mp3 in Resources */,
+				F43B6AD02BD6BCB100089E9E /* ds_digital in Resources */,
+				F43B6AD12BD6BCB100089E9E /* PerfilViewCell.xib in Resources */,
+				F43B6AD22BD6BCB100089E9E /* Muli-Bold.ttf in Resources */,
+				F43B6AD32BD6BCB100089E9E /* DS-DIGII.TTF in Resources */,
+				F43B6AD42BD6BCB100089E9E /* PagoCell.xib in Resources */,
+				F43B6AD52BD6BCB100089E9E /* xoalogo1.png in Resources */,
+				F43B6AD62BD6BCB100089E9E /* Entitlements.plist in Resources */,
+				F43B6B052BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard in Resources */,
+				F43B6AD72BD6BCB100089E9E /* PagoYapaViewCell.xib in Resources */,
+				F43B6AD82BD6BCB100089E9E /* Muli-Semi-BoldItalic.ttf in Resources */,
+				F43B6AD92BD6BCB100089E9E /* ContactoCell.xib in Resources */,
+				F43B6ADA2BD6BCB100089E9E /* Muli-SemiBold.ttf in Resources */,
+				F43B6ADB2BD6BCB100089E9E /* OrigenCell.xib in Resources */,
+				F43B6ADC2BD6BCB100089E9E /* Muli-Italic.ttf in Resources */,
+				F43B6ADD2BD6BCB100089E9E /* Login.storyboard in Resources */,
+				F43B6ADE2BD6BCB100089E9E /* userPhoto.png in Resources */,
+				F43B6ADF2BD6BCB100089E9E /* SOSCollectionViewCell.xib in Resources */,
+				F43B6AE02BD6BCB100089E9E /* CardRow.xib in Resources */,
+				F43B6AE12BD6BCB100089E9E /* PerfilNombreCell.xib in Resources */,
+				F43B6AE22BD6BCB100089E9E /* Andy Launch Screen.storyboard in Resources */,
+				F43B6AE32BD6BCB100089E9E /* Muli-ExtraLight.ttf in Resources */,
+				F43B6AE42BD6BCB100089E9E /* CallCenterViewCell.xib in Resources */,
+				F43B6AE52BD6BCB100089E9E /* Muli-ExtraLightItalic.ttf in Resources */,
+				F43B6AE62BD6BCB100089E9E /* HistoryViewCell.xib in Resources */,
+				F43B6AE72BD6BCB100089E9E /* DetallesViewCell.xib in Resources */,
+				F43B6AE82BD6BCB100089E9E /* beep.wav in Resources */,
+				F43B6AE92BD6BCB100089E9E /* Main.storyboard in Resources */,
+				F43B6AEA2BD6BCB100089E9E /* Perfil2ViewCell.xib in Resources */,
+				F43B6AEB2BD6BCB100089E9E /* OfertaCell.xib in Resources */,
+				F43B6AEC2BD6BCB100089E9E /* Launch Screen.storyboard in Resources */,
+				F43B6AED2BD6BCB100089E9E /* xoalogo.png in Resources */,
+				F43B6B002BD6BE3400089E9E /* Asset.xcassets in Resources */,
+				F43B6AEE2BD6BCB100089E9E /* YapaViewCell.xib in Resources */,
+				F43B6AEF2BD6BCB100089E9E /* Muli-BoldItalic.ttf in Resources */,
+				F43B6AF02BD6BCB100089E9E /* Muli-Light.ttf in Resources */,
+				F43B6AF12BD6BCB100089E9E /* Perfil3ViewCell.xib in Resources */,
+				F43B6AF22BD6BCB100089E9E /* PactadaCell.xib in Resources */,
+				F43B6AF32BD6BCB100089E9E /* Muli.ttf in Resources */,
+				F43B6AF42BD6BCB100089E9E /* .gitignore in Resources */,
+				F43B6AF52BD6BCB100089E9E /* Images-5.xcassets in Resources */,
+				F43B6AF62BD6BCB100089E9E /* Muli-LightItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F45E0F1D2A37DE03004A4FEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2834,273 +3125,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00FDA1DCD919AB755A71F6A9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-LlamadaFacil-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4ECDD76096F67C263AB7CB22 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		51781EBB0367C4E1F963D78B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9F64E0C2711024BBE6EA819E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC5A701EA59C585812EE8964 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-RuedaCar-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B44DB13A5916A3C65B058116 /* [CP] Embed Pods Frameworks */ = {
+		0D3A1FE49362229BC2D2145F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3174,7 +3199,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BD11422AF2CE6A0EAEFF4115 /* [CP] Embed Pods Frameworks */ = {
+		29A0FF71A670933E05844B43 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3248,50 +3273,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		CC9D1870A59703C9DAEFAF2B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-VipCar-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D7BD8001EA78B2E4FFA71556 /* [CP] Check Pods Manifest.lock */ = {
+		2E257157E69BBC31B3C64D7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3313,7 +3295,295 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E880A923B5EE4BA0472703C8 /* [CP] Embed Pods Frameworks */ = {
+		370217D999755EECC8D09D5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-LlamadaFacil-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5516B2BE1854D695B2665EA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D22C0AF0673B67E12449F4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-RuedaCar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63C03C645F1A85D02E502D64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-OrientExpress-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E6DBD8DB1378F5CFBE9B7D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A426A8EA2B0065FFD72D5400 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA6D842973D538DAC3A801CD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3387,7 +3657,146 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F39F6F214EDB79BA698B4029 /* [CP] Check Pods Manifest.lock */ = {
+		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		C6EE0AB8498A642FD7C2219F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-VipCar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D298C0AB40A2C1A4B94AAB0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-TransporVIP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2A686DDDF02EB5B0F5FB63F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxGeocoder.swift/MapboxGeocoder.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMaps/MapboxMaps.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCoreMaps/MapboxCoreMaps.framework/MapboxCoreMaps",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework/MapboxMobileEvents",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearch/MapboxSearch.framework/MapboxSearch",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxSearchUI/MapboxSearchUI.framework/MapboxSearchUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxGeocoder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreMaps.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSearchUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED338DB2060EEF4A858B9E0D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3469,6 +3878,27 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
+		F43B6A3B2BD6BCB100089E9E /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		F45E0E912A37DE03004A4FEF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3528,28 +3958,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		FBF2154D91C6F834DD8E4E69 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-OrientExpress-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4142,6 +4550,153 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F43B6A3C2BD6BCB100089E9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43B6A3D2BD6BCB100089E9E /* SideMenuController.swift in Sources */,
+				F43B6A3E2BD6BCB100089E9E /* AdaptiveLayoutConstraint.swift in Sources */,
+				F43B6A3F2BD6BCB100089E9E /* LoginDelegatesExt.swift in Sources */,
+				F43B6A402BD6BCB100089E9E /* AppDelegate.swift in Sources */,
+				F43B6A412BD6BCB100089E9E /* UIImage.swift in Sources */,
+				F43B6A422BD6BCB100089E9E /* Tarifario.swift in Sources */,
+				F43B6A432BD6BCB100089E9E /* appStoreService.swift in Sources */,
+				F43B6A442BD6BCB100089E9E /* UISegmentedContol.swift in Sources */,
+				F43B6A452BD6BCB100089E9E /* ContactoViewCell.swift in Sources */,
+				F43B6A462BD6BCB100089E9E /* Responsive.swift in Sources */,
+				F43B6A472BD6BCB100089E9E /* InicioPanelExt.swift in Sources */,
+				F43B6A482BD6BCB100089E9E /* PublicidadService.swift in Sources */,
+				F43B6A492BD6BCB100089E9E /* Date.swift in Sources */,
+				F43B6A4A2BD6BCB100089E9E /* InicioControllerExt.swift in Sources */,
+				F43B6A4B2BD6BCB100089E9E /* UIButton.swift in Sources */,
+				F43B6A4C2BD6BCB100089E9E /* SolPendientesViewCell.swift in Sources */,
+				F43B6A4D2BD6BCB100089E9E /* CRuta.swift in Sources */,
+				F43B6A4E2BD6BCB100089E9E /* PerfilNombreCell.swift in Sources */,
+				F43B6A4F2BD6BCB100089E9E /* LoginFunctionsExt.swift in Sources */,
+				F43B6A502BD6BCB100089E9E /* AppConfig.swift in Sources */,
+				F43B6A512BD6BCB100089E9E /* BaseController.swift in Sources */,
+				F43B6A522BD6BCB100089E9E /* SplashController.swift in Sources */,
+				F43B6A532BD6BCB100089E9E /* InicioValidationExt.swift in Sources */,
+				F43B6A542BD6BCB100089E9E /* ConfigMessage.swift in Sources */,
+				F43B6A552BD6BCB100089E9E /* UILabel.swift in Sources */,
+				F43B6A562BD6BCB100089E9E /* CompletadaDelegatesExt.swift in Sources */,
+				F43B6A572BD6BCB100089E9E /* apiService.swift in Sources */,
+				F43B6A582BD6BCB100089E9E /* YapaPanelTableExt.swift in Sources */,
+				F43B6A592BD6BCB100089E9E /* ApiRequestController.swift in Sources */,
+				F43B6A5A2BD6BCB100089E9E /* YapaCell.swift in Sources */,
+				F43B6A5B2BD6BCB100089E9E /* YapaPanel.swift in Sources */,
+				F43B6A5C2BD6BCB100089E9E /* SolDetallesFunctionsExt.swift in Sources */,
+				F43B6A5D2BD6BCB100089E9E /* CSMSVoz.swift in Sources */,
+				F43B6A5E2BD6BCB100089E9E /* String.swift in Sources */,
+				F43B6A5F2BD6BCB100089E9E /* UIVisualEffectView.swift in Sources */,
+				F43B6A602BD6BCB100089E9E /* SideMenuTable.swift in Sources */,
+				F43B6A612BD6BCB100089E9E /* UITextfield.swift in Sources */,
+				F43B6A622BD6BCB100089E9E /* Character.swift in Sources */,
+				F43B6A632BD6BCB100089E9E /* GoogleAdsService.swift in Sources */,
+				F43B6A642BD6BCB100089E9E /* YapaController.swift in Sources */,
+				F43B6A652BD6BCB100089E9E /* PerfilController.swift in Sources */,
+				F43B6A662BD6BCB100089E9E /* OfertasControllerExt.swift in Sources */,
+				F43B6A672BD6BCB100089E9E /* PagoYapaCell.swift in Sources */,
+				F43B6A682BD6BCB100089E9E /* R.generated.swift in Sources */,
+				F43B6A692BD6BCB100089E9E /* PerfilControllerExt.swift in Sources */,
+				F43B6A6A2BD6BCB100089E9E /* TerminosController.swift in Sources */,
+				F43B6A6B2BD6BCB100089E9E /* UIImageView.swift in Sources */,
+				F43B6A6C2BD6BCB100089E9E /* Solicitud.swift in Sources */,
+				F43B6A6D2BD6BCB100089E9E /* Customization.swift in Sources */,
+				F43B6A6E2BD6BCB100089E9E /* SOSCollectionCell.swift in Sources */,
+				F43B6A6F2BD6BCB100089E9E /* AddressController.swift in Sources */,
+				F43B6A702BD6BCB100089E9E /* OfertaDataViewCell.swift in Sources */,
+				F43B6A712BD6BCB100089E9E /* EsperaChildVC.swift in Sources */,
+				F43B6A722BD6BCB100089E9E /* PagoController.swift in Sources */,
+				F43B6A732BD6BCB100089E9E /* PactadaCell.swift in Sources */,
+				F43B6A742BD6BCB100089E9E /* CompletadaCollectionExt.swift in Sources */,
+				F43B6A752BD6BCB100089E9E /* SolicitudesTableController.swift in Sources */,
+				F43B6A762BD6BCB100089E9E /* Telefono.swift in Sources */,
+				F43B6A772BD6BCB100089E9E /* Perfil2ViewCell.swift in Sources */,
+				F43B6A782BD6BCB100089E9E /* SolDetallesController.swift in Sources */,
+				F43B6A792BD6BCB100089E9E /* SolicitudHistorial.swift in Sources */,
+				F43B6A7A2BD6BCB100089E9E /* contactService.swift in Sources */,
+				F43B6A7B2BD6BCB100089E9E /* AddressMapExt.swift in Sources */,
+				F43B6A7C2BD6BCB100089E9E /* CardViewCell.swift in Sources */,
+				F43B6A7D2BD6BCB100089E9E /* Perfil3ViewCell.swift in Sources */,
+				F43B6A7E2BD6BCB100089E9E /* CustomCalloutView.swift in Sources */,
+				F43B6A7F2BD6BCB100089E9E /* DetallesCell.swift in Sources */,
+				F43B6A802BD6BCB100089E9E /* GlobalVariables.swift in Sources */,
+				F43B6A812BD6BCB100089E9E /* AppOpenAdManager.swift in Sources */,
+				F43B6A822BD6BCB100089E9E /* RegistroController.swift in Sources */,
+				F43B6A832BD6BCB100089E9E /* Taxi.swift in Sources */,
+				F43B6A842BD6BCB100089E9E /* GlobalConstants.swift in Sources */,
+				F43B6A852BD6BCB100089E9E /* pagoApiService.swift in Sources */,
+				F43B6A862BD6BCB100089E9E /* Cliente.swift in Sources */,
+				F43B6A872BD6BCB100089E9E /* InicioFunctionsExt.swift in Sources */,
+				F43B6A882BD6BCB100089E9E /* UIViewController.swift in Sources */,
+				F43B6A892BD6BCB100089E9E /* SolViewCell.swift in Sources */,
+				F43B6A8A2BD6BCB100089E9E /* DestinoCell.swift in Sources */,
+				F43B6A8B2BD6BCB100089E9E /* StringConstants.swift in Sources */,
+				F43B6A8C2BD6BCB100089E9E /* RegistroFunctionsExt.swift in Sources */,
+				F43B6A8D2BD6BCB100089E9E /* PagoDelegatesExt.swift in Sources */,
+				F43B6A8E2BD6BCB100089E9E /* OfertaViewCell.swift in Sources */,
+				F43B6A8F2BD6BCB100089E9E /* InicioController.swift in Sources */,
+				F43B6A902BD6BCB100089E9E /* CallCenterUI.swift in Sources */,
+				F43B6A912BD6BCB100089E9E /* OfertasController.swift in Sources */,
+				F43B6A922BD6BCB100089E9E /* UITextView.swift in Sources */,
+				F43B6A932BD6BCB100089E9E /* OrigenViewCell.swift in Sources */,
+				F43B6A942BD6BCB100089E9E /* Card.swift in Sources */,
+				F43B6A952BD6BCB100089E9E /* AppStoreVersion.swift in Sources */,
+				F43B6A962BD6BCB100089E9E /* CSocket.swift in Sources */,
+				F43B6A972BD6BCB100089E9E /* DireccionPactada.swift in Sources */,
+				F43B6A982BD6BCB100089E9E /* InicioControllerTablesExt.swift in Sources */,
+				F43B6A992BD6BCB100089E9E /* InicioApiDelegatesExt.swift in Sources */,
+				F43B6A9A2BD6BCB100089E9E /* LoginSocketExt.swift in Sources */,
+				F43B6A9B2BD6BCB100089E9E /* LoginController.swift in Sources */,
+				F43B6A9C2BD6BCB100089E9E /* OurDate.swift in Sources */,
+				F43B6A9D2BD6BCB100089E9E /* SocketService.swift in Sources */,
+				F43B6A9E2BD6BCB100089E9E /* InicioSocketExt.swift in Sources */,
+				F43B6A9F2BD6BCB100089E9E /* PagoSocketExt.swift in Sources */,
+				F43B6AA02BD6BCB100089E9E /* UIView.swift in Sources */,
+				F43B6AA12BD6BCB100089E9E /* SolicitudPanel.swift in Sources */,
+				F43B6AA22BD6BCB100089E9E /* CallCenterViewCell.swift in Sources */,
+				F43B6AA32BD6BCB100089E9E /* VerificationController.swift in Sources */,
+				F43B6AA42BD6BCB100089E9E /* mapSevice.swift in Sources */,
+				F43B6AA52BD6BCB100089E9E /* ComentarioCollectionCell.swift in Sources */,
+				F43B6AA62BD6BCB100089E9E /* InicioSearchExt.swift in Sources */,
+				F43B6AA72BD6BCB100089E9E /* SolicitudStatus.swift in Sources */,
+				F43B6AA82BD6BCB100089E9E /* CGFloat.swift in Sources */,
+				F43B6AA92BD6BCB100089E9E /* PagoFunctionsExt.swift in Sources */,
+				F43B6AAA2BD6BCB100089E9E /* HistorialDetailsController.swift in Sources */,
+				F43B6AAB2BD6BCB100089E9E /* CompletadaController.swift in Sources */,
+				F43B6AAC2BD6BCB100089E9E /* YapaTableExt.swift in Sources */,
+				F43B6AAD2BD6BCB100089E9E /* Oferta.swift in Sources */,
+				F43B6AAE2BD6BCB100089E9E /* PagoViewCell.swift in Sources */,
+				F43B6AAF2BD6BCB100089E9E /* Conductor.swift in Sources */,
+				F43B6AB02BD6BCB100089E9E /* Address.swift in Sources */,
+				F43B6AB12BD6BCB100089E9E /* SolDetallesMapExt.swift in Sources */,
+				F43B6AB22BD6BCB100089E9E /* HistorialController.swift in Sources */,
+				F43B6AB32BD6BCB100089E9E /* CConexionInternet.swift in Sources */,
+				F43B6AB42BD6BCB100089E9E /* Alert.swift in Sources */,
+				F43B6AB52BD6BCB100089E9E /* Tarifa.swift in Sources */,
+				F43B6AB62BD6BCB100089E9E /* InicioMapExt.swift in Sources */,
+				F43B6AB72BD6BCB100089E9E /* CallCenterController.swift in Sources */,
+				F43B6AB82BD6BCB100089E9E /* Double.swift in Sources */,
+				F43B6AB92BD6BCB100089E9E /* HistorialTableExt.swift in Sources */,
+				F43B6ABA2BD6BCB100089E9E /* UIToolbar.swift in Sources */,
+				F43B6ABB2BD6BCB100089E9E /* SMSVoz.swift in Sources */,
+				F43B6ABC2BD6BCB100089E9E /* HistoryCell.swift in Sources */,
+				F43B6ABD2BD6BCB100089E9E /* Weather.swift in Sources */,
+				F43B6ABE2BD6BCB100089E9E /* Evaluacion.swift in Sources */,
+				F43B6ABF2BD6BCB100089E9E /* SolDetallesSocketExt.swift in Sources */,
+				F43B6AC02BD6BCB100089E9E /* MKMapView.swift in Sources */,
+				F43B6AC12BD6BCB100089E9E /* RegistroDelegatesExt.swift in Sources */,
+				F43B6AC22BD6BCB100089E9E /* MapView.swift in Sources */,
+				F43B6AC32BD6BCB100089E9E /* SolDetallesExt.swift in Sources */,
+				F43B6AC42BD6BCB100089E9E /* PerfilViewCell.swift in Sources */,
+				F43B6AC52BD6BCB100089E9E /* MyMapAnnotation.swift in Sources */,
+				F43B6AC62BD6BCB100089E9E /* PassController.swift in Sources */,
+				F43B6AC72BD6BCB100089E9E /* WeatherService.swift in Sources */,
+				F43B6AC82BD6BCB100089E9E /* PanicoController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F45E0E922A37DE03004A4FEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4719,7 +5274,7 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5ACE15F8F071DFE6C0368891 /* Pods-UnTaxi.debug.xcconfig */;
+			baseConfigurationReference = AE5059C258C735895FB60CA6 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4760,7 +5315,7 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E6A96B659EB424469F8B4C /* Pods-UnTaxi.release.xcconfig */;
+			baseConfigurationReference = 6BB8F40E0343E2723F549A13 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4799,7 +5354,7 @@
 		};
 		F404BC432A7BFE0000D1671E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1F6A001F1ACDE5E61C349F1 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */;
+			baseConfigurationReference = AA7F4120227CCB1E1BD6BA02 /* Pods-UnTaxi-RuedaCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4840,7 +5395,7 @@
 		};
 		F404BC442A7BFE0000D1671E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 186110C78980DD79614E15E4 /* Pods-UnTaxi-RuedaCar.release.xcconfig */;
+			baseConfigurationReference = DE43EE61AE94270F7CD5F3CC /* Pods-UnTaxi-RuedaCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4879,7 +5434,7 @@
 		};
 		F41603232A6D96E8006A3FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 898257AEB325A5728E38C7ED /* Pods-UnTaxi-OrientExpress.debug.xcconfig */;
+			baseConfigurationReference = 09471AE52C2273506446FF4D /* Pods-UnTaxi-OrientExpress.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4920,7 +5475,7 @@
 		};
 		F41603242A6D96E8006A3FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CEDBA14CD6DC93D0543127E /* Pods-UnTaxi-OrientExpress.release.xcconfig */;
+			baseConfigurationReference = 1A8B4767D51181B7B5C3DD2B /* Pods-UnTaxi-OrientExpress.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4959,7 +5514,7 @@
 		};
 		F41603E72A785746006A3FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0B017057BB706751E7F833F /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */;
+			baseConfigurationReference = 96DF6A215E90BB54E720FC60 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5000,7 +5555,7 @@
 		};
 		F41603E82A785746006A3FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AEEE49DC295892DA60AB47F /* Pods-UnTaxi-AndyTaxi.release.xcconfig */;
+			baseConfigurationReference = 734524A66653089298E70C35 /* Pods-UnTaxi-AndyTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5037,9 +5592,89 @@
 			};
 			name = Release;
 		};
+		F43B6AF92BD6BCB100089E9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2846143760337FFF1AA96493 /* Pods-UnTaxi-TransporVIP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/TransporVIP/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TransporVIP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.0.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.TransporVIP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F43B6AFA2BD6BCB100089E9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6988C1FA1682510BEBF97F6D /* Pods-UnTaxi-TransporVIP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VMNV5JH5M;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/TransporVIP/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TransporVIP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_DYLIB_INSTALL_NAME = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.0.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.TransporVIP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		F45E0F4A2A37DE03004A4FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC66B7AA1E608349BB29BAB /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */;
+			baseConfigurationReference = 7EF14B24174023BA26BB04FF /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5080,7 +5715,7 @@
 		};
 		F45E0F4B2A37DE03004A4FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D2541BED58D2BA0C712E357 /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */;
+			baseConfigurationReference = C9D456892B116755AA901B7C /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5197,7 +5832,7 @@
 		};
 		F4E132972A08121A00E18299 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2324A751779FF9CCA081F67 /* Pods-UnTaxi-VipCar.debug.xcconfig */;
+			baseConfigurationReference = F7224FE6577AD5631E734AEB /* Pods-UnTaxi-VipCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5239,7 +5874,7 @@
 		};
 		F4E132982A08121A00E18299 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67DE922F92806D1A5A6B6008 /* Pods-UnTaxi-VipCar.release.xcconfig */;
+			baseConfigurationReference = FDDBBC0C67EEDB28143689AC /* Pods-UnTaxi-VipCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5320,6 +5955,15 @@
 			buildConfigurations = (
 				F41603E72A785746006A3FC1 /* Debug */,
 				F41603E82A785746006A3FC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F43B6AF82BD6BCB100089E9E /* Build configuration list for PBXNativeTarget "TransporVIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F43B6AF92BD6BCB100089E9E /* Debug */,
+				F43B6AFA2BD6BCB100089E9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -11,9 +11,11 @@ import UIKit
 class PanicoController: UIViewController {
   
   @IBOutlet weak var contentView: UIView!
-  
+    @IBOutlet weak var llamarBtn: UIButton!
+    
   override func viewDidLoad() {
     self.contentView.addShadow()
+      llamarBtn.addCustomActionBtnsColors()
   }
   
   @IBAction func closePanicoView(_ sender: Any) {
