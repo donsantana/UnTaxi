@@ -59,6 +59,8 @@
 	<string>La app permite utilizar Face ID para autenticarse.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La app necesita acceder a tu localización para buscar los taxis más cercanos. Además se envia al conductor para que sepa el punto exacto de recogida.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>La app necesita acceder a tu localización para buscar los taxis más cercanos. Además se envia al conductor para que sepa el punto exacto de recogida.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>La app necesita acceder al micrófono para que usted pueda Enviar mensaje de voz al conductor.</string>
 	<key>NSZombieEnabled</key>
