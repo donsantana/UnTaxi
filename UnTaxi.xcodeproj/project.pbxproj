@@ -918,7 +918,6 @@
 		F43B6AF52BD6BCB100089E9E /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		F43B6AF62BD6BCB100089E9E /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
 		F43B6B002BD6BE3400089E9E /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43B6AFE2BD6BE2C00089E9E /* Asset.xcassets */; };
-		F43B6B032BD6CCBF00089E9E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F571521BCE958200FC18D5 /* Info.plist */; };
 		F43B6B052BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43B6B042BD6CF1F00089E9E /* TransporVIP Launch Screen.storyboard */; };
 		F452DE4C2A084D8C005BCF55 /* VipCar Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */; };
 		F452DE4D2A084D8C005BCF55 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F452DE4A2A084D8C005BCF55 /* Asset.xcassets */; };
@@ -1473,6 +1472,12 @@
 		F4E1328E2A08121A00E18299 /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E1F1FA61F580019432B /* Perfil3ViewCell.xib */; };
 		F4E1328F2A08121A00E18299 /* PactadaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C62E593E24BB5D7800FFB26B /* PactadaCell.xib */; };
 		F4E132912A08121A00E18299 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C61F3479248E8F65006A07F6 /* .gitignore */; };
+		F4E137E22C04DFC500E3A54E /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137E12C04DFC500E3A54E /* MapboxMaps */; };
+		F4E137E42C04DFC500E3A54E /* MapboxSearch in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137E32C04DFC500E3A54E /* MapboxSearch */; };
+		F4E137E62C04DFC500E3A54E /* MapboxSearchUI in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137E52C04DFC500E3A54E /* MapboxSearchUI */; };
+		F4E137E82C04DFC500E3A54E /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137E72C04DFC500E3A54E /* SocketIO */; };
+		F4E137EA2C04DFC500E3A54E /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137E92C04DFC500E3A54E /* MapboxDirections */; };
+		F4E137EC2C04DFC500E3A54E /* MapboxGeocoder in Frameworks */ = {isa = PBXBuildFile; productRef = F4E137EB2C04DFC500E3A54E /* MapboxGeocoder */; };
 		F4E746112B3E153A0059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
 		F4E746122B55DBBF0059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
 		F4E746132B55DC410059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
@@ -1730,6 +1735,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E137E42C04DFC500E3A54E /* MapboxSearch in Frameworks */,
+				F4E137EA2C04DFC500E3A54E /* MapboxDirections in Frameworks */,
+				F4E137EC2C04DFC500E3A54E /* MapboxGeocoder in Frameworks */,
+				F4E137E62C04DFC500E3A54E /* MapboxSearchUI in Frameworks */,
+				F4E137E22C04DFC500E3A54E /* MapboxMaps in Frameworks */,
+				F4E137E82C04DFC500E3A54E /* SocketIO in Frameworks */,
 				8B11B988668D0A09215A458F /* Pods_UnTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2517,6 +2528,14 @@
 			dependencies = (
 			);
 			name = UnTaxi;
+			packageProductDependencies = (
+				F4E137E12C04DFC500E3A54E /* MapboxMaps */,
+				F4E137E32C04DFC500E3A54E /* MapboxSearch */,
+				F4E137E52C04DFC500E3A54E /* MapboxSearchUI */,
+				F4E137E72C04DFC500E3A54E /* SocketIO */,
+				F4E137E92C04DFC500E3A54E /* MapboxDirections */,
+				F4E137EB2C04DFC500E3A54E /* MapboxGeocoder */,
+			);
 			productName = Xtaxi;
 			productReference = 84F571431BCE958200FC18D5 /* UnTaxi.app */;
 			productType = "com.apple.product-type.application";
@@ -2770,7 +2789,6 @@
 				AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */,
 				C6D3199025916F8500A4BF1C /* Muli-Bold.ttf in Resources */,
 				C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */,
-				F43B6B032BD6CCBF00089E9E /* Info.plist in Resources */,
 				C65F9F30229E384200E3E304 /* PagoCell.xib in Resources */,
 				AFE16C231FAEB13F00AEDC73 /* xoalogo1.png in Resources */,
 				8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */,
@@ -5252,7 +5270,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5292,7 +5310,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/UnTaxi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6028,6 +6046,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F489F2372C0364A000F42D0B /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		F4E137E12C04DFC500E3A54E /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F22F2C01355F00F42D0B /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+		F4E137E32C04DFC500E3A54E /* MapboxSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2322C0138C400F42D0B /* XCRemoteSwiftPackageReference "search-ios" */;
+			productName = MapboxSearch;
+		};
+		F4E137E52C04DFC500E3A54E /* MapboxSearchUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2322C0138C400F42D0B /* XCRemoteSwiftPackageReference "search-ios" */;
+			productName = MapboxSearchUI;
+		};
+		F4E137E72C04DFC500E3A54E /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2372C0364A000F42D0B /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+		F4E137E92C04DFC500E3A54E /* MapboxDirections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F47FFE882C039F7300912A95 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */;
+			productName = MapboxDirections;
+		};
+		F4E137EB2C04DFC500E3A54E /* MapboxGeocoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F47FFE8B2C03A28C00912A95 /* XCRemoteSwiftPackageReference "MapboxGeocoder.swift" */;
+			productName = MapboxGeocoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
