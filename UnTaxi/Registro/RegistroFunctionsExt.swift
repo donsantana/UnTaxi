@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CountryPicker
 
 extension RegistroController{
   

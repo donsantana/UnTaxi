@@ -521,7 +521,7 @@ extension InicioController{
 		let options = RouteOptions(waypoints: [wp1, wp2])
 		options.includesSteps = true
 		options.routeShapeResolution = .full
-		options.attributeOptions = [.congestionLevel, .maximumSpeedLimit]
+		options.attributeOptions = [.congestionLevel]
 		
 		self.destinoAnnotation = annotation
 		destinoCell.destinoText.text = self.destinoAnnotation.address
