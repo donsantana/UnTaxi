@@ -1,0 +1,105 @@
+{
+  "originHash" : "7047a8dd0c105bc3fd8c73c7b4f425e2c59b41dd2d1b6a3a3291716d1f9b32e5",
+  "pins" : [
+    {
+      "identity" : "mapbox-common-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-common-ios.git",
+      "state" : {
+        "revision" : "9c04997ed32c5b2506eb704f9f7a16367b5dcc64",
+        "version" : "24.4.0"
+      }
+    },
+    {
+      "identity" : "mapbox-core-maps-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
+      "state" : {
+        "revision" : "c7897628028afb2c008d50c5d5d4054768c99340",
+        "version" : "11.4.0"
+      }
+    },
+    {
+      "identity" : "mapbox-directions-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-directions-swift.git",
+      "state" : {
+        "revision" : "3aaab4fb516638c51ec8a2e73cd2fabdb4588622",
+        "version" : "2.11.1"
+      }
+    },
+    {
+      "identity" : "mapbox-maps-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
+      "state" : {
+        "revision" : "84ea7b4b42b6e3ec8d2010eeb236a5ec7aa3d0a1",
+        "version" : "11.4.0"
+      }
+    },
+    {
+      "identity" : "mapboxgeocoder.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/MapboxGeocoder.swift.git",
+      "state" : {
+        "revision" : "10c497840c9e1142194563f402ddc903310a935d",
+        "version" : "0.15.0"
+      }
+    },
+    {
+      "identity" : "polyline",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/raphaelmor/Polyline.git",
+      "state" : {
+        "revision" : "353f80378dcd8f17eefe8550090c6b1ae3c9da23",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "search-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/search-ios.git",
+      "state" : {
+        "revision" : "de947384dc4fc9325627ed379fc410ab2002e90b",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "socket.io-client-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/socketio/socket.io-client-swift",
+      "state" : {
+        "revision" : "175da8b5156f6b132436f0676cc84c2f6a766b6e",
+        "version" : "16.1.0"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream",
+      "state" : {
+        "revision" : "ac6c0fc9da221873e01bd1a0d4818498a71eef33",
+        "version" : "4.0.6"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "0fbc8848e389af3bb55c182bc19ca9d5dc2f255b",
+        "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "turf-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/turf-swift.git",
+      "state" : {
+        "revision" : "213050191cfcb3d5aa76e1fa90c6ff1e182a42ca",
+        "version" : "2.8.0"
+      }
+    }
+  ],
+  "version" : 3
+}

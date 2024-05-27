@@ -6,8 +6,6 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>TransporVIP</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -44,6 +42,8 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ</string>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ</string>
 	<key>NSAppTransportSecurity</key>

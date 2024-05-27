@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CountryPicker
 
 extension RegistroController: UITextFieldDelegate{
   //MARK:- CONTROL DE TECLADO VIRTUAL
@@ -264,12 +263,12 @@ extension RegistroController: ApiServiceDelegate{
   
 }
 
-extension RegistroController: CountryPickerDelegate{
-  // a picker item was selected
-  func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-     //pick up anythink
-    countryCodeText.text = phoneCode
-    flagImageView.image = flag
-    picker.isHidden = true
-  }
-}
+//extension RegistroController: CountryPickerDelegate{
+//  // a picker item was selected
+//  func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+//     //pick up anythink
+//    countryCodeText.text = phoneCode
+//    flagImageView.image = flag
+//    picker.isHidden = true
+//  }
+//}

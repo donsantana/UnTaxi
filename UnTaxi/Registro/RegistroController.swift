@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CountryPicker
+//import CountryPicker
 
 class RegistroController: UIViewController {
   var apiService = ApiService()
@@ -21,7 +21,7 @@ class RegistroController: UIViewController {
   @IBOutlet weak var crearCuentaBtn: UIButton!
   @IBOutlet weak var countryCodeText: UITextField!
   @IBOutlet weak var flagImageView: UIImageView!
-  @IBOutlet weak var picker: CountryPicker!
+ // @IBOutlet weak var picker: CountryPicker!
   
   @IBOutlet weak var waitingView: UIVisualEffectView!
   
@@ -68,11 +68,11 @@ class RegistroController: UIViewController {
     //init Picker
     //picker.displayOnlyCountriesWithCodes = ["EC"] //display only
     //picker.exeptCountriesWithCodes = ["EC"] //exept country
-    let theme = CountryViewTheme(countryCodeTextColor: .white, countryNameTextColor: .white, rowBackgroundColor: .black, showFlagsBorder: false)        //optional for UIPickerView theme changes
-    picker.theme = theme //optional for UIPickerView theme changes
-    picker.countryPickerDelegate = self
-    picker.showPhoneNumbers = true
-    picker.setCountry(code!)
+//    let theme = CountryViewTheme(countryCodeTextColor: .white, countryNameTextColor: .white, rowBackgroundColor: .black, showFlagsBorder: false)        //optional for UIPickerView theme changes
+//    picker.theme = theme //optional for UIPickerView theme changes
+//    picker.countryPickerDelegate = self
+//    picker.showPhoneNumbers = true
+//    picker.setCountry(code!)
   }
   
   @IBAction func EnviarRegistro(_ sender: AnyObject) {
