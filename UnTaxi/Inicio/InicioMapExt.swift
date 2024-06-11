@@ -54,9 +54,11 @@ extension InicioController {
 		} else {
 			let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
 																		northeast: annotations.last!.coordinates)
+            //let points = MultiPoint(annotations.map({$0.coordinates}))
+            
 			// Center the camera on the bounds
             let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 0, pitch: 0, maxZoom: 100, offset: nil)
-//            let camera = mapView.mapboxMap.camera(for:[annotations.first!.coordinates,annotations.last!.coordinates],camera:CameraOptions(cameraState: CameraState.init(center: annotations.first!.coordinates, padding: .init(top: 100, left: 40, bottom: 60, right: 40), zoom: 100, bearing: .infinity, pitch: 0)), rect: mapView.bounds)
+            //let camera = mapView.mapboxMap.camera(for:[annotations.first!.coordinates,annotations.last!.coordinates],camera:CameraOptions(padding: .zero, zoom: 100, bearing: .infinity, pitch: 0), rect: mapView.bounds)
 			mapView.mapboxMap.setCamera(to: camera)
 		}
 

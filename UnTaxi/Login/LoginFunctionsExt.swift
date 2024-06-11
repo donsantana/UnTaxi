@@ -177,20 +177,34 @@ extension LoginController{
     self.waitingView.isHidden = false
   }
   
-  func sendRecoverClave(){
-    waitingView.isHidden = false
-    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!])
-    globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
-  }
+    func sendRecoverClave() {
+        waitingView.isHidden = false
+        globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
+        ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!]) { result in
+            switch result {
+            case .success(let message):
+                self.showRecoverUserClaveAlert(success: true, message: message)
+            case .failure(let error):
+                self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+            }
+        }
+    }
   
   func createNewPassword(codigo: String, newPassword: String){
     if self.newPasswordText.text == self.newPassConfirmText.text{
       waitingView.isHidden = false
-      self.apiService.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
+        ApiService.shared.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
         "nombreusuario": globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String,
         "codigo": codigo,
         "password": newPassword,
-      ])
+      ]) { result in
+          switch result {
+          case .success(let message):
+              self.showCreateNewPassAlert(success: true, message: message)
+          case .failure(let error):
+              self.showCreateNewPassAlert(success: false, message: error.localizedDescription)
+          }
+      }
     } else {
       let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
@@ -199,6 +213,25 @@ extension LoginController{
       self.present(alertaDos, animated: true, completion: nil)
     }
   }
+    
+    func showCreateNewPassAlert(success: Bool, message: String) {
+        DispatchQueue.main.async {
+          self.waitingView.isHidden = true
+          let alertaDos = UIAlertController (title: success ? "Nueva clave creada" : "Error", message: message, preferredStyle: .alert)
+          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+            if success{
+              self.codigoText.text?.removeAll()
+              self.newPasswordText.text?.removeAll()
+              self.newPassConfirmText.text?.removeAll()
+              self.waitingView.isHidden = true
+              self.NewPasswordView.isHidden = true
+              self.claveRecoverView.isHidden = true
+              globalVariables.userDefaults.setValue(nil, forKey:"nombreUsuario")
+            }
+          }))
+          self.present(alertaDos, animated: true, completion: nil)
+        }
+    }
   
   func checkifBioAuth(){
     let myLocalizedReasonString = "Biometric Authntication testing !!"

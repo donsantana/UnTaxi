@@ -100,9 +100,32 @@ class PerfilController: BaseController {
         "email": self.emailText.text as Any,
       ] as [String : Any]
       
-      apiService.updateProfileAPI(parameters: params as [String: AnyObject])
+        ApiService.shared.updateProfileAPI(parameters: params as [String: AnyObject]) { result in
+            var title = ""
+            var message = ""
+            switch result {
+            case .success(let jsonResult):
+                globalVariables.cliente.updateProfile(jsonData: jsonResult["datos"] as! [String: Any])
+                self.showProfileUpdated(success: true, message: jsonResult["msg"] as? String ?? "")
+            case .failure(let error):
+                self.showProfileUpdated(success: false, message: error.localizedDescription)
+            }
+        }
     }
   }
+    internal func showProfileUpdated(success: Bool, message: String) {
+        DispatchQueue.main.async {
+            self.waitingView.isHidden = true
+            let alertaDos = UIAlertController (title: success ? GlobalStrings.profileUpdatedTitle :  GlobalStrings.errorTitle, message: message, preferredStyle: UIAlertController.Style.alert)
+            alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alerAction in
+                if success {
+                    self.goToInicioView()
+                }
+            }))
+            
+            self.present(alertaDos, animated: true, completion: nil)
+        }
+    }
 	
 	func closeSession() {
 		globalVariables.userDefaults.set(nil, forKey: "accessToken")
@@ -133,12 +156,28 @@ class PerfilController: BaseController {
 	
 	@IBAction func removeClient(_ sender: Any) {
 		let okAction = UIAlertAction(title: GlobalStrings.eliminarButtonTitle, style: .destructive, handler: {_ in
-			self.apiService.removeClientAPI()
+            ApiService.shared.removeClientAPI() { result in
+                switch result {
+                case .success(let message):
+                    self.showRemoveUser(message: message, success: true)
+                case .failure(let error):
+                    self.showRemoveUser(message: error.localizedDescription, success: false)
+                }
+            }
 		})
 		let cancelAction = UIAlertAction(title: GlobalStrings.noButtonTitle, style: .default, handler: {_ in
 			
 		})
 		Alert.showBasic(title: GlobalStrings.removeClientTitle, message: GlobalStrings.removeClientMessage, vc: self, withActions: [okAction, cancelAction])
 	}
+    
+    internal func showRemoveUser(message: String, success: Bool) {
+        let okAction = UIAlertAction(title: GlobalStrings.okButtonTitle, style: .default, handler: {_ in
+            if success {
+                self.closeSession()
+            }
+        })
+        Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+    }
   
 }

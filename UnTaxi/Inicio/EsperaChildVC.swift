@@ -38,6 +38,9 @@ class EsperaChildVC: UIViewController {
    
     self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.importe)))"
     self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
+      
+      up25.setTitle("\(GlobalConstants.ofertaIncrementValue)", for: .normal)
+      down25.setTitle("-\(GlobalConstants.ofertaIncrementValue)", for: .normal)
     
   }
 
@@ -105,13 +108,13 @@ class EsperaChildVC: UIViewController {
   }
   
   @IBAction func downOferta(_ sender: Any) {
-    self.updateOfertaValue(value: -0.25)
+      self.updateOfertaValue(value: -GlobalConstants.ofertaIncrementValue)
     self.down25.isEnabled = Double(self.newOfertaText!.text!.dropFirst())! > solicitud!.importe
   }
   
   @IBAction func upOferta(_ sender: Any) {
     self.down25.isEnabled = true
-    self.updateOfertaValue(value: +0.25)
+      self.updateOfertaValue(value: +GlobalConstants.ofertaIncrementValue)
   }
   @IBAction func enviarNuevoValorOferta(_ sender: Any) {
     //#RSO.id,idcliente,nuevovaloroferta,#

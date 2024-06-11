@@ -31,6 +31,8 @@ struct GlobalStrings {
 	static let noCardsTiTle: String = NSLocalizedString("No tiene Tarjetas Registradas",comment:"")
     static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
     static let avisoImportanteTitle: String = NSLocalizedString("Aviso Importante",comment:"")
+    static let cambioClavesTitle: String = NSLocalizedString("Cambio de clave",comment:"")
+    static let recuperacionClaveTitle: String = NSLocalizedString("Recuperación de clave",comment:"")
 	//static let noCardsMessage: String = NSLocalizedString("Por favor debe registrar alguna tarjeta para el pago.",comment:"")
 	
 	//Formularios

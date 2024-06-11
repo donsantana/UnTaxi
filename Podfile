@@ -3,9 +3,7 @@ platform :ios, '16.0'
 use_frameworks!
 
 target "UnTaxi" do
-    pod 'Socket.IO-Client-Swift'
     pod 'Canvas'
-    pod 'SwiftyJSON'
     pod 'MaterialComponents/TextFields'
     pod 'TextFieldEffects'
     pod 'R.swift'
@@ -22,6 +20,7 @@ target "UnTaxi" do
     target 'AndyTaxi'
     target 'RuedaCar'
     target 'TransporVIP'
+    target 'Kyper'
 end
 
 post_install do |installer|

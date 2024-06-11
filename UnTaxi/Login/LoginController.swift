@@ -215,6 +215,26 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   @IBAction func reenviarCodigo(_ sender: Any) {
     waitingView.isHidden = false
     let nombreUsuario = globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String
-    apiService.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": nombreUsuario])
+      ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": nombreUsuario]) { result in
+          switch result {
+          case .success(let message):
+              self.showRecoverUserClaveAlert(success: true, message: message)
+          case .failure(let error):
+              self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+          }
+      }
   }
+    
+    internal func showRecoverUserClaveAlert(success: Bool, message: String) {
+        DispatchQueue.main.async {
+            let alertaDos = UIAlertController (title: success ? GlobalStrings.recuperacionClaveTitle : GlobalStrings.errorTitle, message: message, preferredStyle: UIAlertController.Style.alert)
+          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+            self.waitingView.isHidden = true
+            if success{
+              self.NewPasswordView.isHidden = false
+            }
+          }))
+          self.present(alertaDos, animated: true, completion: nil)
+        }
+    }
 }

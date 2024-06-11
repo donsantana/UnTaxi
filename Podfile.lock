@@ -72,10 +72,6 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
   - R.swift (7.3.2)
   - SideMenu (6.5.0)
-  - Socket.IO-Client-Swift (16.1.0):
-    - Starscream (~> 4.0.6)
-  - Starscream (4.0.8)
-  - SwiftyJSON (5.0.2)
   - TextFieldEffects (1.6.0)
   - ToastViewSwift (2.1.2)
 
@@ -88,8 +84,6 @@ DEPENDENCIES:
   - PhoneNumberKit (~> 3.3)
   - R.swift
   - SideMenu
-  - Socket.IO-Client-Swift
-  - SwiftyJSON
   - TextFieldEffects
   - ToastViewSwift
 
@@ -106,9 +100,6 @@ SPEC REPOS:
     - PhoneNumberKit
     - R.swift
     - SideMenu
-    - Socket.IO-Client-Swift
-    - Starscream
-    - SwiftyJSON
     - TextFieldEffects
     - ToastViewSwift
 
@@ -124,12 +115,9 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 3d9a20cfe8ee68f35c2a3ae9474093133f72a8a1
   R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
-  Socket.IO-Client-Swift: ee4b8f80a3db18dd7f32b266ddf273310609443c
-  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   ToastViewSwift: 62e4c54cd482dd1106c2b2224103a8b171763cf3
 
-PODFILE CHECKSUM: 7e313ff5f1ed97ca34552fc9257ae2989c34b951
+PODFILE CHECKSUM: 5f03194b4598e07ca1d1721d18128961a1f4e130
 
 COCOAPODS: 1.14.3

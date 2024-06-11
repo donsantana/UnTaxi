@@ -208,7 +208,7 @@ extension RegistroController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String) {
 		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
 			if success{
-				self.goToLoginView()
+				self.goToLoginView(success)
 			} else {
 				self.waitingView.isHidden = true
 			}
@@ -255,7 +255,7 @@ extension RegistroController: ApiServiceDelegate{
     }
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
-		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alertAction in
 			self.waitingView.isHidden = true
 		})
 		Alert.showBasic(title: GlobalStrings.formErrorTitle, message: msg, vc: self, withActions: [okAction])

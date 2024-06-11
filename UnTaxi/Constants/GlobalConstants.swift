@@ -48,6 +48,8 @@ struct GlobalConstants {
             return "autoamigo"
         case "com.xoait.TransporVIP":
             return "movilcallcenter"
+        case "com.xoait.kyper":
+            return "kyper"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -113,6 +115,8 @@ struct GlobalConstants {
             return "1563504584"
         case "com.xoait.TransporVIP":
             return "6499275207"
+        case "com.xoait.kyper":
+            return "6502842865"
         default:
             return "1149206387"
         }
@@ -160,6 +164,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tubHRhMmwxMGtscjJ2bnloMm9wOWFydyJ9.TZjHwLdkwB4-qRN555PFkg"
         case "com.xoait.TransporVIP":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ"
+        case "com.xoait.kyper":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -176,7 +182,23 @@ struct GlobalConstants {
         }
     }
     //    static var googleAdsID = "ca-app-pub-1778988557303127/2416922071"
+    static var countryAddress: String {
+        switch bundleId {
+        case "com.xoait.kyper":
+            return "Argentina"
+        default:
+            return "Ecuador"
+        }
+    }
     
+    static var ofertaIncrementValue: Double {
+        switch bundleId {
+        case "com.xoait.kyper":
+            return 200.0
+        default:
+            return 0.25
+        }
+    }
 }
 
 struct CustomAdsConstants {
@@ -222,6 +244,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2626310486"
         case "com.xoait.TransporVIP":
             return "ca-app-pub-1778988557303127/2144753273"
+        case "com.xoait.kyper":
+            return "ca-app-pub-1778988557303127/9360438861"
         default:
             return ""
         }
@@ -262,6 +286,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/8987429343"
         case "com.xoait.TransporVIP":
             return "ca-app-pub-1778988557303127/2131977696"
+        case "com.xoait.kyper":
+            return "ca-app-pub-1778988557303127/4108112186"
         default:
             return ""
         }

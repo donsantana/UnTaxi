@@ -32,14 +32,22 @@ extension RegistroController{
                         "version": GlobalConstants.appVersion,
                         "recomendado": ""])
                 } else {
-                    apiService.registerUserAPI(url: GlobalConstants.registerUrl, params: [
+                    ApiService.shared.registerUserAPI(url: GlobalConstants.registerUrl, params: [
                         "password": claveText.text!,
                         "movil": telefonoText.text!,
                         "nombreapellidos": nombreApText.text!,
                         "email": correoText.text!,
                         "so": "IOS",
                         "version": GlobalConstants.appVersion,
-                        "recomendado": ""])
+                        "recomendado": ""]) { result in
+                            switch result {
+                            case .success(let message):
+                                self.showRegistrationMessage(message: message, success: true)
+                            case .failure(let error):
+                                self.showRegistrationMessage(message: error.localizedDescription, success: false)
+                            }
+                            
+                        }
                 }
 			} else {
 				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
@@ -54,17 +62,28 @@ extension RegistroController{
 			Alert.showBasic(title: GlobalStrings.formErrorTitle, message: GlobalStrings.passNotMatchMessage, vc: self, withActions: [okAction])
 		}
 	}
+    
+    func showRegistrationMessage(message: String, success: Bool) {
+        let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alertAction in
+            self.goToLoginView(success)
+        })
+        Alert.showBasic(title: success ? GlobalStrings.registroUsuarioTitle : GlobalStrings.formErrorTitle, message: message, vc: self, withActions: [okAction])
+    }
   
-    func goToLoginView() {
+    func goToLoginView(_ success: Bool = true) {
         DispatchQueue.main.async {
-            guard let viewcontrollers = self.navigationController?.viewControllers else {
-                return
-            }
-            viewcontrollers.forEach({ (vc) in
-                if let inventoryListVC = vc as? LoginController {
-                    self.navigationController!.popToViewController(inventoryListVC, animated: true)
+            if success {
+                guard let viewcontrollers = self.navigationController?.viewControllers else {
+                    return
                 }
-            })
+                viewcontrollers.forEach({ (vc) in
+                    if let inventoryListVC = vc as? LoginController {
+                        self.navigationController!.popToViewController(inventoryListVC, animated: true)
+                    }
+                })
+            } else {
+                self.waitingView.isHidden = true
+            }
         }
     }
     
