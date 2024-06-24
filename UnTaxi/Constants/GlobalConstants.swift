@@ -191,6 +191,15 @@ struct GlobalConstants {
         }
     }
     
+    static var ofertaTitle: String {
+        switch bundleId {
+        case "com.xoait.kyper":
+            return "Cotizacion y Pedido"
+        default:
+            return "Oferta"
+        }
+    }
+    
     static var ofertaIncrementValue: Double {
         switch bundleId {
         case "com.xoait.kyper":
