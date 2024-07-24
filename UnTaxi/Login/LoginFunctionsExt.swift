@@ -15,8 +15,7 @@ import LocalAuthentication
 
 extension LoginController{
   
-  func startSocketConnection(){
-    //print(Customization.serverData!)
+  func startSocketConnection() {
     let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
     self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])])
     
@@ -69,7 +68,7 @@ extension LoginController{
       self.checkLocationStatus()
   }
   
-  func initConnectionError(message: String){
+  func initConnectionError(message: String) {
     let alertaDos = UIAlertController (title: "Autenticación", message: message, preferredStyle: UIAlertController.Style.alert)
     alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
       self.waitingView.isHidden = true
@@ -143,7 +142,7 @@ extension LoginController{
   }
   
   //FUNCION PARA LISTAR SOLICITUDES PENDIENTES
-  func ListSolicitudPendiente(_ listado : [[String: Any]]){
+  func ListSolicitudPendiente(_ listado : [[String: Any]]) {
     //#LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi, latorig,lngorig,latdest,lngdest,telefonoconductor
     globalVariables.solpendientes.removeAll()
     var i = 0
@@ -172,7 +171,7 @@ extension LoginController{
   
   //MARK:- FUNCIONES PROPIAS
   
-  func Login(user: String, password: String){
+  func Login(user: String, password: String) {
     self.apiService.loginToAPIService(user: user, password: password)
     self.waitingView.isHidden = false
   }
@@ -190,7 +189,7 @@ extension LoginController{
         }
     }
   
-  func createNewPassword(codigo: String, newPassword: String){
+  func createNewPassword(codigo: String, newPassword: String) {
     if self.newPasswordText.text == self.newPassConfirmText.text{
       waitingView.isHidden = false
         ApiService.shared.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
@@ -233,7 +232,7 @@ extension LoginController{
         }
     }
   
-  func checkifBioAuth(){
+  func checkifBioAuth() {
     let myLocalizedReasonString = "Biometric Authntication testing !!"
     
     var authError: NSError?
