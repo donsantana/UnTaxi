@@ -90,20 +90,23 @@ class CallCenterController: BaseController {
 extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
   // MARK: - Table view data source
   func numberOfSections(in tableView: UITableView) -> Int {
+      
       return telefonosCallCenter.filter{$0.seccion == "PUBLICIDAD"}.count > 0 ? 2 : 1
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     let seccionName = section == 0 ? "CALLCENTER" : "PUBLICIDAD"
-    return self.telefonosCallCenter.filter({$0.seccion == seccionName}).count
+    //return self.telefonosCallCenter.filter({$0.seccion == seccionName}).count
+    return self.telefonosCallCenter.count
   }
   
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = Bundle.main.loadNibNamed("CallCenterViewCell", owner: self, options: nil)?.first as! CallCenterViewCell
     let seccionName = indexPath.section == 0 ? "CALLCENTER" : "PUBLICIDAD"
-    cell.initContent(telefono: self.telefonosCallCenter.filter({$0.seccion == seccionName})[indexPath.row])
+    //cell.initContent(telefono: self.telefonosCallCenter.filter({$0.seccion == seccionName})[indexPath.row])
+    cell.initContent(telefono: self.telefonosCallCenter[indexPath.row])
     // Configure the cell...
     
     return cell

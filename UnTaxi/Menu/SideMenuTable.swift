@@ -125,7 +125,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return self.MenuTable.frame.height/CGFloat(self.menuArray[0].count + self.menuArray[1].count + self.menuArray[2].count)
+    return 60//self.MenuTable.frame.height/CGFloat(self.menuArray[0].count + self.menuArray[1].count + self.menuArray[2].count)
   }
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -137,6 +137,6 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
 
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
       // Section Footer height
-      return 1.0
+      return 0.0
   }
 }
