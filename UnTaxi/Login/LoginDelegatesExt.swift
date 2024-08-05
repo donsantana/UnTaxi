@@ -159,18 +159,18 @@ extension LoginController: ApiServiceDelegate{
     self.startSocketConnection()
   }
 
-  func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String) {
-    DispatchQueue.main.async {
-      let alertaDos = UIAlertController (title: success ? "Recuperación de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-        self.waitingView.isHidden = true
-        if success{
-          self.NewPasswordView.isHidden = false
-        }
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
-  }
+//  func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String) {
+//    DispatchQueue.main.async {
+//      let alertaDos = UIAlertController (title: success ? "Recuperación de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
+//      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//        self.waitingView.isHidden = true
+//        if success{
+//          self.NewPasswordView.isHidden = false
+//        }
+//      }))
+//      self.present(alertaDos, animated: true, completion: nil)
+//    }
+//  }
   
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String) {
     DispatchQueue.main.async {

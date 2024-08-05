@@ -10,6 +10,13 @@
 import Foundation
 import UIKit
 
+enum APIError: Error {
+    case invalidURL
+    case invalidResponse(error: String?)
+    case invalidData
+    case serverError(error: String)
+}
+
 protocol ApiServiceDelegate: AnyObject {
   func apiRequest(_ controller: ApiService, apiPOSTRequest response: Dictionary<String, AnyObject>)
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String)
@@ -18,14 +25,14 @@ protocol ApiServiceDelegate: AnyObject {
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String)
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String)
-  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String)
-  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any])
+//  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String)
+//  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any])
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String)
   func apiRequest(_ controller: ApiService, getLoginToken token: String)
   func apiRequest(_ controller: ApiService, getLoginData data: [String: Any])
   func apiRequest(_ controller: ApiService, getServerData serverData: String)
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool)
-  func apiRequest(_ controller: ApiService, getAddressList data: [Address])
+//  func apiRequest(_ controller: ApiService, getAddressList data: [Address])
 	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address])
   func apiRequest(_ controller: ApiService, getLoginError msg: String)
   
@@ -50,14 +57,35 @@ final class ApiService {
     return request
   }
   
-  func registerUserAPI(url: String, params: Dictionary<String, String>) {
+    internal func parseResponse(_ data: Data?, _ response: URLResponse?,_ error: Error?) -> Result<Any, APIError> {
+        if let error = error {
+            return .failure(.serverError(error: error.localizedDescription))
+        }
+      
+        do {
+          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+          
+          print("json \(json["msg"] as! String)")
+          
+          guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+              return .failure(.invalidResponse(error: json["msg"] as? String))
+          }
+            return .success(json["msg"] as? String ?? "Success")
+        } catch {
+            return .failure(.invalidData)
+        }
+    }
+    
+    func registerUserAPI(url: String, params: Dictionary<String, String>, completion: @escaping (Result<String, APIError>) -> Void) {
       print("register URL: \(url)")
     let request = self.apiPOSTRequest(url: url, params: params)
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-
+//
+//        let apiResult = self.parseResponse(data,response,error)
+//        completion(apiResult)
       if let error = error {
-        self.handlerError(error: error.localizedDescription)
+          completion(.failure(.serverError(error: error.localizedDescription)))
         return
       }
     
@@ -67,13 +95,15 @@ final class ApiService {
         print("json \(json["msg"] as! String)")
         
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, registerUserAPI: false, msg: json["msg"] as! String)
+            completion(.failure(.invalidResponse(error: json["msg"] as? String)))
+          //self.delegate?.apiRequest(self, registerUserAPI: false, msg: json["msg"] as! String)
           return
         }
-        
-        self.delegate?.apiRequest(self, registerUserAPI: true, msg: json["msg"] as! String)
+          completion(.success(json["msg"] as? String ?? "Success"))
+        //self.delegate?.apiRequest(self, registerUserAPI: true, msg: json["msg"] as! String)
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
+        //self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
       }
     })
     task.resume()
@@ -109,7 +139,7 @@ final class ApiService {
     func validateRegisterCode(url: String, params: Dictionary<String, String>){
       let request = self.apiPOSTRequest(url: url, params: params)
       let session = URLSession.shared
-      let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+      let task = session.dataTask(with: request, completionHandler: { data, response, error in
         if let error = error {
           self.handlerError(error: error.localizedDescription)
           return
@@ -133,7 +163,7 @@ final class ApiService {
       task.resume()
     }
 	
-	func removeClientAPI() {
+    func removeClientAPI(completion: @escaping (Result<String, APIError>) -> Void) {
 		let params: Dictionary<String, String> = ["movil": globalVariables.cliente.user]
 		var request = URLRequest(url: URL(string: GlobalConstants.removeClient)!)
 		request.httpMethod = "POST"
@@ -142,38 +172,33 @@ final class ApiService {
 		request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
 		
 		let session = URLSession.shared
-		let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-			let response = response as! HTTPURLResponse
-
+		let task = session.dataTask(with: request, completionHandler: { data, response, error in
 			if let error = error {
-				self.handlerError(error: error.localizedDescription)
-				return
+                completion(.failure(.serverError(error: error.localizedDescription)))
 			}
 		
 			do {
 				guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                    self.delegate?.apiRequest(self, removeClientAPI: false, msg: GlobalStrings.usuarioEliminadoError)
-					return
+                    completion(.failure(.invalidResponse(error: GlobalStrings.usuarioEliminadoError)))
+                    return
 				}
                 
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                
-                self.delegate?.apiRequest(self, removeClientAPI: true, msg: json["msg"] as? String ?? GlobalStrings.usuarioEliminadoExito)
+                completion(.success(json["msg"] as? String ?? GlobalStrings.usuarioEliminadoExito))
 			} catch {
-				self.handlerError(error: GlobalStrings.errorGenericoMessage)
+                completion(.failure(.invalidData))
 			}
 		})
 		
 		task.resume()
 	}
   
-  func recoverUserClaveAPI(url: String, params: Dictionary<String, String>){
+    func recoverUserClaveAPI(url: String, params: Dictionary<String, String>, completion: @escaping (Result<String,APIError>) -> Void) {
     let request = self.apiPOSTRequest(url: url, params: params)
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
       if let error = error {
-        self.handlerError(error: error.localizedDescription)
-        return
+          completion(.failure(.serverError(error: error.localizedDescription)))
       }
     
       do {
@@ -181,26 +206,25 @@ final class ApiService {
         print("json \(json["msg"] as! String)")
         
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, recoverUserClaveAPI: false, msg: json["msg"] as! String)
+            completion(.failure(.invalidResponse(error: json["msg"] as? String ?? "")))
           return
         }
-        self.delegate?.apiRequest(self, recoverUserClaveAPI: true, msg: json["msg"] as! String)
+          completion(.success(json["msg"] as? String ?? ""))
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
       }
     })
     
     task.resume()
   }
   
-  func createNewClaveAPI(url: String, params: Dictionary<String, String>){
+  func createNewClaveAPI(url: String, params: Dictionary<String, String>, completion: @escaping (Result<String,APIError>) -> Void){
     let request = self.apiPOSTRequest(url: url, params: params)
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
       
       if let error = error {
-        self.handlerError(error: error.localizedDescription)
-        return
+          completion(.failure(.serverError(error: error.localizedDescription)))
       }
     
       do {
@@ -208,12 +232,12 @@ final class ApiService {
         print("json \(json["msg"] as! String)")
         
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, createNewClaveAPI: false, msg: json["msg"] as! String)
+            completion(.failure(.invalidResponse(error: json["msg"] as? String ?? "")))
           return
         }
-        self.delegate?.apiRequest(self, createNewClaveAPI: true, msg: json["msg"] as! String)
+          completion(.success(json["msg"] as? String ?? ""))
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
       }
     })
 //
@@ -234,7 +258,7 @@ final class ApiService {
     task.resume()
   }
   
-  func changeClaveAPI(params: Dictionary<String, String>){
+    func changeClaveAPI(params: Dictionary<String, String>, completion: @escaping (Result<String, APIError>) -> Void) {
     var request = URLRequest(url: URL(string: GlobalConstants.passChangeUrl)!)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -243,12 +267,9 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      let response = response as! HTTPURLResponse
-      print("heree \(error) \(response.statusCode)")
-      
+
       if let error = error {
-        self.handlerError(error: error.localizedDescription)
-        return
+          completion(.failure(.serverError(error: error.localizedDescription)))
       }
     
       do {
@@ -256,31 +277,19 @@ final class ApiService {
         print("json \(json["msg"] as! String)")
         
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, changeClaveAPI: false, msg: json["msg"] as! String)
+            completion(.failure(.invalidResponse(error: json["msg"] as? String ?? GlobalStrings.errorGenericoMessage)))
           return
         }
-        self.delegate?.apiRequest(self, changeClaveAPI: true, msg: json["msg"] as! String)
+          completion(.success(json["msg"] as! String))
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
       }
-      
-//      if error == nil && response.statusCode == 200{
-//        do {
-//          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-//          self.delegate?.apiRequest(self, changeClaveAPI: json["msg"] as! String)
-//        } catch {
-//          self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
-//          print("error")
-//        }
-//      } else {
-//        self.delegate?.apiRequest(self, changeClaveAPI: "Se produjo un error al intentar cambiar su clave, si no recuerda su clave actual puede cerrar sesión y utilizar la opción de Olvidé mi clave")
-//      }
     })
     
     task.resume()
   }
   
-  func updateProfileAPI(parameters: [String: AnyObject]){
+    func updateProfileAPI(parameters: [String: AnyObject], completion: @escaping (Result<[String: Any], APIError>) -> Void) {
     print(globalVariables.cliente.user)
     //let recordedFilePath = NSHomeDirectory() + "/Library/Caches/Image"
     let mimetype = "image/jpeg"
@@ -322,24 +331,22 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-      let statusCode = (response as? HTTPURLResponse)?.statusCode
       
       if let error = error {
-        self.handlerError(error: error.localizedDescription)
-        return
+          completion(.failure(.serverError(error: error.localizedDescription)))
       }
     
       do {
         let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-        print("json \(json as! [String:Any])")
         
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
+            completion(.failure(.invalidResponse(error: json["msg"] as? String ?? "")))
           return
         }
-        self.delegate?.apiRequest(self, updatedProfileAPI: json)
+          completion(.success(json))
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
+        //self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
       }
       
 //      if error == nil && statusCode == 200{
@@ -408,7 +415,7 @@ final class ApiService {
     task.resume()
   }
   
-  func uploadFile(serverUrl: String, parameters: [String: AnyObject]?,localFilePath: String, fileName: String, mimetype: String){
+    func uploadFile(serverUrl: String, parameters: [String: AnyObject]?,localFilePath: String, fileName: String, mimetype: String, completion: @escaping (Result<[String: Any], APIError>) -> Void) {
     var request : NSMutableURLRequest = NSMutableURLRequest()
     let body = NSMutableData()
     let boundary = "--------14737809831466499882746641449----"
@@ -450,30 +457,34 @@ final class ApiService {
     let session = URLSession.shared
     let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
       let statusCode = (response as? HTTPURLResponse)?.statusCode
-      if error == nil && statusCode == 200{
+      if error == nil && statusCode == 200 {
         if mimetype == "image/jpeg" {
           do{
             let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-            print("photo \(json)")
-            self.delegate?.apiRequest(self, updatedProfileAPI: json)
+              completion(.success(json))
+            //self.delegate?.apiRequest(self, updatedProfileAPI: json)
           } catch {
-            self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+              completion(.failure(.invalidData))
+            //self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
           }
         } else {
-          self.delegate?.apiRequest(self, fileUploaded: statusCode == 200)
+            completion(.failure(.invalidResponse(error: GlobalStrings.errorGenericoMessage)))
+          //self.delegate?.apiRequest(self, fileUploaded: statusCode == 200)
         }
         print("file uploaded")
       } else {
         if mimetype == "image/jpeg" {
           do{
             let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-            print("photo \(json)")
-            self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
+              completion(.failure(.invalidResponse(error: json["msg"] as! String)))
+            //self.delegate?.apiRequest(self, updatedProfileError: json["msg"] as! String)
           } catch {
-            self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+              completion(.failure(.serverError(error: GlobalStrings.errorGenericoMessage)))
+//            self.delegate?.apiRequest(self, updatedProfileError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
           }
         } else {
-          self.delegate?.apiRequest(self, fileUploaded: false)
+            completion(.failure(.serverError(error: GlobalStrings.errorGenericoMessage)))
+          //self.delegate?.apiRequest(self, fileUploaded: false)
         }
         print("error uploading file")
       }
@@ -488,13 +499,21 @@ final class ApiService {
     let mimetype = "audio/x-m4a"
     let parameters = ["idsolicitud": solicitud.id, "idtaxi": solicitud.taxi.id] as [String: AnyObject]
     
-    self.uploadFile(serverUrl: GlobalConstants.subiraudioUrl, parameters: parameters, localFilePath: recordedFilePath, fileName: name, mimetype: mimetype)
+      self.uploadFile(serverUrl: GlobalConstants.subiraudioUrl, parameters: parameters, localFilePath: recordedFilePath, fileName: name, mimetype: mimetype) { result in
+          switch result {
+          case .success(let jsonResponse):
+              break
+          case .failure(let error):
+              break
+          }
+      }
   }
   
-  func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double) {
+    func searchAddressXoaAPI(searchQuery: String, lat: Double, lon: Double, completion: @escaping (Result<[Address], APIError>) -> Void) {
     //&lon=-79.89725013269098&lat=-2.1363502421557943
+        let country = globalVariables.cliente.annotation.address
     let searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
-    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=\(lon)&lat=\(lat)"
+        let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),\(GlobalConstants.countryAddress)&lon=\(lon)&lat=\(lat)"
 //    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
     print("urlString: \(urlString)")
     //let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
@@ -505,29 +524,27 @@ final class ApiService {
     
     let session = URLSession.shared
     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-      if let error = error {
-        self.handlerError(error: error.localizedDescription)
-        return
-      }
+        if let error = error {
+            completion(.failure(.serverError(error: error.localizedDescription)))
+        }
     
       do {
         let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-          self.delegate?.apiRequest(self, getAddressList: [])
+            completion(.failure(.invalidResponse(error: GlobalStrings.errorGenericoMessage)))
           return
         }
         print(json["features"] as! [[String:AnyObject]])
         var addressList: [Address] = []
-        for address in json["features"] as! [[String:AnyObject]]{
+        for address in json["features"] as! [[String:AnyObject]] {
           let newAddress = try Address(json: address)
-          if newAddress.pais == "Ecuador" && newAddress.ciudad != ""{
+          if newAddress.pais == "\(GlobalConstants.countryAddress)" && newAddress.ciudad != "" {
             addressList.append(newAddress)
           }
         }
-        print("addressList \(addressList)")
-        self.delegate?.apiRequest(self, getAddressList: addressList)
+          completion(.success(addressList))
       } catch {
-        self.handlerError(error: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+          completion(.failure(.invalidData))
       }
     })
     
@@ -548,41 +565,6 @@ final class ApiService {
 		
 		task.resume()
 	}
-  
-//  func getServerConnectionData(token: String){
-//    let header = ["Authorization":"Bearer \(token)"] as Dictionary<String, String>
-//    var request = URLRequest(url: URL(string: GlobalConstants.apiServerPortUrl)!)
-//    request.httpMethod = "GET"
-//    request.allHTTPHeaderFields = header
-//    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//    let session = URLSession.shared
-//    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-//      if error == nil{
-//        //print("respuesta \(response["cliente"])")
-//        do {
-//          let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-//          self.delegate?.apiRequest(self, getServerData: "\(json["cliente"]!["ip"] as! String):\(json["cliente"]!["p"] as! String)")
-//          //Customization.serverData = "\(json["cliente"]!["ip"] as! String):\(json["cliente"]!["p"] as! String)"
-//        } catch {
-//          print("error URL")
-//        }
-//      } else {
-//        //print("error \(error)")
-//      }
-//    })
-//    task.resume()
-//  }
-  
-//  func handlerExceptions(data: Data){
-//    do {
-//      let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
-//      self.delegate?.apiRequest(self, getAPIError: json["msg"] as! String)
-//    } catch {
-//      self.delegate?.apiRequest(self, getAPIError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
-//    }
-//  }
-  
   func handlerError(error: String) {
     self.delegate?.apiRequest(self, getAPIError: error)
   }
@@ -599,12 +581,12 @@ extension ApiServiceDelegate {
 	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, recoverUserClaveAPI success: Bool, msg: String){}
   func apiRequest(_ controller: ApiService, createNewClaveAPI success: Bool, msg: String){}
-  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String){}
-  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]){}
+//  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String){}
+//  func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]){}
   func apiRequest(_ controller: ApiService, updatedProfileError msg: String){}
   func apiRequest(_ controller: ApiService, getServerData serverData: String){}
   func apiRequest(_ controller: ApiService, fileUploaded isSuccess: Bool){}
-  func apiRequest(_ controller: ApiService, getAddressList data: [Address]){}
+//  func apiRequest(_ controller: ApiService, getAddressList data: [Address]){}
 	func apiRequest(_ controller: ApiService, getReverseAddressList data: [Address]){}
   func apiRequest(_ controller: ApiService, getLoginError msg: String){}
   func apiRequest(_ controller: ApiService, getAPIError msg: String){}

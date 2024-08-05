@@ -82,30 +82,30 @@ extension PerfilController: UITextFieldDelegate{
 }
 
 extension PerfilController: ApiServiceDelegate{
-	func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]) {
-		DispatchQueue.main.async {
-			self.waitingView.isHidden = true
-			globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
-			let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-			alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-				self.goToInicioView()
-			}))
-			
-			self.present(alertaDos, animated: true, completion: nil)
-		}
-	}
+//	func apiRequest(_ controller: ApiService, updatedProfileAPI data: [String: Any]) {
+//		DispatchQueue.main.async {
+//			self.waitingView.isHidden = true
+//			globalVariables.cliente.updateProfile(jsonData: data["datos"] as! [String: Any])
+//			let alertaDos = UIAlertController (title: "Perfil Actualizado", message: data["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
+//			alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//				self.goToInicioView()
+//			}))
+//			
+//			self.present(alertaDos, animated: true, completion: nil)
+//		}
+//	}
+//	
 	
-	
-  func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
-    let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
-    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-      DispatchQueue.main.async {
-        self.goToInicioView()
-      }
-    }))
-    
-    self.present(alertaDos, animated: true, completion: nil)
-  }
+//  func apiRequest(_ controller: ApiService, updatedProfileError msg: String) {
+//    let alertaDos = UIAlertController (title: "Error de Perfil", message: msg, preferredStyle: UIAlertController.Style.alert)
+//    alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//      DispatchQueue.main.async {
+//        self.goToInicioView()
+//      }
+//    }))
+//    
+//    self.present(alertaDos, animated: true, completion: nil)
+//  }
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
     DispatchQueue.main.async {
@@ -117,14 +117,14 @@ extension PerfilController: ApiServiceDelegate{
     }
   }
 	
-	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String) {
-		let okAction = UIAlertAction(title: GlobalStrings.okButtonTitle, style: .default, handler: {_ in
-			if success {
-				self.closeSession()
-			}
-		})
-		Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
-	}
+//	func apiRequest(_ controller: ApiService, removeClientAPI success: Bool, msg: String) {
+//		let okAction = UIAlertAction(title: GlobalStrings.okButtonTitle, style: .default, handler: {_ in
+//			if success {
+//				self.closeSession()
+//			}
+//		})
+//		Alert.showBasic(title: "", message: msg, vc: self, withActions: [okAction])
+//	}
   
 }
 

@@ -59,11 +59,7 @@ class AppOpenAdManager: NSObject {
         }
         isLoadingAd = true
         print("Start loading app open ad.")
-        GADAppOpenAd.load(
-            withAdUnitID: GoogleAdsConstant.appLaunchBannerID,//"ca-app-pub-3940256099942544/5662855259",//GoogleAdsConstant.appLaunchBannerID,
-            request: GADRequest(),
-            orientation: UIInterfaceOrientation.portrait
-        ) { ad, error in
+        GADAppOpenAd.load(withAdUnitID: GoogleAdsConstant.appLaunchBannerID, request: GADRequest(), completionHandler: { ad, error in
             self.isLoadingAd = false
             if let error = error {
                 self.appOpenAd = nil
@@ -76,7 +72,7 @@ class AppOpenAdManager: NSObject {
             self.appOpenAd?.fullScreenContentDelegate = self
             self.loadTime = Date()
             print("App open ad loaded successfully.")
-        }
+        })
     }
     
     func showAdIfAvailable(viewController: UIViewController) {

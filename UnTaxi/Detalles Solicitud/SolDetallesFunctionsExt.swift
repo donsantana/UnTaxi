@@ -17,8 +17,8 @@ extension SolPendController{
   //MASK:- FUNCIONES PROPIAS
   
   func initMapView(){
-		let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
-		let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
+		//let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
+		let myMapInitOptions = MapInitOptions()
 		mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
 		mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		mapViewParent.addSubview(mapView)

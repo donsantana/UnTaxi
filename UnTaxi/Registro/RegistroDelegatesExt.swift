@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CountryPicker
 
 extension RegistroController: UITextFieldDelegate{
   //MARK:- CONTROL DE TECLADO VIRTUAL
@@ -209,7 +208,7 @@ extension RegistroController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, registerUserAPI success: Bool, msg: String) {
 		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
 			if success{
-				self.goToLoginView()
+				self.goToLoginView(success)
 			} else {
 				self.waitingView.isHidden = true
 			}
@@ -256,7 +255,7 @@ extension RegistroController: ApiServiceDelegate{
     }
   
   func apiRequest(_ controller: ApiService, getAPIError msg: String) {
-		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alertAction in
 			self.waitingView.isHidden = true
 		})
 		Alert.showBasic(title: GlobalStrings.formErrorTitle, message: msg, vc: self, withActions: [okAction])
@@ -264,12 +263,12 @@ extension RegistroController: ApiServiceDelegate{
   
 }
 
-extension RegistroController: CountryPickerDelegate{
-  // a picker item was selected
-  func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-     //pick up anythink
-    countryCodeText.text = phoneCode
-    flagImageView.image = flag
-    picker.isHidden = true
-  }
-}
+//extension RegistroController: CountryPickerDelegate{
+//  // a picker item was selected
+//  func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+//     //pick up anythink
+//    countryCodeText.text = phoneCode
+//    flagImageView.image = flag
+//    picker.isHidden = true
+//  }
+//}

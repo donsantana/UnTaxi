@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VWC-AK-1aR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VWC-AK-1aR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -744,13 +743,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mre-97-T1b" customClass="CountryPicker" customModule="CountryPicker">
-                                        <rect key="frame" x="0.0" y="652" width="414" height="162"/>
-                                        <color key="backgroundColor" red="0.92148476840000004" green="0.93338632580000003" blue="0.96066969629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="162" id="6Nt-Iu-ozr"/>
-                                        </constraints>
-                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -785,10 +777,8 @@
                                     <constraint firstItem="mt6-tT-0hR" firstAttribute="top" secondItem="gni-vt-sYD" secondAttribute="bottom" constant="40" id="gCl-RP-2qr"/>
                                     <constraint firstItem="w1S-av-uZZ" firstAttribute="trailing" secondItem="7qT-QG-nSo" secondAttribute="trailing" id="gQN-8V-FWd"/>
                                     <constraint firstItem="e4e-6t-dt2" firstAttribute="trailing" secondItem="7qT-QG-nSo" secondAttribute="trailing" constant="-5" id="hP1-Nn-xpD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mre-97-T1b" secondAttribute="trailing" id="hUN-YQ-SYA"/>
                                     <constraint firstItem="TFM-vT-4ty" firstAttribute="leading" secondItem="9Tk-F6-E1r" secondAttribute="leading" constant="10" id="iPM-gW-Yst"/>
                                     <constraint firstItem="yg7-5F-AY3" firstAttribute="leading" secondItem="7qT-QG-nSo" secondAttribute="leading" id="inf-CH-Zop"/>
-                                    <constraint firstItem="Mre-97-T1b" firstAttribute="leading" secondItem="iQO-tu-Xm6" secondAttribute="leading" id="jCz-wX-TQC"/>
                                     <constraint firstItem="Mqr-VB-gYD" firstAttribute="trailing" secondItem="0Tf-aU-KgJ" secondAttribute="trailing" constant="-5" id="kCA-cd-HY6"/>
                                     <constraint firstItem="7qT-QG-nSo" firstAttribute="leading" secondItem="iQO-tu-Xm6" secondAttribute="leading" constant="30" id="kPQ-xm-NbE"/>
                                     <constraint firstItem="7LA-mi-mUS" firstAttribute="top" secondItem="iQO-tu-Xm6" secondAttribute="top" constant="8" id="lvz-Sv-Mlc"/>
@@ -804,7 +794,6 @@
                                     <constraint firstItem="Mqr-VB-gYD" firstAttribute="bottom" secondItem="0Tf-aU-KgJ" secondAttribute="bottom" constant="-5" id="uzW-TI-D8a"/>
                                     <constraint firstItem="jTy-H9-0b9" firstAttribute="top" secondItem="7qT-QG-nSo" secondAttribute="bottom" constant="27.333333333333314" id="wxd-f8-aqt"/>
                                     <constraint firstItem="mt6-tT-0hR" firstAttribute="height" secondItem="7qT-QG-nSo" secondAttribute="height" id="xFm-nf-Rcp"/>
-                                    <constraint firstAttribute="bottom" secondItem="Mre-97-T1b" secondAttribute="bottom" id="znE-Cj-Q5a"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
@@ -859,7 +848,6 @@
                         <outlet property="flagImageView" destination="yg7-5F-AY3" id="oQt-DQ-8QW"/>
                         <outlet property="nombreApText" destination="w1S-av-uZZ" id="Xiq-60-RLi"/>
                         <outlet property="nombreTextBottom" destination="cNl-7p-7Qk" id="Rm9-H5-Gkn"/>
-                        <outlet property="picker" destination="Mre-97-T1b" id="Dax-YP-izv"/>
                         <outlet property="showHideClaveBtn" destination="Mqr-VB-gYD" id="deU-Ej-a7R"/>
                         <outlet property="showHideConfirmClaveBtn" destination="e4e-6t-dt2" id="QDf-5s-0u7"/>
                         <outlet property="telefonoText" destination="JfZ-Jk-QLH" id="Vn3-qu-gTh"/>
@@ -1107,46 +1095,46 @@
     </scenes>
     <designables>
         <designable name="0Tf-aU-KgJ">
-            <size key="intrinsicContentSize" width="128" height="34"/>
+            <size key="intrinsicContentSize" width="114" height="34"/>
         </designable>
         <designable name="2pP-tk-bBX">
-            <size key="intrinsicContentSize" width="70.5" height="34"/>
+            <size key="intrinsicContentSize" width="56.5" height="34"/>
         </designable>
         <designable name="7qT-QG-nSo">
-            <size key="intrinsicContentSize" width="151.5" height="34"/>
+            <size key="intrinsicContentSize" width="137.5" height="34"/>
         </designable>
         <designable name="J7N-rA-MSZ">
-            <size key="intrinsicContentSize" width="66" height="34"/>
+            <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
         <designable name="JfZ-Jk-QLH">
-            <size key="intrinsicContentSize" width="203.5" height="34"/>
+            <size key="intrinsicContentSize" width="189.5" height="34"/>
         </designable>
         <designable name="SPg-He-6sH">
-            <size key="intrinsicContentSize" width="161" height="34"/>
+            <size key="intrinsicContentSize" width="147" height="34"/>
         </designable>
         <designable name="X8m-E3-N1k">
-            <size key="intrinsicContentSize" width="189" height="34"/>
+            <size key="intrinsicContentSize" width="175" height="34"/>
         </designable>
         <designable name="jTy-H9-0b9">
             <size key="intrinsicContentSize" width="186" height="19"/>
         </designable>
         <designable name="kDx-sD-B91">
-            <size key="intrinsicContentSize" width="154" height="34"/>
+            <size key="intrinsicContentSize" width="140" height="34"/>
         </designable>
         <designable name="qQP-xb-v5Y">
-            <size key="intrinsicContentSize" width="163.5" height="34"/>
-        </designable>
-        <designable name="uUO-Nv-ZZU">
             <size key="intrinsicContentSize" width="149.5" height="34"/>
         </designable>
+        <designable name="uUO-Nv-ZZU">
+            <size key="intrinsicContentSize" width="135.5" height="34"/>
+        </designable>
         <designable name="w1S-av-uZZ">
-            <size key="intrinsicContentSize" width="159.5" height="34"/>
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
         </designable>
     </designables>
     <resources>
         <image name="close" width="40" height="40"/>
         <image name="launch" width="562.5" height="1218"/>
-        <image name="login" width="240" height="266.5"/>
+        <image name="login" width="750" height="601"/>
         <image name="showClave" width="40" height="40"/>
         <image name="xoalogo.png" width="160" height="60"/>
         <systemColor name="labelColor">

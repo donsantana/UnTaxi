@@ -6,8 +6,6 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>UnTaxi</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -44,6 +42,8 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
+	<key>MBXAccessToken</key>
+	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
 	<key>MGLMapboxAccessToken</key>
 	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
 	<key>NSAppTransportSecurity</key>

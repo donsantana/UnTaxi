@@ -6,14 +6,16 @@
 //  Copyright © 2020 Done Santana. All rights reserved.
 //
 
+import UIKit
 import MapboxMaps
+
 
 //Mapbox
 extension InicioController {
   func initMapView() {
 		print("Init Map")
-		let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
-		let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
+		//let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
+		let myMapInitOptions = MapInitOptions()
 		mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
 		mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		mapViewParent.addSubview(mapView)
@@ -52,8 +54,11 @@ extension InicioController {
 		} else {
 			let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
 																		northeast: annotations.last!.coordinates)
+            //let points = MultiPoint(annotations.map({$0.coordinates}))
+            
 			// Center the camera on the bounds
-			let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 0, pitch: 0)
+            let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 0, pitch: 0, maxZoom: 100, offset: nil)
+            //let camera = mapView.mapboxMap.camera(for:[annotations.first!.coordinates,annotations.last!.coordinates],camera:CameraOptions(padding: .zero, zoom: 100, bearing: .infinity, pitch: 0), rect: mapView.bounds)
 			mapView.mapboxMap.setCamera(to: camera)
 		}
 
@@ -80,14 +85,14 @@ extension InicioController: GestureManagerDelegate {
 			locationIcono.isHidden = true
 
 			if searchingAddress == "origen" {
-				origenAnnotation.coordinates = (mapView.cameraState.center)
+                origenAnnotation.coordinates = (mapView.mapboxMap.cameraState.center)
 				origenAnnotation.type = searchingAddress
 				getReverseAddressXoaAPI(origenAnnotation)
 
 				pointAnnotationManager.annotations = [origenAnnotation.annotation]
 				getTaxisCercanos()
 			} else {
-				destinoAnnotation.coordinates = (mapView.cameraState.center)
+                destinoAnnotation.coordinates = (mapView.mapboxMap.cameraState.center)
 				destinoAnnotation.type = searchingAddress
 				getReverseAddressXoaAPI(destinoAnnotation)
 

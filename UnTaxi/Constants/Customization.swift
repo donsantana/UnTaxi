@@ -59,6 +59,8 @@ struct CustomAppColor {
             return UIColor(red: 219/255, green: 0/255, blue: 0/255, alpha: 1)
         case "com.xoait.TransporVIP":
             return UIColor(red: 222/255, green: 11/255, blue: 19/255, alpha: 1)
+        case "com.xoait.kyper":
+            return UIColor(red: 219/255, green: 187/255, blue: 81/255, alpha: 1)
         default:
           return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
         }

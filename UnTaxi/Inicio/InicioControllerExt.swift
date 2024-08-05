@@ -119,7 +119,18 @@ extension InicioController: UITextFieldDelegate{
   }
   
   @objc func searchAddress(){
-    apiService.searchAddressXoaAPI(searchQuery: searchText.text!,lat: self.origenAnnotation.coordinates.latitude,lon: self.origenAnnotation.coordinates.longitude)
+      ApiService.shared.searchAddressXoaAPI(searchQuery: searchText.text!,lat: self.origenAnnotation.coordinates.latitude,lon: self.origenAnnotation.coordinates.longitude) { result in
+          switch result {
+          case .success(let addressList):
+              self.searchAddressList = addressList
+          case .failure(let error):
+              break
+          }
+          
+          DispatchQueue.main.async { [self] in
+              self.sinResultadosLabel.isHidden = self.searchAddressList.count > 0 || self.searchText.text!.isEmpty
+          }
+      }
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

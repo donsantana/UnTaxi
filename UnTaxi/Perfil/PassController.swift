@@ -9,7 +9,6 @@
 import UIKit
 
 class PassController: BaseController, UIGestureRecognizerDelegate {
-  var apiService = ApiService.shared
   
   @IBOutlet weak var claveActualText: UITextField!
   @IBOutlet weak var NuevaClaveText: UITextField!
@@ -36,7 +35,6 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.apiService.delegate = self
 		claveActualText.delegate = self
 		NuevaClaveText.delegate = self
 		ConfirmeClaveText.delegate = self
@@ -48,7 +46,29 @@ class PassController: BaseController, UIGestureRecognizerDelegate {
   
   func sendUpdatePassword(){
     self.waitingView.isHidden = false
-    self.apiService.changeClaveAPI(params: ["user": String(globalVariables.cliente.user), "password": self.claveActualText.text!, "newpassword": self.NuevaClaveText.text!])
+      ApiService.shared.changeClaveAPI(params: ["user": String(globalVariables.cliente.user), "password": self.claveActualText.text!, "newpassword": self.NuevaClaveText.text!]) { result in
+          var title = ""
+          var message = GlobalStrings.errorGenericoMessage
+          
+          switch result {
+          case .success(let messge):
+              title = GlobalStrings.cambioClavesTitle
+              message = messge
+          case .failure(let error):
+              title = GlobalStrings.errorTitle
+              message = error.localizedDescription
+          }
+          DispatchQueue.main.async {
+            self.waitingView.isHidden = true
+            let alertaDos = UIAlertController (title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+              self.dismiss(animated: false, completion: nil)
+            }))
+            self.present(alertaDos, animated: true, completion: nil)
+          }
+      }
+      
+      
   }
   
   @objc func ocultarTeclado(sender: UITapGestureRecognizer){
@@ -126,15 +146,15 @@ extension PassController: UITextFieldDelegate{
   }
 }
 
-extension PassController: ApiServiceDelegate{
-  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String) {
-    DispatchQueue.main.async {
-      self.waitingView.isHidden = true
-      let alertaDos = UIAlertController (title: success ? "Cambio de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
-      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-        self.dismiss(animated: false, completion: nil)
-      }))
-      self.present(alertaDos, animated: true, completion: nil)
-    }
-  }
-}
+//extension PassController: ApiServiceDelegate{
+//  func apiRequest(_ controller: ApiService, changeClaveAPI success: Bool, msg: String) {
+//    DispatchQueue.main.async {
+//      self.waitingView.isHidden = true
+//      let alertaDos = UIAlertController (title: success ? "Cambio de clave" : "Error", message: msg, preferredStyle: UIAlertController.Style.alert)
+//      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//        self.dismiss(animated: false, completion: nil)
+//      }))
+//      self.present(alertaDos, animated: true, completion: nil)
+//    }
+//  }
+//}

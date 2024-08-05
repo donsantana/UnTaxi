@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "PANTALLAS-01 2.jpg",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "PANTALLAS-01 1.jpg",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "PANTALLAS-01.jpg",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "PANTALLAS-01 copy.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

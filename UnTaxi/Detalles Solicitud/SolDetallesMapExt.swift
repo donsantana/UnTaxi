@@ -16,10 +16,7 @@ extension SolPendController{
 		if annotations.count == 1, let annotation = annotations.first {
 			mapView.setCenter(annotation.coordinates, zoomLevel: 15, animated: true)
 		} else {
-			let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
-																		northeast: annotations.last!.coordinates)
-			// Center the camera on the bounds
-			let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 10, pitch: 0)
+            let camera = mapView.mapboxMap.camera(for: .lineString(.init([annotations.first!.coordinates,annotations.last!.coordinates])), padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 10, pitch: 0)
 			mapView.mapboxMap.setCamera(to: camera)
 		}
 
