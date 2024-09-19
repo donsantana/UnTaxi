@@ -87,30 +87,30 @@ extension InicioController: UITextFieldDelegate{
     
   }
   
-  func textFieldDidEndEditing(_ textfield: UITextField) {
-    switch textfield {
-    case self.contactoCell.telefonoText:
-      let (valid, message) = textfield.validate(.movilNumber)
-      if !valid {
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-          //self.contactoCell.telefonoText.becomeFirstResponder()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      } else {
-        
-      }
-    case self.ofertaDataCell.valorOfertaText:
+    func textFieldDidEndEditing(_ textfield: UITextField) {
+        switch textfield {
+        case self.contactoCell.telefonoText:
+            let (valid, message) = textfield.validate(.movilNumber)
+            if !valid {
+                let alertaDos = UIAlertController (title: "Error en el formulario", message: message, preferredStyle: .alert)
+                alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                    //self.contactoCell.telefonoText.becomeFirstResponder()
+                }))
+                self.present(alertaDos, animated: true, completion: nil)
+            } else {
+                
+            }
+        case self.ofertaDataCell.valorOfertaText:
             if !self.ofertaDataCell.isValidOferta() {
-        let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", ofertaDataCell.getBestOferta()))", preferredStyle: .alert)
-        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-          self.ofertaDataCell.updateValorOfertaText()
-        }))
-        self.present(alertaDos, animated: true, completion: nil)
-      }
-    default:
-      break
-    }
+                let alertaDos = UIAlertController (title: "Error en el formulario", message: "El valor de la oferta debe ser igual o superior a: $\(String(format: "%.2f", ofertaDataCell.getBestOferta()))", preferredStyle: .alert)
+                alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                    self.ofertaDataCell.updateValorOfertaText()
+                }))
+                self.present(alertaDos, animated: true, completion: nil)
+            }
+        default:
+            break
+        }
     }
     
   @objc func textFieldDidChange(_ textField: UITextField) {
@@ -123,7 +123,7 @@ extension InicioController: UITextFieldDelegate{
           switch result {
           case .success(let addressList):
               self.searchAddressList = addressList
-          case .failure(let error):
+          case .failure(let _):
               break
           }
           
@@ -172,7 +172,24 @@ extension InicioController: PagoCellDelegate {
     func voucherSwitch(_ controller: PagoViewCell, voucherSelected isSelected: Bool) {
         self.isVoucherSelected = isSelected
         if pagoCell.formaPagoSelected == "Tarjeta" {
-            pagoApiService.listCardsAPIService()
+            PagoApiService.shared.listCardsAPIService(completion: { result in
+                switch result {
+                case .success(let cards):
+                    self.cardList = cards
+                case .failure(let _):
+                    DispatchQueue.main.async {
+                        let alertaDos = UIAlertController (title: GlobalStrings.noCardsTiTle, message: GlobalStrings.noCardsMessage, preferredStyle: UIAlertController.Style.alert)
+                        alertaDos.addAction(UIAlertAction(title: GlobalStrings.registrarBtnTitle, style: .default, handler: {alerAction in
+                            self.openRegisterCardView()
+                        }))
+                        alertaDos.addAction(UIAlertAction(title: GlobalStrings.cancelarButtonTitle, style: .default, handler: {alerAction in
+                            self.tarjetasView.isHidden = true
+                            self.pagoCell.resetToEfectivo()
+                        }))
+                        self.present(alertaDos, animated: true, completion: nil)
+                    }
+                }
+            })
             self.isVoucherSelected = false
         }
         loadFormularioData()
@@ -181,18 +198,27 @@ extension InicioController: PagoCellDelegate {
 
 extension InicioController: ContactoCellDelegate {
   func otherContactSelected(_ controller: ContactoViewCell, otherContactSelected isSelected: Bool) {
-    if isSelected{
+    if isSelected {
+        AnalyticsHelper.otraPersonaSelectedEvent()
       if self.tabBar.selectedItem == self.ofertaItem || self.isVoucherSelected {
         if !(self.destinoCell.destinoText.text!.isEmpty) {
           self.contactoCell.contactoNameText.becomeFirstResponder()
         } else {
           self.contactoCell.contactarSwitch.isOn = false
-          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
-          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-            self.view.endEditing(true)
-            self.destinoCell.destinoText.becomeFirstResponder()
-          }))
-          self.present(alertaDos, animated: true, completion: nil)
+            let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                self.view.endEditing(true)
+                self.destinoCell.destinoText.becomeFirstResponder()
+             })
+            Alert.show(title: GlobalStrings.formErrorTitle, message: GlobalStrings.formDestinoMessage, vc: self, withActions:
+                [okAction]
+            )
+            
+//          let alertaDos = UIAlertController (title: "Error en el formulario", message: "Por favor debe espeficicar su destino.", preferredStyle: UIAlertController.Style.alert)
+//          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//            self.view.endEditing(true)
+//            self.destinoCell.destinoText.becomeFirstResponder()
+//          }))
+//          self.present(alertaDos, animated: true, completion: nil)
         }
       }
     }
@@ -216,7 +242,7 @@ extension InicioController: UIPickerViewDelegate, UIPickerViewDataSource{
   }
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    if pickerView.isEqual(self.addressPicker){
+    if pickerView.isEqual(self.addressPicker) {
       return globalVariables.direccionesPactadas[row].dirorigen
     } else {
       return self.destinoPactadas[row].dirdestino
@@ -224,7 +250,7 @@ extension InicioController: UIPickerViewDelegate, UIPickerViewDataSource{
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    if pickerView.isEqual(self.addressPicker){
+    if pickerView.isEqual(self.addressPicker) {
       let direccionPactadaSeleccionada = globalVariables.direccionesPactadas[row]
       self.origenCell.origenText.text = direccionPactadaSeleccionada.dirorigen
       self.origenAnnotation.coordinates = CLLocationCoordinate2D(latitude: direccionPactadaSeleccionada.latorigen, longitude: direccionPactadaSeleccionada.lngorigen)
@@ -235,7 +261,7 @@ extension InicioController: UIPickerViewDelegate, UIPickerViewDataSource{
       
       self.destinoAddressPicker.reloadAllComponents()
       
-      if self.destinoPactadas.count == 1{
+      if self.destinoPactadas.count == 1 {
         self.destinoCell.destinoText.text = globalVariables.direccionesPactadas[row].dirdestino
         self.pactadaCell.precioText.text = "$\(globalVariables.direccionesPactadas[row].importeida)"
       }

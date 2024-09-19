@@ -113,8 +113,7 @@ final class SocketService {
 		self.offSocketEventos()
 		print("Cargando Eventos")
 		//Evento sockect para escuchar
-		//TRAMA IN: #LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi,latorig,lngorig,latdest,lngdest,telefonoconductor
-		
+        
 		globalVariables.socket.on("disconnect"){data, ack  in
 			let result = data[0] as! [String: AnyObject]
 			print("desconectado \(result)")
@@ -150,6 +149,7 @@ final class SocketService {
 		
 		globalVariables.socket.on("sinvehiculo"){data, ack in
 			let result = data[0] as! [String: Any]
+            print("No vehiculo encontrado \(result)")
 			self.delegate?.socketResponse(self, sinvehiculo: result)
 		}
 		
@@ -262,6 +262,7 @@ final class SocketService {
 			self.delegate?.socketResponse(self, sosAlert: result)
 		}
 	}
+    
 	func initYapaEvents() {
 		globalVariables.socket.on("recargaryapa"){data, ack in
 			print("Yapa recargada")

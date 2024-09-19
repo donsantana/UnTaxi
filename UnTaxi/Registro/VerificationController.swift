@@ -12,7 +12,7 @@ import UIKit
 class RegisterValidationController: UIViewController {
     var timeToValidateCode = 180
     var registerCodeTimer = Timer()
-    let apiService = ApiService()
+    //let apiService = ApiService()
     var registrationParams: Dictionary<String, String>!
     var parenController:UIViewController!
     var counter = 1
@@ -28,7 +28,7 @@ class RegisterValidationController: UIViewController {
     
     override func viewDidLoad() {
         codeText.delegate = self
-        apiService.delegate = self
+        ApiService.shared.delegate = self
         waitingView.addStandardConfig()
         activityIndicator.color = CustomAppColor.activityIndicatorColor
         titleText.text = GlobalStrings.codeValidationTitle
@@ -69,7 +69,9 @@ class RegisterValidationController: UIViewController {
         if let codeText = codeText.text {
             registrationParams.updateValue(codeText, forKey: "codigo")
         }
-        apiService.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: registrationParams)
+        ApiService.shared.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: registrationParams) { result in
+            
+        }
     }
     
     func goBackToLogin() {

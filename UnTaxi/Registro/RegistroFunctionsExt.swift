@@ -23,14 +23,16 @@ extension RegistroController{
 				waitingView.isHidden = false
 				view.endEditing(true)
                 if GlobalConstants.registerValidationIsAnable {
-                    apiService.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: [
+                    ApiService.shared.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: [
                         "password": claveText.text!,
                         "movil": telefonoText.text!,
                         "nombreapellidos": nombreApText.text!,
                         "email": correoText.text!,
                         "so": "IOS",
                         "version": GlobalConstants.appVersion,
-                        "recomendado": ""])
+                        "recomendado": ""]) { result in
+                            self.registerResultProcesor(result: result)
+                        }
                 } else {
                     ApiService.shared.registerUserAPI(url: GlobalConstants.registerUrl, params: [
                         "password": claveText.text!,
@@ -40,11 +42,20 @@ extension RegistroController{
                         "so": "IOS",
                         "version": GlobalConstants.appVersion,
                         "recomendado": ""]) { result in
+                            var errorMessage = ""
                             switch result {
                             case .success(let message):
                                 self.showRegistrationMessage(message: message, success: true)
                             case .failure(let error):
-                                self.showRegistrationMessage(message: error.localizedDescription, success: false)
+                                switch error {
+                                case .invalidResponse(message: let message):
+                                    errorMessage = message
+                                case .serverError(message: let message):
+                                    errorMessage = message
+                                default:
+                                    errorMessage = error.localizedDescription
+                                }
+                                self.showRegistrationMessage(message: errorMessage, success: false)
                             }
                             
                         }
@@ -62,6 +73,50 @@ extension RegistroController{
 			Alert.showBasic(title: GlobalStrings.formErrorTitle, message: GlobalStrings.passNotMatchMessage, vc: self, withActions: [okAction])
 		}
 	}
+    
+    internal func registerResultProcesor(result: Result<Dictionary<String, AnyObject>, APIError>) {
+        switch result {
+        case .success(let result):
+            let message = result["msg"] as? String ?? GlobalStrings.errorGenericoMessage
+            switch result["statusCode"] as! Int {
+            case 201:
+                //registration success
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.goToLoginView()
+                })
+                Alert.showBasic(title: "Éxito", message: message, vc: self, withActions: [okAction])
+            case 404:
+                //Codigo de activacion invalido o caducado
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.showCodeVerificationView()
+                })
+                Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+            case 400:
+                //Codigo generenado, revise Whatsapp
+                showCodeVerificationView()
+            case 409:
+                //Usuarion Existente
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.goToLoginView()
+                })
+                Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+            case 410:
+                //Usuarion Existente
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.waitingView.isHidden = true
+                })
+                Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+            default:
+                //General Error
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.waitingView.isHidden = true
+                })
+                Alert.showBasic(title: "", message: GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
+            }
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
+    }
     
     func showRegistrationMessage(message: String, success: Bool) {
         let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { alertAction in

@@ -41,21 +41,21 @@ extension InicioController: SocketServiceDelegate{
   
   func socketResponse(_ controller: SocketService, solicitarservicio result: [String : Any]) {
     print("solicitarservicio \(result)")
-    if (result["code"] as! Int) == 1 {
-      let newSolicitud = result["datos"] as! [String: Any]
-      self.ConfirmaSolicitud(newSolicitud)
-    } else {
-            
-            let alertaDos = UIAlertController (title: "", message: result["msg"] as! String, preferredStyle: UIAlertController.Style.alert)
-            alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-                DispatchQueue.main.async {
-                    self.waitingView.isHidden = true
-                }
-            }))
-            
-            self.present(alertaDos, animated: true, completion: nil)
-      print("error de solicitud \(result["msg"])")
-    }
+      if (result["code"] as! Int) == 1 {
+          let newSolicitud = result["datos"] as! [String: Any]
+          self.ConfirmaSolicitud(newSolicitud)
+      } else {
+          
+          let alertaDos = UIAlertController (title: "", message: result["msg"] as? String, preferredStyle: UIAlertController.Style.alert)
+          alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+              DispatchQueue.main.async {
+                  self.waitingView.isHidden = true
+              }
+          }))
+          
+          self.present(alertaDos, animated: true, completion: nil)
+          print("error de solicitud \(result["msg"])")
+      }
     
   }
   
@@ -76,11 +76,10 @@ extension InicioController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, sinvehiculo result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
-    if (solicitud != nil) {
+      if let solicitud = globalVariables.solpendientes.first(where: {$0.id == result["idsolicitud"] as! Int}) {
       let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-        self.CancelarSolicitud("",solicitud: solicitud!)
+        self.CancelarSolicitud("",solicitud: solicitud)
         self.Inicio()
       }))
       
@@ -89,24 +88,26 @@ extension InicioController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, solicitudaceptada result: [String : Any]) {
-    let newTaxi = Taxi(id: result["idtaxi"] as! Int, matricula: result["matriculataxi"] as! String, codigo: result["codigotaxi"] as! String, marca: result["marcataxi"] as! String,color: result["colortaxi"] as! String, lat: result["lattaxi"] as! Double, long: result["lngtaxi"] as! Double, conductor: Conductor(idConductor: result["idconductor"] as! Int, nombre: result["nombreapellidosconductor"] as! String, telefono:  result["telefonoconductor"] as! String, urlFoto: result["foto"] as! String, calificacion: result["calificacion"] as! Double, cantidadcalificaciones: result["cantidadcalificacion"] as! Int))
-    
-    globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}!.DatosTaxiConductor(taxi: newTaxi)
-    
-    DispatchQueue.main.async {
-      let vc = R.storyboard.main.solDetalles()!
-      vc.solicitudPendiente = globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}
-      self.navigationController?.show(vc, sender: nil)
-    }
+      if let solPendiente = globalVariables.solpendientes.first(where: {$0.id == (result["idsolicitud"] as! Int)}) {
+          let newTaxi = Taxi(id: result["idtaxi"] as! Int, matricula: result["matriculataxi"] as! String, codigo: result["codigotaxi"] as! String, marca: result["marcataxi"] as! String,color: result["colortaxi"] as! String, lat: result["lattaxi"] as! Double, long: result["lngtaxi"] as! Double, conductor: Conductor(idConductor: result["idconductor"] as! Int, nombre: result["nombreapellidosconductor"] as! String, telefono:  result["telefonoconductor"] as! String, urlFoto: result["foto"] as! String, calificacion: result["calificacion"] as! Double, cantidadcalificaciones: result["cantidadcalificacion"] as! Int))
+          
+          
+          globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}?.DatosTaxiConductor(taxi: newTaxi)
+          
+          DispatchQueue.main.async {
+              let vc = R.storyboard.main.solDetalles()!
+              vc.solicitudPendiente = globalVariables.solpendientes.first{$0.id == (result["idsolicitud"] as! Int)}
+              self.navigationController?.show(vc, sender: nil)
+          }
+      }
   }
   
   func socketResponse(_ controller: SocketService, serviciocancelado result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
-    if solicitud != nil{
+      if let solicitud = globalVariables.solpendientes.first(where:{$0.id == result["idsolicitud"] as! Int}) {
       let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         
-        self.CancelarSolicitud("Conductor",solicitud: solicitud!)
+        self.CancelarSolicitud("Conductor",solicitud: solicitud)
         
         DispatchQueue.main.async {
           self.goToInicioView()
@@ -118,7 +119,7 @@ extension InicioController: SocketServiceDelegate{
   
   func socketResponse(_ controller: SocketService, ofertadelconductor result: [String : Any]) {
     let array = globalVariables.ofertasList.map{$0.id}
-    if !array.contains(result["idsolicitud"] as! Int){
+    if !array.contains(result["idsolicitud"] as! Int) {
       let newOferta = Oferta(id: result["idsolicitud"] as! Int, idTaxi: result["idtaxi"] as! Int, idConductor: result["idconductor"] as! Int, codigo: result["codigotaxi"] as! String, nombreConductor: result["nombreapellidosconductor"] as! String, movilConductor: result["telefonoconductor"] as! String, lat: result["lattaxi"] as! Double, lng: result["lngtaxi"] as! Double, valorOferta: result["valoroferta"] as! Double, tiempoLLegada: result["tiempollegada"] as! Int, calificacion: result["calificacion"] as! Double, totalCalif: result["cantidadcalificacion"] as! Int, urlFoto: result["foto"] as! String, matricula: result["matriculataxi"] as! String, marca: result["marcataxi"] as! String, color: result["colortaxi"] as! String)
 
       globalVariables.ofertasList.append(newOferta)
@@ -135,13 +136,12 @@ extension InicioController: SocketServiceDelegate{
   }
   
   func socketResponse(_ controller: SocketService, taximetroiniciado result: [String : Any]) {
-    let solicitud = globalVariables.solpendientes.first{$0.id == result["idsolicitud"] as! Int}
-    if solicitud != nil {
+    if let solicitud = globalVariables.solpendientes.first(where: {$0.id == result["idsolicitud"] as! Int}) {
       //self.MensajeEspera.text = result
       //self.AlertaEsperaView.hidden = false
-      let title = solicitud!.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
-      let mensaje = solicitud!.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
-      let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: result["fechacambioestado"] as! String).timeToShow()).", preferredStyle: .alert)
+      let title = solicitud.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
+      let mensaje = solicitud.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
+        let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: result["fechacambioestado"] as? String).timeToShow()).", preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         
       }))

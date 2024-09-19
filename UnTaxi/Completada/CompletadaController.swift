@@ -11,198 +11,216 @@ import UIKit
 
 
 class CompletadaController: BaseController, UITextFieldDelegate {
-  var solicitud: Solicitud!
-  var conductor = Conductor()
-  var idConductor = 0
-  var evaluacion: CEvaluacion!
-  var importe: Double = 0.0
-  var ptosEvaluacion = 0
-  var socketService = SocketService.shared
-  var comentariosSelected: [String] = []
-  
-  @IBOutlet weak var completadaBack: UIView!
-  @IBOutlet weak var comentarioText: UITextField!
-  @IBOutlet weak var completadaView: UIView!
-  @IBOutlet weak var conductorImage: UIImageView!
-  @IBOutlet weak var conductorName: UILabel!
-  @IBOutlet weak var importeText: UILabel!
-  @IBOutlet weak var origenIcon: UIImageView!
-  
-  @IBOutlet weak var detallesView: UIView!
-  @IBOutlet weak var evaluacionView: UIView!
-  @IBOutlet weak var sendEvaluacionBtn: UIButton!
-  
-	@IBOutlet weak var startsViews: UIView!
-	@IBOutlet weak var PrimeraStart: UIButton!
-  @IBOutlet weak var SegundaStar: UIButton!
-  @IBOutlet weak var TerceraStar: UIButton!
-  @IBOutlet weak var CuartaStar: UIButton!
-  @IBOutlet weak var QuintaStar: UIButton!
-  
-  @IBOutlet weak var evaluacionTitleText: UILabel!
-  @IBOutlet weak var evaluacionSubtitleText: UILabel!
-  
-  
-  @IBOutlet weak var origenAddressText: UILabel!
-  @IBOutlet weak var destinoAddressText: UILabel!
-  @IBOutlet weak var efectivoText: UILabel!
-  @IBOutlet weak var yapaText: UILabel!
-	@IBOutlet weak var pagoView: UIView!
-	@IBOutlet weak var efectivoYapaView: UIView!
-	
-  @IBOutlet weak var comentariosCollection: UICollectionView!
-  
-  @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
-	@IBOutlet weak var costoViajeLabelTop: NSLayoutConstraint!
-	
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
-
-    self.comentariosCollection.delegate = self
-    self.comentarioText.delegate = self
-    origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
-    self.comentarioText.setBottomBorder(borderColor: .gray)
-    self.conductor = self.solicitud.taxi.conductor
-    let url = URL(string:"\(GlobalConstants.urlHost)/\(self.conductor.urlFoto)")
+    var solicitud: Solicitud!
+    var conductor = Conductor()
+    var idConductor = 0
+    var evaluacion: CEvaluacion!
+    var importe: Double = 0.0
+    var ptosEvaluacion = 0
+    var socketService = SocketService.shared
+    var comentariosSelected: [String] = []
     
-    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-      guard let data = data, error == nil else { return }
-      DispatchQueue.main.sync() {
-        self.conductorImage.image = UIImage(data: data)
-      }
-    }
-    task.resume()
-		
-    self.topViewConstraint.constant = super.getTopMenuBottom()
-    self.conductorName.text = conductor.nombreApellido
-    //self.comentarioText.delegate = self
-    self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
-    self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
-		self.importeText.text = "$\(String(format: "%.2f", solicitud.importe))"
-		self.efectivoText.text = "$\(String(format: "%.2f", solicitud.importe - solicitud.yapaimporte)),\(self.solicitud.useVoucher == "1" ? " Voucher" : " Efectivo")"
-		self.yapaText.text = "$\(String(format: "%.2f", solicitud.yapaimporte)), Yapa"
-		efectivoYapaView.isHidden = !solicitud.isPendientePago()
-		showPagoConTarjetaView(isHidden: !solicitud.isPendientePago())
-    self.origenAddressText.text = solicitud.dirOrigen
-    self.destinoAddressText.text = solicitud.dirDestino
-		costoViajeLabelTop.constant = solicitud.isPendientePago() ? -30 : 0
+    @IBOutlet weak var completadaBack: UIView!
+    @IBOutlet weak var comentarioText: UITextField!
+    @IBOutlet weak var completadaView: UIView!
+    @IBOutlet weak var conductorImage: UIImageView!
+    @IBOutlet weak var conductorName: UILabel!
+    @IBOutlet weak var importeText: UILabel!
+    @IBOutlet weak var origenIcon: UIImageView!
     
-    sendEvaluacionBtn.addCustomActionBtnsColors()
-  }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		socketService.delegate = self
-		socketService.initPagoEvents()
-	}
-
-  func updateEvalucion(evaluation: Int){
-    self.evaluacionView.isHidden = false
-    self.evaluacion.EvaluarCarrera(evaluation)
-    self.evaluacionTitleText.text = self.evaluacion.getTitle()
-    self.evaluacionSubtitleText.text = self.evaluacion.getSubtilte()
-    self.comentariosCollection.reloadData()
-    self.ptosEvaluacion = evaluation
-  }
-	
-	func showPagoConTarjetaView(isHidden: Bool) {
-		hideMenuBar(isHidden: !isHidden)
-		pagoView.isHidden = isHidden
-		startsViews.isHidden = !pagoView.isHidden
-	}
-  
-  //ENVIAR EVALUACIÓN
-  func EnviarEvaluacion(_ evaluacion: Int, comentario: String){
-    if evaluacion != 0 {
-      let datos = [
-        "evaluacion": self.evaluacion.ptoEvaluacion,
-        "comentario": comentario,
-        "idsolicitud": self.solicitud.id,
-        "idconductor": idConductor == 0 ? self.conductor.idConductor : idConductor,
-        ] as [String : Any]
-      print("datos \(datos)")
-      socketService.socketEmit("evaluarservicio", datos: datos)
+    @IBOutlet weak var detallesView: UIView!
+    @IBOutlet weak var evaluacionView: UIView!
+    @IBOutlet weak var sendEvaluacionBtn: UIButton!
+    
+    @IBOutlet weak var startsViews: UIView!
+    @IBOutlet weak var PrimeraStart: UIButton!
+    @IBOutlet weak var SegundaStar: UIButton!
+    @IBOutlet weak var TerceraStar: UIButton!
+    @IBOutlet weak var CuartaStar: UIButton!
+    @IBOutlet weak var QuintaStar: UIButton!
+    
+    @IBOutlet weak var evaluacionTitleText: UILabel!
+    @IBOutlet weak var evaluacionSubtitleText: UILabel!
+    
+    
+    @IBOutlet weak var origenAddressText: UILabel!
+    @IBOutlet weak var destinoAddressText: UILabel!
+    @IBOutlet weak var efectivoText: UILabel!
+    @IBOutlet weak var yapaText: UILabel!
+    @IBOutlet weak var pagoView: UIView!
+    @IBOutlet weak var efectivoYapaView: UIView!
+    
+    @IBOutlet weak var comentariosCollection: UICollectionView!
+    
+    @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var costoViajeLabelTop: NSLayoutConstraint!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        self.comentariosCollection.delegate = self
+        self.comentarioText.delegate = self
+        origenIcon.addCustomTintColor(customColor: CustomAppColor.buttonActionColor)
+        self.comentarioText.setBottomBorder(borderColor: .gray)
+        self.conductor = self.solicitud.taxi.conductor
+        let url = URL(string:"\(GlobalConstants.urlHost)/\(self.conductor.urlFoto)")
+        
+        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.sync() {
+                self.conductorImage.image = UIImage(data: data)
+            }
+        }
+        task.resume()
+        
+        self.topViewConstraint.constant = super.getTopMenuBottom()
+        self.conductorName.text = conductor.nombreApellido
+        //self.comentarioText.delegate = self
+        self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
+        self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
+        self.importeText.text = "$\(String(format: "%.2f", solicitud.importe))"
+        self.efectivoText.text = "$\(String(format: "%.2f", solicitud.importe - solicitud.yapaimporte)),\(self.solicitud.useVoucher == "1" ? " Voucher" : " Efectivo")"
+        self.yapaText.text = "$\(String(format: "%.2f", solicitud.yapaimporte)), Yapa"
+        efectivoYapaView.isHidden = !solicitud.isPendientePago()
+        showPagoConTarjetaView(isHidden: !solicitud.isPendientePago())
+        self.origenAddressText.text = solicitud.dirOrigen
+        self.destinoAddressText.text = solicitud.dirDestino
+        costoViajeLabelTop.constant = solicitud.isPendientePago() ? -30 : 0
+        
+        sendEvaluacionBtn.addCustomActionBtnsColors()
     }
-    DispatchQueue.main.async {
-      self.goToInicioView()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        socketService.delegate = self
+        socketService.initPagoEvents()
     }
-  }
-	
-	func pagoConTarjeta() {
-		PagoApiService.shared.listCardsAPIService()
-	}
-  
-  @IBAction func Star1(_ sender: AnyObject) {
-    self.updateEvalucion(evaluation: 1)
-  }
-  @IBAction func Star2(_ sender: AnyObject) {
-    self.updateEvalucion(evaluation: 2)
-  }
-  @IBAction func Star3(_ sender: AnyObject) {
-    self.updateEvalucion(evaluation: 3)
-  }
-  @IBAction func Star4(_ sender: AnyObject) {
-    self.updateEvalucion(evaluation: 4)
-  }
-  @IBAction func Star5(_ sender: AnyObject) {
-    self.updateEvalucion(evaluation: 5)
-  }
-  
-  override func homeBtnAction() {
-    self.goToInicioView()
-  }
-  
-  //Enviar comentario
-  @IBAction func AceptarEvalucion(_ sender: AnyObject) {
-    if self.ptosEvaluacion > 0{
-      if !comentarioText.text!.isEmpty{
-        self.comentariosSelected.append(comentarioText.text!)
-      }
-      EnviarEvaluacion(self.evaluacion.ptoEvaluacion,comentario: self.comentariosSelected.joined(separator: ","))
-    } else {
-      self.goToInicioView()
+    
+    func updateEvalucion(evaluation: Int){
+        self.evaluacionView.isHidden = false
+        self.evaluacion.EvaluarCarrera(evaluation)
+        self.evaluacionTitleText.text = self.evaluacion.getTitle()
+        self.evaluacionSubtitleText.text = self.evaluacion.getSubtilte()
+        self.comentariosCollection.reloadData()
+        self.ptosEvaluacion = evaluation
     }
-  }
-  
-	@IBAction func pagarConTarjeta(_ sender: Any) {
-		let pagoViewController = storyboard?.instantiateViewController(withIdentifier: "PagoViewVC") as! PagoController
-		pagoViewController.solicitudPendiente = solicitud
-		pagoViewController.delegate = self
-		self.addChild(pagoViewController)
-		self.view.addSubview(pagoViewController.view)
-	}
-	
-	@IBAction func pagarConEfectivo(_ sender: Any) {
-		let datos:[String: Any] = [
-			"idtaxi": solicitud.taxi.id,
-			"nombreapellidoscliente": solicitud.cliente.nombreApellidos,
-			"idsolicitud": solicitud.id
-		]
-		socketService.socketEmit("pagadaenefectivocliente", datos: datos)
-		socketService.delegate = self
-		socketService.initPagoEvents()
-	}
-	
-	//MARK:- TEXT DELEGATE ACTION
-  
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    animateViewMoving(true, moveValue: 210,view: self.view)
-  }
-  
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    animateViewMoving(false, moveValue: 210,view: self.view)
-  }
-  
-  func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
-    let movementDuration:TimeInterval = 0.3
-    let movement:CGFloat = ( up ? -moveValue : moveValue)
-    UIView.beginAnimations( "animateView", context: nil)
-    UIView.setAnimationBeginsFromCurrentState(true)
-    UIView.setAnimationDuration(movementDuration)
-    view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
-    UIView.commitAnimations()
-  }
-  
-  
-  
+    
+    func showPagoConTarjetaView(isHidden: Bool) {
+        hideMenuBar(isHidden: !isHidden)
+        pagoView.isHidden = isHidden
+        startsViews.isHidden = !pagoView.isHidden
+    }
+    
+    //ENVIAR EVALUACIÓN
+    func EnviarEvaluacion(_ evaluacion: Int, comentario: String){
+        if evaluacion != 0 {
+            let datos = [
+                "evaluacion": self.evaluacion.ptoEvaluacion,
+                "comentario": comentario,
+                "idsolicitud": self.solicitud.id,
+                "idconductor": idConductor == 0 ? self.conductor.idConductor : idConductor,
+            ] as [String : Any]
+            print("datos \(datos)")
+            socketService.socketEmit("evaluarservicio", datos: datos)
+        }
+        DispatchQueue.main.async {
+            self.goToInicioView()
+        }
+    }
+    
+//    func pagoConTarjeta() {
+//        PagoApiService.shared.listCardsAPIService(completion: { result in
+//            
+//            switch result {
+//            case .success(let cards):
+//                self.cardList = cards
+//            case .failure(let _):
+//                DispatchQueue.main.async {
+//                    let alertaDos = UIAlertController (title: GlobalStrings.noCardsTiTle, message: GlobalStrings.noCardsMessage, preferredStyle: UIAlertController.Style.alert)
+//                    alertaDos.addAction(UIAlertAction(title: GlobalStrings.registrarBtnTitle, style: .default, handler: {alerAction in
+//                        self.openRegisterCardView()
+//                    }))
+//                    alertaDos.addAction(UIAlertAction(title: GlobalStrings.cancelarButtonTitle, style: .default, handler: {alerAction in
+//                        self.tarjetasView.isHidden = true
+//                        self.pagoCell.resetToEfectivo()
+//                    }))
+//                    self.present(alertaDos, animated: true, completion: nil)
+//                }
+//            }
+//        })
+//    }
+    
+    @IBAction func Star1(_ sender: AnyObject) {
+        self.updateEvalucion(evaluation: 1)
+    }
+    @IBAction func Star2(_ sender: AnyObject) {
+        self.updateEvalucion(evaluation: 2)
+    }
+    @IBAction func Star3(_ sender: AnyObject) {
+        self.updateEvalucion(evaluation: 3)
+    }
+    @IBAction func Star4(_ sender: AnyObject) {
+        self.updateEvalucion(evaluation: 4)
+    }
+    @IBAction func Star5(_ sender: AnyObject) {
+        self.updateEvalucion(evaluation: 5)
+    }
+    
+    override func homeBtnAction() {
+        self.goToInicioView()
+    }
+    
+    //Enviar comentario
+    @IBAction func AceptarEvalucion(_ sender: AnyObject) {
+        if self.ptosEvaluacion > 0{
+            if !comentarioText.text!.isEmpty {
+                self.comentariosSelected.append(comentarioText.text!)
+            }
+            EnviarEvaluacion(self.evaluacion.ptoEvaluacion,comentario: self.comentariosSelected.joined(separator: ","))
+        } else {
+            self.goToInicioView()
+        }
+    }
+    
+    @IBAction func pagarConTarjeta(_ sender: Any) {
+        let pagoViewController = storyboard?.instantiateViewController(withIdentifier: "PagoViewVC") as! PagoController
+        pagoViewController.solicitudPendiente = solicitud
+        pagoViewController.delegate = self
+        self.addChild(pagoViewController)
+        self.view.addSubview(pagoViewController.view)
+    }
+    
+    @IBAction func pagarConEfectivo(_ sender: Any) {
+        let datos:[String: Any] = [
+            "idtaxi": solicitud.taxi.id,
+            "nombreapellidoscliente": solicitud.cliente.nombreApellidos,
+            "idsolicitud": solicitud.id
+        ]
+        socketService.socketEmit("pagadaenefectivocliente", datos: datos)
+        socketService.delegate = self
+        socketService.initPagoEvents()
+    }
+    
+    //MARK:- TEXT DELEGATE ACTION
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateViewMoving(true, moveValue: 210,view: self.view)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        animateViewMoving(false, moveValue: 210,view: self.view)
+    }
+    
+    func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView){
+        let movementDuration:TimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    
+    
 }

@@ -13,8 +13,10 @@ extension PagoController {
 	@objc func openRegisterCardView() {
 		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
 		print("AddURL \(GlobalConstants.addCardsUrl)\(accessToken)")
-		let url = URL(string: "\(GlobalConstants.addCardsUrl)\(accessToken)")
-		let requestObj = URLRequest(url: url! as URL)
+        guard let url = URL(string: "\(GlobalConstants.addCardsUrl)\(accessToken)") else {
+            return
+        }
+		let requestObj = URLRequest(url: url)
 		tarjetaWebView.load(requestObj)
 		tarjetaWebView.isHidden = false
 		waitingView.isHidden = false
@@ -30,11 +32,11 @@ extension PagoController {
 	}
 	
 	func enviarPagoConTajeta(idSolicitud: String, tokenCard: String) {
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		//let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
 		let datos:[String: Any] = [
 			"toke": tokenCard,
 			"idsolicitud": idSolicitud,
-			"idcliente": globalVariables.cliente.id
+            "idcliente": globalVariables.cliente.id as Any
 		]
 		socketService.socketEmit("pagarcontarjeta", datos: datos)
 	}
@@ -53,12 +55,58 @@ extension PagoController {
 			
 			if inicioVC.count != 0 {
 				print("Hay inicio")
-				self.navigationController?.popToViewController(inicioVC.first!, animated: false)
+                guard let inicioController = inicioVC.first else {
+                    return
+                }
+				self.navigationController?.popToViewController(inicioController, animated: false)
 			} else {
 				print("No hay inicio")
-				let vc = R.storyboard.main.inicioView()!
+                guard let vc = R.storyboard.main.inicioView() else {
+                    return
+                }
 				self.navigationController?.show(vc, sender: self)
 			}
 		}
 	}
+    
+    func listCardAPIService() {
+        PagoApiService.shared.listCardsAPIService(completion: { result in
+            switch result {
+            case .success(let cardList):
+                self.cardList = cardList
+                DispatchQueue.main.async {
+                    self.tarjetasTableView.reloadData()
+                }
+            case .failure(let _):
+                self.cardList = []
+                let registrarAction = UIAlertAction(title: "Registrar", style: .default, handler: {alerAction in
+                    self.waitingView.isHidden = false
+                    self.openRegisterCardView()
+                })
+                let cancelarAction = UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
+                    self.goToInicioView()
+                })
+                
+                Alert.showBasic(title: GlobalStrings.noCardsTiTle, message: GlobalStrings.noCardsMessage, vc: self, withActions: [registrarAction, cancelarAction])
+            }
+        })
+    }
+    
+    func removeCard(cardId: Int) {
+        PagoApiService.shared.removeCardsAPIService(cardId: cardId, completion: { result in
+            var message: String
+            switch result {
+            case .success(let _):
+                message = GlobalStrings.tarjetaEliminadaSucess
+            case .failure(let error):
+                message = error.localizedDescription
+            }
+            
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: {alerAction in
+                self.goToInicioView()
+             })
+            
+            Alert.showBasic(title: GlobalStrings.tarjetaEliminadaTitle, message: message, vc: self, withActions: [okAction])
+        })
+    }
 }

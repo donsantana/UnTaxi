@@ -39,7 +39,7 @@ class RegistroController: UIViewController {
     super.viewDidLoad()
     
     //MARK:- DELEGATES
-    apiService.delegate = self
+      ApiService.shared.delegate = self
     claveText.delegate = self
     telefonoText.delegate = self
     nombreApText.delegate = self
@@ -65,6 +65,7 @@ class RegistroController: UIViewController {
     
     let locale = Locale.current
     let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+      print("REGISTER URL: \(GlobalConstants.registerUrl)")
     //init Picker
     //picker.displayOnlyCountriesWithCodes = ["EC"] //display only
     //picker.exeptCountriesWithCodes = ["EC"] //exept country

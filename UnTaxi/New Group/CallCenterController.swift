@@ -113,6 +113,7 @@ extension CallCenterController: UITableViewDelegate,UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      AnalyticsHelper.showCallCenterUsedEvent()
     if telefonosCallCenter[indexPath.row].tienewhatsapp {
       let callCenterAlert = UIAlertController(title: "Comunicar al Call Center", message: "", preferredStyle: UIAlertController.Style.actionSheet)
   //    callCenterAlert.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in

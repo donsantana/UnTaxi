@@ -216,12 +216,30 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     waitingView.isHidden = false
     let nombreUsuario = globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String
       ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": nombreUsuario]) { result in
+          
           switch result {
           case .success(let message):
-              self.showRecoverUserClaveAlert(success: true, message: message)
+              self.showRecoverUserClaveAlert(success: true,message: message)
           case .failure(let error):
-              self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+              var errorMessage = ""
+              switch error {
+              case .invalidResponse(message: let message):
+                  errorMessage = message
+              case .serverError(message: let message):
+                  errorMessage = message
+              default:
+                  errorMessage = error.localizedDescription
+              }
+              self.showRecoverUserClaveAlert(success: false,message: errorMessage)
           }
+      
+          
+//          switch result {
+//          case .success(let message):
+//              self.showRecoverUserClaveAlert(success: true, message: message)
+//          case .failure(let error):
+//              self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+//          }
       }
   }
     

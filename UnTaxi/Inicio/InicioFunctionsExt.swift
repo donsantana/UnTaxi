@@ -410,13 +410,19 @@ extension InicioController{
 		switch self.tabBar.selectedItem {
 		case self.taximetroItem:
 			tipoServicio = 2
+            AnalyticsHelper.solicitudEvent(type: .servicioTaximetro)
 		case self.horasItem:
 			tipoServicio = 3
+            AnalyticsHelper.solicitudEvent(type: .servicioPorhoras)
 		case self.pactadaItem:
 			tipoServicio = 4
+            AnalyticsHelper.solicitudEvent(type: .servicioPactadas)
 		default:
 			tipoServicio = 1
+            AnalyticsHelper.solicitudEvent(type: .servicioOferta)
 		}
+        
+        triggerSolicitudEvent(tipoServicio: tipoServicio)
 		
 		let pagoConTarjeta = pagoCell.formaPagoSwitch.titleForSegment(at: pagoCell.formaPagoSwitch.selectedSegmentIndex) == "Tarjeta"
 		
@@ -424,10 +430,15 @@ extension InicioController{
 		let nuevaSolicitud = Solicitud(id: 0, fechaHora: "", dirOrigen: origen, referenciaOrigen: referencia, dirDestino: destino, latOrigen: origenCoord.latitude, lngOrigen: origenCoord.longitude, latDestino: destinoCoord.latitude, lngDestino: destinoCoord.longitude, importe: valorOferta, detalleOferta: detalleOferta, fechaReserva: fechaReserva, useVoucher: voucher, tipoServicio: tipoServicio,yapa: isYapa,tarjeta: pagoConTarjeta)
 		nuevaSolicitud.DatosCliente(cliente: globalVariables.cliente!)
 		
-		if !self.contactoCell.telefonoText.text!.isEmpty{
+		if !self.contactoCell.telefonoText.text!.isEmpty {
 			nuevaSolicitud.DatosOtroCliente(telefono: self.cleanTextField(textfield: self.contactoCell.telefonoText), nombre: self.cleanTextField(textfield: self.contactoCell.contactoNameText))
+            AnalyticsHelper.otraPersonaFilledEvent()
 		}
-		
+        
+        if isYapa {
+            AnalyticsHelper.useYapaEvent()
+        }
+        
 		self.crearTramaSolicitud(nuevaSolicitud)
 		view.endEditing(true)
 	}
@@ -435,6 +446,19 @@ extension InicioController{
 	func showFormError() {
 		
 	}
+    
+    func triggerSolicitudEvent(tipoServicio: Int) {
+        switch tipoServicio {
+        case 2:
+            AnalyticsHelper.solicitudEvent(type: .servicioTaximetro)
+        case 3:
+            AnalyticsHelper.solicitudEvent(type: .servicioPorhoras)
+        case 4:
+            AnalyticsHelper.solicitudEvent(type: .servicioPactadas)
+        default:
+            AnalyticsHelper.solicitudEvent(type: .servicioOferta)
+        }
+    }
 	
 	@objc func enviarSolicitud() {
 		if self.origenCell.origenText.text!.isEmpty {
@@ -582,7 +606,7 @@ extension InicioController{
 		}
 	}
 	
-	func openSearchAddress(){
+	func openSearchAddress() {
 		super.hideMenuBar(isHidden: true)
 		self.searchAddressView.isHidden = false
 		self.searchText.placeholder = self.searchingAddress == "origen" ? "Ingrese nuevo origen" : "Ingrese nuevo destino"
@@ -600,7 +624,7 @@ extension InicioController{
 		}
 	}
 	
-	func closeSearchAddress(addressSelected: Address?){
+	func closeSearchAddress(addressSelected: Address?) {
 		super.hideMenuBar(isHidden: false)
 		self.mapBottomConstraint.constant = 0
 		searchText.endEditing(true)
@@ -636,7 +660,7 @@ extension InicioController{
 		}
 	}
 	
-	@objc func openMapBtnAction(){
+	@objc func openMapBtnAction() {
 		self.addressPreviewText.isHidden = false
 		self.view.endEditing(true)
 		self.searchAddressView.isHidden = true

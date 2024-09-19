@@ -101,14 +101,21 @@ class PerfilController: BaseController {
       ] as [String : Any]
       
         ApiService.shared.updateProfileAPI(parameters: params as [String: AnyObject]) { result in
-            var title = ""
-            var message = ""
             switch result {
             case .success(let jsonResult):
                 globalVariables.cliente.updateProfile(jsonData: jsonResult["datos"] as! [String: Any])
                 self.showProfileUpdated(success: true, message: jsonResult["msg"] as? String ?? "")
             case .failure(let error):
-                self.showProfileUpdated(success: false, message: error.localizedDescription)
+                var errorMessage = ""
+                switch error {
+                case .invalidResponse(message: let message):
+                    errorMessage = message
+                case .serverError(message: let message):
+                    errorMessage = message
+                default:
+                    errorMessage = error.localizedDescription
+                }
+                self.showProfileUpdated(success: false,message: errorMessage)
             }
         }
     }
@@ -161,7 +168,16 @@ class PerfilController: BaseController {
                 case .success(let message):
                     self.showRemoveUser(message: message, success: true)
                 case .failure(let error):
-                    self.showRemoveUser(message: error.localizedDescription, success: false)
+                    var errorMessage = ""
+                    switch error {
+                    case .invalidResponse(message: let message):
+                        errorMessage = message
+                    case .serverError(message: let message):
+                        errorMessage = message
+                    default:
+                        errorMessage = error.localizedDescription
+                    }
+                    self.showRemoveUser(message: errorMessage, success: false)
                 }
             }
 		})

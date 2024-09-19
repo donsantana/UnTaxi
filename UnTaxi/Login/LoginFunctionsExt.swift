@@ -172,7 +172,33 @@ extension LoginController{
   //MARK:- FUNCIONES PROPIAS
   
   func Login(user: String, password: String) {
-    self.apiService.loginToAPIService(user: user, password: password)
+    //self.apiService.loginToAPIService(user: user, password: password)
+      self.apiService.loginToAPIService(user: user, password: password) {results in
+          switch results {
+          case .success(let data):
+              globalVariables.userDefaults.set(data["token"] as! String, forKey: "accessToken")
+              self.startSocketConnection()
+              AnalyticsHelper.loginEvent()
+          case .failure(let error):
+              var errorMessage = ""
+              switch error {
+              case .invalidResponse(message: let message):
+                  errorMessage = message
+              case .serverError(message: let message):
+                  errorMessage = message
+              default:
+                  errorMessage = error.localizedDescription
+              }
+
+              DispatchQueue.main.async {
+                  let alertaDos = UIAlertController (title: "Error de Autenticación", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+                alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                  self.waitingView.isHidden = true
+                }))
+                self.present(alertaDos, animated: true, completion: nil)
+              }
+          }
+      }
     self.waitingView.isHidden = false
   }
   
@@ -180,12 +206,30 @@ extension LoginController{
         waitingView.isHidden = false
         globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
         ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!]) { result in
+
             switch result {
             case .success(let message):
-                self.showRecoverUserClaveAlert(success: true, message: message)
+                self.showRecoverUserClaveAlert(success: false,message: message)
             case .failure(let error):
-                self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+                var errorMessage = ""
+                switch error {
+                case .invalidResponse(message: let message):
+                    errorMessage = message
+                case .serverError(message: let message):
+                    errorMessage = message
+                default:
+                    errorMessage = error.localizedDescription
+                }
+                self.showRecoverUserClaveAlert(success: false,message: errorMessage)
             }
+            
+//        message: errorMessage,
+//            switch result {
+//            case .success(let message):
+//                self.showRecoverUserClaveAlert(success: true, message: message)
+//            case .failure(let error):
+//                self.showRecoverUserClaveAlert(success: false, message: error.localizedDescription)
+//            }
         }
     }
   
@@ -197,12 +241,29 @@ extension LoginController{
         "codigo": codigo,
         "password": newPassword,
       ]) { result in
+          
           switch result {
           case .success(let message):
-              self.showCreateNewPassAlert(success: true, message: message)
+              self.showCreateNewPassAlert(success: true,message: message)
           case .failure(let error):
-              self.showCreateNewPassAlert(success: false, message: error.localizedDescription)
+              var errorMessage = ""
+              switch error {
+              case .invalidResponse(message: let message):
+                  errorMessage = message
+              case .serverError(message: let message):
+                  errorMessage = message
+              default:
+                  errorMessage = error.localizedDescription
+              }
+              self.showCreateNewPassAlert(success: false,message: errorMessage)
           }
+          
+//          switch result {
+//          case .success(let message):
+//              self.showCreateNewPassAlert(success: true, message: message)
+//          case .failure(let error):
+//              self.showCreateNewPassAlert(success: false, message: error.localizedDescription)
+//          }
       }
     } else {
       let alertaDos = UIAlertController (title: "Nueva clave", message: "Las nueva clave no coincide en ambos campos", preferredStyle: UIAlertController.Style.alert)

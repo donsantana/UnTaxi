@@ -14,7 +14,9 @@ extension PagoController: SocketServiceDelegate {
 		let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: { [self] alerAction in
 			if result {
 				tarjetaWebView.isHidden = true
-				pagoApiService.listCardsAPIService()
+                PagoApiService.shared.listCardsAPIService(completion: { result in
+                    
+                })
 				//tarjetasTableView.reloadData()
 			} else {
 				tarjetaWebView.isHidden = true

@@ -9,7 +9,7 @@
 import UIKit
 
 class EsperaChildVC: UIViewController {
-  var socketService = SocketService.shared
+  //var socketService = SocketService.shared
   var solicitud: Solicitud!
 
   @IBOutlet weak var MensajeEspera: UITextView!
@@ -27,8 +27,8 @@ class EsperaChildVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.setNavigationBarHidden(true, animated: false)
-    self.socketService.delegate = self
-    self.socketService.initListenEventos()
+      SocketService.shared.delegate = self
+      SocketService.shared.initListenEventos()
     
     self.updateOfertaView.addShadow()
     self.SendOferta.addCustomActionBtnsColors()
@@ -104,7 +104,7 @@ class EsperaChildVC: UIViewController {
     //let temp = (globalVariables.solpendientes.last?.idTaxi)! + "," + motivo + "," + "# \n"
     let datos = solicitud.crearTramaCancelar(motivo: motivo)
     globalVariables.solpendientes.removeAll{$0.id == self.solicitud.id}
-    self.socketService.socketEmit("cancelarservicio", datos: datos)
+      SocketService.shared.socketEmit("cancelarservicio", datos: datos)
   }
   
   @IBAction func downOferta(_ sender: Any) {
@@ -119,7 +119,7 @@ class EsperaChildVC: UIViewController {
   @IBAction func enviarNuevoValorOferta(_ sender: Any) {
     //#RSO.id,idcliente,nuevovaloroferta,#
 //    let datos = "#RSO,\(self.solicitudInProcess.text!),\(globalVariables.cliente.idCliente!),\(self.newOfertaText.text!),# \n"
-    self.socketService.socketEmit("subiroferta", datos: self.solicitud.updateValorOferta(newValor: self.newOfertaText.text!))
+      SocketService.shared.socketEmit("subiroferta", datos: self.solicitud.updateValorOferta(newValor: self.newOfertaText.text!))
   }
   
   @IBAction func CancelarProcesoSolicitud(_ sender: AnyObject) {

@@ -37,7 +37,8 @@ struct GlobalStrings {
 	
 	//Formularios
 	static let formErrorTitle: String = NSLocalizedString("Error en el formulario",comment:"")
-	static let formErrorMessage: String = NSLocalizedString("Por favor revizar todos los campos del formulario",comment:"")
+    static let formErrorMessage: String = NSLocalizedString("Por favor revizar todos los campos del formulario",comment:"")
+	static let formDestinoMessage: String = NSLocalizedString("Por favor debe espeficicar su destino.",comment:"")
 	static let formIncompleteTitle: String = NSLocalizedString("Formulario incompleto",comment:"")
 	static let formIncompleteMessage: String = NSLocalizedString("Debe llenar todos los campos del formulario",comment:"")
 	static let passNotMatchMessage: String = NSLocalizedString("Las contraseñas no coinciden.",comment:"")
@@ -90,7 +91,8 @@ struct GlobalStrings {
 	static let autorizarButtonTitle: String = NSLocalizedString("Autorizar",comment:"")
 	static let closeAppButtonTitle: String = NSLocalizedString("Cerrar aplicación",comment:"")
     static let settingsBtnTitle: String = NSLocalizedString("Configuración",comment:"")
-	static let verficarBtnTitle: String = NSLocalizedString("Verificar",comment:"")
+    static let verficarBtnTitle: String = NSLocalizedString("Verificar",comment:"")
+	static let registrarBtnTitle: String = NSLocalizedString("Registrar",comment:"")
 	
 	//Placeholders
 	static let enterOrigen: String = NSLocalizedString("Ingrese nuevo origen",comment:"")

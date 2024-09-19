@@ -81,6 +81,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         self.navigationController?.show(vc, sender: nil)
         
       case "Operadora":
+          AnalyticsHelper.showCallCenterEvent()
         vc = R.storyboard.main.callCenter()!
         vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
 

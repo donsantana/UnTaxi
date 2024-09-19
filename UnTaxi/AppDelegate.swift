@@ -13,6 +13,8 @@ import SocketIO
 import AVFoundation
 import UserNotifications
 import GoogleMobileAds
+import FirebaseAnalytics
+@_implementationOnly import FirebaseCore
 
 @UIApplicationMain
  class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -26,6 +28,8 @@ import GoogleMobileAds
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     application.isIdleTimerDisabled = true
+      
+      FirebaseApp.configure()
     
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
       if let error = error {

@@ -31,7 +31,7 @@ final class PagoApiService {
 		return request
 	}
 	
-	func listCardsAPIService(){
+    func listCardsAPIService(completion: @escaping (Result<[Card],APIError>)-> Void) {
 		print("List Card URL: \(GlobalConstants.listCardsUrl)")
 		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
 		var request = URLRequest(url: URL(string: GlobalConstants.listCardsUrl)!)
@@ -43,20 +43,24 @@ final class PagoApiService {
 		let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
 			
 			if let error = error {
-				self.delegate?.apiRequest(self, getAPIError: error.localizedDescription)
+                completion(.failure(.serverError(message: error.localizedDescription)))
+				//self.delegate?.apiRequest(self, getAPIError: error.localizedDescription)
 				return
 			}
 			
 			guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-				self.delegate?.apiRequest(self, getAPIError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
+                completion(.failure(.invalidResponse(message: GlobalStrings.errorGenericoMessage)))
+				//self.delegate?.apiRequest(self, getAPIError: "Ha ocurrido un error en el servidor. Por favor, intentelo otra vez.")
 				return
 			}
 			if let data = data {
 				let decoder = JSONDecoder()
 				if let decodedResponse = try? decoder.decode(CardResponseData.self, from: data) {
 					print("Response Decoded \(decodedResponse.cards)")
-					self.delegate?.apiRequest(self, getCardsList: decodedResponse.cards)
+                    completion(.success(decodedResponse.cards))
+					//self.delegate?.apiRequest(self, getCardsList: decodedResponse.cards)
 				}else{
+                    completion(.failure(.invalidData))
 					self.delegate?.apiRequest(self, getCardsList: [])
 				}
 			}
@@ -66,7 +70,7 @@ final class PagoApiService {
 		task.resume()
 	}
 	
-	func removeCardsAPIService(cardId: Int){
+    func removeCardsAPIService(cardId: Int, completion: @escaping (Result<Int, APIError>) -> Void) {
 		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
 		var request = URLRequest(url: URL(string: "\(GlobalConstants.listCardsUrl)/\(cardId)")!)
 		request.httpMethod = "DELETE"
@@ -76,10 +80,12 @@ final class PagoApiService {
 		let session = URLSession.shared
 		let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
 			let response = response as! HTTPURLResponse
-				if error == nil && response.statusCode == 200{
-					self.delegate?.apiRequest(self, cardRemoved: cardId)
+				if error == nil && response.statusCode == 200 {
+                    completion(.success(cardId))
+					//self.delegate?.apiRequest(self, cardRemoved: cardId)
 				} else {
-					self.delegate?.apiRequest(self, cardRemoved: nil)
+                    completion(.failure(.serverError(message: error?.localizedDescription ?? GlobalStrings.errorGenericoMessage)))
+					//self.delegate?.apiRequest(self, cardRemoved: nil)
 				}
 		})
 		

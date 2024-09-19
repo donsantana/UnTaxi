@@ -14,7 +14,7 @@ protocol PagoControllerDelegate: AnyObject {
 }
 
 class PagoController: UIViewController {
-	var pagoApiService = PagoApiService.shared
+	//var pagoApiService = PagoApiService.shared
 	var socketService = SocketService.shared
 	var solicitudPendiente: Solicitud?
 	var isFromMenu = false
@@ -28,12 +28,12 @@ class PagoController: UIViewController {
 	@IBOutlet weak var waitingView: UIVisualEffectView!
 	
 	override func viewDidLoad() {
-		self.pagoApiService.delegate = self
+		//self.pagoApiService.delegate = self
 		socketService.delegate = self
 		tarjetasTableView.delegate = self
 		tarjetaWebView.navigationDelegate = self
 		waitingView.addStandardConfig()
-		pagoApiService.listCardsAPIService()
+        listCardAPIService()
 		socketService.initPagoEvents()
 		
 		let addCardBtn = UIButton(type: UIButton.ButtonType.system)

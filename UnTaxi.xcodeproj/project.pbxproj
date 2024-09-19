@@ -1671,6 +1671,15 @@
 		F4E746152B55DC420059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
 		F4E746162B55DC420059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
 		F4E746172B55DC430059A08C /* VerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E746102B3E153A0059A08C /* VerificationController.swift */; };
+		F4E87A572C8F49530019D2CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */; };
+		F4E87A5A2C8F4A7E0019D2CF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A592C8F4A7E0019D2CF /* FirebaseAnalytics */; };
+		F4E87A5C2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A5B2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion */; };
+		F4E87A5E2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A5D2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F4E87A602C8F4A7E0019D2CF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A5F2C8F4A7E0019D2CF /* FirebaseAppCheck */; };
+		F4E87A622C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A612C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta */; };
+		F4E87A642C8F900A0019D2CF /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F4E87A672C8F93B60019D2CF /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F4E87A692C8FBE640019D2CF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A682C8FBE640019D2CF /* FirebaseAnalytics */; };
 		FB849B7B2C642BE35D2ADF11 /* Pods_UnTaxi_Kyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB68A98154B1CB65E737640 /* Pods_UnTaxi_Kyper.framework */; };
 /* End PBXBuildFile section */
 
@@ -1922,6 +1931,9 @@
 		F4E139922C0515A100E3A54E /* Kyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E139932C0515A200E3A54E /* TransporVIP copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TransporVIP copy2-Info.plist"; path = "/Users/done/Documents/Documents - Done’s Mac mini/Repos/UnTaxi/TransporVIP copy2-Info.plist"; sourceTree = "<absolute>"; };
 		F4E746102B3E153A0059A08C /* VerificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationController.swift; sourceTree = "<group>"; };
+		F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnalyticsService.swift; path = Utils/Enums/AnalyticsService.swift; sourceTree = SOURCE_ROOT; };
 		F4EB53702596123F8C3E62DB /* Pods-UnTaxi-OrientExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1931,12 +1943,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4E137E42C04DFC500E3A54E /* MapboxSearch in Frameworks */,
+				F4E87A5E2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F4E137EA2C04DFC500E3A54E /* MapboxDirections in Frameworks */,
+				F4E87A5A2C8F4A7E0019D2CF /* FirebaseAnalytics in Frameworks */,
 				F4E137EC2C04DFC500E3A54E /* MapboxGeocoder in Frameworks */,
+				F4E87A5C2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				F4E137E62C04DFC500E3A54E /* MapboxSearchUI in Frameworks */,
 				F4E137E22C04DFC500E3A54E /* MapboxMaps in Frameworks */,
 				F4E137E82C04DFC500E3A54E /* SocketIO in Frameworks */,
 				8B11B988668D0A09215A458F /* Pods_UnTaxi.framework in Frameworks */,
+				F4E87A602C8F4A7E0019D2CF /* FirebaseAppCheck in Frameworks */,
+				F4E87A622C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1980,6 +1997,7 @@
 				F489F2392C0364A000F42D0B /* SocketIO in Frameworks */,
 				82C67440F6D0CC1850A894E1 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */,
 				45AC9B804F192A4DB431AAA3 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */,
+				F4E87A692C8FBE640019D2CF /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2055,6 +2073,7 @@
 		84F5713A1BCE958200FC18D5 = {
 			isa = PBXGroup;
 			children = (
+				F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */,
 				F4E131D82A08100200E18299 /* Apps */,
 				C6FEC00B2591596C008EEF83 /* fonts */,
 				C61F3479248E8F65006A07F6 /* .gitignore */,
@@ -2278,6 +2297,7 @@
 		C63A6B1D245F63BC007B0EE5 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				F4E87A652C8F934F0019D2CF /* Analytics */,
 				C603C79228F2219D00F4A761 /* Pago */,
 				C66984152679513B00C0C353 /* weather */,
 				C66984122677EF6E00C0C353 /* publicidad */,
@@ -2466,6 +2486,7 @@
 			isa = PBXGroup;
 			children = (
 				C6A37F0A2554AB4C00C79BFF /* SolicitudStatus.swift */,
+				F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2734,6 +2755,14 @@
 			path = Kyper;
 			sourceTree = "<group>";
 		};
+		F4E87A652C8F934F0019D2CF /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2761,6 +2790,11 @@
 				F4E137E72C04DFC500E3A54E /* SocketIO */,
 				F4E137E92C04DFC500E3A54E /* MapboxDirections */,
 				F4E137EB2C04DFC500E3A54E /* MapboxGeocoder */,
+				F4E87A592C8F4A7E0019D2CF /* FirebaseAnalytics */,
+				F4E87A5B2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion */,
+				F4E87A5D2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport */,
+				F4E87A5F2C8F4A7E0019D2CF /* FirebaseAppCheck */,
+				F4E87A612C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta */,
 			);
 			productName = Xtaxi;
 			productReference = 84F571431BCE958200FC18D5 /* UnTaxi.app */;
@@ -2853,6 +2887,7 @@
 				F489F2382C0364A000F42D0B /* SocketIO */,
 				F47FFE892C039F7300912A95 /* MapboxDirections */,
 				F47FFE8C2C03A28C00912A95 /* MapboxGeocoder */,
+				F4E87A682C8FBE640019D2CF /* FirebaseAnalytics */,
 			);
 			productName = Xtaxi;
 			productReference = F43B6AFB2BD6BCB100089E9E /* TransporVIP.app */;
@@ -3014,6 +3049,7 @@
 				F489F2372C0364A000F42D0B /* XCRemoteSwiftPackageReference "socket" */,
 				F47FFE882C039F7300912A95 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */,
 				F47FFE8B2C03A28C00912A95 /* XCRemoteSwiftPackageReference "MapboxGeocoder.swift" */,
+				F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 84F571441BCE958200FC18D5 /* Products */;
 			projectDirPath = "";
@@ -3078,6 +3114,7 @@
 				C62E593F24BB5D7800FFB26B /* PactadaCell.xib in Resources */,
 				C6D3198925916F8500A4BF1C /* Muli.ttf in Resources */,
 				C61F347A248E8F66006A07F6 /* .gitignore in Resources */,
+				F4E87A572C8F49530019D2CF /* GoogleService-Info.plist in Resources */,
 				C67004552463B60900FF97AB /* Images-5.xcassets in Resources */,
 				C6D3198F25916F8500A4BF1C /* Muli-LightItalic.ttf in Resources */,
 			);
@@ -4393,7 +4430,9 @@
 				C602558324A7F60A00C91725 /* Card.swift in Sources */,
 				C67F1FE7290D742E0011FCAB /* AppStoreVersion.swift in Sources */,
 				C63D220821D56150007378D7 /* CSocket.swift in Sources */,
+				F4E87A642C8F900A0019D2CF /* AnalyticsEvent.swift in Sources */,
 				C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */,
+				F4E87A672C8F93B60019D2CF /* AnalyticsService.swift in Sources */,
 				C6445814255F78160000433E /* InicioControllerTablesExt.swift in Sources */,
 				C603C79A28F3783A00F4A761 /* InicioApiDelegatesExt.swift in Sources */,
 				C6C3A4F3245F32640084F409 /* LoginSocketExt.swift in Sources */,
@@ -5767,7 +5806,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -5785,7 +5824,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.5.2;
+				MARKETING_VERSION = 3.6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -5807,7 +5846,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -5825,7 +5864,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.5.2;
+				MARKETING_VERSION = 3.6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
 				PRODUCT_NAME = UnTaxi;
@@ -6087,7 +6126,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -6105,7 +6144,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.TransporVIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6127,7 +6166,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -6145,7 +6184,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.TransporVIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6651,6 +6690,14 @@
 				minimumVersion = 0.15.0;
 			};
 		};
+		F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -6743,6 +6790,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4E138C72C0515A100E3A54E /* XCRemoteSwiftPackageReference "MapboxGeocoder.swift" */;
 			productName = MapboxGeocoder;
+		};
+		F4E87A592C8F4A7E0019D2CF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F4E87A5B2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		F4E87A5D2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		F4E87A5F2C8F4A7E0019D2CF /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		F4E87A612C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		F4E87A682C8FBE640019D2CF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

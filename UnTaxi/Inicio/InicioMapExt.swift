@@ -17,30 +17,30 @@ extension InicioController {
 		//let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
 		let myMapInitOptions = MapInitOptions()
 		mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
-		mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-		mapViewParent.addSubview(mapView)
-		pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
-		
-    var annotationsToShow = [globalVariables.cliente.annotation!]
-    if self.origenAnnotation.coordinates.latitude != 0.0 {
-      annotationsToShow = [self.origenAnnotation]
-    }
-		
-    self.locationIcono.image = UIImage(named: "origen")
-    self.locationIcono.isHidden = true
-		
-		if self.tabBar.selectedItem != self.pactadaItem {
-      self.getReverseAddressXoaAPI(annotationsToShow.first!)
-    }
-		
-		self.showAnnotations(annotationsToShow)
-		initMapInterations()
+      mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+      mapViewParent.addSubview(mapView)
+      pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
+      
+      var annotationsToShow = [globalVariables.cliente.annotation!]
+      if self.origenAnnotation.coordinates.latitude != 0.0 {
+          annotationsToShow = [self.origenAnnotation]
+      }
+      
+      self.locationIcono.image = UIImage(named: "origen")
+      self.locationIcono.isHidden = true
+      
+      if self.tabBar.selectedItem != self.pactadaItem {
+          self.getReverseAddressXoaAPI(annotationsToShow.first!)
+      }
+      
+      self.showAnnotations(annotationsToShow)
+      initMapInterations()
   }
-	
-	func initMapInterations() {
-		mapView.gestures.delegate = self
-		getTaxisCercanos()
-	}
+    
+    func initMapInterations() {
+        mapView.gestures.delegate = self
+        getTaxisCercanos()
+    }
 	
 	func updateMapFocus() {
 		mapView.setCenter(globalVariables.cliente.annotation.coordinates, zoomLevel: 15, animated: true)

@@ -76,11 +76,11 @@ extension PagoController: PagoApiServiceDelegate {
 
 extension PagoController: CarViewCellDelegate {
 	func cardViewCell(_ controller: CardViewCell, eliminarCard cardId: Int) {
-		let elinimarAction = UIAlertAction(title: "Eliminar", style: .destructive, handler: {alerAction in
-			self.pagoApiService.removeCardsAPIService(cardId: cardId)
+		let elinimarAction = UIAlertAction(title: "Eliminar", style: .destructive, handler: { alerAction in
+            self.removeCard(cardId: cardId)
 		})
 		
-		let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {alerAction in
+		let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: { alerAction in
 			
 		})
 		

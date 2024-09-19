@@ -217,6 +217,7 @@ extension RegistroController: ApiServiceDelegate{
   }
     
     func apiRequest(_ controller: ApiService, newRegisterUserAPI success: Bool, statusCode: Int, msg: String) {
+        print("newRegisterUserAPI")
         switch statusCode {
         case 201:
             //registration success
