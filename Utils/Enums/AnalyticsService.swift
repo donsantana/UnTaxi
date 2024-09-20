@@ -11,7 +11,9 @@ import FirebaseAnalytics
 
 final class AnalyticsHelper {
     private class func event(with type: AnalyticsEvent, parameters: [String: Any]? = nil) {
-        Analytics.logEvent(type.name, parameters: parameters)
+        if GlobalConstants.analyticsTrackingIsEnable {
+            Analytics.logEvent(type.name, parameters: parameters)
+        }
     }
 }
 

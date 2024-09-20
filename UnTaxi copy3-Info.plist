@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Flott</string>
+	<string>UnTaxi</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -27,7 +27,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1778988557303127~3771638980</string>
+	<string>ca-app-pub-1778988557303127~7105663047</string>
 	<key>LSApplicationCategoryType</key>
 	<string> &lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
  &lt;dict&gt;
@@ -43,9 +43,9 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>MBXAccessToken</key>
-	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY20xOXB0N2p4MDQxcDJwcTMwOXVrcXhxOCJ9.SYvavW75Vzn-PhKPwbak2g</string>
+	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
 	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY20xOXB0N2p4MDQxcDJwcTMwOXVrcXhxOCJ9.SYvavW75Vzn-PhKPwbak2g</string>
+	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

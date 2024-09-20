@@ -49,7 +49,9 @@ struct GlobalConstants {
         case "com.xoait.TransporVIP":
             return "movilcallcenter"
         case "com.xoait.kyper":
-            return "kyper"
+            return "kyper"  
+        case "com.xoait.frott":
+            return "flott"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -117,6 +119,8 @@ struct GlobalConstants {
             return "6499275207"
         case "com.xoait.kyper":
             return "6502842865"
+        case "com.xoait.flott":
+            return "6701986749"
         default:
             return "1149206387"
         }
@@ -166,6 +170,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ"
         case "com.xoait.kyper":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
+        case "com.xoait.flott":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY20xOXB0N2p4MDQxcDJwcTMwOXVrcXhxOCJ9.SYvavW75Vzn-PhKPwbak2g"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -177,6 +183,15 @@ struct GlobalConstants {
             return true
 //        case "com.xoait.TransporVIP":
 //            return true
+        default:
+            return false
+        }
+    }
+    
+    static var analyticsTrackingIsEnable: Bool {
+        switch bundleId {
+        case "com.xoait.UnTaxi":
+            return true
         default:
             return false
         }
@@ -255,6 +270,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2144753273"
         case "com.xoait.kyper":
             return "ca-app-pub-1778988557303127/9360438861"
+        case "com.xoait.frott":
+            return "ca-app-pub-1778988557303127/3555743491"
         default:
             return ""
         }
@@ -297,6 +314,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2131977696"
         case "com.xoait.kyper":
             return "ca-app-pub-1778988557303127/4108112186"
+        case "com.xoait.frott":
+            return "ca-app-pub-1778988557303127/9968284199"
         default:
             return ""
         }
