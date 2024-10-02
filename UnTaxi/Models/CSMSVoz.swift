@@ -54,7 +54,11 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         if granted {
           //set category and activate recorder session
           //self.AudioSetCategory.setAudio(self.recordingSession)
-          try! self.recordingSession.setActive(true)
+            do {
+                try self.recordingSession.setActive(true)
+            } catch {
+                
+            }
           /*if #available(iOS 10.0, *) {
            try! self.recordingSession.setCategory(.playAndRecord, mode: .default)
            try! self.recordingSession.setActive(true)

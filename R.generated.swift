@@ -59,7 +59,7 @@ struct _R {
     var viewColor: RswiftResources.ColorResource { .init(name: "viewColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 91 images.
+  /// This `_R.image` struct is generated, and contains static references to 98 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -132,6 +132,9 @@ struct _R {
     /// Image `dc`.
     var dc: RswiftResources.ImageResource { .init(name: "dc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `destino`.
+    var destino: RswiftResources.ImageResource { .init(name: "destino", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `destinoIcon`.
     var destinoIcon: RswiftResources.ImageResource { .init(name: "destinoIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
@@ -177,6 +180,9 @@ struct _R {
     /// Image `jc`.
     var jc: RswiftResources.ImageResource { .init(name: "jc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `launch`.
+    var launch: RswiftResources.ImageResource { .init(name: "launch", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `llamar`.
     var llamar: RswiftResources.ImageResource { .init(name: "llamar", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
@@ -185,6 +191,12 @@ struct _R {
 
     /// Image `locationBtn`.
     var locationBtn: RswiftResources.ImageResource { .init(name: "locationBtn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `login`.
+    var login: RswiftResources.ImageResource { .init(name: "login", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `logo`.
+    var logo: RswiftResources.ImageResource { .init(name: "logo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `mapIcon`.
     var mapIcon: RswiftResources.ImageResource { .init(name: "mapIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -212,6 +224,9 @@ struct _R {
 
     /// Image `ofertaIcon`.
     var ofertaIcon: RswiftResources.ImageResource { .init(name: "ofertaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `origen`.
+    var origen: RswiftResources.ImageResource { .init(name: "origen", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `origenIcon`.
     var origenIcon: RswiftResources.ImageResource { .init(name: "origenIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -288,6 +303,9 @@ struct _R {
     /// Image `taxiIcon`.
     var taxiIcon: RswiftResources.ImageResource { .init(name: "taxiIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `taxi_libre`.
+    var taxi_libre: RswiftResources.ImageResource { .init(name: "taxi_libre", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `terminos`.
     var terminos: RswiftResources.ImageResource { .init(name: "terminos", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
@@ -335,6 +353,9 @@ struct _R {
 
     /// Image `yapaIcon`.
     var yapaIcon: RswiftResources.ImageResource { .init(name: "yapaIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `yapaImg`.
+    var yapaImg: RswiftResources.ImageResource { .init(name: "yapaImg", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
   /// This `_R.entitlements` struct is generated, and contains static references to 1 properties.
@@ -570,19 +591,15 @@ struct _R {
     let sosBtn: RswiftResources.ReuseIdentifier<SOSCollectionCell> = .init(identifier: "sosBtn")
   }
 
-  /// This `_R.storyboard` struct is generated, and contains static references to 5 storyboards.
+  /// This `_R.storyboard` struct is generated, and contains static references to 4 storyboards.
   struct storyboard {
     let bundle: Foundation.Bundle
     var andyLaunchScreen: andyLaunchScreen { .init(bundle: bundle) }
-    var flottLaunchScreen: flottLaunchScreen { .init(bundle: bundle) }
     var launchScreen: launchScreen { .init(bundle: bundle) }
     var login: login { .init(bundle: bundle) }
     var main: main { .init(bundle: bundle) }
 
     func andyLaunchScreen(bundle: Foundation.Bundle) -> andyLaunchScreen {
-      .init(bundle: bundle)
-    }
-    func flottLaunchScreen(bundle: Foundation.Bundle) -> flottLaunchScreen {
       .init(bundle: bundle)
     }
     func launchScreen(bundle: Foundation.Bundle) -> launchScreen {
@@ -596,7 +613,6 @@ struct _R {
     }
     func validate() throws {
       try self.andyLaunchScreen.validate()
-      try self.flottLaunchScreen.validate()
       try self.launchScreen.validate()
       try self.login.validate()
       try self.main.validate()
@@ -612,18 +628,6 @@ struct _R {
       let name = "Andy Launch Screen"
       func validate() throws {
         if UIKit.UIImage(named: "LaunchImg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'LaunchImg' is used in storyboard 'Andy Launch Screen', but couldn't be loaded.") }
-      }
-    }
-
-    /// Storyboard `Flott Launch Screen`.
-    struct flottLaunchScreen: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
-      typealias InitialController = UIKit.UIViewController
-
-      let bundle: Foundation.Bundle
-
-      let name = "Flott Launch Screen"
-      func validate() throws {
-        if UIKit.UIImage(named: "launch", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'launch' is used in storyboard 'Flott Launch Screen', but couldn't be loaded.") }
       }
     }
 

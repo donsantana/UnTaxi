@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VWC-AK-1aR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VWC-AK-1aR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1093,48 +1093,10 @@
             <point key="canvasLocation" x="-2459.4202898550725" y="-1045.3125"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="0Tf-aU-KgJ">
-            <size key="intrinsicContentSize" width="114" height="34"/>
-        </designable>
-        <designable name="2pP-tk-bBX">
-            <size key="intrinsicContentSize" width="56.5" height="34"/>
-        </designable>
-        <designable name="7qT-QG-nSo">
-            <size key="intrinsicContentSize" width="137.5" height="34"/>
-        </designable>
-        <designable name="J7N-rA-MSZ">
-            <size key="intrinsicContentSize" width="52" height="34"/>
-        </designable>
-        <designable name="JfZ-Jk-QLH">
-            <size key="intrinsicContentSize" width="189.5" height="34"/>
-        </designable>
-        <designable name="SPg-He-6sH">
-            <size key="intrinsicContentSize" width="147" height="34"/>
-        </designable>
-        <designable name="X8m-E3-N1k">
-            <size key="intrinsicContentSize" width="175" height="34"/>
-        </designable>
-        <designable name="jTy-H9-0b9">
-            <size key="intrinsicContentSize" width="186" height="19"/>
-        </designable>
-        <designable name="kDx-sD-B91">
-            <size key="intrinsicContentSize" width="140" height="34"/>
-        </designable>
-        <designable name="qQP-xb-v5Y">
-            <size key="intrinsicContentSize" width="149.5" height="34"/>
-        </designable>
-        <designable name="uUO-Nv-ZZU">
-            <size key="intrinsicContentSize" width="135.5" height="34"/>
-        </designable>
-        <designable name="w1S-av-uZZ">
-            <size key="intrinsicContentSize" width="145.5" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <image name="close" width="40" height="40"/>
         <image name="launch" width="562.5" height="1218"/>
-        <image name="login" width="750" height="601"/>
+        <image name="login" width="556.5" height="422"/>
         <image name="showClave" width="40" height="40"/>
         <image name="xoalogo.png" width="160" height="60"/>
         <systemColor name="labelColor">

@@ -1,5 +1,5 @@
 {
-  "originHash" : "5fece8401055f44e7e4804aa0770f8a36971e11937dec4a19ce9f6b9655ab9e0",
+  "originHash" : "ba077f22b06c52ac02b6cd7ed99d528b45314cd43e80efafcae5d148798a347b",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "9118aca998dbe2ceac45d64b21a91c6376928df7",
-        "version" : "11.1.0"
+        "revision" : "1fc52ab0e172e7c5a961f975a76c2611f4f22852",
+        "version" : "11.2.0"
       }
     },
     {
@@ -96,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "9c04997ed32c5b2506eb704f9f7a16367b5dcc64",
-        "version" : "24.4.0"
+        "revision" : "b4197f12f928066645e08b70c12ce1e22e50e2c3",
+        "version" : "24.6.0"
       }
     },
     {
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
       "state" : {
-        "revision" : "c7897628028afb2c008d50c5d5d4054768c99340",
-        "version" : "11.4.0"
+        "revision" : "455ad90488ab033a50ab4b7283fa78184309eef3",
+        "version" : "11.6.0"
       }
     },
     {
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-directions-swift.git",
       "state" : {
-        "revision" : "3aaab4fb516638c51ec8a2e73cd2fabdb4588622",
-        "version" : "2.11.1"
+        "revision" : "6512320ee7f0091a4c55abe2bc6414f078da88c8",
+        "version" : "2.14.0"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
-        "revision" : "84ea7b4b42b6e3ec8d2010eeb236a5ec7aa3d0a1",
-        "version" : "11.4.0"
+        "revision" : "fa5b1b095504ce00583de9a3253b5087f569b836",
+        "version" : "11.6.0"
       }
     },
     {
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/search-ios.git",
       "state" : {
-        "revision" : "de947384dc4fc9325627ed379fc410ab2002e90b",
-        "version" : "2.1.0"
+        "revision" : "0e80515c3e6d9dd16368cc269281ea21e919c698",
+        "version" : "2.3.0"
       }
     },
     {
@@ -195,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "0fbc8848e389af3bb55c182bc19ca9d5dc2f255b",
-        "version" : "1.4.0"
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
       }
     },
     {

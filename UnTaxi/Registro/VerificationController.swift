@@ -70,6 +70,47 @@ class RegisterValidationController: UIViewController {
             registrationParams.updateValue(codeText, forKey: "codigo")
         }
         ApiService.shared.newRegisterUserAPI(url: GlobalConstants.registerUrl, params: registrationParams) { result in
+            switch result {
+            case .success(let successResult):
+                let statusCode = successResult["statusCode"] as! Int
+                let message = successResult["msg"] as! String
+                switch statusCode {
+                case 201:
+                    //registration success
+                    let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                        self.goBackToLogin()
+                    })
+                    Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+                   
+                case 404:
+                    //Codigo de activacion invalido o caducado
+                    let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    })
+                    Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+                case 400:
+                    //Codigo generenado, revise Whatsapp
+                    let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    })
+                    Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+                case 409:
+                    //Usuarion Existente
+                    let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                        self.goBackToLogin()
+                    })
+                    Alert.showBasic(title: "", message: message, vc: self, withActions: [okAction])
+                default:
+                    //General Error
+                    let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                        self.goBackToLogin()
+                    })
+                    Alert.showBasic(title: "", message: GlobalStrings.errorGenericoMessage, vc: self, withActions: [okAction])
+                }
+            case .failure(let error):
+                let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alertAction in
+                    self.goBackToLogin()
+                })
+                Alert.showBasic(title: "", message: error.localizedDescription, vc: self, withActions: [okAction])
+            }
             
         }
     }

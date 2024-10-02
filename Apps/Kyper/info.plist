@@ -53,8 +53,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>La app necesita acceder a la camara para tomar la foto de su perfil</string>
-	<key>NSContactsUsageDescription</key>
-	<string>La app necesita acceder a tus contactos para que puedas pasarle YAPA.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>La app permite utilizar Face ID para autenticarse.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
