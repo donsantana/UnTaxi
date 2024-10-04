@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import SocketIO
+internal import SocketIO
 import AVFoundation
 import SideMenu
-import MapboxMaps
+internal import MapboxMaps
 //import MapboxDirections
 
 extension SolPendController{

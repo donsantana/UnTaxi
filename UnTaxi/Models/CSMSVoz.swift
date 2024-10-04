@@ -201,7 +201,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
 //    let boundary = "--------14737809831466499882746641449----"
 //    //define the multipart request type
 //    request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-//    request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+//    request.addValue("Bearer \(UserDefaults.standard.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
 //    let currentFilename = name
 //    let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
 //    //let docsDir: AnyObject=dirPaths[0]
@@ -276,7 +276,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
 //    globalVariables.SMSProceso = true
 //    self.ReproducirMusica()
 //
-//    let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+//    let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 //
 //    let currentFilename = name
 //    let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)

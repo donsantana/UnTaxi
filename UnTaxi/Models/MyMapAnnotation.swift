@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapboxMaps
+internal import MapboxMaps
 
 class MyMapAnnotation {
 	var type: String {

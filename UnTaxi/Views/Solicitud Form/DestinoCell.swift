@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapboxMaps
+internal import MapboxMaps
 
 class DestinoCell: UITableViewCell {
   @IBOutlet weak var destinoText: UITextField!

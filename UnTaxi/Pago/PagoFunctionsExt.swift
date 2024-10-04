@@ -11,7 +11,7 @@ import UIKit
 
 extension PagoController {
 	@objc func openRegisterCardView() {
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 		print("AddURL \(GlobalConstants.addCardsUrl)\(accessToken)")
         guard let url = URL(string: "\(GlobalConstants.addCardsUrl)\(accessToken)") else {
             return
@@ -32,7 +32,6 @@ extension PagoController {
 	}
 	
 	func enviarPagoConTajeta(idSolicitud: String, tokenCard: String) {
-		//let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
 		let datos:[String: Any] = [
 			"toke": tokenCard,
 			"idsolicitud": idSolicitud,
@@ -77,7 +76,7 @@ extension PagoController {
                 DispatchQueue.main.async {
                     self.tarjetasTableView.reloadData()
                 }
-            case .failure(let _):
+            case .failure(_):
                 self.cardList = []
                 let registrarAction = UIAlertAction(title: "Registrar", style: .default, handler: {alerAction in
                     self.waitingView.isHidden = false
@@ -96,7 +95,7 @@ extension PagoController {
         PagoApiService.shared.removeCardsAPIService(cardId: cardId, completion: { result in
             var message: String
             switch result {
-            case .success(let _):
+            case .success(_):
                 message = GlobalStrings.tarjetaEliminadaSucess
             case .failure(let error):
                 message = error.localizedDescription

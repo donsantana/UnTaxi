@@ -8,10 +8,10 @@
 
 import UIKit
 import MapKit
-import SocketIO
+internal import SocketIO
 import AVFoundation
 import SideMenu
-import MapboxMaps
+internal import MapboxMaps
 import MapboxDirections
 import GoogleMobileAds
 

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
-import MapboxMaps
+internal import MapboxMaps
 
 extension InicioController: SocketServiceDelegate{
   func socketResponse(_ controller: SocketService, cargarvehiculoscercanos result: [String : Any]) {

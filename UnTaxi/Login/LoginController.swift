@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIO
+internal import SocketIO
 import CoreLocation
 import LocalAuthentication
 
@@ -72,9 +72,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    globalVariables.userDefaults = UserDefaults.standard
-    
+
     coreLocationManager = CLLocationManager()
     coreLocationManager.delegate = self
     coreLocationManager.requestWhenInUseAuthorization()
@@ -119,8 +117,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
     self.movilClaveRecoverHeight.constant = 40
     
     if CConexionInternet.isConnectedToNetwork() == true {
-      print("login \(globalVariables.userDefaults.value(forKey: "accessToken"))")
-      if globalVariables.userDefaults.value(forKey: "accessToken") != nil {
+      print("login \(UserDefaults.standard.value(forKey: "accessToken"))")
+      if UserDefaults.standard.value(forKey: "accessToken") != nil {
         //self.socketService.initLoginEventos()
         self.startSocketConnection()
       } else {
@@ -214,7 +212,7 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   @IBAction func reenviarCodigo(_ sender: Any) {
     waitingView.isHidden = false
-    let nombreUsuario = globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String
+    let nombreUsuario = UserDefaults.standard.value(forKey: "nombreUsuario") as! String
       ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": nombreUsuario]) { result in
           
           switch result {

@@ -33,7 +33,7 @@ final class PagoApiService {
 	
     func listCardsAPIService(completion: @escaping (Result<[Card],APIError>)-> Void) {
 		print("List Card URL: \(GlobalConstants.listCardsUrl)")
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 		var request = URLRequest(url: URL(string: GlobalConstants.listCardsUrl)!)
 		request.httpMethod = "GET"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -71,7 +71,7 @@ final class PagoApiService {
 	}
 	
     func removeCardsAPIService(cardId: Int, completion: @escaping (Result<Int, APIError>) -> Void) {
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 		var request = URLRequest(url: URL(string: "\(GlobalConstants.listCardsUrl)/\(cardId)")!)
 		request.httpMethod = "DELETE"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")

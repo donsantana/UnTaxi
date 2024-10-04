@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapboxMaps
+internal import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 import MapboxDirections

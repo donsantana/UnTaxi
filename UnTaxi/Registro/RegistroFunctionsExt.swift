@@ -14,7 +14,7 @@ extension RegistroController{
     self.view.endEditing(true)
   }
   
-  func sendNewUserData(){
+  func sendNewUserData() {
     
 		let (valid, message) = confirmarClavText.validate(.password)
 		if valid && confirmarClavText.text == claveText.text {
@@ -164,7 +164,7 @@ extension RegistroController{
                 "so": "IOS",
                 "recomendado": ""]
             vc.parenController = self
-            self.cleanAllTexfields()
+            //self.cleanAllTexfields()
             self.present(vc, animated: true)
         }
     }

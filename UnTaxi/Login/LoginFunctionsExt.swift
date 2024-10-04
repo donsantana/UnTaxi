@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SocketIO
+internal import SocketIO
 import CoreLocation
 import RswiftResources
 import LocalAuthentication
@@ -16,7 +16,7 @@ import LocalAuthentication
 extension LoginController{
   
   func startSocketConnection() {
-    let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+    let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
     self.socketIOManager = SocketManager(socketURL: URL(string: GlobalConstants.socketurlHost)!, config: [.log(false),.compress,.forcePolling(true),.version(.two), .connectParams(["Authorization": "Bearer token", "token": accessToken])])
     
     print("token para socket \(accessToken)")
@@ -48,7 +48,7 @@ extension LoginController{
     print("appConfig \(appConfig)")
     
     if !(appConfig["publicidad"] is NSNull) && appConfig["publicidad"] != nil {
-      let publicidad = !(appConfig["publicidad"] is NSNull) ? appConfig["publicidad"] as! [String: Any] : nil
+        let publicidad = !(appConfig["publicidad"] is NSNull) ? (appConfig["publicidad"] as! [String: Any]) : nil
       print("publicidades \(publicidad!["images"] as! [[String: Any]])")
       globalVariables.publicidadService = PublicidadService(publicidades: publicidad!["images"] as! [[String: Any]])
     }
@@ -176,7 +176,7 @@ extension LoginController{
       self.apiService.loginToAPIService(user: user, password: password) {results in
           switch results {
           case .success(let data):
-              globalVariables.userDefaults.set(data["token"] as! String, forKey: "accessToken")
+              UserDefaults.standard.set(data["token"] as! String, forKey: "accessToken")
               self.startSocketConnection()
               AnalyticsHelper.loginEvent()
           case .failure(let error):
@@ -204,12 +204,12 @@ extension LoginController{
   
     func sendRecoverClave() {
         waitingView.isHidden = false
-        globalVariables.userDefaults.set(movilClaveRecover.text, forKey: "nombreUsuario")
+        UserDefaults.standard.set(movilClaveRecover.text, forKey: "nombreUsuario")
         ApiService.shared.recoverUserClaveAPI(url: GlobalConstants.passRecoverUrl, params: ["nombreusuario": movilClaveRecover.text!]) { result in
 
             switch result {
             case .success(let message):
-                self.showRecoverUserClaveAlert(success: false,message: message)
+                self.showRecoverUserClaveAlert(success: true,message: message)
             case .failure(let error):
                 var errorMessage = ""
                 switch error {
@@ -237,7 +237,7 @@ extension LoginController{
     if self.newPasswordText.text == self.newPassConfirmText.text{
       waitingView.isHidden = false
         ApiService.shared.createNewClaveAPI(url: GlobalConstants.createPassUrl, params: [
-        "nombreusuario": globalVariables.userDefaults.value(forKey: "nombreUsuario") as! String,
+        "nombreusuario": UserDefaults.standard.value(forKey: "nombreUsuario") as! String,
         "codigo": codigo,
         "password": newPassword,
       ]) { result in
@@ -286,7 +286,7 @@ extension LoginController{
               self.waitingView.isHidden = true
               self.NewPasswordView.isHidden = true
               self.claveRecoverView.isHidden = true
-              globalVariables.userDefaults.setValue(nil, forKey:"nombreUsuario")
+              UserDefaults.standard.setValue(nil, forKey:"nombreUsuario")
             }
           }))
           self.present(alertaDos, animated: true, completion: nil)

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIO
+internal import SocketIO
 import CoreLocation
 
 struct globalVariables {
@@ -23,7 +23,6 @@ struct globalVariables {
     static var urlSubirVoz:String!
     static var SMSVoz = CSMSVoz()
     static var urlConductor = ""
-    static var userDefaults: UserDefaults!
     static var TelefonosCallCenter: [Telefono] = []
     static var tipoSolicitud: Int = 0
     static var cardList:[Card] = []

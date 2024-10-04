@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import SocketIO
+internal import SocketIO
 import AVFoundation
 import ToastViewSwift
 

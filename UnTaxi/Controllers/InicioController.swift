@@ -9,12 +9,12 @@
 import UIKit
 import MapKit
 import CoreLocation
-import SocketIO
+internal import SocketIO
 import Canvas
 import AddressBook
 import AVFoundation
 import CoreData
-import MapboxMaps
+internal import MapboxMaps
 import MapboxSearch
 import MapboxSearchUI
 import MapboxGeocoder

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIO
+internal import SocketIO
 import CoreImage
 
 class PerfilController: BaseController {
@@ -47,7 +47,7 @@ class PerfilController: BaseController {
     self.navigationController?.navigationBar.tintColor = UIColor.black
     //UILabel.appearance().textColor = .lightGray
     
-    let readString = globalVariables.userDefaults.string(forKey: "loginData") ?? ""
+    let readString = UserDefaults.standard.string(forKey: "loginData") ?? ""
     
     self.login = String(readString).components(separatedBy: ",")
     self.perfilViewHeight.constant = CGFloat(globalVariables.responsive.heightPercent(percent: 70))
@@ -135,7 +135,7 @@ class PerfilController: BaseController {
     }
 	
 	func closeSession() {
-		globalVariables.userDefaults.set(nil, forKey: "accessToken")
+        UserDefaults.standard.set(nil, forKey: "accessToken")
 		let vc = R.storyboard.main.inicioView()!
 		vc.CloseAPP()
 	}

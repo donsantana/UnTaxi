@@ -105,12 +105,12 @@ internal extension UIView {
 }
 
 internal extension UIApplication {
-    internal class func safeAreaBottom() -> CGFloat {
+    class func safeAreaBottom() -> CGFloat {
         let window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
         let bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
         return bottomPadding
     }
-    internal class func safeAreaTop() -> CGFloat {
+    class func safeAreaTop() -> CGFloat {
         let window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
         let bottomPadding = window?.safeAreaInsets.top ?? 0.0
         return bottomPadding

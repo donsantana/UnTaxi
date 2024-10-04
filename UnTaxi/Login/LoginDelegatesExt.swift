@@ -155,7 +155,7 @@ extension LoginController: UITextFieldDelegate{
 extension LoginController: ApiServiceDelegate{
   func apiRequest(_ controller: ApiService, getLoginData data: [String:Any]) {
     print("msg \(data["token"] as! String)")
-    globalVariables.userDefaults.set(data["token"] as! String, forKey: "accessToken")
+      UserDefaults.standard.set(data["token"] as! String, forKey: "accessToken")
     self.startSocketConnection()
   }
 
@@ -184,7 +184,7 @@ extension LoginController: ApiServiceDelegate{
           self.waitingView.isHidden = true
           self.NewPasswordView.isHidden = true
           self.claveRecoverView.isHidden = true
-          globalVariables.userDefaults.setValue(nil, forKey:"nombreUsuario")
+          UserDefaults.standard.setValue(nil, forKey:"nombreUsuario")
         }
       }))
       self.present(alertaDos, animated: true, completion: nil)

@@ -108,7 +108,7 @@ extension SideMenuController: UITableViewDelegate, UITableViewDataSource{
         //                } catch {
         //
         //                }
-        //globalVariables.userDefaults.set(nil, forKey: "\(Customization.nameShowed)-loginData")
+        //UserDefaults.standard.set(nil, forKey: "\(Customization.nameShowed)-loginData")
         self.CloseAPP()
       default:
         print("nada")

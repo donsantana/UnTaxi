@@ -6,7 +6,7 @@
 //  Copyright © 2021 Done Santana. All rights reserved.
 //
 
-import MapboxMaps
+internal import MapboxMaps
 
 
 //class CustomCalloutView: UIView, MGLCalloutView {

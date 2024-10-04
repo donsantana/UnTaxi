@@ -6,7 +6,7 @@
 //  Copyright © 2020 Done Santana. All rights reserved.
 //
 
-import MapboxMaps
+internal import MapboxMaps
 
 //Mapbox
 extension SolPendController{

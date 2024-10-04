@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SocketIO
+internal import SocketIO
 import UIKit
 
 protocol SocketServiceDelegate: AnyObject {

@@ -12,7 +12,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import GoogleMobileAds
-import MapboxMaps
+internal import MapboxMaps
 
 extension InicioController: UITextFieldDelegate{
   //Funciones para mover los elementos para que no queden detrás del teclado
@@ -465,7 +465,7 @@ extension InicioController: UITabBarDelegate{
 ////                }catch{
 ////
 ////                }
-//                globalVariables.userDefaults.set(nil, forKey: "loginData")
+//                UserDefaults.standard.set(nil, forKey: "loginData")
 //                self.CloseAPP()
 //            default:
 //                self.CloseAPP()

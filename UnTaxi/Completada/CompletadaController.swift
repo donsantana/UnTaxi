@@ -76,7 +76,6 @@ class CompletadaController: BaseController, UITextFieldDelegate {
         
         self.topViewConstraint.constant = super.getTopMenuBottom()
         self.conductorName.text = conductor.nombreApellido
-        //self.comentarioText.delegate = self
         self.evaluacion = CEvaluacion(botones: [PrimeraStart, SegundaStar,TerceraStar,CuartaStar,QuintaStar])
         self.importeText.addBorder(color: CustomAppColor.buttonActionColor)
         self.importeText.text = "$\(String(format: "%.2f", solicitud.importe))"

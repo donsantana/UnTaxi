@@ -199,7 +199,7 @@ final class ApiService {
         var request = URLRequest(url: URL(string: GlobalConstants.removeClient)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(UserDefaults.standard.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
         
         let session = URLSession.shared
@@ -293,7 +293,7 @@ final class ApiService {
         var request = URLRequest(url: URL(string: GlobalConstants.passChangeUrl)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(UserDefaults.standard.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
         
         let session = URLSession.shared
@@ -334,7 +334,7 @@ final class ApiService {
         request = URLRequest(url: URL(string: GlobalConstants.updateProfileUrl)!) as! NSMutableURLRequest
         request.httpMethod = "POST"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(UserDefaults.standard.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
         
         for (key, value) in parameters {
             body.append(("--\(boundary)\r\n").data(using: .utf8)!)
@@ -476,7 +476,7 @@ final class ApiService {
         request = URLRequest(url: URL(string: serverUrl)!) as! NSMutableURLRequest
         request.httpMethod = "POST"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(globalVariables.userDefaults.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(UserDefaults.standard.value(forKey: "accessToken") as! String)", forHTTPHeaderField: "Authorization")
         
         let recordedFilePath = localFilePath + fileName
         print(recordedFilePath)
@@ -561,7 +561,7 @@ final class ApiService {
         let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),\(GlobalConstants.countryAddress)&lon=\(lon)&lat=\(lat)"
         //    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
         print("urlString: \(urlString)")
-        //let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+        //let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
         var request = URLRequest(url: (URL(string: "\(urlString)") ?? URL(string: "\(GlobalConstants.searchAddressUrl)"))!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

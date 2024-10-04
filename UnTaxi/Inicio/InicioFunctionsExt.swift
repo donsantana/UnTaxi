@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-import MapboxMaps
+internal import MapboxMaps
 import MapboxDirections
 import MapboxGeocoder
 import FloatingPanel
@@ -410,16 +410,12 @@ extension InicioController{
 		switch self.tabBar.selectedItem {
 		case self.taximetroItem:
 			tipoServicio = 2
-            AnalyticsHelper.solicitudEvent(type: .servicioTaximetro)
 		case self.horasItem:
 			tipoServicio = 3
-            AnalyticsHelper.solicitudEvent(type: .servicioPorhoras)
 		case self.pactadaItem:
 			tipoServicio = 4
-            AnalyticsHelper.solicitudEvent(type: .servicioPactadas)
 		default:
 			tipoServicio = 1
-            AnalyticsHelper.solicitudEvent(type: .servicioOferta)
 		}
         
         triggerSolicitudEvent(tipoServicio: tipoServicio)
@@ -812,7 +808,9 @@ extension InicioController{
 					if address.distrito != "" {
 						addressString += ", \(address.distrito)"
 					}
-				}
+                } else {
+                    addressString = "Sin resultado"
+                }
 				
 				DispatchQueue.main.async {
 					annotation.address = addressString
@@ -829,7 +827,7 @@ extension InicioController{
 	
 	@objc func openRegisterCardView() {
 		super.hideMenuBar(isHidden: true)
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 		print("AddURL \(GlobalConstants.addCardsUrl)\(accessToken)")
 		let url = URL(string: "\(GlobalConstants.addCardsUrl)\(accessToken)")
 		let requestObj = URLRequest(url: url! as URL)
@@ -839,7 +837,7 @@ extension InicioController{
 	}
 	
 	func enviarPagoConTajeta(idSolicitud: String, tokenCard: String) {
-		let accessToken = globalVariables.userDefaults.value(forKey: "accessToken") as! String
+		let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
 		let datos:[String: Any] = [
 			"toke": tokenCard,
 			"idsolicitud": idSolicitud,

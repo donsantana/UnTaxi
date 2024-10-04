@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MapboxMaps
+internal import MapboxMaps
 
 extension MapView {
 

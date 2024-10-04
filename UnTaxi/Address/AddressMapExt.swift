@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapboxMaps
+internal import MapboxMaps
 
 //extension AddressController: MGLMapViewDelegate{
 //  func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {

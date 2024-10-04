@@ -9,7 +9,7 @@
 
 import UIKit
 import CoreLocation
-import SocketIO
+internal import SocketIO
 import AVFoundation
 import UserNotifications
 import GoogleMobileAds
