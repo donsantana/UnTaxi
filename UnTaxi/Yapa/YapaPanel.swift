@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import FloatingPanel
-import PhoneNumberKit
+internal import FloatingPanel
+internal import PhoneNumberKit
 
 class YapaPanel: UIViewController {
-  let phoneNumberKit = PhoneNumberKit()
+    let phoneNumberKit = PhoneNumberUtility()
   var actionType = 1
   var socketService = SocketService.shared
   var contactService = ContactService()
   var keyboardHeight:CGFloat!
   var activeTextField: UITextField!
   var idReceptorYapa = 0
-  let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ocultarTeclado))
+    let tapGesture = UITapGestureRecognizer(target: YapaPanel.self, action: #selector(ocultarTeclado))
   
   @IBOutlet weak var activeCodigoView: UIView!
   @IBOutlet weak var titleText: UILabel!

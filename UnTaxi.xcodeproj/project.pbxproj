@@ -7,14 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38A3CD398E5E55E1C03C0A26 /* Pods_UnTaxi_RuedaCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69E9FBAB417EB2FC51E80F5 /* Pods_UnTaxi_RuedaCar.framework */; };
-		3AA0E187BE3A5DA6F04CCB2D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EDEC3E97308121FFCBC829 /* Pods_UnTaxi_AndyTaxi.framework */; };
-		45AC9B804F192A4DB431AAA3 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC03664482B0DB9E78DD475 /* Pods_UnTaxi_TransporVIP.framework */; };
 		50EC68222FB79B77BC88EF19 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		7F56F1077B67CD88506FC3D1 /* Pods_UnTaxi_VipCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CABE0FA46484342AE56F54 /* Pods_UnTaxi_VipCar.framework */; };
-		82C67440F6D0CC1850A894E1 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC03664482B0DB9E78DD475 /* Pods_UnTaxi_TransporVIP.framework */; };
 		8462408F1BEABBB800F272D5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8462408E1BEABBB800F272D5 /* Entitlements.plist */; };
-		8B11B988668D0A09215A458F /* Pods_UnTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662E974F9B3FBBFD3861AB0D /* Pods_UnTaxi.framework */; };
 		AF3D9E0F1FA504CB0019432B /* CallCenterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */; };
 		AF3D9E181FA51A190019432B /* PerfilViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3D9E161FA51A190019432B /* PerfilViewCell.swift */; };
 		AF3D9E191FA51A190019432B /* PerfilViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3D9E171FA51A190019432B /* PerfilViewCell.xib */; };
@@ -189,8 +183,6 @@
 		C6F580E723AB412D002D69E5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F580E623AB412D002D69E5 /* UIImage.swift */; };
 		C6FEC02125915A44008EEF83 /* DS-DIGII.TTF in Resources */ = {isa = PBXBuildFile; fileRef = B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */; };
 		C6FFCB6624BB7880003C0B81 /* DireccionPactada.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */; };
-		CF583E2DB9AD22CD87F62E6D /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DD2170A4E38DAF0C75011B /* Pods_UnTaxi_LlamadaFacil.framework */; };
-		D3A679A219EB9CADCB137121 /* Pods_UnTaxi_OrientExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8985FAEF0C2B51225D5D05E /* Pods_UnTaxi_OrientExpress.framework */; };
 		E43024C43969E2805C32FA15 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F404BB882A7BFE0000D1671E /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
 		F404BB892A7BFE0000D1671E /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
@@ -1307,6 +1299,13 @@
 		F49BF4392A44F67A00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
 		F49BF43A2A44F67D00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
 		F49BF43B2A44F67E00C22269 /* ConfigMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49BF4382A44F67A00C22269 /* ConfigMessage.swift */; };
+		F4C17FC12CB5C55800E07BE3 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FC02CB5C55800E07BE3 /* SideMenu */; };
+		F4C17FC42CB5C5BE00E07BE3 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FC32CB5C5BE00E07BE3 /* GoogleMobileAds */; };
+		F4C17FC72CB5C5EB00E07BE3 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FC62CB5C5EB00E07BE3 /* PhoneNumberKit */; };
+		F4C17FCE2CB5C61500E07BE3 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FCD2CB5C61500E07BE3 /* FloatingPanel */; };
+		F4C17FD12CB5C64700E07BE3 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FD02CB5C64700E07BE3 /* RswiftLibrary */; };
+		F4C17FD32CB5C64700E07BE3 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FD22CB5C64700E07BE3 /* rswift */; };
+		F4C17FD62CB5C6DB00E07BE3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F4C17FD52CB5C6DB00E07BE3 /* Toast */; };
 		F4E131D32A07FF0000E18299 /* InicioControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D22A07FF0000E18299 /* InicioControllerExt.swift */; };
 		F4E131D72A0802F100E18299 /* InicioSocketExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E131D62A0802F100E18299 /* InicioSocketExt.swift */; };
 		F4E131DF2A08121A00E18299 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
@@ -1680,20 +1679,9 @@
 		F4E87A642C8F900A0019D2CF /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
 		F4E87A672C8F93B60019D2CF /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
 		F4E87A692C8FBE640019D2CF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A682C8FBE640019D2CF /* FirebaseAnalytics */; };
-		FB849B7B2C642BE35D2ADF11 /* Pods_UnTaxi_Kyper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB68A98154B1CB65E737640 /* Pods_UnTaxi_Kyper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22EDEC3E97308121FFCBC829 /* Pods_UnTaxi_AndyTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_AndyTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25FC29FE8CAF9E22DF5514CC /* Pods-UnTaxi-RuedaCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.debug.xcconfig"; sourceTree = "<group>"; };
-		2BC03664482B0DB9E78DD475 /* Pods_UnTaxi_TransporVIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_TransporVIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33DD2170A4E38DAF0C75011B /* Pods_UnTaxi_LlamadaFacil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_LlamadaFacil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55CABE0FA46484342AE56F54 /* Pods_UnTaxi_VipCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_VipCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65E6E901C93829F907D52288 /* Pods-UnTaxi-Kyper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-Kyper.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper.debug.xcconfig"; sourceTree = "<group>"; };
-		662E974F9B3FBBFD3861AB0D /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70F7C52B36A5F4D4B4871008 /* Pods-UnTaxi-VipCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.debug.xcconfig"; sourceTree = "<group>"; };
-		75082A554F9C0712801F81C8 /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
-		7D60280F6929BDC44F1F21E6 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.debug.xcconfig"; sourceTree = "<group>"; };
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		84F571431BCE958200FC18D5 /* UnTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1702,8 +1690,6 @@
 		84F5715D1BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F571661BCE958200FC18D5 /* XtaxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtaxiUITests.swift; sourceTree = "<group>"; };
 		84F571681BCE958200FC18D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CB68A98154B1CB65E737640 /* Pods_UnTaxi_Kyper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_Kyper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A185822CE1FE0A3AD1619481 /* Pods-UnTaxi-TransporVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-TransporVIP.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP.release.xcconfig"; sourceTree = "<group>"; };
 		AF3D9E0D1FA504CB0019432B /* CallCenterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCenterViewCell.xib; sourceTree = "<group>"; };
 		AF3D9E161FA51A190019432B /* PerfilViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewCell.swift; sourceTree = "<group>"; };
 		AF3D9E171FA51A190019432B /* PerfilViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PerfilViewCell.xib; sourceTree = "<group>"; };
@@ -1734,11 +1720,6 @@
 		B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGI.TTF"; path = "UnTaxi/ds_digital/DS-DIGI.TTF"; sourceTree = "<group>"; };
 		B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DS-DIGII.TTF"; path = "UnTaxi/ds_digital/DS-DIGII.TTF"; sourceTree = "<group>"; };
 		B5F753E41D5D045500FFDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE98D7B4781461676777548B /* Pods-UnTaxi-AndyTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.release.xcconfig"; sourceTree = "<group>"; };
-		C07F069FA981BBEC9BFB7570 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-AndyTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		C0E72C9BFE9E6046FF8E339B /* Pods-UnTaxi-Kyper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-Kyper.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper.release.xcconfig"; sourceTree = "<group>"; };
-		C28BB8A0EB79CD9BD89282BA /* Pods-UnTaxi-TransporVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-TransporVIP.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP.debug.xcconfig"; sourceTree = "<group>"; };
-		C38436B51F18A48A06C9CD39 /* Pods-UnTaxi-VipCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-VipCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar.release.xcconfig"; sourceTree = "<group>"; };
 		C6002C4C28FCA49C004C55EE /* PagoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoController.swift; sourceTree = "<group>"; };
 		C6002C4E28FCA7FA004C55EE /* PagoDelegatesExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoDelegatesExt.swift; sourceTree = "<group>"; };
 		C6002C5028FCA94A004C55EE /* PagoFunctionsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagoFunctionsExt.swift; sourceTree = "<group>"; };
@@ -1885,12 +1866,6 @@
 		C6F27B07238F2C5400679E07 /* SolicitudHistorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudHistorial.swift; sourceTree = "<group>"; };
 		C6F580E623AB412D002D69E5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C6FFCB6524BB7880003C0B81 /* DireccionPactada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPactada.swift; sourceTree = "<group>"; };
-		CEB2B48987EA0FD63A09CE5D /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-LlamadaFacil.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil.release.xcconfig"; sourceTree = "<group>"; };
-		D6AC89EBD0F73937A8BB355C /* Pods-UnTaxi-OrientExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.release.xcconfig"; sourceTree = "<group>"; };
-		D8985FAEF0C2B51225D5D05E /* Pods_UnTaxi_OrientExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_OrientExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E69E9FBAB417EB2FC51E80F5 /* Pods_UnTaxi_RuedaCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi_RuedaCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA6C6DAA964AA7F7B5D3E030 /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
-		ED2B600BABC65BFFE5901684 /* Pods-UnTaxi-RuedaCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-RuedaCar.release.xcconfig"; path = "Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar.release.xcconfig"; sourceTree = "<group>"; };
 		F404BC452A7BFE0000D1671E /* RuedaCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuedaCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F404BC482A7BFEEE00D1671E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F404BC492A7BFEEE00D1671E /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
@@ -1934,7 +1909,6 @@
 		F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnalyticsService.swift; path = Utils/Enums/AnalyticsService.swift; sourceTree = SOURCE_ROOT; };
-		F4EB53702596123F8C3E62DB /* Pods-UnTaxi-OrientExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi-OrientExpress.debug.xcconfig"; path = "Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1945,15 +1919,21 @@
 				F4E137E42C04DFC500E3A54E /* MapboxSearch in Frameworks */,
 				F4E87A5E2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F4E137EA2C04DFC500E3A54E /* MapboxDirections in Frameworks */,
+				F4C17FD32CB5C64700E07BE3 /* rswift in Frameworks */,
 				F4E87A5A2C8F4A7E0019D2CF /* FirebaseAnalytics in Frameworks */,
 				F4E137EC2C04DFC500E3A54E /* MapboxGeocoder in Frameworks */,
+				F4C17FC42CB5C5BE00E07BE3 /* GoogleMobileAds in Frameworks */,
+				F4C17FD62CB5C6DB00E07BE3 /* Toast in Frameworks */,
 				F4E87A5C2C8F4A7E0019D2CF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				F4C17FC72CB5C5EB00E07BE3 /* PhoneNumberKit in Frameworks */,
 				F4E137E62C04DFC500E3A54E /* MapboxSearchUI in Frameworks */,
 				F4E137E22C04DFC500E3A54E /* MapboxMaps in Frameworks */,
 				F4E137E82C04DFC500E3A54E /* SocketIO in Frameworks */,
-				8B11B988668D0A09215A458F /* Pods_UnTaxi.framework in Frameworks */,
 				F4E87A602C8F4A7E0019D2CF /* FirebaseAppCheck in Frameworks */,
+				F4C17FCE2CB5C61500E07BE3 /* FloatingPanel in Frameworks */,
+				F4C17FC12CB5C55800E07BE3 /* SideMenu in Frameworks */,
 				F4E87A622C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta in Frameworks */,
+				F4C17FD12CB5C64700E07BE3 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1961,7 +1941,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38A3CD398E5E55E1C03C0A26 /* Pods_UnTaxi_RuedaCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1972,7 +1951,6 @@
 				F41602F12A6D96E8006A3FC1 /* (null) in Frameworks */,
 				F41602F22A6D96E8006A3FC1 /* (null) in Frameworks */,
 				50EC68222FB79B77BC88EF19 /* (null) in Frameworks */,
-				D3A679A219EB9CADCB137121 /* Pods_UnTaxi_OrientExpress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1981,7 +1959,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E43024C43969E2805C32FA15 /* (null) in Frameworks */,
-				3AA0E187BE3A5DA6F04CCB2D /* Pods_UnTaxi_AndyTaxi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1995,8 +1972,6 @@
 				F489F2362C0138C400F42D0B /* MapboxSearchUI in Frameworks */,
 				F489F2312C01355F00F42D0B /* MapboxMaps in Frameworks */,
 				F489F2392C0364A000F42D0B /* SocketIO in Frameworks */,
-				82C67440F6D0CC1850A894E1 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */,
-				45AC9B804F192A4DB431AAA3 /* Pods_UnTaxi_TransporVIP.framework in Frameworks */,
 				F4E87A692C8FBE640019D2CF /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2005,7 +1980,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF583E2DB9AD22CD87F62E6D /* Pods_UnTaxi_LlamadaFacil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2020,7 +1994,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F56F1077B67CD88506FC3D1 /* Pods_UnTaxi_VipCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2034,7 +2007,6 @@
 				F4E1395B2C0515A100E3A54E /* MapboxSearchUI in Frameworks */,
 				F4E1395C2C0515A100E3A54E /* MapboxMaps in Frameworks */,
 				F4E1395D2C0515A100E3A54E /* SocketIO in Frameworks */,
-				FB849B7B2C642BE35D2ADF11 /* Pods_UnTaxi_Kyper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2047,14 +2019,6 @@
 				B5F5848A1DCF90F3002CA7B5 /* DS-DIGII.TTF */,
 				B5F584881DCF907B002CA7B5 /* DS-DIGI.TTF */,
 				845CE2ED1BE9E93F005C641B /* CoreLocation.framework */,
-				662E974F9B3FBBFD3861AB0D /* Pods_UnTaxi.framework */,
-				22EDEC3E97308121FFCBC829 /* Pods_UnTaxi_AndyTaxi.framework */,
-				33DD2170A4E38DAF0C75011B /* Pods_UnTaxi_LlamadaFacil.framework */,
-				D8985FAEF0C2B51225D5D05E /* Pods_UnTaxi_OrientExpress.framework */,
-				E69E9FBAB417EB2FC51E80F5 /* Pods_UnTaxi_RuedaCar.framework */,
-				2BC03664482B0DB9E78DD475 /* Pods_UnTaxi_TransporVIP.framework */,
-				55CABE0FA46484342AE56F54 /* Pods_UnTaxi_VipCar.framework */,
-				9CB68A98154B1CB65E737640 /* Pods_UnTaxi_Kyper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2086,7 +2050,6 @@
 				84F571651BCE958200FC18D5 /* XtaxiUITests */,
 				84F571441BCE958200FC18D5 /* Products */,
 				806E675426FD1B3FEF7755DC /* Frameworks */,
-				DA53F09E53843FFE9BFE048B /* Pods */,
 				F4E139932C0515A200E3A54E /* TransporVIP copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -2629,29 +2592,6 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		DA53F09E53843FFE9BFE048B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EA6C6DAA964AA7F7B5D3E030 /* Pods-UnTaxi.debug.xcconfig */,
-				75082A554F9C0712801F81C8 /* Pods-UnTaxi.release.xcconfig */,
-				C07F069FA981BBEC9BFB7570 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */,
-				BE98D7B4781461676777548B /* Pods-UnTaxi-AndyTaxi.release.xcconfig */,
-				7D60280F6929BDC44F1F21E6 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */,
-				CEB2B48987EA0FD63A09CE5D /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */,
-				F4EB53702596123F8C3E62DB /* Pods-UnTaxi-OrientExpress.debug.xcconfig */,
-				D6AC89EBD0F73937A8BB355C /* Pods-UnTaxi-OrientExpress.release.xcconfig */,
-				25FC29FE8CAF9E22DF5514CC /* Pods-UnTaxi-RuedaCar.debug.xcconfig */,
-				ED2B600BABC65BFFE5901684 /* Pods-UnTaxi-RuedaCar.release.xcconfig */,
-				70F7C52B36A5F4D4B4871008 /* Pods-UnTaxi-VipCar.debug.xcconfig */,
-				C38436B51F18A48A06C9CD39 /* Pods-UnTaxi-VipCar.release.xcconfig */,
-				C28BB8A0EB79CD9BD89282BA /* Pods-UnTaxi-TransporVIP.debug.xcconfig */,
-				A185822CE1FE0A3AD1619481 /* Pods-UnTaxi-TransporVIP.release.xcconfig */,
-				65E6E901C93829F907D52288 /* Pods-UnTaxi-Kyper.debug.xcconfig */,
-				C0E72C9BFE9E6046FF8E339B /* Pods-UnTaxi-Kyper.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		F404BC472A7BFE2700D1671E /* RuedaCar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2770,13 +2710,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F5716B1BCE958200FC18D5 /* Build configuration list for PBXNativeTarget "UnTaxi" */;
 			buildPhases = (
-				9B1EA9D6CCFF5D95981B0341 /* [CP] Check Pods Manifest.lock */,
 				C68ED7BF2298B8BD00E2F8AC /* Run Script */,
 				84F5713F1BCE958200FC18D5 /* Sources */,
 				84F571401BCE958200FC18D5 /* Frameworks */,
 				84F571411BCE958200FC18D5 /* Resources */,
-				B89AE396884F1CE100AEED9B /* [CP] Embed Pods Frameworks */,
-				ACBE706021D8A05908B35212 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2795,6 +2732,13 @@
 				F4E87A5D2C8F4A7E0019D2CF /* FirebaseAnalyticsWithoutAdIdSupport */,
 				F4E87A5F2C8F4A7E0019D2CF /* FirebaseAppCheck */,
 				F4E87A612C8F4A7E0019D2CF /* FirebaseAppDistribution-Beta */,
+				F4C17FC02CB5C55800E07BE3 /* SideMenu */,
+				F4C17FC32CB5C5BE00E07BE3 /* GoogleMobileAds */,
+				F4C17FC62CB5C5EB00E07BE3 /* PhoneNumberKit */,
+				F4C17FCD2CB5C61500E07BE3 /* FloatingPanel */,
+				F4C17FD02CB5C64700E07BE3 /* RswiftLibrary */,
+				F4C17FD22CB5C64700E07BE3 /* rswift */,
+				F4C17FD52CB5C6DB00E07BE3 /* Toast */,
 			);
 			productName = Xtaxi;
 			productReference = 84F571431BCE958200FC18D5 /* UnTaxi.app */;
@@ -2804,13 +2748,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F404BC422A7BFE0000D1671E /* Build configuration list for PBXNativeTarget "RuedaCar" */;
 			buildPhases = (
-				70442198A56EE44F8CF2398A /* [CP] Check Pods Manifest.lock */,
 				F404BB862A7BFE0000D1671E /* Run Script */,
 				F404BB872A7BFE0000D1671E /* Sources */,
 				F404BC102A7BFE0000D1671E /* Frameworks */,
 				F404BC122A7BFE0000D1671E /* Resources */,
-				83852F8526ECFCFC5A12D446 /* [CP] Embed Pods Frameworks */,
-				FAF13942EAF38CCAD7AF112F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2825,13 +2766,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F41603222A6D96E8006A3FC1 /* Build configuration list for PBXNativeTarget "OrientExpress" */;
 			buildPhases = (
-				312858F744BB2C1FE03F415E /* [CP] Check Pods Manifest.lock */,
 				F41602662A6D96E8006A3FC1 /* Run Script */,
 				F41602672A6D96E8006A3FC1 /* Sources */,
 				F41602F02A6D96E8006A3FC1 /* Frameworks */,
 				F41602F32A6D96E8006A3FC1 /* Resources */,
-				1C80A8B9559D188BB2071F70 /* [CP] Embed Pods Frameworks */,
-				5998475743C222321EC4C162 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2846,13 +2784,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F41603E62A785746006A3FC1 /* Build configuration list for PBXNativeTarget "AndyTaxi" */;
 			buildPhases = (
-				125B7434B21461CCB8379E8D /* [CP] Check Pods Manifest.lock */,
 				F416032A2A785746006A3FC1 /* Run Script */,
 				F416032B2A785746006A3FC1 /* Sources */,
 				F41603B42A785746006A3FC1 /* Frameworks */,
 				F41603B82A785746006A3FC1 /* Resources */,
-				D5DA9B0CC5BD4827C06B87CB /* [CP] Embed Pods Frameworks */,
-				302DF5E90101B084ABA46032 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2867,13 +2802,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F43B6AF82BD6BCB100089E9E /* Build configuration list for PBXNativeTarget "TransporVIP" */;
 			buildPhases = (
-				CCE16E2EA7A830391B8977F3 /* [CP] Check Pods Manifest.lock */,
 				F43B6A3B2BD6BCB100089E9E /* Run Script */,
 				F43B6A3C2BD6BCB100089E9E /* Sources */,
 				F43B6AC92BD6BCB100089E9E /* Frameworks */,
 				F43B6ACB2BD6BCB100089E9E /* Resources */,
-				11C6F7D3BDB92030A429DF84 /* [CP] Embed Pods Frameworks */,
-				2161742720D4ABB5893F7F2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2897,13 +2829,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F45E0F492A37DE03004A4FEF /* Build configuration list for PBXNativeTarget "LlamadaFacil" */;
 			buildPhases = (
-				EEF9D7B0F55221B448120CEE /* [CP] Check Pods Manifest.lock */,
 				F45E0E912A37DE03004A4FEF /* Run Script */,
 				F45E0E922A37DE03004A4FEF /* Sources */,
 				F45E0F1A2A37DE03004A4FEF /* Frameworks */,
 				F45E0F1D2A37DE03004A4FEF /* Resources */,
-				EF1D276FDA1BF3BBA7C0A4EE /* [CP] Embed Pods Frameworks */,
-				3452248188C145B73555F559 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2936,13 +2865,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E132962A08121A00E18299 /* Build configuration list for PBXNativeTarget "VipCar" */;
 			buildPhases = (
-				AC25416C53E680E3BD7596EC /* [CP] Check Pods Manifest.lock */,
 				F4E131DD2A08121A00E18299 /* Run Script */,
 				F4E131DE2A08121A00E18299 /* Sources */,
 				F4E132662A08121A00E18299 /* Frameworks */,
 				F4E132682A08121A00E18299 /* Resources */,
-				951A608EDD629887D4DCE011 /* [CP] Embed Pods Frameworks */,
-				D86056F7AEA7693B29DF0890 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2957,13 +2883,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E1398F2C0515A100E3A54E /* Build configuration list for PBXNativeTarget "Kyper" */;
 			buildPhases = (
-				F75849F074FD0ABD0AC92C54 /* [CP] Check Pods Manifest.lock */,
 				F4E138C92C0515A100E3A54E /* Run Script */,
 				F4E138CA2C0515A100E3A54E /* Sources */,
 				F4E139572C0515A100E3A54E /* Frameworks */,
 				F4E1395F2C0515A100E3A54E /* Resources */,
-				827DA48C6790563930FB3CC8 /* [CP] Embed Pods Frameworks */,
-				695E16566F13F0592800ED51 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3050,6 +2973,12 @@
 				F47FFE882C039F7300912A95 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */,
 				F47FFE8B2C03A28C00912A95 /* XCRemoteSwiftPackageReference "MapboxGeocoder.swift" */,
 				F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F4C17FBF2CB5C55800E07BE3 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				F4C17FC22CB5C5BE00E07BE3 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				F4C17FC52CB5C5EB00E07BE3 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+				F4C17FCC2CB5C61500E07BE3 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				F4C17FCF2CB5C64700E07BE3 /* XCRemoteSwiftPackageReference "R.swift" */,
+				F4C17FD42CB5C6DB00E07BE3 /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = 84F571441BCE958200FC18D5 /* Products */;
 			projectDirPath = "";
@@ -3510,464 +3439,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11C6F7D3BDB92030A429DF84 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		125B7434B21461CCB8379E8D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-AndyTaxi-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1C80A8B9559D188BB2071F70 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2161742720D4ABB5893F7F2F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-TransporVIP/Pods-UnTaxi-TransporVIP-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		302DF5E90101B084ABA46032 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		312858F744BB2C1FE03F415E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-OrientExpress-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3452248188C145B73555F559 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5998475743C222321EC4C162 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-OrientExpress/Pods-UnTaxi-OrientExpress-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		695E16566F13F0592800ED51 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70442198A56EE44F8CF2398A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-RuedaCar-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		827DA48C6790563930FB3CC8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-Kyper/Pods-UnTaxi-Kyper-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83852F8526ECFCFC5A12D446 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		951A608EDD629887D4DCE011 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9B1EA9D6CCFF5D95981B0341 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC25416C53E680E3BD7596EC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-VipCar-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ACBE706021D8A05908B35212 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B89AE396884F1CE100AEED9B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi/Pods-UnTaxi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C68ED7BF2298B8BD00E2F8AC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -3987,147 +3458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		CCE16E2EA7A830391B8977F3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-TransporVIP-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5DA9B0CC5BD4827C06B87CB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-AndyTaxi/Pods-UnTaxi-AndyTaxi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D86056F7AEA7693B29DF0890 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-VipCar/Pods-UnTaxi-VipCar-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEF9D7B0F55221B448120CEE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-LlamadaFacil-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF1D276FDA1BF3BBA7C0A4EE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/CurrencyTextField/CurrencyTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
-				"${BUILT_PRODUCTS_DIR}/ToastViewSwift/ToastViewSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RswiftResources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ToastViewSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-LlamadaFacil/Pods-UnTaxi-LlamadaFacil-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		F404BB862A7BFE0000D1671E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4290,48 +3621,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		F75849F074FD0ABD0AC92C54 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UnTaxi-Kyper-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAF13942EAF38CCAD7AF112F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnTaxi-RuedaCar/Pods-UnTaxi-RuedaCar-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -5797,7 +5086,6 @@
 		};
 		84F5716C1BCE958200FC18D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA6C6DAA964AA7F7B5D3E030 /* Pods-UnTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5838,7 +5126,6 @@
 		};
 		84F5716D1BCE958200FC18D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75082A554F9C0712801F81C8 /* Pods-UnTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5877,7 +5164,6 @@
 		};
 		F404BC432A7BFE0000D1671E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25FC29FE8CAF9E22DF5514CC /* Pods-UnTaxi-RuedaCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5918,7 +5204,6 @@
 		};
 		F404BC442A7BFE0000D1671E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED2B600BABC65BFFE5901684 /* Pods-UnTaxi-RuedaCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5957,7 +5242,6 @@
 		};
 		F41603232A6D96E8006A3FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4EB53702596123F8C3E62DB /* Pods-UnTaxi-OrientExpress.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -5998,7 +5282,6 @@
 		};
 		F41603242A6D96E8006A3FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6AC89EBD0F73937A8BB355C /* Pods-UnTaxi-OrientExpress.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6037,7 +5320,6 @@
 		};
 		F41603E72A785746006A3FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C07F069FA981BBEC9BFB7570 /* Pods-UnTaxi-AndyTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6078,7 +5360,6 @@
 		};
 		F41603E82A785746006A3FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE98D7B4781461676777548B /* Pods-UnTaxi-AndyTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6117,7 +5398,6 @@
 		};
 		F43B6AF92BD6BCB100089E9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C28BB8A0EB79CD9BD89282BA /* Pods-UnTaxi-TransporVIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6158,7 +5438,6 @@
 		};
 		F43B6AFA2BD6BCB100089E9E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A185822CE1FE0A3AD1619481 /* Pods-UnTaxi-TransporVIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6197,7 +5476,6 @@
 		};
 		F45E0F4A2A37DE03004A4FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D60280F6929BDC44F1F21E6 /* Pods-UnTaxi-LlamadaFacil.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6238,7 +5516,6 @@
 		};
 		F45E0F4B2A37DE03004A4FEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEB2B48987EA0FD63A09CE5D /* Pods-UnTaxi-LlamadaFacil.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6355,7 +5632,6 @@
 		};
 		F4E132972A08121A00E18299 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70F7C52B36A5F4D4B4871008 /* Pods-UnTaxi-VipCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6397,7 +5673,6 @@
 		};
 		F4E132982A08121A00E18299 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C38436B51F18A48A06C9CD39 /* Pods-UnTaxi-VipCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6436,7 +5711,6 @@
 		};
 		F4E139902C0515A100E3A54E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65E6E901C93829F907D52288 /* Pods-UnTaxi-Kyper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6477,7 +5751,6 @@
 		};
 		F4E139912C0515A100E3A54E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0E72C9BFE9E6046FF8E339B /* Pods-UnTaxi-Kyper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -6646,8 +5919,56 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
 			requirement = {
-				kind = upToNextMinorVersion;
+				kind = upToNextMajorVersion;
 				minimumVersion = 16.1.0;
+			};
+		};
+		F4C17FBF2CB5C55800E07BE3 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		F4C17FC22CB5C5BE00E07BE3 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+		F4C17FC52CB5C5EB00E07BE3 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		F4C17FCC2CB5C61500E07BE3 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.6;
+			};
+		};
+		F4C17FCF2CB5C64700E07BE3 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.7.0;
+			};
+		};
+		F4C17FD42CB5C6DB00E07BE3 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
 			};
 		};
 		F4E138BE2C0515A100E3A54E /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
@@ -6730,6 +6051,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F489F2372C0364A000F42D0B /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		F4C17FC02CB5C55800E07BE3 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FBF2CB5C55800E07BE3 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		F4C17FC32CB5C5BE00E07BE3 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FC22CB5C5BE00E07BE3 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		F4C17FC62CB5C5EB00E07BE3 /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FC52CB5C5EB00E07BE3 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
+		};
+		F4C17FCD2CB5C61500E07BE3 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FCC2CB5C61500E07BE3 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+		F4C17FD02CB5C64700E07BE3 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FCF2CB5C64700E07BE3 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
+		F4C17FD22CB5C64700E07BE3 /* rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FCF2CB5C64700E07BE3 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = rswift;
+		};
+		F4C17FD52CB5C6DB00E07BE3 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FD42CB5C6DB00E07BE3 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 		F4E137E12C04DFC500E3A54E /* MapboxMaps */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SideMenu
+internal import SideMenu
 
 internal extension UIViewController {
   

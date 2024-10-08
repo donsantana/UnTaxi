@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 internal import SocketIO
 import AVFoundation
-import ToastViewSwift
+internal import Toast
 
 extension SolPendController: SocketServiceDelegate{
   //GEOPOSICION DE TAXIS

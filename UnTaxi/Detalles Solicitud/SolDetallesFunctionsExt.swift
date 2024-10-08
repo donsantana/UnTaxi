@@ -8,9 +8,10 @@
 
 import Foundation
 internal import SocketIO
-import AVFoundation
-import SideMenu
+import UIKit
+internal import SideMenu
 internal import MapboxMaps
+import AVFAudio
 //import MapboxDirections
 
 extension SolPendController{

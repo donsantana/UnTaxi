@@ -8,8 +8,8 @@
 
 import UIKit
 internal import MapboxMaps
-import MapboxSearch
-import MapboxSearchUI
+internal import MapboxSearch
+internal import MapboxSearchUI
 import MapboxDirections
 
 class AddressController: UIViewController {

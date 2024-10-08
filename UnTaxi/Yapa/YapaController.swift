@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FloatingPanel
+internal import FloatingPanel
 
 struct YapaMenu {
   var icon: UIImage

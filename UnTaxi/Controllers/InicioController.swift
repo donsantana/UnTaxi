@@ -10,16 +10,15 @@ import UIKit
 import MapKit
 import CoreLocation
 internal import SocketIO
-import Canvas
 import AddressBook
 import AVFoundation
 import CoreData
 internal import MapboxMaps
-import MapboxSearch
-import MapboxSearchUI
-import MapboxGeocoder
-import FloatingPanel
-import SideMenu
+internal import MapboxSearch
+internal import MapboxSearchUI
+internal import MapboxGeocoder
+internal import FloatingPanel
+internal import SideMenu
 import WebKit
 
 struct MenuData {
