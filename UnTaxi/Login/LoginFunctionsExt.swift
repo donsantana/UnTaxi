@@ -6,10 +6,10 @@
 //  Copyright © 2020 Done Santana. All rights reserved.
 //
 
-import Foundation
+import UIKit
 internal import SocketIO
 import CoreLocation
-import RswiftResources
+internal import RswiftResources
 import LocalAuthentication
 
 

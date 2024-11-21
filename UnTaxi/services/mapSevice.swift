@@ -8,7 +8,7 @@
 
 import UIKit
 internal import MapboxMaps
-import MapboxGeocoder
+internal import MapboxGeocoder
 import CoreLocation
 
 

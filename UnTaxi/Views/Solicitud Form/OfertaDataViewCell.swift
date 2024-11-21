@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CurrencyTextField
 
 
 class OfertaDataViewCell: UITableViewCell {
@@ -16,7 +15,7 @@ class OfertaDataViewCell: UITableViewCell {
 		globalVariables.tarifario.valorForDistance(distance: 0.0)
 	}
 
-  @IBOutlet weak var valorOfertaText: CurrencyTextField!
+    @IBOutlet weak var valorOfertaText: UITextField!
 
   func initContent(){
     valorOfertaText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)

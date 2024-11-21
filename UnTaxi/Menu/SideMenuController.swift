@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SideMenu
+internal import SideMenu
 
 class SideMenuController: UIViewController {
   //MenuData(imagen: "nuevaSolicitud", title: "Nuevo viaje"),

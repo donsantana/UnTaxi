@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 internal import SocketIO
 import AVFoundation
-import SideMenu
+internal import SideMenu
 internal import MapboxMaps
 import MapboxDirections
 import GoogleMobileAds

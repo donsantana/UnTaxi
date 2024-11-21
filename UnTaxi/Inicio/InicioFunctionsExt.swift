@@ -11,8 +11,8 @@ import CoreLocation
 import MapKit
 internal import MapboxMaps
 import MapboxDirections
-import MapboxGeocoder
-import FloatingPanel
+internal import MapboxGeocoder
+internal import FloatingPanel
 
 extension InicioController{
 	//MARK:- FUNCIONES PROPIAS

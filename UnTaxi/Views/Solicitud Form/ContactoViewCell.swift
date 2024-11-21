@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PhoneNumberKit
+internal import PhoneNumberKit
 
 protocol ContactoCellDelegate: AnyObject{
   func otherContactSelected(_ controller: ContactoViewCell, otherContactSelected isSelected: Bool)
@@ -16,7 +16,7 @@ protocol ContactoCellDelegate: AnyObject{
 class ContactoViewCell: UITableViewCell {
   weak var delegate: ContactoCellDelegate?
   
-  let phoneNumberKit = PhoneNumberKit()
+    let phoneNumberKit = PhoneNumberUtility()
   
   @IBOutlet weak var contactoNameText: UITextField!
   @IBOutlet weak var telefonoText: UITextField!

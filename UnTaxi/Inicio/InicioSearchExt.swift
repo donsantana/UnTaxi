@@ -8,8 +8,8 @@
 
 import Foundation
 internal import MapboxMaps
-import MapboxSearch
-import MapboxSearchUI
+internal import MapboxSearch
+internal import MapboxSearchUI
 
 //extension InicioController: SearchControllerDelegate {
 //	func categorySearchResultsReceived(category: MapboxSearchUI.SearchCategory, results: [MapboxSearch.SearchResult]) {

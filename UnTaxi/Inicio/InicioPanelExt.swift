@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FloatingPanel
+internal import FloatingPanel
 
 extension InicioController: FloatingPanelControllerDelegate{
   

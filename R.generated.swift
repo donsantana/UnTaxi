@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import RswiftResources
+internal import RswiftResources
 import UIKit
 
 private class BundleFinder {}
