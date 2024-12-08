@@ -12,7 +12,7 @@ struct GlobalConstants {
     static var bundleId = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
     static var appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "0.0"
     static var enviroment: String = "prod"
-    static var serverDomain = (bundleId == "com.xoait.UnTaxi") ? "xoaserver" : "xoait" // || bundleId == "com.xoait.TransporVIP"
+    static var serverDomain = (bundleId == "com.xoait.UnTaxi" || bundleId == "com.xoait.XTaxi") ? "xoaserver" : "xoait" // || bundleId == "com.xoait.TransporVIP"
     static var urlServer: String = enviroment == "dev" ? "testing-untaxi.xoaserver.com" : "\(serverName).\(serverDomain).com"
     static var serverName: String {
         switch bundleId {
@@ -51,7 +51,7 @@ struct GlobalConstants {
         case "com.xoait.kyper":
             return "kyper"
         default:
-            return "testing-untaxi.xoaserver.com"
+            return "untaxi"
         }
     }
     static var urlHost: String = "https://\(urlServer)"//premium.xoait.com" //testing-untaxi.xoaserver.com
@@ -167,13 +167,15 @@ struct GlobalConstants {
         case "com.xoait.kyper":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
         default:
-            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g"
         }
     }
     
     static var registerValidationIsAnable: Bool {
         switch bundleId {
         case "com.xoait.UnTaxi":
+            return true
+        case "com.xoait.XTaxi":
             return true
 //        case "com.xoait.TransporVIP":
 //            return true
