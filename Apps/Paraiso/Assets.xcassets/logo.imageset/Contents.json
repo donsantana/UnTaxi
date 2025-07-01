@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "LOGO PARAISO - ARTE FINAL-01 (1)-1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "LOGO PARAISO - ARTE FINAL-01 (1).png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "LOGO PARAISO - ARTE FINAL-1.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

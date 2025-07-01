@@ -52,6 +52,8 @@ struct GlobalConstants {
             return "kyper"
         case "com.xoait.easycar":
             return "easycar"
+        case "com.donelkys.Paraiso":
+            return "paraiso"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -137,6 +139,8 @@ struct GlobalConstants {
             return "6499275207"
         case "com.xoait.kyper":
             return "6502842865"
+        case "com.donelkys.Paraiso":
+            return "1193366712"
         default:
             return "1149206387"
         }
@@ -188,6 +192,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
         case "com.xoait.easycar":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t0bTVlMWtlMjJhcTJxbm1pOGdsdnlrcSJ9.QvpTT1r6KBIb0_uzONtSvQ"
+        case "com.donelkys.Paraiso":
+            return "sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttN3V0cXN2MTFxZjJucGJzbHRzMzVyZCJ9.Dt6GBrNQiHY9vp1CUXXaEA"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -283,6 +289,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/9360438861"
         case "com.xoait.easycar":
             return "ca-app-pub-1778988557303127/8234055141"
+        case "com.donelkys.Paraiso":
+            return "ca-app-pub-1778988557303127/6196383816"
         default:
             return ""
         }
@@ -327,6 +335,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/4108112186"
         case "com.xoait.easycar":
             return "ca-app-pub-1778988557303127/2821946368"
+        case "com.donelkys.Paraiso":
+            return "ca-app-pub-1778988557303127/1559699453"
         default:
             return ""
         }
