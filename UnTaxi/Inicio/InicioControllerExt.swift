@@ -118,19 +118,39 @@ extension InicioController: UITextFieldDelegate{
         self.perform(#selector(self.searchAddress), with: nil, afterDelay: 0.5)
   }
   
-  @objc func searchAddress(){
-      ApiService.shared.searchAddressXoaAPI(searchQuery: searchText.text!,lat: self.origenAnnotation.coordinates.latitude,lon: self.origenAnnotation.coordinates.longitude) { result in
-          switch result {
-          case .success(let addressList):
-              self.searchAddressList = addressList
-          case .failure(let _):
-              break
+  @objc func searchAddress() {
+      self.searchAddressList.removeAll()
+      if GlobalConstants.bundleId == "com.xoait.easycar" {
+          AddressService.shared.searchAddress(searchQuery: searchText.text!, lat: self.origenAnnotation.coordinates.latitude, lon: self.origenAnnotation.coordinates.longitude) { result in
+              switch result {
+              case .success(let addressList):
+                  for address in addressList {
+                      self.searchAddressList.append(Address(description: address.description, placeId: address.place_id))
+                  }
+              case .failure(let _):
+                  break
+              }
+              
+              DispatchQueue.main.async { [self] in
+                  self.sinResultadosLabel.isHidden = self.searchAddressList.count > 0 || self.searchText.text!.isEmpty
+              }
           }
           
-          DispatchQueue.main.async { [self] in
-              self.sinResultadosLabel.isHidden = self.searchAddressList.count > 0 || self.searchText.text!.isEmpty
+      } else {
+          ApiService.shared.searchAddressXoaAPI(searchQuery: searchText.text!,lat: self.origenAnnotation.coordinates.latitude,lon: self.origenAnnotation.coordinates.longitude) { result in
+              switch result {
+              case .success(let addressList):
+                  self.searchAddressList = addressList
+              case .failure(let _):
+                  break
+              }
+              
+              DispatchQueue.main.async { [self] in
+                  self.sinResultadosLabel.isHidden = self.searchAddressList.count > 0 || self.searchText.text!.isEmpty
+              }
           }
       }
+      
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

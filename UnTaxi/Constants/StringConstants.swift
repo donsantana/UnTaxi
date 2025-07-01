@@ -64,7 +64,9 @@ struct GlobalStrings {
 	static let canceladaConductorMessage: String = NSLocalizedString("Solicitud cancelada por el conductor.",comment:"")
 	
 	static let taxiLlegoTitle: String = NSLocalizedString("Su taxi ha llegado.",comment:"")
-	static let taxiLlegoMessage: String = NSLocalizedString("Tiene un período de gracia de 5 min.",comment:"")
+    static let taxiLlegoMessage: String = NSLocalizedString("Tiene un período de gracia de 5 min.",comment:"")
+    static let taximetroIniciadoMessage: String = NSLocalizedString("El conductor ha iniciado el Taxímetro ",comment:"")
+	static let carreraIniciadaMessage: String = NSLocalizedString("El conductor ha iniciado la carrera",comment:"")
 	
 	static let removeClientTitle: String = NSLocalizedString("Eliminar Usuario",comment:"")
 	static let removeClientMessage: String = NSLocalizedString("¿Estás seguro que desea eliminar su cuenta?",comment:"")

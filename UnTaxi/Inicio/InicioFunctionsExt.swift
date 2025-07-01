@@ -14,7 +14,7 @@ import MapboxDirections
 internal import MapboxGeocoder
 internal import FloatingPanel
 
-extension InicioController{
+extension InicioController {
 	//MARK:- FUNCIONES PROPIAS
 	
 	func checkForNewVersions() {
@@ -596,7 +596,7 @@ extension InicioController{
 							//self.mapView.addPolyline(origin: self.origenAnnotation, destiny: self.destinoAnnotation)
 						}
 					}
-					self.showAnnotations([self.origenAnnotation, self.destinoAnnotation])
+                    self.showAnnotations([self.origenAnnotation, self.destinoAnnotation])
 				}
 			}
 		}
@@ -646,8 +646,9 @@ extension InicioController{
 			}
 		} else {
 			if self.searchingAddress == "origen" {
-				origenAnnotation.coordinates = self.origenAnnotation.coordinates
-				origenAnnotation.address = self.origenAnnotation.address
+				origenAnnotation.coordinates = coreLocationManager.location!.coordinate
+				origenAnnotation.address = ""
+                initMapView()
 			} else {
 				destinoAnnotation.coordinates = self.origenAnnotation.coordinates
 				destinoAnnotation.address = ""

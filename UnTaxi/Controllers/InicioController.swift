@@ -334,18 +334,17 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     //MARK:- BOTONES GRAFICOS ACCIONES
     
     @IBAction func RelocateBtn(_ sender: Any) {
-        if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-            if searchingAddress == "origen" {
-                pointAnnotationManager.annotations.removeAll(where: {$0.id == origenAnnotation.annotation.id})
-                origenAnnotation.coordinates = coreLocationManager.location!.coordinate
-                pointAnnotationManager.annotations.append(self.origenAnnotation.annotation)
-            } else {
-                pointAnnotationManager.annotations.removeAll(where: {$0.id == destinoAnnotation.annotation.id})
-                destinoAnnotation.coordinates = coreLocationManager.location!.coordinate
-                pointAnnotationManager.annotations.append(self.destinoAnnotation.annotation)
-            }
+        if let navigationController = navigationController, !navigationController.isNavigationBarHidden, searchingAddress == "destino" {
+            pointAnnotationManager.annotations.removeAll(where: {$0.id == destinoAnnotation.annotation.id})
+            destinoAnnotation.coordinates = coreLocationManager.location!.coordinate
+            getReverseAddressXoaAPI(destinoAnnotation)
+            pointAnnotationManager.annotations.append(destinoAnnotation.annotation)
             mapView.setCenter(origenAnnotation.coordinates, zoomLevel: 15, animated: false)
         } else {
+            pointAnnotationManager.annotations.removeAll(where: {$0.id == origenAnnotation.annotation.id})
+            origenAnnotation.coordinates = coreLocationManager.location!.coordinate
+            getReverseAddressXoaAPI(origenAnnotation)
+            pointAnnotationManager.annotations.append(origenAnnotation.annotation)
             updateMapFocus()
         }
     }
@@ -409,7 +408,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
                     destinoAnnotation.address = searchText.text!
                     destinoCell.destinoText.text = searchText.text
                 } else {
-                    self.getReverseAddressXoaAPI(self.destinoAnnotation)
+                    //self.getReverseAddressXoaAPI(self.destinoAnnotation)
                 }
                 self.getDestinoFromSearch(annotation: self.destinoAnnotation)
             } else {
@@ -417,8 +416,9 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
                     self.origenAnnotation.address = searchText.text ?? ""
                     origenCell.origenText.text = searchText.text
                 } else {
-                    self.getReverseAddressXoaAPI(self.origenAnnotation)
+                    //self.getReverseAddressXoaAPI(self.origenAnnotation)
                 }
+                getTaxisCercanos()
             }
         }
         

@@ -46,6 +46,9 @@ class RegistroController: UIViewController {
     correoText.delegate = self
     confirmarClavText.delegate = self
     countryCodeText.delegate = self
+      
+      claveText.clearButtonMode = .never
+      confirmarClavText.clearButtonMode = .never
     
     self.crearCuentaBtn.addCustomActionBtnsColors()
     self.waitingView.addStandardConfig()

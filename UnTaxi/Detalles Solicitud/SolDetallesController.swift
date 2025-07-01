@@ -296,7 +296,7 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
         let alertaCompartir = UIAlertController (title: "Viaje seguro", message: "Para un viaje más seguro, puede compartir los datos de conductor con un amigo a familiar.", preferredStyle: UIAlertController.Style.alert)
         alertaCompartir.addAction(UIAlertAction(title: "Compartir", style: .default, handler: {alerAction in
             
-            let datosConductor = "Hola, soy \(globalVariables.cliente.nombreApellidos!), voy viajando en Un Taxi con el conductor: \(self.solicitudPendiente.taxi.conductor.nombreApellido), en un auto marca: \(self.solicitudPendiente.taxi.marca), color: \(self.solicitudPendiente.taxi.color), con placa: \(self.solicitudPendiente.taxi.matricula)"
+            let datosConductor = "Hola, soy \(globalVariables.cliente.nombreApellidos!), voy viajando en \(Bundle.main.displayName) con el conductor: \(self.solicitudPendiente.taxi.conductor.nombreApellido), en un auto marca: \(self.solicitudPendiente.taxi.marca), color: \(self.solicitudPendiente.taxi.color), con placa: \(self.solicitudPendiente.taxi.matricula) \n SIGUE MI RUTA:\n\(GlobalConstants.shareDetallesUrl)\(globalVariables.cliente.id ?? 0)x\(self.solicitudPendiente.id)"
             let objectsToShare = [datosConductor]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)

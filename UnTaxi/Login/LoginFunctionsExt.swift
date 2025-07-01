@@ -232,6 +232,19 @@ extension LoginController{
 //            }
         }
     }
+    
+    internal func validateMovilNumber() {
+        let (valid, message) = movilClaveRecover.validate(.movilNumber)
+        if !valid {
+                  let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                      
+                  })
+                  Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+        } else {
+            sendRecoverClave()
+        }
+        
+    }
   
   func createNewPassword(codigo: String, newPassword: String) {
     if self.newPasswordText.text == self.newPassConfirmText.text{

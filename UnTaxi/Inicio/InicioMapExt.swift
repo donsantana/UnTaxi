@@ -12,30 +12,33 @@ internal import MapboxMaps
 
 //Mapbox
 extension InicioController {
-  func initMapView() {
-		print("Init Map")
-		//let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
-		let myMapInitOptions = MapInitOptions()
-		mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
-      mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-      mapViewParent.addSubview(mapView)
-      pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
-      
-      var annotationsToShow = [globalVariables.cliente.annotation!]
-      if self.origenAnnotation.coordinates.latitude != 0.0 {
-          annotationsToShow = [self.origenAnnotation]
-      }
-      
-      self.locationIcono.image = UIImage(named: "origen")
-      self.locationIcono.isHidden = true
-      
-      if self.tabBar.selectedItem != self.pactadaItem {
-          self.getReverseAddressXoaAPI(annotationsToShow.first!)
-      }
-      
-      self.showAnnotations(annotationsToShow)
-      initMapInterations()
-  }
+    func initMapView() {
+        print("Init Map")
+        //let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tha2h0M2piMG54ajJ5bW42Nmh3ODVxZyJ9.l9q-_04bUOhy7Gnwdfdx5g")
+        let myMapInitOptions = MapInitOptions()
+        mapView = MapView(frame: mapViewParent.bounds, mapInitOptions: myMapInitOptions)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapViewParent.addSubview(mapView)
+        pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
+        
+        var annotationsToShow = [globalVariables.cliente.annotation!]
+        if self.origenAnnotation.coordinates.latitude != 0.0 {
+            annotationsToShow = [self.origenAnnotation]
+        }
+        
+        self.locationIcono.image = UIImage(named: "origen")
+        self.locationIcono.isHidden = true
+        
+        if self.tabBar.selectedItem != self.pactadaItem {
+            //self.getReverseAddressXoaAPI(annotationsToShow.first!)
+            if GlobalConstants.bundleId != "com.xoait.easycar" || annotationsToShow.first!.address.isEmpty {
+                self.getReverseAddressXoaAPI(annotationsToShow.first!)
+            }
+        }
+        
+        self.showAnnotations(annotationsToShow)
+        initMapInterations()
+    }
     
     func initMapInterations() {
         mapView.gestures.delegate = self
@@ -47,22 +50,26 @@ extension InicioController {
 	}
   
   func showAnnotations(_ annotations: [MyMapAnnotation]) {
+      
 		guard !annotations.isEmpty else { return }
 		
 		if annotations.count == 1, let annotation = annotations.first {
 			mapView.setCenter(annotation.coordinates, zoomLevel: 15, animated: true)
 		} else {
-			let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
-																		northeast: annotations.last!.coordinates)
-            //let points = MultiPoint(annotations.map({$0.coordinates}))
-            
-			// Center the camera on the bounds
-            let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 100, left: 40, bottom: 60, right: 40), bearing: 0, pitch: 0, maxZoom: 100, offset: nil)
-            //let camera = mapView.mapboxMap.camera(for:[annotations.first!.coordinates,annotations.last!.coordinates],camera:CameraOptions(padding: .zero, zoom: 100, bearing: .infinity, pitch: 0), rect: mapView.bounds)
-			mapView.mapboxMap.setCamera(to: camera)
+            let bounds = CoordinateBounds(southwest: annotations.first!.coordinates,
+                                          northeast: annotations.last!.coordinates, infiniteBounds: true)
+//            let points = MultiPoint(annotations.map({$0.coordinates}))
+//            let boundingBox = MGLCoordinateBounds(coordinates: coordinates)
+//			// Center the camera on the bounds
+//            //let camera = mapView.mapboxMap.camera(for: bounds, padding: .init(top: 200, left: 40, bottom: 100, right: 40), bearing: 0, pitch: 0, maxZoom: 100, offset: .zero)
+//            //let camera = mapView.mapboxMap.camera(for:points.coordinates,camera:CameraOptions(padding: .init(top: 200, left: 40, bottom: 100, right: 40), zoom: 100, bearing: .infinity, pitch: 0), rect: mapView.bounds)
+//            mapView.mapboxMap.setCamera(to: MGLCameraOptions(center: bounds.center, zoomLevel: 12,  padding: .zero), animated: true)
+//            //let camera = mapView.mapboxMap.camera(for:points.coordinates,camera:CameraOptions(padding: .init(top: 200, left: 40, bottom: 200, right: 40)), rect: mapView.bounds)
+            mapView.setCenter(bounds.center, zoomLevel: 11, animated: true)
+//            mapView.mapboxMap.setCamera(to: camera)
 		}
-
-		pointAnnotationManager.annotations = annotations.map({$0.annotation})
+        DibujarIconos(annotations)
+		//pointAnnotationManager.annotations = annotations.map({$0.annotation})
   }
 }
 
@@ -90,7 +97,7 @@ extension InicioController: GestureManagerDelegate {
 				getReverseAddressXoaAPI(origenAnnotation)
 
 				pointAnnotationManager.annotations = [origenAnnotation.annotation]
-				getTaxisCercanos()
+				//getTaxisCercanos()
 			} else {
                 destinoAnnotation.coordinates = (mapView.mapboxMap.cameraState.center)
 				destinoAnnotation.type = searchingAddress

@@ -42,7 +42,23 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
     tableView.deselectRow(at: indexPath, animated: false)
 		switch tableView {
 		case addressTableView:
-			closeSearchAddress(addressSelected: self.searchAddressList[indexPath.row])
+            var addressSelected = self.searchAddressList[indexPath.row]
+            if GlobalConstants.bundleId == "com.xoait.easycar" {
+                AddressService.shared.searchAddressPoint(placeId: addressSelected.numero, completion: { result in
+                    switch result {
+                    case .success(let point):
+                        addressSelected.coordenadas = point
+                        DispatchQueue.main.async {
+                            self.closeSearchAddress(addressSelected: addressSelected)
+                        }
+                    default:
+                        print("")
+                    }
+                })
+            } else {
+                closeSearchAddress(addressSelected: addressSelected)
+            }
+			
 		default:
 			break
 		}

@@ -140,7 +140,7 @@ extension InicioController: SocketServiceDelegate{
       //self.MensajeEspera.text = result
       //self.AlertaEsperaView.hidden = false
       let title = solicitud.tipoServicio == 2 ? "Taximetro Activado" : "Carrera Iniciada"
-      let mensaje = solicitud.tipoServicio == 2 ? "El conductor ha iniciado el Taximetro " : "El conductor ha iniciado la carrera "
+        let mensaje = solicitud.tipoServicio == 2 ? GlobalStrings.taximetroIniciadoMessage : GlobalStrings.carreraIniciadaMessage
         let alertaDos = UIAlertController (title: title, message: "\(mensaje) a las: \(OurDate(stringDate: result["fechacambioestado"] as? String).timeToShow()).", preferredStyle: .alert)
       alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
         

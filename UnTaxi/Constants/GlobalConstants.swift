@@ -50,6 +50,8 @@ struct GlobalConstants {
             return "movilcallcenter"
         case "com.xoait.kyper":
             return "kyper"
+        case "com.xoait.easycar":
+            return "easycar"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -68,8 +70,26 @@ struct GlobalConstants {
     static var newRegisterUrl: String = "\(urlHost)/register-test"
     static var removeClient: String = "\(urlHost)/removeclient"
     static var subiraudioUrl: String = "\(urlHost)/voz"
-    static var searchAddressUrl: String = "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
-    static var searchReverseAddressUrl: String = "https://geosecure.xoaserver.com/reverse?"
+    static var shareDetallesUrl: String = "https://bot-\(urlServer)/?s=" //IdClientexIdSolicitud
+    static var searchAddressUrl: String {
+        switch bundleId {
+        case "com.xoait.easycar":
+            return "\(urlHost)/addressGoogle"
+        default:
+            return "https://geosecure.xoaserver.com/api/?q=" //https://geosecure.xoaserver.com/api/?q=el%20dorado,Ecuador&limit=10&lon=-79.89725013269098&lat=-2.1363502421557943
+        }
+    }
+    static var addressCoordinateUrl: String = "\(urlHost)/addressGooglePoint"
+    
+    static var searchReverseAddressUrl: String {
+        switch bundleId {
+        case "com.xoait.easycar":
+            return "\(urlHost)/reverse?"
+        default:
+            return "https://geosecure.xoaserver.com/reverse?"
+        }
+    }
+    
     
     static var listCardsUrl: String = "\(paymentsUrl)/card"
     static var addCardsUrl: String = "\(paymentsUrl)/card-add?token="
@@ -166,6 +186,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x2YjY4bngyMDR1NzJrbWxkcXdmZDg3YSJ9.jOZgAgV_BfYAQXosGIvBxQ"
         case "com.xoait.kyper":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
+        case "com.xoait.easycar":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t0bTVlMWtlMjJhcTJxbm1pOGdsdnlrcSJ9.QvpTT1r6KBIb0_uzONtSvQ"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -186,6 +208,8 @@ struct GlobalConstants {
         switch bundleId {
         case "com.xoait.kyper":
             return "Argentina"
+//        case "com.xoait.easycar":
+//            return "Ecuador&"
         default:
             return "Ecuador"
         }
@@ -195,6 +219,8 @@ struct GlobalConstants {
         switch bundleId {
         case "com.xoait.kyper":
             return "Cotizacion y Pedido"
+        case "com.xoait.easycar":
+            return "Ofrezca su Precio"
         default:
             return "Oferta"
         }
@@ -255,6 +281,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2144753273"
         case "com.xoait.kyper":
             return "ca-app-pub-1778988557303127/9360438861"
+        case "com.xoait.easycar":
+            return "ca-app-pub-1778988557303127/8234055141"
         default:
             return ""
         }
@@ -297,6 +325,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2131977696"
         case "com.xoait.kyper":
             return "ca-app-pub-1778988557303127/4108112186"
+        case "com.xoait.easycar":
+            return "ca-app-pub-1778988557303127/2821946368"
         default:
             return ""
         }

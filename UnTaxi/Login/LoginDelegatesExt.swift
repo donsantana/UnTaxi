@@ -13,7 +13,6 @@ extension LoginController: UITextFieldDelegate{
   //MARK:- CONTROL DE TECLADO VIRTUAL
   //Funciones para mover los elementos para que no queden detrás del teclado
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    RecuperarClaveBtn.isEnabled = false
     var distanceValue = 0
     switch textField {
     case codigoText:
@@ -30,15 +29,15 @@ extension LoginController: UITextFieldDelegate{
     var distanceValue = 0
     switch textfield {
     case movilClaveRecover:
-      let (valid, message) = textfield.validate(.movilNumber)
-      if !valid {
-				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-					
-				})
-				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
-      } else {
-        RecuperarClaveBtn.isEnabled = true
-      }
+//      let (valid, message) = textfield.validate(.movilNumber)
+//      if !valid {
+//				let okAction = UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+//					
+//				})
+//				Alert.showBasic(title: GlobalStrings.formErrorTitle, message: message ?? GlobalStrings.formErrorMessage, vc: self, withActions: [okAction])
+//      } else {
+//        RecuperarClaveBtn.isEnabled = true
+//      }
       distanceValue = 105
 //    case codigoText:
 //      let (valid, message) = textfield.validate(.codigoVerificacion)

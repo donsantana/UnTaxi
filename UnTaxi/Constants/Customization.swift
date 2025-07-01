@@ -15,7 +15,7 @@ struct Customization {
     static var nameShowed: String = appName
     static var logo: UIImage!
     static var usaVoucher: Bool = true
-    static var motivosCancelacion = ["Mucho tiempo de espera","Me solicitó el conductor","El conductor no se comunica","Ubicación incorrecta","Ya no lo necesito","Solo probaba la aplición","otro"]
+    static var motivosCancelacion = ["Mucho tiempo de espera","Me solicitó el conductor","El conductor no se comunica","Ubicación incorrecta","Ya no lo necesito","Solo probaba la aplicación","otro"]
 }
 
 struct CustomAppColor {
@@ -61,6 +61,8 @@ struct CustomAppColor {
             return UIColor(red: 222/255, green: 11/255, blue: 19/255, alpha: 1)
         case "com.xoait.kyper":
             return UIColor(red: 219/255, green: 187/255, blue: 81/255, alpha: 1)
+        case "com.xoait.easycar":
+            return UIColor(red: 219/255, green: 0/255, blue: 0/255, alpha: 1)
         default:
           return UIColor(red: 30/255, green: 9/255, blue: 64/255, alpha: 1)
         }

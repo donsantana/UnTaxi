@@ -163,7 +163,8 @@ class LoginController: UIViewController, CLLocationManagerDelegate{
   
   @IBAction func RecuperarClave(_ sender: AnyObject) {
     //"#Recuperarclave,numero de telefono,#"
-    self.sendRecoverClave()
+    ///self.sendRecoverClave()
+      validateMovilNumber()
     //movilClaveRecover.endEditing(true)
   }
   

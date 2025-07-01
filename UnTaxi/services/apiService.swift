@@ -558,6 +558,7 @@ final class ApiService {
         //&lon=-79.89725013269098&lat=-2.1363502421557943
         let country = globalVariables.cliente.annotation.address
         let searchQueryText = searchQuery.replacingOccurrences(of: " ", with: "%20")
+        //let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n"))"
         let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),\(GlobalConstants.countryAddress)&lon=\(lon)&lat=\(lat)"
         //    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
         print("urlString: \(urlString)")
@@ -583,7 +584,7 @@ final class ApiService {
                 var addressList: [Address] = []
                 for address in json["features"] as! [[String:AnyObject]] {
                     let newAddress = try Address(json: address)
-                    if newAddress.pais == "\(GlobalConstants.countryAddress)" && newAddress.ciudad != "" {
+                    if (newAddress.pais == "\(GlobalConstants.countryAddress)" && newAddress.ciudad != "") {
                         addressList.append(newAddress)
                     }
                 }
