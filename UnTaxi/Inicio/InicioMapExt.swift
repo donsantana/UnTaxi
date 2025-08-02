@@ -31,7 +31,7 @@ extension InicioController {
         
         if self.tabBar.selectedItem != self.pactadaItem {
             //self.getReverseAddressXoaAPI(annotationsToShow.first!)
-            if GlobalConstants.bundleId != "com.xoait.easycar" || annotationsToShow.first!.address.isEmpty {
+            if GlobalConstants.bundleId != "com.xoait.easycarec" || annotationsToShow.first!.address.isEmpty {
                 self.getReverseAddressXoaAPI(annotationsToShow.first!)
             }
         }

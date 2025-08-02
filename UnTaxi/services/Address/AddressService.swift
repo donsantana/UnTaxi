@@ -53,14 +53,14 @@ class AddressService {
         //    let urlString = "\(GlobalConstants.searchAddressUrl)\(searchQueryText.replacingOccurrences(of: "ñ", with: "n")),Ecuador&lon=-79.89725013269098&lat=-2.1363502421557943"
         print("urlString: \(urlString)")
         print("accessToken: \(UserDefaults.standard.value(forKey: "accessToken") as! String)")
-        print("country: \(country)")
+        print("country: \(country) - lat: \(lat) - lon: \(lon)")
         //let accessToken = UserDefaults.standard.value(forKey: "accessToken") as! String
         let params: Dictionary<String, Any> = [
             "lng": lon,
             "lat": lat,
             "limit": 15,
             "query": searchQueryText,
-            "country": country,
+            "country": "EC",
             "radius": 10000
         ]
         var request = URLRequest(url: (URL(string: "\(urlString)") ?? URL(string: "\(GlobalConstants.searchAddressUrl)"))!)

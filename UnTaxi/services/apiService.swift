@@ -406,6 +406,7 @@ final class ApiService {
     func loginToAPIService(user: String, password: String,completion: @escaping (Result<[String: Any], APIError>)->Void) {
         let params = ["user": user, "password": password, "version": "3.6.0"] as Dictionary<String, String>
         print("URL Login: \(GlobalConstants.apiLoginUrl)")
+        print("URL Host: \(GlobalConstants.urlHost)")
         var request = URLRequest(url: URL(string: GlobalConstants.apiLoginUrl)!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
