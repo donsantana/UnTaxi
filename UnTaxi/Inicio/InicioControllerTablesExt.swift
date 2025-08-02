@@ -43,7 +43,7 @@ extension InicioController: UITableViewDelegate, UITableViewDataSource{
 		switch tableView {
 		case addressTableView:
             var addressSelected = self.searchAddressList[indexPath.row]
-            if GlobalConstants.bundleId == "com.xoait.easycar" {
+            if GlobalConstants.bundleId == "com.xoait.easycarec" {
                 AddressService.shared.searchAddressPoint(placeId: addressSelected.numero, completion: { result in
                     switch result {
                     case .success(let point):

@@ -32,7 +32,7 @@ class PagoViewCell: UITableViewCell {
 		formaPagoSwitch.insertSegment(withTitle: "Efectivo", at: 0, animated: false)
 		self.formaPagoSwitch.selectedSegmentIndex = 0
 		
-		if globalVariables.cliente.idEmpresa != 0 && tipoServicio != 1 {
+      if globalVariables.cliente.idEmpresa != 0 && tipoServicio != 1 && Bundle.main.displayName != "Easycar" {
 			self.formaPagoImg.image = UIImage(named: "voucherIcon")
 			self.formaPagoSwitch.insertSegment(withTitle: "Voucher", at: formaPagoSwitch.numberOfSegments, animated: false)
             self.formaPagoSwitch.selectedSegmentIndex = 1

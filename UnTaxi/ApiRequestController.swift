@@ -20,7 +20,6 @@ final class ApiRequestController {
     func loginToAPIService(){
         var token = ""
         let params = ["email":GlobalConstants.apiUser, "password":GlobalConstants.apiPassword] as Dictionary<String, String>
-        
         var request = URLRequest(url: URL(string: GlobalConstants.apiLoginUrl)!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])

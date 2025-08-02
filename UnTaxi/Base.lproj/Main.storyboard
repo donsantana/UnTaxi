@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -374,7 +374,7 @@
                                 </connections>
                             </containerView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duC-3g-6lY">
-                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="800"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscar una dirección" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzE-jV-EfC">
                                         <rect key="frame" x="20" y="20" width="374" height="21"/>
@@ -394,7 +394,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-X2-cs1">
-                                        <rect key="frame" x="10" y="111" width="384" height="363"/>
+                                        <rect key="frame" x="10" y="111" width="384" height="339"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CELL" textLabel="Fna-u3-ha4" detailTextLabel="2xL-rB-MF5" style="IBUITableViewCellStyleSubtitle" id="PKp-1b-8b6">
@@ -455,7 +455,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-vj-mbY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="760"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-Ta-FuQ">
                                         <rect key="frame" x="364" y="20" width="30" height="30"/>
@@ -711,7 +711,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eiP-4w-XI9">
-                                        <rect key="frame" x="0.0" y="199" width="414" height="655"/>
+                                        <rect key="frame" x="0.0" y="199" width="414" height="621"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MENUCELL" id="vEb-6f-qtB">
@@ -730,7 +730,7 @@
                                         </connections>
                                     </tableView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bu-t9-Yi0">
-                                        <rect key="frame" x="0.0" y="856" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="822" width="414" height="1"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="1t8-Xx-HSG"/>
@@ -2436,9 +2436,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uq-oC-9AV">
                                 <rect key="frame" x="20" y="76" width="374" height="780"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Los presentes Términos y Condiciones aplican a todas las versiones de aplicaciones móviles que contengan un enlace a los Términos y que sean de titularidad de Information Technology XOA S.A. Al descargar la aplicación y registrarse en cualquier lugar que contenga un enlace a estos Términos, usted se compromete a aceptar y quedar obligado bajo estos Términos, los cuales quedan sujetos a eventuales modificaciones. El cliente aceptará irrefutablemente los siguientes términos y condiciones del pago online de servicios de taxis en los aplicativos de Information Technology XOA S.A.
+                                <mutableString key="text">Los presentes Términos y Condiciones aplican a todas las versiones de aplicaciones móviles que contengan un enlace a los Términos y que sean de titularidad de Information Technology XOA S.A. Al descargar la aplicación y registrarse en cualquier lugar que contenga un enlace a estos Términos, usted se compromete a aceptar y quedar obligado bajo estos Términos, los cuales quedan sujetos a eventuales modificaciones. El cliente aceptará irrefutablemente los siguientes términos y condiciones del pago online de servicios de taxis en los aplicativos de Information Technology XOA S.A.
 
-El término “Usuario” aplica a, Usuario de aplicaciones. En calidad de Usuario usted debe leer detenidamente el contenido del presente documento a fin de comprender los términos y condiciones que rigen el uso de las diferentes versiones de las aplicaciones. El mismo contiene información necesaria e importante respecto a sus derechos y obligaciones. Toda la información de carácter personal que el Usuario entregue a Un Taxi para el registro y el uso de los servicios, como nombre de usuario, cédula, dirección de correo electrónico, número de contacto telefónico, etc., Será usada para fines propios del servicio, y reconoce que son auténticos y reales.
+El término “Usuario” aplica a, Usuario de aplicaciones. En calidad de Usuario usted debe leer detenidamente el contenido del presente documento a fin de comprender los términos y condiciones que rigen el uso de las diferentes versiones de las aplicaciones. El mismo contiene información necesaria e importante respecto a sus derechos y obligaciones. Toda la información de carácter personal que el Usuario utiliza para el registro y el uso de los servicios, como nombre de usuario, cédula, dirección de correo electrónico, número de contacto telefónico, etc., Será usada para fines propios del servicio, y reconoce que son auténticos y reales.
 
 Los servicios que brindan los taxistas no son responsabilidad ni brindados por Information Technology XOA S.A, las Cooperativas de Taxis se encargan de la gestión de los servicios. Los taxistas son los únicos responsables de la realización correcta del servicio, los mismos han pasado por un proceso de verificación.
 
@@ -2462,7 +2462,7 @@ No existen cambios, devoluciones ni reembolsos ni de la “tasa de pago” ni de
 
 Los pagos efectuados desde el aplicativo están protegios por los términos de la legislación ecuatoriana, en particular la ley de Comercio Electrónico y su Reglamento, por lo que la contratación obliga al usuario, en los términos legales y contractuales del negocio jurídico realizado.
 
-Cualquier diferencia surgida entre las partes será dirimida en derecho aplicando la legislación ecuatoriana, ante la justicia ordinaria.  Al visitar este Sitio, usted acepta que estos Términos y las controversias de cualquier índole que surgen entre nosotros se regirán por las leyes de la República del Ecuador.</string>
+Cualquier diferencia surgida entre las partes será dirimida en derecho aplicando la legislación ecuatoriana, ante la justicia ordinaria.  Al visitar este Sitio, usted acepta que estos Términos y las controversias de cualquier índole que surgen entre nosotros se regirán por las leyes de la República del Ecuador.</mutableString>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -3498,7 +3498,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEM-Ov-V9Z">
-                                <rect key="frame" x="10" y="48" width="394" height="350"/>
+                                <rect key="frame" x="10" y="96" width="394" height="350"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese el código de activación de Yapa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOU-Zj-uJT">
                                         <rect key="frame" x="30" y="70" width="334" height="50"/>
@@ -3556,7 +3556,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sU3-ou-MQh">
-                                <rect key="frame" x="10" y="48" width="394" height="350"/>
+                                <rect key="frame" x="10" y="96" width="394" height="350"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ingrese el número de celular  al que va a pasar la YAPA" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1j-xE-iJ3">
                                         <rect key="frame" x="20" y="10" width="354" height="60"/>
@@ -4034,11 +4034,11 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         <viewControllerLayoutGuide type="bottom" id="Lg7-nW-5uw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x9W-DG-b0G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-Oe-5WM" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="770"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -4217,7 +4217,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G3C-RF-90w" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JRK-jC-WD3">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -4274,7 +4274,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qxL-hk-aAK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d9Q-dc-qRs">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -4299,10 +4299,10 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Go-Pb-7Mz">
-                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="732"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0Vw-eC-Nbv">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="754"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="672"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="j3l-kE-gap" id="PWT-Wn-nAb"/>
@@ -4310,7 +4310,7 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         </connections>
                                     </tableView>
                                     <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zg-Rp-Pj7">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="734"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="652"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -4318,13 +4318,13 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGH-q6-x3E">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5cQ-0d-NdB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="aUj-cd-CGl">
-                                                    <rect key="frame" x="182" y="382" width="50" height="50"/>
+                                                    <rect key="frame" x="182" y="341" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="aUj-cd-CGl" secondAttribute="height" multiplier="1:1" id="OaK-Go-yEm"/>
                                                         <constraint firstAttribute="width" constant="50" id="q4Y-vK-EH2"/>
@@ -4446,28 +4446,28 @@ Cualquier diferencia surgida entre las partes será dirimida en derecho aplicand
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
