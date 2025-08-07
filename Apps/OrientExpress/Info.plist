@@ -46,6 +46,8 @@
 	<false/>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tyNTJ1N2NqMXd6ZjJxbGQ1Y2o1cTBwYiJ9.1g_kSx6O5as-2EDgNimi0Q</string>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tyNTJ1N2NqMXd6ZjJxbGQ1Y2o1cTBwYiJ9.1g_kSx6O5as-2EDgNimi0Q</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

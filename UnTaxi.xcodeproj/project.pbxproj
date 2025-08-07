@@ -1507,6 +1507,38 @@
 		F470189C2A96A758009A5FED /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		F470189D2A96A758009A5FED /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47017D62A96A73B009A5FED /* Launch Screen.storyboard */; };
 		F470189E2A96A758009A5FED /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
+		F47F15F02E3E76700050BB6F /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15EF2E3E76700050BB6F /* SideMenu */; };
+		F47F15F22E3E769E0050BB6F /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15F12E3E769E0050BB6F /* MapboxMaps */; };
+		F47F15F42E3E769E0050BB6F /* MapboxSearch in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15F32E3E769E0050BB6F /* MapboxSearch */; };
+		F47F15F62E3E769E0050BB6F /* MapboxSearchUI in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15F52E3E769E0050BB6F /* MapboxSearchUI */; };
+		F47F15F82E3E769E0050BB6F /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15F72E3E769E0050BB6F /* SocketIO */; };
+		F47F15FA2E3E769E0050BB6F /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15F92E3E769E0050BB6F /* MapboxDirections */; };
+		F47F15FC2E3E769E0050BB6F /* MapboxGeocoder in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15FB2E3E769E0050BB6F /* MapboxGeocoder */; };
+		F47F15FE2E3E769E0050BB6F /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15FD2E3E769E0050BB6F /* GoogleMobileAds */; };
+		F47F16002E3E769E0050BB6F /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = F47F15FF2E3E769E0050BB6F /* PhoneNumberKit */; };
+		F47F16072E3E769E0050BB6F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F47F16062E3E769E0050BB6F /* FloatingPanel */; };
+		F47F16092E3E769E0050BB6F /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = F47F16082E3E769E0050BB6F /* RswiftLibrary */; };
+		F47F160B2E3E769E0050BB6F /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F47F160A2E3E769E0050BB6F /* Toast */; };
+		F47F160E2E3E771A0050BB6F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F47F160D2E3E771A0050BB6F /* FirebaseAnalytics */; };
+		F47F16102E3E771A0050BB6F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F47F160F2E3E771A0050BB6F /* FirebaseAnalyticsOnDeviceConversion */; };
+		F47F16122E3E771A0050BB6F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F47F16112E3E771A0050BB6F /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F47F16132E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16142E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16152E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16162E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16172E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16182E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F16192E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F161A2E3E77EA0050BB6F /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A662C8F93B60019D2CF /* AnalyticsService.swift */; };
+		F47F161B2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F161C2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F161D2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F161E2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F161F2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F16202E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F16212E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F16222E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A632C8F900A0019D2CF /* AnalyticsEvent.swift */; };
+		F47F16242E3E79F50050BB6F /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */; };
 		F47FFE8A2C039F7300912A95 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = F47FFE892C039F7300912A95 /* MapboxDirections */; };
 		F47FFE8D2C03A28C00912A95 /* MapboxGeocoder in Frameworks */ = {isa = PBXBuildFile; productRef = F47FFE8C2C03A28C00912A95 /* MapboxGeocoder */; };
 		F489F2312C01355F00F42D0B /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = F489F2302C01355F00F42D0B /* MapboxMaps */; };
@@ -1909,6 +1941,19 @@
 		F4E87A692C8FBE640019D2CF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F4E87A682C8FBE640019D2CF /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F47F160C2E3E769E0050BB6F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		845CE2ED1BE9E93F005C641B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8462408E1BEABBB800F272D5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -2184,8 +2229,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41602F12A6D96E8006A3FC1 /* (null) in Frameworks */,
+				F47F16092E3E769E0050BB6F /* RswiftLibrary in Frameworks */,
+				F47F15F82E3E769E0050BB6F /* SocketIO in Frameworks */,
 				F41602F22A6D96E8006A3FC1 /* (null) in Frameworks */,
+				F47F15F02E3E76700050BB6F /* SideMenu in Frameworks */,
+				F47F16072E3E769E0050BB6F /* FloatingPanel in Frameworks */,
+				F47F160E2E3E771A0050BB6F /* FirebaseAnalytics in Frameworks */,
+				F47F15F42E3E769E0050BB6F /* MapboxSearch in Frameworks */,
+				F47F15FE2E3E769E0050BB6F /* GoogleMobileAds in Frameworks */,
+				F47F16122E3E771A0050BB6F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				50EC68222FB79B77BC88EF19 /* (null) in Frameworks */,
+				F47F15F62E3E769E0050BB6F /* MapboxSearchUI in Frameworks */,
+				F47F16102E3E771A0050BB6F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				F47F160B2E3E769E0050BB6F /* Toast in Frameworks */,
+				F47F15FA2E3E769E0050BB6F /* MapboxDirections in Frameworks */,
+				F47F16002E3E769E0050BB6F /* PhoneNumberKit in Frameworks */,
+				F47F15F22E3E769E0050BB6F /* MapboxMaps in Frameworks */,
+				F47F15FC2E3E769E0050BB6F /* MapboxGeocoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3053,6 +3113,7 @@
 				F41602672A6D96E8006A3FC1 /* Sources */,
 				F41602F02A6D96E8006A3FC1 /* Frameworks */,
 				F41602F32A6D96E8006A3FC1 /* Resources */,
+				F47F160C2E3E769E0050BB6F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3859,6 +3920,7 @@
 		};
 		F41602662A6D96E8006A3FC1 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3875,7 +3937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		F416032A2A785746006A3FC1 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4187,6 +4249,7 @@
 				F404BB8E2A7BFE0000D1671E /* appStoreService.swift in Sources */,
 				F404BB8F2A7BFE0000D1671E /* UISegmentedContol.swift in Sources */,
 				F404BB902A7BFE0000D1671E /* ContactoViewCell.swift in Sources */,
+				F47F161F2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F404BB912A7BFE0000D1671E /* Responsive.swift in Sources */,
 				F404BB922A7BFE0000D1671E /* InicioPanelExt.swift in Sources */,
 				F404BB932A7BFE0000D1671E /* PublicidadService.swift in Sources */,
@@ -4218,6 +4281,7 @@
 				F404BBAB2A7BFE0000D1671E /* Character.swift in Sources */,
 				F404BBAC2A7BFE0000D1671E /* GoogleAdsService.swift in Sources */,
 				F404BBAD2A7BFE0000D1671E /* YapaController.swift in Sources */,
+				F47F16172E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F404BBAE2A7BFE0000D1671E /* PerfilController.swift in Sources */,
 				F404BBAF2A7BFE0000D1671E /* OfertasControllerExt.swift in Sources */,
 				F404BBB02A7BFE0000D1671E /* PagoYapaCell.swift in Sources */,
@@ -4327,6 +4391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47F16242E3E79F50050BB6F /* GoogleService-Info.plist in Sources */,
 				F41602682A6D96E8006A3FC1 /* SideMenuController.swift in Sources */,
 				F41602692A6D96E8006A3FC1 /* AdaptiveLayoutConstraint.swift in Sources */,
 				F416026A2A6D96E8006A3FC1 /* LoginDelegatesExt.swift in Sources */,
@@ -4336,6 +4401,7 @@
 				F416026E2A6D96E8006A3FC1 /* appStoreService.swift in Sources */,
 				F416026F2A6D96E8006A3FC1 /* UISegmentedContol.swift in Sources */,
 				F41602702A6D96E8006A3FC1 /* ContactoViewCell.swift in Sources */,
+				F47F161D2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F41602712A6D96E8006A3FC1 /* Responsive.swift in Sources */,
 				F41602722A6D96E8006A3FC1 /* InicioPanelExt.swift in Sources */,
 				F41602732A6D96E8006A3FC1 /* PublicidadService.swift in Sources */,
@@ -4367,6 +4433,7 @@
 				F416028B2A6D96E8006A3FC1 /* Character.swift in Sources */,
 				F416028C2A6D96E8006A3FC1 /* GoogleAdsService.swift in Sources */,
 				F416028D2A6D96E8006A3FC1 /* YapaController.swift in Sources */,
+				F47F16152E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F416028E2A6D96E8006A3FC1 /* PerfilController.swift in Sources */,
 				F416028F2A6D96E8006A3FC1 /* OfertasControllerExt.swift in Sources */,
 				F41602902A6D96E8006A3FC1 /* PagoYapaCell.swift in Sources */,
@@ -4485,6 +4552,7 @@
 				F41603322A785746006A3FC1 /* appStoreService.swift in Sources */,
 				F41603332A785746006A3FC1 /* UISegmentedContol.swift in Sources */,
 				F41603342A785746006A3FC1 /* ContactoViewCell.swift in Sources */,
+				F47F161E2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F41603352A785746006A3FC1 /* Responsive.swift in Sources */,
 				F41603362A785746006A3FC1 /* InicioPanelExt.swift in Sources */,
 				F41603372A785746006A3FC1 /* PublicidadService.swift in Sources */,
@@ -4516,6 +4584,7 @@
 				F416034F2A785746006A3FC1 /* Character.swift in Sources */,
 				F41603502A785746006A3FC1 /* GoogleAdsService.swift in Sources */,
 				F41603512A785746006A3FC1 /* YapaController.swift in Sources */,
+				F47F16162E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F41603522A785746006A3FC1 /* PerfilController.swift in Sources */,
 				F41603532A785746006A3FC1 /* OfertasControllerExt.swift in Sources */,
 				F41603542A785746006A3FC1 /* PagoYapaCell.swift in Sources */,
@@ -4634,6 +4703,7 @@
 				F43B6A432BD6BCB100089E9E /* appStoreService.swift in Sources */,
 				F43B6A442BD6BCB100089E9E /* UISegmentedContol.swift in Sources */,
 				F43B6A452BD6BCB100089E9E /* ContactoViewCell.swift in Sources */,
+				F47F16212E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F43B6A462BD6BCB100089E9E /* Responsive.swift in Sources */,
 				F43B6A472BD6BCB100089E9E /* InicioPanelExt.swift in Sources */,
 				F43B6A482BD6BCB100089E9E /* PublicidadService.swift in Sources */,
@@ -4665,6 +4735,7 @@
 				F43B6A622BD6BCB100089E9E /* Character.swift in Sources */,
 				F43B6A632BD6BCB100089E9E /* GoogleAdsService.swift in Sources */,
 				F43B6A642BD6BCB100089E9E /* YapaController.swift in Sources */,
+				F47F16192E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F43B6A652BD6BCB100089E9E /* PerfilController.swift in Sources */,
 				F43B6A662BD6BCB100089E9E /* OfertasControllerExt.swift in Sources */,
 				F43B6A672BD6BCB100089E9E /* PagoYapaCell.swift in Sources */,
@@ -4934,6 +5005,7 @@
 				F45E0E992A37DE03004A4FEF /* appStoreService.swift in Sources */,
 				F45E0E9A2A37DE03004A4FEF /* UISegmentedContol.swift in Sources */,
 				F45E0E9B2A37DE03004A4FEF /* ContactoViewCell.swift in Sources */,
+				F47F161C2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F45E0E9C2A37DE03004A4FEF /* Responsive.swift in Sources */,
 				F45E0E9D2A37DE03004A4FEF /* InicioPanelExt.swift in Sources */,
 				F45E0E9E2A37DE03004A4FEF /* PublicidadService.swift in Sources */,
@@ -4965,6 +5037,7 @@
 				F45E0EB52A37DE03004A4FEF /* Character.swift in Sources */,
 				F45E0EB62A37DE03004A4FEF /* GoogleAdsService.swift in Sources */,
 				F45E0EB72A37DE03004A4FEF /* YapaController.swift in Sources */,
+				F47F16142E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F45E0EB82A37DE03004A4FEF /* PerfilController.swift in Sources */,
 				F45E0EB92A37DE03004A4FEF /* OfertasControllerExt.swift in Sources */,
 				F45E0EBA2A37DE03004A4FEF /* PagoYapaCell.swift in Sources */,
@@ -5083,6 +5156,7 @@
 				F47017E72A96A758009A5FED /* appStoreService.swift in Sources */,
 				F47017E82A96A758009A5FED /* UISegmentedContol.swift in Sources */,
 				F47017E92A96A758009A5FED /* ContactoViewCell.swift in Sources */,
+				F47F16202E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F47017EA2A96A758009A5FED /* Responsive.swift in Sources */,
 				F47017EB2A96A758009A5FED /* InicioPanelExt.swift in Sources */,
 				F47017EC2A96A758009A5FED /* PublicidadService.swift in Sources */,
@@ -5114,6 +5188,7 @@
 				F47018062A96A758009A5FED /* Character.swift in Sources */,
 				F47018072A96A758009A5FED /* GoogleAdsService.swift in Sources */,
 				F47018082A96A758009A5FED /* YapaController.swift in Sources */,
+				F47F16182E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F47018092A96A758009A5FED /* PerfilController.swift in Sources */,
 				F470180A2A96A758009A5FED /* OfertasControllerExt.swift in Sources */,
 				F470180B2A96A758009A5FED /* PagoYapaCell.swift in Sources */,
@@ -5232,6 +5307,7 @@
 				F4E131E52A08121A00E18299 /* appStoreService.swift in Sources */,
 				F4E131E62A08121A00E18299 /* UISegmentedContol.swift in Sources */,
 				F4E131E72A08121A00E18299 /* ContactoViewCell.swift in Sources */,
+				F47F161B2E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F4E131E82A08121A00E18299 /* Responsive.swift in Sources */,
 				F4E131E92A08121A00E18299 /* InicioPanelExt.swift in Sources */,
 				F4E131EA2A08121A00E18299 /* PublicidadService.swift in Sources */,
@@ -5263,6 +5339,7 @@
 				F4E132012A08121A00E18299 /* Character.swift in Sources */,
 				F4E132022A08121A00E18299 /* GoogleAdsService.swift in Sources */,
 				F4E132032A08121A00E18299 /* YapaController.swift in Sources */,
+				F47F16132E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F4E132042A08121A00E18299 /* PerfilController.swift in Sources */,
 				F4E132052A08121A00E18299 /* OfertasControllerExt.swift in Sources */,
 				F4E132062A08121A00E18299 /* PagoYapaCell.swift in Sources */,
@@ -5381,6 +5458,7 @@
 				F4E138D12C0515A100E3A54E /* appStoreService.swift in Sources */,
 				F4E138D22C0515A100E3A54E /* UISegmentedContol.swift in Sources */,
 				F4E138D32C0515A100E3A54E /* ContactoViewCell.swift in Sources */,
+				F47F16222E3E782C0050BB6F /* AnalyticsEvent.swift in Sources */,
 				F4E138D42C0515A100E3A54E /* Responsive.swift in Sources */,
 				F4E138D52C0515A100E3A54E /* InicioPanelExt.swift in Sources */,
 				F4E138D62C0515A100E3A54E /* PublicidadService.swift in Sources */,
@@ -5412,6 +5490,7 @@
 				F4E138F02C0515A100E3A54E /* Character.swift in Sources */,
 				F4E138F12C0515A100E3A54E /* GoogleAdsService.swift in Sources */,
 				F4E138F22C0515A100E3A54E /* YapaController.swift in Sources */,
+				F47F161A2E3E77EA0050BB6F /* AnalyticsService.swift in Sources */,
 				F4E138F32C0515A100E3A54E /* PerfilController.swift in Sources */,
 				F4E138F42C0515A100E3A54E /* OfertasControllerExt.swift in Sources */,
 				F4E138F52C0515A100E3A54E /* PagoYapaCell.swift in Sources */,
@@ -5825,17 +5904,17 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
-				INFOPLIST_FILE = "UnTaxi copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/OrientExpress/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Orient Express";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.OrientExpress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5864,17 +5943,17 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
-				INFOPLIST_FILE = "UnTaxi copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Apps/OrientExpress/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Orient Express";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.OrientExpress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6861,6 +6940,81 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F45188D62D53C6DD004CD538 /* XCRemoteSwiftPackageReference "toast-swift" */;
 			productName = Toast;
+		};
+		F47F15EF2E3E76700050BB6F /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FBF2CB5C55800E07BE3 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		F47F15F12E3E769E0050BB6F /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F22F2C01355F00F42D0B /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+		F47F15F32E3E769E0050BB6F /* MapboxSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2322C0138C400F42D0B /* XCRemoteSwiftPackageReference "search-ios" */;
+			productName = MapboxSearch;
+		};
+		F47F15F52E3E769E0050BB6F /* MapboxSearchUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2322C0138C400F42D0B /* XCRemoteSwiftPackageReference "search-ios" */;
+			productName = MapboxSearchUI;
+		};
+		F47F15F72E3E769E0050BB6F /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F489F2372C0364A000F42D0B /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+		F47F15F92E3E769E0050BB6F /* MapboxDirections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F47FFE882C039F7300912A95 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */;
+			productName = MapboxDirections;
+		};
+		F47F15FB2E3E769E0050BB6F /* MapboxGeocoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F47FFE8B2C03A28C00912A95 /* XCRemoteSwiftPackageReference "MapboxGeocoder.swift" */;
+			productName = MapboxGeocoder;
+		};
+		F47F15FD2E3E769E0050BB6F /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FC22CB5C5BE00E07BE3 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		F47F15FF2E3E769E0050BB6F /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FC52CB5C5EB00E07BE3 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
+		};
+		F47F16062E3E769E0050BB6F /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FCC2CB5C61500E07BE3 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+		F47F16082E3E769E0050BB6F /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FCF2CB5C64700E07BE3 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
+		F47F160A2E3E769E0050BB6F /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C17FD42CB5C6DB00E07BE3 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
+		};
+		F47F160D2E3E771A0050BB6F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F47F160F2E3E771A0050BB6F /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		F47F16112E3E771A0050BB6F /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E87A582C8F4A7E0019D2CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		F47FFE892C039F7300912A95 /* MapboxDirections */ = {
 			isa = XCSwiftPackageProductDependency;
