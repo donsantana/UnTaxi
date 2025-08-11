@@ -32,11 +32,10 @@ class SplashViewController: UIViewController, AppOpenAdManagerDelegate {
     
     @objc func decrementCounter() {
         secondsRemaining -= 1
-        if secondsRemaining > 0 {
+        if secondsRemaining > 0 && GoogleAdsConstant.showLaunchBanner == true {
             AppOpenAdManager.shared.showAdIfAvailable(viewController: self)
         } else {
             countdownTimer?.invalidate()
-            //AppOpenAdManager.shared.showAdIfAvailable(viewController: self)
             startMainScreen()
         }
     }

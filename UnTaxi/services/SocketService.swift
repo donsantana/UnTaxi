@@ -186,7 +186,6 @@ final class SocketService {
 		
 		//UPDATE VALOR DE OFERTA
 		globalVariables.socket.on("subiroferta"){data, ack in
-			
 			let result = data[0] as! [String: Any]
 			print(result)
 			self.delegate?.socketResponse(self, subiroferta: result)
