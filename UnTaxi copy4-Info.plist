@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>UnTaxi</string>
+	<string>MegaCQ</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -43,9 +43,9 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>MBXAccessToken</key>
-	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
+	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttZG9zN3FtMG8waTJ3a2g2bGJ0MXZ6YiJ9.0o9AqCvN3guRbS8kq39KlA</string>
 	<key>MGLMapboxAccessToken</key>
-	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2tmYnllYTE5MWFqcjJ4cnFxc2o2M3h6ciJ9.X-ZDV6D8Ajyf-_iXwbrToQ</string>
+	<string>sk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2ttZG9zN3FtMG8waTJ3a2g2bGJ0MXZ6YiJ9.0o9AqCvN3guRbS8kq39KlA</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

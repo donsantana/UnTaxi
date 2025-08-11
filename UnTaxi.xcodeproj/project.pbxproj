@@ -1118,7 +1118,6 @@
 		F44F089E2E4546AA003A61BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4E87A562C8F49530019D2CF /* GoogleService-Info.plist */; };
 		F44F089F2E4546AA003A61BF /* Images-5.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67004542463B60900FF97AB /* Images-5.xcassets */; };
 		F44F08A02E4546AA003A61BF /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D3198525916F8500A4BF1C /* Muli-LightItalic.ttf */; };
-		F44F08A72E45470C003A61BF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44F08A62E45470C003A61BF /* Info.plist */; };
 		F44F08A82E45470C003A61BF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44F08A62E45470C003A61BF /* Info.plist */; };
 		F45188D92D53C6DD004CD538 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
 		F45188DA2D53C6DD004CD538 /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
@@ -3882,7 +3881,6 @@
 				F44F087A2E4546AA003A61BF /* Muli-Bold.ttf in Resources */,
 				F44F087B2E4546AA003A61BF /* DS-DIGII.TTF in Resources */,
 				F44F087C2E4546AA003A61BF /* PagoCell.xib in Resources */,
-				F44F08A72E45470C003A61BF /* Info.plist in Resources */,
 				F44F087D2E4546AA003A61BF /* xoalogo1.png in Resources */,
 				F44F087E2E4546AA003A61BF /* Entitlements.plist in Resources */,
 				F44F087F2E4546AA003A61BF /* PagoYapaViewCell.xib in Resources */,
@@ -6579,7 +6577,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "UnTaxi copy4-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
+				INFOPLIST_KEY_CFBundleDisplayName = MegaCQ;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
@@ -6588,9 +6586,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.6.1;
+				MARKETING_VERSION = 3.1.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.MegaCQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6618,7 +6616,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBSC_COMPILER_AUTO_ACTIVATE_CUSTOM_FONTS = YES;
 				INFOPLIST_FILE = "UnTaxi copy4-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = UnTaxi;
+				INFOPLIST_KEY_CFBundleDisplayName = MegaCQ;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
@@ -6627,9 +6625,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 3.6.1;
+				MARKETING_VERSION = 3.1.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.UnTaxi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xoait.MegaCQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
