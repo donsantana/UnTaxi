@@ -11,7 +11,7 @@ import MapKit
 
 class OfertasController: BaseController{
   var socketService = SocketService.shared
-  let progress = Progress(totalUnitCount: 80)
+  var progress = Progress(totalUnitCount: 1200)
   var progressTimer = Timer()
   var ofertaSeleccionada: Oferta!
   var solicitud: Solicitud!
@@ -27,6 +27,7 @@ class OfertasController: BaseController{
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    progress.totalUnitCount = Int64(globalVariables.appConfig.tiemposolicitud)
     self.mapView.centerCoordinate = solicitud.origenCoord
     self.mapView.showsUserLocation = true
     self.socketService.delegate = self
@@ -54,10 +55,10 @@ class OfertasController: BaseController{
         
         let alertaDos = UIAlertController (title: "Ofertas no Aceptadas", message: "El tiempo para aceptar alguna oferta ha concluido. Por favor vuelva a enviar su solicitud.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
-          //self.CancelarSolicitud("")
-          globalVariables.solpendientes.removeAll(where: {$0.id == self.solicitud.id})
-          globalVariables.ofertasList.removeAll()
-          self.goToInicioView()
+          self.CancelarSolicitud("")
+//          globalVariables.solpendientes.removeAll(where: {$0.id == self.solicitud.id})
+//          globalVariables.ofertasList.removeAll()
+//          self.goToInicioView()
         }))
         self.present(alertaDos, animated: true, completion: nil)
         timer.invalidate()
