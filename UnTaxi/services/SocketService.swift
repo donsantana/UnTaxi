@@ -108,7 +108,7 @@ final class SocketService {
 			self.delegate?.socketResponse(self, startEvent: result)
 		}
 	}
-	
+    
 	func initListenEventos(){
 		self.offSocketEventos()
 		print("Cargando Eventos")
