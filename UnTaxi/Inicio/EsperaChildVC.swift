@@ -24,30 +24,41 @@ class EsperaChildVC: UIViewController {
   
   @IBOutlet weak var CancelarSolicitudProceso: UIButton!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
-      SocketService.shared.delegate = self
-      SocketService.shared.initListenEventos()
-    
-    self.updateOfertaView.addShadow()
-    self.SendOferta.addCustomActionBtnsColors()
-    cancelarBtn.addBorder(color: .red)
-    self.newOfertaText.addBorder(color: CustomAppColor.buttonActionColor)
-    self.MensajeEspera.centerVertically()
-   
-    self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.importe)))"
-    self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
-      
-      up25.setTitle("\(GlobalConstants.ofertaIncrementValue)", for: .normal)
-      down25.setTitle("-\(GlobalConstants.ofertaIncrementValue)", for: .normal)
-    
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        SocketService.shared.delegate = self
+        SocketService.shared.initListenEventos()
+        
+        self.updateOfertaView.addShadow()
+        self.SendOferta.addCustomActionBtnsColors()
+        cancelarBtn.addBorder(color: .red)
+        self.newOfertaText.addBorder(color: CustomAppColor.buttonActionColor)
+        self.MensajeEspera.centerVertically()
+        
+        self.newOfertaText.text = "$\(String(format: "%.2f", Double(self.solicitud.importe)))"
+        self.updateOfertaView.isHidden = solicitud.tipoServicio != 1//self.solicitud!.valorOferta == 0.0
+        
+        up25.setTitle("\(GlobalConstants.ofertaIncrementValue)", for: .normal)
+        down25.setTitle("-\(GlobalConstants.ofertaIncrementValue)", for: .normal)
+        
+        self.tieneOferta()
+    }
 
   func updateOfertaValue(value: Double){
     self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
 		print(self.newOfertaText.text)
   }
+    
+    internal func tieneOferta() {
+        if globalVariables.ofertasList.filter({$0.id == self.solicitud.id}).count > 0 {
+            DispatchQueue.main.async {
+                let vc = R.storyboard.main.ofertasView()
+                vc?.solicitud = self.solicitud
+                self.navigationController?.show(vc!, sender: nil)
+            }
+        }
+    }
   
   //CANCELAR SOLICITUDES
   func mostrarAdvertenciaCancelacion(){

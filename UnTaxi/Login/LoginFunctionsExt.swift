@@ -42,6 +42,8 @@ extension LoginController{
     
     let clientData = datos["cliente"] as! [String: Any]
     let appConfig = datos["config"] as! [String: Any]
+    
+      
       if let alertauso = datos["alertauso"], (alertauso as! String) == "true" {
           globalVariables.llamadaFacilAlert = ConfigMessage(key: "alertauso", value: ((datos["mensaje"] as? NSString) ?? "") as String)
       }
@@ -54,6 +56,7 @@ extension LoginController{
     }
     
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
+      let ofertasPendiente = datos["ofertas"] as! [[String: Any]]
     globalVariables.tarifario = Tarifario(jsonData: datos["tarifas"] as! [String: Any])
     globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
@@ -62,6 +65,10 @@ extension LoginController{
     
       if solicitudesEnProceso.count > 0 {
           self.ListSolicitudPendiente(solicitudesEnProceso)
+          for oferta in ofertasPendiente {
+              let ofertaPendiente = Oferta(jsonData: oferta)
+              globalVariables.ofertasList.append(ofertaPendiente)
+          }
       }
       
       AppStoreService.shared.checkNewVersionAvailable()
@@ -151,9 +158,13 @@ extension LoginController{
       let solpendiente = Solicitud(jsonData: data)
       solpendiente.DatosCliente(cliente: globalVariables.cliente)
       globalVariables.solpendientes.append(solpendiente)
-      if solpendiente.taxi.id != 0{
-        globalVariables.solicitudesproceso = true
-      }
+//      if solpendiente.taxi.id != 0 {
+//        globalVariables.solicitudesproceso = true
+//      } else {
+//          if solpendiente.ofertas.count > 0 {
+//              
+//          }
+//      }
       i += 1
     }
   }
