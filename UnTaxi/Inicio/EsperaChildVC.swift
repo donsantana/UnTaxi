@@ -41,13 +41,23 @@ class EsperaChildVC: UIViewController {
       
       up25.setTitle("\(GlobalConstants.ofertaIncrementValue)", for: .normal)
       down25.setTitle("-\(GlobalConstants.ofertaIncrementValue)", for: .normal)
-    
+      self.tieneOferta()
   }
 
   func updateOfertaValue(value: Double){
     self.newOfertaText.text = "$\(Double(self.newOfertaText.text!.dropFirst())! + value)"
 		print(self.newOfertaText.text)
   }
+    
+    internal func tieneOferta() {
+        if globalVariables.ofertasList.filter({$0.id == self.solicitud.id}).count > 0 {
+            DispatchQueue.main.async {
+                let vc = R.storyboard.main.ofertasView()
+                vc?.solicitud = self.solicitud
+                self.navigationController?.show(vc!, sender: nil)
+            }
+        }
+    }
   
   //CANCELAR SOLICITUDES
   func mostrarAdvertenciaCancelacion(){

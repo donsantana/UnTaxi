@@ -62,6 +62,13 @@ extension LoginController{
     
       if solicitudesEnProceso.count > 0 {
           self.ListSolicitudPendiente(solicitudesEnProceso)
+          if let ofertasPendiente = datos["ofertas"] as? [[String: Any]] {
+              for oferta in ofertasPendiente {
+                  let ofertaPendiente = Oferta(jsonData: oferta)
+                  globalVariables.ofertasList.append(ofertaPendiente)
+              }
+          }
+
       }
       
       AppStoreService.shared.checkNewVersionAvailable()
@@ -151,9 +158,9 @@ extension LoginController{
       let solpendiente = Solicitud(jsonData: data)
       solpendiente.DatosCliente(cliente: globalVariables.cliente)
       globalVariables.solpendientes.append(solpendiente)
-      if solpendiente.taxi.id != 0{
-        globalVariables.solicitudesproceso = true
-      }
+//      if solpendiente.taxi.id != 0{
+//        globalVariables.solicitudesproceso = true
+//      }
       i += 1
     }
   }

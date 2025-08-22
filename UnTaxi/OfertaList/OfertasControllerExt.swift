@@ -99,5 +99,15 @@ extension OfertasController: SocketServiceDelegate{
     }))
     self.present(alertaDos, animated: true, completion: nil)
   }
+    
+    func socketResponse(_ controller: SocketService, sinvehiculo result: [String : Any]) {
+        let alertaDos = UIAlertController (title: "Ofertas no Aceptadas", message: "El tiempo para aceptar alguna oferta ha concluido. Por favor vuelva a enviar su solicitud.", preferredStyle: UIAlertController.Style.alert)
+        alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+            globalVariables.solpendientes.removeAll(where: {$0.id == self.solicitud.id})
+            globalVariables.ofertasList.removeAll()
+            self.goToInicioView()
+        }))
+        self.present(alertaDos, animated: true, completion: nil)
+    }
 
 }
