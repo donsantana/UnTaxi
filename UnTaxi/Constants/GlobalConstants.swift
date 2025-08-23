@@ -52,6 +52,8 @@ struct GlobalConstants {
             return "kyper"
         case "com.xoait.easycarec":
             return "easycar"
+        case "com.xoait.naicar":
+            return "naicar"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -139,6 +141,8 @@ struct GlobalConstants {
             return "6502842865"
         case "com.xoait.easycarec":
             return "1588576419"
+        case "com.xoait.naicar":
+            return "6751442095"
         default:
             return "1149206387"
         }
@@ -190,6 +194,8 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2x3YXZyaTVkMGlkaDJpdHh4MDQ3Z2V0OCJ9.t7q9CeGcrSUxfLvymdTkSA"
         case "com.xoait.easycarec":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t0bTVlMWtlMjJhcTJxbm1pOGdsdnlrcSJ9.QvpTT1r6KBIb0_uzONtSvQ"
+        case "com.xoait.naicar":
+            return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY21lb2V5cXJiMWUzZTJxcHBraGxldDhiciJ9.WSf9ejfVS4Y1VXDdREY0aQ"
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -293,6 +299,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/9360438861"
         case "com.xoait.easycarec":
             return "ca-app-pub-1778988557303127/8234055141"
+        case "com.xoait.naicar":
+            return "ca-app-pub-1778988557303127/5433241106"
         default:
             return ""
         }
@@ -337,6 +345,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/4108112186"
         case "com.xoait.easycarec":
             return "ca-app-pub-1778988557303127/2821946368"
+        case "com.xoait.naicar":
+            return "ca-app-pub-1778988557303127/4755402496"
         default:
             return ""
         }
