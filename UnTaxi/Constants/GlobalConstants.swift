@@ -254,6 +254,15 @@ struct GoogleAdsConstant {
             return true
         }
     }
+    
+    static var showDetailsBanner: Bool {
+        switch bundleId {
+        case "com.xoait.easycarec":
+            return false
+        default:
+            return true
+        }
+    }
     static var appBannerID: String {
         //let bundleId: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String
         switch bundleId {

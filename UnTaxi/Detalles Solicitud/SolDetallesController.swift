@@ -178,11 +178,14 @@ class SolPendController: BaseController, MKMapViewDelegate, UITextViewDelegate,U
         
         malUsoBtn.addUnderline()
         
-        if Date.isTimeBriceAd {
-            showBriceAd()
-        } else {
-            initGoogleAds()
+        if GoogleAdsConstant.showDetailsBanner {
+            if Date.isTimeBriceAd {
+                showBriceAd()
+            } else {
+                initGoogleAds()
+            }
         }
+       
         
         SMSVozBtn.isHidden = GlobalConstants.bundleId == "com.donelkys.RuedaCar"
 
