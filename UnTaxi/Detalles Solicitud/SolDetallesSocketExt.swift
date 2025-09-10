@@ -54,16 +54,23 @@ extension SolPendController: SocketServiceDelegate{
 		}
 		let toast = Toast.text(GlobalStrings.taxiLlegoTitle,subtitle: GlobalStrings.taxiLlegoMessage )
 					toast.show()
+      playTaxillegoSound()
   }
   
   func socketResponse(_ controller: SocketService, taximetroiniciado result: [String : Any]) {
 		if let solicitud = globalVariables.solpendientes.first(where: {$0.id == result["idsolicitud"] as! Int}) {
 			
             let mensaje = solicitud.tipoServicio == 2 ? GlobalStrings.taximetroIniciadoMessage : GlobalStrings.carreraIniciadaMessage
-					let toast = Toast.text("\(mensaje)", subtitle: "\(OurDate(stringDate: result["fechacambioestado"] as! String).timeToShow())")
+					let toast = Toast.text("\(mensaje)", subtitle: "\(OurDate(stringDate: result["fechacambioestado"] as? String).timeToShow())")
 					toast.show()
+
     }
   }
+    
+    internal func playTaxillegoSound() {
+        globalVariables.SMSVoz.playLlegoTaxiSound()
+   }
+
   
   func socketResponse(_ controller: SocketService, cancelarservicio result: [String : Any]) {
     let title = (result["code"] as! Int) == 1 ? "Solicitud Cancelada" : "Error Cancelar"
