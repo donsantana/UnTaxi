@@ -93,6 +93,7 @@ iOSInjectionProject/
 
 # Secret keys
 GlobalConstants.swift
+Info.plist
 
 
 ## Gcc Patch
