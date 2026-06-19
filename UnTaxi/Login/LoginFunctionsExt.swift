@@ -56,7 +56,6 @@ extension LoginController{
     }
     
     let solicitudesEnProceso = datos["solicitudes"] as! [[String: Any]]
-      let ofertasPendiente = datos["ofertas"] as! [[String: Any]]
     globalVariables.tarifario = Tarifario(jsonData: datos["tarifas"] as! [String: Any])
     globalVariables.cliente = Cliente(jsonData: clientData)
     globalVariables.appConfig = appConfig != nil ? AppConfig(config: appConfig) : AppConfig()
@@ -65,10 +64,13 @@ extension LoginController{
     
       if solicitudesEnProceso.count > 0 {
           self.ListSolicitudPendiente(solicitudesEnProceso)
-          for oferta in ofertasPendiente {
-              let ofertaPendiente = Oferta(jsonData: oferta)
-              globalVariables.ofertasList.append(ofertaPendiente)
+          if let ofertasPendiente = datos["ofertas"] as? [[String: Any]] {
+              for oferta in ofertasPendiente {
+                  let ofertaPendiente = Oferta(jsonData: oferta)
+                  globalVariables.ofertasList.append(ofertaPendiente)
+              }
           }
+
       }
       
       AppStoreService.shared.checkNewVersionAvailable()

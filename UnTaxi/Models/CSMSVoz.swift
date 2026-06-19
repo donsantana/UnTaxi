@@ -16,6 +16,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   var myPlayer = AVPlayer()
   var myMusica = AVAudioPlayer()
   var myAudioPlayer = AVAudioPlayer()
+  var llegoTaxiSound = AVAudioPlayer()
   //var playSession = AVAudioSession()
   var vozConductor = AVAudioPlayer()
   var recordingSession = AVAudioSession()
@@ -168,7 +169,6 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     }
   }
   
-  
   func ReproducirVozConductor(_ url: String){
     print("audio recibido \(url)")
     //AUDIOSESSION
@@ -193,6 +193,23 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
   func ReproducirMusica(){
     myMusica.play()
   }
+    
+    func playLlegoTaxiSound() {
+        let myFilePathString = Bundle.main.path(forResource: "llegotaxisound", ofType: "mp3")
+        
+        if let myFilePathString = myFilePathString {
+            let myFilePathURL = URL(fileURLWithPath: myFilePathString)
+            
+            do{
+                try llegoTaxiSound = AVAudioPlayer(contentsOf: myFilePathURL)
+                llegoTaxiSound.prepareToPlay()
+                llegoTaxiSound.volume = 1
+                llegoTaxiSound.play()
+            } catch {
+                print("error")
+            }
+        }
+    }
   
 //  func uploadImageToServerFromApp(solicitud: Solicitud, name: String){
 //    var request : NSMutableURLRequest = NSMutableURLRequest()
