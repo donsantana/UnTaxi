@@ -54,6 +54,8 @@ struct GlobalConstants {
             return "easycar"
         case "com.xoait.naicar":
             return "naicar"
+        case "com.xoait.TE":
+            return "te"
         default:
             return "testing-untaxi.xoaserver.com"
         }
@@ -143,6 +145,8 @@ struct GlobalConstants {
             return "1588576419"
         case "com.xoait.naicar":
             return "6751442095"
+        case "com.xoait.TE":
+            return "6782609995"
         default:
             return "1149206387"
         }
@@ -196,6 +200,14 @@ struct GlobalConstants {
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t0bTVlMWtlMjJhcTJxbm1pOGdsdnlrcSJ9.QvpTT1r6KBIb0_uzONtSvQ"
         case "com.xoait.naicar":
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY21lb2V5cXJiMWUzZTJxcHBraGxldDhiciJ9.WSf9ejfVS4Y1VXDdREY0aQ"
+        case "com.xoait.TE":
+            if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+               let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                guard let token = dict["MAPBOX_TOKEN"] as? String else { return "" }
+                return token
+            } else {
+                return ""
+            }
         default:
             return "pk.eyJ1IjoiZG9uZWxreXMiLCJhIjoiY2t1eXc3NGprMmJ0MzJwbnlrY2wzZndkNSJ9.M99SzZUpM8rQrPDsKneeVQ"
         }
@@ -256,6 +268,8 @@ struct GoogleAdsConstant {
         switch bundleId {
         case "com.xoait.easycarec":
             return false
+        case "com.xoait.TE":
+            return false
         default:
             return true
         }
@@ -301,6 +315,8 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/8234055141"
         case "com.xoait.naicar":
             return "ca-app-pub-1778988557303127/5433241106"
+        case "com.xoait.TE":
+            return "ca-app-pub-1778988557303127/6746593512"
         default:
             return ""
         }
@@ -347,8 +363,11 @@ struct GoogleAdsConstant {
             return "ca-app-pub-1778988557303127/2821946368"
         case "com.xoait.naicar":
             return "ca-app-pub-1778988557303127/4755402496"
+        case "com.xoait.TE":
+            return "ca-app-pub-1778988557303127/2212452139"
         default:
             return ""
         }
     }
 }
+
