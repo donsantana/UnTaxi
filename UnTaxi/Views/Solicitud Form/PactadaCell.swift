@@ -23,6 +23,7 @@ class PactadaCell: UITableViewCell {
   }
   
   func initContent(solicitudPactada: DireccionesPactadas) {
+      self.idaVueltaSwitch.selectedSegmentIndex = 0
     self.solicitudPactada = solicitudPactada
     self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida : self.solicitudPactada.importeidaregreso
     
@@ -31,8 +32,9 @@ class PactadaCell: UITableViewCell {
   
   @IBAction func onValueChanged(_ sender: Any) {
     self.importe = self.idaVueltaSwitch.selectedSegmentIndex == 0 ? self.solicitudPactada.importeida : self.solicitudPactada.importeidaregreso
-    
+    print("ida \(self.solicitudPactada.importeida) --- \(self.solicitudPactada.importeidaregreso)")
     self.precioText.text = "$\(String(format: "%.0f", self.importe))"
+  
   }
   
 }

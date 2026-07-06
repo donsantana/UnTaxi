@@ -8,6 +8,7 @@
 
 import UIKit
 internal import SideMenu
+import SwiftUI
 
 class SideMenuController: UIViewController {
   //MenuData(imagen: "nuevaSolicitud", title: "Nuevo viaje"),
@@ -64,6 +65,8 @@ class SideMenuController: UIViewController {
     self.NombreUsuario.text = "¡Hola, \(globalVariables.cliente.nombreApellidos.uppercased())!"
     self.yapaText.text = " $\(String(format: "%.2f", globalVariables.cliente.yapa))"
     globalVariables.cliente.cargarPhoto(imageView: self.userProfilePhoto)
+      
+      
   }
   
   //MASK:- FUNCTIONS
@@ -90,7 +93,7 @@ class SideMenuController: UIViewController {
       ErrorConexion()
     }
   }
-  
+
   func ErrorConexion(){
     //self.CargarTelefonos()
     //AlertaSinConexion.isHidden = false

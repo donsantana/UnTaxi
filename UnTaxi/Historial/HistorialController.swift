@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class HistorialController: BaseController {
   var historialSolicitudesList: [SolicitudHistorial] = []
@@ -37,6 +38,14 @@ class HistorialController: BaseController {
   override func homeBtnAction() {
     self.goToInicioView()
   }
+    
+    
+    internal func showReviewView() {
+        let reviewView = ReviewView()
+        let hosting = UIHostingController(rootView: reviewView)
+        self.navigationController?.pushViewController(hosting, animated: true)
+    }
+  
   
 }
 
@@ -48,6 +57,10 @@ extension HistorialController: SocketServiceDelegate{
       for solicitudHistory in historialJson{
         self.historialSolicitudesList.append(SolicitudHistorial(jsonData: solicitudHistory))
       }
+        
+        if historialSolicitudesList.count > 5 {
+            showReviewView()
+        }
       if self.historialSolicitudesList.count > 0{
         self.tableView.reloadData()
       } else {

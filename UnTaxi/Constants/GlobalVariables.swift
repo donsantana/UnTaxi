@@ -29,6 +29,7 @@ struct globalVariables {
     static var responsive = Responsive()
     static var appConfig = AppConfig()
     static var direccionesPactadas: [DireccionesPactadas] = []
+    static var destinosPactadaIndex: Int = 0
     static var isBigIphone = UIScreen.main.bounds.height >= 750
     static var publicidadService: PublicidadService?
     static var authorizationStatus: CLAuthorizationStatus = .notDetermined

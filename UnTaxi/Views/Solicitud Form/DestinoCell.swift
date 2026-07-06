@@ -21,5 +21,9 @@ class DestinoCell: UITableViewCell {
  
     self.destinoText.setBottomBorder(borderColor: CustomAppColor.bottomBorderColor)
   }
+    
+    func cleanDestinoText() {
+        self.destinoText.text?.removeAll()
+    }
 
 }

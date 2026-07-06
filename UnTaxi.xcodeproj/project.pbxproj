@@ -1139,6 +1139,18 @@
 		F4560DBF2E13470F003699C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4560DB72E13470F003699C6 /* Bundle.swift */; };
 		F4560DC02E13470F003699C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4560DB72E13470F003699C6 /* Bundle.swift */; };
 		F4560DC12E13470F003699C6 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4560DB72E13470F003699C6 /* Bundle.swift */; };
+		F4587D582FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D592FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5A2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5B2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5C2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5D2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5E2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D5F2FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D602FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D612FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D622FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
+		F4587D632FEB29D9005438E9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4587D572FEB29D9005438E9 /* ReviewView.swift */; };
 		F45E0E932A37DE03004A4FEF /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68073F8256F30200093E4DE /* SideMenuController.swift */; };
 		F45E0E942A37DE03004A4FEF /* AdaptiveLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63445A72597A11500ABEC47 /* AdaptiveLayoutConstraint.swift */; };
 		F45E0E952A37DE03004A4FEF /* LoginDelegatesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3A4EE245F32640084F409 /* LoginDelegatesExt.swift */; };
@@ -2543,6 +2555,7 @@
 		F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "VipCar Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F452DE4A2A084D8C005BCF55 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		F4560DB72E13470F003699C6 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		F4587D572FEB29D9005438E9 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		F45E0F4C2A37DE03004A4FEF /* LlamadaFacil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LlamadaFacil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45E0F592A37DF78004A4FEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F45E0F5A2A37DF78004A4FEF /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
@@ -2865,6 +2878,7 @@
 		AFD656631FA1734300C8A5BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4587D562FEB29A3005438E9 /* Review */,
 				C6AEE28C28E86C3C00AB79A2 /* SOS */,
 				C66F2511265A9EDB004716AF /* Yapa */,
 				C68D05B425A666DA00E124AB /* Completada */,
@@ -3391,6 +3405,14 @@
 				F452DE492A084D8C005BCF55 /* VipCar Launch Screen.storyboard */,
 			);
 			path = VipCar;
+			sourceTree = "<group>";
+		};
+		F4587D562FEB29A3005438E9 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				F4587D572FEB29D9005438E9 /* ReviewView.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		F45E0F582A37DF47004A4FEF /* LlamadaFacil */ = {
@@ -4821,6 +4843,7 @@
 				C63445B12597BB1E00ABEC47 /* AddressController.swift in Sources */,
 				C6D04D012398CD2E00ACD70C /* OfertaDataViewCell.swift in Sources */,
 				C68074742571CDDC0093E4DE /* EsperaChildVC.swift in Sources */,
+				F4587D5A2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				C6002C4D28FCA49C004C55EE /* PagoController.swift in Sources */,
 				C62E594124BB669F00FFB26B /* PactadaCell.swift in Sources */,
 				C68D05A725A663DB00E124AB /* CompletadaCollectionExt.swift in Sources */,
@@ -5013,6 +5036,7 @@
 				F404BBE22A7BFE0000D1671E /* LoginSocketExt.swift in Sources */,
 				F404BBE32A7BFE0000D1671E /* LoginController.swift in Sources */,
 				F404BBE42A7BFE0000D1671E /* OurDate.swift in Sources */,
+				F4587D632FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F404BBE52A7BFE0000D1671E /* SocketService.swift in Sources */,
 				F404BBE62A7BFE0000D1671E /* InicioSocketExt.swift in Sources */,
 				F404BBE72A7BFE0000D1671E /* PagoSocketExt.swift in Sources */,
@@ -5162,6 +5186,7 @@
 				F41602C22A6D96E8006A3FC1 /* LoginSocketExt.swift in Sources */,
 				F41602C32A6D96E8006A3FC1 /* LoginController.swift in Sources */,
 				F41602C42A6D96E8006A3FC1 /* OurDate.swift in Sources */,
+				F4587D622FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F41602C52A6D96E8006A3FC1 /* SocketService.swift in Sources */,
 				F41602C62A6D96E8006A3FC1 /* InicioSocketExt.swift in Sources */,
 				F41602C72A6D96E8006A3FC1 /* PagoSocketExt.swift in Sources */,
@@ -5311,6 +5336,7 @@
 				F41603862A785746006A3FC1 /* LoginSocketExt.swift in Sources */,
 				F41603872A785746006A3FC1 /* LoginController.swift in Sources */,
 				F41603882A785746006A3FC1 /* OurDate.swift in Sources */,
+				F4587D5B2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F41603892A785746006A3FC1 /* SocketService.swift in Sources */,
 				F416038A2A785746006A3FC1 /* InicioSocketExt.swift in Sources */,
 				F416038B2A785746006A3FC1 /* PagoSocketExt.swift in Sources */,
@@ -5460,6 +5486,7 @@
 				F43B6A9A2BD6BCB100089E9E /* LoginSocketExt.swift in Sources */,
 				F43B6A9B2BD6BCB100089E9E /* LoginController.swift in Sources */,
 				F43B6A9C2BD6BCB100089E9E /* OurDate.swift in Sources */,
+				F4587D592FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F43B6A9D2BD6BCB100089E9E /* SocketService.swift in Sources */,
 				F43B6A9E2BD6BCB100089E9E /* InicioSocketExt.swift in Sources */,
 				F43B6A9F2BD6BCB100089E9E /* PagoSocketExt.swift in Sources */,
@@ -5568,6 +5595,7 @@
 				F451890B2D53C6DD004CD538 /* AddressController.swift in Sources */,
 				F451890C2D53C6DD004CD538 /* OfertaDataViewCell.swift in Sources */,
 				F451890D2D53C6DD004CD538 /* EsperaChildVC.swift in Sources */,
+				F4587D5E2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F451890E2D53C6DD004CD538 /* PagoController.swift in Sources */,
 				F451890F2D53C6DD004CD538 /* PactadaCell.swift in Sources */,
 				F45189102D53C6DD004CD538 /* CompletadaCollectionExt.swift in Sources */,
@@ -5760,6 +5788,7 @@
 				F45E0EEC2A37DE03004A4FEF /* LoginSocketExt.swift in Sources */,
 				F45E0EED2A37DE03004A4FEF /* LoginController.swift in Sources */,
 				F45E0EEE2A37DE03004A4FEF /* OurDate.swift in Sources */,
+				F4587D5C2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F45E0EEF2A37DE03004A4FEF /* SocketService.swift in Sources */,
 				F45E0EF02A37DE03004A4FEF /* InicioSocketExt.swift in Sources */,
 				F45E0EF12A37DE03004A4FEF /* PagoSocketExt.swift in Sources */,
@@ -5909,6 +5938,7 @@
 				F470183E2A96A758009A5FED /* LoginSocketExt.swift in Sources */,
 				F470183F2A96A758009A5FED /* LoginController.swift in Sources */,
 				F47018402A96A758009A5FED /* OurDate.swift in Sources */,
+				F4587D612FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F47018412A96A758009A5FED /* SocketService.swift in Sources */,
 				F47018422A96A758009A5FED /* InicioSocketExt.swift in Sources */,
 				F47018432A96A758009A5FED /* PagoSocketExt.swift in Sources */,
@@ -6017,6 +6047,7 @@
 				F47DD8C02FE7456B006AAA9D /* AddressController.swift in Sources */,
 				F47DD8C12FE7456B006AAA9D /* OfertaDataViewCell.swift in Sources */,
 				F47DD8C22FE7456B006AAA9D /* EsperaChildVC.swift in Sources */,
+				F4587D582FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F47DD8C32FE7456B006AAA9D /* PagoController.swift in Sources */,
 				F47DD8C42FE7456B006AAA9D /* PactadaCell.swift in Sources */,
 				F47DD8C52FE7456B006AAA9D /* CompletadaCollectionExt.swift in Sources */,
@@ -6168,6 +6199,7 @@
 				F498B7B02E5A0BEC007C8E4A /* AddressController.swift in Sources */,
 				F498B7B12E5A0BEC007C8E4A /* OfertaDataViewCell.swift in Sources */,
 				F498B7B22E5A0BEC007C8E4A /* EsperaChildVC.swift in Sources */,
+				F4587D5F2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F498B7B32E5A0BEC007C8E4A /* PagoController.swift in Sources */,
 				F498B7B42E5A0BEC007C8E4A /* PactadaCell.swift in Sources */,
 				F498B7B52E5A0BEC007C8E4A /* CompletadaCollectionExt.swift in Sources */,
@@ -6360,6 +6392,7 @@
 				F4E132382A08121A00E18299 /* LoginSocketExt.swift in Sources */,
 				F4E132392A08121A00E18299 /* LoginController.swift in Sources */,
 				F4E1323A2A08121A00E18299 /* OurDate.swift in Sources */,
+				F4587D5D2FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F4E1323B2A08121A00E18299 /* SocketService.swift in Sources */,
 				F4E1323C2A08121A00E18299 /* InicioSocketExt.swift in Sources */,
 				F4E1323D2A08121A00E18299 /* PagoSocketExt.swift in Sources */,
@@ -6509,6 +6542,7 @@
 				F4E139282C0515A100E3A54E /* LoginSocketExt.swift in Sources */,
 				F4E139292C0515A100E3A54E /* LoginController.swift in Sources */,
 				F4E1392A2C0515A100E3A54E /* OurDate.swift in Sources */,
+				F4587D602FEB29D9005438E9 /* ReviewView.swift in Sources */,
 				F4E1392B2C0515A100E3A54E /* SocketService.swift in Sources */,
 				F4E1392C2C0515A100E3A54E /* InicioSocketExt.swift in Sources */,
 				F4E1392D2C0515A100E3A54E /* PagoSocketExt.swift in Sources */,
@@ -7325,7 +7359,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
@@ -7364,7 +7398,7 @@
 				CODE_SIGN_ENTITLEMENTS = UnTaxi/UnTaxi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2VMNV5JH5M;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_BITCODE = NO;
