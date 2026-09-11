@@ -36,16 +36,28 @@ extension InicioController {
 	
 	func initTipoSolicitudBar() {
         
+        if #available(iOS 26.0, *) {
+            self.ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!)
+            self.taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!)
+            self.horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!)
+            self.pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!)
+        } else {
+            self.ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            self.taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            self.horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            self.pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+        }
+        
         self.tabBar.items?.removeAll()
-        if globalVariables.appConfig.oferta == true{
+        if globalVariables.appConfig.oferta == true {
           self.tabBar.items?.append(self.ofertaItem)
         }
         
-        if globalVariables.appConfig.taximetro == true{
+        if globalVariables.appConfig.taximetro == true {
           self.tabBar.items?.append(self.taximetroItem)
         }
         
-        if globalVariables.appConfig.horas == true{
+        if globalVariables.appConfig.horas == true {
           self.tabBar.items?.append(self.horasItem)
         }
         
@@ -101,7 +113,7 @@ extension InicioController {
 		}
 	}
 	
-	func loadFormularioData(){
+	func loadFormularioData() {
 
 		formularioDataCellList.removeAll()
 		origenCell.origenText.text = origenAnnotation.address

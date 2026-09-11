@@ -84,11 +84,16 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     var sideMenu: SideMenuNavigationController?
     
     var menuArray = [[MenuData(imagen: "solicitud", title: "Viajes en proceso"),MenuData(imagen: "historial", title: "Historial de Viajes")],[MenuData(imagen: "callCenter", title: "Operadora"),MenuData(imagen: "terminos", title: "Términos y condiciones"),MenuData(imagen: "compartir", title: "Compartir app")],[MenuData(imagen: "salir2", title: "Salir")]]//,MenuData(imagen: "card", title: "Mis tarjetas")
+   
+//    var ofertaItem: UITabBarItem!
+//    var taximetroItem: UITabBarItem!
+//    var horasItem: UITabBarItem!
+//    var pactadaItem: UITabBarItem!
+     var ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+     var taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+     var horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+     var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
     
-    var ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
-    var taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
-    var horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
-    var pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
     
     //variables de interfaz
     
@@ -179,6 +184,7 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
         self.tabBar.delegate = self
         self.tabBar.layer.borderColor = UIColor.clear.cgColor
         self.tabBar.clipsToBounds = true
+
         addressTableView.delegate = self
         coreLocationManager.delegate = self
         tarjetaWebView.navigationDelegate = self
@@ -242,6 +248,23 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
         globalVariables.socket.on("disconnect"){data, ack in
             print("disconnect")
             self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.Reconect), userInfo: nil, repeats: true)
+        }
+        
+        
+        //customSolicitudType()
+    }
+    
+    private func customSolicitudType() {
+        if #available(iOS 26, *) {
+            ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), tag: 0)
+            taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), tag: 1)
+            horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), tag: 2)
+            pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), tag: 3)
+        } else {
+            ofertaItem = UITabBarItem(title: "", image: UIImage(named: "tipoOferta"), selectedImage: UIImage(named: "tipoOferta")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            taximetroItem = UITabBarItem(title: "", image: UIImage(named: "tipoTaximetro"), selectedImage: UIImage(named: "tipoTaximetro")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            horasItem = UITabBarItem(title: "", image: UIImage(named: "tipoHoras"), selectedImage: UIImage(named: "tipoHoras")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
+            pactadaItem = UITabBarItem(title: "", image: UIImage(named: "tipoPactada"), selectedImage: UIImage(named: "tipoPactada")!.addBorder(radius: 10, color: CustomAppColor.tabItemBorderColor))
         }
         
     }
@@ -438,7 +461,4 @@ class InicioController: BaseController, CLLocationManagerDelegate, URLSessionDel
     
     
 }
-
-
-
 

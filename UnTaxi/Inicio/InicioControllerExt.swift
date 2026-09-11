@@ -19,19 +19,38 @@ extension InicioController: UITextFieldDelegate{
   func textFieldDidBeginEditing(_ textField: UITextField) {
     if self.tabBar.selectedItem == self.pactadaItem {
       textField.resignFirstResponder()
-      if globalVariables.direccionesPactadas.count > 0{
-        if textField.isEqual(self.origenCell.origenText){
-          self.destinoCell.destinoText.text?.removeAll()
-          self.addressView.isHidden = false
-          self.origenCell.origenText.text = globalVariables.direccionesPactadas[0].dirorigen
-          self.destinoPactadas = globalVariables.direccionesPactadas.filter{$0.dirorigen == globalVariables.direccionesPactadas[0].dirorigen}
-          self.destinoAddressPicker.reloadAllComponents()
-        } else {
-          if textField.isEqual(self.destinoCell.destinoText){
-            self.destinoAddressView.isHidden = false
-            self.destinoCell.destinoText.text = globalVariables.direccionesPactadas[0].dirdestino
-            self.pactadaCell.initContent(solicitudPactada: globalVariables.direccionesPactadas[0])
-          }
+      if globalVariables.direccionesPactadas.count > 0 {
+          if textField.isEqual(self.origenCell.origenText) {
+              addressPicker.selectRow(0, inComponent: 0, animated: false)
+              self.destinoCell.cleanDestinoText()
+              self.addressView.isHidden = false
+              //self.origenCell.origenText.text = globalVariables.direccionesPactadas[0].dirorigen
+              createOrigenPactada(direccionPactadaSeleccionada: globalVariables.direccionesPactadas[0])
+              self.destinoPactadas = globalVariables.direccionesPactadas.filter{$0.dirorigen == globalVariables.direccionesPactadas[0].dirorigen}
+              if self.destinoPactadas.count == 1 {
+                  createDestinoPactada(pactadaSelected: destinoPactadas[0])
+//                  self.destinoCell.destinoText.text = destinoPactadas[0].dirdestino
+//                  self.pactadaCell.initContent(solicitudPactada: destinoPactadas[0])
+              }
+              
+              self.destinoAddressPicker.reloadAllComponents()
+          } else {
+              if textField.isEqual(self.destinoCell.destinoText) {
+                  if origenCell.origenText.text != "" {
+                      if destinoPactadas.count == 1 {
+                          self.destinoCell.destinoText.text = destinoPactadas[0].dirdestino
+                      }
+                      self.destinoAddressView.isHidden = false
+                      self.pactadaCell.initContent(solicitudPactada: destinoPactadas[0])
+                  } else {
+                      let alertaDos = UIAlertController (title: "Elige el Origen", message: "Debes eligir el origen de la carrera y luego el destino", preferredStyle: .alert)
+                      alertaDos.addAction(UIAlertAction(title: GlobalStrings.aceptarButtonTitle, style: .default, handler: {alerAction in
+                        
+                      }))
+                      
+                      self.present(alertaDos, animated: true, completion: nil)
+                  }
+              }
         }
       } else {
         let alertaDos = UIAlertController (title: "Dirección de Pactada", message: "Su empresa no dispone de direcciones pactadas. Por favor contacte con la dirección de su compañía.", preferredStyle: .alert)
@@ -158,14 +177,26 @@ extension InicioController: UITextFieldDelegate{
     return true
   }
   
+    internal func createOrigenPactada(direccionPactadaSeleccionada: DireccionesPactadas) {
+        self.origenCell.origenText.text = direccionPactadaSeleccionada.dirorigen
+        self.origenAnnotation.coordinates = CLLocationCoordinate2D(latitude: direccionPactadaSeleccionada.latorigen, longitude: direccionPactadaSeleccionada.lngorigen)
+        self.origenAnnotation.address = direccionPactadaSeleccionada.dirorigen
+        initMapView()
+    }
+    
+    internal func createDestinoPactada(pactadaSelected: DireccionesPactadas) {
+        self.destinoCell.destinoText.text = destinoPactadas[0].dirdestino
+        self.pactadaCell.initContent(solicitudPactada: pactadaSelected)
+        //self.origenAnnotation.coordinates = CLLocationCoordinate2D(latitude: pactadaSelected.latorigen, longitude: pactadaSelected.lngorigen)
+        //self.origenAnnotation.address = pactadaSelected.dirorigen
+        
+    }
   func animateViewMoving (_ up:Bool, moveValue :CGFloat, view : UIView) {
-    let movementDuration:TimeInterval = 0.3
-    let movement:CGFloat = ( up ? -moveValue : moveValue)
-    UIView.beginAnimations( "animateView", context: nil)
-    UIView.setAnimationBeginsFromCurrentState(true)
-    UIView.setAnimationDuration(movementDuration)
-    view.frame = view.frame.offsetBy(dx: 0,  dy: movement)
-    UIView.commitAnimations()
+    let movementDuration: TimeInterval = 0.3
+    let movement: CGFloat = (up ? -moveValue : moveValue)
+    UIView.animate(withDuration: movementDuration, delay: 0, options: [.beginFromCurrentState, .curveEaseInOut], animations: {
+        view.frame = view.frame.offsetBy(dx: 0, dy: movement)
+    }, completion: nil)
   }
 }
 
@@ -196,7 +227,7 @@ extension InicioController: PagoCellDelegate {
                 switch result {
                 case .success(let cards):
                     self.cardList = cards
-                case .failure(let _):
+                case .failure( _):
                     DispatchQueue.main.async {
                         let alertaDos = UIAlertController (title: GlobalStrings.noCardsTiTle, message: GlobalStrings.noCardsMessage, preferredStyle: UIAlertController.Style.alert)
                         alertaDos.addAction(UIAlertAction(title: GlobalStrings.registrarBtnTitle, style: .default, handler: {alerAction in
@@ -272,25 +303,28 @@ extension InicioController: UIPickerViewDelegate, UIPickerViewDataSource{
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     if pickerView.isEqual(self.addressPicker) {
       let direccionPactadaSeleccionada = globalVariables.direccionesPactadas[row]
-      self.origenCell.origenText.text = direccionPactadaSeleccionada.dirorigen
-      self.origenAnnotation.coordinates = CLLocationCoordinate2D(latitude: direccionPactadaSeleccionada.latorigen, longitude: direccionPactadaSeleccionada.lngorigen)
-      self.origenAnnotation.address = direccionPactadaSeleccionada.dirorigen
-      initMapView()
+//      self.origenCell.origenText.text = direccionPactadaSeleccionada.dirorigen
+//      self.origenAnnotation.coordinates = CLLocationCoordinate2D(latitude: direccionPactadaSeleccionada.latorigen, longitude: direccionPactadaSeleccionada.lngorigen)
+//      self.origenAnnotation.address = direccionPactadaSeleccionada.dirorigen
+//      initMapView()
+        createOrigenPactada(direccionPactadaSeleccionada: direccionPactadaSeleccionada)
       
       self.destinoPactadas = globalVariables.direccionesPactadas.filter{$0.dirorigen == globalVariables.direccionesPactadas[row].dirorigen}
       
       self.destinoAddressPicker.reloadAllComponents()
       
       if self.destinoPactadas.count == 1 {
-        self.destinoCell.destinoText.text = globalVariables.direccionesPactadas[row].dirdestino
-        self.pactadaCell.precioText.text = "$\(globalVariables.direccionesPactadas[row].importeida)"
+          createDestinoPactada(pactadaSelected: destinoPactadas[0])
+//        self.destinoCell.destinoText.text = destinoPactadas[0].dirdestino
+//        self.pactadaCell.initContent(solicitudPactada: destinoPactadas[0])
+        //self.pactadaCell.precioText.text = "$\(destinoPactadas[0].importeida)"
       }
     } else {
       self.destinoCell.destinoText.text = self.destinoPactadas[row].dirdestino
       self.destinoAnnotation.coordinates = CLLocationCoordinate2D(latitude: globalVariables.direccionesPactadas[row].latdestino, longitude: globalVariables.direccionesPactadas[row].lngdestino)
       self.destinoAnnotation.address = globalVariables.direccionesPactadas[row].dirdestino
       
-      self.pactadaCell.initContent(solicitudPactada: globalVariables.direccionesPactadas[row])
+      self.pactadaCell.initContent(solicitudPactada: self.destinoPactadas[row])
       //self.pactadaCell.precioText.text = "$\(self.destinoPactadas[row].importeida)"
     }
   }
@@ -308,6 +342,7 @@ extension InicioController: UITabBarDelegate{
         default:
             tipoServicio = 1
         }
+      self.tabBar.selectedItem = item
     loadFormularioData()
   }
 }
@@ -581,3 +616,4 @@ extension InicioController: UITabBarDelegate{
 //}
 //
 //
+
